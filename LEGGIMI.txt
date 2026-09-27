@@ -1,0 +1,5 @@
+CONTROCORRENTE - SITO CON LE 4 IMMAGINI ORIGINALI
+Estrai tutto e sovrascrivi i file del vecchio sito nella cartella controcorrente. Apri index.html per la home. Nessun audio o servizio esterno. Le immagini originali sono in menu/.
+
+Corretto menu/antipasti.png: rimossa la dicitura «al vapore» dai gamberetti in salsa rosa.
+Pagina allergeni ridisegnata in stile nautico, con 14 categorie e link alle fonti istituzionali.
