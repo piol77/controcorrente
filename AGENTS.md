@@ -77,6 +77,7 @@ Before committing/publishing:
 9. Verify that the tessera appunti still works.
 10. Ensure no unrelated content or business rule changed.
 11. Preserve the repository and avoid destructive deployment/account operations unless explicitly requested.
+12. After every change to dinner dishes or the daily special, update the shared English and Chinese translations in `menu-translations.js` as the final content check.
 
 ## Safety against accidental regressions
 - Never bulk-delete old-looking assets until confirming they are genuinely unused by the current site.
