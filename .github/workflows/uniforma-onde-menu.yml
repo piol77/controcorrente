@@ -1,0 +1,54 @@
+name: Uniforma onde menu
+on:
+  push:
+    paths:
+      - .github/workflows/uniforma-onde-menu.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  uniforma:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Pillow
+        run: python -m pip install pillow
+      - name: Copy the exact Antipasti waves into the other approved menus
+        run: |
+          python - <<'PY'
+          from PIL import Image
+          import numpy as np
+          from pathlib import Path
+          master = Image.open("Antipastiok.png").convert("RGB")
+          start, end = 1360, 1430
+          for source, dest in [
+              ("Primiok.png", "Primi-onde.png"),
+              ("Secondiok.png", "Secondi-onde.png"),
+              ("Bibiteok.png", "Bibite-onde.png"),
+          ]:
+              original = Image.open(source).convert("RGB")
+              if original.size != master.size or master.size != (1024,1536):
+                  raise RuntimeError(f"Unexpected dimensions in {source}: {original.size}, master {master.size}")
+              import numpy as np
+              img = np.asarray(original, dtype=np.float32).copy()
+              ref = np.asarray(master, dtype=np.float32)
+              alpha = np.clip((np.arange(img.shape[0], dtype=np.float32)[:,None,None] - start)/(end-start), 0, 1)
+              blended = (img*(1-alpha)+ref*alpha).round().astype("uint8")
+              Image.fromarray(blended, "RGB").save(dest, optimize=True)
+              # The entire wave band from pixel row 1430 to bottom is identical to Antipasti.
+              if not np.array_equal(blended[end:], np.asarray(master)[end:]):
+                  raise RuntimeError(f"Wave verification failed for {dest}")
+              print("Created and verified",dest)
+          PY
+      - name: Commit and publish uniform menu illustrations
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Primi-onde.png Secondi-onde.png Bibite-onde.png
+          if ! git diff --cached --quiet; then
+            git commit -m "Use Antipasti master waves on all menus"
+            git push
+          fi
