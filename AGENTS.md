@@ -44,6 +44,7 @@ When Paolo asks to add, remove, rename or change a dish:
 ### Frozen-at-origin marker
 - Use `*` for ingredients/products frozen at origin.
 - Always apply the marker to gamberetti/gamberoni and patatine fritte when they appear.
+- Place the marker directly after the frozen ingredient name (for example `gamberetti*`, `gamberoni*`, `scampi*`), never after the price.
 - Preserve the site's explanatory note for the asterisk where applicable.
 
 ## Restaurant wording and business rules
