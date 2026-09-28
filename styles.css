@@ -19,8 +19,9 @@
 .language-course h2{color:#0c6c9c;text-align:center;text-transform:uppercase;letter-spacing:.12em;font-size:19px;margin:0 0 14px}
 .language-dish{border-bottom:1px solid rgba(12,108,156,.2);padding:11px 4px}.language-dish:last-child{border-bottom:0}
 .language-dish h3{color:#082a43;font-size:20px;margin:0 0 4px}.language-dish p{margin:0;color:#304c5f;line-height:1.5}
+.language-dish h3{display:flex;justify-content:space-between;gap:18px;align-items:baseline}.language-price{flex:none;color:#b87814;font-size:18px;white-space:nowrap}
 .language-note{text-align:center;margin:26px 0 0;color:#082a43;font-size:14px}
 .language-daily{margin-top:34px;padding:20px 18px;border:2px solid #cba76d;border-radius:14px;background:#fff9ea}
 .language-daily h2{color:#9b6817;line-height:1.4}
 .whatsapp-button{background:#167c4a;border-color:#9dd8b7}
-@media(max-width:600px){.language-menu{padding:22px 16px 28px}.language-dish h3{font-size:18px}.language-course h2{font-size:17px}}
+@media(max-width:600px){.language-menu{padding:22px 16px 28px}.language-dish h3{font-size:18px}.language-price{font-size:16px}.language-course h2{font-size:17px}}
