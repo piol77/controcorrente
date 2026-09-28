@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install Pillow
-        run: python -m pip install pillow
+        run: python -m pip install pillow numpy
       - name: Copy the exact Antipasti waves into the other approved menus
         run: |
           python - <<'PY'
