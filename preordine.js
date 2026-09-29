@@ -4,21 +4,21 @@
   const PHONE = '393272292006';
   const catalog = {
     antipasti: [
-      ['Bruschetta al salmone affumicato', 10, 18, 35.3],
-      ['Gamberetti* in salsa rosa', 10, 18, 55.3],
-      ['Funghi champignon fritti', 10, 18, 75.2]
+      ['Bruschetta al salmone affumicato', 10, 88, 32.5],
+      ['Gamberetti* in salsa rosa', 10, 88, 52.3],
+      ['Funghi champignon fritti', 10, 88, 72.3]
     ],
     primi: [
-      ['Spaghetti ai frutti di mare', 15, 18, 31.7],
-      ['Conchigliette verdure, zafferano e croccante di guanciale', 12.5, 18, 49.4],
-      ['Risotto barbabietola e gorgonzola (minimo due porzioni)', 12.5, 18, 67.7],
-      ['Linguine crema di zucchine, avocado e gamberetti*', 12.5, 18, 85.2]
+      ['Spaghetti ai frutti di mare', 15, 88, 29.4],
+      ['Conchigliette verdure, zafferano e croccante di guanciale', 12.5, 88, 47.1],
+      ['Risotto barbabietola e gorgonzola (minimo due porzioni)', 12.5, 88, 65.0],
+      ['Linguine crema di zucchine, avocado e gamberetti*', 12.5, 88, 82.8]
     ],
     secondi: [
-      ['Frittura mista di alici, calamari e gamberetti*', 20, 18, 33.2],
-      ['Filetti di suino al bacon e fichi', 14, 18, 51.1],
-      ['Filetto di branzino al limone', 14, 18, 68.7],
-      ['Trancio di salmone all’arancia e pepe rosa', 14, 18, 86.1]
+      ['Frittura mista di alici, calamari e gamberetti*', 20, 88, 30.8],
+      ['Filetti di suino al bacon e fichi', 14, 88, 48.7],
+      ['Filetto di branzino al limone', 14, 88, 66.4],
+      ['Trancio di salmone all’arancia e pepe rosa', 14, 88, 84.0]
     ],
     'bibite-vini': [
       ['Acqua 1 litro', 2, 9, 40], ['Bibite in lattina 33 cl', 3, 27, 40],
