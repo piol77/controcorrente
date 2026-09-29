@@ -4,21 +4,21 @@
   const PHONE = '393272292006';
   const catalog = {
     antipasti: [
-      ['Bruschetta al salmone affumicato', 10, 88, 32.5],
-      ['Gamberetti* in salsa rosa', 10, 88, 52.3],
-      ['Funghi champignon fritti', 10, 88, 72.3]
+      ['Bruschetta al salmone affumicato', 10, 92, 28.06],
+      ['Gamberetti* in salsa rosa', 10, 92, 50.07],
+      ['Funghi champignon fritti', 10, 92, 69.73]
     ],
     primi: [
-      ['Spaghetti ai frutti di mare', 15, 88, 29.4],
-      ['Conchigliette verdure, zafferano e croccante di guanciale', 12.5, 88, 47.1],
-      ['Risotto barbabietola e gorgonzola (minimo due porzioni)', 12.5, 88, 65.0],
-      ['Linguine crema di zucchine, avocado e gamberetti*', 12.5, 88, 82.8]
+      ['Spaghetti ai frutti di mare', 15, 92, 25.85],
+      ['Conchigliette verdure, zafferano e croccante di guanciale', 12.5, 92, 44.63],
+      ['Risotto barbabietola e gorgonzola (minimo due porzioni)', 12.5, 92, 61.00],
+      ['Linguine crema di zucchine, avocado e gamberetti*', 12.5, 92, 79.78]
     ],
     secondi: [
-      ['Frittura mista di alici, calamari e gamberetti*', 20, 88, 30.8],
-      ['Filetti di suino al bacon e fichi', 14, 88, 48.7],
-      ['Filetto di branzino al limone', 14, 88, 66.4],
-      ['Trancio di salmone all’arancia e pepe rosa', 14, 88, 84.0]
+      ['Frittura mista di alici, calamari e gamberetti*', 20, 92, 26.79],
+      ['Filetti di suino al bacon e fichi', 14, 92, 45.05],
+      ['Filetto di branzino al limone', 14, 92, 62.53],
+      ['Trancio di salmone all’arancia e pepe rosa', 14, 92, 81.18]
     ]
   };
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
