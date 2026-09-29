@@ -39,7 +39,7 @@
       [dish.querySelector('h3')?.textContent.trim(), priceNumber(dish.querySelector('strong')?.textContent || '')]);
     const dishes = Array.from(doc.querySelectorAll('.daily-dish h2')).map(el => el.textContent.trim());
     const price = priceNumber(doc.querySelector('.daily-price strong')?.textContent || '');
-    return dishes.length && Number.isFinite(price) ? [['Menù del giorno in offerta: ' + dishes.join('; '), price]] : [];
+    return dishes.length && Number.isFinite(price) ? [['Offerta del giorno: ' + dishes.join('; '), price]] : [];
   }
   function dailyKey(section, item) { return section + ':' + encodeURIComponent(item[0]); }
   function reconcileDaily(section) {
@@ -149,9 +149,9 @@
       });
       if (!list.children.length) { const li = document.createElement('li'); li.textContent = 'Nessun piatto selezionato. Scegli dal menù.'; list.append(li); }
       total.textContent = euro(sum);
-      document.querySelector('[data-service-info]').textContent = isLunch()
-        ? 'Pranzo: acqua, caffè e coperto inclusi. È necessaria la conferma del Ristorante entro le 12.'
-        : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Il coperto serale è 1,50 € a persona; prenotando tavolo e menù entro le 18:00 è omaggio.';
+      document.querySelector('[data-service-info]').innerHTML = isLunch()
+        ? 'Pranzo: acqua, caffè e coperto inclusi. <strong>Attendere la conferma del Ristorante entro le 12 per considerare valido l’ordine.</strong>'
+        : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Il coperto serale è 1,50 € a persona; prenotando tavolo e menù entro le 18:00 è omaggio. <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong>';
       document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'antipasti.html';
     }
     render();
@@ -170,7 +170,7 @@
       const data = new FormData(form);
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
         'Servizio: ' + (isLunch() ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
-        'Nome e cognome: ' + data.get('nome'), 'Telefono: ' + data.get('telefono'),
+        'Nome e cognome: ' + data.get('nome'),
         'Persone: ' + data.get('persone'), 'Data: ' + data.get('data'),
         'Orario richiesto: ' + data.get('orario'),
         'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',

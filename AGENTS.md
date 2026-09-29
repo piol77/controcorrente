@@ -79,7 +79,13 @@ When Paolo asks to add, remove, rename or change a dish:
 - English and Chinese menu translations are dynamic and share the site's current menu data. Recheck and synchronize them whenever a relevant source dish changes; do not maintain visually divergent copies.
 - Frozen markers are dynamic: reassess the affected ingredients on every menu edit and place `*` immediately after each applicable ingredient name.
 - Allergen numbers are dynamic: recalculate them from the actual changed ingredients every time, using only regional table numbers in parentheses and never sulphites.
-- Paolo supplies the remaining variable content (dishes, descriptions, prices, offers and other business wording). Do not infer or change it beyond grammar/spelling corrections that preserve meaning.
+- Paolo supplies the remaining variable content (dishes, descriptions, prices, offers and other business wording). Correct grammar, spelling and style automatically while preserving the intended meaning and business terms.
+- Whenever a visible dish or offer price changes, update the matching preorder catalog/data in `preordine.js` in the same edit so quantities, summaries, totals and the WhatsApp message always use the new price.
+
+### Lunch dish images
+- Whenever lunch dishes are updated, add a small realistic image for each dish directly below its name whenever a suitable image is available.
+- Keep lunch photos compact and consistently placed. They must never cover or displace the price, `+` / `−` controls, allergens, text or another dish.
+- Use the existing `.lunch-photo` treatment and preserve the approved nautical layout; do not invent a competing card style.
 
 ## Restaurant wording and business rules
 Preserve established Controcorrente wording and commercial rules unless Paolo explicitly changes them.
@@ -107,6 +113,14 @@ Preserve established Controcorrente wording and commercial rules unless Paolo ex
 - Keep lunch's existing WhatsApp booking button and its noon deadline separate from dinner preorders.
 - The website only composes the WhatsApp message; the customer sends it and Paolo confirms the request. Requests made by 18:00 are answered by 18:30. Do not collect identity-document photos or silently submit requests.
 - Clear the selected items when the customer clicks the WhatsApp request button; opening the site again must start with an empty selection. Keep dinner `+` / `−` controls compact in the clear area below each price, never over a food photo or the price strip.
+- Do not request the customer's telephone number in preorder forms and do not repeat a telephone field in the generated message: Paolo receives the request from the customer's WhatsApp account.
+- In lunch and dinner ordering areas, state in bold that the customer must wait for the Ristorante's confirmation before the order is valid. Preserve this warning in every existing explanatory summary and notice.
+- The Contacts page must keep a direct WhatsApp button to `327 229 2006`.
+
+### Menu-page uniformity
+- Every food-menu page, including lunch and `Offerta del giorno`, must preserve the same approved nautical visual system, page structure and responsive quality used by Antipasti and Primi.
+- Home, Contacts, Allergens, Club and Il Locale are the only pages allowed to retain their distinct established layouts.
+- The permanent public label for `offerta.html` is `Offerta del giorno`; inside the page, keep `Valido solo per cena`.
 
 ## Content publishing procedure
 Before committing/publishing:
@@ -140,4 +154,4 @@ When finished, report concisely:
 - whether checks passed;
 - any uncertainty requiring Paolo's decision.
 
-Last established: 2026-09-29.
+Last established: 2026-09-30.
