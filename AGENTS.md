@@ -78,6 +78,8 @@ Preserve established Controcorrente wording and commercial rules unless Paolo ex
 ### Anonymous visible counter
 - Preserve the existing visible visit/click counter.
 - Its purpose is a simple aggregate anonymous count.
+- Count the visitor once per browser navigation session regardless of which site page they enter first; internal page changes and reloads in that session must not add visits.
+- Keep the numerical counter visible on the home page without an “Accesso già registrato” explanatory box or message.
 - Do not add names, user identification, profiling or unnecessary tracking.
 - Do not remove or replace it while editing unrelated code.
 
