@@ -54,7 +54,9 @@
       if (next) cart[key] = {qty:next, name:item[0], price:item[1]}; else delete cart[key];
       save(cart); refresh();
     });
-    wrap.append(minus, count, plus); refresh(); return wrap;
+    wrap.append(minus, count, plus); refresh();
+    window.addEventListener('pageshow', refresh);
+    return wrap;
   }
   function updateBadge() {
     const badge = document.querySelector('[data-order-count]');
@@ -109,6 +111,7 @@
       total.textContent = euro(sum);
     }
     render();
+    window.addEventListener('pageshow', render);
     const form = document.querySelector('[data-order-form]');
     form.addEventListener('submit', event => {
       event.preventDefault();
@@ -127,7 +130,10 @@
         'Orario richiesto: ' + data.get('orario'),
         'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',
         'Attendo la vostra conferma via WhatsApp entro le 18:30.'];
-      window.location.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n'));
+      const whatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n'));
+      try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
+      render();
+      window.location.href = whatsappUrl;
     });
     const date = form.elements.data;
     const today = new Intl.DateTimeFormat('sv-SE', {timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());

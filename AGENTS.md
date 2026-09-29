@@ -92,6 +92,7 @@ Preserve established Controcorrente wording and commercial rules unless Paolo ex
 - The four HD menu images remain unchanged by the controls. When a dinner dish, drink, price, order or daily offer changes, update the corresponding entry in `preordine.js` at the same time so the summary and message match the visible menu. Adjust a control position only if its dish photo moves.
 - Keep lunch's existing WhatsApp booking button and its noon deadline separate from dinner preorders.
 - The website only composes the WhatsApp message; the customer sends it and Paolo confirms the request. Requests made by 18:00 are answered by 18:30. Do not collect identity-document photos or silently submit requests.
+- Clear the selected items when the customer clicks the WhatsApp request button; opening the site again must start with an empty selection. Keep dinner `+` / `−` controls compact in the clear area below each price, never over a food photo or the price strip.
 
 ## Content publishing procedure
 Before committing/publishing:
