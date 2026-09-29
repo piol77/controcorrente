@@ -35,10 +35,6 @@
   function row(section, index) {
     if (catalog[section]) return catalog[section][index];
     if (section === 'offerta') return ['Menù del giorno in offerta', 25];
-    if (section === 'pranzo') {
-      const dish = document.querySelectorAll('.lunch-dish')[index];
-      return dish && [dish.querySelector('h3').textContent.trim(), Number(dish.querySelector('strong').textContent.replace(',', '.').match(/[\d.]+/)[0])];
-    }
   }
   function controls(section, index) {
     const item = row(section, index), key = id(section, index);
@@ -96,10 +92,6 @@
     if (!price) return;
     price.after(controls('offerta', 0)); bar();
   }
-  function setupLunch() {
-    document.querySelectorAll('.lunch-dish').forEach((dish, index) => dish.append(controls('pranzo', index)));
-    bar();
-  }
   function setupSummary() {
     const list = document.querySelector('[data-order-list]'), total = document.querySelector('[data-order-total]');
     if (!list || !total) return;
@@ -145,7 +137,6 @@
     const page = location.pathname.split('/').pop().replace(/\.html$/, '');
     if (catalog[page]) setupMenu(page);
     if (page === 'offerta') setupDaily();
-    if (page === 'pranzo') setupLunch();
     if (page === 'ordine') setupSummary();
   });
 })();
