@@ -27,6 +27,20 @@ This file is the permanent operating specification for AI agents working on the 
 - Prefer the existing CSS/components/assets over introducing a second competing style system.
 - When adding food imagery, use realistic food photography/imagery coherent with the dish and existing design; do not replace unrelated images.
 
+### Locked visual master (permanent default)
+The currently published site is the approved visual master. Its graphic system must not drift between pages or be reinterpreted during content edits.
+
+- Source of truth: the existing `styles.css` and the currently published HD menu boards.
+- Master menu boards: `Antipasti-HD.png`, `Primi-HD.png`, `Secondi-HD.png`, and `Bibite-HD.png`, all RGB PNG at 2048 × 3072. New raster menu boards must be rendered at this resolution or higher and must preserve the same proportions.
+- Typography: keep the current serif system `Georgia, "Times New Roman", serif`, with the existing small-caps treatment, weights, sizes, line heights, letter spacing and hierarchy. Do not substitute fonts without Paolo's explicit request.
+- Primary palette: deep nautical blue `#082a43`, body text blue `#0c2940`, warm paper `#f4efe4` / `#fffaf0`, gold `#cba76d`, sea blues `#1685b3` / `#54a9c8`, and price highlight yellow `#efbd36`. Preserve the current secondary shades already defined in `styles.css`; do not introduce a competing palette.
+- Backgrounds and gradients: keep the warm paper/parchment surfaces and the established deep-blue/teal marine gradients. Preserve existing opacity, border, shadow and contrast treatments.
+- Decorations: preserve anchors, waves, nautical dividers, double borders, gold outlines, irregular yellow price strips, marine ornaments and their current scale, placement and spacing.
+- Components: navigation, headers, menu boards, dish rows/cards, price labels, footers, allergen presentation and responsive breakpoints must remain visually consistent with the approved pages.
+- Images: preserve crop, placement, proportions, realistic food style and surrounding decorative context. Do not repeatedly paint over or patch raster text if this produces stains, ghosting, blurred letters or visibly dirty areas.
+- Quality rule: if a requested correction cannot be made cleanly, rebuild/render the entire affected page from the approved master at HD or higher resolution, reproducing every unchanged element exactly and applying only the requested correction.
+- Never redesign the master as part of a text, price, allergen, asterisk, translation or single-dish correction.
+
 ## Menu content rules
 When Paolo asks to add, remove, rename or change a dish:
 1. Modify only the named dish(es)/field(s).
@@ -46,6 +60,12 @@ When Paolo asks to add, remove, rename or change a dish:
 - Always apply the marker to gamberetti/gamberoni and patatine fritte when they appear.
 - Place the marker directly after the frozen ingredient name (for example `gamberetti*`, `gamberoni*`, `scampi*`), never after the price.
 - Preserve the site's explanatory note for the asterisk where applicable.
+
+### Dynamic content checks
+- English and Chinese menu translations are dynamic and share the site's current menu data. Recheck and synchronize them whenever a relevant source dish changes; do not maintain visually divergent copies.
+- Frozen markers are dynamic: reassess the affected ingredients on every menu edit and place `*` immediately after each applicable ingredient name.
+- Allergen numbers are dynamic: recalculate them from the actual changed ingredients every time, using only regional table numbers in parentheses and never sulphites.
+- Paolo supplies the remaining variable content (dishes, descriptions, prices, offers and other business wording). Do not infer or change it beyond grammar/spelling corrections that preserve meaning.
 
 ## Restaurant wording and business rules
 Preserve established Controcorrente wording and commercial rules unless Paolo explicitly changes them.
@@ -97,4 +117,4 @@ When finished, report concisely:
 - whether checks passed;
 - any uncertainty requiring Paolo's decision.
 
-Last established: 2026-09-28.
+Last established: 2026-09-29.
