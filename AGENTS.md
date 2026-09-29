@@ -119,6 +119,7 @@ Preserve established Controcorrente wording and commercial rules unless Paolo ex
 
 ### Menu-page uniformity
 - Every food-menu page, including lunch and `Offerta del giorno`, must preserve the same approved nautical visual system, page structure and responsive quality used by Antipasti and Primi.
+- Every page or section that displays food dishes, including translated menus and the order summary, must include a visible `Consulta la tabella allergeni` link to `allergeni.html`.
 - Home, Contacts, Allergens, Club and Il Locale are the only pages allowed to retain their distinct established layouts.
 - The permanent public label for `offerta.html` is `Offerta del giorno`; inside the page, keep `Valido solo per cena`.
 
