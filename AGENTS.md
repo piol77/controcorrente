@@ -87,6 +87,12 @@ Preserve established Controcorrente wording and commercial rules unless Paolo ex
 - Preserve the existing notes/card (“tessera appunti”) feature and its current behavior.
 - Do not remove, reset or redesign it as collateral damage from unrelated work.
 
+### Dinner preorders
+- Preserve the `+` / `−` controls on the four dinner menu pages and the daily dinner offer, the order summary in `ordine.html`, and the WhatsApp request flow in `preordine.js`.
+- The four HD menu images remain unchanged by the controls. When a dinner dish, drink, price, order or daily offer changes, update the corresponding entry in `preordine.js` at the same time so the summary and message match the visible menu. Adjust a control position only if its dish photo moves.
+- Keep lunch's existing WhatsApp booking button and its noon deadline separate from dinner preorders.
+- The website only composes the WhatsApp message; the customer sends it and Paolo confirms the request. Requests made by 18:00 are answered by 18:30. Do not collect identity-document photos or silently submit requests.
+
 ## Content publishing procedure
 Before committing/publishing:
 1. Read this file and inspect the current site.
