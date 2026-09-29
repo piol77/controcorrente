@@ -41,6 +41,20 @@ The currently published site is the approved visual master. Its graphic system m
 - Quality rule: if a requested correction cannot be made cleanly, rebuild/render the entire affected page from the approved master at HD or higher resolution, reproducing every unchanged element exactly and applying only the requested correction.
 - Never redesign the master as part of a text, price, allergen, asterisk, translation or single-dish correction.
 
+### Locked price-and-order-control layout (approved 2026-09-30)
+This arrangement is part of the permanent visual master and must remain unchanged unless Paolo explicitly requests a layout change.
+
+- Applies to the dinner food boards `Antipasti-HD.png`, `Primi-HD.png`, and `Secondi-HD.png`; drinks and wines must never receive `+` / `−` order controls.
+- Keep every price and its gold underline in the approved raised position, 48 raster pixels above their former position on the 2048 × 3072 boards.
+- Prices must share one coherent right-hand alignment and the same visual relationship to their dish row. Changing dish names, descriptions, allergens, photos or prices must not move the approved price column or alter its spacing.
+- Place each compact `+` / `−` control directly below its price, on the clear background, horizontally aligned with that price.
+- A control must remain entirely inside the horizontal band belonging to its dish. It must never overlap a food photo, price, dish text, allergens, divider, decoration, or any content in the dish row below.
+- Preserve the current compact proportions and responsive scaling on desktop and mobile. If text grows, reflow only the text inside its existing text area; do not displace the price/control column or allow the row to invade the next dish.
+- Current approved control anchors in `preordine.js` are authoritative: all use `left: 92%`; Antipasti `top: 28.06%, 50.07%, 69.73%`; Primi `top: 25.85%, 44.63%, 61.00%, 79.78%`; Secondi `top: 26.79%, 45.05%, 62.53%, 81.18%`.
+- When dishes or prices change, update the corresponding catalog data and visible board together while preserving these row anchors and layout rules. Move an anchor only when Paolo explicitly changes the row structure or expressly asks for a new position.
+- For raster corrections, change only the necessary price/text/photo region. All pixels outside the requested region must remain identical to the approved master; do not regenerate or reinterpret the whole board.
+- Preserve the cache-version updates in the relevant HTML whenever an approved board, stylesheet or preorder script changes, so visitors receive the new layout.
+
 ## Menu content rules
 When Paolo asks to add, remove, rename or change a dish:
 1. Modify only the named dish(es)/field(s).
