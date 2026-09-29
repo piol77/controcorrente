@@ -19,26 +19,43 @@
       ['Filetti di suino al bacon e fichi', 14, 88, 48.7],
       ['Filetto di branzino al limone', 14, 88, 66.4],
       ['Trancio di salmone all’arancia e pepe rosa', 14, 88, 84.0]
-    ],
-    'bibite-vini': [
-      ['Acqua 1 litro', 2, 9, 40], ['Bibite in lattina 33 cl', 3, 27, 40],
-      ['Birra Moretti / Peroni 66 cl', 4, 48, 40], ['Ceres 33 cl', 4, 65, 40],
-      ['Amari', 4, 86, 40], ['Generoso', 20, 10, 78],
-      ['Nonna Seppa', 25, 30, 78], ['Pentamerone', 30, 50, 78],
-      ['Emmente', 20, 70, 78], ['Seicentododici', 20, 90, 78]
     ]
   };
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
-  const read = () => { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (_) { return {}; } };
+  const read = () => { try {
+    const cart = JSON.parse(localStorage.getItem(KEY)) || {};
+    return Object.fromEntries(Object.entries(cart).filter(([key, item]) =>
+      !key.startsWith('bibite-vini:') && item && Number.isInteger(item.qty) && item.qty > 0 && Number.isFinite(item.price)));
+  } catch (_) { return {}; } };
   const save = cart => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (_) { /* Browser storage may be disabled. */ } };
   const id = (section, index) => section + ':' + index;
   function row(section, index) {
     if (catalog[section]) return catalog[section][index];
-    if (section === 'offerta') return ['Menù del giorno in offerta', 25];
+  }
+  const service = section => section === 'pranzo' ? 'pranzo' : 'cena';
+  const priceNumber = text => Number((text.match(/\d+(?:[.,]\d+)?/) || [NaN])[0].toString().replace(',', '.'));
+  function dailyCatalog(doc, section) {
+    if (section === 'pranzo') return Array.from(doc.querySelectorAll('.lunch-dish')).map(dish =>
+      [dish.querySelector('h3')?.textContent.trim(), priceNumber(dish.querySelector('strong')?.textContent || '')]);
+    const dishes = Array.from(doc.querySelectorAll('.daily-dish h2')).map(el => el.textContent.trim());
+    const price = priceNumber(doc.querySelector('.daily-price strong')?.textContent || '');
+    return dishes.length && Number.isFinite(price) ? [['Menù del giorno in offerta: ' + dishes.join('; '), price]] : [];
+  }
+  function dailyKey(section, item) { return section + ':' + encodeURIComponent(item[0]); }
+  function reconcileDaily(section) {
+    const cart = read();
+    for (const key of Object.keys(cart)) {
+      if (!key.startsWith(section + ':')) continue;
+      const item = catalog[section].find(item => dailyKey(section, item) === key);
+      if (item) { cart[key].name = item[0]; cart[key].price = item[1]; }
+      else delete cart[key];
+    }
+    save(cart);
   }
   function controls(section, index) {
-    const item = row(section, index), key = id(section, index);
+    const item = row(section, index);
     if (!item) return null;
+    const key = ['pranzo', 'offerta'].includes(section) ? dailyKey(section, item) : id(section, index);
     const wrap = document.createElement('div');
     wrap.className = 'order-controls';
     wrap.setAttribute('aria-label', 'Quantità: ' + item[0]);
@@ -51,6 +68,9 @@
     function refresh() { count.textContent = read()[key]?.qty || 0; updateBadge(); }
     for (const [button, delta] of [[minus, -1], [plus, 1]]) button.addEventListener('click', () => {
       const cart = read(), next = Math.max(0, Math.min(99, (cart[key]?.qty || 0) + delta));
+      if (delta > 0 && Object.keys(cart).some(k => service(k.split(':')[0]) !== service(section))) {
+        window.alert('Pranzo e cena richiedono ordini separati. Completa la richiesta già iniziata prima di aggiungere questi piatti.'); return;
+      }
       if (next) cart[key] = {qty:next, name:item[0], price:item[1]}; else delete cart[key];
       save(cart); refresh();
     });
@@ -73,30 +93,50 @@
     if (!img) return;
     const frame = document.createElement('div'); frame.className = 'order-board';
     img.parentNode.insertBefore(frame, img); frame.append(img);
-    const drinks = section === 'bibite-vini' ? document.createElement('div') : null;
-    if (drinks) { drinks.className = 'order-drinks-grid'; frame.after(drinks); }
     catalog[section].forEach((item, index) => {
       const control = controls(section, index);
-      if (drinks) {
-        const entry = document.createElement('div'), label = document.createElement('span');
-        label.textContent = item[0] + ' · ' + euro(item[1]);
-        entry.append(label, control); drinks.append(entry);
-      } else {
         control.classList.add('order-on-image');
         control.style.left = item[2] + '%'; control.style.top = item[3] + '%';
         frame.append(control);
-      }
     });
     bar();
   }
-  function setupDaily() {
-    const price = document.querySelector('.daily-price');
-    if (!price) return;
-    price.after(controls('offerta', 0)); bar();
+  function setupDaily(section) {
+    catalog[section] = dailyCatalog(document, section);
+    reconcileDaily(section);
+    if (section === 'pranzo') {
+      document.querySelectorAll('.lunch-dish').forEach((dish, index) => {
+        const item = catalog[section][index];
+        if (item[0] && Number.isFinite(item[1])) dish.append(controls(section, index));
+      });
+    } else if (catalog[section].length) {
+      document.querySelector('.daily-price').after(controls(section, 0));
+    }
+    if (catalog[section].length) bar();
   }
-  function setupSummary() {
+  async function setupSummary() {
     const list = document.querySelector('[data-order-list]'), total = document.querySelector('[data-order-total]');
     if (!list || !total) return;
+    const form = document.querySelector('[data-order-form]');
+    const submit = form.querySelector('[type="submit"]');
+    let menuReady = false;
+    async function refreshDaily() {
+      submit.disabled = true; menuReady = false;
+      try {
+        for (const section of ['pranzo', 'offerta']) {
+          if (!Object.keys(read()).some(key => key.startsWith(section + ':'))) continue;
+          const response = await fetch(section + '.html', {cache:'no-store'});
+          if (!response.ok) throw new Error('menu');
+          const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+          if (!doc.querySelector(section === 'pranzo' ? '.lunch-board' : '.daily-menu')) throw new Error('menu');
+          catalog[section] = dailyCatalog(doc, section); reconcileDaily(section);
+        }
+        menuReady = true;
+      } catch (_) { list.textContent = 'Impossibile aggiornare il menù. Ricarica la pagina prima di inviare.'; }
+      submit.disabled = !menuReady;
+      if (menuReady) render();
+    }
+    function isLunch() { return Object.keys(read()).some(key => key.startsWith('pranzo:')); }
     function render() {
       list.replaceChildren(); let sum = 0;
       Object.values(read()).forEach(item => {
@@ -109,12 +149,17 @@
       });
       if (!list.children.length) { const li = document.createElement('li'); li.textContent = 'Nessun piatto selezionato. Scegli dal menù.'; list.append(li); }
       total.textContent = euro(sum);
+      document.querySelector('[data-service-info]').textContent = isLunch()
+        ? 'Pranzo: acqua, caffè e coperto inclusi. È necessaria la conferma del Ristorante entro le 12.'
+        : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Il coperto serale è 1,50 € a persona; prenotando tavolo e menù entro le 18:00 è omaggio.';
+      document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'antipasti.html';
     }
     render();
-    window.addEventListener('pageshow', render);
-    const form = document.querySelector('[data-order-form]');
+    window.addEventListener('pageshow', refreshDaily);
+    refreshDaily();
     form.addEventListener('submit', event => {
       event.preventDefault();
+      if (!menuReady) return;
       const cart = read(), dishes = [];
       Object.values(cart).forEach(item => {
         if (item && Number.isInteger(item.qty) && item.qty > 0) dishes.push(item.qty + ' × ' + item.name + ' — ' + euro(item.qty * item.price));
@@ -124,12 +169,12 @@
       if (!form.reportValidity()) return;
       const data = new FormData(form);
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
-        'Totale piatti e bevande: ' + total.textContent, '',
+        'Servizio: ' + (isLunch() ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
         'Nome e cognome: ' + data.get('nome'), 'Telefono: ' + data.get('telefono'),
         'Persone: ' + data.get('persone'), 'Data: ' + data.get('data'),
         'Orario richiesto: ' + data.get('orario'),
         'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',
-        'Attendo la vostra conferma via WhatsApp entro le 18:30.'];
+        'Attendo la vostra conferma via WhatsApp entro le ' + (isLunch() ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const whatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n'));
       try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
       render();
@@ -142,7 +187,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const page = location.pathname.split('/').pop().replace(/\.html$/, '');
     if (catalog[page]) setupMenu(page);
-    if (page === 'offerta') setupDaily();
+    if (page === 'offerta' || page === 'pranzo') setupDaily(page);
     if (page === 'ordine') setupSummary();
   });
 })();

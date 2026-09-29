@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#082a43">
-  <title>Riepilogo preordine | Controcorrente</title><link rel="stylesheet" href="styles.css?v=10">
+  <title>Riepilogo preordine | Controcorrente</title><link rel="stylesheet" href="styles.css?v=12">
 </head>
 <body>
   <header class="top"><div class="nav"><a class="logo" href="index.html">Controcorrente<small>RISTORANTE</small></a><nav><a href="index.html">Home</a> <a href="il-locale.html">Il Locale</a> <a href="antipasti.html">Antipasti</a> <a href="primi.html">Primi</a> <a href="secondi.html">Secondi</a> <a href="bibite-vini.html">Bibite &amp; Vini</a> <a href="offerta.html">Menù del giorno in offerta</a> <a href="pranzo.html">Menù di pranzo</a> <a href="allergeni.html">Allergeni</a> <a href="club.html">Club</a> <a href="contatti.html">Contatti</a> <a href="english.html">🇬🇧 English</a> <a href="cinese.html">🇨🇳 中文</a></nav></div></header>
@@ -10,16 +10,16 @@
     <div class="page-head"><h1>Riepilogo preordine</h1><p class="dinner-label">Controcorrente · Torino</p></div>
     <section class="daily-menu order-card" aria-labelledby="order-heading">
       <div class="daily-menu-head"><div class="daily-mark">⚓ &nbsp; ≋ &nbsp; ⚓</div><p class="daily-kicker">La tua richiesta</p></div>
-      <h2 id="order-heading">Piatti e bevande</h2>
+      <h2 id="order-heading">Piatti</h2>
       <ul class="order-list" data-order-list tabindex="-1"></ul>
       <p class="order-total">Totale indicativo: <strong data-order-total>0,00 €</strong></p>
-      <p class="order-small">Il coperto serale è 1,50 € a persona. Prenotando tavolo e menù entro le 18:00, il coperto è omaggio.</p>
-      <p><a class="button" href="antipasti.html">Aggiungi altri piatti</a></p>
+      <p class="order-small" data-service-info>Il coperto serale è 1,50 € a persona. Prenotando tavolo e menù entro le 18:00, il coperto è omaggio.</p>
+      <p><a class="button" data-add-dishes href="antipasti.html">Aggiungi altri piatti</a></p>
     </section>
     <section class="daily-menu order-card" aria-labelledby="restaurant-heading">
       <h2 id="restaurant-heading">Informazioni del ristorante</h2>
       <p><strong>Controcorrente</strong> · Via San Paolo 16, Torino<br><a href="tel:+393272292006">327 229 2006</a></p>
-      <p>La richiesta arriva su WhatsApp. Per quelle inviate entro le 18:00, confermiamo entro le 18:30.</p>
+      <p>La richiesta arriva su WhatsApp. È necessaria la conferma del Ristorante: per il pranzo entro le 12; per la cena entro le 18:30, per le richieste inviate entro le 18:00.</p>
     </section>
     <form class="daily-menu order-card order-form" data-order-form>
       <h2>Dati del cliente e prenotazione</h2>
@@ -32,6 +32,7 @@
       </div>
       <label>Allergie e altre note <textarea name="note" rows="3" maxlength="500" placeholder="Comunicare eventuali allergie e richieste"></textarea></label>
       <div class="order-notices"><h2>Avvisi</h2>
+        <p><strong>Per azzerare l’ordine, cliccare il pulsante WhatsApp ed eventualmente ricominciare.</strong></p>
         <p>Controlla piatti, quantità e orario prima di inviare. L’ordine è una richiesta: il tavolo e i piatti sono confermati solo dopo la nostra risposta su WhatsApp.</p>
         <p>Il risotto barbabietola e gorgonzola richiede almeno due porzioni. I piatti sono disponibili fino a esaurimento. * Ingredienti congelati all’origine.</p>
         <p>I dati inseriti vengono usati per comporre il messaggio WhatsApp e non sono inviati dal sito prima che tu lo confermi nell’app.</p>
@@ -40,6 +41,6 @@
     </form>
   </main>
   <footer>CONTROCORRENTE · Via San Paolo 16, Torino · <a href="tel:+393272292006">327 229 2006</a><p>Comunicare eventuali allergie prima di ordinare. * Ingredienti congelati all'origine.</p></footer>
-  <script src="site-session.js?v=3"></script><script src="preordine.js?v=3"></script>
+  <script src="site-session.js?v=3"></script><script src="preordine.js?v=4"></script>
 </body>
 </html>
