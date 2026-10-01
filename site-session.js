@@ -1,5 +1,11 @@
 (() => {
   'use strict';
+
+  // Migliora la leggibilità dei soli link di navigazione, senza toccare gli altri testi.
+  const navStyle = document.createElement('style');
+  navStyle.textContent = 'header.top nav a{font-size:16px}';
+  document.head.append(navStyle);
+
   // Every page opening counts. All pages share the same server-side counter.
   const endpoint = 'https://hitscounter.dev/api/hit?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F&label=Oggi%20%2F%20Totale&icon=people-fill&color=%23082a43&style=flat&tz=Europe%2FRome';
   function countAccess() {
