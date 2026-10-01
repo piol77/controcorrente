@@ -1,33 +1,24 @@
 (() => {
-  const counterUrl = 'https://hitscounter.dev/api/hit?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F&label=Accessi&icon=people-fill&color=%23082a43&message=&style=flat&tz=Europe%2FRome';
-  const key = 'controcorrente-visit-counted-day';
-  const badge = document.querySelector('[data-visitor-counter]');
-  const badgeKey = `${key}-badge`;
-  const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date());
-  const svgSrc = (svg) => `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-  let countedDay = '';
-  let cachedBadge = '';
-  let badgeDay = '';
-  try {
-    countedDay = localStorage.getItem(key) || '';
-    cachedBadge = localStorage.getItem(badgeKey) || '';
-    badgeDay = localStorage.getItem(`${badgeKey}-day`) || '';
-  } catch (_) {}
-
-  if (countedDay === today) {
-    if (badge && cachedBadge && badgeDay === today) badge.src = svgSrc(cachedBadge);
-    return;
+  'use strict';
+  // Every page opening counts. All pages share the same server-side counter.
+  const endpoint = 'https://hitscounter.dev/api/hit?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F&label=Oggi%20%2F%20Totale&icon=people-fill&color=%23082a43&style=flat&tz=Europe%2FRome';
+  function countAccess() {
+    const badge = document.querySelector('[data-visitor-counter]');
+    const image = badge || document.createElement('img');
+    if (!badge) {
+      image.hidden = true;
+      image.alt = '';
+      image.onload = image.onerror = () => image.remove();
+      document.body.append(image);
+    } else {
+      image.alt = 'Accessi di oggi / accessi totali';
+      image.onerror = () => { image.alt = 'Contatore temporaneamente non disponibile'; };
+    }
+    // Change only the request URL, never the shared tracking key.
+    image.src = endpoint + '&request=' + Date.now() + '-' + Math.random().toString(36).slice(2);
   }
-
-  fetch(counterUrl)
-    .then((response) => response.text())
-    .then((svg) => {
-      try {
-        localStorage.setItem(key, today);
-        localStorage.setItem(badgeKey, svg);
-        localStorage.setItem(`${badgeKey}-day`, today);
-      } catch (_) {}
-      if (badge) badge.src = svgSrc(svg);
-    })
-    .catch(() => { if (badge) badge.src = counterUrl; });
+  countAccess();
+  window.addEventListener('pageshow', event => {
+    if (event.persisted) countAccess();
+  });
 })();

@@ -164,3 +164,9 @@ When finished, report concisely:
 - any uncertainty requiring Paolo's decision.
 
 Last established: 2026-09-30.
+
+## Latest overrides — 2026-10-01
+- Count every page opening and reload across every HTML page, including navigation between menus. Do not deduplicate by device, browser, cookie, localStorage or session. One shared counter key for the whole site; show the badge only on Home. First number: today's requests in Europe/Rome (00:00 to 23:59); second: cumulative total. Preserve the existing server-side total.
+- Daily offers retain the approved nautical graphics. For these offers, omit food photos; show allergen reference numbers with symbols, without parentheses, and frozen markers immediately after the ingredient.
+- If terminal GitHub authentication is unavailable, use the existing authenticated GitHub browser session and upload the changed files in one commit. Browser-facing paths map from /workspace/scratch to /home/oai/share. Check Pages deployment and the live result; do not request another login when the browser is already signed in.
+- The order summary has an Azzera tutto button and automatically uses the current Europe/Rome calendar day in the WhatsApp message. Preserve the existing clear-on-WhatsApp behavior.
