@@ -49,3 +49,12 @@
 @media(max-width:600px){.language-menu{padding:22px 16px 28px}.language-dish h3{font-size:18px}.language-price{font-size:16px}.language-course h2{font-size:17px}}
 .reset-order-button{background:#fffaf0;color:#0a345d;border-color:#0a345d}
 .daily-dish-price{display:inline-block;margin-top:12px;padding:3px 10px;color:#082a43;font-size:22px;background:#efbd36;clip-path:polygon(0 18%,11% 5%,44% 12%,76% 2%,100% 20%,97% 86%,66% 97%,32% 88%,2% 100%);transform:rotate(-1deg)}.daily-dish+.order-controls{position:relative;z-index:1;margin:8px auto 20px}
+
+/* Offerta del giorno: fondale e simboli identici alla famiglia grafica dei menù serali */
+.offer-nautical-card{padding-bottom:205px;background:linear-gradient(#fffaf0f2,#fffaf0f2),radial-gradient(circle at 18% 8%,#e9c58d66,transparent 44%)}
+.offer-nautical-card:before{content:'⚓';left:10px;top:12px;color:#0c83ba;opacity:.13;font-size:86px;transform:rotate(-16deg)}
+.offer-nautical-card:after{content:'';right:0;bottom:0;width:100%;height:180px;background-image:url('Antipasti-HD.png?v=2');background-repeat:no-repeat;background-size:100% auto;background-position:center bottom;opacity:.82}
+.offer-nautical-card .daily-allergens{display:flex;justify-content:center;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.offer-nautical-card .daily-allergens .allergen-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0;border:0;background:transparent;line-height:1}
+.offer-nautical-card .allergen-icon{display:grid;width:52px;height:52px;place-items:center;padding:0;border:2px solid #082a43;border-radius:50%;background:#fffaf0;font-size:27px;box-shadow:inset 0 0 0 3px #fffaf0,0 1px 0 #cba76d}
+@media(max-width:650px){.offer-nautical-card{padding-bottom:145px}.offer-nautical-card:after{height:125px}.offer-nautical-card .allergen-icon{width:46px;height:46px;font-size:23px}}

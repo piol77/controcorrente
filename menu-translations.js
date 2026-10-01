@@ -23,10 +23,17 @@ const CONTROCORRENTE_MENU = {
     ],
     dailyTitle: "Today's Dinner Offers · €10 each",
     daily: [
-      ["Starter · Beef Tartare with Lemon and Grana", "(7)", "€ 10,00"],
-      ["Main Course · Octopus, Shrimp* and Potatoes", "(2, 14)", "€ 10,00"],
-      ["First Course · Stir-fried Rice with Chicken, Shrimp*, Vegetables and Spices", "(2, 6)", "€ 10,00"]
+      ["Starter · Beef Tartare with Lemon and Grana", "7", "€ 10,00"],
+      ["Main Course · Octopus, Shrimp* and Potatoes", "2, 14", "€ 10,00"],
+      ["First Course · Stir-fried Rice with Chicken, Shrimp*, Vegetables and Spices", "2, 6", "€ 10,00"]
     ],
+    fixedTitle: "Complete Dinner Menu · €25 per person",
+    fixed: [
+      ["Starter · Fresh Tomato Bruschetta", "1", ""],
+      ["First Course · Seafood Spaghetti", "Mussels, clams, shrimp* and scampi* · 1, 2, 14", ""],
+      ["Main Course · Fried Anchovies, Calamari and Shrimp*", "1, 2, 4, 14", ""]
+    ],
+    fixedNote: "Drinks not included · While supplies last",
     note: "Please tell us about any allergies before ordering · * Ingredients frozen at source"
   },
   zh: {
@@ -53,10 +60,17 @@ const CONTROCORRENTE_MENU = {
     ],
     dailyTitle: "今日晚餐优惠 · 每道10欧元",
     daily: [
-      ["前菜 · 柠檬帕玛森奶酪生牛肉", "(7)", "€ 10,00"],
-      ["主菜 · 章鱼、小虾仁*和土豆", "(2, 14)", "€ 10,00"],
-      ["第一道主食 · 鸡肉小虾仁*蔬菜香料炒饭", "(2, 6)", "€ 10,00"]
+      ["前菜 · 柠檬帕玛森奶酪生牛肉", "7", "€ 10,00"],
+      ["主菜 · 章鱼、小虾仁*和土豆", "2, 14", "€ 10,00"],
+      ["第一道主食 · 鸡肉小虾仁*蔬菜香料炒饭", "2, 6", "€ 10,00"]
     ],
+    fixedTitle: "晚餐套餐 · 每位25欧元",
+    fixed: [
+      ["前菜 · 新鲜番茄烤面包", "1", ""],
+      ["第一道主食 · 海鲜意大利面", "淡菜、蛤蜊、小虾仁*和海螯虾* · 1, 2, 14", ""],
+      ["主菜 · 炸凤尾鱼、鱿鱼和小虾仁*", "1, 2, 4, 14", ""]
+    ],
+    fixedNote: "饮料另计 · 售完即止",
     note: "点餐前请告知过敏情况 · * 原产地冷冻食材"
   }
 };
@@ -69,7 +83,10 @@ function renderTranslatedMenu() {
   root.querySelector("h1").textContent = menu.title;
   root.querySelector(".language-head p").textContent = menu.subtitle;
   const content = root.querySelector(".translated-menu-content");
-  [...menu.courses, { title: menu.dailyTitle, dishes: menu.daily, daily: true }].forEach(course => {
+  [...menu.courses,
+    { title: menu.dailyTitle, dishes: menu.daily, daily: true },
+    { title: menu.fixedTitle, dishes: menu.fixed, daily: true, note: menu.fixedNote }
+  ].forEach(course => {
     const section = document.createElement("section");
     section.className = course.daily ? "language-course language-daily" : "language-course";
     const heading = document.createElement("h2");
@@ -91,6 +108,11 @@ function renderTranslatedMenu() {
       article.append(title, text);
       section.appendChild(article);
     });
+    if (course.note) {
+      const note = document.createElement("p");
+      note.textContent = course.note;
+      section.appendChild(note);
+    }
     content.appendChild(section);
   });
   root.querySelector(".language-note").textContent = menu.note;

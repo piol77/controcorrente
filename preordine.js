@@ -37,10 +37,16 @@
   function dailyCatalog(doc, section) {
     if (section === 'pranzo') return Array.from(doc.querySelectorAll('.lunch-dish')).map(dish =>
       [dish.querySelector('h3')?.textContent.trim(), priceNumber(dish.querySelector('strong')?.textContent || '')]);
-    return Array.from(doc.querySelectorAll('.daily-dish')).map(dish => [
+    const individual = Array.from(doc.querySelectorAll('.daily-menu:not(.daily-fixed-menu) .daily-dish')).map(dish => [
       dish.querySelector('h2')?.textContent.trim(),
       priceNumber(dish.querySelector('.daily-dish-price')?.textContent || '')
     ]).filter(([name, price]) => name && Number.isFinite(price));
+    const fixed = Array.from(doc.querySelectorAll('.daily-fixed-menu')).map(menu => {
+      const dishes = Array.from(menu.querySelectorAll('.daily-dish h2')).map(el => el.textContent.trim());
+      const price = priceNumber(menu.querySelector('.daily-price strong')?.textContent || '');
+      return ['Menù completo: ' + dishes.join('; '), price];
+    }).filter(([name, price]) => name && Number.isFinite(price));
+    return individual.concat(fixed);
   }
   function dailyKey(section, item) { return section + ':' + encodeURIComponent(item[0]); }
   function reconcileDaily(section) {
@@ -111,7 +117,11 @@
         if (item[0] && Number.isFinite(item[1])) dish.append(controls(section, index));
       });
     } else if (catalog[section].length) {
-      document.querySelectorAll('.daily-dish').forEach((dish, index) => dish.after(controls(section, index)));
+      const individual = document.querySelectorAll('.daily-menu:not(.daily-fixed-menu) .daily-dish');
+      individual.forEach((dish, index) => dish.after(controls(section, index)));
+      document.querySelectorAll('.daily-fixed-menu').forEach((menu, index) => {
+        menu.querySelector('.daily-price').after(controls(section, individual.length + index));
+      });
     }
     if (catalog[section].length) bar();
   }
