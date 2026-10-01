@@ -37,7 +37,7 @@
 .order-on-image{transform:translate(-50%,0);margin-top:0}
 .lunch-dish{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;row-gap:8px}
 .lunch-dish>div:first-child{grid-column:1;grid-row:1 / span 2}
-.lunch-dish>strong{grid-column:2;grid-row:1;justify-self:center}
+.lunch-dish>strong{grid-column:2;grid-row:1;align-self:start;justify-self:center;transform:translateY(-4px)}
 .lunch-dish>.order-controls{grid-column:2;grid-row:2;justify-self:end;margin:0}
 .lunch-board.daily-menu>*{position:relative;z-index:1}.lunch-photo{display:block;width:min(180px,100%);height:auto;aspect-ratio:4/3;margin:10px 0 0;object-fit:cover;border:2px solid #cba76d;border-radius:8px;box-shadow:0 4px 12px #082a4330}.order-confirmation{max-width:850px;margin:12px auto 18px;text-align:center;color:#0a345d;font-size:16px}
 .order-form button:disabled{opacity:.55;cursor:wait}

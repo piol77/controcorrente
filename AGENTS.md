@@ -87,6 +87,14 @@ When Paolo asks to add, remove, rename or change a dish:
 - Keep lunch photos compact and consistently placed. They must never cover or displace the price, `+` / `−` controls, allergens, text or another dish.
 - Use the existing `.lunch-photo` treatment and preserve the approved nautical layout; do not invent a competing card style.
 
+### Locked lunch-menu layout (permanent default)
+- Treat the current lunch menu as part of the same approved nautical visual system as the dinner menus: preserve the established Georgia serif typography, deep-blue text and headings, warm-paper surface, gold borders, sea-blue dividers, irregular yellow price strip and compact realistic food photography.
+- Every lunch dish row must use the same alignment and spacing logic. Keep the dish text and photo in the left content column and the price/control stack in the fixed right column.
+- Keep the price slightly raised above the compact `−` / `+` control so neither element overlaps or covers the other. The price strip, control position, column alignment, row spacing and mobile behavior must remain consistent across all lunch dishes.
+- When lunch text becomes longer, reflow only inside its content column. Never push the price or control over the photo, allergens, another row or outside the board.
+- Lunch preorder names and prices are read dynamically from `pranzo.html` by `preordine.js`; after every lunch edit, verify the cart summary and total against all visible prices.
+- Preserve the current class names and structure (`.lunch-board`, `.lunch-course`, `.lunch-dish`, `.lunch-photo`, `.lunch-allergens`, `.order-controls`) unless Paolo explicitly asks for a layout redesign.
+
 ## Restaurant wording and business rules
 Preserve established Controcorrente wording and commercial rules unless Paolo explicitly changes them.
 - Dinner cover charge: €1.50.
