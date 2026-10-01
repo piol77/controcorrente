@@ -21,11 +21,11 @@ const CONTROCORRENTE_MENU = {
         ["Salmon Steak with Orange and Pink Peppercorns", "Grilled salmon with orange and pink peppercorns, served with raw fennel and balsamic vinegar. (4)", "€ 14,00"]
       ]}
     ],
-    dailyTitle: "Today's Dinner Special · €25 per person · drinks excluded",
+    dailyTitle: "Today's Dinner Offers · €10 each",
     daily: [
-      ["Starter · Fresh Tomato Bruschetta", "(1)"],
-      ["First Course · Seafood Spaghetti", "Mussels, clams, shrimp* and scampi*. (1, 2, 14)"],
-      ["Main Course · Fried Anchovies, Calamari and Shrimp", "(1, 2, 4, 14)"]
+      ["Starter · Beef Tartare with Lemon and Grana", "(7)", "€ 10,00"],
+      ["Main Course · Octopus, Shrimp* and Potatoes", "(2, 14)", "€ 10,00"],
+      ["First Course · Stir-fried Rice with Chicken, Shrimp*, Vegetables and Spices", "(2, 6)", "€ 10,00"]
     ],
     note: "Please tell us about any allergies before ordering · * Ingredients frozen at source"
   },
@@ -51,11 +51,11 @@ const CONTROCORRENTE_MENU = {
         ["橙香粉红胡椒三文鱼排", "烤三文鱼配橙子和粉红胡椒，佐生茴香和意大利黑醋。(4)", "€ 14,00"]
       ]}
     ],
-    dailyTitle: "今日晚餐特餐 · 每位25欧元 · 饮料另计",
+    dailyTitle: "今日晚餐优惠 · 每道10欧元",
     daily: [
-      ["前菜 · 新鲜番茄烤面包", "(1)"],
-      ["第一道主食 · 海鲜意大利面", "淡菜、蛤蜊、小虾仁*和海螯虾*。(1, 2, 14)"],
-      ["主菜 · 炸凤尾鱼、鱿鱼和小虾", "(1, 2, 4, 14)"]
+      ["前菜 · 柠檬帕玛森奶酪生牛肉", "(7)", "€ 10,00"],
+      ["主菜 · 章鱼、小虾仁*和土豆", "(2, 14)", "€ 10,00"],
+      ["第一道主食 · 鸡肉小虾仁*蔬菜香料炒饭", "(2, 6)", "€ 10,00"]
     ],
     note: "点餐前请告知过敏情况 · * 原产地冷冻食材"
   }

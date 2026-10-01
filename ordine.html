@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#082a43">
-  <title>Riepilogo preordine | Controcorrente</title><link rel="stylesheet" href="styles.css?v=14">
+  <title>Riepilogo preordine | Controcorrente</title><link rel="stylesheet" href="styles.css?v=15">
 </head>
 <body>
   <header class="top"><div class="nav"><a class="logo" href="index.html">Controcorrente<small>RISTORANTE</small></a><nav><a href="index.html">Home</a> <a href="il-locale.html">Il Locale</a> <a href="antipasti.html">Antipasti</a> <a href="primi.html">Primi</a> <a href="secondi.html">Secondi</a> <a href="bibite-vini.html">Bibite &amp; Vini</a> <a href="offerta.html">Offerta del giorno</a> <a href="pranzo.html">Menù di pranzo</a> <a href="allergeni.html">Allergeni</a> <a href="club.html">Club</a> <a href="contatti.html">Contatti</a> <a href="english.html">🇬🇧 English</a> <a href="cinese.html">🇨🇳 中文</a></nav></div></header>
@@ -26,21 +26,21 @@
       <label>Nome e cognome <input name="nome" autocomplete="name" required maxlength="100"></label>
       <div class="order-fields">
         <label>Numero di persone <input name="persone" type="number" min="1" max="30" required></label>
-        <label>Data <input name="data" type="date" required></label>
         <label>Orario di arrivo <input name="orario" type="time" required></label>
       </div>
       <label>Allergie e altre note <textarea name="note" rows="3" maxlength="500" placeholder="Comunicare eventuali allergie e richieste"></textarea></label>
       <div class="order-notices"><h2>Avvisi</h2>
-        <p><strong>Per azzerare l’ordine, cliccare il pulsante WhatsApp ed eventualmente ricominciare.</strong></p>
+        <p><strong>In caso di errore, usa “Azzera tutto” per ricominciare l’ordine da capo.</strong></p>
         <p>Controlla piatti, quantità e orario prima di inviare. <strong>L’ordine è una richiesta: il tavolo e i piatti sono confermati solo dopo la nostra risposta su WhatsApp.</strong></p>
         <p>Il risotto barbabietola e gorgonzola richiede almeno due porzioni. I piatti sono disponibili fino a esaurimento. * Ingredienti congelati all’origine.</p>
         <p>I dati inseriti vengono usati per comporre il messaggio WhatsApp e non sono inviati dal sito prima che tu lo confermi nell’app.</p>
       </div>
+      <button class="button reset-order-button" type="button" data-reset-order>Azzera tutto</button>
       <button class="button whatsapp-button" type="submit">Apri WhatsApp e invia la richiesta</button>
     </form>
     <p style="text-align:center"><a href="allergeni.html">Consulta la tabella allergeni</a></p>
   </main>
   <footer>CONTROCORRENTE · Via San Paolo 16, Torino · <a href="tel:+393272292006">327 229 2006</a><p>Comunicare eventuali allergie prima di ordinare. * Ingredienti congelati all'origine.</p></footer>
-  <script src="site-session.js?v=4"></script><script src="preordine.js?v=6"></script>
+  <script src="site-session.js?v=4"></script><script src="preordine.js?v=7"></script>
 </body>
 </html>

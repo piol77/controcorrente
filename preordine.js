@@ -37,9 +37,10 @@
   function dailyCatalog(doc, section) {
     if (section === 'pranzo') return Array.from(doc.querySelectorAll('.lunch-dish')).map(dish =>
       [dish.querySelector('h3')?.textContent.trim(), priceNumber(dish.querySelector('strong')?.textContent || '')]);
-    const dishes = Array.from(doc.querySelectorAll('.daily-dish h2')).map(el => el.textContent.trim());
-    const price = priceNumber(doc.querySelector('.daily-price strong')?.textContent || '');
-    return dishes.length && Number.isFinite(price) ? [['Offerta del giorno: ' + dishes.join('; '), price]] : [];
+    return Array.from(doc.querySelectorAll('.daily-dish')).map(dish => [
+      dish.querySelector('h2')?.textContent.trim(),
+      priceNumber(dish.querySelector('.daily-dish-price')?.textContent || '')
+    ]).filter(([name, price]) => name && Number.isFinite(price));
   }
   function dailyKey(section, item) { return section + ':' + encodeURIComponent(item[0]); }
   function reconcileDaily(section) {
@@ -110,7 +111,7 @@
         if (item[0] && Number.isFinite(item[1])) dish.append(controls(section, index));
       });
     } else if (catalog[section].length) {
-      document.querySelector('.daily-price').after(controls(section, 0));
+      document.querySelectorAll('.daily-dish').forEach((dish, index) => dish.after(controls(section, index)));
     }
     if (catalog[section].length) bar();
   }
@@ -119,6 +120,7 @@
     if (!list || !total) return;
     const form = document.querySelector('[data-order-form]');
     const submit = form.querySelector('[type="submit"]');
+    const reset = form.querySelector('[data-reset-order]');
     let menuReady = false;
     async function refreshDaily() {
       submit.disabled = true; menuReady = false;
@@ -155,6 +157,12 @@
       document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'antipasti.html';
     }
     render();
+    reset.addEventListener('click', () => {
+      try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
+      form.reset();
+      render();
+      list.focus();
+    });
     window.addEventListener('pageshow', refreshDaily);
     refreshDaily();
     form.addEventListener('submit', event => {
@@ -171,7 +179,7 @@
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
         'Servizio: ' + (isLunch() ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
         'Nome e cognome: ' + data.get('nome'),
-        'Persone: ' + data.get('persone'), 'Data: ' + data.get('data'),
+        'Persone: ' + data.get('persone'), 'Giorno: ' + requestDate(),
         'Orario richiesto: ' + data.get('orario'),
         'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (isLunch() ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
@@ -180,9 +188,11 @@
       render();
       window.location.href = whatsappUrl;
     });
-    const date = form.elements.data;
-    const today = new Intl.DateTimeFormat('sv-SE', {timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-    date.min = today; date.value = today;
+    function requestDate() {
+      return new Intl.DateTimeFormat('it-IT', {
+        timeZone: 'Europe/Rome', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+      }).format(new Date());
+    }
   }
   document.addEventListener('DOMContentLoaded', () => {
     const page = location.pathname.split('/').pop().replace(/\.html$/, '');
