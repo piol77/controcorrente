@@ -63,6 +63,17 @@ When Paolo asks to add, remove, rename or change a dish:
 4. Keep prices exactly as instructed.
 5. Maintain the existing layout and visual hierarchy.
 
+### Menu-only update lock (permanent rule, 2026-10-01)
+When Paolo asks to “change/update only the menu”, “vary the menu”, replace dishes, change dish text, or otherwise requests a menu-content update without explicitly requesting a design or functional change, treat the request as content-only.
+
+- Do not change, regenerate, reinterpret, resize, move or restyle any logo, background, page layout, symbol, icon, decorative element, font system, color, border, gradient, image frame, navigation element, price strip, button, `+` / `−` control, WhatsApp control, order-summary control, responsive rule, spacing system or any other graphic/UI element.
+- Do not change the behavior, workflow or logic of ordering, WhatsApp composition, validation, counters, navigation, translations, cache handling, sessions or any other existing working feature merely because menu content changed.
+- Preserve the current approved visual master and button/control positions exactly unless Paolo explicitly asks for a graphic, layout, button-position or functional change.
+- The only functional/data adjustment automatically required by a menu-only update is to re-evaluate and synchronize the pricing/catalog data used by the ordering system so every selected dish, quantity, subtotal, total, summary and WhatsApp message uses the correct current visible price.
+- Update only the minimum source data/files required for the changed dishes and their prices. Do not refactor unrelated code and do not alter working order mechanics.
+- If a dish price changes, the visible price and the corresponding order-price source must be updated together in the same change. If a dish name changes, keep its order mapping synchronized without changing the ordering workflow.
+- Existing functionality remains authoritative and frozen by default. Any change to buttons, graphics, layout, ordering behavior or site logic requires a separate explicit instruction from Paolo.
+
 ### Allergens
 - Show allergens only as the corresponding regional allergen-table numbers in parentheses.
 - Never spell out allergen names beside dishes.
@@ -163,7 +174,7 @@ When finished, report concisely:
 - whether checks passed;
 - any uncertainty requiring Paolo's decision.
 
-Last established: 2026-09-30.
+Last established: 2026-10-01.
 
 ## Latest overrides — 2026-10-01
 - Count every page opening and reload across every HTML page, including navigation between menus. Do not deduplicate by device, browser, cookie, localStorage or session. One shared counter key for the whole site; show the badge only on Home. First number: today's requests in Europe/Rome (00:00 to 23:59); second: cumulative total. Preserve the existing server-side total.
