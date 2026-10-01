@@ -56,5 +56,6 @@
 .offer-nautical-card:after{content:'';right:0;bottom:0;width:100%;height:180px;background-image:url('Antipasti-HD.png?v=2');background-repeat:no-repeat;background-size:100% auto;background-position:center bottom;opacity:.82}
 .offer-nautical-card .daily-allergens{display:flex;justify-content:center;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .offer-nautical-card .daily-allergens .allergen-item{display:flex;flex-direction:column;align-items:center;gap:2px;padding:0;border:0;background:transparent;line-height:1}
+.offer-nautical-card .daily-allergens .allergen-item>span:not(.allergen-icon){padding:0;border:0;background:transparent}
 .offer-nautical-card .allergen-icon{display:grid;width:52px;height:52px;place-items:center;padding:0;border:2px solid #082a43;border-radius:50%;background:#fffaf0;font-size:27px;box-shadow:inset 0 0 0 3px #fffaf0,0 1px 0 #cba76d}
 @media(max-width:650px){.offer-nautical-card{padding-bottom:145px}.offer-nautical-card:after{height:125px}.offer-nautical-card .allergen-icon{width:46px;height:46px;font-size:23px}}
