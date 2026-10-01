@@ -10,7 +10,7 @@
 <body>
   <header class="top"><div class="nav"><a class="logo" href="index.html">Controcorrente<small>RISTORANTE</small></a><nav><a href="index.html">Home</a> <a href="il-locale.html">Il Locale</a> <a href="antipasti.html">Antipasti</a> <a href="primi.html">Primi</a> <a href="secondi.html">Secondi</a> <a href="bibite-vini.html">Bibite &amp; Vini</a> <a href="offerta.html">Offerta del giorno</a> <a href="pranzo.html">Menù di pranzo</a> <a href="allergeni.html">Allergeni</a> <a href="club.html">Club</a> <a href="contatti.html">Contatti</a> <a href="english.html">🇬🇧 English</a> <a href="cinese.html">🇨🇳 中文</a></nav></div></header>
   <main class="shell">
-    <div class="page-head"><h1>Menù di pranzo</h1><p class="dinner-label">Valido solo per pranzo</p></div>
+    <div class="page-head"><h1>Menù di pranzo</h1><p class="dinner-label">Valido solo per pranzo</p><p class="dinner-label"><time id="lunch-date"></time></p><script>const lunchDate=document.getElementById('lunch-date');if(lunchDate){const formattedDate=new Intl.DateTimeFormat('it-IT',{weekday:'long',day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Rome'}).format(new Date());lunchDate.textContent=formattedDate.charAt(0).toUpperCase()+formattedDate.slice(1);}</script></div>
     <section class="lunch-board daily-menu">
       <div class="lunch-head"><div class="lunch-orn">⚓ &nbsp; ≋ &nbsp; ⚓</div><p>Controcorrente · Cucina italiana e di mare</p></div>
       <section class="lunch-course" aria-labelledby="lunch-primi">
