@@ -186,6 +186,25 @@
       if (cart['primi:2']?.qty === 1) { window.alert('Il risotto richiede almeno due porzioni.'); return; }
       if (!form.reportValidity()) return;
       const data = new FormData(form);
+      const requestedTime = String(data.get('orario') || '');
+      const minutes = (() => {
+        const parts = requestedTime.split(':').map(Number);
+        return parts.length === 2 && parts.every(Number.isFinite) ? parts[0] * 60 + parts[1] : NaN;
+      })();
+      const lunchTime = Number.isFinite(minutes) && minutes >= 11 * 60 && minutes <= 15 * 60;
+      const dinnerTime = Number.isFinite(minutes) && minutes >= 18 * 60;
+      const wrongService = (isLunch() && !lunchTime) || (!isLunch() && !dinnerTime);
+      if (wrongService) {
+        const message = isLunch()
+          ? 'I piatti selezionati dal Menù di pranzo sono validi solo a pranzo (11:00–15:00). L’ordine è stato azzerato.'
+          : 'I piatti selezionati da Antipasti, Primi, Secondi o Offerta del giorno sono validi solo a cena (dalle 18:00). L’ordine è stato azzerato.';
+        try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
+        form.reset();
+        render();
+        window.alert(message);
+        list.focus();
+        return;
+      }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
         'Servizio: ' + (isLunch() ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
         'Nome e cognome: ' + data.get('nome'),
