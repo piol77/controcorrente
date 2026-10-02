@@ -7,18 +7,18 @@
 .lunch-date{margin:4px 0 0;color:#0a345d;font-size:17px;font-weight:700}
 .lunch-course{position:relative;z-index:1;margin:0}
 .lunch-course>h2{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.lunch-dish{position:relative;display:grid;grid-template-columns:180px minmax(0,1fr) 126px;grid-template-rows:auto 44px;column-gap:18px;row-gap:5px;align-items:center;min-height:98px;padding:9px 4px;border-bottom:1px solid rgba(20,125,174,.48);background:transparent;text-align:left}
+.lunch-dish{position:relative;display:grid;grid-template-columns:180px minmax(0,1fr) 126px;grid-template-rows:auto 44px;grid-auto-flow:row;column-gap:18px;row-gap:5px;align-items:center;min-height:98px;padding:9px 4px;border-bottom:1px solid rgba(20,125,174,.48);background:transparent;text-align:left}
 .lunch-dish:not(:last-child)::after{content:'〰';position:absolute;right:152px;bottom:-12px;color:#1685b3;font-size:34px;font-weight:700;line-height:1;opacity:.72;transform:rotate(-4deg);pointer-events:none}
-.lunch-photo{grid-column:1;grid-row:1 / span 2;display:block;width:170px;height:86px;object-fit:cover;border:2px solid rgba(203,167,109,.8);border-radius:50%;box-shadow:0 4px 9px rgba(8,42,67,.18);background:#fffaf0}
-.lunch-photo-placeholder{grid-column:1;grid-row:1 / span 2;width:170px;height:86px;border:1px dashed rgba(10,52,93,.22);border-radius:50%;background:rgba(255,250,240,.34)}
-.lunch-copy{grid-column:2;grid-row:1 / span 2;min-width:0;align-self:center}
+.lunch-dish>.lunch-photo{grid-column:1!important;grid-row:1 / span 2!important;display:block;width:170px;height:86px;object-fit:cover;border:2px solid rgba(203,167,109,.8);border-radius:50%;box-shadow:0 4px 9px rgba(8,42,67,.18);background:#fffaf0;z-index:1}
+.lunch-photo-placeholder{grid-column:1!important;grid-row:1 / span 2!important;width:170px;height:86px;border:1px dashed rgba(10,52,93,.22);border-radius:50%;background:rgba(255,250,240,.34)}
+.lunch-dish>.lunch-copy{grid-column:2!important;grid-row:1 / span 2!important;min-width:0;align-self:center;z-index:1}
 .lunch-copy h3{margin:0;color:#0a345d;font-size:clamp(18px,2.6vw,25px);line-height:1.08}
 .lunch-copy p{margin:3px 0 0;color:#345d73;font-size:14px;line-height:1.2;font-style:italic}
 .lunch-copy .lunch-allergens{color:#0a345d;font-style:normal;font-weight:700;font-size:15px;line-height:1.25;letter-spacing:.01em}
-.lunch-price{position:relative;isolation:isolate;grid-column:3;grid-row:1;align-self:end;justify-self:center;min-width:100px;padding:4px 10px 7px;color:#082a43;font-size:22px;font-weight:700;line-height:1.05;text-align:center;white-space:nowrap}
+.lunch-dish>.lunch-price{position:relative;isolation:isolate;grid-column:3!important;grid-row:1!important;align-self:end!important;justify-self:center!important;transform:none!important;min-width:100px;margin:0 0 1px!important;padding:4px 10px 7px;color:#082a43;font-size:22px;font-weight:700;line-height:1.05;text-align:center;white-space:nowrap;z-index:2}
 .lunch-price:before{content:"";position:absolute;z-index:-1;left:-6px;right:-6px;bottom:0;height:9px;background:#efbd36;clip-path:polygon(0 35%,10% 8%,44% 18%,76% 2%,100% 28%,95% 82%,67% 100%,30% 80%,2% 100%);transform:rotate(-1deg)}
 /* I controlli restano quelli reali e condivisi di styles.css/preordine.js. Qui si definisce solo la loro posizione. */
-.lunch-dish>.order-controls{grid-column:3;grid-row:2;align-self:start;justify-self:center;margin:2px auto 0}
+.lunch-dish>.order-controls{grid-column:3!important;grid-row:2!important;align-self:start!important;justify-self:center!important;margin:2px auto 0!important;z-index:2}
 .lunch-master-note,.lunch-frozen{position:relative;z-index:1;margin:14px 26px 0;text-align:center;color:#0a345d;font-size:13px;line-height:1.35}
 .lunch-master-note{padding-top:10px;border-top:1px solid rgba(20,125,174,.45)}
 .lunch-frozen{margin-top:7px;font-size:12px}
@@ -30,11 +30,11 @@
  .lunch-date{font-size:15px}
  .lunch-dish{grid-template-columns:104px minmax(0,1fr) 96px;grid-template-rows:auto 40px;column-gap:9px;min-height:92px;padding:8px 0}
  .lunch-dish:not(:last-child)::after{right:103px;bottom:-9px;font-size:26px}
- .lunch-photo,.lunch-photo-placeholder{width:98px;height:72px}
+ .lunch-dish>.lunch-photo,.lunch-photo-placeholder{width:98px;height:72px}
  .lunch-copy h3{font-size:16px}
  .lunch-copy p{font-size:12px}
  .lunch-copy .lunch-allergens{font-size:12.5px}
- .lunch-price{min-width:78px;font-size:17px;padding:3px 5px 6px}
+ .lunch-dish>.lunch-price{min-width:78px;font-size:17px;padding:3px 5px 6px}
  .lunch-dish>.order-controls{transform:scale(.88);transform-origin:top center}
  .lunch-master-note{margin-inline:5px;font-size:11px}
 }
@@ -42,10 +42,10 @@
  .lunch-master{padding:125px 12px 138px}
  .lunch-dish{grid-template-columns:82px minmax(0,1fr) 86px;column-gap:7px;min-height:88px}
  .lunch-dish:not(:last-child)::after{right:88px;bottom:-8px;font-size:23px}
- .lunch-photo,.lunch-photo-placeholder{width:78px;height:62px}
+ .lunch-dish>.lunch-photo,.lunch-photo-placeholder{width:78px;height:62px}
  .lunch-copy h3{font-size:14px}
  .lunch-copy p{font-size:10.5px}
  .lunch-copy .lunch-allergens{font-size:11px}
- .lunch-price{font-size:15px;min-width:68px;padding-bottom:5px}
+ .lunch-dish>.lunch-price{font-size:15px;min-width:68px;padding-bottom:5px}
  .lunch-dish>.order-controls{transform:scale(.78)}
 }
