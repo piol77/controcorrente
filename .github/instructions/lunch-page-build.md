@@ -15,7 +15,7 @@ Quando Paolo chiede di cambiare **solo il menù pranzo**, non modificare mai aut
 L’unico adeguamento funzionale automatico consentito quando cambiano piatti o prezzi è la sincronizzazione dei dati necessari affinché il sistema di preordine legga correttamente nome, quantità, prezzo, subtotale, totale, riepilogo e messaggio WhatsApp.
 
 ## Master grafico approvato per il pranzo
-Il riferimento grafico da implementare in futuro è l’ultima anteprima approvata il 2 ottobre 2026, con queste caratteristiche obbligatorie:
+Il riferimento grafico attivo è il master approvato il 2 ottobre 2026 e pubblicato tramite `pranzo.html` + `pranzo-master.css`, con queste caratteristiche obbligatorie:
 
 - identità nautica Controcorrente coerente con Antipasti/Primi/Secondi;
 - fondo carta/pergamena chiaro;
@@ -112,6 +112,6 @@ Prima di pubblicare una nuova versione del pranzo:
 9. pubblicare soltanto dopo questi controlli.
 
 ## Stato attuale
-Al momento della creazione di questa specifica, **non applicare automaticamente il nuovo master grafico alla pagina pranzo pubblicata**. Il sito deve restare funzionante nello stato corrente finché Paolo non ordina esplicitamente di implementare e pubblicare il nuovo master.
+Dal 2 ottobre 2026 il nuovo master grafico pranzo è **attivo**. Le fonti di riferimento operative sono `pranzo.html` e `pranzo-master.css`. La logica di ordine resta quella condivisa di `preordine.js` e non deve essere riscritta per semplici cambi del menù. Le future variazioni del pranzo devono preservare questo master salvo esplicita richiesta di Paolo.
 
 Ultimo aggiornamento di questa specifica: 2 ottobre 2026.
