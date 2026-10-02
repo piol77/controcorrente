@@ -1,6 +1,6 @@
 /* Controcorrente — master pranzo definitivo 02/10/2026. SOLO pagina pranzo. */
 .lunch-shell{max-width:1080px}
-.lunch-master{position:relative;max-width:900px;min-height:1230px;margin:8px auto 36px;padding:185px 42px 190px;overflow:hidden;background:#fff8e8 url('pranzo-master-bg.webp?v=3') center/100% 100% no-repeat;border:0;border-radius:8px;box-shadow:0 14px 35px #0b26343b;color:#0a345d;text-align:left}
+.lunch-master{position:relative;max-width:900px;min-height:1230px;margin:8px auto 36px;padding:185px 42px 190px;overflow:hidden;background:#fff8e8 url('pranzo-master-bg.webp?v=2') center/100% 100% no-repeat;border:0;border-radius:8px;box-shadow:0 14px 35px #0b26343b;color:#0a345d;text-align:left}
 .lunch-master-head{position:relative;z-index:1;text-align:center;margin:0 0 4px;padding:0 0 8px}
 .lunch-master-head .lunch-brand,.lunch-master-head h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .lunch-master-head .dinner-label{margin:0 0 2px;padding:5px 20px;font-size:17px}
