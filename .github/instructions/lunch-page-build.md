@@ -1,117 +1,96 @@
 # Controcorrente — Master build pagina Pranzo
 
-Questa specifica è interna al repository e serve come istruzione operativa per ChatGPT/Work e per qualunque agente che modifichi la pagina pranzo. Non deve essere mostrata né linkata nel sito pubblico.
+Questa specifica è interna al repository. Serve come istruzione operativa per ChatGPT/Work e non deve essere linkata o mostrata nel sito pubblico.
 
 ## Regola principale
-La pagina pranzo è produzione. Qualunque intervento deve essere chirurgico: modificare soltanto ciò che Paolo richiede e lasciare invariati tutti gli altri meccanismi del sito.
+La pagina pranzo è produzione. Modificare soltanto ciò che Paolo richiede e lasciare invariati tutti gli altri meccanismi del sito.
 
-Quando Paolo chiede di cambiare **solo il menù pranzo**, non modificare mai automaticamente:
-- loghi, intestazioni, sfondi, bordi, onde, barche, fari, montagne o altri elementi nautici;
-- font, colori, dimensioni, allineamenti, spaziature o struttura generale del master;
-- pulsanti `− / 0 / +`, loro colori, forma, dimensione o comportamento;
-- riepilogo ordine, logica del carrello, WhatsApp, validazioni orarie, reset ordine, contatore, navigazione, traduzioni o altre pagine;
-- qualunque funzione già operativa, salvo richiesta esplicita distinta.
+Quando Paolo chiede di variare **solo il menù pranzo**:
+- non modificare navigazione, altre pagine, contatore, WhatsApp, riepilogo, validazioni orarie, reset ordine o logica condivisa;
+- non riscrivere `preordine.js` se basta aggiornare i dati presenti in `pranzo.html`;
+- aggiornare nome e prezzo del piatto in modo che il sistema di preordine legga sempre gli stessi dati mostrati a video;
+- preservare il master grafico salvo esplicita richiesta diversa.
 
-L’unico adeguamento funzionale automatico consentito quando cambiano piatti o prezzi è la sincronizzazione dei dati necessari affinché il sistema di preordine legga correttamente nome, quantità, prezzo, subtotale, totale, riepilogo e messaggio WhatsApp.
+## Master grafico definitivo — approvato 2 ottobre 2026
+Il riferimento autoritativo è il layout nautico fornito e approvato da Paolo il 2 ottobre 2026, implementato tramite:
+- `pranzo.html` per contenuti vivi;
+- `pranzo-master.css` per l'impaginazione;
+- `pranzo-master-bg.webp` per il fondale nautico.
 
-## Master grafico approvato per il pranzo
-Il riferimento grafico attivo è il master approvato il 2 ottobre 2026 e pubblicato tramite `pranzo.html` + `pranzo-master.css`, con queste caratteristiche obbligatorie:
+Caratteristiche obbligatorie:
+- fondale pergamena/avorio con cornice blu;
+- intestazione grafica `Controcorrente · Cucina di mare` a sinistra e `Piatti per il pranzo` a destra;
+- onda e barca nella parte alta;
+- ampia zona centrale chiara riservata ai piatti;
+- faro, uccelli, montagne, barca e onde blu nella parte bassa;
+- i piatti devono restare interamente dentro la zona chiara e non invadere il fondale marino inferiore;
+- foto del piatto a sinistra, testo al centro, prezzo a destra;
+- prezzo con pennellata/striscia gialla;
+- controlli quantità sotto il prezzo con spazio sufficiente e senza sovrapposizioni;
+- layout leggibile anche su mobile.
 
-- identità nautica Controcorrente coerente con Antipasti/Primi/Secondi;
-- fondo carta/pergamena chiaro;
-- testo e titoli in blu nautico;
-- intestazione `Controcorrente – Cucina di mare` e titolo `Piatti per il pranzo`;
-- fascia `Valido solo per pranzo`;
-- data del menù visibile e riferita al giorno di pubblicazione del pranzo;
-- layout verticale allungabile dinamicamente in base al numero dei piatti;
-- elementi marini di chiusura (onde, mare, faro, barca, montagne) sempre collocati in fondo alla pagina, dopo l’ultimo piatto, senza comprimere le righe;
-- ogni piatto disposto in una propria fascia chiaramente separata e sufficientemente alta;
-- foto del piatto a sinistra soltanto quando è coerente e corretta; non usare immagini approssimative o di un altro piatto;
-- nome, descrizione e allergeni nella zona centrale;
-- prezzo in colonna fissa a destra;
-- striscia gialla irregolare immediatamente sotto il prezzo;
-- sotto il prezzo deve esserci spazio libero sufficiente per i controlli di preordine;
-- controlli `− / 0 / +` con la stessa grafica dell’anteprima approvata: `−` chiaro con bordo blu, quantità `0` in riquadro chiaro, `+` in cerchio blu pieno con simbolo bianco;
-- non cambiare colore, forma o stile dei controlli salvo esplicita richiesta di Paolo;
-- nessun controllo deve sovrapporsi a prezzo, foto, testo, allergeni, separatori o riga successiva;
-- su mobile i controlli devono restare leggibili, cliccabili e separati, mantenendo la stessa identità grafica.
+Non reinterpretare o sostituire il fondale con una grafica diversa. Se viene chiesto di cambiare soltanto i piatti, la cornice nautica resta invariata.
 
-## Foto dei piatti
-Le foto devono rappresentare il piatto corretto, non una generica preparazione simile.
+## Pulsanti ordine
+I pulsanti `− / 0 / +` devono essere **gli stessi controlli HTML reali usati dalle altre sezioni del sito**, generati dalla logica condivisa di `preordine.js` e stilizzati dalla classe `.order-controls` di `styles.css`.
 
 Regole:
-- usare immagini realistiche e coerenti con il piatto effettivo;
-- non sostituire una specie di pesce con un’altra;
-- per l’orata alla griglia usare un’orata intera alla griglia;
-- per il salmone alla griglia usare un **trancio/filetto di salmone rosa-arancio**, non un pesce intero;
-- se non esiste una foto adeguata, è preferibile non mostrare la foto piuttosto che pubblicarne una incoerente;
-- la modifica di una singola foto non autorizza a rigenerare o cambiare le altre righe.
+- non incorporare i pulsanti dentro immagini raster;
+- non duplicare i controlli con elementi finti;
+- non cambiare colori, forma o comportamento dei controlli condivisi salvo richiesta esplicita;
+- nel CSS pranzo è consentito definire soltanto posizione, spaziatura e responsività dei controlli;
+- i pulsanti devono stare sotto il prezzo e non coprire foto, testo o prezzo.
 
-## Testi e stile
-Paolo può fornire i piatti in forma grezza: correggere automaticamente grammatica, punteggiatura, maiuscole/minuscole e stile italiano senza cambiare il significato o gli ingredienti.
+## Struttura DOM necessaria al preordine
+Per ogni piatto preservare una riga `.lunch-dish` contenente:
+- un `h3` con il nome esatto del piatto;
+- un elemento `strong` con il prezzo numerico visibile;
+- eventuale foto/descrizione/allergeni.
 
-Evitare ripetizioni inutili come `con ... con ... con ...` quando una formulazione più naturale mantiene esattamente il contenuto.
+La pagina deve preservare `.lunch-board`. `preordine.js` legge dinamicamente `.lunch-dish`, `h3` e `strong`, quindi la modifica grafica non deve cambiare questi hook.
 
-Non inventare ingredienti. Se Paolo specifica `poca panna`, mantenerlo esplicitamente nel piatto interessato.
+## Foto
+- usare soltanto foto coerenti con il piatto reale;
+- se manca una foto corretta, è preferibile lasciare lo spazio neutro piuttosto che mostrare un piatto sbagliato;
+- per il salmone usare un trancio/filetto rosa-arancio, mai un pesce intero;
+- la modifica di una foto non autorizza a cambiare le altre righe.
 
-## Allergeni
-Usare la simbologia grafica già adottata nella tabella allergeni del sito e il relativo numero regionale.
+## Testo, allergeni e asterischi
+Correggere automaticamente grammatica e stile senza inventare ingredienti.
 
-Regole permanenti:
-- mostrare simbolo + numero;
-- **non mettere i numeri tra parentesi**;
-- non scrivere il nome testuale dell’allergene accanto al piatto;
-- non indicare solfiti;
-- valutare gli allergeni in base agli ingredienti effettivi del piatto;
-- non inventare allergeni in caso di incertezza;
-- mantenere lo stesso stile di simboli usato nella pagina/tabella allergeni già pubblicata.
+Allergeni:
+- usare simbolo + numero regionale;
+- niente parentesi;
+- niente nome testuale dell'allergene;
+- niente solfiti;
+- non inventare allergeni incerti.
 
-## Asterischi per congelati all’origine
-- usare `*` immediatamente dopo l’ingrediente interessato;
-- gamberetti, gamberoni e scampi devono avere l’asterisco quando previsto dalla regola interna;
-- patatine fritte devono avere l’asterisco quando presenti;
-- non mettere l’asterisco dopo il prezzo;
-- mantenere la nota `* Ingredienti congelati all’origine` dove prevista.
+Congelati:
+- `*` subito dopo l'ingrediente interessato;
+- gamberetti, gamberoni e scampi con asterisco secondo la regola interna;
+- mantenere la nota `* Ingredienti congelati all’origine.`.
 
-## Prezzi e preordine
-Il prezzo mostrato e quello usato dal sistema d’ordine devono essere sempre identici.
-
-Ogni modifica del menù deve essere verificata affinché:
-- il `+` aggiunga esattamente il piatto corretto;
-- il `−` riduca la quantità corretta;
-- lo `0`/contatore mostri la quantità corrente;
-- il riepilogo riporti nome, quantità e prezzo corretti;
-- subtotali e totale siano corretti;
-- il messaggio WhatsApp riporti gli stessi piatti e prezzi visibili;
-- l’ordine venga azzerato secondo il comportamento già stabilito;
-- le regole pranzo/cena e le validazioni degli orari restino invariate.
-
-Non riscrivere la logica di preordine se la modifica può essere ottenuta aggiornando soltanto i dati del menù.
-
-## Contenuti fissi della pagina pranzo
-Salvo diversa istruzione di Paolo, preservare:
+## Contenuti fissi
+Salvo richiesta esplicita diversa, preservare:
 - `Valido solo per pranzo`;
 - data del giorno del menù;
 - `Prenotazioni entro le 12`;
-- indicazione che l’ordine è valido soltanto dopo conferma del Ristorante;
-- `Acqua, caffè e coperto inclusi` dove previsto;
+- attesa della conferma del Ristorante;
+- `Acqua, caffè e coperto inclusi`;
 - `Fino a esaurimento`;
 - link alla tabella allergeni;
-- nota sui prodotti congelati all’origine.
+- nota congelati.
 
-## Regola di pubblicazione
-Prima di pubblicare una nuova versione del pranzo:
-1. leggere questa specifica;
-2. confrontare la pagina corrente con il master approvato;
-3. modificare soltanto i piatti/dati richiesti;
-4. verificare testo, prezzi, allergeni e asterischi;
-5. verificare tutti i pulsanti `− / 0 / +`;
-6. verificare riepilogo e messaggio WhatsApp;
-7. controllare il comportamento mobile;
-8. verificare che nessun’altra pagina o funzione sia cambiata;
-9. pubblicare soltanto dopo questi controlli.
+## Verifiche prima della pubblicazione
+1. controllare che tutti i piatti restino nella zona chiara del master;
+2. controllare che prezzo e pulsanti non si sovrappongano;
+3. controllare mobile;
+4. verificare che `+` e `−` lavorino sul piatto corretto;
+5. verificare riepilogo, subtotali, totale e WhatsApp;
+6. verificare che le regole pranzo/cena restino invariate;
+7. confrontare il diff e accertare che nessuna pagina o funzione non richiesta sia cambiata.
 
 ## Stato attuale
-Dal 2 ottobre 2026 il nuovo master grafico pranzo è **attivo**. Le fonti di riferimento operative sono `pranzo.html` e `pranzo-master.css`. La logica di ordine resta quella condivisa di `preordine.js` e non deve essere riscritta per semplici cambi del menù. Le future variazioni del pranzo devono preservare questo master salvo esplicita richiesta di Paolo.
+Dal 2 ottobre 2026 questo master nautico è il layout definitivo della pagina pranzo. La logica ordine resta quella condivisa di `preordine.js` e non deve essere modificata per semplici variazioni di piatti, prezzi, descrizioni, allergeni o foto.
 
-Ultimo aggiornamento di questa specifica: 2 ottobre 2026.
+Ultimo aggiornamento: 2 ottobre 2026.
