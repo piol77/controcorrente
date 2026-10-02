@@ -42,14 +42,24 @@ Non cambiare questo layout, colori, ordine delle informazioni o gerarchia salvo 
 Mostrare soltanto:
 - posizione;
 - pseudonimo;
-- punti totali guadagnati.
+- **punti totali guadagnati**;
+- **sconti già riscossi cumulativi**, espressi in euro.
 
 Non mostrare mai il nome reale nella classifica.
+
+### Regola permanente dei punti e degli sconti pubblici
+- La colonna `Punti totali` deve mostrare sempre i punti complessivamente guadagnati dal cliente nel periodo di riferimento della classifica, non i punti disponibili residui.
+- Il riscatto di uno sconto non riduce i punti totali mostrati nella classifica.
+- La colonna `Sconti già riscossi` deve mostrare la somma cumulativa in euro di tutti gli sconti effettivamente utilizzati dal cliente.
+- Il valore degli sconti già riscossi non si azzera dopo un nuovo acquisto e non diminuisce: aumenta soltanto quando viene effettivamente utilizzato un nuovo sconto.
+- Esempio: un cliente che ha già utilizzato due sconti da 5 € deve mostrare `10 €` nella colonna `Sconti già riscossi`.
+- In `club.html` ogni riga reale usa `data-points-total` e `data-discounts-redeemed`; lo script della classifica mostra dinamicamente i valori, riordina i clienti per punti totali e ricalcola la posizione.
+- Quando si aggiorna una tessera, aggiornare nella stessa operazione anche questi due valori pubblici, mantenendo la classifica anonima.
 
 ### Regola permanente della classifica cumulativa
 - La classifica deve contenere **tutti i soci/clienti reali registrati nel Club**, ciascuno con il proprio pseudonimo.
 - Quando viene creata una nuova tessera, **aggiungere** il nuovo pseudonimo alla classifica senza eliminare o sostituire i clienti reali già presenti.
-- Quando cambia il totale punti di un cliente, aggiornare la sua riga e ricalcolare l'ordine della classifica.
+- Quando cambia il totale punti o il totale degli sconti riscossi di un cliente, aggiornare la sua riga e ricalcolare l'ordine della classifica.
 - Ordinare la classifica per **punti totali guadagnati**, dal valore più alto al più basso.
 - La posizione deve essere ricalcolata dopo ogni nuova registrazione o aggiornamento punti.
 - Eventuali righe dimostrative/esempi non devono sostituire né falsare la classifica reale e, quando la classifica reale viene usata operativamente, possono essere rimosse o chiaramente escluse dal conteggio.
@@ -73,6 +83,7 @@ Mostrare:
 - Lo sconto è utilizzabile dalla cena successiva.
 - Quando viene riscosso uno sconto, i punti disponibili diminuiscono del relativo blocco di 100 punti.
 - I punti totali guadagnati non diminuiscono dopo il riscatto e restano quelli usati per la classifica.
+- Ogni sconto effettivamente utilizzato deve essere aggiunto al totale cumulativo `Sconti già riscossi` della classifica pubblica.
 - La spesa totale registrata rappresenta gli importi effettivamente registrati sulla tessera.
 
 ## Procedura standard per creare una nuova tessera
@@ -83,32 +94,36 @@ Per ogni nuovo cliente o coppia registrata come profilo unico:
 4. aggiungere `noindex,nofollow,noarchive` alla pagina personale;
 5. non linkare la pagina personale dalla classifica o dalla navigazione pubblica;
 6. registrare spesa iniziale, punti, sconti e primo movimento con data/ora quando disponibili;
-7. aggiungere il nuovo pseudonimo alla classifica pubblica senza rimuovere i clienti reali già registrati, quindi riordinare tutti per punti totali;
-8. generare il QR con l'URL della pagina personale + `#nome=<nome reale codificato>`;
-9. costruire il QR grafico usando il master definitivo descritto sopra, con nome reale stampato visibilmente sotto il codice;
-10. verificare che il QR apra la pagina corretta;
-11. verificare che con il QR il nome reale venga mostrato nella scheda;
-12. verificare che aprendo la stessa pagina senza frammento il nome reale non compaia;
-13. verificare che la classifica rimanga anonima e contenga tutti i clienti reali registrati;
-14. consegnare a Paolo il QR semplice e, se utile, la tessera grafica completa.
+7. aggiungere il nuovo pseudonimo alla classifica pubblica senza rimuovere i clienti reali già registrati, impostando `data-points-total` sui punti totali e `data-discounts-redeemed` sul totale cumulativo degli sconti già riscossi, inizialmente `0` se non ci sono riscatti;
+8. riordinare tutti per punti totali;
+9. generare il QR con l'URL della pagina personale + `#nome=<nome reale codificato>`;
+10. costruire il QR grafico usando il master definitivo descritto sopra, con nome reale stampato visibilmente sotto il codice;
+11. verificare che il QR apra la pagina corretta;
+12. verificare che con il QR il nome reale venga mostrato nella scheda;
+13. verificare che aprendo la stessa pagina senza frammento il nome reale non compaia;
+14. verificare che la classifica rimanga anonima e contenga tutti i clienti reali registrati;
+15. consegnare a Paolo il QR semplice e, se utile, la tessera grafica completa.
 
 ## Aggiornamenti successivi della tessera
-Quando Paolo comunica una nuova visita/spesa:
+Quando Paolo comunica una nuova visita/spesa o un riscatto:
 1. aggiungere il nuovo movimento alla scheda personale;
 2. aumentare spesa totale e punti totali della cifra effettivamente pagata;
 3. aggiornare i punti disponibili tenendo conto di eventuali riscatti;
 4. calcolare gli eventuali sconti maturati;
-5. aggiornare la posizione in classifica in base ai punti totali;
-6. aggiornare la classifica pubblica mantenendo tutte le altre tessere reali presenti e riordinando per punti totali;
-7. non rigenerare il QR se l'URL personale non cambia;
-8. non cambiare pseudonimo o token salvo esplicita richiesta.
+5. se uno sconto viene effettivamente usato, aggiungerne l'importo al totale cumulativo degli sconti già riscossi;
+6. aggiornare la posizione in classifica in base ai punti totali;
+7. aggiornare la classifica pubblica mantenendo tutte le altre tessere reali presenti, aggiornando punti totali e sconti riscossi cumulativi e riordinando per punti totali;
+8. non rigenerare il QR se l'URL personale non cambia;
+9. non cambiare pseudonimo o token salvo esplicita richiesta.
 
 ## Controlli prima della pubblicazione
 Prima di pubblicare o aggiornare una tessera verificare sempre:
 - nessun nome reale presente in classifica;
 - nessun nome reale nel nome file o in contenuti pubblicamente indicizzati;
 - pagina personale `noindex,nofollow,noarchive`;
-- punti e sconti coerenti con le regole Club;
+- punti totali pubblici distinti dai punti disponibili;
+- totale cumulativo degli sconti già riscossi corretto;
+- punti e sconti della scheda privata coerenti con le regole Club;
 - storico dei movimenti corretto;
 - classifica comprensiva di tutti i clienti reali registrati e ordinata correttamente per punti totali;
 - QR leggibile e scansionabile;
