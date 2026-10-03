@@ -22,7 +22,8 @@
           3,
           10
         ],
-        "icon": "Shrimp"
+        "icon": "Shrimp",
+        "dishPhoto": "cena-gamberetti.webp"
       },
       {
         "name": "Funghi champignon fritti",
@@ -32,7 +33,8 @@
           1,
           3
         ],
-        "icon": "Leaf"
+        "icon": "Leaf",
+        "dishPhoto": "cena-funghi.webp"
       }
     ],
     "primi": [
@@ -45,7 +47,8 @@
           2,
           14
         ],
-        "icon": "Shell"
+        "icon": "Shell",
+        "dishPhoto": "cena-spaghetti.webp"
       },
       {
         "name": "Conchigliette verdure, zafferano e croccante di guanciale",
@@ -56,7 +59,8 @@
           7,
           9
         ],
-        "icon": "Wheat"
+        "icon": "Wheat",
+        "dishPhoto": "cena-conchigliette.webp"
       },
       {
         "name": "Risotto barbabietola e gorgonzola (minimo due porzioni)",
@@ -67,7 +71,8 @@
           8,
           9
         ],
-        "icon": "CookingPot"
+        "icon": "CookingPot",
+        "dishPhoto": "cena-risotto.webp"
       },
       {
         "name": "Linguine crema di zucchine, avocado e gamberetti*",
@@ -78,7 +83,8 @@
           2,
           7
         ],
-        "icon": "Shrimp"
+        "icon": "Shrimp",
+        "dishPhoto": "cena-linguine.webp"
       }
     ],
     "secondi": [
@@ -92,7 +98,8 @@
           4,
           14
         ],
-        "icon": "Fish"
+        "icon": "Fish",
+        "dishPhoto": "cena-frittura.webp"
       },
       {
         "name": "Filetti di suino al bacon e fichi",
@@ -101,7 +108,8 @@
         "allergens": [
           7
         ],
-        "icon": "Beef"
+        "icon": "Beef",
+        "dishPhoto": "cena-suino.webp"
       },
       {
         "name": "Filetto di branzino al limone",
@@ -110,7 +118,8 @@
         "allergens": [
           4
         ],
-        "icon": "Fish"
+        "icon": "Fish",
+        "dishPhoto": "cena-branzino.webp"
       },
       {
         "name": "Trancio di salmone all’arancia e pepe rosa",
@@ -119,7 +128,8 @@
         "allergens": [
           4
         ],
-        "icon": "Fish"
+        "icon": "Fish",
+        "dishPhoto": "cena-salmone.webp"
       }
     ]
   },
