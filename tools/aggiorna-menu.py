@@ -35,10 +35,12 @@ def dish(d, section='', index=0, fixed=False):
     art = node('article', class_=cls)
     if section in data['dinner']:
         art.set('data-order-section', section); art.set('data-order-index', str(index))
+    thumbnail = d.get('photoLayout') == 'thumbnail'
     if 'dishPhoto' in d:
         if not (ROOT / d['dishPhoto']).is_file(): raise ValueError('Foto mancante: '+d['dishPhoto'])
-        art.set('class', cls+' dish-photo-card')
-        art.append(node('img', class_='dish-photo', src=d['dishPhoto'], alt=frozen(d['name']), width='1200', height='800', loading='eager'))
+        art.set('class', cls+(' dish-thumbnail-card' if thumbnail else ' dish-photo-card'))
+        if not thumbnail:
+            art.append(node('img', class_='dish-photo', src=d['dishPhoto'], alt=frozen(d['name']), width='1200', height='800', loading='eager'))
     elif 'photo' in d:
         art.set('class', cls+' wine-card')
         # Inquadratura della bottiglia originale: nessuna scritta esterna, etichetta intatta.
@@ -51,6 +53,8 @@ def dish(d, section='', index=0, fixed=False):
     else: art.append(pictogram(d['icon'], 'icon dish-mark'))
     copy = node('div', class_='dish-copy')
     copy.append(node('h2' if section == 'offerta' else 'h3', frozen(d['name'])))
+    if thumbnail and d.get('dishPhoto'):
+        copy.append(node('img', class_='dish-photo dish-thumbnail', src=d['dishPhoto'], alt=frozen(d['name']), width='120', height='90', loading='lazy'))
     if d.get('designation'): copy.append(node('p', d['designation'], class_='wine-designation'))
     copy.append(node('p', frozen(d['description']), class_='dish-description'))
     if d.get('allergens'):

@@ -18,3 +18,15 @@ python3 tools/aggiorna-menu.py pranzo
 Si possono indicare più sezioni nello stesso comando. Lo script conserva la struttura delle pagine e le procedure d’ordine; per le offerte le traduzioni dei piatti sono nel campo `translations`. Non genera immagini e non pubblica automaticamente: occorre verificare il risultato prima del commit.
 
 Il vecchio `tools/render-menu.py` ricostruisce il restyling dalle copie storiche: non usarlo per manutenzione ordinaria o variazioni dei piatti. Le istruzioni complete e le eccezioni autorizzate restano in `AGENTS.md`.
+
+
+## Regola generale miniature e descrizioni — 2026-10-03 sera
+Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto.
+- Ogni singola scheda di piatto deve avere una foto/miniatura realistica e una descrizione breve, elegante e fedele agli ingredienti: pranzo, cena, offerta del giorno e menù fisso, comprese le versioni inglese e cinese.
+- A ogni sostituzione, aggiunta o eliminazione di un piatto, aggiornare insieme nome, descrizione, fotografia e traduzioni; una foto di un piatto precedente non deve rimanere associata al nuovo. Non modificare schede già complete e corrette.
+- Per nuove foto cercare prima fotografie su internet coerenti con il piatto; privilegiare, dove possibile, sfondo, piatto, luce, prospettiva e impiattamento uniformi. Non sostituire automaticamente le foto già approvate. Registrare origine e limiti del riferimento; non spacciare foto illustrative per fotografie reali del ristorante. Non usare immagini di piatti diversi per nascondere un riferimento mancante.
+- Ogni foto resta un elemento autonomo della griglia, modificabile o eliminabile insieme alla propria scheda, mai incorporata in un'immagine unica del menù. Conservare in menu-data.json dishPhoto e description; photoLayout: thumbnail seleziona la miniatura compatta a fianco della descrizione.
+- Usare misure coerenti e responsive: foto interamente nel proprio spazio, senza coprire descrizione, prezzo, allergeni, pulsanti, schede vicine o decorazioni. Per le miniature pranzo usare dish-thumbnails.css; per le schede già approvate conservare la loro cornice. Non alterare il resto del layout.
+- Le sezioni EN/ZH clonano dinamicamente foto e schede italiane tramite foreign-menus.js. Aggiornare anche le corrispondenti descrizioni e i nomi tradotti quando cambia un piatto; verificare tutte e tre le sezioni in entrambe le lingue.
+- Le foto da internet possono avere presentazioni diverse: descrizioni, ingredienti e allergeni restano quelli comunicati da Paolo, mai ricavati arbitrariamente dalla fotografia. Segnalare riferimenti non fedeli invece di cambiare la ricetta.
+- Prima dell'intervento richiesto salvare il backup completo definitiva.zip, verificarne l'integrità e renderlo scaricabile. Prima di pubblicare controllare desktop, telefono, immagini caricate, prezzi e ordini. Pubblicare e verificare GitHub Pages effettivamente online.

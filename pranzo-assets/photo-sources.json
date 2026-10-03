@@ -1,0 +1,57 @@
+{
+  "note": "Fotografie illustrative di riferimento, non foto dei piatti effettivamente serviti; impiattamento e contorni possono variare. Non derivare ingredienti o allergeni dalle foto. Fotografie web non dichiarate di proprietà del ristorante.",
+  "images": [
+    {
+      "dish": "Spaghetti salsiccia e zafferano",
+      "file": "pranzo-assets/spaghetti-salsiccia-zafferano.webp",
+      "origin": "fotografia web di riferimento",
+      "sourceImage": "https://wips.plug.it/cips/buonissimo.org/cms/2012/11/spaghetti-salsiccia-e-zafferano.jpg?w=712&a=c&h=406"
+    },
+    {
+      "dish": "Orecchiette zucca e gorgonzola",
+      "file": "pranzo-assets/orecchiette-zucca-gorgonzola.webp",
+      "origin": "fotografia web di riferimento",
+      "sourceImage": "https://www.costabilebrand.com/cdn/shop/articles/Orecchiette_pasta_with_pumpkin_gorgonzola_and_organic_extra_virgin_olive_oil_from_puglia_italy-3.jpg?v=1698338319"
+    },
+    {
+      "dish": "Linguine gamberetti* con granella di pistacchio",
+      "file": "pranzo-assets/linguine-gamberetti-pistacchio.webp",
+      "origin": "fotografia web di riferimento",
+      "sourceImage": "https://www.tochinavi.net/img/kuchikomi/02/IMG02_55de2d408858e19a3f10f5d02474b75d4ec644a2.jpg"
+    },
+    {
+      "dish": "Fusilli melanzane e branzino al profumo di basilico",
+      "file": "pranzo-assets/fusilli-melanzane-branzino.webp",
+      "origin": "Adattamento IA di riferimento web: fusilli, melanzane, branzino e basilico; eliminati pomodoro e pesce spada del riferimento.",
+      "reference": "https://pastadimartino.com/cdn/shop/articles/Fusillata_casareccia_di_Gragnano_IGP_con_pesce_spada_e_melanzane.jpg?v=1720780748"
+    },
+    {
+      "dish": "Orata alla griglia con patate al forno",
+      "file": "pranzo-assets/orata-griglia-patate.webp",
+      "origin": "fotografia web di riferimento",
+      "sourceImage": "https://s1.15min.lt/static/cache/MTIwMHgxMjAwLDkwOXg2MDIsNjE2MTYzLG9yaWdpbmFsLCxpZD04OTY0NzAyJmRhdGU9MjAyMyUyRjA1JTJGMzAsMjE0MDgxMzY2Mw%3D%3D/grilyje-kepta-dorada-6475f8db965a4.jpg"
+    },
+    {
+      "dish": "Salmone alla griglia con patate al forno",
+      "file": "pranzo-assets/salmone-griglia-patate.webp",
+      "origin": "fotografia web di riferimento",
+      "sourceImage": "https://img.topky.sk/vysetrenie/1600px_not_cropped/3537695.jpg/jedlo-ryba-mecun.jpg"
+    },
+    {
+      "dish": "Insalatona arancia, finocchi, avocado e bocconcini di salmone fresco",
+      "file": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado.webp",
+      "origin": "Immagine già presente nel repository, riutilizzata per lo stesso piatto."
+    },
+    {
+      "dish": "Filetti di suino con cipolle di Tropea in agrodolce",
+      "file": "pranzo-assets/suino-cipolle.webp",
+      "origin": "fotografia web di riferimento",
+      "sourceImage": "https://www.tapenda.it/obr/upl/Filetto_di_maiale_con_marmellata_di_cipolla_rossa.jpg"
+    },
+    {
+      "dish": "Insalatona Cesarona",
+      "file": "pranzo-assets/insalatina-cesarona.webp",
+      "origin": "Immagine già presente nel repository, riutilizzata per lo stesso piatto."
+    }
+  ]
+}
