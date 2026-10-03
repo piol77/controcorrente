@@ -1,0 +1,16 @@
+{
+  "1": {"name": "Cereali contenenti glutine", "icon": "Wheat"},
+  "2": {"name": "Crostacei", "icon": "Shrimp"},
+  "3": {"name": "Uova", "icon": "Egg"},
+  "4": {"name": "Pesce", "icon": "Fish"},
+  "5": {"name": "Arachidi", "icon": "Nut"},
+  "6": {"name": "Soia", "icon": "Bean"},
+  "7": {"name": "Latte", "icon": "Milk"},
+  "8": {"name": "Frutta a guscio", "icon": "Nut"},
+  "9": {"name": "Sedano", "icon": "LeafyGreen"},
+  "10": {"name": "Senape", "icon": "Flower2"},
+  "11": {"name": "Semi di sesamo", "icon": "Ellipsis"},
+  "12": {"name": "Anidride solforosa e solfiti", "icon": "FlaskConical"},
+  "13": {"name": "Lupini", "icon": "Bean"},
+  "14": {"name": "Molluschi", "icon": "Shell"}
+}

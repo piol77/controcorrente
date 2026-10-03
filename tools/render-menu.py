@@ -88,21 +88,28 @@ if previous.get('lunchDigest') and previous['lunchDigest']!=digest:
     datafile.write_text(json.dumps(data,ensure_ascii=False,indent=2))
 statefile.write_text(json.dumps({'lunchDigest':digest},indent=2))
 
-links=[('index.html','Novità'),('cena.html','Menù cena'),('pranzo.html','Menù pranzo'),('offerta.html','Offerta del giorno'),('bibite-vini.html','Bibite & vini'),('club.html','Club'),('il-locale.html','Il Locale'),('allergeni.html','Allergeni'),('contatti.html','Contatti')]
+links=[('index.html','Novità'),('il-locale.html','Il Locale'),('pranzo.html','Menù pranzo'),('cena.html','Menù cena'),('offerta.html','Offerta del giorno'),('bibite-vini.html','Bibite & vini'),('club.html','Club'),('allergeni.html','Allergeni'),('contatti.html','Contatti')]
 def nav(current):
     return '<header class="top"><div class="brand-row"><a class="logo" href="index.html">'+icon('Anchor')+'<span>Controcorrente<small>RISTORANTE · TORINO</small></span></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">'+icon('Menu')+'<span>Menù</span></button></div><nav id="site-nav">'+''.join(f'<a href="{p}"'+(' aria-current="page"' if current==p else '')+f'>{t}</a>' for p,t in links)+'<span class="languages"><a href="english.html" lang="en">EN</a><a href="cinese.html" lang="zh">中文</a></span></nav></header>'
 foot='<footer>'+icon('Waves')+'<p class="footer-name">Controcorrente</p><p>Via San Paolo 16, Torino · <a href="tel:+393272292006">327 229 2006</a></p><p>Comunicare eventuali allergie prima di ordinare.<br>* Ingredienti congelati all’origine.</p></footer>'
 def head(title,label='',date=''):
     return '<div class="page-head"><p class="eyebrow">'+icon('Waves')+' CONTROCORRENTE · CUCINA DI MARE</p><h1>'+title+'</h1>'+('<p class="service-label">'+label+'</p>' if label else '')+(f'<p class="lunch-date"><time datetime="{data["lunchUpdatedAt"]}">{e(data["lunchDateLabel"])}</time></p>' if date else '')+'</div>'
 note='<p class="menu-note">Comunicare eventuali allergie · * Ingredienti congelati all’origine.<br><a href="allergeni.html">Consulta la tabella allergeni</a></p>'
-def allergen(a):return '<p class="allergen-refs" aria-label="Riferimenti allergeni">'+''.join(f'<span>{v:02}</span>' for v in a)+'</p>' if a else ''
+allergen_symbols=json.loads((ROOT/'allergen-symbols.json').read_text())
+def allergen(a):
+    return '<p class="allergen-refs" aria-label="Riferimenti allergeni">'+''.join(f'<span class="allergen-badge" title="{e(allergen_symbols[str(v)]["name"])}" aria-label="{v:02} · {e(allergen_symbols[str(v)]["name"])}"><span class="allergen-pictogram">'+icon(allergen_symbols[str(v)]['icon'])+f'</span><span class="allergen-number">{v:02}</span></span>' for v in a)+'</p>' if a else ''
 def dish(d,cls='dish',section='',i=0,heading='h3',price=True):
-    return f'<article class="{cls}"'+(f' data-order-section="{section}" data-order-index="{i}"' if section else '')+'>'+icon(d['icon'],'dish-mark')+f'<div class="dish-copy"><{heading}>{e(frozen(d["name"]))}</{heading}>'+('<p class="wine-designation">'+e(d['designation'])+'</p>' if 'designation' in d else '')+'<p class="dish-description">'+e(frozen(d['description']))+'</p>'+allergen(d.get('allergens',[]))+'</div>'+('<strong class="dish-price '+('daily-dish-price' if cls=='daily-dish dish' else '')+'">'+money(d['price'])+'</strong>' if price else '')+'</article>'
+    if 'photo' in d:
+        cls+=' wine-card'
+        mark=f'<img class="wine-photo" src="{e(d["photo"])}" alt="Bottiglia di {e(d["name"])} · Cantine Delite" width="800" height="800" loading="lazy">'
+    else:mark=icon(d['icon'],'dish-mark')
+    source=f'<a class="wine-source" href="{e(d["sourceUrl"])}" target="_blank" rel="noopener">Cantine Delite · Scheda del vino</a>' if 'sourceUrl' in d else ''
+    return f'<article class="{cls}"'+(f' data-order-section="{section}" data-order-index="{i}"' if section else '')+'>'+mark+f'<div class="dish-copy"><{heading}>{e(frozen(d["name"]))}</{heading}>'+('<p class="wine-designation">'+e(d['designation'])+'</p>' if 'designation' in d else '')+'<p class="dish-description">'+e(frozen(d['description']))+'</p>'+allergen(d.get('allergens',[]))+source+'</div>'+('<strong class="dish-price '+('daily-dish-price' if cls=='daily-dish dish' else '')+'">'+money(d['price'])+'</strong>' if price else '')+'</article>'
 def doc(title,current,body,scripts='',private=False):
     robots='<meta name="robots" content="noindex,nofollow,noarchive">' if private or current=='club-esempio-brezza27-demo.html' else ''
     footer='<footer>'+icon('Waves')+'<p class="footer-name">Controcorrente</p></footer>' if current=='index.html' else foot
-    scripts=re.sub(r'src="([^"?]+\.js)"',r'src="\1?v=20261003-nautica2"',scripts)
-    return '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081c30">'+robots+'<title>'+title+' | Controcorrente</title><link rel="stylesheet" href="styles.css?v=20261003-nautica2"><link rel="icon" href="icons/Anchor.svg"></head><body>'+nav(current)+'<main class="shell">'+body+'</main>'+footer+'<script src="ui.js?v=20261003-nautica2"></script><script src="site-session.js?v=20261003-nautica2"></script>'+scripts+'</body></html>'
+    scripts=re.sub(r'src="([^"?]+\.js)"',r'src="\1?v=20261003-nautica3"',scripts)
+    return '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081c30">'+robots+'<title>'+title+' | Controcorrente</title><link rel="stylesheet" href="styles.css?v=20261003-nautica3"><link rel="icon" href="icons/Anchor.svg"></head><body>'+nav(current)+'<main class="shell">'+body+'</main>'+footer+'<script src="ui.js?v=20261003-nautica3"></script><script src="site-session.js?v=20261003-nautica3"></script>'+scripts+'</body></html>'
 
 # New dinner page; old links remain usable and route to the relevant part of it.
 body=head('Menù cena','Valido solo per cena')+'<nav class="course-tabs" aria-label="Portate">'+''.join(f'<a href="#{s}">{label}</a>' for s,label in [('antipasti','Antipasti'),('primi','Primi'),('secondi','Secondi')])+'</nav>'
@@ -130,7 +137,12 @@ for file in ['index.html','club.html','contatti.html','allergeni.html','il-local
     for st in n.cssselect('[style]'):
         if st.tag!='col' and not st.getparent().get('class','').startswith('club-progress-track'):
             del st.attrib['style']
-    for mark in n.cssselect('.orn,.daily-mark,.wave-mark,.allergen-symbol'):mark.text='';mark.append(html.fromstring(icon('Anchor')))
+    for mark in n.cssselect('.orn,.daily-mark,.wave-mark'):mark.text='';mark.append(html.fromstring(icon('Anchor')))
+    for card in n.cssselect('.allergen-card'):
+        number=int(card.cssselect('.allergen-num')[0].text_content())
+        mark=card.cssselect('.allergen-symbol')[0]
+        mark.clear();mark.set('class','allergen-symbol');mark.set('aria-hidden','true')
+        mark.append(html.fromstring(icon(allergen_symbols[str(number)]['icon'])))
     main=n.cssselect('main')[0]
     body=inner(main)
     scripts=''.join(etree.tostring(x,encoding='unicode',method='html') for x in n.cssselect('body > script') if not x.get('src','').startswith('site-session'))
@@ -197,6 +209,22 @@ Object.values(CONTROCORRENTE_MENU).forEach(menu=>{
 });
 '''
 trans=trans.replace('\nfunction renderTranslatedMenu()', '\n'+patch+'\nfunction renderTranslatedMenu()')
+trans=trans.replace('const SHARED_DINNER=', 'const SHARED_ALLERGEN_SYMBOLS='+json.dumps(allergen_symbols,ensure_ascii=False)+';\nconst SHARED_DINNER=')
+trans=trans.replace('      text.textContent = description;', '''      const refs=description.match(/\\(([\\d, ]+)\\)\\.?$/)||description.match(/([\\d, ]+)$/);
+      text.textContent=refs ? description.slice(0,refs.index).replace(/[ ·]+$/,'').trim() : description;
+      if(refs){
+        const badges=document.createElement('p');badges.className='allergen-refs';
+        refs[1].split(',').map(Number).filter(n=>SHARED_ALLERGEN_SYMBOLS[n]).forEach(number=>{
+          const info=SHARED_ALLERGEN_SYMBOLS[number];
+          const badge=document.createElement('span');badge.className='allergen-badge';badge.title=info.name;badge.setAttribute('aria-label',String(number).padStart(2,'0')+' · '+info.name);
+          const pictogram=document.createElement('span');pictogram.className='allergen-pictogram';
+          const image=document.createElement('img');image.className='icon';image.src='icons/'+info.icon+'.svg';image.alt='';image.setAttribute('aria-hidden','true');pictogram.append(image);
+          const label=document.createElement('span');label.className='allergen-number';label.textContent=String(number).padStart(2,'0');
+          badge.append(pictogram,label);badges.append(badge);
+        });article.append(badges);
+      }''')
+# Preserve the existing title/description order, then show the symbol/number row.
+trans=trans.replace('      article.append(title, text);','      article.prepend(title, text);')
 (OUT/'menu-translations.js').write_text(trans)
 
 print('Generated all pages from menu-data.json; Club data retained; no deployment.')

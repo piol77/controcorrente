@@ -75,6 +75,7 @@ const CONTROCORRENTE_MENU = {
   }
 };
 
+const SHARED_ALLERGEN_SYMBOLS={"1": {"name": "Cereali contenenti glutine", "icon": "Wheat"}, "2": {"name": "Crostacei", "icon": "Shrimp"}, "3": {"name": "Uova", "icon": "Egg"}, "4": {"name": "Pesce", "icon": "Fish"}, "5": {"name": "Arachidi", "icon": "Nut"}, "6": {"name": "Soia", "icon": "Bean"}, "7": {"name": "Latte", "icon": "Milk"}, "8": {"name": "Frutta a guscio", "icon": "Nut"}, "9": {"name": "Sedano", "icon": "LeafyGreen"}, "10": {"name": "Senape", "icon": "Flower2"}, "11": {"name": "Semi di sesamo", "icon": "Ellipsis"}, "12": {"name": "Anidride solforosa e solfiti", "icon": "FlaskConical"}, "13": {"name": "Lupini", "icon": "Bean"}, "14": {"name": "Molluschi", "icon": "Shell"}};
 const SHARED_DINNER={"antipasti": [{"name": "Bruschetta al salmone affumicato", "price": 10, "description": "Pane tostato, salmone affumicato, formaggio spalmabile, rucola e capperi.", "allergens": [1, 4, 7], "icon": "Fish"}, {"name": "Gamberetti* in salsa rosa", "price": 10, "description": "Gamberetti* e delicata salsa rosa, su un letto di fresca insalata.", "allergens": [2, 3, 10], "icon": "Shrimp"}, {"name": "Funghi champignon fritti", "price": 10, "description": "Champignon dorati e croccanti, serviti con spicchi di limone.", "allergens": [1, 3], "icon": "Leaf"}], "primi": [{"name": "Spaghetti ai frutti di mare", "price": 15, "description": "Cozze, vongole, gamberetti* e gamberone*, con un leggero pomodoro.", "allergens": [1, 2, 14], "icon": "Shell"}, {"name": "Conchigliette verdure, zafferano e croccante di guanciale", "price": 12.5, "description": "Verdure di stagione, zafferano e guanciale croccante.", "allergens": [1, 7, 9], "icon": "Wheat"}, {"name": "Risotto barbabietola e gorgonzola (minimo due porzioni)", "price": 12.5, "description": "Risotto cremoso alla barbabietola, gorgonzola e noci.", "allergens": [7, 8, 9], "icon": "CookingPot"}, {"name": "Linguine crema di zucchine, avocado e gamberetti*", "price": 12.5, "description": "Crema di zucchine, avocado, gamberetti* e una nota fresca di limone. Poco pomodoro.", "allergens": [1, 2, 7], "icon": "Shrimp"}], "secondi": [{"name": "Frittura mista di alici, calamari e gamberetti*", "price": 20, "description": "Alici, calamari e gamberetti* in una frittura leggera e croccante.", "allergens": [1, 2, 4, 14], "icon": "Fish"}, {"name": "Filetti di suino al bacon e fichi", "price": 14, "description": "Filetti avvolti nel bacon, con fichi e patate al forno.", "allergens": [7], "icon": "Beef"}, {"name": "Filetto di branzino al limone", "price": 14, "description": "Branzino alla griglia, limone e prezzemolo, con verza viola cruda.", "allergens": [4], "icon": "Fish"}, {"name": "Trancio di salmone all’arancia e pepe rosa", "price": 14, "description": "Salmone alla griglia, arancia e pepe rosa, con finocchi crudi e aceto balsamico.", "allergens": [4], "icon": "Fish"}]}; const SHARED_OFFERS=[{"name": "Carne cruda con limone e Grana", "price": 10, "description": "Carne cruda, limone e scaglie di Grana.", "allergens": [7], "icon": "Beef", "course": "Antipasto"}, {"name": "Tentacoli, gamberetti* e patate", "price": 10, "description": "Tentacoli e gamberetti*, con morbide patate.", "allergens": [2, 14], "icon": "Shell", "course": "Secondo"}, {"name": "Riso saltato con pollo, gamberetti*, verdure e spezie", "price": 10, "description": "Riso saltato, pollo e gamberetti*, con verdure e spezie.", "allergens": [2, 6], "icon": "CookingPot", "course": "Primo"}]; const SHARED_FIXED={"price": 25, "dishes": [{"name": "Bruschetta al pomodoro fresco", "description": "Pane tostato e pomodoro fresco.", "allergens": [1], "icon": "Wheat", "course": "Antipasto"}, {"name": "Spaghetti ai frutti di mare", "description": "Cozze, vongole, gamberetti* e scampi*.", "allergens": [1, 2, 14], "icon": "Shell", "course": "Primo"}, {"name": "Fritturina di alici, calamari e gamberetti*", "description": "Alici, calamari e gamberetti* in una frittura croccante.", "allergens": [1, 2, 4, 14], "icon": "Fish", "course": "Secondo"}]};
 Object.values(CONTROCORRENTE_MENU).forEach(menu=>{
  menu.courses.forEach((c,i)=>c.dishes.forEach((d,j)=>{const shared=SHARED_DINNER[['antipasti','primi','secondi'][i]][j]; d[2]=new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(shared.price);d[1]=d[1].replace(/\([\d, ]+\)[.]?$/, '')+' ('+shared.allergens.join(', ')+')';}));
@@ -111,8 +112,20 @@ function renderTranslatedMenu() {
         title.appendChild(amount);
       }
       const text = document.createElement("p");
-      text.textContent = description;
-      article.append(title, text);
+      const refs=description.match(/\(([\d, ]+)\)\.?$/)||description.match(/([\d, ]+)$/);
+      text.textContent=refs ? description.slice(0,refs.index).replace(/[ ·]+$/,'').trim() : description;
+      if(refs){
+        const badges=document.createElement('p');badges.className='allergen-refs';
+        refs[1].split(',').map(Number).filter(n=>SHARED_ALLERGEN_SYMBOLS[n]).forEach(number=>{
+          const info=SHARED_ALLERGEN_SYMBOLS[number];
+          const badge=document.createElement('span');badge.className='allergen-badge';badge.title=info.name;badge.setAttribute('aria-label',String(number).padStart(2,'0')+' · '+info.name);
+          const pictogram=document.createElement('span');pictogram.className='allergen-pictogram';
+          const image=document.createElement('img');image.className='icon';image.src='icons/'+info.icon+'.svg';image.alt='';image.setAttribute('aria-hidden','true');pictogram.append(image);
+          const label=document.createElement('span');label.className='allergen-number';label.textContent=String(number).padStart(2,'0');
+          badge.append(pictogram,label);badges.append(badge);
+        });article.append(badges);
+      }
+      article.prepend(title, text);
       section.appendChild(article);
     });
     if (course.note) {
