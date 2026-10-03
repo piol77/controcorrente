@@ -230,7 +230,17 @@
         7
       ],
       "icon": "Beef",
-      "course": "Antipasto"
+      "course": "Antipasto",
+      "translations": {
+        "en": {
+          "name": "Beef Tartare with Lemon and Grana",
+          "description": "Raw beef with lemon and shavings of Grana cheese."
+        },
+        "zh": {
+          "name": "柠檬格拉纳奶酪生牛肉",
+          "description": "生牛肉配柠檬和格拉纳奶酪薄片。"
+        }
+      }
     },
     {
       "name": "Tentacoli, gamberetti* e patate",
@@ -241,54 +251,129 @@
         14
       ],
       "icon": "Shell",
-      "course": "Secondo"
+      "course": "Secondo",
+      "translations": {
+        "en": {
+          "name": "Tentacles, Shrimp* and Potatoes",
+          "description": "Tender tentacles and shrimp* with soft potatoes."
+        },
+        "zh": {
+          "name": "触须、小虾仁*和土豆",
+          "description": "软嫩触须与小虾仁*，搭配土豆。"
+        }
+      }
     },
     {
-      "name": "Riso saltato con pollo, gamberetti*, verdure e spezie",
-      "price": 10,
-      "description": "Riso saltato, pollo e gamberetti*, con verdure e spezie.",
+      "name": "Spaghetti con burrata, granella di pistacchi e gamberetti*",
+      "price": 12.5,
+      "description": "Spaghetti avvolti dalla cremosità della burrata, con gamberetti* e granella di pistacchi.",
       "allergens": [
+        1,
         2,
-        6
+        7,
+        8
       ],
-      "icon": "CookingPot",
-      "course": "Primo"
+      "icon": "Shrimp",
+      "course": "Primo",
+      "dishPhoto": "offerta-assets/spaghetti.webp",
+      "translations": {
+        "en": {
+          "name": "Spaghetti with Burrata, Chopped Pistachios and Shrimp*",
+          "description": "Creamy burrata, shrimp* and chopped pistachios."
+        },
+        "zh": {
+          "name": "布拉塔奶酪开心果碎小虾意大利面",
+          "description": "意大利面配布拉塔奶酪、小虾仁*和开心果碎。"
+        }
+      }
+    },
+    {
+      "name": "Ravioli orientali di verdure e carne (5 pezzi)",
+      "price": 6,
+      "description": "Cinque ravioli dal delicato ripieno di carne e verza.",
+      "allergens": [
+        1
+      ],
+      "icon": "Wheat",
+      "course": "Antipasto",
+      "dishPhoto": "offerta-assets/ravioli.webp",
+      "translations": {
+        "en": {
+          "name": "Vegetable and Meat Dumplings (5 pieces)",
+          "description": "Five oriental dumplings with a delicate meat and savoy cabbage filling."
+        },
+        "zh": {
+          "name": "蔬菜肉馅饺子（5个）",
+          "description": "五个东方风味饺子，内馅为肉和皱叶甘蓝。"
+        }
+      }
     }
   ],
   "fixed": {
     "price": 25,
     "dishes": [
       {
-        "name": "Bruschetta al pomodoro fresco",
-        "description": "Pane tostato e pomodoro fresco.",
+        "name": "Bruschetta al pomodoro",
+        "description": "Pane tostato e pomodoro fresco: una bruschetta semplice e profumata.",
         "allergens": [
           1
         ],
         "icon": "Wheat",
-        "course": "Antipasto"
+        "course": "Antipasto",
+        "dishPhoto": "offerta-assets/bruschetta.webp",
+        "translations": {
+          "en": {
+            "name": "Tomato Bruschetta",
+            "description": "Toasted bread with fresh tomato."
+          },
+          "zh": {
+            "name": "番茄烤面包",
+            "description": "烤面包搭配新鲜番茄。"
+          }
+        }
       },
       {
-        "name": "Spaghetti ai frutti di mare",
-        "description": "Cozze, vongole, gamberetti* e scampi*.",
+        "name": "Farfalle con zucchine, panna, pomodorini e salmone fresco",
+        "description": "Farfalle cremose con zucchine, pomodorini e morbidi bocconcini di salmone fresco.",
         "allergens": [
           1,
+          4,
+          7
+        ],
+        "icon": "Fish",
+        "course": "Primo",
+        "dishPhoto": "offerta-assets/farfalle.webp",
+        "translations": {
+          "en": {
+            "name": "Farfalle with Courgette, Cream, Cherry Tomatoes and Fresh Salmon",
+            "description": "Creamy farfalle with courgette, cherry tomatoes and tender fresh salmon pieces."
+          },
+          "zh": {
+            "name": "西葫芦奶油小番茄鲜三文鱼蝴蝶面",
+            "description": "奶油蝴蝶面，配西葫芦、小番茄和鲜三文鱼块。"
+          }
+        }
+      },
+      {
+        "name": "Insalata tiepida di tentacoli, patate e gamberetti*",
+        "description": "Tentacoli e gamberetti* incontrano le patate in una delicata insalata tiepida.",
+        "allergens": [
           2,
           14
         ],
         "icon": "Shell",
-        "course": "Primo"
-      },
-      {
-        "name": "Fritturina di alici, calamari e gamberetti*",
-        "description": "Alici, calamari e gamberetti* in una frittura croccante.",
-        "allergens": [
-          1,
-          2,
-          4,
-          14
-        ],
-        "icon": "Fish",
-        "course": "Secondo"
+        "course": "Secondo",
+        "dishPhoto": "offerta-assets/tentacoli.webp",
+        "translations": {
+          "en": {
+            "name": "Warm Tentacle, Potato and Shrimp* Salad",
+            "description": "Tender tentacles and shrimp* with potatoes in a delicate warm salad."
+          },
+          "zh": {
+            "name": "温拌触须土豆小虾仁*沙拉",
+            "description": "软嫩触须、小虾仁*和土豆组成温拌沙拉。"
+          }
+        }
       }
     ]
   },
@@ -322,6 +407,12 @@
       "description": "San Simone, Capo, Unicum, limoncello, mirto",
       "price": 4,
       "icon": "Wine"
+    },
+    {
+      "name": "Caffè espresso",
+      "description": "Espresso",
+      "price": 1.5,
+      "icon": "Coffee"
     }
   ],
   "wines": [
@@ -334,7 +425,8 @@
       "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2020/02/generoso-1.jpg",
       "descriptionSource": "https://www.cantinedelite.it/wp-content/uploads/2021/05/Aglianico-scheda-tecnica.pdf",
       "price": 20,
-      "icon": "Wine"
+      "icon": "Wine",
+      "photoViewBox": "290 0 220 800"
     },
     {
       "name": "Nonna Seppa",
@@ -345,7 +437,8 @@
       "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2020/02/nonna-seppa-1.jpg",
       "descriptionSource": "https://www.cantinedelite.it/wp-content/uploads/2021/05/CAMPI-TAURASINI-scheda-tecnica.pdf",
       "price": 25,
-      "icon": "Wine"
+      "icon": "Wine",
+      "photoViewBox": "290 0 220 800"
     },
     {
       "name": "Pentamerone",
@@ -356,7 +449,8 @@
       "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2020/02/pentamerone-1.jpg",
       "descriptionSource": "https://www.cantinedelite.it/prodotto/pentamerone-taurasi-docg/",
       "price": 30,
-      "icon": "Wine"
+      "icon": "Wine",
+      "photoViewBox": "290 0 220 800"
     },
     {
       "name": "Emmente",
@@ -367,7 +461,8 @@
       "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2022/07/emmente.jpg",
       "descriptionSource": "https://www.cantinedelite.it/prodotto/emmente-irpinia-rosato-doc-biologico/",
       "price": 20,
-      "icon": "Wine"
+      "icon": "Wine",
+      "photoViewBox": "290 0 220 800"
     },
     {
       "name": "Seicentododici",
@@ -378,7 +473,8 @@
       "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2026/08/coda-di-volpe_.png",
       "descriptionSource": "https://www.cantinedelite.it/prodotto/seicentododici-irpinia-coda-di-volpe-doc-biologico/",
       "price": 20,
-      "icon": "Wine"
+      "icon": "Wine",
+      "photoViewBox": "380 0 210 800"
     }
   ]
 }
