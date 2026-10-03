@@ -30,3 +30,7 @@
 
 /* One logo at the top; wave illustration in the footer. */
 .footer-waves{display:block;width:min(100%,1104px);height:auto;margin:0 auto 24px;pointer-events:none}
+
+/* Novità: clear breathing room before the footer so the boat in the wave artwork remains fully visible. */
+body:has(nav a[aria-current="page"][href="index.html"]) .shell{padding-bottom:120px}
+@media(max-width:650px){body:has(nav a[aria-current="page"][href="index.html"]) .shell{padding-bottom:90px}}
