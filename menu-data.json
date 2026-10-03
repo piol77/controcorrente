@@ -421,9 +421,6 @@
       "designation": "Irpinia Aglianico DOC",
       "description": "Aglianico 100%, rosso rubino. Profumi di violetta, rosa e amarena; sorso morbido, con una chiusura speziata. Ideale con primi saporiti e carni rosse.",
       "photo": "wine-assets/generoso.jpg",
-      "sourceUrl": "https://www.cantinedelite.it/prodotto/generoso-irpinia-aglianico-doc/",
-      "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2020/02/generoso-1.jpg",
-      "descriptionSource": "https://www.cantinedelite.it/wp-content/uploads/2021/05/Aglianico-scheda-tecnica.pdf",
       "price": 20,
       "icon": "Wine",
       "photoViewBox": "290 0 220 800"
@@ -433,9 +430,6 @@
       "designation": "Campi Taurasini DOC",
       "description": "Aglianico 100% dal profilo fruttato, con spezie e liquirizia. Secco ed equilibrato, dai tannini ben integrati; accompagna salumi, formaggi e cacciagione.",
       "photo": "wine-assets/nonna-seppa.jpg",
-      "sourceUrl": "https://www.cantinedelite.it/prodotto/campi-taurasini-doc/",
-      "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2020/02/nonna-seppa-1.jpg",
-      "descriptionSource": "https://www.cantinedelite.it/wp-content/uploads/2021/05/CAMPI-TAURASINI-scheda-tecnica.pdf",
       "price": 25,
       "icon": "Wine",
       "photoViewBox": "290 0 220 800"
@@ -445,9 +439,6 @@
       "designation": "Taurasi DOCG",
       "description": "Taurasi da Aglianico 100%, intenso ed elegante. Aromi di caffè, rabarbaro ed erbe aromatiche; fresco e strutturato al palato, con tannini morbidi.",
       "photo": "wine-assets/pentamerone.jpg",
-      "sourceUrl": "https://www.cantinedelite.it/prodotto/pentamerone-taurasi-docg/",
-      "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2020/02/pentamerone-1.jpg",
-      "descriptionSource": "https://www.cantinedelite.it/prodotto/pentamerone-taurasi-docg/",
       "price": 30,
       "icon": "Wine",
       "photoViewBox": "290 0 220 800"
@@ -457,9 +448,6 @@
       "designation": "Irpinia Rosato DOC · Biologico",
       "description": "Aglianico in versione rosata e biologica. Al naso richiama mele e piccoli frutti rossi; il sorso unisce freschezza e intensità, chiudendo su note speziate. Ottimo con aperitivi e tartare di pesce.",
       "photo": "wine-assets/emmente.jpg",
-      "sourceUrl": "https://www.cantinedelite.it/prodotto/emmente-irpinia-rosato-doc-biologico/",
-      "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2022/07/emmente.jpg",
-      "descriptionSource": "https://www.cantinedelite.it/prodotto/emmente-irpinia-rosato-doc-biologico/",
       "price": 20,
       "icon": "Wine",
       "photoViewBox": "290 0 220 800"
@@ -469,9 +457,6 @@
       "designation": "Irpinia Coda di Volpe DOC · Biologico",
       "description": "Il primo bianco di Cantine Delite: un Coda di Volpe biologico nato a Montemarano. Un vitigno antico dell’Irpinia, valorizzato in un vino dalla forte identità territoriale.",
       "photo": "wine-assets/seicentododici.png",
-      "sourceUrl": "https://www.cantinedelite.it/prodotto/seicentododici-irpinia-coda-di-volpe-doc-biologico/",
-      "photoSource": "https://www.cantinedelite.it/wp-content/uploads/2026/08/coda-di-volpe_.png",
-      "descriptionSource": "https://www.cantinedelite.it/prodotto/seicentododici-irpinia-coda-di-volpe-doc-biologico/",
       "price": 20,
       "icon": "Wine",
       "photoViewBox": "380 0 210 800"

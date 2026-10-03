@@ -61,7 +61,6 @@ def dish(d, section='', index=0, fixed=False):
             circle = node('span', class_='allergen-pictogram'); circle.append(pictogram(info['icon']))
             badge.append(circle); badge.append(node('span', f'{a:02}', class_='allergen-number')); refs.append(badge)
         copy.append(refs)
-    if d.get('sourceUrl'): copy.append(node('a', 'Cantine Delite · Scheda del vino', class_='wine-source', href=d['sourceUrl'], target='_blank', rel='noopener'))
     art.append(copy)
     if not fixed: art.append(node('strong', f"{d['price']:.2f} €".replace('.', ','), class_='dish-price'+(' daily-dish-price' if section == 'offerta' else '')))
     return art

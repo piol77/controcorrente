@@ -106,7 +106,7 @@ def dish(d,cls='dish',section='',i=0,heading='h3',price=True):
         cls+=' wine-card'
         mark=f'<img class="wine-photo" src="{e(d["photo"])}" alt="Bottiglia di {e(d["name"])} · Cantine Delite" width="800" height="800" loading="lazy">'
     else:mark=icon(d['icon'],'dish-mark')
-    source=f'<a class="wine-source" href="{e(d["sourceUrl"])}" target="_blank" rel="noopener">Cantine Delite · Scheda del vino</a>' if 'sourceUrl' in d else ''
+    source=''
     return f'<article class="{cls}"'+(f' data-order-section="{section}" data-order-index="{i}"' if section else '')+'>'+mark+f'<div class="dish-copy"><{heading}>{e(frozen(d["name"]))}</{heading}>'+('<p class="wine-designation">'+e(d['designation'])+'</p>' if 'designation' in d else '')+'<p class="dish-description">'+e(frozen(d['description']))+'</p>'+allergen(d.get('allergens',[]))+source+'</div>'+('<strong class="dish-price '+('daily-dish-price' if cls=='daily-dish dish' else '')+'">'+money(d['price'])+'</strong>' if price else '')+'</article>'
 def doc(title,current,body,scripts='',private=False):
     robots='<meta name="robots" content="noindex,nofollow,noarchive">' if private or current=='club-esempio-brezza27-demo.html' else ''
