@@ -109,7 +109,8 @@ def doc(title,current,body,scripts='',private=False):
     robots='<meta name="robots" content="noindex,nofollow,noarchive">' if private or current=='club-esempio-brezza27-demo.html' else ''
     footer='<footer>'+icon('Waves')+'<p class="footer-name">Controcorrente</p></footer>' if current=='index.html' else foot
     scripts=re.sub(r'src="([^"?]+\.js)"',r'src="\1?v=20261003-nautica3"',scripts)
-    return '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081c30">'+robots+'<title>'+title+' | Controcorrente</title><link rel="stylesheet" href="styles.css?v=20261003-nautica3"><link rel="icon" href="icons/Anchor.svg"></head><body>'+nav(current)+'<main class="shell">'+body+'</main>'+footer+'<script src="ui.js?v=20261003-nautica3"></script><script src="site-session.js?v=20261003-nautica3"></script>'+scripts+'</body></html>'
+    style_version='20261003-pranzo1' if current=='pranzo.html' else '20261003-nautica3'
+    return '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081c30">'+robots+'<title>'+title+' | Controcorrente</title><link rel="stylesheet" href="styles.css?v='+style_version+'"><link rel="icon" href="icons/Anchor.svg"></head><body>'+nav(current)+'<main class="shell">'+body+'</main>'+footer+'<script src="ui.js?v=20261003-nautica3"></script><script src="site-session.js?v=20261003-nautica3"></script>'+scripts+'</body></html>'
 
 # New dinner page; old links remain usable and route to the relevant part of it.
 body=head('Menù cena','Valido solo per cena')+'<nav class="course-tabs" aria-label="Portate">'+''.join(f'<a href="#{s}">{label}</a>' for s,label in [('antipasti','Antipasti'),('primi','Primi'),('secondi','Secondi')])+'</nav>'
@@ -118,7 +119,7 @@ for section,label in [('antipasti','Antipasti'),('primi','Primi'),('secondi','Se
 body+='<p class="business-note">Coperto cena 1,50 € a persona. Prenotando tavolo e menù entro le 18:00, il coperto è omaggio.<br><strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong></p>'+note
 (OUT/'cena.html').write_text(doc('Menù cena','cena.html',body,'<script src="preordine.js"></script>'))
 
-body=head('Menù pranzo','Valido solo per pranzo',date=True)+'<section class="lunch-board"><div class="dish-grid">'+''.join(dish(d,'lunch-dish dish') for d in data['lunch'])+'</div></section><p class="business-note">Prenotazioni entro le 12 · Acqua, caffè e coperto inclusi · Fino a esaurimento.<br><strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong></p>'+note
+body=head('Menù pranzo','Valido solo per pranzo',date=True)+'<section class="lunch-board"><div class="dish-grid">'+''.join(dish(d,'lunch-dish dish') for d in data['lunch'])+'</div></section><aside class="lunch-inclusions" aria-label="Servizi inclusi nel pranzo"><strong>Prenotando entro le 12:00</strong><span>½ litro d’acqua · caffè · coperto inclusi</span><small>Fino a esaurimento</small></aside><p class="business-note"><strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong></p>'+note
 (OUT/'pranzo.html').write_text(doc('Menù pranzo','pranzo.html',body,'<script src="preordine.js"></script>'))
 
 body=head('Offerta del giorno','Valido solo per cena')+'<section class="daily-menu"><div class="course-heading"><span>01</span><h2>Piatti a 10 €</h2>'+icon('Anchor')+'</div><div class="dish-grid">'+''.join(dish(d,'daily-dish dish',heading='h2') for d in data['offers'])+'</div><p class="business-note">Fino a esaurimento · <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong></p></section>'
