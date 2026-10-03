@@ -27,3 +27,6 @@
 /* Approved cursive logo, with clear space in each existing section. */
 .logo .brand-logo{width:210px;height:auto;display:block}.brand-heading{display:flex;justify-content:center;margin:0 auto 25px;padding:0 15px}.brand-heading .brand-logo{width:360px;max-width:100%;height:auto}.page-head .brand-heading{margin-bottom:28px}.section-logo{width:145px;height:auto;flex:none;margin-left:auto}.footer-logo .brand-logo{width:230px;height:auto;margin:12px auto 22px;display:block}.photo-disclaimer{font-size:.875rem;line-height:1.65;color:var(--ink);text-align:center;margin:30px auto;max-width:850px}.daily-fixed-menu .dish-photo-card .dish-copy{grid-column:1/4}.wine-photo{object-fit:initial;overflow:hidden;background:#fff}.wine-photo image{max-width:none}
 @media(max-width:650px){.logo .brand-logo{width:190px}.brand-heading .brand-logo{width:300px}.section-logo{width:115px}.course-heading{flex-wrap:wrap}.course-heading h2{flex:1;min-width:0}.photo-disclaimer{margin:25px 5px}.daily-fixed-menu .dish-photo-card{min-height:365px}}
+
+/* One logo at the top; wave illustration in the footer. */
+.footer-waves{display:block;width:min(100%,1104px);height:auto;margin:0 auto 24px;pointer-events:none}

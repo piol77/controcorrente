@@ -194,7 +194,7 @@ Paolo approved publication of the complete midnight-blue nautical redesign, with
 - On the lunch page, prominently display: “Prenotando entro le 12:00” and “½ litro d’acqua · caffè · coperto inclusi”, followed by “Fino a esaurimento”. Preserve this highlighted notice during future lunch-menu updates.
 
 ## Logo, photographs and menu maintenance — 2026-10-03 afternoon
-- The approved restaurant logo is `logo-controcorrente.webp`: cursive Controcorrente, CUCINA DI MARE, sun, birds and wave adapted to the midnight-blue context. It replaces the previous text-only branding in every page, page heading, menu-section heading and footer. Preserve its proportions and clear space; it must not cover content or controls.
+- The approved restaurant logo is `logo-controcorrente.webp`: cursive Controcorrente, sun, birds and wave, without “Cucina di mare”. Show it exactly once per page, in the top header; never repeat it in headings, menu sections or footers. Every footer uses only `footer-onde.webp` as its decorative brand element. Preserve logo proportions, clear space and all existing content and controls.
 - Food-photo pages retain the bold notice: “Le immagini dei piatti, pur realistiche, sono generate con intelligenza artificiale e hanno scopo illustrativo.” This does not label original restaurant or wine photographs as AI-generated.
 - Wine bottles are original producer photographs shown through the `photoViewBox` crop on white. Do not display the external lettering from the photograph, alter labels, or substitute generated bottles. Keep all bottles centered.
 - Coffee espresso is listed among Bibite at €1.50 with the matching `icons/Coffee.svg`; drinks and wines have no order controls.
