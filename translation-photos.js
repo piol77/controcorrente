@@ -44,7 +44,7 @@
           dish=targetDishes.find(function(item){return !chosen.includes(item)&&numericPrice(item.querySelector('.language-price')?.textContent)===sourcePrice;});
         }
       }
-      if(!dish&&!chosen.includes(targetDishes[sourceIndex]))dish=targetDishes[sourceIndex];
+      if(!dish&&targetDishes[sourceIndex]&&!chosen.includes(targetDishes[sourceIndex]))dish=targetDishes[sourceIndex];
       if(!dish)return;
 
       addPhoto(article.querySelector('.dish-photo'),dish);
@@ -53,8 +53,8 @@
 
     /* Keep the translated daily offer aligned with the actual Italian offer. */
     targetDishes.forEach(function(dish){if(!chosen.includes(dish))dish.remove();});
-    const heading=targetSection.querySelector('h2');
-    chosen.forEach(function(dish){heading.insertAdjacentElement('afterend',dish);heading=dish;});
+    let cursor=targetSection.querySelector('h2');
+    chosen.forEach(function(dish){cursor.insertAdjacentElement('afterend',dish);cursor=dish;});
   }
 
   function syncTranslationPhotos(){
