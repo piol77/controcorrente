@@ -4,7 +4,7 @@
   const PHONE = '393272292006';
   const catalog = {
     antipasti: [
-      ['Bruschetta al salmone affumicato', 10, 92, 28.06],
+      ['Bruschette con crema di zucca e speck croccante (2 pezzi)', 10, 92, 28.06],
       ['Gamberetti* in salsa rosa', 10, 92, 50.07],
       ['Funghi champignon fritti', 10, 92, 69.73]
     ],

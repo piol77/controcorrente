@@ -4,7 +4,7 @@ const CONTROCORRENTE_MENU = {
     subtitle: "Controcorrente · Seafood cuisine",
     courses: [
       { title: "Starters", dishes: [
-        ["Smoked Salmon Bruschetta", "Toasted bread, smoked salmon, cream cheese, rocket and capers. (1, 4, 7)", "€ 10,00"],
+        ["Pumpkin Cream and Crispy Speck Bruschetta (2 pieces)", "Toasted bread, velvety pumpkin cream and crispy speck. (1)", "€ 10,00"],
         ["Shrimp Cocktail", "Shrimp* with our delicate cocktail sauce, served on fresh lettuce. (2, 3, 10)", "€ 10,00"],
         ["Fried Button Mushrooms", "Fresh button mushrooms, fried until golden and served with lemon. (1)", "€ 10,00"]
       ]},
@@ -41,7 +41,7 @@ const CONTROCORRENTE_MENU = {
     subtitle: "Controcorrente · 海鲜料理",
     courses: [
       { title: "前菜", dishes: [
-        ["烟熏三文鱼烤面包", "烤面包、烟熏三文鱼、奶油奶酪、芝麻菜和刺山柑。(1, 4, 7)", "€ 10,00"],
+        ["南瓜奶油香脆熏肉烤面包（2片）", "烤面包、细腻南瓜奶油和香脆熏肉。(1)", "€ 10,00"],
         ["玫瑰酱小虾", "小虾仁*配本店特制玫瑰酱，佐新鲜生菜。(2, 3, 10)", "€ 10,00"],
         ["炸口蘑", "新鲜口蘑炸至金黄，配柠檬。(1)", "€ 10,00"]
       ]},
