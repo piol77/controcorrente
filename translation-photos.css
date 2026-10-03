@@ -1,0 +1,4 @@
+.language-dish{overflow:auto}
+.language-dish-photo{float:left;width:112px;height:82px;object-fit:cover;display:block;margin:2px 16px 10px 0;border:1px solid var(--line);border-radius:2px}
+@media(max-width:650px){.language-dish-photo{width:92px;height:68px;margin-right:13px}}
+@media(max-width:370px){.language-dish-photo{width:82px;height:62px;margin-right:11px}}
