@@ -1,0 +1,354 @@
+{
+  "lunchUpdatedAt": "2026-10-02",
+  "lunchDateLabel": "Venerdì 2 ottobre 2026",
+  "dinner": {
+    "antipasti": [
+      {
+        "name": "Bruschetta al salmone affumicato",
+        "price": 10,
+        "description": "Pane tostato, salmone affumicato, formaggio spalmabile, rucola e capperi.",
+        "allergens": [
+          1,
+          4,
+          7
+        ],
+        "icon": "Fish"
+      },
+      {
+        "name": "Gamberetti* in salsa rosa",
+        "price": 10,
+        "description": "Gamberetti* e delicata salsa rosa, su un letto di fresca insalata.",
+        "allergens": [
+          2,
+          3,
+          10
+        ],
+        "icon": "Shrimp"
+      },
+      {
+        "name": "Funghi champignon fritti",
+        "price": 10,
+        "description": "Champignon dorati e croccanti, serviti con spicchi di limone.",
+        "allergens": [
+          1,
+          3
+        ],
+        "icon": "Leaf"
+      }
+    ],
+    "primi": [
+      {
+        "name": "Spaghetti ai frutti di mare",
+        "price": 15,
+        "description": "Cozze, vongole, gamberetti* e gamberone*, con un leggero pomodoro.",
+        "allergens": [
+          1,
+          2,
+          14
+        ],
+        "icon": "Shell"
+      },
+      {
+        "name": "Conchigliette verdure, zafferano e croccante di guanciale",
+        "price": 12.5,
+        "description": "Verdure di stagione, zafferano e guanciale croccante.",
+        "allergens": [
+          1,
+          7,
+          9
+        ],
+        "icon": "Wheat"
+      },
+      {
+        "name": "Risotto barbabietola e gorgonzola (minimo due porzioni)",
+        "price": 12.5,
+        "description": "Risotto cremoso alla barbabietola, gorgonzola e noci.",
+        "allergens": [
+          7,
+          8,
+          9
+        ],
+        "icon": "CookingPot"
+      },
+      {
+        "name": "Linguine crema di zucchine, avocado e gamberetti*",
+        "price": 12.5,
+        "description": "Crema di zucchine, avocado, gamberetti* e una nota fresca di limone. Poco pomodoro.",
+        "allergens": [
+          1,
+          2,
+          7
+        ],
+        "icon": "Shrimp"
+      }
+    ],
+    "secondi": [
+      {
+        "name": "Frittura mista di alici, calamari e gamberetti*",
+        "price": 20,
+        "description": "Alici, calamari e gamberetti* in una frittura leggera e croccante.",
+        "allergens": [
+          1,
+          2,
+          4,
+          14
+        ],
+        "icon": "Fish"
+      },
+      {
+        "name": "Filetti di suino al bacon e fichi",
+        "price": 14,
+        "description": "Filetti avvolti nel bacon, con fichi e patate al forno.",
+        "allergens": [
+          7
+        ],
+        "icon": "Beef"
+      },
+      {
+        "name": "Filetto di branzino al limone",
+        "price": 14,
+        "description": "Branzino alla griglia, limone e prezzemolo, con verza viola cruda.",
+        "allergens": [
+          4
+        ],
+        "icon": "Fish"
+      },
+      {
+        "name": "Trancio di salmone all’arancia e pepe rosa",
+        "price": 14,
+        "description": "Salmone alla griglia, arancia e pepe rosa, con finocchi crudi e aceto balsamico.",
+        "allergens": [
+          4
+        ],
+        "icon": "Fish"
+      }
+    ]
+  },
+  "lunch": [
+    {
+      "name": "Spaghetti salsiccia e zafferano",
+      "price": 10.0,
+      "description": "Salsiccia e zafferano, legati da un tocco di panna.",
+      "allergens": [
+        1,
+        7
+      ],
+      "icon": "Wheat"
+    },
+    {
+      "name": "Orecchiette zucca e gorgonzola",
+      "price": 10.0,
+      "description": "La dolcezza della zucca incontra il carattere del gorgonzola.",
+      "allergens": [
+        1,
+        7
+      ],
+      "icon": "CookingPot"
+    },
+    {
+      "name": "Linguine gamberetti* con granella di pistacchio",
+      "price": 12.0,
+      "description": "Gamberetti*, granella di pistacchio e un tocco di panna.",
+      "allergens": [
+        1,
+        2,
+        7,
+        8
+      ],
+      "icon": "Shrimp"
+    },
+    {
+      "name": "Fusilli melanzane e branzino al profumo di basilico",
+      "price": 12.0,
+      "description": "Melanzane e branzino, con una nota profumata di basilico.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish"
+    },
+    {
+      "name": "Orata alla griglia con patate al forno",
+      "price": 12.0,
+      "description": "Orata alla griglia, accompagnata da patate al forno.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish"
+    },
+    {
+      "name": "Salmone alla griglia con patate al forno",
+      "price": 12.0,
+      "description": "Trancio di salmone alla griglia, con patate al forno.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish"
+    },
+    {
+      "name": "Insalatona arancia, finocchi, avocado e bocconcini di salmone fresco",
+      "price": 12.0,
+      "description": "Arancia, finocchi e avocado, con bocconcini di salmone fresco.",
+      "allergens": [
+        4
+      ],
+      "icon": "Salad"
+    },
+    {
+      "name": "Filetti di suino con cipolle di Tropea in agrodolce",
+      "price": 12.0,
+      "description": "Cipolle di Tropea in agrodolce e insalata tiepida di patate prezzemolate.",
+      "allergens": [],
+      "icon": "Beef"
+    },
+    {
+      "name": "Insalatona Cesarona",
+      "price": 9.0,
+      "description": "Pollo, pancetta e scaglie di Grana.",
+      "allergens": [
+        7
+      ],
+      "icon": "Salad"
+    }
+  ],
+  "offers": [
+    {
+      "name": "Carne cruda con limone e Grana",
+      "price": 10,
+      "description": "Carne cruda, limone e scaglie di Grana.",
+      "allergens": [
+        7
+      ],
+      "icon": "Beef",
+      "course": "Antipasto"
+    },
+    {
+      "name": "Tentacoli, gamberetti* e patate",
+      "price": 10,
+      "description": "Tentacoli e gamberetti*, con morbide patate.",
+      "allergens": [
+        2,
+        14
+      ],
+      "icon": "Shell",
+      "course": "Secondo"
+    },
+    {
+      "name": "Riso saltato con pollo, gamberetti*, verdure e spezie",
+      "price": 10,
+      "description": "Riso saltato, pollo e gamberetti*, con verdure e spezie.",
+      "allergens": [
+        2,
+        6
+      ],
+      "icon": "CookingPot",
+      "course": "Primo"
+    }
+  ],
+  "fixed": {
+    "price": 25,
+    "dishes": [
+      {
+        "name": "Bruschetta al pomodoro fresco",
+        "description": "Pane tostato e pomodoro fresco.",
+        "allergens": [
+          1
+        ],
+        "icon": "Wheat",
+        "course": "Antipasto"
+      },
+      {
+        "name": "Spaghetti ai frutti di mare",
+        "description": "Cozze, vongole, gamberetti* e scampi*.",
+        "allergens": [
+          1,
+          2,
+          14
+        ],
+        "icon": "Shell",
+        "course": "Primo"
+      },
+      {
+        "name": "Fritturina di alici, calamari e gamberetti*",
+        "description": "Alici, calamari e gamberetti* in una frittura croccante.",
+        "allergens": [
+          1,
+          2,
+          4,
+          14
+        ],
+        "icon": "Fish",
+        "course": "Secondo"
+      }
+    ]
+  },
+  "drinks": [
+    {
+      "name": "Acqua",
+      "description": "1 litro",
+      "price": 2,
+      "icon": "GlassWater"
+    },
+    {
+      "name": "Bibite in lattina",
+      "description": "Coca-Cola, Fanta, Sprite · 33 cl",
+      "price": 3,
+      "icon": "GlassWater"
+    },
+    {
+      "name": "Birra Moretti / Peroni",
+      "description": "66 cl",
+      "price": 4,
+      "icon": "Beer"
+    },
+    {
+      "name": "Ceres",
+      "description": "33 cl",
+      "price": 4,
+      "icon": "Beer"
+    },
+    {
+      "name": "Amari",
+      "description": "San Simone, Capo, Unicum, limoncello, mirto",
+      "price": 4,
+      "icon": "Wine"
+    }
+  ],
+  "wines": [
+    {
+      "name": "Generoso",
+      "designation": "Irpinia Aglianico DOC",
+      "description": "Aglianico delle colline argillose del Monte Marano. Rosso rubino, fruttato e floreale, per carni rosse e arrosti.",
+      "price": 20,
+      "icon": "Wine"
+    },
+    {
+      "name": "Nonna Seppa",
+      "designation": "Campi Taurasini DOC",
+      "description": "Dedicato a Giuseppe “Nonna Seppa”. Aglianico intenso e strutturato, per primi importanti e carni alla griglia.",
+      "price": 25,
+      "icon": "Wine"
+    },
+    {
+      "name": "Pentamerone",
+      "designation": "Taurasi DOCG",
+      "description": "Aglianico in purezza da vigne storiche. Elegante, con frutti di bosco e spezie, per carni rosse, selvaggina e formaggi stagionati.",
+      "price": 30,
+      "icon": "Wine"
+    },
+    {
+      "name": "Emmente",
+      "designation": "Irpinia Rosato DOC · Biologico",
+      "description": "Rosato da Aglianico, fresco e minerale, con note di frutti rossi. Per pesce, antipasti e piatti leggeri.",
+      "price": 20,
+      "icon": "Wine"
+    },
+    {
+      "name": "Seicentododici",
+      "designation": "Irpinia Coda di Volpe DOC · Biologico",
+      "description": "Coda di Volpe vinificata in acciaio. Fresco e aromatico, con fiori bianchi e agrumi, per antipasti di mare, crudi e pesce.",
+      "price": 20,
+      "icon": "Wine"
+    }
+  ]
+}

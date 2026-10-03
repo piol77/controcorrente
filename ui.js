@@ -1,0 +1,1 @@
+document.querySelector('.nav-toggle')?.addEventListener('click',function(){const open=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',String(open));document.querySelector('#site-nav').classList.toggle('open',open);});

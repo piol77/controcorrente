@@ -2,30 +2,12 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {
-    antipasti: [
-      ['Bruschetta al salmone affumicato', 10, 92, 28.06],
-      ['Gamberetti* in salsa rosa', 10, 92, 50.07],
-      ['Funghi champignon fritti', 10, 92, 69.73]
-    ],
-    primi: [
-      ['Spaghetti ai frutti di mare', 15, 92, 25.85],
-      ['Conchigliette verdure, zafferano e croccante di guanciale', 12.5, 92, 44.63],
-      ['Risotto barbabietola e gorgonzola (minimo due porzioni)', 12.5, 92, 61.00],
-      ['Linguine crema di zucchine, avocado e gamberetti*', 12.5, 92, 79.78]
-    ],
-    secondi: [
-      ['Frittura mista di alici, calamari e gamberetti*', 20, 92, 26.79],
-      ['Filetti di suino al bacon e fichi', 14, 92, 45.05],
-      ['Filetto di branzino al limone', 14, 92, 62.53],
-      ['Trancio di salmone all’arancia e pepe rosa', 14, 92, 81.18]
-    ]
-  };
+  const catalog = {"antipasti": [["Bruschetta al salmone affumicato", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto barbabietola e gorgonzola (minimo due porzioni)", 12.5], ["Linguine crema di zucchine, avocado e gamberetti*", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Filetti di suino al bacon e fichi", 14], ["Filetto di branzino al limone", 14], ["Trancio di salmone all’arancia e pepe rosa", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
     return Object.fromEntries(Object.entries(cart).filter(([key, item]) =>
-      !key.startsWith('bibite-vini:') && item && Number.isInteger(item.qty) && item.qty > 0 && Number.isFinite(item.price)));
+      !key.startsWith('bibite-vini:') && item && Number.isInteger(item.qty) && item.qty > 0 && Number.isFinite(item.price)).map(([key,item])=>{ const [section,index]=key.split(':'); const current=catalog[section]?.[Number(index)]; return [key,current ? {...item,name:current[0],price:current[1]} : item]; }));
   } catch (_) { return {}; } };
   const save = cart => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (_) { /* Browser storage may be disabled. */ } };
   const id = (section, index) => section + ':' + index;
@@ -96,17 +78,7 @@
     document.body.append(a); updateBadge();
   }
   function setupMenu(section) {
-    const img = document.querySelector('.menu-img');
-    if (!img) return;
-    const frame = document.createElement('div'); frame.className = 'order-board';
-    img.parentNode.insertBefore(frame, img); frame.append(img);
-    catalog[section].forEach((item, index) => {
-      const control = controls(section, index);
-        control.classList.add('order-on-image');
-        control.style.left = item[2] + '%'; control.style.top = item[3] + '%';
-        frame.append(control);
-    });
-    bar();
+    document.querySelectorAll('[data-order-section="'+section+'"]').forEach((dish,index)=>dish.append(controls(section,index)));
   }
   function setupDaily(section) {
     catalog[section] = dailyCatalog(document, section);
@@ -118,9 +90,9 @@
       });
     } else if (catalog[section].length) {
       const individual = document.querySelectorAll('.daily-menu:not(.daily-fixed-menu) .daily-dish');
-      individual.forEach((dish, index) => dish.after(controls(section, index)));
+      individual.forEach((dish, index) => dish.append(controls(section, index)));
       document.querySelectorAll('.daily-fixed-menu').forEach((menu, index) => {
-        menu.querySelector('.daily-price').after(controls(section, individual.length + index));
+        menu.querySelector('.fixed-bottom').append(controls(section, individual.length + index));
       });
     }
     if (catalog[section].length) bar();
@@ -164,7 +136,7 @@
       document.querySelector('[data-service-info]').innerHTML = isLunch()
         ? 'Pranzo: acqua, caffè e coperto inclusi. <strong>Attendere la conferma del Ristorante entro le 12 per considerare valido l’ordine.</strong>'
         : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Il coperto serale è 1,50 € a persona; prenotando tavolo e menù entro le 18:00 è omaggio. <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong>';
-      document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'antipasti.html';
+      document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'cena.html';
     }
     render();
     reset.addEventListener('click', () => {
@@ -197,7 +169,7 @@
       if (wrongService) {
         const message = isLunch()
           ? 'I piatti selezionati dal Menù di pranzo sono validi solo a pranzo (11:00–15:00). L’ordine è stato azzerato.'
-          : 'I piatti selezionati da Antipasti, Primi, Secondi o Offerta del giorno sono validi solo a cena (dalle 18:00). L’ordine è stato azzerato.';
+          : 'I piatti selezionati dal Menù cena o dall’Offerta del giorno sono validi solo a cena (dalle 18:00). L’ordine è stato azzerato.';
         try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
         form.reset();
         render();
@@ -215,7 +187,7 @@
       const whatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n'));
       try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
       render();
-      window.location.href = whatsappUrl;
+      if (window.__DEMO_OPEN_WHATSAPP) window.__DEMO_OPEN_WHATSAPP(whatsappUrl); else window.location.href = whatsappUrl;
     });
     function requestDate() {
       return new Intl.DateTimeFormat('it-IT', {
@@ -224,8 +196,8 @@
     }
   }
   document.addEventListener('DOMContentLoaded', () => {
-    const page = location.pathname.split('/').pop().replace(/\.html$/, '');
-    if (catalog[page]) setupMenu(page);
+    const page = (window.__DEMO_ROUTE || location.pathname.split('/').pop()).split('#')[0].replace(/\.html$/, '');
+    if (page === 'cena') { ['antipasti','primi','secondi'].forEach(setupMenu); bar(); }
     if (page === 'offerta' || page === 'pranzo') setupDaily(page);
     if (page === 'ordine') setupSummary();
   });

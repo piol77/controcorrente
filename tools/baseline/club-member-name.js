@@ -1,0 +1,1 @@
+(function(){try{const p=new URLSearchParams(window.location.hash.substring(1));const n=p.get('nome');if(!n)return;document.querySelectorAll('[data-club-real-name]').forEach(function(el){el.textContent=n;el.hidden=false;});}catch(e){}})();
