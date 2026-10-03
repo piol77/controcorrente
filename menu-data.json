@@ -226,6 +226,7 @@
       "name": "Carne cruda con limone e Grana",
       "price": 10,
       "description": "Carne cruda, limone e scaglie di Grana.",
+      "dishPhoto": "offerta-assets/torretta-carne-cruda.webp",
       "allergens": [
         7
       ],
@@ -246,6 +247,7 @@
       "name": "Tentacoli, gamberetti* e patate",
       "price": 10,
       "description": "Tentacoli e gamberetti*, con morbide patate.",
+      "dishPhoto": "offerta-assets/tentacoli.webp",
       "allergens": [
         2,
         14
