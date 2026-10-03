@@ -1,1 +1,3 @@
 document.querySelector('.nav-toggle')?.addEventListener('click',function(){const open=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',String(open));document.querySelector('#site-nav').classList.toggle('open',open);});
+
+document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(function(section){if(section.querySelector(':scope > .nautical-head-spacer'))return;const spacer=document.createElement('div');spacer.className='nautical-head-spacer';spacer.setAttribute('aria-hidden','true');spacer.style.height='1.8em';spacer.style.pointerEvents='none';section.appendChild(spacer);});
