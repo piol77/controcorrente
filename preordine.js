@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti": [["Bruschetta al salmone affumicato", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto barbabietola e gorgonzola (minimo due porzioni)", 12.5], ["Linguine crema di zucchine, avocado e gamberetti*", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Filetti di suino al bacon e fichi", 14], ["Filetto di branzino al limone", 14], ["Trancio di salmone all’arancia e pepe rosa", 14]]};
+  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto barbabietola e gorgonzola (minimo due porzioni)", 12.5], ["Linguine crema di zucchine, avocado e gamberetti*", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Filetti di suino al bacon e fichi", 14], ["Filetto di branzino al limone", 14], ["Trancio di salmone all’arancia e pepe rosa", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};

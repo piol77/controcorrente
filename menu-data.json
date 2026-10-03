@@ -4,15 +4,14 @@
   "dinner": {
     "antipasti": [
       {
-        "name": "Bruschetta al salmone affumicato",
+        "name": "Bruschette con crema di zucca e speck croccante (2 pezzi)",
         "price": 10,
-        "description": "Pane tostato, salmone affumicato, formaggio spalmabile, rucola e capperi.",
+        "description": "Pane tostato, crema di zucca vellutata e speck croccante.",
         "allergens": [
-          1,
-          4,
-          7
+          1
         ],
-        "icon": "Fish"
+        "icon": "Wheat",
+        "dishPhoto": "bruschetta-zucca-speck.webp"
       },
       {
         "name": "Gamberetti* in salsa rosa",
