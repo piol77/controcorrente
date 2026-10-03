@@ -4,7 +4,8 @@
   }
 
   function addPhoto(sourcePhoto,dish){
-    if(!sourcePhoto||!dish||dish.querySelector('.language-dish-photo'))return;
+    if(!sourcePhoto||!dish)return;
+    dish.querySelector('.language-dish-photo')?.remove();
     const photo=document.createElement('img');
     photo.className='language-dish-photo';
     photo.src=sourcePhoto.getAttribute('src');
@@ -26,26 +27,40 @@
     });
   }
 
-  function syncDailyByPrice(sourceArticles,targetDishes){
-    const used=new Set();
+  function syncOfferSection(sourceArticles,targetSection,sharedEntries,language){
+    if(!targetSection)return;
+    const targetDishes=[...targetSection.querySelectorAll('.language-dish')];
+    const chosen=[];
+
     sourceArticles.forEach(function(article,sourceIndex){
-      const sourcePrice=numericPrice(article.querySelector('.dish-price')?.textContent);
-      let targetIndex=-1;
-      if(sourcePrice!==null){
-        targetIndex=targetDishes.findIndex(function(dish,index){
-          return !used.has(index)&&numericPrice(dish.querySelector('.language-price')?.textContent)===sourcePrice;
-        });
+      const sourceName=(article.querySelector('h2,h3')?.textContent||'').trim();
+      const shared=sharedEntries.find(function(entry){return entry.name===sourceName;});
+      const translatedName=shared?.translations?.[language]?.name;
+      let dish=translatedName?targetDishes.find(function(item){return dishLabel(item)===translatedName;}):null;
+
+      if(!dish){
+        const sourcePrice=numericPrice(article.querySelector('.dish-price')?.textContent);
+        if(sourcePrice!==null){
+          dish=targetDishes.find(function(item){return !chosen.includes(item)&&numericPrice(item.querySelector('.language-price')?.textContent)===sourcePrice;});
+        }
       }
-      if(targetIndex<0&&!used.has(sourceIndex)&&targetDishes[sourceIndex])targetIndex=sourceIndex;
-      if(targetIndex<0)return;
-      used.add(targetIndex);
-      addPhoto(article.querySelector('.dish-photo'),targetDishes[targetIndex]);
+      if(!dish&&!chosen.includes(targetDishes[sourceIndex]))dish=targetDishes[sourceIndex];
+      if(!dish)return;
+
+      addPhoto(article.querySelector('.dish-photo'),dish);
+      chosen.push(dish);
     });
+
+    /* Keep the translated daily offer aligned with the actual Italian offer. */
+    targetDishes.forEach(function(dish){if(!chosen.includes(dish))dish.remove();});
+    const heading=targetSection.querySelector('h2');
+    chosen.forEach(function(dish){heading.insertAdjacentElement('afterend',dish);heading=dish;});
   }
 
   function syncTranslationPhotos(){
     const root=document.querySelector('[data-menu-language]');
     if(!root)return;
+    const language=root.dataset.menuLanguage;
 
     Promise.all([
       fetch('cena.html',{cache:'no-store'}).then(function(response){if(!response.ok)throw new Error('Dinner menu unavailable');return response.text();}),
@@ -62,13 +77,13 @@
       });
 
       const dailySections=[...root.querySelectorAll('.translated-menu-content > .language-course.language-daily')];
-      const translatedDaily=dailySections[0]?[...dailySections[0].querySelectorAll('.language-dish')]:[];
-      const translatedFixed=dailySections[1]?[...dailySections[1].querySelectorAll('.language-dish')]:[];
       const sourceDaily=[...offerSource.querySelectorAll('.daily-menu:not(.daily-fixed-menu) .daily-dish')];
       const sourceFixed=[...offerSource.querySelectorAll('.daily-fixed-menu .daily-dish')];
+      const offers=(typeof SHARED_OFFERS!=='undefined')?SHARED_OFFERS:[];
+      const fixed=(typeof SHARED_FIXED!=='undefined')?SHARED_FIXED.dishes:[];
 
-      syncDailyByPrice(sourceDaily,translatedDaily);
-      syncByIndex(sourceFixed,translatedFixed);
+      syncOfferSection(sourceDaily,dailySections[0],offers,language);
+      syncOfferSection(sourceFixed,dailySections[1],fixed,language);
     }).catch(function(){/* Translations stay usable even if a source page cannot be loaded. */});
   }
 
