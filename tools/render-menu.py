@@ -26,7 +26,7 @@ res=subprocess.check_output(['node','-e','console.log(JSON.stringify('+literal+'
 cat=json.loads(res)
 descs={
 'antipasti':[
-('Pane tostato, crema di zucca vellutata e speck croccante.',[1],'Wheat'),
+('Pane tostato con una spalmata di gorgonzola, crema di zucca vellutata e speck croccante.',[1,7],'Wheat'),
 ('Gamberetti* e delicata salsa rosa, su un letto di fresca insalata.',[2,3,10],'Shrimp'),
 ('Champignon dorati e croccanti, serviti con spicchi di limone.',[1,3],'Leaf')],
 'primi':[
@@ -111,7 +111,7 @@ def dish(d,cls='dish',section='',i=0,heading='h3',price=True):
 def doc(title,current,body,scripts='',private=False):
     robots='<meta name="robots" content="noindex,nofollow,noarchive">' if private or current=='club-esempio-brezza27-demo.html' else ''
     footer='<footer>'+icon('Waves')+'<p class="footer-name">Controcorrente</p></footer>' if current=='index.html' else foot
-    asset_version='20261003-bruschetta1' if current=='cena.html' else '20261003-nautica3'
+    asset_version='20261003-bruschetta2' if current in ('cena.html','english.html','cinese.html') else '20261003-vini1' if current=='bibite-vini.html' else '20261003-nautica3'
     scripts=re.sub(r'src="([^"?]+\.js)"',r'src="\1?v='+asset_version+'"',scripts)
     style_version='20261003-pranzo1' if current=='pranzo.html' else asset_version
     return '<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#081c30">'+robots+'<title>'+title+' | Controcorrente</title><link rel="stylesheet" href="styles.css?v='+style_version+'"><link rel="icon" href="icons/Anchor.svg"></head><body>'+nav(current)+'<main class="shell">'+body+'</main>'+footer+'<script src="ui.js?v='+asset_version+'"></script><script src="site-session.js?v='+asset_version+'"></script>'+scripts+'</body></html>'

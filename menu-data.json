@@ -6,12 +6,13 @@
       {
         "name": "Bruschette con crema di zucca e speck croccante (2 pezzi)",
         "price": 10,
-        "description": "Pane tostato, crema di zucca vellutata e speck croccante.",
+        "description": "Pane tostato con una spalmata di gorgonzola, crema di zucca vellutata e speck croccante.",
         "allergens": [
-          1
+          1,
+          7
         ],
         "icon": "Wheat",
-        "dishPhoto": "bruschetta-zucca-speck.webp"
+        "dishPhoto": "bruschetta-zucca-speck-gorgonzola.webp"
       },
       {
         "name": "Gamberetti* in salsa rosa",
