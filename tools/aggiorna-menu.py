@@ -43,7 +43,11 @@ def dish(d, section='', index=0, fixed=False):
         art.set('class', cls+' wine-card')
         # Inquadratura della bottiglia originale: nessuna scritta esterna, etichetta intatta.
         svg = node('svg', class_='wine-photo', viewBox=d.get('photoViewBox', '290 0 220 800'), role='img', aria_label='Bottiglia di '+d['name']+' · Cantine Delite', preserveAspectRatio='xMidYMid meet')
-        svg.append(node('image', href=d['photo'], width='800', height='800')); art.append(svg)
+        x,y,w,h=d.get('photoViewBox','290 0 220 800').split()
+        crop_id=f'wine-crop-{index}'
+        defs=node('defs'); crop=node('clipPath', id=crop_id)
+        crop.append(node('rect', x=x, y=y, width=w, height=h)); defs.append(crop); svg.append(defs)
+        svg.append(node('image', href=d['photo'], width='800', height='800', clip_path=f'url(#{crop_id})')); art.append(svg)
     else: art.append(pictogram(d['icon'], 'icon dish-mark'))
     copy = node('div', class_='dish-copy')
     copy.append(node('h2' if section == 'offerta' else 'h3', frozen(d['name'])))
