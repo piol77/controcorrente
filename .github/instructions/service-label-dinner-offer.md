@@ -1,13 +1,16 @@
-# Dicitura servizio — Menù cena e Offerta del giorno
+# Dicitura servizio — Menù cena, Offerta del giorno e Menù pranzo
 
-Regola master permanente — 2026-10-04.
+Regola master permanente — aggiornata 2026-10-04.
 
-- Questa istruzione si applica sia a `cena.html` sia a `offerta.html` e prevale su qualsiasi formulazione precedente che ometta la parola “anche”.
-- La dicitura grafica deve essere identica in entrambe le pagine, con lo stesso stile, spaziatura e trattamento visivo già approvato.
-- Testo esatto su due righe:
-  - `Valido solo per cena`
-  - `… e anche a pranzo nei festivi`
-- Non sostituire la seconda riga con `… e pranzo nei festivi` né con altre varianti.
+- Questa istruzione prevale su qualsiasi formulazione precedente diversa da quelle riportate qui sotto.
+- `cena.html` e `offerta.html` devono usare la stessa dicitura grafica, con lo stesso stile, spaziatura e trattamento visivo già approvato.
+- Testo esatto per Menù cena e Offerta del giorno:
+  - `Valido solo a cena,`
+  - `o a pranzo nei festivi`
+- Testo esatto per Menù pranzo:
+  - `Valido solo a pranzo,`
+  - `nel giorno sotto indicato`
 - `Offerta del giorno` segue integralmente le stesse regole temporali e di servizio del Menù cena.
-- La validazione dell’ordine avviene esclusivamente nel riepilogo, in base alla data e all’orario scelti dal cliente: cena dalle 18:00; pranzo 11:00–15:00 nei giorni festivi applicabili. Non bloccare la selezione al pulsante `+`.
-- Questa correzione è testuale/grafica e non autorizza modifiche ad altri contenuti, prezzi, layout, immagini, pulsanti o funzionamenti del sito.
+- La validazione dell’ordine avviene esclusivamente nel riepilogo, in base alla data e all’orario scelti dal cliente: cena dalle 18:00; pranzo 11:00–15:00 nei festivi per Menù cena/Offerta del giorno; Menù pranzo solo nel giorno indicato e con le esclusioni previste. Non bloccare la selezione al pulsante `+`.
+- I popup bloccanti devono mantenere tutto il resto del messaggio e usare le stesse formulazioni: `solo a cena ... o a pranzo nei festivi` per cena/offerta; `solo a pranzo, nel giorno sotto indicato` per il pranzo.
+- Queste correzioni non autorizzano modifiche ad altri contenuti, prezzi, layout, immagini, pulsanti o funzionamenti del sito.
