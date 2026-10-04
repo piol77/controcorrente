@@ -1,5 +1,6 @@
-.locale-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:24px 0 10px}
+.locale-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0 10px}
 .locale-gallery figure,.locale-gallery figure:first-child{margin:0;grid-row:auto;min-width:0}
+.locale-gallery figure:nth-child(n+4){display:none}
 .locale-gallery .gallery-thumb{display:block;width:100%;padding:0;border:1px solid var(--line,#bfa77c);border-radius:10px;overflow:hidden;background:#081c30;cursor:zoom-in;box-shadow:0 6px 20px #0004}
 .locale-gallery .gallery-thumb:focus-visible,.locale-viewer button:focus-visible{outline:3px solid #eac580;outline-offset:3px}
 .locale-gallery .gallery-thumb img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border:0;filter:brightness(1.04) contrast(1.03) saturate(1.04);transition:transform .2s ease}
