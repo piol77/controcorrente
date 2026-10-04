@@ -26,6 +26,14 @@
     const part = type => parts.find(p => p.type === type).value;
     return `${part('year')}-${part('month')}-${part('day')}`;
   }
+  function nowInRomeMinute() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    }).formatToParts(new Date());
+    const part = type => parts.find(p => p.type === type).value;
+    return `${part('year')}-${part('month')}-${part('day')}T${part('hour')}:${part('minute')}`;
+  }
   function isHoliday(day) {
     const date = new Date(day + 'T12:00:00Z');
     if (date.getUTCDay() === 0) return true;
@@ -196,6 +204,11 @@
       if (!form.reportValidity()) return;
       const data = new FormData(form);
       const requestedDay = String(data.get('giorno') || '');
+      const requestedTime = String(data.get('orario') || '');
+      if (`${requestedDay}T${requestedTime}` < nowInRomeMinute()) {
+        window.alert('È impossibile prenotare retroattivamente.');
+        return;
+      }
       if (isLunch()) {
         await refreshDaily();
         if (!menuReady) return;
@@ -207,7 +220,6 @@
       });
       if (!dishes.length) { list.focus(); return; }
       if (cart['primi:2']?.qty === 1) { window.alert('Il risotto richiede almeno due porzioni.'); return; }
-      const requestedTime = String(data.get('orario') || '');
       const minutes = (() => {
         const parts = requestedTime.split(':').map(Number);
         return parts.length === 2 && parts.every(Number.isFinite) ? parts[0] * 60 + parts[1] : NaN;
