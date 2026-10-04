@@ -12,5 +12,6 @@ Regola master permanente — aggiornata 2026-10-04.
   - `nel giorno sotto indicato`
 - `Offerta del giorno` segue integralmente le stesse regole temporali e di servizio del Menù cena.
 - La validazione dell’ordine avviene esclusivamente nel riepilogo, in base alla data e all’orario scelti dal cliente: cena dalle 18:00; pranzo 11:00–15:00 nei festivi per Menù cena/Offerta del giorno; Menù pranzo solo nel giorno indicato e con le esclusioni previste. Non bloccare la selezione al pulsante `+`.
-- I popup bloccanti devono mantenere tutto il resto del messaggio e usare le stesse formulazioni: `solo a cena ... o a pranzo nei festivi` per cena/offerta; `solo a pranzo, nel giorno sotto indicato` per il pranzo.
+- I popup bloccanti devono mantenere tutto il resto del messaggio e usare le stesse formulazioni: `solo a cena, o a pranzo nei festivi` per cena/offerta; `solo a pranzo, nel giorno sotto indicato` per il pranzo.
+- Nei popup bloccanti non riportare fasce orarie o orari specifici: le regole orarie restano operative nella validazione, ma non devono essere mostrate nel testo del messaggio di errore.
 - Queste correzioni non autorizzano modifiche ad altri contenuti, prezzi, layout, immagini, pulsanti o funzionamenti del sito.
