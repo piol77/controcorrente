@@ -221,8 +221,8 @@
         : !dinnerTime && !(lunchTime && holiday);
       if (wrongService) {
         const message = isLunch()
-          ? 'I piatti selezionati dal Menù di pranzo sono validi solo a pranzo (11:00–15:00), esclusi sabato, domenica e festivi. L’ordine è stato azzerato.'
-          : 'I piatti selezionati dal Menù cena o dall’Offerta del giorno sono validi a cena (dalle 18:00) e anche a pranzo nei festivi (11:00–15:00). L’ordine è stato azzerato.';
+          ? 'I piatti selezionati dal Menù di pranzo sono validi solo a pranzo, nel giorno sotto indicato (11:00–15:00), esclusi sabato, domenica e festivi. L’ordine è stato azzerato.'
+          : 'I piatti selezionati dal Menù cena o dall’Offerta del giorno sono validi solo a cena (dalle 18:00), o a pranzo nei festivi (11:00–15:00). L’ordine è stato azzerato.';
         try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
         form.reset();
         render();
