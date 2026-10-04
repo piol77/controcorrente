@@ -15,6 +15,26 @@
     if (catalog[section]) return catalog[section][index];
   }
   const service = section => section === 'pranzo' ? 'pranzo' : 'cena';
+  let lunchDate = '';
+  function readLunchDate(doc) {
+    lunchDate = doc.querySelector('.lunch-date time')?.getAttribute('datetime') || '';
+  }
+  function checkLunchDate() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(new Date());
+    const part = type => parts.find(p => p.type === type).value;
+    if (lunchDate === `${part('year')}-${part('month')}-${part('day')}`) return true;
+    const cart = read();
+    Object.keys(cart).filter(key => key.startsWith('pranzo:')).forEach(key => delete cart[key]);
+    save(cart);
+    window.dispatchEvent(new Event('order-date-invalid'));
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(lunchDate) ? lunchDate.split('-').reverse().join('/') : '';
+    window.alert(date
+      ? 'Il menù pranzo del ' + date + ' non è valido per oggi. Non è possibile ordinare questi piatti. La selezione pranzo è stata azzerata.'
+      : 'La data del menù pranzo non è disponibile. Non è possibile ordinare questi piatti. La selezione pranzo è stata azzerata.');
+    return false;
+  }
   const priceNumber = text => Number((text.match(/\d+(?:[.,]\d+)?/) || [NaN])[0].toString().replace(',', '.'));
   function dailyCatalog(doc, section) {
     if (section === 'pranzo') return Array.from(doc.querySelectorAll('.lunch-dish')).map(dish =>
@@ -56,6 +76,7 @@
     count.setAttribute('aria-label', 'Quantità');
     function refresh() { count.textContent = read()[key]?.qty || 0; updateBadge(); }
     for (const [button, delta] of [[minus, -1], [plus, 1]]) button.addEventListener('click', () => {
+      if (section === 'pranzo' && delta > 0 && !checkLunchDate()) return;
       const cart = read(), next = Math.max(0, Math.min(99, (cart[key]?.qty || 0) + delta));
       if (delta > 0 && Object.keys(cart).some(k => service(k.split(':')[0]) !== service(section))) {
         window.alert('Pranzo e cena richiedono ordini separati. Completa la richiesta già iniziata prima di aggiungere questi piatti.'); return;
@@ -65,6 +86,7 @@
     });
     wrap.append(minus, count, plus); refresh();
     window.addEventListener('pageshow', refresh);
+    window.addEventListener('order-date-invalid', refresh);
     return wrap;
   }
   function updateBadge() {
@@ -84,6 +106,7 @@
     catalog[section] = dailyCatalog(document, section);
     reconcileDaily(section);
     if (section === 'pranzo') {
+      readLunchDate(document);
       document.querySelectorAll('.lunch-dish').forEach((dish, index) => {
         const item = catalog[section][index];
         if (item[0] && Number.isFinite(item[1])) dish.append(controls(section, index));
@@ -113,6 +136,7 @@
           if (!response.ok) throw new Error('menu');
           const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
           if (!doc.querySelector(section === 'pranzo' ? '.lunch-board' : '.daily-menu')) throw new Error('menu');
+          if (section === 'pranzo') readLunchDate(doc);
           catalog[section] = dailyCatalog(doc, section); reconcileDaily(section);
         }
         menuReady = true;
@@ -147,9 +171,14 @@
     });
     window.addEventListener('pageshow', refreshDaily);
     refreshDaily();
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', async event => {
       event.preventDefault();
       if (!menuReady) return;
+      if (isLunch()) {
+        await refreshDaily();
+        if (!menuReady) return;
+        if (!checkLunchDate()) { render(); list.focus(); return; }
+      }
       const cart = read(), dishes = [];
       Object.values(cart).forEach(item => {
         if (item && Number.isInteger(item.qty) && item.qty > 0) dishes.push(item.qty + ' × ' + item.name + ' — ' + euro(item.qty * item.price));
