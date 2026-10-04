@@ -217,3 +217,9 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Le sezioni EN/ZH clonano dinamicamente foto e schede italiane tramite foreign-menus.js. Aggiornare anche le corrispondenti descrizioni e i nomi tradotti quando cambia un piatto; verificare tutte e tre le sezioni in entrambe le lingue.
 - Le foto da internet possono avere presentazioni diverse: descrizioni, ingredienti e allergeni restano quelli comunicati da Paolo, mai ricavati arbitrariamente dalla fotografia. Segnalare riferimenti non fedeli invece di cambiare la ricetta.
 - Backup ZIP completo del sito una sola volta alla settimana, il lunedì notte (Europe/Rome, indicativamente ore 03:00), non prima di ogni modifica. Verificarne l'integrità e il salvataggio; conservare solo i due backup completi più recenti ed eliminare i precedenti solo dopo il buon esito del nuovo backup. Questa regola, richiesta da Paolo il 2026-10-04, sostituisce l'obbligo precedente di creare definitiva.zip a ogni intervento. Prima di pubblicare controllare desktop, telefono, immagini caricate, prezzi e ordini. Pubblicare e verificare GitHub Pages effettivamente online.
+
+
+## Controlli sulla prenotazione — 2026-10-04
+- I controlli di validità per data e servizio si applicano solo alla conferma nel riepilogo, dopo la scelta obbligatoria del giorno e dell’orario di arrivo, mai al pulsante `+`.
+- Confrontare la data del menù pranzo con il giorno prenotato, non con il giorno di consultazione; mantenere le fasce orarie e l’esclusione di sabato, domenica e festivi per il menù pranzo. Menù cena e offerte sono validi anche a pranzo la domenica e nei festivi italiani, incluso San Giovanni a Torino.
+- Il messaggio WhatsApp deve riportare la data selezionata e il servizio effettivamente prenotato. Questa regola sostituisce il precedente inserimento automatico del giorno corrente. Conservare gli altri controlli, i prezzi e l’azzeramento dell’ordine.

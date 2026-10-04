@@ -19,19 +19,36 @@
   function readLunchDate(doc) {
     lunchDate = doc.querySelector('.lunch-date time')?.getAttribute('datetime') || '';
   }
-  function checkLunchDate() {
+  function todayInRome() {
     const parts = new Intl.DateTimeFormat('en-CA', {
       timeZone: 'Europe/Rome', year: 'numeric', month: '2-digit', day: '2-digit'
     }).formatToParts(new Date());
     const part = type => parts.find(p => p.type === type).value;
-    if (lunchDate === `${part('year')}-${part('month')}-${part('day')}`) return true;
+    return `${part('year')}-${part('month')}-${part('day')}`;
+  }
+  function isHoliday(day) {
+    const date = new Date(day + 'T12:00:00Z');
+    if (date.getUTCDay() === 0) return true;
+    // Italian public holidays and San Giovanni, patron of Torino (24 June).
+    if (['01-01','01-06','04-25','05-01','06-02','06-24','08-15','10-04','11-01','12-08','12-25','12-26'].includes(day.slice(5))) return true;
+    // Gregorian Easter: also allow Easter Monday at lunch.
+    const y = date.getUTCFullYear(), a = y % 19, b = Math.floor(y / 100), c = y % 100;
+    const d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30;
+    const i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7;
+    const m = Math.floor((a + 11 * h + 22 * l) / 451), n = h + l - 7 * m + 114;
+    const monday = new Date(Date.UTC(y, Math.floor(n / 31) - 1, n % 31 + 2));
+    return day === monday.toISOString().slice(0, 10);
+  }
+  function checkLunchDate(requestedDay) {
+    if (lunchDate && lunchDate === requestedDay) return true;
     const cart = read();
     Object.keys(cart).filter(key => key.startsWith('pranzo:')).forEach(key => delete cart[key]);
     save(cart);
     window.dispatchEvent(new Event('order-date-invalid'));
     const date = /^\d{4}-\d{2}-\d{2}$/.test(lunchDate) ? lunchDate.split('-').reverse().join('/') : '';
     window.alert(date
-      ? 'Il menù pranzo del ' + date + ' non è valido per oggi. Non è possibile ordinare questi piatti. La selezione pranzo è stata azzerata.'
+      ? 'Il menù pranzo del ' + date + ' non è valido per il giorno scelto (' + requestedDay.split('-').reverse().join('/') + '). Non è possibile ordinare questi piatti. La selezione pranzo è stata azzerata.'
       : 'La data del menù pranzo non è disponibile. Non è possibile ordinare questi piatti. La selezione pranzo è stata azzerata.');
     return false;
   }
@@ -76,7 +93,6 @@
     count.setAttribute('aria-label', 'Quantità');
     function refresh() { count.textContent = read()[key]?.qty || 0; updateBadge(); }
     for (const [button, delta] of [[minus, -1], [plus, 1]]) button.addEventListener('click', () => {
-      if (section === 'pranzo' && delta > 0 && !checkLunchDate()) return;
       const cart = read(), next = Math.max(0, Math.min(99, (cart[key]?.qty || 0) + delta));
       if (delta > 0 && Object.keys(cart).some(k => service(k.split(':')[0]) !== service(section))) {
         window.alert('Pranzo e cena richiedono ordini separati. Completa la richiesta già iniziata prima di aggiungere questi piatti.'); return;
@@ -125,6 +141,8 @@
     if (!list || !total) return;
     const form = document.querySelector('[data-order-form]');
     const submit = form.querySelector('[type="submit"]');
+    const dayInput = form.querySelector('[name="giorno"]');
+    dayInput.min = todayInRome();
     const reset = form.querySelector('[data-reset-order]');
     let menuReady = false;
     async function refreshDaily() {
@@ -174,10 +192,14 @@
     form.addEventListener('submit', async event => {
       event.preventDefault();
       if (!menuReady) return;
+      dayInput.min = todayInRome();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const requestedDay = String(data.get('giorno') || '');
       if (isLunch()) {
         await refreshDaily();
         if (!menuReady) return;
-        if (!checkLunchDate()) { render(); list.focus(); return; }
+        if (!checkLunchDate(requestedDay)) { render(); list.focus(); return; }
       }
       const cart = read(), dishes = [];
       Object.values(cart).forEach(item => {
@@ -185,8 +207,6 @@
       });
       if (!dishes.length) { list.focus(); return; }
       if (cart['primi:2']?.qty === 1) { window.alert('Il risotto richiede almeno due porzioni.'); return; }
-      if (!form.reportValidity()) return;
-      const data = new FormData(form);
       const requestedTime = String(data.get('orario') || '');
       const minutes = (() => {
         const parts = requestedTime.split(':').map(Number);
@@ -194,11 +214,15 @@
       })();
       const lunchTime = Number.isFinite(minutes) && minutes >= 11 * 60 && minutes <= 15 * 60;
       const dinnerTime = Number.isFinite(minutes) && minutes >= 18 * 60;
-      const wrongService = (isLunch() && !lunchTime) || (!isLunch() && !dinnerTime);
+      const holiday = isHoliday(requestedDay);
+      const weekday = new Date(requestedDay + 'T12:00:00Z').getUTCDay();
+      const wrongService = isLunch()
+        ? !lunchTime || weekday === 6 || holiday
+        : !dinnerTime && !(lunchTime && holiday);
       if (wrongService) {
         const message = isLunch()
-          ? 'I piatti selezionati dal Menù di pranzo sono validi solo a pranzo (11:00–15:00). L’ordine è stato azzerato.'
-          : 'I piatti selezionati dal Menù cena o dall’Offerta del giorno sono validi solo a cena (dalle 18:00). L’ordine è stato azzerato.';
+          ? 'I piatti selezionati dal Menù di pranzo sono validi solo a pranzo (11:00–15:00), esclusi sabato, domenica e festivi. L’ordine è stato azzerato.'
+          : 'I piatti selezionati dal Menù cena o dall’Offerta del giorno sono validi a cena (dalle 18:00) e a pranzo nei festivi (11:00–15:00). L’ordine è stato azzerato.';
         try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
         form.reset();
         render();
@@ -207,21 +231,21 @@
         return;
       }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
-        'Servizio: ' + (isLunch() ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
+        'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
         'Nome e cognome: ' + data.get('nome'),
-        'Persone: ' + data.get('persone'), 'Giorno: ' + requestDate(),
+        'Persone: ' + data.get('persone'), 'Giorno: ' + requestDate(requestedDay),
         'Orario richiesto: ' + data.get('orario'),
         'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',
-        'Attendo la vostra conferma via WhatsApp entro le ' + (isLunch() ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
+        'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const whatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n'));
       try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
       render();
       if (window.__DEMO_OPEN_WHATSAPP) window.__DEMO_OPEN_WHATSAPP(whatsappUrl); else window.location.href = whatsappUrl;
     });
-    function requestDate() {
+    function requestDate(day) {
       return new Intl.DateTimeFormat('it-IT', {
         timeZone: 'Europe/Rome', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-      }).format(new Date());
+      }).format(new Date(day + 'T12:00:00Z'));
     }
   }
   document.addEventListener('DOMContentLoaded', () => {
