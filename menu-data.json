@@ -399,6 +399,12 @@
   },
   "drinks": [
     {
+      "name": "Vino bianco a caraffa",
+      "description": "½ litro",
+      "price": 5,
+      "icon": "Wine"
+    },
+    {
       "name": "Acqua",
       "description": "1 litro",
       "price": 2,
