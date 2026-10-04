@@ -140,7 +140,7 @@ Preserve established Controcorrente wording and commercial rules unless Paolo ex
 - Every food-menu page, including lunch and `Offerta del giorno`, must preserve the same approved nautical visual system, page structure and responsive quality used by Antipasti and Primi.
 - Every page or section that displays food dishes, including translated menus and the order summary, must include a visible `Consulta la tabella allergeni` link to `allergeni.html`.
 - Home, Contacts, Allergens, Club and Il Locale are the only pages allowed to retain their distinct established layouts.
-- The permanent public label for `offerta.html` is `Offerta del giorno`; inside the page, keep `Valido solo per cena`.
+- The permanent public label for `offerta.html` is `Offerta del giorno`; inside the page, use the same service-label graphic as the dinner menu with the exact two-line wording `Valido solo per cena` / `… e pranzo nei festivi`.
 
 ## Content publishing procedure
 Before committing/publishing:
@@ -221,5 +221,8 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 
 ## Controlli sulla prenotazione — 2026-10-04
 - I controlli di validità per data e servizio si applicano solo alla conferma nel riepilogo, dopo la scelta obbligatoria del giorno e dell’orario di arrivo, mai al pulsante `+`.
-- Confrontare la data del menù pranzo con il giorno prenotato, non con il giorno di consultazione; mantenere le fasce orarie e l’esclusione di sabato, domenica e festivi per il menù pranzo. Menù cena e offerte sono validi anche a pranzo la domenica e nei festivi italiani, incluso San Giovanni a Torino.
+- Confrontare la data del menù pranzo con il giorno prenotato, non con il giorno di consultazione; mantenere le fasce orarie e l’esclusione di sabato, domenica e festivi per il menù pranzo.
+- L’`Offerta del giorno` eredita integralmente le regole temporali e di servizio del Menù cena: è ordinabile a cena e anche a pranzo nei giorni festivi. La validazione deve essere determinata dalla data e dall’orario inseriti dal cliente nel riepilogo, non dal momento in cui viene premuto `+` né dal giorno in cui il sito viene consultato.
+- Per Menù cena e Offerta del giorno, il servizio è valido a cena dalle 18:00; è valido a pranzo nella fascia 11:00–15:00 quando la data scelta è domenica o un giorno festivo applicabile, inclusi i festivi italiani e San Giovanni a Torino. Fuori da queste condizioni l’ordine deve essere bloccato nel riepilogo.
+- La grafica di `offerta.html` deve riportare, con lo stesso stile usato nel Menù cena, la dicitura su due righe: `Valido solo per cena` e `… e pranzo nei festivi`.
 - Il messaggio WhatsApp deve riportare la data selezionata e il servizio effettivamente prenotato. Questa regola sostituisce il precedente inserimento automatico del giorno corrente. Conservare gli altri controlli, i prezzi e l’azzeramento dell’ordine.
