@@ -91,29 +91,30 @@
         }
       },
       {
-        "name": "Fusilli con melanzane e tonno fresco",
+        "name": "Fusilli con melanzane, tonno fresco e poco pomodoro",
         "price": 12.5,
-        "description": "Melanzane morbide e bocconcini di tonno fresco, avvolti dai fusilli.",
+        "description": "Melanzane morbide e bocconcini di tonno fresco, con poco pomodoro.",
         "allergens": [
           1,
           4
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/fusilli-melanzane-tonno-20261006.webp",
+        "dishPhoto": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
         "translations": {
           "en": {
-            "name": "Fusilli with aubergine and fresh tuna",
-            "description": "Fusilli with tender aubergine and fresh tuna pieces."
+            "name": "Fusilli with aubergine, fresh tuna and a little tomato",
+            "description": "Fusilli with tender aubergine, fresh tuna pieces and a little tomato."
           },
           "zh": {
-            "name": "茄子鲜金枪鱼螺旋面",
-            "description": "螺旋面搭配软嫩茄子与鲜金枪鱼块。"
+            "name": "茄子鲜金枪鱼螺旋面配少量番茄",
+            "description": "螺旋面搭配软嫩茄子、鲜金枪鱼块与少量番茄。"
           }
         },
         "photoSource": {
           "type": "AI-generated illustration",
           "date": "2026-10-06",
-          "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."
+          "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients.",
+          "edit": "Added a small amount of tomato to the approved photograph while preserving its visual style, plate and background."
         }
       }
     ],

@@ -269,3 +269,7 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 
 ### Identificazione cliente fisso — 2026-10-06
 - Il cliente fisso singolo è Paolo, soprannominato «Puzza», come identificato direttamente da Paolo Moretti. Nei riepiloghi operativi privati riconoscerlo con questa identità e riservargli un posto; non conteggiarlo nuovamente quando è già incluso negli ordini. Il cognome, gli orari e l'ordine non sono stabiliti da questa identificazione: non assumere che sia Paolo Ferreri senza un collegamento esplicito.
+
+## Coerenza obbligatoria delle fotografie dei piatti — 2026-10-06
+- Le foto devono essere coerenti sia tra loro nella resa grafica (sfondo, piatto, inquadratura, luce, colori, scala e formato), sia con il piatto e gli ingredienti effettivamente comunicati da Paolo. Conservare lo stile fotografico già approvato. Applicare la regola a pranzo, cena, offerte e miniature EN/ZH.
+- Quando cambia un ingrediente aggiornare, quando possibile, anche la fotografia del piatto mantenendo la coerenza visiva con le altre. Per una modifica puntuale privilegiare la foto approvata come base, senza cambiare sfondo, piatto e inquadratura. Se non è possibile ottenere una foto fedele, dichiarare il limite senza inventare ingredienti né presentare una foto diversa come corrispondente.
