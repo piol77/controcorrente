@@ -242,3 +242,9 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Il totale degli ordini deve combaciare: per ogni tavolo verificare che quantità × prezzi dei piatti corrispondano al totale del blocco unificato; il totale generale deve essere uguale alla somma dei totali dei tavoli e dei messaggi effettivamente conteggiati.
 - Aggiunte effettive aumentano il totale; semplici reinvii non lo aumentano. Rettifiche o sostituzioni esplicite aggiornano le voci interessate senza sommare anche le voci sostituite.
 - Usare soltanto quantità, prezzi e importi disponibili e verificati. Se un totale non coincide, segnalare precisamente la differenza e il dato dubbio; non forzare la quadratura, alterare importi o inventare dati. Chiedere il solo chiarimento necessario prima di presentare il riepilogo come verificato.
+
+### Formato sintetico del riepilogo ordini pranzo — 2026-10-06
+- Paolo richiede permanentemente un riepilogo sintetico: nome, orario, piatti con quantità. Questa istruzione sostituisce l'obbligo precedente di riprodurre integralmente il formato WhatsApp originale.
+- Un blocco compatto per tavolo, in ordine di data e orario prenotati, con aggiunte e rettifiche unificate secondo le regole già stabilite. Se tutte le prenotazioni sono dello stesso giorno, non ripetere la data per ogni tavolo.
+- Omettere saluti, formula di conferma, campi vuoti, numero di persone e altri dati non richiesti. Conservare accanto al piatto le variazioni rilevanti e le allergie/note operative indispensabili.
+- Verificare sempre la quadratura degli importi; riportare il totale generale una sola volta in fondo, senza appesantire ciascun tavolo con prezzi e totali salvo richiesta esplicita.
