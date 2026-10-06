@@ -248,3 +248,8 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Un blocco compatto per tavolo, in ordine di data e orario prenotati, con aggiunte e rettifiche unificate secondo le regole già stabilite. Se tutte le prenotazioni sono dello stesso giorno, non ripetere la data per ogni tavolo.
 - Omettere saluti, formula di conferma, campi vuoti, numero di persone e altri dati non richiesti. Conservare accanto al piatto le variazioni rilevanti e le allergie/note operative indispensabili.
 - Verificare sempre la quadratura degli importi; riportare il totale generale una sola volta in fondo, senza appesantire ciascun tavolo con prezzi e totali salvo richiesta esplicita.
+
+### Formato definitivo del riepilogo pranzo — 2026-10-06
+- Ordine obbligatorio dei dati: nome, numero di persone, orario richiesto, piatti con quantità. Paolo ha richiesto di includere nuovamente il numero di persone: questa regola prevale sulla precedente omissione.
+- Presentare ogni tavolo in modo sintetico: Nome — N persone — HH:MM, poi i piatti con quantità. Se nome o numero di persone non sono indicati, segnalarli come non indicati senza dedurli dal numero di piatti.
+- Conservare ordine cronologico, unificazione di aggiunte/rettifiche, note operative e allergie indispensabili e controllo della quadratura. Riportare il totale generale una sola volta in fondo.
