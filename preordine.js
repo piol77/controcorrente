@@ -209,6 +209,21 @@
         window.alert('È impossibile prenotare retroattivamente.');
         return;
       }
+      const minutes = (() => {
+        const parts = requestedTime.split(':').map(Number);
+        return parts.length === 2 && parts.every(Number.isFinite) ? parts[0] * 60 + parts[1] : NaN;
+      })();
+      const lunchTime = Number.isFinite(minutes) && minutes >= 12 * 60 && minutes <= 14 * 60 + 30;
+      const dinnerTime = Number.isFinite(minutes) && minutes >= 19 * 60 && minutes <= 22 * 60 + 30;
+      const weekday = new Date(requestedDay + 'T12:00:00Z').getUTCDay();
+      if (weekday === 1) {
+        window.alert('Il ristorante è chiuso il lunedì. Scegli un altro giorno per la prenotazione.');
+        return;
+      }
+      if (!lunchTime && !dinnerTime) {
+        window.alert('Orario di arrivo non valido. Puoi prenotare dalle 12:00 alle 14:30 oppure dalle 19:00 alle 22:30. Il lunedì siamo chiusi.');
+        return;
+      }
       if (isLunch()) {
         await refreshDaily();
         if (!menuReady) return;
@@ -219,14 +234,7 @@
         if (item && Number.isInteger(item.qty) && item.qty > 0) dishes.push(item.qty + ' × ' + item.name + ' — ' + euro(item.qty * item.price));
       });
       if (!dishes.length) { list.focus(); return; }
-      const minutes = (() => {
-        const parts = requestedTime.split(':').map(Number);
-        return parts.length === 2 && parts.every(Number.isFinite) ? parts[0] * 60 + parts[1] : NaN;
-      })();
-      const lunchTime = Number.isFinite(minutes) && minutes >= 11 * 60 && minutes <= 15 * 60;
-      const dinnerTime = Number.isFinite(minutes) && minutes >= 18 * 60;
       const holiday = isHoliday(requestedDay);
-      const weekday = new Date(requestedDay + 'T12:00:00Z').getUTCDay();
       const wrongService = isLunch()
         ? !lunchTime || weekday === 6 || holiday
         : !dinnerTime && !(lunchTime && holiday);

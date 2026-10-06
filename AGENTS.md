@@ -287,3 +287,9 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 ### Stile Divertentismo approvato da Paolo — 2026-10-06
 - Paolo ha approvato espressamente lo stile della prima vignetta «Precisione al dente». Mantenerlo come riferimento fisso per tutte le prossime: due riquadri affiancati su desktop e impilati sul telefono, illustrazioni vettoriali semplici a tratto sottile dorato sul blu nautico, personaggi stilizzati, dialoghi brevi sopra la scena, titoli e battute con il serif condiviso. Conservare proporzioni, cornici, spaziature e piccolo sorriso discreto; cambiare soltanto scena, personaggi, battuta, titolo e data secondo il tema.
 - Procedura confermata: leggere istruzioni e vignetta corrente, evitare ripetizioni, creare la nuova vignetta leggera e non offensiva, controllare testi e leggibilità, aggiornare il file col suo SHA attuale, pubblicare direttamente e verificare GitHub Pages. Automazione quotidiana alle 20:57 Europe/Rome già attiva: non crearne un duplicato.
+
+
+## Orari di ingresso prenotabili — 2026-10-06
+- Alla conferma del riepilogo, dopo il controllo retroattivo e prima dei controlli su data e servizio del menù, bloccare qualsiasi ingresso fuori dalle fasce inclusive 12:00–14:30 e 19:00–22:30. Lunedì chiuso tutto il giorno, anche se festivo. Le nuove fasce prevalgono sulle precedenti 11:00–15:00 e cena dalle 18:00.
+- Usare giorno e orario scelti dal cliente; nessun blocco al pulsante `+`. Per chiusura del lunedì o orario fuori fascia, mostrare il motivo e conservare carrello e dati per consentire la correzione. Non aprire WhatsApp.
+- Conservare gli altri vincoli: menù pranzo nel giorno indicato, esclusi sabato, domenica e festivi; cena e offerte a cena oppure a pranzo nei festivi, sempre entro gli orari di apertura e mai il lunedì.
