@@ -5,29 +5,59 @@
   };
 
   const LUNCH={
-    en:{
-      'Spaghetti salsiccia e zafferano':['Spaghetti with sausage and saffron','Sausage and saffron, finished with a touch of cream.'],
-      'Orecchiette zucca e gorgonzola':['Orecchiette with pumpkin and gorgonzola','Sweet pumpkin paired with the bold flavour of gorgonzola.'],
-      'Linguine gamberetti* con granella di pistacchio':['Linguine with shrimp* and crushed pistachios','Shrimp*, crushed pistachios and a touch of cream.'],
-      'Fusilli melanzane e branzino al profumo di basilico':['Fusilli with aubergine and sea bass, scented with basil','Aubergine and sea bass with a fragrant touch of basil.'],
-      'Orata alla griglia con patate al forno':['Grilled sea bream with roast potatoes','Grilled sea bream served with roast potatoes.'],
-      'Salmone alla griglia con patate al forno':['Grilled salmon with roast potatoes','Grilled salmon steak served with roast potatoes.'],
-      'Insalatona arancia, finocchi, avocado e bocconcini di salmone fresco':['Orange, fennel, avocado and fresh salmon salad','Orange, fennel and avocado with pieces of fresh salmon.'],
-      'Filetti di suino con cipolle di Tropea in agrodolce':['Pork fillets with sweet-and-sour Tropea onions','Sweet-and-sour Tropea onions with a warm parsley potato salad.'],
-      'Insalatona Cesarona':['Cesarona salad','Chicken, bacon and Grana cheese flakes.']
-    },
-    zh:{
-      'Spaghetti salsiccia e zafferano':['香肠藏红花意大利面','香肠与藏红花，加入少量奶油调和。'],
-      'Orecchiette zucca e gorgonzola':['南瓜戈贡佐拉奶酪猫耳朵面','南瓜的甜味与戈贡佐拉奶酪的浓郁风味结合。'],
-      'Linguine gamberetti* con granella di pistacchio':['开心果碎小虾仁*扁意面','小虾仁*、开心果碎和少量奶油。'],
-      'Fusilli melanzane e branzino al profumo di basilico':['茄子海鲈鱼罗勒螺旋面','茄子与海鲈鱼，带有罗勒清香。'],
-      'Orata alla griglia con patate al forno':['烤金头鲷配烤土豆','烤金头鲷配烤土豆。'],
-      'Salmone alla griglia con patate al forno':['烤三文鱼配烤土豆','烤三文鱼排配烤土豆。'],
-      'Insalatona arancia, finocchi, avocado e bocconcini di salmone fresco':['橙子茴香牛油果鲜三文鱼沙拉','橙子、茴香和牛油果，配鲜三文鱼块。'],
-      'Filetti di suino con cipolle di Tropea in agrodolce':['猪里脊配糖醋特罗佩阿洋葱','糖醋特罗佩阿洋葱，配温热欧芹土豆沙拉。'],
-      'Insalatona Cesarona':['Cesarona 大沙拉','鸡肉、培根和格拉纳奶酪薄片。']
-    }
-  };
+  "en": {
+    "Fusilli con crema di pomodorini, burrata e parmigiano al profumo di basilico": [
+      "Fusilli with cherry tomato cream, burrata, parmesan and basil",
+      "Cherry tomato cream, soft burrata and parmesan, scented with basil."
+    ],
+    "Bucatini al sugo di orata e olive, leggermente piccante": [
+      "Bucatini with sea bream and olives, mildly spicy",
+      "Sea bream and olives in a sauce with a gentle spicy note."
+    ],
+    "Gnocchetti sardi con patate, zafferano e salsiccia": [
+      "Sardinian gnocchetti with potatoes, saffron and sausage",
+      "Potatoes and sausage with the aromatic warmth of saffron."
+    ],
+    "Straccetti di maiale in salsa agrodolce con riso bianco al vapore": [
+      "Sweet-and-sour pork strips with steamed white rice",
+      "Pineapple, bell peppers and tomato in a sweet-and-sour sauce, with steamed white rice."
+    ],
+    "Filetti di orata in crosta di verdure con insalata tiepida di patate prezzemolate": [
+      "Vegetable-crusted sea bream fillets with warm parsley potato salad",
+      "A crust of courgette, carrot and aubergine, served with warm parsley potatoes."
+    ],
+    "Orata alla griglia con fagiolini in padella": [
+      "Grilled sea bream with sautéed green beans",
+      "Grilled sea bream served with pan-sautéed green beans."
+    ]
+  },
+  "zh": {
+    "Fusilli con crema di pomodorini, burrata e parmigiano al profumo di basilico": [
+      "小番茄酱布拉塔帕尔马奶酪罗勒螺旋面",
+      "细腻小番茄酱、布拉塔与帕尔马奶酪，带有罗勒清香。"
+    ],
+    "Bucatini al sugo di orata e olive, leggermente piccante": [
+      "微辣金头鲷橄榄空心长意面",
+      "金头鲷与橄榄，搭配微辣酱汁。"
+    ],
+    "Gnocchetti sardi con patate, zafferano e salsiccia": [
+      "土豆藏红花香肠撒丁小贝壳面",
+      "土豆与香肠，融入藏红花的芬芳。"
+    ],
+    "Straccetti di maiale in salsa agrodolce con riso bianco al vapore": [
+      "糖醋猪肉条配白米饭",
+      "菠萝、甜椒与番茄制成糖醋酱，配蒸白米饭。"
+    ],
+    "Filetti di orata in crosta di verdure con insalata tiepida di patate prezzemolate": [
+      "蔬菜脆皮金头鲷鱼柳配温热欧芹土豆沙拉",
+      "西葫芦、胡萝卜与茄子蔬菜外层，配温热欧芹土豆。"
+    ],
+    "Orata alla griglia con fagiolini in padella": [
+      "烤金头鲷配炒四季豆",
+      "烤金头鲷，搭配煎炒四季豆。"
+    ]
+  }
+};
 
   function cleanDescription(text){return (text||'').replace(/\s*\([\d, ]+\)\.?\s*$/,'').trim();}
   function sourceName(article){return (article.querySelector('h3,h2')?.textContent||'').trim();}

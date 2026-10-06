@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-10-02",
-  "lunchDateLabel": "Venerdì 2 ottobre 2026",
+  "lunchUpdatedAt": "2026-10-06",
+  "lunchDateLabel": "Martedì 6 ottobre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -136,107 +136,160 @@
   },
   "lunch": [
     {
-      "name": "Spaghetti salsiccia e zafferano",
-      "price": 10.0,
-      "description": "Salsiccia e zafferano, legati da un tocco di panna.",
+      "name": "Fusilli con crema di pomodorini, burrata e parmigiano al profumo di basilico",
+      "price": 10,
+      "description": "Crema di pomodorini, morbida burrata e parmigiano, con il profumo del basilico.",
       "allergens": [
         1,
         7
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/spaghetti-salsiccia-zafferano.webp",
-      "photoLayout": "thumbnail"
+      "dishPhoto": "pranzo-assets/fusilli-pomodorini-burrata-basilico-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Fusilli with cherry tomato cream, burrata, parmesan and basil",
+          "description": "Cherry tomato cream, soft burrata and parmesan, scented with basil."
+        },
+        "zh": {
+          "name": "小番茄酱布拉塔帕尔马奶酪罗勒螺旋面",
+          "description": "细腻小番茄酱、布拉塔与帕尔马奶酪，带有罗勒清香。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-06",
+        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+      }
     },
     {
-      "name": "Orecchiette zucca e gorgonzola",
-      "price": 10.0,
-      "description": "La dolcezza della zucca incontra il carattere del gorgonzola.",
-      "allergens": [
-        1,
-        7
-      ],
-      "icon": "CookingPot",
-      "dishPhoto": "pranzo-assets/orecchiette-zucca-gorgonzola.webp",
-      "photoLayout": "thumbnail"
-    },
-    {
-      "name": "Linguine gamberetti* con granella di pistacchio",
-      "price": 12.0,
-      "description": "Gamberetti*, granella di pistacchio e un tocco di panna.",
-      "allergens": [
-        1,
-        2,
-        7,
-        8
-      ],
-      "icon": "Shrimp",
-      "dishPhoto": "pranzo-assets/linguine-gamberetti-pistacchio.webp",
-      "photoLayout": "thumbnail"
-    },
-    {
-      "name": "Fusilli melanzane e branzino al profumo di basilico",
-      "price": 12.0,
-      "description": "Melanzane e branzino, con una nota profumata di basilico.",
+      "name": "Bucatini al sugo di orata e olive, leggermente piccante",
+      "price": 12,
+      "description": "Orata e olive in un sugo dal delicato tocco piccante.",
       "allergens": [
         1,
         4
       ],
       "icon": "Fish",
-      "dishPhoto": "pranzo-assets/fusilli-melanzane-branzino.webp",
-      "photoLayout": "thumbnail"
+      "dishPhoto": "pranzo-assets/bucatini-orata-olive-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Bucatini with sea bream and olives, mildly spicy",
+          "description": "Sea bream and olives in a sauce with a gentle spicy note."
+        },
+        "zh": {
+          "name": "微辣金头鲷橄榄空心长意面",
+          "description": "金头鲷与橄榄，搭配微辣酱汁。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-06",
+        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+      }
     },
     {
-      "name": "Orata alla griglia con patate al forno",
-      "price": 12.0,
-      "description": "Orata alla griglia, accompagnata da patate al forno.",
+      "name": "Gnocchetti sardi con patate, zafferano e salsiccia",
+      "price": 10,
+      "description": "Patate e salsiccia avvolte dalle note aromatiche dello zafferano.",
       "allergens": [
-        4
+        1
       ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/orata-griglia-patate.webp",
-      "photoLayout": "thumbnail"
+      "icon": "Wheat",
+      "dishPhoto": "pranzo-assets/gnocchetti-patate-zafferano-salsiccia-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Sardinian gnocchetti with potatoes, saffron and sausage",
+          "description": "Potatoes and sausage with the aromatic warmth of saffron."
+        },
+        "zh": {
+          "name": "土豆藏红花香肠撒丁小贝壳面",
+          "description": "土豆与香肠，融入藏红花的芬芳。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-06",
+        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+      }
     },
     {
-      "name": "Salmone alla griglia con patate al forno",
-      "price": 12.0,
-      "description": "Trancio di salmone alla griglia, con patate al forno.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/salmone-griglia-patate.webp",
-      "photoLayout": "thumbnail"
-    },
-    {
-      "name": "Insalatona arancia, finocchi, avocado e bocconcini di salmone fresco",
-      "price": 12.0,
-      "description": "Arancia, finocchi e avocado, con bocconcini di salmone fresco.",
-      "allergens": [
-        4
-      ],
-      "icon": "Salad",
-      "dishPhoto": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado.webp",
-      "photoLayout": "thumbnail"
-    },
-    {
-      "name": "Filetti di suino con cipolle di Tropea in agrodolce",
-      "price": 12.0,
-      "description": "Cipolle di Tropea in agrodolce e insalata tiepida di patate prezzemolate.",
+      "name": "Straccetti di maiale in salsa agrodolce con riso bianco al vapore",
+      "price": 10,
+      "description": "Ananas, peperoni e pomodoro in una salsa agrodolce, con riso bianco al vapore.",
       "allergens": [],
       "icon": "Beef",
-      "dishPhoto": "pranzo-assets/suino-cipolle.webp",
-      "photoLayout": "thumbnail"
+      "dishPhoto": "pranzo-assets/maiale-agrodolce-riso-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Sweet-and-sour pork strips with steamed white rice",
+          "description": "Pineapple, bell peppers and tomato in a sweet-and-sour sauce, with steamed white rice."
+        },
+        "zh": {
+          "name": "糖醋猪肉条配白米饭",
+          "description": "菠萝、甜椒与番茄制成糖醋酱，配蒸白米饭。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-06",
+        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+      }
     },
     {
-      "name": "Insalatona Cesarona",
-      "price": 9.0,
-      "description": "Pollo, pancetta e scaglie di Grana.",
+      "name": "Filetti di orata in crosta di verdure con insalata tiepida di patate prezzemolate",
+      "price": 12,
+      "description": "Zucchine, carote e melanzane in una crosta di verdure, con patate tiepide al prezzemolo.",
       "allergens": [
-        7
+        4
       ],
-      "icon": "Salad",
-      "dishPhoto": "pranzo-assets/insalatina-cesarona.webp",
-      "photoLayout": "thumbnail"
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/orata-crosta-verdure-patate-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Vegetable-crusted sea bream fillets with warm parsley potato salad",
+          "description": "A crust of courgette, carrot and aubergine, served with warm parsley potatoes."
+        },
+        "zh": {
+          "name": "蔬菜脆皮金头鲷鱼柳配温热欧芹土豆沙拉",
+          "description": "西葫芦、胡萝卜与茄子蔬菜外层，配温热欧芹土豆。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-06",
+        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+      }
+    },
+    {
+      "name": "Orata alla griglia con fagiolini in padella",
+      "price": 12,
+      "description": "Orata alla griglia, accompagnata da fagiolini saltati in padella.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/orata-griglia-fagiolini-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Grilled sea bream with sautéed green beans",
+          "description": "Grilled sea bream served with pan-sautéed green beans."
+        },
+        "zh": {
+          "name": "烤金头鲷配炒四季豆",
+          "description": "烤金头鲷，搭配煎炒四季豆。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-06",
+        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+      }
     }
   ],
   "offers": [
