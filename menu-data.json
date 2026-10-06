@@ -64,28 +64,57 @@
         "dishPhoto": "cena-conchigliette.webp"
       },
       {
-        "name": "Risotto barbabietola e gorgonzola (minimo due porzioni)",
+        "name": "Orecchiette fresche con zucca, gorgonzola e noci",
         "price": 12.5,
-        "description": "Risotto cremoso alla barbabietola, gorgonzola e noci.",
-        "allergens": [
-          7,
-          8,
-          9
-        ],
-        "icon": "CookingPot",
-        "dishPhoto": "cena-risotto.webp"
-      },
-      {
-        "name": "Linguine crema di zucchine, avocado e gamberetti*",
-        "price": 12.5,
-        "description": "Crema di zucchine, avocado, gamberetti* e una nota fresca di limone. Poco pomodoro.",
+        "description": "Orecchiette fresche con la dolcezza della zucca, gorgonzola cremoso e noci.",
         "allergens": [
           1,
-          2,
-          7
+          7,
+          8
         ],
-        "icon": "Shrimp",
-        "dishPhoto": "cena-linguine.webp"
+        "icon": "Wheat",
+        "dishPhoto": "cena-assets/orecchiette-zucca-gorgonzola-noci-20261006.webp",
+        "translations": {
+          "en": {
+            "name": "Fresh orecchiette with pumpkin, gorgonzola and walnuts",
+            "description": "Fresh orecchiette with sweet pumpkin, creamy gorgonzola and walnuts."
+          },
+          "zh": {
+            "name": "南瓜戈贡佐拉奶酪核桃鲜猫耳面",
+            "description": "新鲜猫耳面搭配香甜南瓜、绵滑戈贡佐拉奶酪与核桃。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-06",
+          "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."
+        }
+      },
+      {
+        "name": "Fusilli con melanzane e tonno fresco",
+        "price": 12.5,
+        "description": "Melanzane morbide e bocconcini di tonno fresco, avvolti dai fusilli.",
+        "allergens": [
+          1,
+          4
+        ],
+        "icon": "Fish",
+        "dishPhoto": "cena-assets/fusilli-melanzane-tonno-20261006.webp",
+        "translations": {
+          "en": {
+            "name": "Fusilli with aubergine and fresh tuna",
+            "description": "Fusilli with tender aubergine and fresh tuna pieces."
+          },
+          "zh": {
+            "name": "茄子鲜金枪鱼螺旋面",
+            "description": "螺旋面搭配软嫩茄子与鲜金枪鱼块。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-06",
+          "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."
+        }
       }
     ],
     "secondi": [
@@ -103,14 +132,29 @@
         "dishPhoto": "cena-frittura.webp"
       },
       {
-        "name": "Filetti di suino al bacon e fichi",
+        "name": "Tonno rosso alla mediterranea con patate al forno",
         "price": 14,
-        "description": "Filetti avvolti nel bacon, con fichi e patate al forno.",
+        "description": "Tonno rosso con pomodoro, olive e capperi, accompagnato da patate al forno.",
         "allergens": [
-          7
+          4
         ],
-        "icon": "Beef",
-        "dishPhoto": "cena-suino.webp"
+        "icon": "Fish",
+        "dishPhoto": "cena-assets/tonno-mediterranea-20261006.webp",
+        "translations": {
+          "en": {
+            "name": "Mediterranean-style bluefin tuna with roasted potatoes",
+            "description": "Bluefin tuna with tomato, olives and capers, served with roasted potatoes."
+          },
+          "zh": {
+            "name": "地中海风味蓝鳍金枪鱼配烤土豆",
+            "description": "蓝鳍金枪鱼配番茄、橄榄和酸豆，佐烤土豆。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-06",
+          "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."
+        }
       },
       {
         "name": "Filetto di branzino al limone",
@@ -315,49 +359,28 @@
       }
     },
     {
-      "name": "Tentacoli, gamberetti* e patate",
+      "name": "Gnocchetti sardi con patate, salsiccia e zafferano",
       "price": 10,
-      "description": "Tentacoli e gamberetti*, con morbide patate.",
-      "dishPhoto": "offerta-assets/tentacoli.webp",
+      "description": "Patate e salsiccia avvolte dalle note aromatiche dello zafferano.",
       "allergens": [
-        2,
-        14
+        1
       ],
-      "icon": "Shell",
-      "course": "Secondo",
+      "icon": "Wheat",
+      "dishPhoto": "pranzo-assets/gnocchetti-patate-zafferano-salsiccia-20261006.webp",
       "translations": {
         "en": {
-          "name": "Tentacles, Shrimp* and Potatoes",
-          "description": "Tender tentacles and shrimp* with soft potatoes."
+          "name": "Sardinian gnocchetti with potatoes, saffron and sausage",
+          "description": "Potatoes and sausage with the aromatic warmth of saffron."
         },
         "zh": {
-          "name": "触须、小虾仁*和土豆",
-          "description": "软嫩触须与小虾仁*，搭配土豆。"
+          "name": "土豆藏红花香肠撒丁小贝壳面",
+          "description": "土豆与香肠，融入藏红花的芬芳。"
         }
-      }
-    },
-    {
-      "name": "Spaghetti con burrata, granella di pistacchi e gamberetti*",
-      "price": 12.5,
-      "description": "Spaghetti avvolti dalla cremosità della burrata, con gamberetti* e granella di pistacchi.",
-      "allergens": [
-        1,
-        2,
-        7,
-        8
-      ],
-      "icon": "Shrimp",
-      "course": "Primo",
-      "dishPhoto": "offerta-assets/spaghetti.webp",
-      "translations": {
-        "en": {
-          "name": "Spaghetti with Burrata, Chopped Pistachios and Shrimp*",
-          "description": "Creamy burrata, shrimp* and chopped pistachios."
-        },
-        "zh": {
-          "name": "布拉塔奶酪开心果碎小虾意大利面",
-          "description": "意大利面配布拉塔奶酪、小虾仁*和开心果碎。"
-        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-06",
+        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
       }
     },
     {

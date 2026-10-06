@@ -37,13 +37,13 @@ const CONTROCORRENTE_MENU = {
             "€ 12,50"
           ],
           [
-            "Beetroot and Gorgonzola Risotto (minimum two portions)",
-            "Creamy beetroot risotto with gorgonzola and walnuts. (7, 8, 9)",
+            "Fresh orecchiette with pumpkin, gorgonzola and walnuts",
+            "Fresh orecchiette with sweet pumpkin, creamy gorgonzola and walnuts. (1, 7, 8)",
             "€ 12,50"
           ],
           [
-            "Linguine with Courgette Cream, Avocado and Shrimp",
-            "With shrimp*, lemon and a touch of tomato. (1, 2, 7)",
+            "Fusilli with aubergine and fresh tuna",
+            "Fusilli with tender aubergine and fresh tuna pieces. (1, 4)",
             "€ 12,50"
           ]
         ]
@@ -57,8 +57,8 @@ const CONTROCORRENTE_MENU = {
             "€ 20,00"
           ],
           [
-            "Pork Tenderloin with Bacon and Figs",
-            "Bacon-wrapped pork tenderloin with figs and roasted potatoes.",
+            "Mediterranean-style bluefin tuna with roasted potatoes",
+            "Bluefin tuna with tomato, olives and capers, served with roasted potatoes. (4)",
             "€ 14,00"
           ],
           [
@@ -82,14 +82,9 @@ const CONTROCORRENTE_MENU = {
         "€ 10,00"
       ],
       [
-        "Tentacles, Shrimp* and Potatoes",
-        "Tender tentacles and shrimp* with soft potatoes. (2, 14)",
+        "Sardinian gnocchetti with potatoes, saffron and sausage",
+        "Potatoes and sausage with the aromatic warmth of saffron. (1)",
         "€ 10,00"
-      ],
-      [
-        "Spaghetti with Burrata, Chopped Pistachios and Shrimp*",
-        "Creamy burrata, shrimp* and chopped pistachios. (1, 2, 7, 8)",
-        "€ 12,50"
       ],
       [
         "Vegetable and Meat Dumplings (5 pieces)",
@@ -156,13 +151,13 @@ const CONTROCORRENTE_MENU = {
             "€ 12,50"
           ],
           [
-            "甜菜根戈贡佐拉奶酪烩饭（至少两份）",
-            "甜菜根烩饭，配戈贡佐拉奶酪和核桃。(7, 8, 9)",
+            "南瓜戈贡佐拉奶酪核桃鲜猫耳面",
+            "新鲜猫耳面搭配香甜南瓜、绵滑戈贡佐拉奶酪与核桃。 (1, 7, 8)",
             "€ 12,50"
           ],
           [
-            "西葫芦牛油果小虾扁意面",
-            "西葫芦酱、牛油果、小虾仁*、柠檬和少量番茄。(1, 2, 7)",
+            "茄子鲜金枪鱼螺旋面",
+            "螺旋面搭配软嫩茄子与鲜金枪鱼块。 (1, 4)",
             "€ 12,50"
           ]
         ]
@@ -176,8 +171,8 @@ const CONTROCORRENTE_MENU = {
             "€ 20,00"
           ],
           [
-            "培根无花果猪里脊",
-            "培根包裹猪里脊，配无花果和烤土豆。",
+            "地中海风味蓝鳍金枪鱼配烤土豆",
+            "蓝鳍金枪鱼配番茄、橄榄和酸豆，佐烤土豆。 (4)",
             "€ 14,00"
           ],
           [
@@ -201,14 +196,9 @@ const CONTROCORRENTE_MENU = {
         "€ 10,00"
       ],
       [
-        "触须、小虾仁*和土豆",
-        "软嫩触须与小虾仁*，搭配土豆。 (2, 14)",
+        "土豆藏红花香肠撒丁小贝壳面",
+        "土豆与香肠，融入藏红花的芬芳。 (1)",
         "€ 10,00"
-      ],
-      [
-        "布拉塔奶酪开心果碎小虾意大利面",
-        "意大利面配布拉塔奶酪、小虾仁*和开心果碎。 (1, 2, 7, 8)",
-        "€ 12,50"
       ],
       [
         "蔬菜肉馅饺子（5个）",
@@ -240,7 +230,7 @@ const CONTROCORRENTE_MENU = {
 };
 
 const SHARED_ALLERGEN_SYMBOLS={"1": {"name": "Cereali contenenti glutine", "icon": "Wheat"}, "2": {"name": "Crostacei", "icon": "Shrimp"}, "3": {"name": "Uova", "icon": "Egg"}, "4": {"name": "Pesce", "icon": "Fish"}, "5": {"name": "Arachidi", "icon": "Nut"}, "6": {"name": "Soia", "icon": "Bean"}, "7": {"name": "Latte", "icon": "Milk"}, "8": {"name": "Frutta a guscio", "icon": "Nut"}, "9": {"name": "Sedano", "icon": "LeafyGreen"}, "10": {"name": "Senape", "icon": "Flower2"}, "11": {"name": "Semi di sesamo", "icon": "Ellipsis"}, "12": {"name": "Anidride solforosa e solfiti", "icon": "FlaskConical"}, "13": {"name": "Lupini", "icon": "Bean"}, "14": {"name": "Molluschi", "icon": "Shell"}};
-const SHARED_DINNER={"antipasti": [{"name": "Bruschette con crema di zucca e speck croccante (2 pezzi)", "price": 10, "description": "Pane tostato con una spalmata di gorgonzola, crema di zucca vellutata e speck croccante.", "allergens": [1, 7], "icon": "Wheat", "dishPhoto": "bruschetta-zucca-speck-gorgonzola.webp"}, {"name": "Gamberetti* in salsa rosa", "price": 10, "description": "Gamberetti* e delicata salsa rosa, su un letto di fresca insalata.", "allergens": [2, 3, 10], "icon": "Shrimp", "dishPhoto": "cena-gamberetti.webp"}, {"name": "Funghi champignon fritti", "price": 10, "description": "Champignon dorati e croccanti, serviti con spicchi di limone.", "allergens": [1, 3], "icon": "Leaf", "dishPhoto": "cena-funghi.webp"}], "primi": [{"name": "Spaghetti ai frutti di mare", "price": 15, "description": "Cozze, vongole, gamberetti* e gamberone*, con un leggero pomodoro.", "allergens": [1, 2, 14], "icon": "Shell", "dishPhoto": "cena-spaghetti.webp"}, {"name": "Conchigliette verdure, zafferano e croccante di guanciale", "price": 12.5, "description": "Verdure di stagione, zafferano e guanciale croccante.", "allergens": [1, 7, 9], "icon": "Wheat", "dishPhoto": "cena-conchigliette.webp"}, {"name": "Risotto barbabietola e gorgonzola (minimo due porzioni)", "price": 12.5, "description": "Risotto cremoso alla barbabietola, gorgonzola e noci.", "allergens": [7, 8, 9], "icon": "CookingPot", "dishPhoto": "cena-risotto.webp"}, {"name": "Linguine crema di zucchine, avocado e gamberetti*", "price": 12.5, "description": "Crema di zucchine, avocado, gamberetti* e una nota fresca di limone. Poco pomodoro.", "allergens": [1, 2, 7], "icon": "Shrimp", "dishPhoto": "cena-linguine.webp"}], "secondi": [{"name": "Frittura mista di alici, calamari e gamberetti*", "price": 20, "description": "Alici, calamari e gamberetti* in una frittura leggera e croccante.", "allergens": [1, 2, 4, 14], "icon": "Fish", "dishPhoto": "cena-frittura.webp"}, {"name": "Filetti di suino al bacon e fichi", "price": 14, "description": "Filetti avvolti nel bacon, con fichi e patate al forno.", "allergens": [7], "icon": "Beef", "dishPhoto": "cena-suino.webp"}, {"name": "Filetto di branzino al limone", "price": 14, "description": "Branzino alla griglia, limone e prezzemolo, con verza viola cruda.", "allergens": [4], "icon": "Fish", "dishPhoto": "cena-branzino.webp"}, {"name": "Trancio di salmone all’arancia e pepe rosa", "price": 14, "description": "Salmone alla griglia, arancia e pepe rosa, con finocchi crudi e aceto balsamico.", "allergens": [4], "icon": "Fish", "dishPhoto": "cena-salmone.webp"}]}; const SHARED_OFFERS=[{"name": "Carne cruda con limone e Grana", "price": 10, "description": "Carne cruda, limone e scaglie di Grana.", "allergens": [7], "icon": "Beef", "course": "Antipasto", "translations": {"en": {"name": "Beef Tartare with Lemon and Grana", "description": "Raw beef with lemon and shavings of Grana cheese."}, "zh": {"name": "柠檬格拉纳奶酪生牛肉", "description": "生牛肉配柠檬和格拉纳奶酪薄片。"}}}, {"name": "Tentacoli, gamberetti* e patate", "price": 10, "description": "Tentacoli e gamberetti*, con morbide patate.", "allergens": [2, 14], "icon": "Shell", "course": "Secondo", "translations": {"en": {"name": "Tentacles, Shrimp* and Potatoes", "description": "Tender tentacles and shrimp* with soft potatoes."}, "zh": {"name": "触须、小虾仁*和土豆", "description": "软嫩触须与小虾仁*，搭配土豆。"}}}, {"name": "Spaghetti con burrata, granella di pistacchi e gamberetti*", "price": 12.5, "description": "Spaghetti avvolti dalla cremosità della burrata, con gamberetti* e granella di pistacchi.", "allergens": [1, 2, 7, 8], "icon": "Shrimp", "course": "Primo", "dishPhoto": "offerta-assets/spaghetti.webp", "translations": {"en": {"name": "Spaghetti with Burrata, Chopped Pistachios and Shrimp*", "description": "Creamy burrata, shrimp* and chopped pistachios."}, "zh": {"name": "布拉塔奶酪开心果碎小虾意大利面", "description": "意大利面配布拉塔奶酪、小虾仁*和开心果碎。"}}}, {"name": "Ravioli orientali di verdure e carne (5 pezzi)", "price": 6, "description": "Cinque ravioli dal delicato ripieno di carne e verza.", "allergens": [1], "icon": "Wheat", "course": "Antipasto", "dishPhoto": "offerta-assets/ravioli.webp", "translations": {"en": {"name": "Vegetable and Meat Dumplings (5 pieces)", "description": "Five oriental dumplings with a delicate meat and savoy cabbage filling."}, "zh": {"name": "蔬菜肉馅饺子（5个）", "description": "五个东方风味饺子，内馅为肉和皱叶甘蓝。"}}}]; const SHARED_FIXED={"price": 25, "dishes": [{"name": "Bruschetta al pomodoro", "description": "Pane tostato e pomodoro fresco: una bruschetta semplice e profumata.", "allergens": [1], "icon": "Wheat", "course": "Antipasto", "dishPhoto": "offerta-assets/bruschetta.webp", "translations": {"en": {"name": "Tomato Bruschetta", "description": "Toasted bread with fresh tomato."}, "zh": {"name": "番茄烤面包", "description": "烤面包搭配新鲜番茄。"}}}, {"name": "Farfalle con zucchine, panna, pomodorini e salmone fresco", "description": "Farfalle cremose con zucchine, pomodorini e morbidi bocconcini di salmone fresco.", "allergens": [1, 4, 7], "icon": "Fish", "course": "Primo", "dishPhoto": "offerta-assets/farfalle.webp", "translations": {"en": {"name": "Farfalle with Courgette, Cream, Cherry Tomatoes and Fresh Salmon", "description": "Creamy farfalle with courgette, cherry tomatoes and tender fresh salmon pieces."}, "zh": {"name": "西葫芦奶油小番茄鲜三文鱼蝴蝶面", "description": "奶油蝴蝶面，配西葫芦、小番茄和鲜三文鱼块。"}}}, {"name": "Insalata tiepida di tentacoli, patate e gamberetti*", "description": "Tentacoli e gamberetti* incontrano le patate in una delicata insalata tiepida.", "allergens": [2, 14], "icon": "Shell", "course": "Secondo", "dishPhoto": "offerta-assets/tentacoli.webp", "translations": {"en": {"name": "Warm Tentacle, Potato and Shrimp* Salad", "description": "Tender tentacles and shrimp* with potatoes in a delicate warm salad."}, "zh": {"name": "温拌触须土豆小虾仁*沙拉", "description": "软嫩触须、小虾仁*和土豆组成温拌沙拉。"}}}]};
+const SHARED_DINNER={"antipasti": [{"name": "Bruschette con crema di zucca e speck croccante (2 pezzi)", "price": 10, "description": "Pane tostato con una spalmata di gorgonzola, crema di zucca vellutata e speck croccante.", "allergens": [1, 7], "icon": "Wheat", "dishPhoto": "bruschetta-zucca-speck-gorgonzola.webp"}, {"name": "Gamberetti* in salsa rosa", "price": 10, "description": "Gamberetti* e delicata salsa rosa, su un letto di fresca insalata.", "allergens": [2, 3, 10], "icon": "Shrimp", "dishPhoto": "cena-gamberetti.webp"}, {"name": "Funghi champignon fritti", "price": 10, "description": "Champignon dorati e croccanti, serviti con spicchi di limone.", "allergens": [1, 3], "icon": "Leaf", "dishPhoto": "cena-funghi.webp"}], "primi": [{"name": "Spaghetti ai frutti di mare", "price": 15, "description": "Cozze, vongole, gamberetti* e gamberone*, con un leggero pomodoro.", "allergens": [1, 2, 14], "icon": "Shell", "dishPhoto": "cena-spaghetti.webp"}, {"name": "Conchigliette verdure, zafferano e croccante di guanciale", "price": 12.5, "description": "Verdure di stagione, zafferano e guanciale croccante.", "allergens": [1, 7, 9], "icon": "Wheat", "dishPhoto": "cena-conchigliette.webp"}, {"name": "Orecchiette fresche con zucca, gorgonzola e noci", "price": 12.5, "description": "Orecchiette fresche con la dolcezza della zucca, gorgonzola cremoso e noci.", "allergens": [1, 7, 8], "icon": "Wheat", "dishPhoto": "cena-assets/orecchiette-zucca-gorgonzola-noci-20261006.webp", "translations": {"en": {"name": "Fresh orecchiette with pumpkin, gorgonzola and walnuts", "description": "Fresh orecchiette with sweet pumpkin, creamy gorgonzola and walnuts."}, "zh": {"name": "南瓜戈贡佐拉奶酪核桃鲜猫耳面", "description": "新鲜猫耳面搭配香甜南瓜、绵滑戈贡佐拉奶酪与核桃。"}}, "photoSource": {"type": "AI-generated illustration", "date": "2026-10-06", "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."}}, {"name": "Fusilli con melanzane e tonno fresco", "price": 12.5, "description": "Melanzane morbide e bocconcini di tonno fresco, avvolti dai fusilli.", "allergens": [1, 4], "icon": "Fish", "dishPhoto": "cena-assets/fusilli-melanzane-tonno-20261006.webp", "translations": {"en": {"name": "Fusilli with aubergine and fresh tuna", "description": "Fusilli with tender aubergine and fresh tuna pieces."}, "zh": {"name": "茄子鲜金枪鱼螺旋面", "description": "螺旋面搭配软嫩茄子与鲜金枪鱼块。"}}, "photoSource": {"type": "AI-generated illustration", "date": "2026-10-06", "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."}}], "secondi": [{"name": "Frittura mista di alici, calamari e gamberetti*", "price": 20, "description": "Alici, calamari e gamberetti* in una frittura leggera e croccante.", "allergens": [1, 2, 4, 14], "icon": "Fish", "dishPhoto": "cena-frittura.webp"}, {"name": "Tonno rosso alla mediterranea con patate al forno", "price": 14, "description": "Tonno rosso con pomodoro, olive e capperi, accompagnato da patate al forno.", "allergens": [4], "icon": "Fish", "dishPhoto": "cena-assets/tonno-mediterranea-20261006.webp", "translations": {"en": {"name": "Mediterranean-style bluefin tuna with roasted potatoes", "description": "Bluefin tuna with tomato, olives and capers, served with roasted potatoes."}, "zh": {"name": "地中海风味蓝鳍金枪鱼配烤土豆", "description": "蓝鳍金枪鱼配番茄、橄榄和酸豆，佐烤土豆。"}}, "photoSource": {"type": "AI-generated illustration", "date": "2026-10-06", "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."}}, {"name": "Filetto di branzino al limone", "price": 14, "description": "Branzino alla griglia, limone e prezzemolo, con verza viola cruda.", "allergens": [4], "icon": "Fish", "dishPhoto": "cena-branzino.webp"}, {"name": "Trancio di salmone all’arancia e pepe rosa", "price": 14, "description": "Salmone alla griglia, arancia e pepe rosa, con finocchi crudi e aceto balsamico.", "allergens": [4], "icon": "Fish", "dishPhoto": "cena-salmone.webp"}]}; const SHARED_OFFERS=[{"name": "Carne cruda con limone e Grana", "price": 10, "description": "Carne cruda, limone e scaglie di Grana.", "dishPhoto": "offerta-assets/torretta-carne-cruda.webp", "allergens": [7], "icon": "Beef", "course": "Antipasto", "translations": {"en": {"name": "Beef Tartare with Lemon and Grana", "description": "Raw beef with lemon and shavings of Grana cheese."}, "zh": {"name": "柠檬格拉纳奶酪生牛肉", "description": "生牛肉配柠檬和格拉纳奶酪薄片。"}}}, {"name": "Gnocchetti sardi con patate, salsiccia e zafferano", "price": 10, "description": "Patate e salsiccia avvolte dalle note aromatiche dello zafferano.", "allergens": [1], "icon": "Wheat", "dishPhoto": "pranzo-assets/gnocchetti-patate-zafferano-salsiccia-20261006.webp", "translations": {"en": {"name": "Sardinian gnocchetti with potatoes, saffron and sausage", "description": "Potatoes and sausage with the aromatic warmth of saffron."}, "zh": {"name": "土豆藏红花香肠撒丁小贝壳面", "description": "土豆与香肠，融入藏红花的芬芳。"}}, "photoSource": {"type": "AI-generated illustration", "date": "2026-10-06", "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."}}, {"name": "Ravioli orientali di verdure e carne (5 pezzi)", "price": 6, "description": "Cinque ravioli dal delicato ripieno di carne e verza.", "allergens": [1], "icon": "Wheat", "course": "Antipasto", "dishPhoto": "offerta-assets/ravioli.webp", "translations": {"en": {"name": "Vegetable and Meat Dumplings (5 pieces)", "description": "Five oriental dumplings with a delicate meat and savoy cabbage filling."}, "zh": {"name": "蔬菜肉馅饺子（5个）", "description": "五个东方风味饺子，内馅为肉和皱叶甘蓝。"}}}]; const SHARED_FIXED={"price": 25, "dishes": [{"name": "Bruschetta al pomodoro", "description": "Pane tostato e pomodoro fresco: una bruschetta semplice e profumata.", "allergens": [1], "icon": "Wheat", "course": "Antipasto", "dishPhoto": "offerta-assets/bruschetta.webp", "translations": {"en": {"name": "Tomato Bruschetta", "description": "Toasted bread with fresh tomato."}, "zh": {"name": "番茄烤面包", "description": "烤面包搭配新鲜番茄。"}}}, {"name": "Farfalle con zucchine, panna, pomodorini e salmone fresco", "description": "Farfalle cremose con zucchine, pomodorini e morbidi bocconcini di salmone fresco.", "allergens": [1, 4, 7], "icon": "Fish", "course": "Primo", "dishPhoto": "offerta-assets/farfalle.webp", "translations": {"en": {"name": "Farfalle with Courgette, Cream, Cherry Tomatoes and Fresh Salmon", "description": "Creamy farfalle with courgette, cherry tomatoes and tender fresh salmon pieces."}, "zh": {"name": "西葫芦奶油小番茄鲜三文鱼蝴蝶面", "description": "奶油蝴蝶面，配西葫芦、小番茄和鲜三文鱼块。"}}}, {"name": "Insalata tiepida di tentacoli, patate e gamberetti*", "description": "Tentacoli e gamberetti* incontrano le patate in una delicata insalata tiepida.", "allergens": [2, 14], "icon": "Shell", "course": "Secondo", "dishPhoto": "offerta-assets/tentacoli.webp", "translations": {"en": {"name": "Warm Tentacle, Potato and Shrimp* Salad", "description": "Tender tentacles and shrimp* with potatoes in a delicate warm salad."}, "zh": {"name": "温拌触须土豆小虾仁*沙拉", "description": "软嫩触须、小虾仁*和土豆组成温拌沙拉。"}}}]};
 Object.values(CONTROCORRENTE_MENU).forEach(menu=>{
  menu.courses.forEach((c,i)=>c.dishes.forEach((d,j)=>{const shared=SHARED_DINNER[['antipasti','primi','secondi'][i]][j]; d[2]=new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(shared.price);d[1]=d[1].replace(/\([\d, ]+\)[.]?$/, '')+' ('+shared.allergens.join(', ')+')';}));
  menu.daily.forEach((d,i)=>{d[1]=d[1].replace(/\([\d, ]+\)\.?$/, '').trim()+' ('+SHARED_OFFERS[i].allergens.join(', ')+')';d[2]=new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(SHARED_OFFERS[i].price);});
@@ -303,3 +293,4 @@ function renderTranslatedMenu() {
 }
 
 document.addEventListener("DOMContentLoaded", renderTranslatedMenu);
+

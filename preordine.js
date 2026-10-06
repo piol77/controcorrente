@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto barbabietola e gorgonzola (minimo due porzioni)", 12.5], ["Linguine crema di zucchine, avocado e gamberetti*", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Filetti di suino al bacon e fichi", 14], ["Filetto di branzino al limone", 14], ["Trancio di salmone all’arancia e pepe rosa", 14]]};
+  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Orecchiette fresche con zucca, gorgonzola e noci", 12.5], ["Fusilli con melanzane e tonno fresco", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Tonno rosso alla mediterranea con patate al forno", 14], ["Filetto di branzino al limone", 14], ["Trancio di salmone all’arancia e pepe rosa", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
@@ -219,7 +219,6 @@
         if (item && Number.isInteger(item.qty) && item.qty > 0) dishes.push(item.qty + ' × ' + item.name + ' — ' + euro(item.qty * item.price));
       });
       if (!dishes.length) { list.focus(); return; }
-      if (cart['primi:2']?.qty === 1) { window.alert('Il risotto richiede almeno due porzioni.'); return; }
       const minutes = (() => {
         const parts = requestedTime.split(':').map(Number);
         return parts.length === 2 && parts.every(Number.isFinite) ? parts[0] * 60 + parts[1] : NaN;
