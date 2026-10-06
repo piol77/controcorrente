@@ -8,6 +8,17 @@
   <link rel="stylesheet" href="styles.css?v=202610031345">
   <link rel="stylesheet" href="locale-gallery.css?v=20261005-2gallery">
   <link rel="icon" href="icons/Anchor.svg">
+
+<style>
+.locale-food-group .locale-gallery-group-head{flex-wrap:wrap}
+.locale-food-speed{font:inherit;font-size:.8rem;color:var(--gold,#eac580);border:1px solid var(--line,#bfa77c);border-radius:999px;background:#0d314b;padding:9px 12px;cursor:pointer;line-height:1.3}
+.locale-food-speed:focus-visible{outline:3px solid #eac580;outline-offset:3px}
+.locale-food-group .locale-gallery{display:block;overflow:hidden}
+.locale-food-track{display:flex;gap:12px}
+.locale-food-group .locale-gallery figure,.locale-food-group .locale-gallery figure:nth-child(n+2){display:block;flex:0 0 100%;width:100%}
+.locale-food-group .gallery-thumb{cursor:default}
+.locale-food-group .gallery-thumb:hover img{transform:none}
+</style>
 </head>
 <body>
 <header class="top">
@@ -51,52 +62,54 @@
       </div>
     </article>
 
-    <article class="locale-gallery-group">
+    <article class="locale-gallery-group locale-food-group">
       <div class="locale-gallery-group-head">
         <h3>I nostri piatti</h3>
-        <span class="locale-gallery-start"><span aria-hidden="true">▶</span>Clicca per lo slideshow</span>
+        <button class="locale-food-speed" type="button" aria-pressed="false">Clicca qui per rallentare 😄</button>
       </div>
       <div class="locale-gallery authorized-photos" data-gallery-kind="food" aria-label="Fotografie dei nostri piatti">
+        <div class="locale-food-track">
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-broccoli.webp" data-caption="Crema di broccoli" aria-label="Apri slideshow dei piatti: Crema di broccoli"><img src="locale-assets/piatto-broccoli.webp" width="960" height="960" alt="Crema di broccoli con crostini e scaglie di formaggio" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-broccoli.webp" width="960" height="960" alt="Crema di broccoli con crostini e scaglie di formaggio" loading="eager"></div>
           <figcaption>Crema di broccoli</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-gnocchi-pomodoro.webp" data-caption="Gnocchi al pomodoro" aria-label="Apri slideshow dei piatti: Gnocchi al pomodoro"><img src="locale-assets/piatto-gnocchi-pomodoro.webp" width="960" height="960" alt="Gnocchi al pomodoro con mozzarella e olive" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-gnocchi-pomodoro.webp" width="960" height="960" alt="Gnocchi al pomodoro con mozzarella e olive" loading="eager"></div>
           <figcaption>Gnocchi al pomodoro</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-spaghetti-zucchine.webp" data-caption="Spaghetti alle zucchine" aria-label="Apri slideshow dei piatti: Spaghetti alle zucchine"><img src="locale-assets/piatto-spaghetti-zucchine.webp" width="960" height="960" alt="Spaghetti cremosi con zucchine e pinoli" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-spaghetti-zucchine.webp" width="960" height="960" alt="Spaghetti cremosi con zucchine e pinoli" loading="eager"></div>
           <figcaption>Spaghetti alle zucchine</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-noodles.webp" data-caption="Noodles in brodo" aria-label="Apri slideshow dei piatti: Noodles in brodo"><img src="locale-assets/piatto-noodles.webp" width="960" height="960" alt="Noodles in brodo con verdure, carne e uovo" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-noodles.webp" width="960" height="960" alt="Noodles in brodo con verdure, carne e uovo" loading="eager"></div>
           <figcaption>Noodles in brodo</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-gnocchi-rossi.webp" data-caption="Gnocchi alla barbabietola" aria-label="Apri slideshow dei piatti: Gnocchi alla barbabietola"><img src="locale-assets/piatto-gnocchi-rossi.webp" width="960" height="960" alt="Gnocchi in salsa alla barbabietola e formaggio" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-gnocchi-rossi.webp" width="960" height="960" alt="Gnocchi in salsa alla barbabietola e formaggio" loading="eager"></div>
           <figcaption>Gnocchi alla barbabietola</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-gnocchi-melanzane.webp" data-caption="Gnocchi e melanzane" aria-label="Apri slideshow dei piatti: Gnocchi e melanzane"><img src="locale-assets/piatto-gnocchi-melanzane.webp" width="960" height="960" alt="Gnocchi con pomodoro, melanzane, mozzarella e basilico" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-gnocchi-melanzane.webp" width="960" height="960" alt="Gnocchi con pomodoro, melanzane, mozzarella e basilico" loading="eager"></div>
           <figcaption>Gnocchi e melanzane</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-vellutata-gamberi.webp" data-caption="Vellutata con gamberi" aria-label="Apri slideshow dei piatti: Vellutata con gamberi"><img src="locale-assets/piatto-vellutata-gamberi.webp" width="960" height="960" alt="Vellutata al pomodoro con gamberi e pane tostato" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-vellutata-gamberi.webp" width="960" height="960" alt="Vellutata al pomodoro con gamberi e pane tostato" loading="eager"></div>
           <figcaption>Vellutata con gamberi</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-misto-orientale.webp" data-caption="Piatto misto orientale" aria-label="Apri slideshow dei piatti: Piatto misto orientale"><img src="locale-assets/piatto-misto-orientale.webp" width="960" height="960" alt="Piatto misto con ravioli, riso, verdure e focaccia" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-misto-orientale.webp" width="960" height="960" alt="Piatto misto con ravioli, riso, verdure e focaccia" loading="eager"></div>
           <figcaption>Piatto misto orientale</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-frutta.webp" data-caption="Coppa di frutta" aria-label="Apri slideshow dei piatti: Coppa di frutta"><img src="locale-assets/piatto-frutta.webp" width="960" height="960" alt="Coppa di frutta fresca in vetro" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-frutta.webp" width="960" height="960" alt="Coppa di frutta fresca in vetro" loading="eager"></div>
           <figcaption>Coppa di frutta</figcaption>
         </figure>
         <figure>
-          <button class="gallery-thumb" type="button" data-kind="food" data-full="locale-assets/piatto-gamberi-verdure.webp" data-caption="Gamberi e verdure" aria-label="Apri slideshow dei piatti: Gamberi e verdure"><img src="locale-assets/piatto-gamberi-verdure.webp" width="960" height="960" alt="Gamberi con verdure grigliate e pomodorini" loading="lazy"></button>
+          <div class="gallery-thumb"><img src="locale-assets/piatto-gamberi-verdure.webp" width="960" height="960" alt="Gamberi con verdure grigliate e pomodorini" loading="eager"></div>
           <figcaption>Gamberi e verdure</figcaption>
         </figure>
+        </div>
       </div>
     </article>
   </section>
@@ -131,5 +144,50 @@
 <script src="ui.js?v=20261003-nautica3"></script>
 <script src="site-session.js?v=20261003-nautica3"></script>
 <script src="locale-gallery.js?v=20261005-2gallery" defer></script>
+
+<script>
+(() => {
+  const gallery = document.querySelector('[data-gallery-kind="food"]');
+  const track = gallery?.querySelector('.locale-food-track');
+  const button = document.querySelector('.locale-food-speed');
+  if (!track || !button) return;
+  const originals = [...track.children];
+  if (originals.length < 2) return;
+  originals.forEach(item => {
+    const copy = item.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    track.append(copy);
+  });
+  let animation;
+  let slow = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let visible = true;
+  const updateButton = () => {
+    button.textContent = slow ? 'Clicca qui per accelerare 😄' : 'Clicca qui per rallentare 😄';
+    button.setAttribute('aria-pressed', String(slow));
+    if (animation) animation.playbackRate = slow ? 0.15 : 1;
+  };
+  const resize = () => {
+    const distance = track.children[originals.length].offsetLeft - track.children[0].offsetLeft;
+    if (!distance) return;
+    const phase = animation ? (animation.currentTime % animation.effect.getTiming().duration) / animation.effect.getTiming().duration : 0;
+    animation?.cancel();
+    const duration = distance / 260 * 1000;
+    animation = track.animate([{transform:'translateX(0)'},{transform:`translateX(-${distance}px)`}], {duration,iterations:Infinity,easing:'linear'});
+    animation.currentTime = phase * duration;
+    updateButton();
+    if (!visible || document.hidden) animation.pause();
+  };
+  button.addEventListener('click', () => { slow = !slow; updateButton(); });
+  document.addEventListener('visibilitychange', () => {
+    if (animation) document.hidden || !visible ? animation.pause() : animation.play();
+  });
+  new ResizeObserver(resize).observe(gallery);
+  new IntersectionObserver(entries => {
+    visible = entries[0].isIntersecting;
+    if (animation) visible && !document.hidden ? animation.play() : animation.pause();
+  }).observe(gallery);
+  updateButton();
+})();
+</script>
 </body>
 </html>
