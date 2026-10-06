@@ -237,3 +237,8 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Conservare allergie, note e variazioni associate ai piatti/clienti senza perderle. Non sommare automaticamente il numero di persone riportato nei messaggi dello stesso tavolo: usare le rettifiche esplicite e segnalare valori discordanti. Ricalcolare il totale soltanto con quantità e prezzi noti dai messaggi, senza inventare prezzi, dati o conferme.
 - Questa è una procedura dell'assistente per i messaggi che Paolo fornisce, non un invio automatico ai clienti né una modifica alla composizione WhatsApp o al funzionamento del sito. Non leggere WhatsApp autonomamente.
 - Ambito: raccolta mattutina degli ordini pranzo prima delle 12:00, fuso Europe/Rome. Paolo gestisce il termine: non introdurre per questa trascrizione un nuovo blocco automatico alle 12 né rifiutare di riordinare messaggi già forniti.
+
+### Quadratura obbligatoria dei totali WhatsApp pranzo — 2026-10-06
+- Il totale degli ordini deve combaciare: per ogni tavolo verificare che quantità × prezzi dei piatti corrispondano al totale del blocco unificato; il totale generale deve essere uguale alla somma dei totali dei tavoli e dei messaggi effettivamente conteggiati.
+- Aggiunte effettive aumentano il totale; semplici reinvii non lo aumentano. Rettifiche o sostituzioni esplicite aggiornano le voci interessate senza sommare anche le voci sostituite.
+- Usare soltanto quantità, prezzi e importi disponibili e verificati. Se un totale non coincide, segnalare precisamente la differenza e il dato dubbio; non forzare la quadratura, alterare importi o inventare dati. Chiedere il solo chiarimento necessario prima di presentare il riepilogo come verificato.
