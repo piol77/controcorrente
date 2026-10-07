@@ -34,3 +34,12 @@
 /* Novità: clear breathing room before the footer so the boat in the wave artwork remains fully visible. */
 body:has(nav a[aria-current="page"][href="index.html"]) .shell{padding-bottom:120px}
 @media(max-width:650px){body:has(nav a[aria-current="page"][href="index.html"]) .shell{padding-bottom:90px}}
+
+/* Lunch menu: compact side thumbnails; dinner/photo cards keep their existing layout. */
+.lunch-board .dish-photo-card{grid-template-columns:112px minmax(0,1fr) 108px;grid-template-rows:1fr auto;min-height:218px;align-items:start}
+.lunch-board .dish-photo-card .dish-photo{grid-column:1;grid-row:1/3;width:112px;height:84px;align-self:start;border:1px solid var(--line);display:block}
+.lunch-board .dish-photo-card .dish-copy{grid-column:2;grid-row:1/3}
+.lunch-board .dish-photo-card .dish-price{grid-column:3;grid-row:1}
+@media(max-width:900px){.lunch-board .dish-photo-card{grid-template-columns:112px minmax(0,1fr) 112px;min-height:180px}}
+@media(max-width:650px){.lunch-board .dish-photo-card{grid-template-columns:82px minmax(0,1fr) 88px;column-gap:11px;min-height:186px}.lunch-board .dish-photo-card .dish-photo{width:82px;height:62px}.lunch-board .dish-photo-card .dish-price{font-size:1.25rem}}
+@media(max-width:370px){.lunch-board .dish-photo-card{grid-template-columns:68px minmax(0,1fr) 82px;column-gap:8px}.lunch-board .dish-photo-card .dish-photo{width:68px;height:51px}}
