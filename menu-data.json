@@ -181,159 +181,177 @@
   },
   "lunch": [
     {
-      "name": "Fusilli con crema di pomodorini, burrata e parmigiano al profumo di basilico",
-      "price": 10,
-      "description": "Crema di pomodorini, morbida burrata e parmigiano, con il profumo del basilico.",
-      "allergens": [
-        1,
-        7
-      ],
-      "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/fusilli-pomodorini-burrata-basilico-20261006.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Fusilli with cherry tomato cream, burrata, parmesan and basil",
-          "description": "Cherry tomato cream, soft burrata and parmesan, scented with basil."
-        },
-        "zh": {
-          "name": "小番茄酱布拉塔帕尔马奶酪罗勒螺旋面",
-          "description": "细腻小番茄酱、布拉塔与帕尔马奶酪，带有罗勒清香。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-06",
-        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
-      }
-    },
-    {
-      "name": "Bucatini al sugo di orata e olive, leggermente piccante",
-      "price": 12,
-      "description": "Orata e olive in un sugo dal delicato tocco piccante.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/bucatini-orata-olive-20261006.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Bucatini with sea bream and olives, mildly spicy",
-          "description": "Sea bream and olives in a sauce with a gentle spicy note."
-        },
-        "zh": {
-          "name": "微辣金头鲷橄榄空心长意面",
-          "description": "金头鲷与橄榄，搭配微辣酱汁。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-06",
-        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
-      }
-    },
-    {
-      "name": "Gnocchetti sardi con patate, zafferano e salsiccia",
-      "price": 10,
-      "description": "Patate e salsiccia avvolte dalle note aromatiche dello zafferano.",
+      "name": "Spaghetti al pomodoro fresco e basilico",
+      "price": 8,
+      "description": "Spaghetti al pomodoro fresco, profumati al basilico.",
       "allergens": [
         1
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/gnocchetti-patate-zafferano-salsiccia-20261006.webp",
+      "dishPhoto": "https://images.pexels.com/photos/11653569/pexels-photo-11653569.jpeg?auto=compress&cs=tinysrgb&w=640",
       "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Sardinian gnocchetti with potatoes, saffron and sausage",
-          "description": "Potatoes and sausage with the aromatic warmth of saffron."
+          "name": "Spaghetti with fresh tomato and basil",
+          "description": "Spaghetti with fresh tomato sauce, scented with basil."
         },
         "zh": {
-          "name": "土豆藏红花香肠撒丁小贝壳面",
-          "description": "土豆与香肠，融入藏红花的芬芳。"
+          "name": "新鲜番茄罗勒意大利面",
+          "description": "意大利面配新鲜番茄酱与罗勒香气。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-06",
-        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+        "type": "Pexels free stock photo",
+        "date": "2026-10-07",
+        "source": "https://www.pexels.com/photo/spaghetti-on-plate-11653569/",
+        "note": "Selected because it shows tomato-and-basil spaghetti without olives."
       }
     },
     {
-      "name": "Straccetti di maiale in salsa agrodolce con riso bianco al vapore",
+      "name": "Spaghetti di riso con verdure e carne di maiale",
+      "price": 9,
+      "description": "Carote, zucchine, verza, uovo e salsa di soia, saltati con carne di maiale e spaghetti di riso.",
+      "allergens": [
+        3,
+        6
+      ],
+      "icon": "Bean",
+      "dishPhoto": "https://images.pexels.com/photos/34888273/pexels-photo-34888273.jpeg?auto=compress&cs=tinysrgb&w=640",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Rice noodles with vegetables and pork",
+          "description": "Rice noodles with carrots, courgettes, savoy cabbage, egg, soy sauce and pork."
+        },
+        "zh": {
+          "name": "猪肉蔬菜炒米粉",
+          "description": "米粉配胡萝卜、西葫芦、皱叶甘蓝、鸡蛋、酱油和猪肉。"
+        }
+      },
+      "photoSource": {
+        "type": "Pexels free stock photo",
+        "date": "2026-10-07",
+        "source": "https://www.pexels.com/photo/vietnamese-grilled-pork-with-noodles-on-rustic-table-34888273/",
+        "note": "Dry rice noodles with pork and vegetables; no broth."
+      }
+    },
+    {
+      "name": "Conchigliette con tentacoli, gamberetti* e patate",
+      "price": 12,
+      "description": "Conchigliette con tentacoli, gamberetti* e patate, in un condimento saporito e delicato.",
+      "allergens": [
+        1,
+        2,
+        14
+      ],
+      "icon": "Shell",
+      "dishPhoto": "https://images.pexels.com/photos/31235404/pexels-photo-31235404.jpeg?auto=compress&cs=tinysrgb&w=640",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Small shell pasta with tentacles, shrimp* and potatoes",
+          "description": "Small shell pasta with tentacles, shrimp* and potatoes in a delicate savoury dressing."
+        },
+        "zh": {
+          "name": "小贝壳面配触须、小虾仁*和土豆",
+          "description": "小贝壳面搭配触须、小虾仁*和土豆，口味鲜香细腻。"
+        }
+      },
+      "photoSource": {
+        "type": "Pexels free stock photo",
+        "date": "2026-10-07",
+        "source": "https://www.pexels.com/photo/seafood-pasta-with-shrimp-and-squid-on-rustic-plate-31235404/",
+        "note": "Seafood pasta visibly showing shrimp and tentacles; replaces the unrelated guanciale photo."
+      }
+    },
+    {
+      "name": "Fusilli con tonno fresco, melanzane e poco pomodoro",
+      "price": 12,
+      "description": "Melanzane morbide e bocconcini di tonno fresco, con poco pomodoro.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Fusilli with fresh tuna, aubergine and a little tomato",
+          "description": "Tender aubergine and fresh tuna pieces with a little tomato."
+        },
+        "zh": {
+          "name": "鲜金枪鱼茄子螺旋面配少量番茄",
+          "description": "软嫩茄子与鲜金枪鱼块，配少量番茄。"
+        }
+      }
+    },
+    {
+      "name": "Tonno rosso alla mediterranea con patate al forno",
+      "price": 13,
+      "description": "Tonno rosso con pomodoro, olive e capperi, accompagnato da patate al forno.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "cena-assets/tonno-mediterranea-20261006.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Mediterranean-style bluefin tuna with roasted potatoes",
+          "description": "Bluefin tuna with tomato, olives and capers, served with roasted potatoes."
+        },
+        "zh": {
+          "name": "地中海风味蓝鳍金枪鱼配烤土豆",
+          "description": "蓝鳍金枪鱼配番茄、橄榄和酸豆，佐烤土豆。"
+        }
+      }
+    },
+    {
+      "name": "Straccetti di pollo e melanzane con riso bianco al vapore",
       "price": 10,
-      "description": "Ananas, peperoni e pomodoro in una salsa agrodolce, con riso bianco al vapore.",
+      "description": "Straccetti di pollo e melanzane, serviti con riso bianco al vapore.",
       "allergens": [],
       "icon": "Beef",
-      "dishPhoto": "pranzo-assets/maiale-agrodolce-riso-20261006.webp",
+      "dishPhoto": "https://images.pexels.com/photos/8996122/pexels-photo-8996122.jpeg?auto=compress&cs=tinysrgb&w=640",
       "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Sweet-and-sour pork strips with steamed white rice",
-          "description": "Pineapple, bell peppers and tomato in a sweet-and-sour sauce, with steamed white rice."
+          "name": "Chicken and aubergine strips with steamed white rice",
+          "description": "Chicken and aubergine strips served with steamed white rice."
         },
         "zh": {
-          "name": "糖醋猪肉条配白米饭",
-          "description": "菠萝、甜椒与番茄制成糖醋酱，配蒸白米饭。"
+          "name": "鸡肉茄子条配白米饭",
+          "description": "鸡肉与茄子条，配蒸白米饭。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-06",
-        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+        "type": "Pexels free stock photo",
+        "date": "2026-10-07",
+        "source": "https://www.pexels.com/photo/plate-of-white-rice-with-chicken-and-vegetable-8996122/",
+        "note": "Single plated chicken-and-rice dish; replaces the unrelated mixed platter."
       }
     },
     {
-      "name": "Filetti di orata in crosta di verdure con insalata tiepida di patate prezzemolate",
+      "name": "Insalata tiepida di patate, gamberetti*, tentacoli e calamari",
       "price": 12,
-      "description": "Zucchine, carote e melanzane in una crosta di verdure, con patate tiepide al prezzemolo.",
+      "description": "Patate, gamberetti*, tentacoli e calamari, serviti tiepidi.",
       "allergens": [
-        4
+        2,
+        14
       ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/orata-crosta-verdure-patate-20261006.webp",
+      "icon": "Shell",
+      "dishPhoto": "pranzo-assets/tentacoli-gamberetti-patate.webp",
       "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Vegetable-crusted sea bream fillets with warm parsley potato salad",
-          "description": "A crust of courgette, carrot and aubergine, served with warm parsley potatoes."
+          "name": "Warm potato, shrimp*, tentacle and squid salad",
+          "description": "Potatoes, shrimp*, tentacles and squid, served warm."
         },
         "zh": {
-          "name": "蔬菜脆皮金头鲷鱼柳配温热欧芹土豆沙拉",
-          "description": "西葫芦、胡萝卜与茄子蔬菜外层，配温热欧芹土豆。"
+          "name": "温拌土豆、小虾仁*、触须和鱿鱼沙拉",
+          "description": "土豆、小虾仁*、触须和鱿鱼，温热食用。"
         }
-      },
-      "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-06",
-        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
-      }
-    },
-    {
-      "name": "Orata alla griglia con fagiolini in padella",
-      "price": 12,
-      "description": "Orata alla griglia, accompagnata da fagiolini saltati in padella.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/orata-griglia-fagiolini-20261006.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Grilled sea bream with sautéed green beans",
-          "description": "Grilled sea bream served with pan-sautéed green beans."
-        },
-        "zh": {
-          "name": "烤金头鲷配炒四季豆",
-          "description": "烤金头鲷，搭配煎炒四季豆。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-06",
-        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
       }
     }
   ],
