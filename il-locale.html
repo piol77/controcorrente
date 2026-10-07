@@ -171,7 +171,7 @@
     if (!distance) return;
     const phase = animation ? (animation.currentTime % animation.effect.getTiming().duration) / animation.effect.getTiming().duration : 0;
     animation?.cancel();
-    const duration = distance / 260 * 1000;
+    const duration = distance / 520 * 1000;
     animation = track.animate([{transform:'translateX(0)'},{transform:`translateX(-${distance}px)`}], {duration,iterations:Infinity,easing:'linear'});
     animation.currentTime = phase * duration;
     updateButton();
