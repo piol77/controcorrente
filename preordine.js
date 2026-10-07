@@ -34,6 +34,13 @@
     const part = type => parts.find(p => p.type === type).value;
     return `${part('year')}-${part('month')}-${part('day')}T${part('hour')}:${part('minute')}`;
   }
+  function currentRomeMinutes() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Rome', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    }).formatToParts(new Date());
+    const part = type => parts.find(p => p.type === type).value;
+    return Number(part('hour')) * 60 + Number(part('minute'));
+  }
   function isHoliday(day) {
     const date = new Date(day + 'T12:00:00Z');
     if (date.getUTCDay() === 0) return true;
@@ -248,6 +255,10 @@
         window.alert(message);
         list.focus();
         return;
+      }
+      const currentMinutes = currentRomeMinutes();
+      if ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60)) {
+        window.alert('Stai prenotando al limite dell’orario utile per la prenotazione, ricordati di chiedere conferma al ristoratore.');
       }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
