@@ -6,55 +6,71 @@
 
   const LUNCH={
   "en": {
-    "Fusilli con crema di pomodorini, burrata e parmigiano al profumo di basilico": [
-      "Fusilli with cherry tomato cream, burrata, parmesan and basil",
-      "Cherry tomato cream, soft burrata and parmesan, scented with basil."
+    "Gnocchetti sardi con patate, lenticchie e salsiccia": [
+      "Sardinian gnocchetti with potatoes, lentils and sausage",
+      "Sardinian pasta with tender potatoes, lentils and sausage."
     ],
-    "Bucatini al sugo di orata e olive, leggermente piccante": [
-      "Bucatini with sea bream and olives, mildly spicy",
-      "Sea bream and olives in a sauce with a gentle spicy note."
+    "Riso saltato all’ananas": [
+      "Pineapple fried rice",
+      "Stir-fried rice with pineapple, egg, peas, onion, shrimp*, cooked ham and mushrooms."
     ],
-    "Gnocchetti sardi con patate, zafferano e salsiccia": [
-      "Sardinian gnocchetti with potatoes, saffron and sausage",
-      "Potatoes and sausage with the aromatic warmth of saffron."
+    "Farfalle con zucchine, salmone fresco e pomodorini": [
+      "Farfalle with courgettes, fresh salmon and cherry tomatoes",
+      "Bow-tie pasta with courgettes, pieces of fresh salmon and cherry tomatoes."
     ],
-    "Straccetti di maiale in salsa agrodolce con riso bianco al vapore": [
-      "Sweet-and-sour pork strips with steamed white rice",
-      "Pineapple, bell peppers and tomato in a sweet-and-sour sauce, with steamed white rice."
+    "Linguine con gamberetti* e crema di zucchine, avocado e profumo di limone": [
+      "Linguine with shrimp*, courgette cream, avocado and lemon",
+      "Linguine with courgette cream, shrimp* and avocado, scented with lemon."
     ],
-    "Filetti di orata in crosta di verdure con insalata tiepida di patate prezzemolate": [
-      "Vegetable-crusted sea bream fillets with warm parsley potato salad",
-      "A crust of courgette, carrot and aubergine, served with warm parsley potatoes."
+    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
+      "Spicy pork strips with vegetables and steamed white rice",
+      "Pork strips with courgettes and carrots in a spicy sauce, served with steamed white rice."
     ],
-    "Orata alla griglia con fagiolini in padella": [
-      "Grilled sea bream with sautéed green beans",
-      "Grilled sea bream served with pan-sautéed green beans."
+    "Filetti di suino con crema di zucca e fichi": [
+      "Pork fillets with pumpkin cream and figs",
+      "Pork fillets with pumpkin cream and figs, onion and butter."
+    ],
+    "Salmone con mandorle e noci, finocchi crudi all’aceto balsamico": [
+      "Salmon with almonds and walnuts, raw fennel with balsamic vinegar",
+      "Salmon with almonds and walnuts, served with raw fennel dressed with balsamic vinegar."
+    ],
+    "Seppiline e calamari in umido con piselli e patate": [
+      "Baby cuttlefish and squid stew with peas and potatoes",
+      "Baby cuttlefish and squid stewed with peas, potatoes, tomato, onion and garlic."
     ]
   },
   "zh": {
-    "Fusilli con crema di pomodorini, burrata e parmigiano al profumo di basilico": [
-      "小番茄酱布拉塔帕尔马奶酪罗勒螺旋面",
-      "细腻小番茄酱、布拉塔与帕尔马奶酪，带有罗勒清香。"
+    "Gnocchetti sardi con patate, lenticchie e salsiccia": [
+      "土豆扁豆香肠撒丁小贝壳面",
+      "撒丁小贝壳面搭配软糯土豆、扁豆和香肠。"
     ],
-    "Bucatini al sugo di orata e olive, leggermente piccante": [
-      "微辣金头鲷橄榄空心长意面",
-      "金头鲷与橄榄，搭配微辣酱汁。"
+    "Riso saltato all’ananas": [
+      "菠萝炒饭",
+      "米饭配菠萝、鸡蛋、豌豆、洋葱、虾仁*、熟火腿和蘑菇。"
     ],
-    "Gnocchetti sardi con patate, zafferano e salsiccia": [
-      "土豆藏红花香肠撒丁小贝壳面",
-      "土豆与香肠，融入藏红花的芬芳。"
+    "Farfalle con zucchine, salmone fresco e pomodorini": [
+      "西葫芦鲜三文鱼小番茄蝴蝶面",
+      "蝴蝶面配西葫芦、鲜三文鱼块和小番茄。"
     ],
-    "Straccetti di maiale in salsa agrodolce con riso bianco al vapore": [
-      "糖醋猪肉条配白米饭",
-      "菠萝、甜椒与番茄制成糖醋酱，配蒸白米饭。"
+    "Linguine con gamberetti* e crema di zucchine, avocado e profumo di limone": [
+      "虾仁*西葫芦酱牛油果柠檬细扁面",
+      "细扁面配西葫芦酱、虾仁*和牛油果，带有清新柠檬香。"
     ],
-    "Filetti di orata in crosta di verdure con insalata tiepida di patate prezzemolate": [
-      "蔬菜脆皮金头鲷鱼柳配温热欧芹土豆沙拉",
-      "西葫芦、胡萝卜与茄子蔬菜外层，配温热欧芹土豆。"
+    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
+      "辣汁蔬菜猪肉条配白米饭",
+      "猪肉条配西葫芦、胡萝卜和辣汁，佐蒸白米饭。"
     ],
-    "Orata alla griglia con fagiolini in padella": [
-      "烤金头鲷配炒四季豆",
-      "烤金头鲷，搭配煎炒四季豆。"
+    "Filetti di suino con crema di zucca e fichi": [
+      "南瓜泥无花果猪里脊",
+      "猪里脊配南瓜泥、无花果、洋葱和黄油。"
+    ],
+    "Salmone con mandorle e noci, finocchi crudi all’aceto balsamico": [
+      "杏仁核桃三文鱼配意式香醋生茴香",
+      "三文鱼配杏仁和核桃，佐意式香醋拌生茴香。"
+    ],
+    "Seppiline e calamari in umido con piselli e patate": [
+      "小墨鱼鱿鱼炖豌豆土豆",
+      "小墨鱼和鱿鱼与豌豆、土豆、番茄、洋葱和大蒜炖煮。"
     ]
   }
 };
