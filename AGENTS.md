@@ -294,3 +294,9 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Alla conferma del riepilogo, dopo il controllo retroattivo e prima dei controlli su data e servizio del menù, bloccare qualsiasi ingresso fuori dalle fasce inclusive 12:00–14:30 e 19:00–22:30. Lunedì chiuso tutto il giorno, anche se festivo. Le nuove fasce prevalgono sulle precedenti 11:00–15:00 e cena dalle 18:00.
 - Usare giorno e orario scelti dal cliente; nessun blocco al pulsante `+`. Per chiusura del lunedì o orario fuori fascia, mostrare il motivo e conservare carrello e dati per consentire la correzione. Non aprire WhatsApp.
 - Conservare gli altri vincoli: menù pranzo nel giorno indicato, esclusi sabato, domenica e festivi; cena e offerte a cena oppure a pranzo nei festivi, sempre entro gli orari di apertura e mai il lunedì.
+
+
+## Promozione prenotazione entro le 18:00 — regola permanente, 2026-10-08
+- La promozione del coperto omaggio per prenotazione di tavolo e menù entro le ore 18:00 vale **esclusivamente per la cena**, non per il pranzo, neppure nei giorni festivi.
+- In ogni pagina pubblica che la menziona, mantenere identica questa frase, senza parafrasi: **«Solo per la cena: prenotando tavolo e menù entro le 18:00, il coperto di 1,50 € è omaggio.»**
+- Preservare la stessa enfasi grafica nelle pagine News, Contatti, Menù cena e Riepilogo ordine, incluso il testo dinamico generato da `preordine.js`. Aggiornare tutti i punti insieme durante ogni futura variazione della promozione. Non confondere l'orario massimo per aderire alla promozione (18:00) con la fascia di ingresso per cena (19:00–22:30), né con l'orario di conferma entro le 18:30.
