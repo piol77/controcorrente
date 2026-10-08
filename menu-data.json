@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-10-06",
-  "lunchDateLabel": "Martedì 6 ottobre 2026",
+  "lunchUpdatedAt": "2026-10-08",
+  "lunchDateLabel": "Giovedì 8 ottobre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -181,177 +181,229 @@
   },
   "lunch": [
     {
-      "name": "Spaghetti al pomodoro fresco e basilico",
-      "price": 8,
-      "description": "Spaghetti al pomodoro fresco, profumati al basilico.",
+      "name": "Gnocchetti sardi con patate, lenticchie e salsiccia",
+      "price": 9,
+      "description": "Gnocchetti sardi con patate morbide, lenticchie e salsiccia.",
       "allergens": [
         1
       ],
       "icon": "Wheat",
-      "dishPhoto": "https://images.pexels.com/photos/11653569/pexels-photo-11653569.jpeg?auto=compress&cs=tinysrgb&w=640",
-      "photoLayout": "thumbnail",
+      "dishPhoto": "pranzo-assets/gnocchetti-lenticchie-20261008.svg",
+      "photoLayout": "side",
       "translations": {
         "en": {
-          "name": "Spaghetti with fresh tomato and basil",
-          "description": "Spaghetti with fresh tomato sauce, scented with basil."
+          "name": "Sardinian gnocchetti with potatoes, lentils and sausage",
+          "description": "Sardinian pasta with tender potatoes, lentils and sausage."
         },
         "zh": {
-          "name": "新鲜番茄罗勒意大利面",
-          "description": "意大利面配新鲜番茄酱与罗勒香气。"
+          "name": "土豆扁豆香肠撒丁小贝壳面",
+          "description": "撒丁小贝壳面搭配软糯土豆、扁豆和香肠。"
         }
       },
       "photoSource": {
-        "type": "Pexels free stock photo",
-        "date": "2026-10-07",
-        "source": "https://www.pexels.com/photo/spaghetti-on-plate-11653569/",
-        "note": "Selected because it shows tomato-and-basil spaghetti without olives."
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "Sardinian malloreddus pasta (small ridged durum wheat shells, NOT potato gnocchi), with small cubed potatoes, brown lentils and crumbled Italian sausage. No tomato, no cheese.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Spaghetti di riso con verdure e carne di maiale",
-      "price": 9,
-      "description": "Carote, zucchine, verza, uovo e salsa di soia, saltati con carne di maiale e spaghetti di riso.",
-      "allergens": [
-        3,
-        6
-      ],
-      "icon": "Bean",
-      "dishPhoto": "https://images.pexels.com/photos/34888273/pexels-photo-34888273.jpeg?auto=compress&cs=tinysrgb&w=640",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Rice noodles with vegetables and pork",
-          "description": "Rice noodles with carrots, courgettes, savoy cabbage, egg, soy sauce and pork."
-        },
-        "zh": {
-          "name": "猪肉蔬菜炒米粉",
-          "description": "米粉配胡萝卜、西葫芦、皱叶甘蓝、鸡蛋、酱油和猪肉。"
-        }
-      },
-      "photoSource": {
-        "type": "Pexels free stock photo",
-        "date": "2026-10-07",
-        "source": "https://www.pexels.com/photo/vietnamese-grilled-pork-with-noodles-on-rustic-table-34888273/",
-        "note": "Dry rice noodles with pork and vegetables; no broth."
-      }
-    },
-    {
-      "name": "Conchigliette con tentacoli, gamberetti* e patate",
-      "price": 12,
-      "description": "Conchigliette con tentacoli, gamberetti* e patate, in un condimento saporito e delicato.",
-      "allergens": [
-        1,
-        2,
-        14
-      ],
-      "icon": "Shell",
-      "dishPhoto": "https://images.pexels.com/photos/31235404/pexels-photo-31235404.jpeg?auto=compress&cs=tinysrgb&w=640",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Small shell pasta with tentacles, shrimp* and potatoes",
-          "description": "Small shell pasta with tentacles, shrimp* and potatoes in a delicate savoury dressing."
-        },
-        "zh": {
-          "name": "小贝壳面配触须、小虾仁*和土豆",
-          "description": "小贝壳面搭配触须、小虾仁*和土豆，口味鲜香细腻。"
-        }
-      },
-      "photoSource": {
-        "type": "Pexels free stock photo",
-        "date": "2026-10-07",
-        "source": "https://www.pexels.com/photo/seafood-pasta-with-shrimp-and-squid-on-rustic-plate-31235404/",
-        "note": "Seafood pasta visibly showing shrimp and tentacles; replaces the unrelated guanciale photo."
-      }
-    },
-    {
-      "name": "Fusilli con tonno fresco, melanzane e poco pomodoro",
-      "price": 12,
-      "description": "Melanzane morbide e bocconcini di tonno fresco, con poco pomodoro.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Fusilli with fresh tuna, aubergine and a little tomato",
-          "description": "Tender aubergine and fresh tuna pieces with a little tomato."
-        },
-        "zh": {
-          "name": "鲜金枪鱼茄子螺旋面配少量番茄",
-          "description": "软嫩茄子与鲜金枪鱼块，配少量番茄。"
-        }
-      }
-    },
-    {
-      "name": "Tonno rosso alla mediterranea con patate al forno",
-      "price": 13,
-      "description": "Tonno rosso con pomodoro, olive e capperi, accompagnato da patate al forno.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "cena-assets/tonno-mediterranea-20261006.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Mediterranean-style bluefin tuna with roasted potatoes",
-          "description": "Bluefin tuna with tomato, olives and capers, served with roasted potatoes."
-        },
-        "zh": {
-          "name": "地中海风味蓝鳍金枪鱼配烤土豆",
-          "description": "蓝鳍金枪鱼配番茄、橄榄和酸豆，佐烤土豆。"
-        }
-      }
-    },
-    {
-      "name": "Straccetti di pollo e melanzane con riso bianco al vapore",
+      "name": "Riso saltato all’ananas",
       "price": 10,
-      "description": "Straccetti di pollo e melanzane, serviti con riso bianco al vapore.",
+      "description": "Ananas, uovo, piselli, cipolla, gamberetti*, prosciutto cotto e funghi.",
+      "allergens": [
+        2,
+        3
+      ],
+      "icon": "Shrimp",
+      "dishPhoto": "pranzo-assets/riso-ananas-20261008.svg",
+      "photoLayout": "side",
+      "translations": {
+        "en": {
+          "name": "Pineapple fried rice",
+          "description": "Stir-fried rice with pineapple, egg, peas, onion, shrimp*, cooked ham and mushrooms."
+        },
+        "zh": {
+          "name": "菠萝炒饭",
+          "description": "米饭配菠萝、鸡蛋、豌豆、洋葱、虾仁*、熟火腿和蘑菇。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "Dry stir-fried rice with pineapple cubes, scrambled egg, peas, onion, small peeled shrimp, diced cooked ham and sliced mushrooms. Clearly identifiable pineapple and shrimp. No broth. No pineapple shell.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Farfalle con zucchine, salmone fresco e pomodorini",
+      "price": 12,
+      "description": "Farfalle con zucchine, bocconcini di salmone fresco e pomodorini.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/farfalle-salmone-20261008.svg",
+      "photoLayout": "side",
+      "translations": {
+        "en": {
+          "name": "Farfalle with courgettes, fresh salmon and cherry tomatoes",
+          "description": "Bow-tie pasta with courgettes, pieces of fresh salmon and cherry tomatoes."
+        },
+        "zh": {
+          "name": "西葫芦鲜三文鱼小番茄蝴蝶面",
+          "description": "蝴蝶面配西葫芦、鲜三文鱼块和小番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "Farfalle bow-tie pasta with zucchini, chunks of fresh cooked salmon and cherry tomatoes. No cream, no smoked salmon.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Linguine con gamberetti* e crema di zucchine, avocado e profumo di limone",
+      "price": 12,
+      "description": "Crema di zucchine, gamberetti* e avocado, con una fresca nota di limone.",
+      "allergens": [
+        1,
+        2
+      ],
+      "icon": "Shrimp",
+      "dishPhoto": "pranzo-assets/linguine-avocado-20261008.svg",
+      "photoLayout": "side",
+      "translations": {
+        "en": {
+          "name": "Linguine with shrimp*, courgette cream, avocado and lemon",
+          "description": "Linguine with courgette cream, shrimp* and avocado, scented with lemon."
+        },
+        "zh": {
+          "name": "虾仁*西葫芦酱牛油果柠檬细扁面",
+          "description": "细扁面配西葫芦酱、虾仁*和牛油果，带有清新柠檬香。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "Linguine pasta coated in smooth pale-green zucchini cream, small peeled shrimp, avocado pieces and a tiny amount of lemon zest. No tomato.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore",
+      "price": 10,
+      "description": "Straccetti di maiale con zucchine e carote in salsa piccante, accompagnati da riso bianco al vapore.",
       "allergens": [],
       "icon": "Beef",
-      "dishPhoto": "https://images.pexels.com/photos/8996122/pexels-photo-8996122.jpeg?auto=compress&cs=tinysrgb&w=640",
-      "photoLayout": "thumbnail",
+      "dishPhoto": "pranzo-assets/maiale-piccante-20261008.svg",
+      "photoLayout": "side",
       "translations": {
         "en": {
-          "name": "Chicken and aubergine strips with steamed white rice",
-          "description": "Chicken and aubergine strips served with steamed white rice."
+          "name": "Spicy pork strips with vegetables and steamed white rice",
+          "description": "Pork strips with courgettes and carrots in a spicy sauce, served with steamed white rice."
         },
         "zh": {
-          "name": "鸡肉茄子条配白米饭",
-          "description": "鸡肉与茄子条，配蒸白米饭。"
+          "name": "辣汁蔬菜猪肉条配白米饭",
+          "description": "猪肉条配西葫芦、胡萝卜和辣汁，佐蒸白米饭。"
         }
       },
       "photoSource": {
-        "type": "Pexels free stock photo",
-        "date": "2026-10-07",
-        "source": "https://www.pexels.com/photo/plate-of-white-rice-with-chicken-and-vegetable-8996122/",
-        "note": "Single plated chicken-and-rice dish; replaces the unrelated mixed platter."
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "Thin pork strips stir-fried with zucchini and carrot strips in a spicy sauce, with a separate compact mound of plain steamed white rice on the same plate. No chicken, no other vegetables.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Insalata tiepida di patate, gamberetti*, tentacoli e calamari",
+      "name": "Filetti di suino con crema di zucca e fichi",
       "price": 12,
-      "description": "Patate, gamberetti*, tentacoli e calamari, serviti tiepidi.",
+      "description": "Filetti di suino con crema di zucca e fichi, cipolla e burro.",
       "allergens": [
-        2,
+        7
+      ],
+      "icon": "Beef",
+      "dishPhoto": "pranzo-assets/suino-zucca-fichi-20261008.svg",
+      "photoLayout": "side",
+      "translations": {
+        "en": {
+          "name": "Pork fillets with pumpkin cream and figs",
+          "description": "Pork fillets with pumpkin cream and figs, onion and butter."
+        },
+        "zh": {
+          "name": "南瓜泥无花果猪里脊",
+          "description": "猪里脊配南瓜泥、无花果、洋葱和黄油。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "Three pork tenderloin medallions with smooth orange pumpkin cream and fig wedges, with onion cooked into a buttery sauce. No rice or potatoes.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Salmone con mandorle e noci, finocchi crudi all’aceto balsamico",
+      "price": 12,
+      "description": "Salmone con mandorle e noci, accompagnato da finocchi crudi conditi con aceto balsamico.",
+      "allergens": [
+        4,
+        8
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/salmone-mandorle-noci-20261008.svg",
+      "photoLayout": "side",
+      "translations": {
+        "en": {
+          "name": "Salmon with almonds and walnuts, raw fennel with balsamic vinegar",
+          "description": "Salmon with almonds and walnuts, served with raw fennel dressed with balsamic vinegar."
+        },
+        "zh": {
+          "name": "杏仁核桃三文鱼配意式香醋生茴香",
+          "description": "三文鱼配杏仁和核桃，佐意式香醋拌生茴香。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "One cooked salmon fillet topped with almond flakes and chopped walnuts, alongside thinly shaved RAW white fennel dressed sparingly with dark balsamic vinegar. No rice or potatoes.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Seppiline e calamari in umido con piselli e patate",
+      "price": 12,
+      "description": "Seppiline e calamari in umido con piselli, patate, pomodoro, cipolla e aglio.",
+      "allergens": [
         14
       ],
       "icon": "Shell",
-      "dishPhoto": "pranzo-assets/tentacoli-gamberetti-patate.webp",
-      "photoLayout": "thumbnail",
+      "dishPhoto": "pranzo-assets/seppie-calamari-20261008.svg",
+      "photoLayout": "side",
       "translations": {
         "en": {
-          "name": "Warm potato, shrimp*, tentacle and squid salad",
-          "description": "Potatoes, shrimp*, tentacles and squid, served warm."
+          "name": "Baby cuttlefish and squid stew with peas and potatoes",
+          "description": "Baby cuttlefish and squid stewed with peas, potatoes, tomato, onion and garlic."
         },
         "zh": {
-          "name": "温拌土豆、小虾仁*、触须和鱿鱼沙拉",
-          "description": "土豆、小虾仁*、触须和鱿鱼，温热食用。"
+          "name": "小墨鱼鱿鱼炖豌豆土豆",
+          "description": "小墨鱼和鱿鱼与豌豆、土豆、番茄、洋葱和大蒜炖煮。"
         }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-08",
+        "tool": "image_gen",
+        "prompt": "Small baby cuttlefish and squid rings in a rustic tomato stew with green peas, cubed potatoes, cooked onion and garlic. Cuttlefish bodies and curled short tentacles visible, squid rings identifiable. No shrimp, no mussels, no pasta.",
+        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant."
       }
     }
   ],
