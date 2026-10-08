@@ -258,7 +258,7 @@
       }
       const currentMinutes = currentRomeMinutes();
       if ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60)) {
-        window.alert('Stai prenotando al limite dell’orario utile per la prenotazione, ricordati di chiedere conferma al ristoratore.');
+        window.alert('Stai prenotando successivamente alla data valida per prenotare. Attendi la conferma specifica che l’ordine sia accettato dal ristoratore.');
       }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
