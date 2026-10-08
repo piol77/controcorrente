@@ -34,7 +34,7 @@
       "Salmon with almonds and walnuts, raw fennel with balsamic vinegar",
       "Salmon with almonds and walnuts, served with raw fennel dressed with balsamic vinegar."
     ],
-    "Seppiline e calamari in umido con piselli e patate": [
+    "Seppioline e calamari in umido con piselli e patate": [
       "Baby cuttlefish and squid stew with peas and potatoes",
       "Baby cuttlefish and squid stewed with peas, potatoes, tomato, onion and garlic."
     ]
@@ -68,7 +68,7 @@
       "杏仁核桃三文鱼配意式香醋生茴香",
       "三文鱼配杏仁和核桃，佐意式香醋拌生茴香。"
     ],
-    "Seppiline e calamari in umido con piselli e patate": [
+    "Seppioline e calamari in umido con piselli e patate": [
       "小墨鱼鱿鱼炖豌豆土豆",
       "小墨鱼和鱿鱼与豌豆、土豆、番茄、洋葱和大蒜炖煮。"
     ]
