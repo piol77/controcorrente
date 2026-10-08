@@ -192,7 +192,7 @@
       total.textContent = euro(sum);
       document.querySelector('[data-service-info]').innerHTML = isLunch()
         ? 'Pranzo: acqua, caffè e coperto inclusi. <strong>Attendere la conferma del Ristorante entro le 12 per considerare valido l’ordine.</strong>'
-        : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Il coperto serale è 1,50 € a persona; prenotando tavolo e menù entro le 18:00 è omaggio. <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong>';
+        : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. <strong>Solo per la cena:</strong> prenotando tavolo e menù entro le 18:00, il coperto di <strong>1,50 € è omaggio.</strong> <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong>';
       document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'cena.html';
     }
     render();
