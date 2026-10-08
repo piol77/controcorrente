@@ -8,6 +8,8 @@ Copia questo testo e completa soltanto la sezione e le modifiche:
 
 La fonte dei contenuti è `menu-data.json`. Dopo aver aggiornato i dati e inserito le foto, sincronizzare solo le sezioni necessarie:
 
+Gli avvisi specifici nel riepilogo sono dinamici: usare nel singolo piatto `minPortions` per un minimo richiesto e/o `orderNotice` per altre condizioni, senza ripetere il nome. Rivalutare o rimuovere questi campi a ogni variazione o sostituzione; non trasferire gli avvisi del vecchio piatto. Eliminando un piatto scompare automaticamente il suo avviso. Non inserire riferimenti fissi ai piatti in `ordine.html`.
+
 ```bash
 python3 tools/aggiorna-menu.py offerta
 python3 tools/aggiorna-menu.py bibite
