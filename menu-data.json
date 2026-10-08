@@ -176,6 +176,32 @@
         ],
         "icon": "Fish",
         "dishPhoto": "cena-salmone.webp"
+      },
+      {
+        "name": "Filetti di maiale con fichi su crema di zucca",
+        "price": 14,
+        "description": "Filetti di maiale con fichi, adagiati su una morbida crema di zucca.",
+        "allergens": [
+          7
+        ],
+        "icon": "Beef",
+        "dishPhoto": "cena-assets/maiale-fichi-zucca-20261008.svg",
+        "translations": {
+          "en": {
+            "name": "Pork fillets with figs on pumpkin cream",
+            "description": "Pork fillets with figs, served on smooth pumpkin cream."
+          },
+          "zh": {
+            "name": "无花果猪里脊配南瓜泥",
+            "description": "猪里脊配无花果，铺于绵滑南瓜泥之上。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-adapted user photo",
+          "date": "2026-10-08",
+          "tool": "image_gen",
+          "note": "User supplied pork and figs photo adapted to the ivory plate and blue tabletop of the dinner menu."
+        }
       }
     ]
   },
@@ -522,24 +548,29 @@
         }
       },
       {
-        "name": "Insalata tiepida di tentacoli, patate e gamberetti*",
-        "description": "Tentacoli e gamberetti* incontrano le patate in una delicata insalata tiepida.",
+        "name": "Seppie e calamari in umido con piselli",
+        "description": "Seppie e calamari in un delicato umido con piselli.",
         "allergens": [
-          2,
           14
         ],
         "icon": "Shell",
         "course": "Secondo",
-        "dishPhoto": "offerta-assets/tentacoli.webp",
+        "dishPhoto": "offerta-assets/seppie-calamari-piselli-20261008.svg",
         "translations": {
           "en": {
-            "name": "Warm Tentacle, Potato and Shrimp* Salad",
-            "description": "Tender tentacles and shrimp* with potatoes in a delicate warm salad."
+            "name": "Cuttlefish and squid stew with peas",
+            "description": "Cuttlefish and squid gently stewed with peas."
           },
           "zh": {
-            "name": "温拌触须土豆小虾仁*沙拉",
-            "description": "软嫩触须、小虾仁*和土豆组成温拌沙拉。"
+            "name": "墨鱼鱿鱼炖豌豆",
+            "description": "墨鱼和鱿鱼搭配豌豆，慢炖入味。"
           }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-08",
+          "tool": "image_gen",
+          "note": "Internet references inspected; generated to match both requested seafood and existing ivory plate on blue background. No potatoes."
         }
       }
     ]
