@@ -267,7 +267,13 @@
         'Orario richiesto: ' + data.get('orario'),
         'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
-      const whatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(lines.join('\n'));
+      const encodedMessage = encodeURIComponent(lines.join('\n'));
+      const webWhatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodedMessage;
+      // Android opens the app directly; the standard link remains the browser fallback.
+      const whatsappUrl = /Android/i.test(navigator.userAgent)
+        ? 'intent://send?phone=' + PHONE + '&text=' + encodedMessage
+          + '#Intent;scheme=whatsapp;S.browser_fallback_url=' + encodeURIComponent(webWhatsappUrl) + ';end'
+        : webWhatsappUrl;
       try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
       render();
       if (window.__DEMO_OPEN_WHATSAPP) window.__DEMO_OPEN_WHATSAPP(whatsappUrl); else window.location.href = whatsappUrl;
