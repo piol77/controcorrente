@@ -91,6 +91,7 @@ When Paolo asks to “change/update only the menu”, “vary the menu”, repla
 - Frozen markers are dynamic: reassess the affected ingredients on every menu edit and place `*` immediately after each applicable ingredient name.
 - Allergen numbers are dynamic: recalculate them from the actual changed ingredients every time, using only regional table numbers in parentheses and never sulphites.
 - Paolo supplies the remaining variable content (dishes, descriptions, prices, offers and other business wording). Correct grammar, spelling and style automatically while preserving the intended meaning and business terms.
+- Regola master permanente, confermata il 2026-10-08: correggere automaticamente gli errori di ortografia, grammatica, punteggiatura e stile nei nomi e nelle descrizioni dei piatti forniti da Paolo prima di pubblicarli. Usare un italiano corretto, naturale ed elegante, preservando significato, ingredienti, preparazione, quantità e prezzi. Sincronizzare il testo corretto con dati del menù, associazioni delle traduzioni e ordini, senza cambiare immagini, grafica o funzionamento. Esempio: «seppioline», non «seppiline».
 - Whenever a visible dish or offer price changes, update the matching preorder catalog/data in `preordine.js` in the same edit so quantities, summaries, totals and the WhatsApp message always use the new price.
 
 ### Lunch dish images
