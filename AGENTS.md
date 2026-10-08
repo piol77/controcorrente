@@ -56,6 +56,12 @@ This arrangement is part of the permanent visual master and must remain unchange
 - Preserve the cache-version updates in the relevant HTML whenever an approved board, stylesheet or preorder script changes, so visitors receive the new layout.
 
 ## Menu content rules
+### Avvisi specifici dei piatti — 2026-10-08
+- Gli avvisi del riepilogo legati a un piatto devono derivare dal piatto corrente in `menu-data.json`, mai da frasi fisse in `ordine.html` o da controlli sul nome del risotto.
+- Registrare nel singolo piatto `minPortions` (intero maggiore di 1, solo quando richiesto) e/o `orderNotice` (testo della condizione, senza ripetere il nome). `order-notices.js` usa il nome attuale e questi campi per generare gli avvisi, anche per pranzo, offerte e componenti del menù fisso.
+- A ogni sostituzione rivalutare questi campi: non ereditare le condizioni del vecchio piatto. Aggiornare o rimuovere i campi quando cambia la condizione; eliminando il piatto scompare anche il suo avviso. Non dedurre un minimo dal tipo di piatto.
+- Nessun campo pertinente significa nessun avviso specifico né spazio vuoto. Conservare separatamente gli avvisi generali. Questi metadati sono informativi e non modificano le policy di prenotazione o la validazione degli ordini.
+
 When Paolo asks to add, remove, rename or change a dish:
 1. Modify only the named dish(es)/field(s).
 2. Leave all other dishes, prices, wording, order and styling unchanged unless explicitly requested.
