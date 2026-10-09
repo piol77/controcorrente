@@ -4,3 +4,5 @@
 .student-demo-qr img{display:block;width:100%;height:auto;background:#fff}
 .student-demo-qr figcaption{margin-top:16px;color:var(--gold);line-height:1.6}
 .ranking-empty td{text-align:center;padding:24px 12px}
+
+.student-lunch-schedule{display:block;margin-top:18px;font-size:clamp(1.15rem,2.8vw,1.6rem);line-height:1.55;color:var(--gold);font-weight:400}

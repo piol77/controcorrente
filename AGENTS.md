@@ -5,7 +5,7 @@ This file is the permanent operating specification for AI agents working on the 
 
 ## Tessera Punti Pranzo — studenti, 2026-10-09
 - Voce «Tessera Punti Pranzo» subito sotto Club, prima di Allergeni, in tutte le pagine; pagina `tessera-punti-pranzo.html`. Conservare la voce durante ogni futura rigenerazione.
-- Grafica e struttura identiche al Club. Mostrare in grande «SOLO PER STUDENTI / SOLO A PRANZO».
+- Grafica e struttura identiche al Club. Mostrare in grande «SOLO PER STUDENTI» e nel titolo «Solo a pranzo / Da martedì a venerdì, esclusi i festivi». Accumulo punti e utilizzo sconti esclusivamente a pranzo da martedì a venerdì, esclusi i festivi.
 - Programma separato: 1 € effettivamente pagato a pranzo = 1 punto; ogni 100 punti disponibili = 5 € di sconto, utilizzabili dal pranzo successivo esclusivamente a pranzo.
 - Classifica studenti autonoma con pseudonimo, punti totali e sconti riscossi cumulativi. Non mescolare soci, punti o sconti con il Club.
 - Stesso meccanismo di tessere personali, QR, link non collegato dalla classifica e nome nel frammento. Seguire `.github/instructions/lunch-student-card.md` e il master QR Club. Non inventare iscritti; escludere la tessera dimostrativa dalla classifica.
