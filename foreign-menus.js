@@ -6,71 +6,79 @@
 
   const LUNCH={
   "en": {
-    "Gnocchetti sardi con patate, lenticchie e salsiccia": [
-      "Sardinian gnocchetti with potatoes, lentils and sausage",
-      "Sardinian pasta with tender potatoes, lentils and sausage."
+    "Linguine ai frutti di mare": [
+      "Linguine with seafood",
+      "Linguine with assorted seafood, including shrimp*."
     ],
-    "Riso saltato all’ananas": [
-      "Pineapple fried rice",
-      "Stir-fried rice with pineapple, egg, peas, onion, shrimp*, cooked ham and mushrooms."
+    "Tagliatelle con zucca, funghi e salsiccia": [
+      "Tagliatelle with pumpkin, mushrooms and sausage",
+      "Tagliatelle with pumpkin, mushrooms and sausage."
     ],
-    "Farfalle con zucchine, salmone fresco e pomodorini": [
-      "Farfalle with courgettes, fresh salmon and cherry tomatoes",
-      "Bow-tie pasta with courgettes, pieces of fresh salmon and cherry tomatoes."
+    "Spaghetti alla carbonara di mare con tonno e salmone": [
+      "Seafood carbonara spaghetti with tuna and salmon",
+      "Seafood carbonara spaghetti with tuna and salmon."
     ],
-    "Linguine con gamberetti* e crema di zucchine, avocado e profumo di limone": [
-      "Linguine with shrimp*, courgette cream, avocado and lemon",
-      "Linguine with courgette cream, shrimp* and avocado, scented with lemon."
+    "Conchigliette con patate, branzino e zafferano": [
+      "Small pasta shells with potatoes, sea bass and saffron",
+      "Small pasta shells with potatoes, sea bass and saffron."
     ],
-    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
-      "Spicy pork strips with vegetables and steamed white rice",
-      "Pork strips with courgettes and carrots in a spicy sauce, served with steamed white rice."
+    "Straccetti di pollo con sedano e riso bianco al vapore": [
+      "Chicken strips with celery and steamed white rice",
+      "Chicken strips with celery, served with steamed white rice."
     ],
-    "Filetti di suino con crema di zucca e fichi": [
-      "Pork fillets with pumpkin cream and figs",
-      "Pork fillets with pumpkin cream and figs, onion and butter."
+    "Branzino alla griglia con patate al forno": [
+      "Grilled sea bass with roast potatoes",
+      "Grilled sea bass served with oven-roasted potatoes."
     ],
-    "Salmone con mandorle e noci, finocchi crudi all’aceto balsamico": [
-      "Salmon with almonds and walnuts, raw fennel with balsamic vinegar",
-      "Salmon with almonds and walnuts, served with raw fennel dressed with balsamic vinegar."
+    "Salmone alla griglia con patate al forno": [
+      "Grilled salmon with roast potatoes",
+      "Grilled salmon served with oven-roasted potatoes."
     ],
-    "Seppioline e calamari in umido con piselli e patate": [
-      "Baby cuttlefish and squid stew with peas and potatoes",
-      "Baby cuttlefish and squid stewed with peas, potatoes, tomato, onion and garlic."
+    "Tonno rosso gratinato al forno con patate al forno": [
+      "Oven-baked red tuna au gratin with roast potatoes",
+      "Red tuna baked with a gratin crust, served with oven-roasted potatoes."
+    ],
+    "Insalata Cesarona": [
+      "Cesarona salad",
+      "Chicken, pancetta and shaved Grana cheese."
     ]
   },
   "zh": {
-    "Gnocchetti sardi con patate, lenticchie e salsiccia": [
-      "土豆扁豆香肠撒丁小贝壳面",
-      "撒丁小贝壳面搭配软糯土豆、扁豆和香肠。"
+    "Linguine ai frutti di mare": [
+      "海鲜细扁面",
+      "细扁面配多种海鲜，包括虾仁*。"
     ],
-    "Riso saltato all’ananas": [
-      "菠萝炒饭",
-      "米饭配菠萝、鸡蛋、豌豆、洋葱、虾仁*、熟火腿和蘑菇。"
+    "Tagliatelle con zucca, funghi e salsiccia": [
+      "南瓜蘑菇香肠宽面",
+      "宽面配南瓜、蘑菇和香肠。"
     ],
-    "Farfalle con zucchine, salmone fresco e pomodorini": [
-      "西葫芦鲜三文鱼小番茄蝴蝶面",
-      "蝴蝶面配西葫芦、鲜三文鱼块和小番茄。"
+    "Spaghetti alla carbonara di mare con tonno e salmone": [
+      "金枪鱼三文鱼海鲜卡邦尼意面",
+      "卡邦尼意大利细面配金枪鱼和三文鱼。"
     ],
-    "Linguine con gamberetti* e crema di zucchine, avocado e profumo di limone": [
-      "虾仁*西葫芦酱牛油果柠檬细扁面",
-      "细扁面配西葫芦酱、虾仁*和牛油果，带有清新柠檬香。"
+    "Conchigliette con patate, branzino e zafferano": [
+      "土豆海鲈鱼藏红花小贝壳面",
+      "小贝壳面配土豆、海鲈鱼和藏红花。"
     ],
-    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
-      "辣汁蔬菜猪肉条配白米饭",
-      "猪肉条配西葫芦、胡萝卜和辣汁，佐蒸白米饭。"
+    "Straccetti di pollo con sedano e riso bianco al vapore": [
+      "芹菜鸡肉条配白米饭",
+      "鸡肉条配芹菜，佐蒸白米饭。"
     ],
-    "Filetti di suino con crema di zucca e fichi": [
-      "南瓜泥无花果猪里脊",
-      "猪里脊配南瓜泥、无花果、洋葱和黄油。"
+    "Branzino alla griglia con patate al forno": [
+      "烤海鲈鱼配烤土豆",
+      "炭烤海鲈鱼，佐烤土豆。"
     ],
-    "Salmone con mandorle e noci, finocchi crudi all’aceto balsamico": [
-      "杏仁核桃三文鱼配意式香醋生茴香",
-      "三文鱼配杏仁和核桃，佐意式香醋拌生茴香。"
+    "Salmone alla griglia con patate al forno": [
+      "烤三文鱼配烤土豆",
+      "炭烤三文鱼，佐烤土豆。"
     ],
-    "Seppioline e calamari in umido con piselli e patate": [
-      "小墨鱼鱿鱼炖豌豆土豆",
-      "小墨鱼和鱿鱼与豌豆、土豆、番茄、洋葱和大蒜炖煮。"
+    "Tonno rosso gratinato al forno con patate al forno": [
+      "焗烤红金枪鱼配烤土豆",
+      "红金枪鱼焗烤至表面金黄，佐烤土豆。"
+    ],
+    "Insalata Cesarona": [
+      "Cesarona沙拉",
+      "鸡肉、意式培根和Grana奶酪薄片。"
     ]
   }
 };
@@ -175,3 +183,4 @@
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
+
