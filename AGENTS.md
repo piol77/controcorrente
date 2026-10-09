@@ -306,3 +306,6 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - La promozione del coperto omaggio per prenotazione di tavolo e menù entro le ore 18:00 vale **esclusivamente per la cena**, non per il pranzo, neppure nei giorni festivi.
 - In ogni pagina pubblica che la menziona, mantenere identica questa frase, senza parafrasi: **«Prenotando tavolo e menù di cena, entro le 18, il coperto di 1,50 € è omaggio.»**
 - Porre in rilievo in grassetto solo le parole **«tavolo e menù»** nella frase. Preservare lo stesso testo e la stessa enfasi grafica nelle pagine News, Contatti, Menù cena e Riepilogo ordine, incluso il testo dinamico generato da `preordine.js`. Nelle Novità, porre il riquadro pranzo sopra quello cena, con gli stessi pulsanti e con l’avviso di conferma sotto ciascuno; i due menù mostrano il rispettivo riquadro per ultimo, senza pulsanti. Aggiornare tutti i punti insieme durante ogni futura variazione della promozione. Non confondere l'orario massimo per aderire alla promozione (18:00) con la fascia di ingresso per cena (19:00–22:30), né con l'orario di conferma entro le 18:30.
+
+### Carbonara — allergene latte/formaggio, 2026-10-09
+- Ogni carbonara, sia di mare sia classica, deve riportare anche l’allergene 07 con il consueto simbolo del latte/formaggio.
