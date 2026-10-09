@@ -1,0 +1,6 @@
+/* Solo Tessera Punti Pranzo: il resto della grafica usa il master Club. */
+.student-lunch-only{font-size:clamp(1.3rem,3.5vw,1.8rem);line-height:1.5;padding:14px 22px;max-width:100%;letter-spacing:.035em}
+.student-demo-qr{width:min(100%,360px);margin:24px auto;padding:18px;background:var(--panel);border:1px solid var(--gold);border-radius:14px;text-align:center}
+.student-demo-qr img{display:block;width:100%;height:auto;background:#fff}
+.student-demo-qr figcaption{margin-top:16px;color:var(--gold);line-height:1.6}
+.ranking-empty td{text-align:center;padding:24px 12px}

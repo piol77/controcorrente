@@ -3,6 +3,13 @@
 ## Purpose
 This file is the permanent operating specification for AI agents working on the Controcorrente restaurant website. Read it before changing code, content, images, CSS, navigation, publishing configuration, or repository structure.
 
+## Tessera Punti Pranzo — studenti, 2026-10-09
+- Voce «Tessera Punti Pranzo» subito sotto Club, prima di Allergeni, in tutte le pagine; pagina `tessera-punti-pranzo.html`. Conservare la voce durante ogni futura rigenerazione.
+- Grafica e struttura identiche al Club. Mostrare in grande «SOLO PER STUDENTI / SOLO A PRANZO».
+- Programma separato: 1 € effettivamente pagato a pranzo = 1 punto; ogni 100 punti disponibili = 5 € di sconto, utilizzabili dal pranzo successivo esclusivamente a pranzo.
+- Classifica studenti autonoma con pseudonimo, punti totali e sconti riscossi cumulativi. Non mescolare soci, punti o sconti con il Club.
+- Stesso meccanismo di tessere personali, QR, link non collegato dalla classifica e nome nel frammento. Seguire `.github/instructions/lunch-student-card.md` e il master QR Club. Non inventare iscritti; escludere la tessera dimostrativa dalla classifica.
+
 ## Core rule: minimal, surgical changes
 - Change only what Paolo explicitly requests.
 - Do not redesign, rewrite, reorganize, rename, “improve”, modernize, or clean up unrelated working parts.
@@ -309,3 +316,4 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 
 ### Carbonara — allergene latte/formaggio, 2026-10-09
 - Ogni carbonara, sia di mare sia classica, deve riportare anche l’allergene 07 con il consueto simbolo del latte/formaggio.
+
