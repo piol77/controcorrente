@@ -64,30 +64,29 @@
         "dishPhoto": "cena-conchigliette.webp"
       },
       {
-        "name": "Orecchiette fresche con zucca, gorgonzola e noci",
+        "name": "Risotto con gorgonzola e pere",
         "price": 12.5,
-        "description": "Orecchiette fresche con la dolcezza della zucca, gorgonzola cremoso e noci.",
+        "description": "Risotto cremoso con gorgonzola e la dolcezza delle pere.",
         "allergens": [
-          1,
-          7,
-          8
+          7
         ],
-        "icon": "Wheat",
-        "dishPhoto": "cena-assets/orecchiette-zucca-gorgonzola-noci-20261006.webp",
+        "icon": "CookingPot",
+        "dishPhoto": "cena-assets/risotto-gorgonzola-pere-20261009.webp",
         "translations": {
           "en": {
-            "name": "Fresh orecchiette with pumpkin, gorgonzola and walnuts",
-            "description": "Fresh orecchiette with sweet pumpkin, creamy gorgonzola and walnuts."
+            "name": "Risotto with gorgonzola and pears",
+            "description": "Creamy risotto with gorgonzola cheese and sweet pears."
           },
           "zh": {
-            "name": "南瓜戈贡佐拉奶酪核桃鲜猫耳面",
-            "description": "新鲜猫耳面搭配香甜南瓜、绵滑戈贡佐拉奶酪与核桃。"
+            "name": "戈贡佐拉奶酪梨烩饭",
+            "description": "绵滑意式烩饭，搭配戈贡佐拉奶酪与清甜的梨。"
           }
         },
         "photoSource": {
           "type": "AI-generated illustration",
-          "date": "2026-10-06",
-          "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."
+          "date": "2026-10-09",
+          "tool": "image_gen",
+          "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
         }
       },
       {
@@ -116,6 +115,33 @@
           "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients.",
           "edit": "Added a small amount of tomato to the approved photograph while preserving its visual style, plate and background."
         }
+      },
+      {
+        "name": "Linguine al nero di seppia",
+        "price": 13,
+        "description": "Linguine avvolte in un intenso e vellutato condimento al nero di seppia.",
+        "allergens": [
+          1,
+          14
+        ],
+        "icon": "Shell",
+        "dishPhoto": "cena-assets/linguine-nero-seppia-20261009.webp",
+        "translations": {
+          "en": {
+            "name": "Linguine with cuttlefish ink",
+            "description": "Linguine coated in a rich, silky cuttlefish ink sauce."
+          },
+          "zh": {
+            "name": "墨鱼汁扁意面",
+            "description": "扁意面裹上浓郁丝滑的墨鱼汁酱。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-09",
+          "tool": "image_gen",
+          "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
+        }
       }
     ],
     "secondi": [
@@ -133,39 +159,58 @@
         "dishPhoto": "cena-frittura.webp"
       },
       {
-        "name": "Tonno rosso alla mediterranea con patate al forno",
+        "name": "Tonno fresco gratinato alle erbette aromatiche con patate al forno",
         "price": 14,
-        "description": "Tonno rosso con pomodoro, olive e capperi, accompagnato da patate al forno.",
+        "description": "Tonno fresco gratinato al forno alle erbette aromatiche, con patate al forno.",
         "allergens": [
+          1,
           4
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/tonno-mediterranea-20261006.webp",
+        "dishPhoto": "cena-assets/tonno-gratinato-erbette-patate-20261009.webp",
         "translations": {
           "en": {
-            "name": "Mediterranean-style bluefin tuna with roasted potatoes",
-            "description": "Bluefin tuna with tomato, olives and capers, served with roasted potatoes."
+            "name": "Fresh tuna baked au gratin with aromatic herbs and roasted potatoes",
+            "description": "Fresh tuna oven-baked with an aromatic herb gratin crust, served with roasted potatoes."
           },
           "zh": {
-            "name": "地中海风味蓝鳍金枪鱼配烤土豆",
-            "description": "蓝鳍金枪鱼配番茄、橄榄和酸豆，佐烤土豆。"
+            "name": "香草焗鲜金枪鱼配烤土豆",
+            "description": "鲜金枪鱼覆以香草脆皮焗烤，搭配烤土豆。"
           }
         },
         "photoSource": {
           "type": "AI-generated illustration",
-          "date": "2026-10-06",
-          "referenceSearch": "Internet images inspected; available examples contained additional ingredients or different pasta/side dishes. Generated to match the supplied ingredients."
+          "date": "2026-10-09",
+          "tool": "image_gen",
+          "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
         }
       },
       {
-        "name": "Filetto di branzino al limone",
+        "name": "Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico",
         "price": 14,
-        "description": "Branzino alla griglia, limone e prezzemolo, con verza viola cruda.",
+        "description": "Filetti di branzino in crosta di mandorle, con verza viola cruda condita all’aceto balsamico.",
         "allergens": [
-          4
+          4,
+          8
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-branzino.webp"
+        "dishPhoto": "cena-assets/branzino-mandorle-verza-viola-20261009.webp",
+        "translations": {
+          "en": {
+            "name": "Almond-crusted sea bass fillets with raw purple cabbage and balsamic vinegar",
+            "description": "Sea bass fillets in an almond crust, with raw purple cabbage dressed with balsamic vinegar."
+          },
+          "zh": {
+            "name": "杏仁脆皮海鲈鱼柳配香醋紫甘蓝",
+            "description": "海鲈鱼柳覆以杏仁脆皮，配意大利香醋调味的生紫甘蓝。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-09",
+          "tool": "image_gen",
+          "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
+        }
       },
       {
         "name": "Trancio di salmone all’arancia e pepe rosa",
@@ -490,28 +535,29 @@
       }
     },
     {
-      "name": "Gnocchetti sardi con patate, salsiccia e zafferano",
+      "name": "Parmigiana di patate con prosciutto e scamorza",
       "price": 10,
-      "description": "Patate e salsiccia avvolte dalle note aromatiche dello zafferano.",
+      "description": "Strati di patate, prosciutto e scamorza, gratinati al forno.",
       "allergens": [
-        1
+        7
       ],
-      "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/gnocchetti-patate-zafferano-salsiccia-20261006.webp",
+      "icon": "CookingPot",
+      "dishPhoto": "offerta-assets/parmigiana-patate-prosciutto-scamorza-20261009.webp",
       "translations": {
         "en": {
-          "name": "Sardinian gnocchetti with potatoes, saffron and sausage",
-          "description": "Potatoes and sausage with the aromatic warmth of saffron."
+          "name": "Potato parmigiana with ham and scamorza",
+          "description": "Layers of potatoes, ham and scamorza cheese, baked until golden."
         },
         "zh": {
-          "name": "土豆藏红花香肠撒丁小贝壳面",
-          "description": "土豆与香肠，融入藏红花的芬芳。"
+          "name": "火腿斯卡莫扎奶酪焗土豆",
+          "description": "土豆片、火腿与斯卡莫扎奶酪层层叠放，烤至金黄。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustration",
-        "date": "2026-10-06",
-        "referenceSearch": "Internet references inspected; ingredients or sides differed. Generated to match supplied recipe."
+        "date": "2026-10-09",
+        "tool": "image_gen",
+        "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
       }
     },
     {
@@ -533,6 +579,32 @@
           "name": "蔬菜肉馅饺子（5个）",
           "description": "五个东方风味饺子，内馅为肉和皱叶甘蓝。"
         }
+      }
+    },
+    {
+      "name": "Cozze di Sardegna alla marinara con poco pomodoro",
+      "price": 10,
+      "description": "Cozze di Sardegna alla marinara, con un leggero tocco di pomodoro.",
+      "allergens": [
+        14
+      ],
+      "icon": "Shell",
+      "dishPhoto": "offerta-assets/cozze-sardegna-marinara-20261009.webp",
+      "translations": {
+        "en": {
+          "name": "Sardinian mussels alla marinara with a little tomato",
+          "description": "Sardinian mussels alla marinara, with a light touch of tomato."
+        },
+        "zh": {
+          "name": "少量番茄海员风味撒丁岛贻贝",
+          "description": "撒丁岛贻贝，以海员风味烹制，加入少量番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-09",
+        "tool": "image_gen",
+        "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
       }
     }
   ],

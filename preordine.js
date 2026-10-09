@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Orecchiette fresche con zucca, gorgonzola e noci", 12.5], ["Fusilli con melanzane, tonno fresco e poco pomodoro", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Tonno rosso alla mediterranea con patate al forno", 14], ["Filetto di branzino al limone", 14], ["Trancio di salmone all’arancia e pepe rosa", 14], ["Filetti di maiale con fichi su crema di zucca", 14]]};
+  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto con gorgonzola e pere", 12.5], ["Fusilli con melanzane, tonno fresco e poco pomodoro", 12.5], ["Linguine al nero di seppia", 13]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Tonno fresco gratinato alle erbette aromatiche con patate al forno", 14], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Trancio di salmone all’arancia e pepe rosa", 14], ["Filetti di maiale con fichi su crema di zucca", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
@@ -291,3 +291,4 @@
     if (page === 'ordine') setupSummary();
   });
 })();
+
