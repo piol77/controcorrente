@@ -5,10 +5,12 @@
   const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto con gorgonzola e pere", 12.5], ["Fusilli con melanzane, tonno fresco e poco pomodoro", 12.5], ["Linguine al nero di seppia", 13]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Tonno fresco gratinato alle erbette aromatiche con patate al forno", 14], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Filetti di salmone all’arancia e pepe rosa", 14], ["Filetti di maiale con fichi su crema di zucca", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
+  const minimumQuantity = (section, index) =>
+    /^Risotto con gorgonzola e pere$/i.test(catalog[section]?.[Number(index)]?.[0] || '') ? 2 : 1;
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
     return Object.fromEntries(Object.entries(cart).filter(([key, item]) =>
-      !key.startsWith('bibite-vini:') && item && Number.isInteger(item.qty) && item.qty > 0 && Number.isFinite(item.price)).map(([key,item])=>{ const [section,index]=key.split(':'); const current=catalog[section]?.[Number(index)]; return [key,current ? {...item,name:current[0],price:current[1]} : item]; }));
+      !key.startsWith('bibite-vini:') && item && Number.isInteger(item.qty) && item.qty > 0 && Number.isFinite(item.price)).map(([key,item])=>{ const [section,index]=key.split(':'); const current=catalog[section]?.[Number(index)]; return [key,current ? {...item,qty:Math.max(minimumQuantity(section,index),item.qty),name:current[0],price:current[1]} : item]; }));
   } catch (_) { return {}; } };
   const save = cart => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (_) { /* Browser storage may be disabled. */ } };
   const id = (section, index) => section + ':' + index;
@@ -110,7 +112,8 @@
     count.setAttribute('aria-label', 'Quantità');
     function refresh() { count.textContent = read()[key]?.qty || 0; updateBadge(); }
     for (const [button, delta] of [[minus, -1], [plus, 1]]) button.addEventListener('click', () => {
-      const cart = read(), next = Math.max(0, Math.min(99, (cart[key]?.qty || 0) + delta));
+      const cart = read(), current = cart[key]?.qty || 0, minimum = minimumQuantity(section, index);
+      const next = delta > 0 ? Math.min(99, current ? current + 1 : minimum) : (current <= minimum ? 0 : current - 1);
       if (delta > 0 && Object.keys(cart).some(k => service(k.split(':')[0]) !== service(section))) {
         window.alert('Pranzo e cena richiedono ordini separati. Completa la richiesta già iniziata prima di aggiungere questi piatti.'); return;
       }
@@ -293,4 +296,5 @@
     if (page === 'ordine') setupSummary();
   });
 })();
+
 

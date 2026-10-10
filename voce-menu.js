@@ -91,7 +91,7 @@
       return 'Consulta gli allergeni indicati accanto ai piatti. Per allergie o esigenze alimentari, chiedi conferma al ristorante prima di ordinare.';
     }
     if (/\b(prenot\w*|ordinare|ordinazione|ordine)\b/.test(q) && !/\b(cosa|piatti|menu|quanto)\b/.test(q)) {
-      return 'Per prenotare o ordinare usa i contatti del sito e attendi la conferma del ristorante.';
+      return 'Non posso effettuare prenotazioni o ordini. Per contattare il ristorante usa la pagina Contatti del sito.';
     }
     if (/\b(togliere|togli|sostituire|sostituisci|senza|cambiare ingrediente)\b/.test(q)) {
       return 'Per togliere o sostituire un ingrediente, chiedi conferma al ristorante prima di ordinare.';
