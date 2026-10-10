@@ -27,6 +27,8 @@
 .locale-welcome [data-welcome-video]{display:block;max-width:380px;width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--gold);background:#07121d;margin-top:18px;border-radius:3px}
 .locale-welcome [data-welcome-video][hidden]{display:none}
 .locale-welcome [data-welcome-status]{color:var(--gold);font-weight:600;min-height:1.8em}
+.locale-welcome .welcome-dialogue{border:1px solid var(--line);padding:12px 16px;overflow-wrap:anywhere}
+.locale-welcome .welcome-dialogue p{margin:8px 0}
 </style>
 </head>
 <body>
@@ -50,20 +52,7 @@
   </section>
 
 
-  <section class="offer locale-welcome" id="accoglienza" aria-labelledby="accoglienza-title">
-    <h2 id="accoglienza-title">Accoglienza vocale</h2>
-    <p class="subtitle">Per un dispositivo del ristorante puntato verso l’ingresso. Attivando la videocamera, il sistema rileva soltanto la presenza di un volto, senza identificare le persone né registrare immagini.</p>
-    <p class="welcome-copy">«Benvenuti al Controcorrente, troverete esposto nel locale il QR code per accedere al sito con i menu relativi al pranzo, alla cena e anche qualche offerta del giorno.»</p>
-    <div class="welcome-controls">
-      <button type="button" class="button" data-welcome-start>Attiva fotocamera e saluto</button>
-      <button type="button" class="button" data-welcome-stop disabled>Disattiva</button>
-      <button type="button" class="button" data-welcome-test>Prova la voce</button>
-      <button type="button" class="button" data-welcome-flip disabled>Cambia fotocamera</button>
-    </div>
-    <p data-welcome-status role="status" aria-live="polite">Accoglienza disattivata. La videocamera è spenta.</p>
-    <video data-welcome-video autoplay muted playsinline hidden aria-label="Anteprima della fotocamera per l’accoglienza"></video>
-    <p class="small-meta">Occorre autorizzare la fotocamera e mantenere questa pagina aperta in primo piano. Il saluto non si ripete mentre la stessa presenza rimane inquadrata; si riattiva quando l’inquadratura si libera. Funziona nel browser del dispositivo, non nella chat di ChatGPT.</p>
-  </section>
+
 
   <section class="locale-gallery-groups" aria-label="Anteprime fotografiche">
     <article class="locale-gallery-group">
@@ -174,6 +163,30 @@
     <a class="button" href="https://www.google.com/maps/place/ControCorrente+Daily+Menu/@45.0642126,7.6528871,17z/data=!4m8!3m7!1s0x47886d1e2cab6a5b:0x2796260e99e48dda!8m2!3d45.0642126!4d7.6528871!9m1!1b1!16s%2Fg%2F1pp2tzkkt?entry=ttu&amp;g_ep=EgoyMDI2MDkyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Lascia una recensione</a>
     <p class="locale-joke">Solo se positiva, ovviamente… 😂<br><span>Scherziamo: scrivi quello che pensi davvero!</span></p>
   </section>
+  <section class="offer locale-welcome" id="accoglienza" aria-labelledby="accoglienza-title">
+    <h2 id="accoglienza-title">Accoglienza vocale</h2>
+    <p class="subtitle">Per un dispositivo del ristorante puntato verso l’ingresso. Attivando la videocamera, il sistema rileva soltanto la presenza di un volto, senza identificare le persone né registrare immagini.</p>
+    <p class="welcome-copy">«Benvenuti al Controcorrente, troverete esposto nel locale il QR code per accedere al sito con i menu relativi al pranzo, alla cena e anche qualche offerta del giorno.»</p>
+    <div class="welcome-controls">
+      <button type="button" class="button" data-welcome-start>Attiva videocamera e benvenuto</button>
+      <button type="button" class="button" data-welcome-stop disabled>Disattiva</button>
+      <button type="button" class="button" data-welcome-test>Ascolta il benvenuto</button>
+      <button type="button" class="button" data-welcome-flip disabled>Cambia fotocamera</button>
+      <button type="button" class="button" data-welcome-talk aria-pressed="false" aria-describedby="welcome-voice-help">Parla dei menù</button>
+      <button type="button" class="button" data-welcome-mic-stop disabled>Spegni microfono</button>
+      <button type="button" class="button" data-welcome-quiet>Ferma voce</button>
+    </div>
+    <p id="welcome-voice-help" class="small-meta">Premi «Parla dei menù» e chiedi, per esempio: «Quali sono i primi a cena?», «Quanto costa il salmone?», «Cosa comprendono i menù fissi?» oppure «Benvenuto». La voce parla soltanto di menù, prezzi, offerte, QR e contatti di Controcorrente. Il microfono si spegne dopo ogni domanda o dopo 15 secondi.</p>
+    <p class="small-meta">Assistente automatico con risposte predefinite, lette dai menù pubblicati. Per un’altra domanda premi di nuovo il microfono.</p>
+    <div class="welcome-dialogue" aria-live="polite">
+      <p><strong>La tua domanda:</strong> <span data-welcome-question>—</span></p>
+      <p><strong>La risposta:</strong> <span data-welcome-answer>—</span></p>
+    </div>
+    <p data-welcome-voice-status role="status" aria-live="polite">Microfono spento.</p>
+    <p data-welcome-status role="status" aria-live="polite">Accoglienza disattivata. La videocamera è spenta.</p>
+    <video data-welcome-video autoplay muted playsinline hidden aria-label="Anteprima della fotocamera per l’accoglienza"></video>
+    <p class="small-meta">Occorre autorizzare la fotocamera e mantenere questa pagina aperta in primo piano. Il saluto non si ripete mentre la stessa presenza rimane inquadrata; si riattiva quando l’inquadratura si libera. Non serve un account. Questa funzione non permette di modificare il sito. Le immagini sono elaborate sul dispositivo e non vengono salvate o inviate; per le richieste vocali il browser può usare il proprio servizio online.</p>
+  </section>
 </main>
 
 <footer>
@@ -185,7 +198,8 @@
 <script src="ui.js?v=20261003-nautica3"></script>
 <script src="site-session.js?v=20261003-nautica3"></script>
 <script src="locale-gallery.js?v=20261005-2gallery" defer></script>
-<script src="accoglienza.js?v=20261010-1" defer></script>
+<script src="voce-menu.js?v=20261010-1" defer></script>
+<script src="accoglienza.js?v=20261010-2" defer></script>
 
 <script>
 (() => {
@@ -233,4 +247,3 @@
 </script>
 </body>
 </html>
-

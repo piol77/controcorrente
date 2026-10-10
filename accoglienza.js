@@ -7,6 +7,12 @@
   const stopButton = root.querySelector('[data-welcome-stop]');
   const testButton = root.querySelector('[data-welcome-test]');
   const flipButton = root.querySelector('[data-welcome-flip]');
+  const talkButton = root.querySelector('[data-welcome-talk]');
+  const micStopButton = root.querySelector('[data-welcome-mic-stop]');
+  const voiceStatus = root.querySelector('[data-welcome-voice-status]');
+  const questionText = root.querySelector('[data-welcome-question]');
+  const answerText = root.querySelector('[data-welcome-answer]');
+  const quietButton = root.querySelector('[data-welcome-quiet]');
   const video = root.querySelector('[data-welcome-video]');
   const status = root.querySelector('[data-welcome-status]');
   const MESSAGE = 'Benvenuti al Controcorrente, troverete esposto nel locale il QR code per accedere al sito con i menu relativi al pranzo, alla cena e anche qualche offerta del giorno.';
@@ -25,19 +31,26 @@
   let facingMode = 'user';
   let consecutiveFaces = 0;
   let maxFacesInVisit = 0;
+  let observedFaces = 0;
   let greetedVisit = false;
   let absentSince = null;
   let lastGreeting = -Infinity;
+  let recognition = null;
+  let micTimer = null;
+  let listening = false;
+  let replying = false;
+  let voiceRequest = 0;
+  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
   function show(message) { status.textContent = message; }
 
-  function sayWelcome() {
+  function sayWelcome(message = MESSAGE, fromVoice = false) {
     if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
       show('Volto rilevato, ma la sintesi vocale non è supportata dal browser.');
-      return;
+      return false;
     }
-    if (window.speechSynthesis.speaking || window.speechSynthesis.pending) return;
-    const utterance = new SpeechSynthesisUtterance(MESSAGE);
+    if (listening || (replying && !fromVoice) || window.speechSynthesis.speaking || window.speechSynthesis.pending) return false;
+    const utterance = new SpeechSynthesisUtterance(message);
     utterance.lang = 'it-IT';
     utterance.rate = 0.92;
     utterance.volume = 1;
@@ -46,21 +59,31 @@
       voices.find(voice => voice.lang.toLowerCase().startsWith('it'));
     if (italian) utterance.voice = italian;
     utterance.onerror = () => {
+      if (fromVoice) replying = false;
       if (active) show('Voce non disponibile: controlla audio e impostazioni del browser.');
     };
     window.speechSynthesis.speak(utterance);
-    show('Volto rilevato: messaggio di benvenuto pronunciato.');
+    utterance.onstart = () => show(fromVoice ? 'Risposta vocale in riproduzione.' : 'Messaggio di benvenuto in riproduzione.');
+    utterance.onend = () => {
+      if (fromVoice) replying = false;
+      show(active
+      ? 'Accoglienza attiva: in attesa di un nuovo arrivo.'
+      : 'Risposta terminata. La videocamera è spenta.');
+    };
+    return true;
   }
 
   function resetVisit() {
     consecutiveFaces = 0;
     maxFacesInVisit = 0;
+    observedFaces = 0;
     greetedVisit = false;
     absentSince = null;
     lastGreeting = -Infinity;
   }
 
   function updateDetection(count, now) {
+    observedFaces = count;
     if (count === 0) {
       consecutiveFaces = 0;
       if (absentSince === null) absentSince = now;
@@ -74,12 +97,11 @@
     consecutiveFaces += 1;
     if (consecutiveFaces < 2) return;
     const newArrival = !greetedVisit || count > maxFacesInVisit;
-    if (newArrival && now - lastGreeting >= MIN_GREETING_INTERVAL_MS) {
+    if (newArrival && now - lastGreeting >= MIN_GREETING_INTERVAL_MS && sayWelcome()) {
       greetedVisit = true;
       lastGreeting = now;
-      sayWelcome();
+      maxFacesInVisit = Math.max(maxFacesInVisit, count);
     }
-    maxFacesInVisit = Math.max(maxFacesInVisit, count);
   }
 
   function runDetector(token) {
@@ -99,10 +121,16 @@
 
   async function requestWakeLock() {
     if (!('wakeLock' in navigator) || document.hidden || !active) return;
-    try { wakeLock = await navigator.wakeLock.request('screen'); } catch (_) { /* opzionale */ }
+    try {
+      const lock = await navigator.wakeLock.request('screen');
+      if (!active || document.hidden) { await lock.release(); return; }
+      if (wakeLock && wakeLock !== lock) await wakeLock.release();
+      wakeLock = lock;
+    } catch (_) { /* opzionale */ }
   }
 
   function stop() {
+    stopListening();
     session += 1;
     active = false;
     if (timer !== null) { clearTimeout(timer); timer = null; }
@@ -121,6 +149,85 @@
     flipButton.disabled = true;
     show('Accoglienza disattivata. La videocamera è spenta.');
     resetVisit();
+  }
+
+  function stopListening(message) {
+    voiceRequest += 1;
+    replying = false;
+    const current = recognition;
+    recognition = null;
+    listening = false;
+    if (micTimer !== null) { clearTimeout(micTimer); micTimer = null; }
+    if (current) {
+      current.onresult = current.onerror = current.onend = current.onstart = null;
+      current.abort();
+    }
+    talkButton.disabled = !Recognition;
+    micStopButton.disabled = true;
+    talkButton.setAttribute('aria-pressed', 'false');
+    voiceStatus.textContent = message || 'Microfono spento.';
+  }
+
+  function listen() {
+    if (!Recognition || listening) return;
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    const current = new Recognition();
+    recognition = current;
+    listening = true;
+    talkButton.disabled = true;
+    micStopButton.disabled = false;
+    talkButton.setAttribute('aria-pressed', 'true');
+    current.lang = 'it-IT';
+    current.continuous = false;
+    current.interimResults = false;
+    current.maxAlternatives = 1;
+    voiceStatus.textContent = 'Autorizza il microfono, poi chiedi del menù o del benvenuto.';
+    current.onstart = () => {
+      if (recognition === current) voiceStatus.textContent = 'Ti ascolto: puoi chiedere dei menù, dei prezzi o il benvenuto.';
+    };
+    current.onresult = event => {
+      if (recognition !== current) return;
+      const phrase = event.results[event.resultIndex][0].transcript;
+      questionText.textContent = phrase;
+      stopListening('Richiesta ricevuta. Microfono spento; preparo la risposta.');
+      const request = voiceRequest;
+      replying = true;
+      const reply = window.ControcorrenteMenuVoice?.answer(phrase) || Promise.resolve('La voce dei menù non è disponibile. Ricarica la pagina.');
+      Promise.resolve(reply).then(answer => {
+        if (request !== voiceRequest || document.hidden) return;
+        const message = answer === 'WELCOME' ? MESSAGE : answer;
+        answerText.textContent = message;
+        voiceStatus.textContent = 'Microfono spento. Premi «Parla dei menù» per un’altra domanda.';
+        if (sayWelcome(message, true) && answer === 'WELCOME' && active) {
+          greetedVisit = true;
+          lastGreeting = performance.now();
+          maxFacesInVisit = Math.max(maxFacesInVisit, observedFaces);
+        }
+        // Nessuna ripetizione automatica se la voce non è disponibile.
+        if (!window.speechSynthesis?.speaking && !window.speechSynthesis?.pending) replying = false;
+      }).catch(() => {
+        if (request !== voiceRequest) return;
+        replying = false;
+        voiceStatus.textContent = 'Risposta non disponibile. Consulta i menù del sito.';
+      });
+    };
+    current.onerror = event => {
+      if (recognition !== current) return;
+      const messages = {
+        'not-allowed': 'Permesso microfono negato. Autorizzalo nelle impostazioni del browser.',
+        'service-not-allowed': 'Riconoscimento vocale non disponibile. Usa «Ascolta il benvenuto».',
+        'audio-capture': 'Microfono non disponibile sul dispositivo.',
+        'network': 'Connessione del servizio vocale non riuscita. Usa «Ascolta il benvenuto».',
+        'no-speech': 'Non ho sentito la richiesta. Premi il pulsante e riprova.'
+      };
+      stopListening(messages[event.error] || 'Richiesta vocale interrotta. Microfono spento.');
+    };
+    current.onend = () => {
+      if (recognition === current) stopListening('Ascolto terminato. Microfono spento.');
+    };
+    micTimer = setTimeout(() => stopListening('Tempo di ascolto terminato. Microfono spento.'), 15000);
+    try { current.start(); }
+    catch (_) { stopListening('Impossibile attivare il microfono. Usa «Ascolta il benvenuto».'); }
   }
 
   async function start() {
@@ -180,16 +287,29 @@
   startButton.addEventListener('click', start);
   stopButton.addEventListener('click', stop);
   testButton.addEventListener('click', () => {
+    stopListening();
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     sayWelcome();
     if (!active) show('Test del messaggio: per il rilevamento, attiva la fotocamera.');
   });
+  talkButton.addEventListener('click', listen);
+  quietButton.addEventListener('click', () => {
+    stopListening();
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    show(active ? 'Accoglienza attiva. Voce interrotta.' : 'Voce interrotta. Videocamera spenta.');
+  });
+  micStopButton.addEventListener('click', () => stopListening());
+  if (!Recognition) {
+    talkButton.disabled = true;
+    voiceStatus.textContent = 'Questo browser non supporta le richieste vocali. Usa «Ascolta il benvenuto».';
+  }
   flipButton.addEventListener('click', () => {
     facingMode = facingMode === 'user' ? 'environment' : 'user';
     stop();
     start();
   });
   document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopListening();
     if (!document.hidden && active) requestWakeLock();
   });
   window.addEventListener('pagehide', stop);
