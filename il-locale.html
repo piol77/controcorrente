@@ -165,27 +165,19 @@
   </section>
   <section class="offer locale-welcome" id="accoglienza" aria-labelledby="accoglienza-title">
     <h2 id="accoglienza-title">Accoglienza vocale</h2>
-    <p class="subtitle">Per un dispositivo del ristorante puntato verso l’ingresso. Attivando la videocamera, il sistema rileva soltanto la presenza di un volto, senza identificare le persone né registrare immagini.</p>
     <p class="welcome-copy">«Benvenuti al Controcorrente, troverete esposto nel locale il QR code per accedere al sito con i menu relativi al pranzo, alla cena e anche qualche offerta del giorno.»</p>
     <div class="welcome-controls">
-      <button type="button" class="button" data-welcome-start>Attiva videocamera e benvenuto</button>
-      <button type="button" class="button" data-welcome-stop disabled>Disattiva</button>
-      <button type="button" class="button" data-welcome-test>Ascolta il benvenuto</button>
-      <button type="button" class="button" data-welcome-flip disabled>Cambia fotocamera</button>
-      <button type="button" class="button" data-welcome-talk aria-pressed="false" aria-describedby="welcome-voice-help">Parla dei menù</button>
-      <button type="button" class="button" data-welcome-mic-stop disabled>Spegni microfono</button>
-      <button type="button" class="button" data-welcome-quiet>Ferma voce</button>
+      <button type="button" class="button" data-welcome-start aria-pressed="false">Attiva videocamera e microfono</button>
+      <button type="button" class="button" data-welcome-quiet disabled>Ferma voce</button>
     </div>
-    <p id="welcome-voice-help" class="small-meta">Premi «Parla dei menù» e chiedi, per esempio: «Quali sono i primi a cena?», «Quanto costa il salmone?», «Cosa comprendono i menù fissi?» oppure «Benvenuto». La voce parla soltanto di menù, prezzi, offerte, QR e contatti di Controcorrente. Il microfono si spegne dopo ogni domanda o dopo 15 secondi.</p>
-    <p class="small-meta">Assistente automatico con risposte predefinite, lette dai menù pubblicati. Per un’altra domanda premi di nuovo il microfono.</p>
+    <p data-welcome-voice-status role="status" aria-live="polite">Conversazione disattivata.</p>
+    <p data-welcome-status role="status" aria-live="polite">Videocamera e microfono spenti.</p>
     <div class="welcome-dialogue" aria-live="polite">
       <p><strong>La tua domanda:</strong> <span data-welcome-question>—</span></p>
       <p><strong>La risposta:</strong> <span data-welcome-answer>—</span></p>
     </div>
-    <p data-welcome-voice-status role="status" aria-live="polite">Microfono spento.</p>
-    <p data-welcome-status role="status" aria-live="polite">Accoglienza disattivata. La videocamera è spenta.</p>
-    <video data-welcome-video autoplay muted playsinline hidden aria-label="Anteprima della fotocamera per l’accoglienza"></video>
-    <p class="small-meta">Occorre autorizzare la fotocamera e mantenere questa pagina aperta in primo piano. Il saluto non si ripete mentre la stessa presenza rimane inquadrata; si riattiva quando l’inquadratura si libera. Non serve un account. Questa funzione non permette di modificare il sito. Le immagini sono elaborate sul dispositivo e non vengono salvate o inviate; per le richieste vocali il browser può usare il proprio servizio online.</p>
+    <video data-welcome-video autoplay muted playsinline hidden aria-label="Anteprima della videocamera per l’accoglienza"></video>
+    <p class="small-meta">Immagini elaborate sul dispositivo, senza identificare le persone né registrare il video. Il riconoscimento vocale può utilizzare il servizio online del browser.</p>
   </section>
 </main>
 
@@ -198,8 +190,8 @@
 <script src="ui.js?v=20261003-nautica3"></script>
 <script src="site-session.js?v=20261003-nautica3"></script>
 <script src="locale-gallery.js?v=20261005-2gallery" defer></script>
-<script src="voce-menu.js?v=20261010-1" defer></script>
-<script src="accoglienza.js?v=20261010-2" defer></script>
+<script src="voce-menu.js?v=20261010-2" defer></script>
+<script src="accoglienza.js?v=20261010-3" defer></script>
 
 <script>
 (() => {
