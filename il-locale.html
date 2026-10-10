@@ -18,6 +18,15 @@
 .locale-food-group .locale-gallery figure,.locale-food-group .locale-gallery figure:nth-child(n+2){display:block;flex:0 0 100%;width:100%}
 .locale-food-group .gallery-thumb{cursor:default}
 .locale-food-group .gallery-thumb:hover img{transform:none}
+
+/* Accoglienza: coerente con le altre schede del locale. */
+.locale-welcome .welcome-copy{font:1.12rem/1.55 var(--serif);color:var(--ink);border-left:2px solid var(--gold);padding-left:18px;margin:16px 0 22px}
+.locale-welcome .welcome-controls{display:flex;flex-wrap:wrap;gap:9px;margin:16px 0}
+.locale-welcome .welcome-controls .button{margin:0}
+.locale-welcome button:disabled{opacity:.45;cursor:not-allowed}
+.locale-welcome [data-welcome-video]{display:block;max-width:380px;width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--gold);background:#07121d;margin-top:18px;border-radius:3px}
+.locale-welcome [data-welcome-video][hidden]{display:none}
+.locale-welcome [data-welcome-status]{color:var(--gold);font-weight:600;min-height:1.8em}
 </style>
 </head>
 <body>
@@ -38,6 +47,22 @@
     <h2 class="section-title">Benvenuti a Controcorrente</h2>
     <p>Nel cuore di Borgo San Paolo, a Torino, Controcorrente è un piccolo ristorante dall’atmosfera informale e familiare. Pareti blu, tavoli in legno e richiami al mare fanno da cornice a una cucina di mare e non solo, con proposte che cambiano e il piacere di stare a tavola senza fretta.</p>
     <p>Qui ci si accomoda, si mangia e si scambiano due parole. Anche qualcuna in più, se Paolo prende il via.</p>
+  </section>
+
+
+  <section class="offer locale-welcome" id="accoglienza" aria-labelledby="accoglienza-title">
+    <h2 id="accoglienza-title">Accoglienza vocale</h2>
+    <p class="subtitle">Per un dispositivo del ristorante puntato verso l’ingresso. Attivando la videocamera, il sistema rileva soltanto la presenza di un volto, senza identificare le persone né registrare immagini.</p>
+    <p class="welcome-copy">«Benvenuti al Controcorrente, troverete esposto nel locale il QR code per accedere al sito con i menu relativi al pranzo, alla cena e anche qualche offerta del giorno.»</p>
+    <div class="welcome-controls">
+      <button type="button" class="button" data-welcome-start>Attiva fotocamera e saluto</button>
+      <button type="button" class="button" data-welcome-stop disabled>Disattiva</button>
+      <button type="button" class="button" data-welcome-test>Prova la voce</button>
+      <button type="button" class="button" data-welcome-flip disabled>Cambia fotocamera</button>
+    </div>
+    <p data-welcome-status role="status" aria-live="polite">Accoglienza disattivata. La videocamera è spenta.</p>
+    <video data-welcome-video autoplay muted playsinline hidden aria-label="Anteprima della fotocamera per l’accoglienza"></video>
+    <p class="small-meta">Occorre autorizzare la fotocamera e mantenere questa pagina aperta in primo piano. Il saluto non si ripete mentre la stessa presenza rimane inquadrata; si riattiva quando l’inquadratura si libera. Funziona nel browser del dispositivo, non nella chat di ChatGPT.</p>
   </section>
 
   <section class="locale-gallery-groups" aria-label="Anteprime fotografiche">
@@ -160,6 +185,7 @@
 <script src="ui.js?v=20261003-nautica3"></script>
 <script src="site-session.js?v=20261003-nautica3"></script>
 <script src="locale-gallery.js?v=20261005-2gallery" defer></script>
+<script src="accoglienza.js?v=20261010-1" defer></script>
 
 <script>
 (() => {
