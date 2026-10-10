@@ -4,6 +4,7 @@
   const PHONE = '393272292006';
   const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto con gorgonzola e pere", 12.5], ["Fusilli con melanzane, tonno fresco e poco pomodoro", 12.5], ["Linguine al nero di seppia", 13]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Tonno fresco gratinato alle erbette aromatiche con patate al forno", 14], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Filetti di salmone all’arancia e pepe rosa", 14], ["Filetti di maiale con fichi su crema di zucca", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
+  catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
     return Object.fromEntries(Object.entries(cart).filter(([key, item]) =>
@@ -103,8 +104,9 @@
     const minus = document.createElement('button'), count = document.createElement('output'), plus = document.createElement('button');
     minus.type = plus.type = 'button';
     minus.textContent = '−'; plus.textContent = '+';
-    minus.setAttribute('aria-label', 'Togli una porzione di ' + item[0]);
-    plus.setAttribute('aria-label', 'Aggiungi una porzione di ' + item[0]);
+    const unit = section === 'menu-fissi' ? (index < 3 ? 'un menù alla coppia: ' : 'un aperitivo singolo: ') : 'una porzione di ';
+    minus.setAttribute('aria-label', 'Togli ' + unit + item[0]);
+    plus.setAttribute('aria-label', 'Aggiungi ' + unit + item[0]);
     count.setAttribute('aria-label', 'Quantità');
     function refresh() { count.textContent = read()[key]?.qty || 0; updateBadge(); }
     for (const [button, delta] of [[minus, -1], [plus, 1]]) button.addEventListener('click', () => {
@@ -286,7 +288,7 @@
   }
   document.addEventListener('DOMContentLoaded', () => {
     const page = (window.__DEMO_ROUTE || location.pathname.split('/').pop()).split('#')[0].replace(/\.html$/, '');
-    if (page === 'cena') { ['antipasti','primi','secondi'].forEach(setupMenu); bar(); }
+    if (page === 'cena') { ['antipasti','primi','secondi','menu-fissi'].forEach(setupMenu); bar(); }
     if (page === 'offerta' || page === 'pranzo') setupDaily(page);
     if (page === 'ordine') setupSummary();
   });
