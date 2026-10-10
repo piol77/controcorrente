@@ -5,10 +5,29 @@
     .normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
   const clean = value => String(value || '').replace(/\*/g, '').replace(/\s+/g, ' ').trim();
   const price = value => clean(value).replace(/€/g, 'euro');
-  const LIMIT = 'Ti rispondo solo sui menù di Controcorrente: pranzo, cena, piatti, prezzi e offerte.';
+  const LIMIT = 'Non posso rispondere a queste domande. Posso aiutarti con i menù di Controcorrente.';
   let previousService = null;
   let previousTerms = [];
   let lastList = null;
+  let lastAnswer = '';
+
+  function outsideScope(q) {
+    return /\b(modifica|modificare|elimina|cancella|pubblica|aggiorna|codice|password|account|amministratore)\b/.test(q) ||
+      /\b(cambia|cambiare|aggiungi)\b.*\b(sito|prezzo|pagina|menu)\b/.test(q) ||
+      /\b(politic\w*|presidente|governo|meteo|tempo atmosferico|calcio|partita|guerra|oroscopo|computer|programmare|bitcoin|borsa|elezioni|capitale|storia|matematica|piove|piovera|pioggia|nevica|neve)\b/.test(q) ||
+      /\b(che tempo fa|che tempo fara|previsioni del tempo|quanto fa|radice quadrata)\b/.test(q);
+  }
+  function smallTalk(q) {
+    if (/^(ciao|salve|ehi|buongiorno|buonasera|buon pomeriggio)( a tutti| a te)?$/.test(q)) return 'Ciao! Dimmi pure.';
+    if (/^(ciao )?(come stai|come va|tutto bene)( grazie)?$/.test(q)) return 'Tutto bene, grazie! Cosa ti va di mangiare?';
+    if (/^(ci sei|mi senti|riesci a sentirmi|mi ascolti|prova|uno due tre)$/.test(q)) return 'Sì, ti sento. Dimmi pure.';
+    if (/^(ho fame|abbiamo fame|vorrei mangiare|vorremmo mangiare|cosa mi consigli|cosa ci consigli)$/.test(q)) return 'Ti va il menù pranzo o quello della cena?';
+    if (/^(grazie|grazie mille|molte grazie|perfetto grazie|ok grazie|va bene grazie|ti ringrazio|gentilissimo|gentilissima)$/.test(q)) return 'Figurati!';
+    if (/^(no|no grazie|basta|va bene cosi|a posto|arrivederci|buona giornata|buona serata)$/.test(q)) return 'Va bene, a presto!';
+    if (/^(benvenuto|benvenuti|saluta|saluto|saluta i clienti|fai il benvenuto)$/.test(q)) return 'Benvenuti al Controcorrente!';
+    if (/^(non ho capito|ripeti|puoi ripetere|me lo ripeti|ripeti per favore)$/.test(q)) return lastAnswer || 'Quale menù ti interessa, pranzo o cena?';
+    return null;
+  }
 
   async function readPage(path) {
     const response = await fetch(path, {cache: 'no-store', credentials: 'omit', signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(12000) : undefined});
@@ -29,20 +48,14 @@
   }
 
   async function catalog() {
-    const [lunch, dinner, offers, drinks, contacts] = await Promise.all(
-      ['pranzo.html', 'cena.html', 'offerta.html', 'bibite-vini.html', 'contatti.html'].map(readPage));
+    const [lunch, dinner, offers, drinks] = await Promise.all(
+      ['pranzo.html', 'cena.html', 'offerta.html', 'bibite-vini.html'].map(readPage));
     return {
       dishes: [...readDishes(lunch, 'pranzo'), ...readDishes(dinner, 'cena'),
         ...readDishes(offers, 'offerta'), ...readDishes(drinks, 'bibite')],
       lunchDate: clean(lunch.querySelector('.lunch-date')?.textContent),
       lunchISO: lunch.querySelector('.lunch-date time')?.getAttribute('datetime'),
-      fixedPrice: price(offers.querySelector('.daily-fixed-menu .daily-price')?.textContent),
-      contactText: [...contacts.querySelectorAll('main > p, main > .offer')]
-        .map(node => {
-          const copy = node.cloneNode(true);
-          copy.querySelectorAll('br').forEach(br => br.replaceWith(' · '));
-          return clean(copy.textContent);
-        }).join(' ')
+      fixedPrice: price(offers.querySelector('.daily-fixed-menu .daily-price')?.textContent)
     };
   }
 
@@ -70,11 +83,10 @@
   function chooseAnswer(question, data) {
     const q = normalize(question);
     const words = q.split(' ');
-    if (/\b(modifica|modificare|elimina|cancella|pubblica|aggiorna|codice|password|account|amministratore)\b/.test(q) ||
-      /\b(cambia|cambiare|aggiungi)\b.*\b(sito|prezzo|pagina|menu)\b/.test(q)) return LIMIT;
-    if (/\b(politic\w*|presidente|governo|meteo|tempo atmosferico|calcio|partita|guerra|oroscopo|computer|programmare|bitcoin|borsa|elezioni|capitale|storia|matematica)\b/.test(q)) return LIMIT;
-    if (/\b(qr|benvenut[oi]|salut[ao]|saluto|ciao|buongiorno|buonasera)\b/.test(q) &&
-      !words.some(word => vocabulary.has(word) && !['costa','quanto'].includes(word))) return 'WELCOME';
+    if (outsideScope(q)) return LIMIT;
+    const social = smallTalk(q);
+    if (social) return social;
+    if (/\bqr\b/.test(q)) return 'Il QR code è esposto nel locale: apre il sito con i menù del pranzo, della cena e le offerte.';
     if (/\b(allergia|allergie|allergeni|intolleran\w*|celia\w*|senza glutine|senza lattosio|vegan\w*|vegetarian\w*)\b/.test(q)) {
       return 'Consulta gli allergeni indicati accanto ai piatti. Per allergie o esigenze alimentari, chiedi conferma al ristorante prima di ordinare.';
     }
@@ -92,8 +104,8 @@
     let course = /\bantipast\w*\b/.test(q) ? 'antipasti' : /\b(prim[oi]|pasta)\b/.test(q) ? 'primi' : /\bsecond[oi]\b/.test(q) ? 'secondi' : null;
     let wantsFixed = /\b(fiss[oi]|completo|coppia|coppie|aperitivo|in due|per due|due persone)\b/.test(q);
     let category = /\bpesce\b/.test(q) ? 'pesce' : /\bcarne\b/.test(q) ? 'carne' : null;
-    let terms = words.filter(word => word.length > 2 && !ignored.has(word) && !['pesce','carne','vini','vino','bibite','bevande','pasta'].includes(word)).map(canonical);
-    const continued = !!lastList && (/\b(continua|continuare|altri|altre|altro|ancora)\b/.test(q) || /^(e )?poi$/.test(q)) && (!explicitService || explicitService === lastList.service);
+    let terms = words.filter(word => word.length > 2 && !ignored.has(word) && !['ciao','salve','buongiorno','buonasera','senti','ascolta','pesce','carne','vini','vino','bibite','bevande','pasta','consigli','consigliami','consiglieresti','consigliare','servite','servi','offrite','proponete','servono','come','era','stavo','pensando'].includes(word)).map(canonical);
+    const continued = !!lastList && (/\b(continua|continuare|altri|altre|altro|ancora)\b/.test(q) || /^(e )?poi$/.test(q) || /^(si|certo|va bene|ok|dimmi pure|vai avanti)( grazie)?$/.test(q)) && (!explicitService || explicitService === lastList.service);
     const listing = /\b(menu|lista|elenco|mangiare|mangio|portate|proposte|piatti)\b/.test(q) || /\b(cosa|che)\b.*\b(avete|hai|c e|trovo)\b/.test(q);
     const followup = !terms.length && !course && !wantsFixed && !category && !listing && previousTerms.length > 0;
     if (continued) {
@@ -112,15 +124,16 @@
     let named = false;
     if (terms.length) {
       const scored = dishes.map(dish => {
-        const tokens = normalize(dish.name + ' ' + dish.description).split(' ').map(canonical);
-        return {dish, score: terms.filter(term => tokens.includes(term)).length};
+        const names = normalize(dish.name).split(' ').map(canonical);
+        const ingredients = normalize(dish.description).split(' ').map(canonical);
+        return {dish, score: terms.reduce((score, term) => score + (names.includes(term) ? 3 : ingredients.includes(term) ? 1 : 0), 0)};
       });
       const best = Math.max(0, ...scored.map(item => item.score));
       if (best) {
         dishes = scored.filter(item => item.score === best).map(item => item.dish);
         named = true;
       } else {
-        const domainQuestion = words.some(word => vocabulary.has(word)) || followup || continued;
+        const domainQuestion = words.some(word => vocabulary.has(word) && !['prezzo','prezzi','costa','costano','costo','quanto','viene','vengono','spendo'].includes(word)) || followup || continued;
         if (!domainQuestion) return LIMIT;
         if (!listing && !course && !wantsFixed && !category) return 'Non trovo quel piatto nel menù pubblicato. Quale piatto intendi?';
       }
@@ -147,14 +160,19 @@
     return lunchNote + answer + fixedNote + suffix;
   }
   window.ControcorrenteMenuVoice = Object.freeze({
-    reset() { previousService = null; previousTerms = []; lastList = null; },
+    reset() { previousService = null; previousTerms = []; lastList = null; lastAnswer = ''; },
     async answer(question) {
       const q = normalize(question);
-      if (/\b(modifica|modificare|elimina|cancella|pubblica|aggiorna|codice|password|account|amministratore)\b/.test(q) ||
-        /\b(cambia|cambiare|aggiungi)\b.*\b(sito|prezzo|pagina|menu)\b/.test(q)) return LIMIT;
-      if (/\b(politic\w*|presidente|governo|meteo|tempo atmosferico|calcio|partita|guerra|oroscopo|computer|programmare|bitcoin|borsa|elezioni|capitale|storia|matematica)\b/.test(q)) return LIMIT;
-      if (/^(ciao|buongiorno|buonasera|benvenuto|benvenuti|saluta|saluto|saluta i clienti|fai il benvenuto)$/.test(q) || /\bqr\b/.test(q)) return 'WELCOME';
-      try { return chooseAnswer(question, await catalog()); }
+      if (outsideScope(q)) return LIMIT;
+      const social = smallTalk(q);
+      if (social) return social;
+      if (/\bqr\b/.test(q)) return 'Il QR code è esposto nel locale: apre il sito con i menù del pranzo, della cena e le offerte.';
+      if (/^(si|certo|va bene|ok|dimmi pure)( grazie)?$/.test(q) && !lastList) return 'Dimmi pure: ti interessa il pranzo o la cena?';
+      try {
+        const answer = chooseAnswer(question, await catalog());
+        if (answer !== LIMIT) lastAnswer = answer;
+        return answer;
+      }
       catch (_) { return 'Non riesco a leggere i menù aggiornati. Riprova fra un momento o consulta le pagine del sito.'; }
     }
   });

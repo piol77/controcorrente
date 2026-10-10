@@ -15,15 +15,16 @@
   const LIBRARY_BASE = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18';
   const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const FRAME_INTERVAL = 450;
-  const RESET_ABSENCE_MS = 3500;
-  const MIN_GREETING_INTERVAL_MS = 7000;
+  const GREETING_DELAY_MS = 1800;
+  const TURN_PAUSE_MS = 900;
   const VOICE_RATE = 1.18;
 
   let stream = null;
   let detector = null;
   let detectionTimer = null;
   let restartTimer = null;
-  let micTimer = null;
+  let turnTimer = null;
+  let audioTimer = null;
   let wakeLock = null;
   let active = false;
   let starting = false;
@@ -35,12 +36,11 @@
   let audioEpoch = 0;
   let audioResolve = null;
   let consecutiveFaces = 0;
-  let maxFacesInVisit = 0;
-  let observedFaces = 0;
-  let greetedVisit = false;
-  let absentSince = null;
-  let lastGreeting = -Infinity;
+  let greetingDone = false;
+  let conversationStarted = false;
+  let listeningSince = null;
   let recognizerFailures = 0;
+  let shortSessions = 0;
 
   function show(message) { status.textContent = message; }
   function controls() {
@@ -50,15 +50,16 @@
   }
   function stopRecognition() {
     if (restartTimer !== null) { clearTimeout(restartTimer); restartTimer = null; }
-    if (micTimer !== null) { clearTimeout(micTimer); micTimer = null; }
+    if (turnTimer !== null) { clearTimeout(turnTimer); turnTimer = null; }
     const current = recognition;
     recognition = null;
     if (current) {
-      current.onstart = current.onresult = current.onerror = current.onend = null;
+      current.onstart = current.onspeechstart = current.onspeechend = current.onresult = current.onerror = current.onend = null;
       try { current.abort(); } catch (_) { /* gia terminato */ }
     }
   }
   function cancelAudio() {
+    if (audioTimer !== null) { clearTimeout(audioTimer); audioTimer = null; }
     audioEpoch += 1;
     const resolve = audioResolve;
     audioResolve = null;
@@ -95,6 +96,7 @@
       if (italian) utterance.voice = italian;
       const finish = ok => {
         if (epoch !== audioEpoch) return;
+        if (audioTimer !== null) { clearTimeout(audioTimer); audioTimer = null; }
         speaking = false;
         audioResolve = null;
         resolve(ok);
@@ -107,27 +109,29 @@
       };
       try { window.speechSynthesis.speak(utterance); }
       catch (_) { finish(false); }
+      // Alcuni motori non inviano onend: l'ascolto deve poter ripartire comunque.
+      if (speaking) audioTimer = setTimeout(() => {
+        if (epoch !== audioEpoch) return;
+        window.speechSynthesis.cancel();
+        finish(false);
+      }, Math.max(15000, message.length * 100 + 5000));
     });
   }
-  async function respond(phrase) {
+  async function respond(phrase, automaticGreeting = false) {
     if (!active || replying || speaking) return;
     stopRecognition();
     const request = ++voiceRequest;
     const token = session;
     replying = true;
+    if (!automaticGreeting) conversationStarted = true;
     questionText.textContent = phrase;
     answerText.textContent = '…';
     voiceStatus.textContent = 'Un momento…';
     try {
-      const answer = await window.ControcorrenteMenuVoice.answer(phrase);
+      const answer = automaticGreeting ? MESSAGE : await window.ControcorrenteMenuVoice.answer(phrase);
       if (!active || token !== session || request !== voiceRequest || document.hidden) return;
-      const message = answer === 'WELCOME' ? MESSAGE : answer;
+      const message = answer;
       answerText.textContent = message;
-      if (answer === 'WELCOME' || observedFaces > 0) {
-        greetedVisit = true;
-        lastGreeting = performance.now();
-        maxFacesInVisit = Math.max(maxFacesInVisit, observedFaces);
-      }
       await speak(message);
     } catch (_) {
       if (token === session && request === voiceRequest) {
@@ -147,20 +151,54 @@
     const current = new Recognition();
     recognition = current;
     current.lang = 'it-IT';
-    current.continuous = false;
-    current.interimResults = false;
+    current.continuous = true;
+    current.interimResults = true;
     current.maxAlternatives = 3;
-    voiceStatus.textContent = 'Ti ascolto…';
+    let finalPhrase = '';
+    let interimPhrase = '';
+    let openedAt = null;
+    const submit = () => {
+      turnTimer = null;
+      if (recognition === current && token === session && finalPhrase && !interimPhrase) respond(finalPhrase);
+    };
+    const waitForPause = () => {
+      if (turnTimer !== null) clearTimeout(turnTimer);
+      turnTimer = finalPhrase && !interimPhrase ? setTimeout(submit, TURN_PAUSE_MS) : null;
+    };
+    voiceStatus.textContent = 'Microfono in avvio…';
     current.onstart = () => {
       if (recognition === current) {
         recognizerFailures = 0;
+        openedAt = listeningSince = performance.now();
         voiceStatus.textContent = 'Ti ascolto…';
       }
     };
+    current.onspeechstart = () => {
+      if (recognition !== current || token !== session) return;
+      conversationStarted = true; // il saluto automatico non interrompe chi parla
+      if (turnTimer !== null) { clearTimeout(turnTimer); turnTimer = null; }
+      voiceStatus.textContent = 'Ti ascolto…';
+    };
+    current.onspeechend = () => {
+      if (recognition === current && token === session) waitForPause();
+    };
     current.onresult = event => {
       if (recognition !== current || token !== session) return;
-      const phrase = event.results[event.resultIndex]?.[0]?.transcript?.trim();
-      if (phrase) respond(phrase);
+      const finals = [], partials = [];
+      for (let i = 0; i < event.results.length; i += 1) {
+        const result = event.results[i];
+        const text = result[0]?.transcript?.trim();
+        if (text) (result.isFinal ? finals : partials).push(text);
+      }
+      finalPhrase = finals.join(' ');
+      interimPhrase = partials.join(' ');
+      const phrase = [finalPhrase, interimPhrase].filter(Boolean).join(' ');
+      if (phrase) {
+        conversationStarted = true;
+        questionText.textContent = phrase;
+        voiceStatus.textContent = 'Ti ascolto…';
+      }
+      waitForPause();
     };
     current.onerror = event => {
       if (recognition !== current || token !== session) return;
@@ -177,16 +215,19 @@
     };
     current.onend = () => {
       if (recognition !== current || token !== session) return;
+      if (turnTimer !== null) { clearTimeout(turnTimer); turnTimer = null; }
       recognition = null;
-      if (micTimer !== null) { clearTimeout(micTimer); micTimer = null; }
-      scheduleListening(800);
-    };
-    // Se il browser non chiude spontaneamente un turno silenzioso, lo rinnova.
-    micTimer = setTimeout(() => {
-      if (recognition === current && token === session) {
-        try { current.stop(); } catch (_) { stopRecognition(); scheduleListening(); }
+      if (finalPhrase) {
+        shortSessions = 0;
+        respond(finalPhrase);
+      } else {
+        shortSessions = openedAt === null || performance.now() - openedAt < 1000 ? shortSessions + 1 : 0;
+        if (shortSessions >= 3) {
+          stop();
+          voiceStatus.textContent = 'Il servizio vocale del browser si interrompe subito. Riapri la pagina in un browser compatibile e riattiva il microfono.';
+        } else scheduleListening(800); // ripresa solo se il servizio del browser chiude
       }
-    }, 30000);
+    };
     try { current.start(); }
     catch (_) {
       stopRecognition();
@@ -200,32 +241,20 @@
   }
   function resetVisit() {
     consecutiveFaces = 0;
-    maxFacesInVisit = 0;
-    observedFaces = 0;
-    greetedVisit = false;
-    absentSince = null;
-    lastGreeting = -Infinity;
+    greetingDone = false;
+    conversationStarted = false;
+    listeningSince = null;
   }
   function updateDetection(count, now) {
-    observedFaces = count;
     if (count === 0) {
       consecutiveFaces = 0;
-      if (absentSince === null) absentSince = now;
-      if (now - absentSince >= RESET_ABSENCE_MS) {
-        maxFacesInVisit = 0;
-        greetedVisit = false;
-      }
       return;
     }
-    absentSince = null;
     consecutiveFaces += 1;
-    if (consecutiveFaces < 2 || replying || speaking) return;
-    if ((!greetedVisit || count > maxFacesInVisit) && now - lastGreeting >= MIN_GREETING_INTERVAL_MS) {
-      greetedVisit = true;
-      maxFacesInVisit = Math.max(maxFacesInVisit, count);
-      lastGreeting = now;
-      respond('Benvenuto');
-    }
+    if (consecutiveFaces < 2 || replying || speaking || greetingDone || conversationStarted ||
+      !recognition || listeningSince === null || now - listeningSince < GREETING_DELAY_MS) return;
+    greetingDone = true; // una sola volta per attivazione, anche se il volto esce dall'inquadratura
+    respond('Benvenuto', true);
   }
   function runDetector(token) {
     if (!active || token !== session || !detector) return;
@@ -292,6 +321,9 @@
       });
       if (token !== session) { media.getTracks().forEach(track => track.stop()); return; }
       stream = media;
+      // SpeechRecognition acquisisce autonomamente il microfono. Non teniamo
+      // una seconda registrazione audio aperta, che può interferire sui telefoni.
+      media.getAudioTracks().forEach(track => track.stop());
       video.srcObject = media;
       video.hidden = false;
       video.style.transform = 'scaleX(-1)';
@@ -301,6 +333,7 @@
       starting = false;
       replying = false;
       recognizerFailures = 0;
+      shortSessions = 0;
       resetVisit();
       window.ControcorrenteMenuVoice.reset?.();
       controls();
@@ -332,12 +365,13 @@
   }
   startButton.addEventListener('click', () => active || starting ? stop() : start());
   quietButton.addEventListener('click', () => {
+    const needsResume = replying || speaking;
     voiceRequest += 1;
     replying = false;
-    stopRecognition();
+    if (needsResume) stopRecognition();
     cancelAudio();
     if (active) {
-      voiceStatus.textContent = 'Voce fermata.';
+      voiceStatus.textContent = recognition ? 'Ti ascolto…' : 'Voce fermata.';
       scheduleListening();
     }
   });
