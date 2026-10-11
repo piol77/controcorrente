@@ -71,12 +71,31 @@
     return false;
   }
   const priceNumber = text => Number((text.match(/\d+(?:[.,]\d+)?/) || [NaN])[0].toString().replace(',', '.'));
+  function whatsappCourse(key, item) {
+    const section = key.split(':')[0];
+    const courses = {antipasti: 0, primi: 1, secondi: 2};
+    if (Object.prototype.hasOwnProperty.call(courses, section)) return courses[section];
+    if (section === 'menu-fissi' || /^Menù completo:/i.test(item.name)) return 3;
+    const current = catalog[section]?.find(dish => dish[0] === item.name);
+    if (Number.isInteger(current?.[2])) return current[2];
+    return dishCourse(item.name);
+  }
+  function dishCourse(name, explicit = '') {
+    if (/^antipast/i.test(explicit)) return 0;
+    if (/^prim/i.test(explicit)) return 1;
+    if (/^second/i.test(explicit)) return 2;
+    if (/^(?:bruschett|gamberetti.*salsa rosa|funghi.*fritti|carne cruda|tartar|ravioli orientali|cozze.*marinara)/i.test(name)) return 0;
+    if (/^(?:spaghetti|linguine|bucatini|tagliatelle|fusilli|farfalle|orecchiette|conchigliette|gnocch|risotto|riso (?:saltato|all)|udon|penne|rigatoni|pasta|ravioli|parmigiana)/i.test(name)) return 1;
+    return 2;
+  }
   function dailyCatalog(doc, section) {
     if (section === 'pranzo') return Array.from(doc.querySelectorAll('.lunch-dish')).map(dish =>
-      [dish.querySelector('h3')?.textContent.trim(), priceNumber(dish.querySelector('strong')?.textContent || '')]);
+      [dish.querySelector('h3')?.textContent.trim(), priceNumber(dish.querySelector('strong')?.textContent || ''),
+        dishCourse(dish.querySelector('h3')?.textContent.trim() || '', dish.dataset.orderCourse || dish.closest('.lunch-course')?.querySelector('h2')?.textContent || '')]);
     const individual = Array.from(doc.querySelectorAll('.daily-menu:not(.daily-fixed-menu) .daily-dish')).map(dish => [
       dish.querySelector('h2')?.textContent.trim(),
-      priceNumber(dish.querySelector('.daily-dish-price')?.textContent || '')
+      priceNumber(dish.querySelector('.daily-dish-price')?.textContent || ''),
+      dishCourse(dish.querySelector('h2')?.textContent.trim() || '', dish.dataset.orderCourse || '')
     ]).filter(([name, price]) => name && Number.isFinite(price));
     const fixed = Array.from(doc.querySelectorAll('.daily-fixed-menu')).map(menu => {
       const dishes = Array.from(menu.querySelectorAll('.daily-dish h2')).map(el => el.textContent.trim());
@@ -242,9 +261,14 @@
         if (!checkLunchDate(requestedDay)) { render(); list.focus(); return; }
       }
       const cart = read(), dishes = [];
-      Object.values(cart).forEach(item => {
-        if (item && Number.isInteger(item.qty) && item.qty > 0) dishes.push(item.qty + ' × ' + item.name + ' — ' + euro(item.qty * item.price));
-      });
+      Object.entries(cart)
+        .filter(([, item]) => item && Number.isInteger(item.qty) && item.qty > 0)
+        .sort(([keyA, itemA], [keyB, itemB]) => whatsappCourse(keyA, itemA) - whatsappCourse(keyB, itemB))
+        .forEach(([, item]) => {
+          // A typographic frozen marker preserves the note without closing WhatsApp bold.
+          const name = item.name.replace(/\*/g, '＊');
+          dishes.push(item.qty + ' × *' + name + '* — ' + euro(item.qty * item.price));
+        });
       if (!dishes.length) { list.focus(); return; }
       const holiday = isHoliday(requestedDay);
       const wrongService = isLunch()
