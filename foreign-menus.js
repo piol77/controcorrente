@@ -36,7 +36,7 @@
     ],
     "Insalata caprese con olive e origano": [
       "Caprese salad with olives and oregano",
-      "Tomato, mozzarella, olives and oregano."
+      "Tomato, mozzarella, green lettuce, olives and oregano."
     ]
   },
   "zh": {
@@ -70,7 +70,7 @@
     ],
     "Insalata caprese con olive e origano": [
       "橄榄牛至卡普雷塞沙拉",
-      "番茄、马苏里拉奶酪、橄榄和牛至。"
+      "番茄、马苏里拉奶酪、生菜、橄榄和牛至。"
     ]
   }
 };

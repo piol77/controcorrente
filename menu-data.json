@@ -464,22 +464,22 @@
     {
       "name": "Insalata caprese con olive e origano",
       "price": 8,
-      "description": "Pomodoro, mozzarella, olive e origano.",
+      "description": "Pomodoro, mozzarella, insalata verde, olive e origano.",
       "allergens": [
         7
       ],
       "icon": "Salad",
-      "dishPhoto": "pranzo-assets/caprese-20261013.webp",
+      "dishPhoto": "pranzo-assets/caprese-insalata-verde-20261013.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
           "name": "Caprese salad with olives and oregano",
-          "description": "Tomato, mozzarella, olives and oregano."
+          "description": "Tomato, mozzarella, green lettuce, olives and oregano."
         },
         "zh": {
           "name": "橄榄牛至卡普雷塞沙拉",
-          "description": "番茄、马苏里拉奶酪、橄榄和牛至。"
+          "description": "番茄、马苏里拉奶酪、生菜、橄榄和牛至。"
         }
       },
       "photoSource": {
@@ -487,7 +487,7 @@
         "date": "2026-10-13",
         "tool": "image_gen",
         "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
-        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: Italian Caprese salad: fresh tomato slices, white mozzarella slices, black olives and dried oregano, arranged simply on the ivory plate. No basil, pesto, lettuce or balsamic vinegar."
+        "prompt": "Edit the existing Caprese photograph by adding a modest bed of fresh green lettuce underneath and around the tomato and mozzarella. Preserve tomato slices, mozzarella slices, black olives, dried oregano, ivory plate, beige stone tabletop, warm natural lighting and framing. No basil, pesto or balsamic vinegar. No text or logos."
       }
     }
   ],
