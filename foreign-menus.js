@@ -6,79 +6,71 @@
 
   const LUNCH={
   "en": {
-    "Linguine ai frutti di mare": [
-      "Linguine with seafood",
-      "Linguine with assorted seafood, including shrimp*."
+    "Udon con verdure, gamberetti* e pollo": [
+      "Udon with vegetables, shrimp* and chicken",
+      "Zucchini, carrots and savoy cabbage with shrimp*, chicken and soy sauce."
     ],
-    "Tagliatelle con zucca, funghi e salsiccia": [
-      "Tagliatelle with pumpkin, mushrooms and sausage",
-      "Tagliatelle with pumpkin, mushrooms and sausage."
+    "Fusilli con zucchine e salsiccia": [
+      "Fusilli with zucchini and sausage",
+      "Zucchini and sausage, lightly bound with a touch of cream."
     ],
-    "Spaghetti alla carbonara di mare con tonno e salmone": [
-      "Seafood carbonara spaghetti with tuna and salmon",
-      "Seafood carbonara spaghetti with tuna and salmon."
+    "Trofie al pesto di carote e mandorle": [
+      "Trofie with carrot and almond pesto",
+      "Trofie pasta with carrot and almond pesto."
     ],
-    "Conchigliette con patate, branzino e zafferano": [
-      "Small pasta shells with potatoes, sea bass and saffron",
-      "Small pasta shells with potatoes, sea bass and saffron."
+    "Penne al salmone fresco": [
+      "Penne with fresh salmon",
+      "Fresh salmon with a touch of cream."
     ],
-    "Straccetti di pollo con sedano e riso bianco al vapore": [
-      "Chicken strips with celery and steamed white rice",
-      "Chicken strips with celery, served with steamed white rice."
+    "Scaloppine di pollo con uva e melagrana": [
+      "Chicken scaloppine with grapes and pomegranate",
+      "Served with raw fennel dressed with balsamic vinegar."
     ],
-    "Branzino alla griglia con patate al forno": [
-      "Grilled sea bass with roast potatoes",
-      "Grilled sea bass served with oven-roasted potatoes."
+    "Salmone croccante su crema di patate e porri": [
+      "Crisp salmon on potato and leek purée",
+      "A crisp salmon fillet on smooth potato and leek purée."
     ],
-    "Salmone alla griglia con patate al forno": [
-      "Grilled salmon with roast potatoes",
-      "Grilled salmon served with oven-roasted potatoes."
+    "Insalata di finocchi, arancia, salmone fresco e avocado": [
+      "Fennel, orange, fresh salmon and avocado salad",
+      "Dressed with balsamic vinegar."
     ],
-    "Tonno rosso gratinato al forno con patate al forno": [
-      "Oven-baked red tuna au gratin with roast potatoes",
-      "Red tuna baked with a gratin crust, served with oven-roasted potatoes."
-    ],
-    "Insalata Cesarona": [
-      "Cesarona salad",
-      "Chicken, pancetta and shaved Grana cheese."
+    "Insalata caprese con olive e origano": [
+      "Caprese salad with olives and oregano",
+      "Tomato, mozzarella, olives and oregano."
     ]
   },
   "zh": {
-    "Linguine ai frutti di mare": [
-      "海鲜细扁面",
-      "细扁面配多种海鲜，包括虾仁*。"
+    "Udon con verdure, gamberetti* e pollo": [
+      "蔬菜虾仁*鸡肉乌冬面",
+      "西葫芦、胡萝卜和皱叶甘蓝，配虾仁*、鸡肉和酱油。"
     ],
-    "Tagliatelle con zucca, funghi e salsiccia": [
-      "南瓜蘑菇香肠宽面",
-      "宽面配南瓜、蘑菇和香肠。"
+    "Fusilli con zucchine e salsiccia": [
+      "西葫芦香肠螺旋意面",
+      "西葫芦与香肠，配少许奶油。"
     ],
-    "Spaghetti alla carbonara di mare con tonno e salmone": [
-      "金枪鱼三文鱼海鲜卡邦尼意面",
-      "卡邦尼意大利细面配金枪鱼和三文鱼。"
+    "Trofie al pesto di carote e mandorle": [
+      "胡萝卜杏仁酱Trofie意面",
+      "Trofie意面配胡萝卜杏仁酱。"
     ],
-    "Conchigliette con patate, branzino e zafferano": [
-      "土豆海鲈鱼藏红花小贝壳面",
-      "小贝壳面配土豆、海鲈鱼和藏红花。"
+    "Penne al salmone fresco": [
+      "鲜三文鱼通心粉",
+      "鲜三文鱼配少许奶油。"
     ],
-    "Straccetti di pollo con sedano e riso bianco al vapore": [
-      "芹菜鸡肉条配白米饭",
-      "鸡肉条配芹菜，佐蒸白米饭。"
+    "Scaloppine di pollo con uva e melagrana": [
+      "葡萄石榴鸡肉薄片",
+      "配生茴香片和意大利香醋。"
     ],
-    "Branzino alla griglia con patate al forno": [
-      "烤海鲈鱼配烤土豆",
-      "炭烤海鲈鱼，佐烤土豆。"
+    "Salmone croccante su crema di patate e porri": [
+      "香煎三文鱼配土豆韭葱泥",
+      "香煎三文鱼鱼排，配细腻的土豆韭葱泥。"
     ],
-    "Salmone alla griglia con patate al forno": [
-      "烤三文鱼配烤土豆",
-      "炭烤三文鱼，佐烤土豆。"
+    "Insalata di finocchi, arancia, salmone fresco e avocado": [
+      "茴香橙子鲜三文鱼牛油果沙拉",
+      "以意大利香醋调味。"
     ],
-    "Tonno rosso gratinato al forno con patate al forno": [
-      "焗烤红金枪鱼配烤土豆",
-      "红金枪鱼焗烤至表面金黄，佐烤土豆。"
-    ],
-    "Insalata Cesarona": [
-      "Cesarona沙拉",
-      "鸡肉、意式培根和Grana奶酪薄片。"
+    "Insalata caprese con olive e origano": [
+      "橄榄牛至卡普雷塞沙拉",
+      "番茄、马苏里拉奶酪、橄榄和牛至。"
     ]
   }
 };
@@ -183,4 +175,5 @@
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
+
 

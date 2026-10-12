@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-10-09",
-  "lunchDateLabel": "Venerdì 9 ottobre 2026",
+  "lunchUpdatedAt": "2026-10-13",
+  "lunchDateLabel": "Martedì 13 ottobre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -252,263 +252,242 @@
   },
   "lunch": [
     {
-      "name": "Linguine ai frutti di mare",
-      "price": 15,
-      "description": "Linguine con un assortimento di frutti di mare, tra cui gamberetti*.",
+      "name": "Udon con verdure, gamberetti* e pollo",
+      "price": 10,
+      "description": "Zucchine, carote e verza, con gamberetti*, pollo e salsa di soia.",
       "allergens": [
         1,
         2,
-        14
+        6
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/linguine-mare-20261009.webp",
+      "dishPhoto": "pranzo-assets/udon-20261013.webp",
       "photoLayout": "side",
+      "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Linguine with seafood",
-          "description": "Linguine with assorted seafood, including shrimp*."
+          "name": "Udon with vegetables, shrimp* and chicken",
+          "description": "Zucchini, carrots and savoy cabbage with shrimp*, chicken and soy sauce."
         },
         "zh": {
-          "name": "海鲜细扁面",
-          "description": "细扁面配多种海鲜，包括虾仁*。"
+          "name": "蔬菜虾仁*鸡肉乌冬面",
+          "description": "西葫芦、胡萝卜和皱叶甘蓝，配虾仁*、鸡肉和酱油。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
+        "date": "2026-10-13",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: Linguine ai frutti di mare: flat thin linguine pasta with mussels and clams in shells, small shrimp, squid rings, lightly dressed. No cheese.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual realistic food thumbnail for the Controcorrente lunch menu, Tuesday 13 October. Create one landscape 4:3 food photograph. Scene: clean ivory ceramic round plate centered on a beige stone tabletop, soft warm natural daylight, camera 45 degrees slightly overhead, entire plate visible and filling about 85 percent of the frame. Subject: thick white stir-fried udon noodles with cooked chicken pieces, small peeled pink shrimp, zucchini strips, carrot strips and savoy cabbage, a light coating of soy sauce. Not soup. No eggs, sesame, peppers, mushrooms or additional vegetables. Modest appetizing restaurant portion, highly realistic textures. No text, price, logo, watermark, hands, cutlery or props. Keep the neutral plate and background suitable for a coordinated series."
       }
     },
     {
-      "name": "Tagliatelle con zucca, funghi e salsiccia",
+      "name": "Fusilli con zucchine e salsiccia",
       "price": 10,
-      "description": "Tagliatelle con zucca, funghi e salsiccia.",
+      "description": "Zucchine e salsiccia, legate con un tocco di panna.",
       "allergens": [
         1,
-        3
+        7
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/tagliatelle-zucca-20261009.webp",
+      "dishPhoto": "pranzo-assets/fusilli-20261013.webp",
       "photoLayout": "side",
+      "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Tagliatelle with pumpkin, mushrooms and sausage",
-          "description": "Tagliatelle with pumpkin, mushrooms and sausage."
+          "name": "Fusilli with zucchini and sausage",
+          "description": "Zucchini and sausage, lightly bound with a touch of cream."
         },
         "zh": {
-          "name": "南瓜蘑菇香肠宽面",
-          "description": "宽面配南瓜、蘑菇和香肠。"
+          "name": "西葫芦香肠螺旋意面",
+          "description": "西葫芦与香肠，配少许奶油。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
+        "date": "2026-10-13",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: Tagliatelle with pumpkin, mushrooms and sausage: unmistakable flat ribbon egg pasta, tender orange pumpkin, sliced brown mushrooms, crumbled cooked Italian sausage. No other toppings.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: Fusilli pasta with zucchini half-moons and crumbled browned Italian sausage, lightly bound with a small amount of cream. No cheese, tomatoes or extra vegetables."
       }
     },
     {
-      "name": "Spaghetti alla carbonara di mare con tonno e salmone",
-      "price": 13,
-      "description": "Spaghetti alla carbonara di mare con tonno e salmone.",
+      "name": "Trofie al pesto di carote e mandorle",
+      "price": 10,
+      "description": "Trofie con un pesto di carote e mandorle.",
       "allergens": [
         1,
-        3,
+        8
+      ],
+      "icon": "Wheat",
+      "dishPhoto": "pranzo-assets/trofie-20261013.webp",
+      "photoLayout": "side",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Trofie with carrot and almond pesto",
+          "description": "Trofie pasta with carrot and almond pesto."
+        },
+        "zh": {
+          "name": "胡萝卜杏仁酱Trofie意面",
+          "description": "Trofie意面配胡萝卜杏仁酱。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-13",
+        "tool": "image_gen",
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: Trofie pasta, clearly short twisted pasta, coated in orange carrot and almond pesto, with a few almond flakes. No green basil pesto, cheese, tomatoes or extra vegetables."
+      }
+    },
+    {
+      "name": "Penne al salmone fresco",
+      "price": 12,
+      "description": "Salmone fresco e un tocco di panna.",
+      "allergens": [
+        1,
         4,
         7
       ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/carbonara-mare-20261009.webp",
+      "icon": "Wheat",
+      "dishPhoto": "pranzo-assets/penne-20261013.webp",
       "photoLayout": "side",
+      "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Seafood carbonara spaghetti with tuna and salmon",
-          "description": "Seafood carbonara spaghetti with tuna and salmon."
+          "name": "Penne with fresh salmon",
+          "description": "Fresh salmon with a touch of cream."
         },
         "zh": {
-          "name": "金枪鱼三文鱼海鲜卡邦尼意面",
-          "description": "卡邦尼意大利细面配金枪鱼和三文鱼。"
+          "name": "鲜三文鱼通心粉",
+          "description": "鲜三文鱼配少许奶油。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
+        "date": "2026-10-13",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: Spaghetti carbonara di mare with tuna and salmon: spaghetti coated in silky golden egg carbonara sauce, clearly visible tender tuna cubes and pink-orange salmon cubes, black pepper. NO pork, bacon or guanciale, no seafood shells, no tomato.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: Penne rigate with visible cooked chunks of fresh salmon, very lightly coated with a small amount of cream. No smoked salmon, tomatoes, lemon, cheese or herbs."
       }
     },
     {
-      "name": "Conchigliette con patate, branzino e zafferano",
-      "price": 12,
-      "description": "Conchigliette con patate, branzino e zafferano.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/conchigliette-branzino-20261009.webp",
-      "photoLayout": "side",
-      "translations": {
-        "en": {
-          "name": "Small pasta shells with potatoes, sea bass and saffron",
-          "description": "Small pasta shells with potatoes, sea bass and saffron."
-        },
-        "zh": {
-          "name": "土豆海鲈鱼藏红花小贝壳面",
-          "description": "小贝壳面配土豆、海鲈鱼和藏红花。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
-        "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: Small conchigliette shell-shaped pasta with cubed potatoes, flaky white sea bass fish and saffron: golden yellow sauce, small shell pasta clearly distinct from other shapes. No shrimp, no squid, no tomato.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
-      }
-    },
-    {
-      "name": "Straccetti di pollo con sedano e riso bianco al vapore",
+      "name": "Scaloppine di pollo con uva e melagrana",
       "price": 10,
-      "description": "Straccetti di pollo con sedano, accompagnati da riso bianco al vapore.",
-      "allergens": [
-        9
-      ],
-      "icon": "Beef",
-      "dishPhoto": "pranzo-assets/pollo-sedano-20261009.webp",
-      "photoLayout": "side",
-      "translations": {
-        "en": {
-          "name": "Chicken strips with celery and steamed white rice",
-          "description": "Chicken strips with celery, served with steamed white rice."
-        },
-        "zh": {
-          "name": "芹菜鸡肉条配白米饭",
-          "description": "鸡肉条配芹菜，佐蒸白米饭。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
-        "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: Chicken strips sautéed with sliced celery alongside a separate mound of plain steamed white rice on the SAME plate. Only chicken, celery, white rice. No carrots, no zucchini, no red sauce.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
-      }
-    },
-    {
-      "name": "Branzino alla griglia con patate al forno",
-      "price": 12,
-      "description": "Branzino alla griglia, accompagnato da patate al forno.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/branzino-griglia-20261009.webp",
-      "photoLayout": "side",
-      "translations": {
-        "en": {
-          "name": "Grilled sea bass with roast potatoes",
-          "description": "Grilled sea bass served with oven-roasted potatoes."
-        },
-        "zh": {
-          "name": "烤海鲈鱼配烤土豆",
-          "description": "炭烤海鲈鱼，佐烤土豆。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
-        "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: Grilled whole sea bass with golden oven roasted potato chunks on the same plate, realistic small restaurant portion, silvery lightly charred skin, no sauce or additional vegetables.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
-      }
-    },
-    {
-      "name": "Salmone alla griglia con patate al forno",
-      "price": 12,
-      "description": "Salmone alla griglia, accompagnato da patate al forno.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/salmone-griglia-20261009.webp",
-      "photoLayout": "side",
-      "translations": {
-        "en": {
-          "name": "Grilled salmon with roast potatoes",
-          "description": "Grilled salmon served with oven-roasted potatoes."
-        },
-        "zh": {
-          "name": "烤三文鱼配烤土豆",
-          "description": "炭烤三文鱼，佐烤土豆。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
-        "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: One grilled thick salmon fillet, pink-orange fish with clear golden grilled surface, alongside oven-roasted golden potato chunks. No nuts, no fennel, no sauce.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
-      }
-    },
-    {
-      "name": "Tonno rosso gratinato al forno con patate al forno",
-      "price": 13,
-      "description": "Tonno rosso gratinato al forno, accompagnato da patate al forno.",
+      "description": "Con finocchi crudi all’aceto balsamico.",
       "allergens": [
         1,
-        4
+        7
       ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/tonno-gratinato-20261009.webp",
+      "icon": "Drumstick",
+      "dishPhoto": "pranzo-assets/scaloppine-20261013.webp",
       "photoLayout": "side",
+      "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Oven-baked red tuna au gratin with roast potatoes",
-          "description": "Red tuna baked with a gratin crust, served with oven-roasted potatoes."
+          "name": "Chicken scaloppine with grapes and pomegranate",
+          "description": "Served with raw fennel dressed with balsamic vinegar."
         },
         "zh": {
-          "name": "焗烤红金枪鱼配烤土豆",
-          "description": "红金枪鱼焗烤至表面金黄，佐烤土豆。"
+          "name": "葡萄石榴鸡肉薄片",
+          "description": "配生茴香片和意大利香醋。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
+        "date": "2026-10-13",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: One single thick red tuna steak baked in the oven with a light fine golden breadcrumb gratin crust covering the top, alongside oven-roasted potato chunks. No tomato sauce, no olives, no capers, no cheese.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: Thin chicken breast scaloppine, lightly floured and pan-cooked with butter, grape halves and pomegranate seeds in a light glossy pan sauce. A small side of thinly sliced raw fennel lightly dressed with balsamic vinegar on the same plate. No breading, rice, potatoes, lemon or other vegetables."
       }
     },
     {
-      "name": "Insalata Cesarona",
-      "price": 9,
-      "description": "Pollo, pancetta e scaglie di Grana.",
+      "name": "Salmone croccante su crema di patate e porri",
+      "price": 12,
+      "description": "Filetto di salmone croccante su una crema di patate e porri.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/salmone-crema-20261013.webp",
+      "photoLayout": "side",
+      "orderCourse": "Secondo",
+      "translations": {
+        "en": {
+          "name": "Crisp salmon on potato and leek purée",
+          "description": "A crisp salmon fillet on smooth potato and leek purée."
+        },
+        "zh": {
+          "name": "香煎三文鱼配土豆韭葱泥",
+          "description": "香煎三文鱼鱼排，配细腻的土豆韭葱泥。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-13",
+        "tool": "image_gen",
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: One cooked fresh salmon fillet with a naturally golden crisp seared surface, resting on a smooth pale potato and leek puree. No breadcrumbs, nuts, fried leek garnish, bacon, potatoes on the side, herb garnish or additional ingredients."
+      }
+    },
+    {
+      "name": "Insalata di finocchi, arancia, salmone fresco e avocado",
+      "price": 12,
+      "description": "Condita con aceto balsamico.",
+      "allergens": [
+        4
+      ],
+      "icon": "Salad",
+      "dishPhoto": "pranzo-assets/insalata-20261013.webp",
+      "photoLayout": "side",
+      "orderCourse": "Secondo",
+      "translations": {
+        "en": {
+          "name": "Fennel, orange, fresh salmon and avocado salad",
+          "description": "Dressed with balsamic vinegar."
+        },
+        "zh": {
+          "name": "茴香橙子鲜三文鱼牛油果沙拉",
+          "description": "以意大利香醋调味。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-13",
+        "tool": "image_gen",
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: Salad of shaved fresh fennel, orange segments, chunks of cooked fresh salmon and avocado slices, lightly dressed with balsamic vinegar. Salmon should be cooked fresh salmon pieces, not thin ribbons of smoked salmon. No lettuce, dill, microgreens, seeds or other ingredients."
+      }
+    },
+    {
+      "name": "Insalata caprese con olive e origano",
+      "price": 8,
+      "description": "Pomodoro, mozzarella, olive e origano.",
       "allergens": [
         7
       ],
       "icon": "Salad",
-      "dishPhoto": "pranzo-assets/cesarona-20261009.webp",
+      "dishPhoto": "pranzo-assets/caprese-20261013.webp",
       "photoLayout": "side",
+      "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Cesarona salad",
-          "description": "Chicken, pancetta and shaved Grana cheese."
+          "name": "Caprese salad with olives and oregano",
+          "description": "Tomato, mozzarella, olives and oregano."
         },
         "zh": {
-          "name": "Cesarona沙拉",
-          "description": "鸡肉、意式培根和Grana奶酪薄片。"
+          "name": "橄榄牛至卡普雷塞沙拉",
+          "description": "番茄、马苏里拉奶酪、橄榄和牛至。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-09",
+        "date": "2026-10-13",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, beige stone tabletop, soft natural light; illustrative image, not a photograph of food served at the restaurant.",
-        "prompt": "Use case: photorealistic-natural\nAsset type: small realistic lunch-menu thumbnail, individual food photo.\nScene: ivory ceramic round plate centered on a beige stone tabletop, identical clean neutral setting across this series.\nSubject: Insalata Cesarona: crisp leafy salad with cooked chicken strips, crispy pancetta pieces and shaved Grana cheese. No tomatoes, no croutons, no eggs, no added sauces.\nStyle: highly realistic Italian restaurant food photography; natural textures, appetizing modest portion. Framing: landscape 4:3, viewed from 45 degrees slightly overhead, entire plate visible and filling 85% of frame, no crop of food. Soft warm natural daylight. No text, prices, logo, watermark, hands, cutlery, props. Faithful ingredient depiction; no extra side dishes."
+        "note": "Uniform ivory plate, beige stone tabletop and warm natural light. Illustrative image, not a photograph of food served at the restaurant. Recipe ingredients supplied by Paolo; soy sauce, butter and flour confirmed in the conversation.",
+        "prompt": "Use case: photorealistic-natural. Asset type: one individual lunch-menu food thumbnail. Scene: ivory ceramic round plate centered on a beige stone tabletop; entire food portion visible, plate fills about 85 percent of landscape 4:3 frame; camera 45 degrees slightly overhead, soft warm natural daylight. Match a coherent series of highly realistic restaurant food photographs. Modest appetizing portion, natural textures. No text, logo, price, watermark, hands, cutlery, props or decorative herbs not specified. Subject: Italian Caprese salad: fresh tomato slices, white mozzarella slices, black olives and dried oregano, arranged simply on the ivory plate. No basil, pesto, lettuce or balsamic vinegar."
       }
     }
   ],
