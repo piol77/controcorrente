@@ -52,18 +52,6 @@
         "dishPhoto": "cena-spaghetti.webp"
       },
       {
-        "name": "Conchigliette verdure, zafferano e croccante di guanciale",
-        "price": 12.5,
-        "description": "Verdure di stagione, zafferano e guanciale croccante.",
-        "allergens": [
-          1,
-          7,
-          9
-        ],
-        "icon": "Wheat",
-        "dishPhoto": "cena-conchigliette.webp"
-      },
-      {
         "name": "Risotto con gorgonzola e pere",
         "price": 12.5,
         "description": "Risotto cremoso con gorgonzola e la dolcezza delle pere.",

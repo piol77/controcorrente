@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Conchigliette verdure, zafferano e croccante di guanciale", 12.5], ["Risotto con gorgonzola e pere", 12.5], ["Fusilli con melanzane, tonno fresco e poco pomodoro", 12.5], ["Linguine al nero di seppia", 13]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Tonno fresco gratinato alle erbette aromatiche con patate al forno", 14], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Filetti di salmone all’arancia e pepe rosa", 14], ["Filetti di maiale con fichi su crema di zucca", 14]]};
+  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Risotto con gorgonzola e pere", 12.5], ["Fusilli con melanzane, tonno fresco e poco pomodoro", 12.5], ["Linguine al nero di seppia", 13]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Tonno fresco gratinato alle erbette aromatiche con patate al forno", 14], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Filetti di salmone all’arancia e pepe rosa", 14], ["Filetti di maiale con fichi su crema di zucca", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
   const minimumQuantity = (section, index) =>
@@ -10,7 +10,16 @@
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
     return Object.fromEntries(Object.entries(cart).filter(([key, item]) =>
-      !key.startsWith('bibite-vini:') && item && Number.isInteger(item.qty) && item.qty > 0 && Number.isFinite(item.price)).map(([key,item])=>{ const [section,index]=key.split(':'); const current=catalog[section]?.[Number(index)]; return [key,current ? {...item,qty:Math.max(minimumQuantity(section,index),item.qty),name:current[0],price:current[1]} : item]; }));
+      !key.startsWith('bibite-vini:') && item && Number.isInteger(item.qty) && item.qty > 0 && Number.isFinite(item.price)).flatMap(([key,item])=>{ const [section,index]=key.split(':');
+        let keyNow=key, indexNow=index;
+        if(section==='primi'){
+          const matched=catalog.primi.findIndex(dish=>dish[0]===item.name);
+          if(matched<0) return [];
+          keyNow=section+':'+matched; indexNow=String(matched);
+        }
+        const current=catalog[section]?.[Number(indexNow)];
+        return [[keyNow,current ? {...item,qty:Math.max(minimumQuantity(section,indexNow),item.qty),name:current[0],price:current[1]} : item]];
+      }));
   } catch (_) { return {}; } };
   const save = cart => { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch (_) { /* Browser storage may be disabled. */ } };
   const id = (section, index) => section + ':' + index;
