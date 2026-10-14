@@ -295,8 +295,8 @@
         return;
       }
       const currentMinutes = currentRomeMinutes();
-      if ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60)) {
-        window.alert('Stai prenotando successivamente alla data valida per prenotare. Attendi la conferma specifica che l’ordine sia accettato dal ristoratore.');
+      if (requestedDay === todayInRome() && ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60))) {
+        window.alert('Stai inviando la richiesta per oggi dopo le ' + (isLunch() ? '12:00' : '18:00') + '. Attendi la conferma specifica del Ristorante.');
       }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',

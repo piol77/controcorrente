@@ -324,3 +324,8 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - La regola riguarda la composizione del messaggio WhatsApp, non il layout dei menù o del riepilogo. Applicarla anche ai piatti pranzo e alle offerte; usare la sezione del catalogo e, per le schede giornaliere, l'eventuale `data-order-course` (Antipasto, Primo o Secondo) o l'intestazione della portata, con riconoscimento del nome come ripiego. Per nuovi nomi ambigui specificare la portata nella scheda.
 - Nel solo testo WhatsApp rappresentare l'asterisco dei surgelati con il segno tipografico `＊`, così rimane visibile e non interrompe il grassetto. Conservare gli asterischi originali nei menù e nei dati.
 - Preservare quantità, prezzi, totale, data, orario, note, controlli di validità, apertura WhatsApp e azzeramento del carrello. Aggiornare il riferimento cache di `preordine.js` in `ordine.html`, verificare con selezioni in ordine inverso/misto e pubblicare su GitHub Pages.
+
+## Avviso richieste tardive e prenotazioni future — 2026-10-14
+- L’avviso aggiuntivo per richieste inviate dopo le 12:00 (menù pranzo) o le 18:00 (menù cena/offerte) si applica esclusivamente quando il giorno prenotato coincide con il giorno corrente in Europe/Rome. Non mostrarlo per domani o date successive valide.
+- Nel testo distinguere l’orario di invio per oggi dalla data prenotata; non descrivere una prenotazione futura come successiva a una data valida per prenotare.
+- Conservare i controlli su passato, lunedì, fasce di ingresso, validità del menù pranzo e servizio/festivi, oltre alla normale conferma del Ristorante e al flusso WhatsApp.
