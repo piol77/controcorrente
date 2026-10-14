@@ -571,6 +571,35 @@
         "tool": "image_gen",
         "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
       }
+    },
+    {
+      "name": "Spaghetti con crema di zucca, speck affumicato croccante e mozzarella Santa Lucia",
+      "price": 10,
+      "description": "Crema di zucca, speck affumicato croccante e mozzarella Santa Lucia.",
+      "allergens": [
+        1,
+        7
+      ],
+      "icon": "Wheat",
+      "dishPhoto": "offerta-assets/spaghetti-zucca-speck-mozzarella-20261014.webp",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Spaghetti with pumpkin cream, crispy smoked speck and Santa Lucia mozzarella",
+          "description": "Pumpkin cream, crispy smoked speck and Santa Lucia mozzarella."
+        },
+        "zh": {
+          "name": "南瓜酱烟熏脆Speck火腿马苏里拉意面",
+          "description": "南瓜酱、烟熏脆Speck火腿和Santa Lucia马苏里拉奶酪。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-adapted approved lunch illustration",
+        "date": "2026-10-14",
+        "tool": "image_gen",
+        "note": "Internet references inspected; alternatives use other cheeses or pasta and extra ingredients. Approved lunch dish adapted to the ivory ceramic plate, navy tabletop, soft light and camera angle of the evening menu. Same pumpkin cream, crispy smoked speck and mozzarella; illustrative image, not a restaurant photograph."
+      },
+      "course": "Primo"
     }
   ],
   "fixed": {
