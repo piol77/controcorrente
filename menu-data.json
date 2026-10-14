@@ -147,30 +147,29 @@
         "dishPhoto": "cena-frittura.webp"
       },
       {
-        "name": "Tonno fresco gratinato alle erbette aromatiche con patate al forno",
-        "price": 14,
-        "description": "Tonno fresco gratinato al forno alle erbette aromatiche, con patate al forno.",
+        "name": "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",
+        "price": 12,
+        "description": "Finocchi croccanti, arance e avocado, con bocconcini di salmone fresco.",
         "allergens": [
-          1,
           4
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/tonno-gratinato-erbette-patate-20261009.webp",
+        "dishPhoto": "cena-assets/insalatona-finocchi-arance-avocado-salmone-20261014.webp",
         "translations": {
           "en": {
-            "name": "Fresh tuna baked au gratin with aromatic herbs and roasted potatoes",
-            "description": "Fresh tuna oven-baked with an aromatic herb gratin crust, served with roasted potatoes."
+            "name": "Salad with fennel, oranges, avocado and fresh salmon bites",
+            "description": "Crisp fennel, oranges and avocado with bite-sized pieces of fresh salmon."
           },
           "zh": {
-            "name": "香草焗鲜金枪鱼配烤土豆",
-            "description": "鲜金枪鱼覆以香草脆皮焗烤，搭配烤土豆。"
+            "name": "茴香橙子牛油果鲜三文鱼沙拉",
+            "description": "爽脆茴香、橙子和牛油果，搭配鲜三文鱼块。"
           }
         },
         "photoSource": {
           "type": "AI-generated illustration",
-          "date": "2026-10-09",
+          "date": "2026-10-14",
           "tool": "image_gen",
-          "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
+          "note": "Internet references inspected: examples use smoked salmon or add unrelated ingredients. Generated with the requested fennel, oranges, avocado and fresh salmon bites, matching the approved ivory plate, navy tabletop and soft light. Illustrative image, not a photograph of food served at the restaurant."
         }
       },
       {
@@ -520,24 +519,31 @@
       }
     },
     {
-      "name": "Ravioli orientali di verdure e carne (5 pezzi)",
+      "name": "Ravioli orientali di gamberetti* (5 pezzi)",
       "price": 6,
-      "description": "Cinque ravioli dal delicato ripieno di carne e verza.",
+      "description": "Cinque ravioli in stile orientale, dal delicato ripieno di gamberetti*.",
       "allergens": [
-        1
+        1,
+        2
       ],
       "icon": "Wheat",
       "course": "Antipasto",
-      "dishPhoto": "offerta-assets/ravioli.webp",
+      "dishPhoto": "offerta-assets/ravioli-orientali-gamberetti-20261014.webp",
       "translations": {
         "en": {
-          "name": "Vegetable and Meat Dumplings (5 pieces)",
-          "description": "Five oriental dumplings with a delicate meat and savoy cabbage filling."
+          "name": "Oriental shrimp* dumplings (5 pieces)",
+          "description": "Five oriental-style dumplings with a delicate shrimp* filling."
         },
         "zh": {
-          "name": "蔬菜肉馅饺子（5个）",
-          "description": "五个东方风味饺子，内馅为肉和皱叶甘蓝。"
+          "name": "东方风味虾仁*饺子（5个）",
+          "description": "五个东方风味饺子，包裹细腻的虾仁*馅。"
         }
+      },
+      "photoSource": {
+        "type": "AI-generated illustration",
+        "date": "2026-10-14",
+        "tool": "image_gen",
+        "note": "Internet references inspected: examples add sauces and garnishes or use different portions and plates. Approved five-dumpling photograph edited to show shrimp filling, preserving ivory plate, navy tabletop, composition and light. Illustrative image, not a photograph of food served at the restaurant."
       }
     },
     {
