@@ -140,12 +140,6 @@
     count.setAttribute('aria-label', 'Quantità');
     function refresh() { count.textContent = read()[key]?.qty || 0; updateBadge(); }
     for (const [button, delta] of [[minus, -1], [plus, 1]]) button.addEventListener('click', () => {
-      // Temporary lunch-only sold-out notice: 15 October 2026, before 15:00 in Rome.
-      const now = nowInRomeMinute();
-      if (section === 'pranzo' && now >= '2026-10-15T00:00' && now < '2026-10-15T15:00') {
-        window.alert('Posti esauriti');
-        return;
-      }
       const cart = read(), current = cart[key]?.qty || 0, minimum = minimumQuantity(section, index);
       const next = delta > 0 ? Math.min(99, current ? current + 1 : minimum) : (current <= minimum ? 0 : current - 1);
       if (delta > 0 && Object.keys(cart).some(k => service(k.split(':')[0]) !== service(section))) {
