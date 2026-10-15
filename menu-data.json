@@ -183,29 +183,30 @@
         "dishPhoto": "cena-salmone.webp"
       },
       {
-        "name": "Filetti di maiale con fichi su crema di zucca",
-        "price": 14,
-        "description": "Filetti di maiale con fichi, adagiati su una morbida crema di zucca.",
+        "name": "Filetti di pollo su crema di cavolfiore bianco",
+        "price": 10,
+        "description": "Filetti di pollo su una vellutata di cavolfiore bianco con burro, senape, panna e miele.",
         "allergens": [
-          7
+          7,
+          10
         ],
-        "icon": "Beef",
-        "dishPhoto": "cena-assets/maiale-fichi-zucca-20261008.svg",
+        "icon": "Drumstick",
+        "dishPhoto": "pranzo-assets/pollo-cavolfiore-20261015.webp",
         "translations": {
           "en": {
-            "name": "Pork fillets with figs on pumpkin cream",
-            "description": "Pork fillets with figs, served on smooth pumpkin cream."
+            "name": "Chicken fillets on white cauliflower cream",
+            "description": "Chicken fillets on silky white cauliflower purée with butter, mustard, cream and honey."
           },
           "zh": {
-            "name": "无花果猪里脊配南瓜泥",
-            "description": "猪里脊配无花果，铺于绵滑南瓜泥之上。"
+            "name": "白花椰菜泥鸡柳",
+            "description": "嫩鸡柳佐细滑白花椰菜泥，搭配黄油、芥末、奶油和蜂蜜。"
           }
         },
         "photoSource": {
-          "type": "AI-adapted user photo",
-          "date": "2026-10-08",
+          "type": "Reused approved AI illustration",
+          "date": "2026-10-15",
           "tool": "image_gen",
-          "note": "User supplied pork and figs photo adapted to the ivory plate and blue tabletop of the dinner menu."
+          "note": "Approved lunch dish illustration reused on the dinner menu with the standard dinner card image crop and a light color adjustment. No unrelated ingredients; illustrative, not an actual restaurant photograph."
         }
       }
     ]
@@ -577,76 +578,7 @@
   ],
   "fixed": {
     "price": 25,
-    "dishes": [
-      {
-        "name": "Bruschetta al pomodoro",
-        "description": "Pane tostato e pomodoro fresco: una bruschetta semplice e profumata.",
-        "allergens": [
-          1
-        ],
-        "icon": "Wheat",
-        "course": "Antipasto",
-        "dishPhoto": "offerta-assets/bruschetta.webp",
-        "translations": {
-          "en": {
-            "name": "Tomato Bruschetta",
-            "description": "Toasted bread with fresh tomato."
-          },
-          "zh": {
-            "name": "番茄烤面包",
-            "description": "烤面包搭配新鲜番茄。"
-          }
-        }
-      },
-      {
-        "name": "Farfalle con zucchine, panna, pomodorini e salmone fresco",
-        "description": "Farfalle cremose con zucchine, pomodorini e morbidi bocconcini di salmone fresco.",
-        "allergens": [
-          1,
-          4,
-          7
-        ],
-        "icon": "Fish",
-        "course": "Primo",
-        "dishPhoto": "offerta-assets/farfalle.webp",
-        "translations": {
-          "en": {
-            "name": "Farfalle with Courgette, Cream, Cherry Tomatoes and Fresh Salmon",
-            "description": "Creamy farfalle with courgette, cherry tomatoes and tender fresh salmon pieces."
-          },
-          "zh": {
-            "name": "西葫芦奶油小番茄鲜三文鱼蝴蝶面",
-            "description": "奶油蝴蝶面，配西葫芦、小番茄和鲜三文鱼块。"
-          }
-        }
-      },
-      {
-        "name": "Seppie e calamari in umido con piselli",
-        "description": "Seppie e calamari in un delicato umido con piselli.",
-        "allergens": [
-          14
-        ],
-        "icon": "Shell",
-        "course": "Secondo",
-        "dishPhoto": "offerta-assets/seppie-calamari-piselli-20261008.svg",
-        "translations": {
-          "en": {
-            "name": "Cuttlefish and squid stew with peas",
-            "description": "Cuttlefish and squid gently stewed with peas."
-          },
-          "zh": {
-            "name": "墨鱼鱿鱼炖豌豆",
-            "description": "墨鱼和鱿鱼搭配豌豆，慢炖入味。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustration",
-          "date": "2026-10-08",
-          "tool": "image_gen",
-          "note": "Internet references inspected; generated to match both requested seafood and existing ivory plate on blue background. No potatoes."
-        }
-      }
-    ]
+    "dishes": []
   },
   "drinks": [
     {
