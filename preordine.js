@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti": [["Bruschette con crema di zucca e speck croccante (2 pezzi)", 10], ["Gamberetti* in salsa rosa", 10], ["Funghi champignon fritti", 10]], "primi": [["Spaghetti ai frutti di mare", 15], ["Risotto con gorgonzola e pere", 12.5], ["Linguine al nero di seppia", 13]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco", 12], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Filetti di salmone all’arancia e pepe rosa", 14], ["Filetti di maiale con fichi su crema di zucca", 14]]};
+  const catalog = {"antipasti":[["Bruschette con crema di zucca e speck croccante (2 pezzi)",10],["Gamberetti* in salsa rosa",10],["Funghi champignon fritti",10]],"primi":[["Spaghetti ai frutti di mare",15],["Risotto con gorgonzola e pere",12.5],["Linguine al nero di seppia",13]],"secondi":[["Frittura mista di alici, calamari e gamberetti*",20],["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",12],["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico",14],["Trancio di salmone all’arancia e pepe rosa",14],["Filetti di pollo su crema di cavolfiore bianco",10]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
   const minimumQuantity = (section, index) =>
@@ -17,6 +17,7 @@
           if(matched<0) return [];
           keyNow=section+':'+matched; indexNow=String(matched);
         }
+        if(section==='secondi' && item.name==='Filetti di maiale con fichi su crema di zucca') return [];
         const current=catalog[section]?.[Number(indexNow)];
         return [[keyNow,current ? {...item,qty:Math.max(minimumQuantity(section,indexNow),item.qty),name:current[0],price:current[1]} : item]];
       }));
