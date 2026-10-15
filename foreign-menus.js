@@ -6,71 +6,71 @@
 
   const LUNCH={
   "en": {
-    "Riso saltato speziato con pollo, gamberetti* e verdure": [
-      "Spiced stir-fried rice with chicken, shrimp* and vegetables",
-      "Carrots, zucchini, eggs and peas, with chicken and shrimp*. Please confirm the seasoning allergens with the staff."
+    "Penne con panna, prosciutto cotto e piselli": [
+      "Penne with cream, cooked ham and peas",
+      "Penne with cream, cooked ham and peas."
     ],
-    "Spaghetti con crema di zucca, speck affumicato croccante e mozzarella Santa Lucia": [
-      "Spaghetti with pumpkin cream, crispy smoked speck and Santa Lucia mozzarella",
-      "Pumpkin cream, crispy smoked speck and Santa Lucia mozzarella."
+    "Udon con verdure, gamberetti* e pollo": [
+      "Udon with vegetables, shrimp* and chicken",
+      "Udon with zucchini, carrots, savoy cabbage, shrimp* and chicken. Please confirm the seasoning allergens with the staff."
     ],
-    "Tagliatelle al ragù della casa": [
-      "Tagliatelle with house ragù",
-      "Tagliatelle coated in the house meat ragù. Please confirm the ragù allergens with the staff."
+    "Farfalle con zucchine, pomodorini e salmone affumicato": [
+      "Farfalle with zucchini, cherry tomatoes and smoked salmon",
+      "Zucchini, cherry tomatoes and smoked salmon, with a little cream."
     ],
-    "Fusilli con branzino, zucchine e pomodorini": [
-      "Fusilli with sea bass, zucchini and cherry tomatoes",
-      "Sea bass pieces, zucchini and cherry tomatoes."
+    "Calamarata al sugo di orata, leggermente piccante": [
+      "Calamarata pasta with mildly spicy sea bream sauce",
+      "Calamarata pasta with sea bream, tomato and olives, mildly spicy."
     ],
-    "Filetti di branzino croccanti su vellutata di zucca, con crumble di amaretto e rosmarino": [
-      "Crisp sea bass fillets on pumpkin velouté with amaretto crumble and rosemary",
-      "Crisp fillets on pumpkin velouté, with amaretto biscuit crumble and rosemary. Please confirm the amaretto biscuit allergens with the staff."
+    "Straccetti di pollo con verdure e salsa di soia, accompagnati da riso bianco al vapore": [
+      "Chicken strips with vegetables and soy sauce, served with steamed white rice",
+      "Chicken, carrots and zucchini in soy sauce, with steamed white rice. Please check with the staff whether the soy sauce contains gluten."
     ],
-    "Branzino alla griglia con patate al forno": [
-      "Grilled sea bass with oven-roasted potatoes",
-      "Grilled sea bass served with oven-roasted potatoes."
+    "Petti di pollo su crema di cavolfiore bianco": [
+      "Chicken breasts on white cauliflower cream",
+      "Chicken breasts on white cauliflower cream with butter, mustard, cream and honey."
     ],
-    "Scaloppine di pollo al limone con insalata tiepida di patate prezzemolate": [
-      "Lemon chicken scaloppine with warm parsley potato salad",
-      "Chicken scaloppine in lemon sauce, with warm potatoes and parsley."
+    "Filetto di salmone al sesamo nero con patate al forno": [
+      "Black sesame salmon fillet with oven-roasted potatoes",
+      "Salmon fillet with black sesame, served with oven-roasted potatoes."
     ],
-    "Parmigiana di melanzane": [
-      "Eggplant parmigiana",
-      "Oven-baked eggplant parmigiana."
+    "Insalata di finocchi, arancia, avocado e bocconcini di salmone fresco": [
+      "Fennel, orange and avocado salad with fresh salmon pieces",
+      "Fennel, orange and avocado with pieces of fresh salmon."
     ]
   },
   "zh": {
-    "Riso saltato speziato con pollo, gamberetti* e verdure": [
-      "香料鸡肉虾仁*蔬菜炒饭",
-      "胡萝卜、西葫芦、鸡蛋和豌豆，搭配鸡肉和虾仁*。 调味料过敏原请向店员确认。"
+    "Penne con panna, prosciutto cotto e piselli": [
+      "奶油熟火腿豌豆通心粉",
+      "通心粉搭配奶油、熟火腿和豌豆。"
     ],
-    "Spaghetti con crema di zucca, speck affumicato croccante e mozzarella Santa Lucia": [
-      "南瓜酱烟熏脆Speck火腿马苏里拉意面",
-      "南瓜酱、烟熏脆Speck火腿和Santa Lucia马苏里拉奶酪。"
+    "Udon con verdure, gamberetti* e pollo": [
+      "鸡肉虾仁*蔬菜乌冬面",
+      "乌冬面搭配西葫芦、胡萝卜、皱叶甘蓝、虾仁*和鸡肉。调味料过敏原请向店员确认。"
     ],
-    "Tagliatelle al ragù della casa": [
-      "本店肉酱宽面",
-      "宽面搭配本店特制肉酱。 肉酱过敏原请向店员确认。"
+    "Farfalle con zucchine, pomodorini e salmone affumicato": [
+      "西葫芦小番茄烟熏三文鱼蝴蝶面",
+      "西葫芦、小番茄和烟熏三文鱼，加入少量奶油。"
     ],
-    "Fusilli con branzino, zucchine e pomodorini": [
-      "海鲈鱼西葫芦小番茄螺旋面",
-      "海鲈鱼块、西葫芦和小番茄。"
+    "Calamarata al sugo di orata, leggermente piccante": [
+      "微辣海鲷鱼酱大圈面",
+      "大圈面搭配海鲷鱼、番茄和橄榄，微辣口味。"
     ],
-    "Filetti di branzino croccanti su vellutata di zucca, con crumble di amaretto e rosmarino": [
-      "脆皮海鲈鱼柳配南瓜浓汤杏仁饼碎迷迭香",
-      "脆皮鱼柳铺于南瓜浓汤上，搭配意式杏仁饼碎和迷迭香。 杏仁饼过敏原请向店员确认。"
+    "Straccetti di pollo con verdure e salsa di soia, accompagnati da riso bianco al vapore": [
+      "酱油蔬菜鸡肉条配清蒸白米饭",
+      "鸡肉、胡萝卜和西葫芦以酱油烹制，搭配清蒸白米饭。酱油是否含麸质请向店员确认。"
     ],
-    "Branzino alla griglia con patate al forno": [
-      "烤海鲈鱼配烤土豆",
-      "烤海鲈鱼，搭配烤土豆。"
+    "Petti di pollo su crema di cavolfiore bianco": [
+      "鸡胸肉配白花椰菜泥",
+      "鸡胸肉铺于白花椰菜泥上，搭配黄油、芥末、奶油和蜂蜜。"
     ],
-    "Scaloppine di pollo al limone con insalata tiepida di patate prezzemolate": [
-      "柠檬鸡肉薄片配欧芹温土豆沙拉",
-      "柠檬汁鸡肉薄片，搭配温土豆和欧芹。"
+    "Filetto di salmone al sesamo nero con patate al forno": [
+      "黑芝麻三文鱼柳配烤土豆",
+      "黑芝麻三文鱼柳，搭配烤土豆。"
     ],
-    "Parmigiana di melanzane": [
-      "意式焗茄子",
-      "烤箱焗制的意式茄子。"
+    "Insalata di finocchi, arancia, avocado e bocconcini di salmone fresco": [
+      "茴香球橙子牛油果鲜三文鱼沙拉",
+      "茴香球、橙子和牛油果，搭配鲜三文鱼块。"
     ]
   }
 };
