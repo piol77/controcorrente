@@ -318,6 +318,19 @@
         ? 'intent://send?phone=' + PHONE + '&text=' + encodedMessage
           + '#Intent;scheme=whatsapp;S.browser_fallback_url=' + encodeURIComponent(webWhatsappUrl) + ';end'
         : webWhatsappUrl;
+      // Solo per il pranzo: somma le persone indicate al contatore pubblico
+      // prima di aprire WhatsApp. Il contatore non indica prenotazioni confermate.
+      if (submit.dataset.launchingWhatsapp === '1') return;
+      submit.dataset.launchingWhatsapp = '1';
+      submit.disabled = true;
+      if (isLunch() && window.ControcorrentePranzoCounter) {
+        try {
+          await Promise.race([
+            window.ControcorrentePranzoCounter.recordLunchRequest(Number(data.get('persone')), requestedDay),
+            new Promise(resolve => setTimeout(resolve, 2500))
+          ]);
+        } catch (_) { /* L'apertura di WhatsApp non dipende dal contatore. */ }
+      }
       try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
       render();
       if (window.__DEMO_OPEN_WHATSAPP) window.__DEMO_OPEN_WHATSAPP(whatsappUrl); else window.location.href = whatsappUrl;
