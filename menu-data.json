@@ -183,30 +183,54 @@
         "dishPhoto": "cena-salmone.webp"
       },
       {
-        "name": "Filetti di pollo su crema di cavolfiore bianco",
+        "name": "Petti di pollo su crema di cavolfiore bianco",
         "price": 10,
-        "description": "Filetti di pollo su una vellutata di cavolfiore bianco con burro, senape, panna e miele.",
+        "description": "Petti di pollo su una vellutata di cavolfiore bianco con burro, senape, panna e miele.",
         "allergens": [
           7,
           10
         ],
         "icon": "Drumstick",
-        "dishPhoto": "pranzo-assets/pollo-cavolfiore-20261015.webp",
+        "dishPhoto": "cena-assets/petti-pollo-cavolfiore-20261015.webp",
         "translations": {
           "en": {
-            "name": "Chicken fillets on white cauliflower cream",
-            "description": "Chicken fillets on silky white cauliflower purée with butter, mustard, cream and honey."
+            "name": "Chicken breasts on white cauliflower cream",
+            "description": "Chicken breasts on silky white cauliflower purée with butter, mustard, cream and honey."
           },
           "zh": {
-            "name": "白花椰菜泥鸡柳",
-            "description": "嫩鸡柳佐细滑白花椰菜泥，搭配黄油、芥末、奶油和蜂蜜。"
+            "name": "鸡胸肉配白花椰菜泥",
+            "description": "鸡胸肉佐细滑白花椰菜泥，搭配黄油、芥末、奶油和蜂蜜。"
           }
         },
         "photoSource": {
-          "type": "Reused approved AI illustration",
+          "type": "AI-generated illustration",
           "date": "2026-10-15",
           "tool": "image_gen",
-          "note": "Approved lunch dish illustration reused on the dinner menu with the standard dinner card image crop and a light color adjustment. No unrelated ingredients; illustrative, not an actual restaurant photograph."
+          "note": "Approved lunch chicken breasts adapted to the dinner menu ivory speckled plate, navy tabletop, camera angle and lighting. Ingredients unchanged. Illustrative image, not an actual restaurant photograph."
+        }
+      },
+      {
+        "name": "Galletto ripieno con salsiccia, frutta e castagne",
+        "price": 14,
+        "description": "Galletto al forno farcito con salsiccia, frutta e castagne, servito già affettato con patate al forno. (dopo le ore 20.)",
+        "allergens": [],
+        "icon": "Drumstick",
+        "dishPhoto": "cena-assets/galletto-ripieno-affettato-patate-20261015.webp",
+        "translations": {
+          "en": {
+            "name": "Cockerel stuffed with sausage, fruit and chestnuts",
+            "description": "Oven-roasted cockerel stuffed with sausage, fruit and chestnuts, served sliced with roast potatoes. (after 8 p.m.)"
+          },
+          "zh": {
+            "name": "香肠水果栗子馅烤小公鸡",
+            "description": "烤小公鸡内填香肠、水果和栗子，切片后配烤土豆。（20点后供应。）"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-15",
+          "tool": "image_gen",
+          "note": "Sliced individual portion showing sausage, fruit and chestnut stuffing with roast potatoes. Matched to the approved dinner ivory speckled plate, navy tabletop, camera angle and lighting. Illustrative image, not an actual restaurant photograph."
         }
       }
     ]
