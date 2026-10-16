@@ -103,6 +103,31 @@
           "tool": "image_gen",
           "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
         }
+      },
+      {
+        "name": "Fusilli con melanzane e tonno fresco",
+        "price": 12.5,
+        "description": "Fusilli con melanzane e tonno fresco, con poco pomodoro.",
+        "allergens": [
+          1,
+          4
+        ],
+        "icon": "Fish",
+        "dishPhoto": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
+        "translations": {
+          "en": {
+            "name": "Fusilli with aubergine and fresh tuna",
+            "description": "Fusilli with aubergine and fresh tuna, with a little tomato."
+          },
+          "zh": {
+            "name": "茄子鲜金枪鱼螺旋面",
+            "description": "螺旋面搭配茄子、鲜金枪鱼和少量番茄。"
+          }
+        },
+        "photoSource": {
+          "type": "Reused approved illustration",
+          "note": "Existing dinner-menu illustration with aubergine, tuna and a little tomato; approved plate and navy background preserved."
+        }
       }
     ],
     "secondi": [
@@ -231,6 +256,32 @@
           "date": "2026-10-15",
           "tool": "image_gen",
           "note": "Sliced individual portion showing sausage, fruit and chestnut stuffing with roast potatoes. Matched to the approved dinner ivory speckled plate, navy tabletop, camera angle and lighting. Illustrative image, not an actual restaurant photograph."
+        }
+      },
+      {
+        "name": "Orata alla griglia con patate",
+        "price": 14,
+        "description": "Orata alla griglia, accompagnata da patate.",
+        "allergens": [
+          4
+        ],
+        "icon": "Fish",
+        "dishPhoto": "cena-assets/orata-griglia-patate-20261016.webp",
+        "translations": {
+          "en": {
+            "name": "Grilled sea bream with potatoes",
+            "description": "Grilled sea bream served with potatoes."
+          },
+          "zh": {
+            "name": "烤海鲷鱼配土豆",
+            "description": "烤海鲷鱼，搭配土豆。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-16",
+          "tool": "image_gen",
+          "note": "Existing sea bream and potato reference adapted to the approved dinner ivory plate, navy tabletop, lighting and viewpoint. One individual serving. Illustrative image, not an actual restaurant photograph."
         }
       }
     ]
