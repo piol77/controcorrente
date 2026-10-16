@@ -56,7 +56,8 @@
   }
   function isHoliday(day) {
     const date = new Date(day + 'T12:00:00Z');
-    if (date.getUTCDay() === 0) return true;
+    // Saturday lunch follows the same festive service rules as Sunday.
+    if ([0, 6].includes(date.getUTCDay())) return true;
     // Italian public holidays and San Giovanni, patron of Torino (24 June).
     if (['01-01','01-06','04-25','05-01','06-02','06-24','08-15','10-04','11-01','12-08','12-25','12-26'].includes(day.slice(5))) return true;
     // Gregorian Easter: also allow Easter Monday at lunch.
