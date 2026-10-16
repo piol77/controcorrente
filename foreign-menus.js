@@ -6,71 +6,79 @@
 
   const LUNCH={
   "en": {
-    "Penne con panna, prosciutto cotto e piselli": [
-      "Penne with cream, cooked ham and peas",
-      "Penne with cream, cooked ham and peas."
+    "Spaghetti ai frutti di mare": [
+      "Seafood spaghetti",
+      "Spaghetti with mussels, clams, shrimp*, langoustines* and tomato."
     ],
-    "Udon con verdure, gamberetti* e pollo": [
-      "Udon with vegetables, shrimp* and chicken",
-      "Udon with zucchini, carrots, savoy cabbage, shrimp* and chicken. Please confirm the seasoning allergens with the staff."
+    "Conchigliette con branzino e melanzane": [
+      "Small shell pasta with sea bass and aubergine",
+      "Small shell pasta with sea bass and aubergine, with a little tomato."
     ],
-    "Farfalle con zucchine, pomodorini e salmone affumicato": [
-      "Farfalle with zucchini, cherry tomatoes and smoked salmon",
-      "Zucchini, cherry tomatoes and smoked salmon, with a little cream."
+    "Riso alla cantonese": [
+      "Cantonese fried rice",
+      "Fried rice with eggs, peas and cooked ham."
     ],
-    "Calamarata al sugo di orata, leggermente piccante": [
-      "Calamarata pasta with mildly spicy sea bream sauce",
-      "Calamarata pasta with sea bream, tomato and olives, mildly spicy."
+    "Orecchiette con salsiccia e spinaci": [
+      "Orecchiette with sausage and spinach",
+      "Orecchiette pasta with sausage and spinach."
     ],
-    "Straccetti di pollo con verdure e salsa di soia, accompagnati da riso bianco al vapore": [
-      "Chicken strips with vegetables and soy sauce, served with steamed white rice",
-      "Chicken, carrots and zucchini in soy sauce, with steamed white rice. Please check with the staff whether the soy sauce contains gluten."
+    "Gnocchi di patate con zucca e gorgonzola": [
+      "Potato gnocchi with pumpkin and gorgonzola",
+      "Potato gnocchi with pumpkin and gorgonzola cheese."
     ],
-    "Petti di pollo su crema di cavolfiore bianco": [
-      "Chicken breasts on white cauliflower cream",
-      "Chicken breasts on white cauliflower cream with butter, mustard, cream and honey."
+    "Salmone alla griglia con verza e carote saltate": [
+      "Grilled salmon with sautéed savoy cabbage and carrots",
+      "Grilled salmon served with sautéed savoy cabbage and carrots."
     ],
-    "Filetto di salmone al sesamo nero con patate al forno": [
-      "Black sesame salmon fillet with oven-roasted potatoes",
-      "Salmon fillet with black sesame, served with oven-roasted potatoes."
+    "Orata alla griglia con verza e carote saltate": [
+      "Grilled sea bream with sautéed savoy cabbage and carrots",
+      "Grilled sea bream served with sautéed savoy cabbage and carrots."
     ],
-    "Insalata di finocchi, arancia, avocado e bocconcini di salmone fresco": [
-      "Fennel, orange and avocado salad with fresh salmon pieces",
-      "Fennel, orange and avocado with pieces of fresh salmon."
+    "Branzino alla griglia con verza e carote saltate": [
+      "Grilled sea bass with sautéed savoy cabbage and carrots",
+      "Grilled sea bass served with sautéed savoy cabbage and carrots."
+    ],
+    "Petti di pollo con zucca e gorgonzola, accompagnati da patate": [
+      "Chicken breasts with pumpkin, gorgonzola and potatoes",
+      "Chicken breasts with pumpkin and gorgonzola cheese, served with potatoes."
     ]
   },
   "zh": {
-    "Penne con panna, prosciutto cotto e piselli": [
-      "奶油熟火腿豌豆通心粉",
-      "通心粉搭配奶油、熟火腿和豌豆。"
+    "Spaghetti ai frutti di mare": [
+      "海鲜意大利面",
+      "意大利面搭配贻贝、蛤蜊、虾仁*、海螯虾*和番茄。"
     ],
-    "Udon con verdure, gamberetti* e pollo": [
-      "鸡肉虾仁*蔬菜乌冬面",
-      "乌冬面搭配西葫芦、胡萝卜、皱叶甘蓝、虾仁*和鸡肉。调味料过敏原请向店员确认。"
+    "Conchigliette con branzino e melanzane": [
+      "鲈鱼茄子小贝壳面",
+      "小贝壳面搭配鲈鱼、茄子和少量番茄。"
     ],
-    "Farfalle con zucchine, pomodorini e salmone affumicato": [
-      "西葫芦小番茄烟熏三文鱼蝴蝶面",
-      "西葫芦、小番茄和烟熏三文鱼，加入少量奶油。"
+    "Riso alla cantonese": [
+      "广式炒饭",
+      "米饭搭配鸡蛋、豌豆和熟火腿炒制。"
     ],
-    "Calamarata al sugo di orata, leggermente piccante": [
-      "微辣海鲷鱼酱大圈面",
-      "大圈面搭配海鲷鱼、番茄和橄榄，微辣口味。"
+    "Orecchiette con salsiccia e spinaci": [
+      "香肠菠菜猫耳朵面",
+      "猫耳朵面搭配香肠和菠菜。"
     ],
-    "Straccetti di pollo con verdure e salsa di soia, accompagnati da riso bianco al vapore": [
-      "酱油蔬菜鸡肉条配清蒸白米饭",
-      "鸡肉、胡萝卜和西葫芦以酱油烹制，搭配清蒸白米饭。酱油是否含麸质请向店员确认。"
+    "Gnocchi di patate con zucca e gorgonzola": [
+      "南瓜戈贡佐拉奶酪土豆团子",
+      "土豆团子搭配南瓜和戈贡佐拉蓝纹奶酪。"
     ],
-    "Petti di pollo su crema di cavolfiore bianco": [
-      "鸡胸肉配白花椰菜泥",
-      "鸡胸肉铺于白花椰菜泥上，搭配黄油、芥末、奶油和蜂蜜。"
+    "Salmone alla griglia con verza e carote saltate": [
+      "烤三文鱼配炒皱叶甘蓝和胡萝卜",
+      "烤三文鱼，搭配炒皱叶甘蓝和胡萝卜。"
     ],
-    "Filetto di salmone al sesamo nero con patate al forno": [
-      "黑芝麻三文鱼柳配烤土豆",
-      "黑芝麻三文鱼柳，搭配烤土豆。"
+    "Orata alla griglia con verza e carote saltate": [
+      "烤海鲷鱼配炒皱叶甘蓝和胡萝卜",
+      "烤海鲷鱼，搭配炒皱叶甘蓝和胡萝卜。"
     ],
-    "Insalata di finocchi, arancia, avocado e bocconcini di salmone fresco": [
-      "茴香球橙子牛油果鲜三文鱼沙拉",
-      "茴香球、橙子和牛油果，搭配鲜三文鱼块。"
+    "Branzino alla griglia con verza e carote saltate": [
+      "烤鲈鱼配炒皱叶甘蓝和胡萝卜",
+      "烤鲈鱼，搭配炒皱叶甘蓝和胡萝卜。"
+    ],
+    "Petti di pollo con zucca e gorgonzola, accompagnati da patate": [
+      "鸡胸肉配南瓜、戈贡佐拉奶酪和土豆",
+      "鸡胸肉搭配南瓜和戈贡佐拉蓝纹奶酪，佐以土豆。"
     ]
   }
 };

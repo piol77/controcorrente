@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-10-15",
-  "lunchDateLabel": "Giovedì 15 ottobre 2026",
+  "lunchUpdatedAt": "2026-10-16",
+  "lunchDateLabel": "Venerdì 16 ottobre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -237,234 +237,259 @@
   },
   "lunch": [
     {
-      "name": "Penne con panna, prosciutto cotto e piselli",
+      "name": "Spaghetti ai frutti di mare",
+      "price": 15,
+      "description": "Spaghetti con cozze, vongole, gamberetti*, scampi* e pomodoro.",
+      "allergens": [
+        1,
+        2,
+        14
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/spaghetti-mare-20261016.webp",
+      "photoLayout": "side",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Seafood spaghetti",
+          "description": "Spaghetti with mussels, clams, shrimp*, langoustines* and tomato."
+        },
+        "zh": {
+          "name": "海鲜意大利面",
+          "description": "意大利面搭配贻贝、蛤蜊、虾仁*、海螯虾*和番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-16",
+        "tool": "image_gen",
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Conchigliette con branzino e melanzane",
+      "price": 12,
+      "description": "Conchigliette con branzino e melanzane, con poco pomodoro.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/conchigliette-20261016.webp",
+      "photoLayout": "side",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Small shell pasta with sea bass and aubergine",
+          "description": "Small shell pasta with sea bass and aubergine, with a little tomato."
+        },
+        "zh": {
+          "name": "鲈鱼茄子小贝壳面",
+          "description": "小贝壳面搭配鲈鱼、茄子和少量番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-16",
+        "tool": "image_gen",
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Riso alla cantonese",
+      "price": 8,
+      "description": "Riso saltato con uova, piselli e prosciutto cotto.",
+      "allergens": [
+        3
+      ],
+      "icon": "CookingPot",
+      "dishPhoto": "pranzo-assets/riso-cantonese-20261016.webp",
+      "photoLayout": "side",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Cantonese fried rice",
+          "description": "Fried rice with eggs, peas and cooked ham."
+        },
+        "zh": {
+          "name": "广式炒饭",
+          "description": "米饭搭配鸡蛋、豌豆和熟火腿炒制。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-16",
+        "tool": "image_gen",
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Orecchiette con salsiccia e spinaci",
       "price": 10,
-      "description": "Penne con panna, prosciutto cotto e piselli.",
+      "description": "Orecchiette con salsiccia e spinaci.",
+      "allergens": [
+        1
+      ],
+      "icon": "Wheat",
+      "dishPhoto": "pranzo-assets/orecchiette-20261016.webp",
+      "photoLayout": "side",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Orecchiette with sausage and spinach",
+          "description": "Orecchiette pasta with sausage and spinach."
+        },
+        "zh": {
+          "name": "香肠菠菜猫耳朵面",
+          "description": "猫耳朵面搭配香肠和菠菜。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-16",
+        "tool": "image_gen",
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Gnocchi di patate con zucca e gorgonzola",
+      "price": 10,
+      "description": "Gnocchi di patate con zucca e gorgonzola.",
       "allergens": [
         1,
         7
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/penne-20261015.webp",
+      "dishPhoto": "pranzo-assets/gnocchi-20261016.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Penne with cream, cooked ham and peas",
-          "description": "Penne with cream, cooked ham and peas."
+          "name": "Potato gnocchi with pumpkin and gorgonzola",
+          "description": "Potato gnocchi with pumpkin and gorgonzola cheese."
         },
         "zh": {
-          "name": "奶油熟火腿豌豆通心粉",
-          "description": "通心粉搭配奶油、熟火腿和豌豆。"
+          "name": "南瓜戈贡佐拉奶酪土豆团子",
+          "description": "土豆团子搭配南瓜和戈贡佐拉蓝纹奶酪。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-15",
+        "date": "2026-10-16",
         "tool": "image_gen",
-        "note": "Internet recipe references reviewed; their ingredients, side dishes or presentation differ. Separate illustrative photograph generated on the approved ivory plate and beige stone table, matching the supplied ingredients. Not a photograph of food served at the restaurant."
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Udon con verdure, gamberetti* e pollo",
-      "price": 10,
-      "description": "Udon con zucchine, carote, verza, gamberetti* e pollo. Allergeni del condimento da confermare con il personale.",
+      "name": "Salmone alla griglia con verza e carote saltate",
+      "price": 12,
+      "description": "Salmone alla griglia, accompagnato da verza e carote saltate.",
       "allergens": [
-        1,
-        2
+        4
       ],
-      "icon": "CookingPot",
-      "dishPhoto": "pranzo-assets/udon-20261013.webp",
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/salmone-20261016.webp",
       "photoLayout": "side",
-      "orderCourse": "Primo",
+      "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Udon with vegetables, shrimp* and chicken",
-          "description": "Udon with zucchini, carrots, savoy cabbage, shrimp* and chicken. Please confirm the seasoning allergens with the staff."
+          "name": "Grilled salmon with sautéed savoy cabbage and carrots",
+          "description": "Grilled salmon served with sautéed savoy cabbage and carrots."
         },
         "zh": {
-          "name": "鸡肉虾仁*蔬菜乌冬面",
-          "description": "乌冬面搭配西葫芦、胡萝卜、皱叶甘蓝、虾仁*和鸡肉。调味料过敏原请向店员确认。"
+          "name": "烤三文鱼配炒皱叶甘蓝和胡萝卜",
+          "description": "烤三文鱼，搭配炒皱叶甘蓝和胡萝卜。"
         }
       },
       "photoSource": {
-        "type": "Reused approved AI illustration",
-        "date": "2026-10-13",
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-16",
         "tool": "image_gen",
-        "note": "Approved matching udon, zucchini, carrots, savoy cabbage, shrimp and chicken photo on beige tabletop reused without alteration."
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Farfalle con zucchine, pomodorini e salmone affumicato",
+      "name": "Orata alla griglia con verza e carote saltate",
       "price": 12,
-      "description": "Zucchine, pomodorini e salmone affumicato, con poca panna.",
+      "description": "Orata alla griglia, accompagnata da verza e carote saltate.",
       "allergens": [
-        1,
-        4,
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/orata-20261016.webp",
+      "photoLayout": "side",
+      "orderCourse": "Secondo",
+      "translations": {
+        "en": {
+          "name": "Grilled sea bream with sautéed savoy cabbage and carrots",
+          "description": "Grilled sea bream served with sautéed savoy cabbage and carrots."
+        },
+        "zh": {
+          "name": "烤海鲷鱼配炒皱叶甘蓝和胡萝卜",
+          "description": "烤海鲷鱼，搭配炒皱叶甘蓝和胡萝卜。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-16",
+        "tool": "image_gen",
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Branzino alla griglia con verza e carote saltate",
+      "price": 12,
+      "description": "Branzino alla griglia, accompagnato da verza e carote saltate.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/branzino-20261016.webp",
+      "photoLayout": "side",
+      "orderCourse": "Secondo",
+      "translations": {
+        "en": {
+          "name": "Grilled sea bass with sautéed savoy cabbage and carrots",
+          "description": "Grilled sea bass served with sautéed savoy cabbage and carrots."
+        },
+        "zh": {
+          "name": "烤鲈鱼配炒皱叶甘蓝和胡萝卜",
+          "description": "烤鲈鱼，搭配炒皱叶甘蓝和胡萝卜。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-16",
+        "tool": "image_gen",
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Petti di pollo con zucca e gorgonzola, accompagnati da patate",
+      "price": 10,
+      "description": "Petti di pollo con zucca e gorgonzola, accompagnati da patate.",
+      "allergens": [
         7
       ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/farfalle-20261015.webp",
-      "photoLayout": "side",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Farfalle with zucchini, cherry tomatoes and smoked salmon",
-          "description": "Zucchini, cherry tomatoes and smoked salmon, with a little cream."
-        },
-        "zh": {
-          "name": "西葫芦小番茄烟熏三文鱼蝴蝶面",
-          "description": "西葫芦、小番茄和烟熏三文鱼，加入少量奶油。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-15",
-        "tool": "image_gen",
-        "note": "Internet recipe references reviewed; their ingredients, side dishes or presentation differ. Separate illustrative photograph generated on the approved ivory plate and beige stone table, matching the supplied ingredients. Not a photograph of food served at the restaurant."
-      }
-    },
-    {
-      "name": "Calamarata al sugo di orata, leggermente piccante",
-      "price": 12,
-      "description": "Calamarata con orata, pomodoro e olive, dal gusto leggermente piccante.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/calamarata-20261015.webp",
-      "photoLayout": "side",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Calamarata pasta with mildly spicy sea bream sauce",
-          "description": "Calamarata pasta with sea bream, tomato and olives, mildly spicy."
-        },
-        "zh": {
-          "name": "微辣海鲷鱼酱大圈面",
-          "description": "大圈面搭配海鲷鱼、番茄和橄榄，微辣口味。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-15",
-        "tool": "image_gen",
-        "note": "Internet recipe references reviewed; their ingredients, side dishes or presentation differ. Separate illustrative photograph generated on the approved ivory plate and beige stone table, matching the supplied ingredients. Not a photograph of food served at the restaurant."
-      }
-    },
-    {
-      "name": "Straccetti di pollo con verdure e salsa di soia, accompagnati da riso bianco al vapore",
-      "price": 10,
-      "description": "Pollo, carote e zucchine in salsa di soia, con riso bianco al vapore. Verificare con il personale l’eventuale presenza di glutine nella salsa di soia.",
-      "allergens": [
-        6
-      ],
       "icon": "Drumstick",
-      "dishPhoto": "pranzo-assets/pollo-soia-20261015.webp",
+      "dishPhoto": "pranzo-assets/pollo-20261016.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Chicken strips with vegetables and soy sauce, served with steamed white rice",
-          "description": "Chicken, carrots and zucchini in soy sauce, with steamed white rice. Please check with the staff whether the soy sauce contains gluten."
+          "name": "Chicken breasts with pumpkin, gorgonzola and potatoes",
+          "description": "Chicken breasts with pumpkin and gorgonzola cheese, served with potatoes."
         },
         "zh": {
-          "name": "酱油蔬菜鸡肉条配清蒸白米饭",
-          "description": "鸡肉、胡萝卜和西葫芦以酱油烹制，搭配清蒸白米饭。酱油是否含麸质请向店员确认。"
+          "name": "鸡胸肉配南瓜、戈贡佐拉奶酪和土豆",
+          "description": "鸡胸肉搭配南瓜和戈贡佐拉蓝纹奶酪，佐以土豆。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-15",
+        "date": "2026-10-16",
         "tool": "image_gen",
-        "note": "Internet recipe references reviewed; their ingredients, side dishes or presentation differ. Separate illustrative photograph generated on the approved ivory plate and beige stone table, matching the supplied ingredients. Not a photograph of food served at the restaurant."
-      }
-    },
-    {
-      "name": "Petti di pollo su crema di cavolfiore bianco",
-      "price": 10,
-      "description": "Petti di pollo su crema di cavolfiore bianco, con burro, senape, panna e miele.",
-      "allergens": [
-        7,
-        10
-      ],
-      "icon": "Drumstick",
-      "dishPhoto": "pranzo-assets/pollo-cavolfiore-20261015.webp",
-      "photoLayout": "side",
-      "orderCourse": "Secondo",
-      "translations": {
-        "en": {
-          "name": "Chicken breasts on white cauliflower cream",
-          "description": "Chicken breasts on white cauliflower cream with butter, mustard, cream and honey."
-        },
-        "zh": {
-          "name": "鸡胸肉配白花椰菜泥",
-          "description": "鸡胸肉铺于白花椰菜泥上，搭配黄油、芥末、奶油和蜂蜜。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-15",
-        "tool": "image_gen",
-        "note": "Internet recipe references reviewed; their ingredients, side dishes or presentation differ. Separate illustrative photograph generated on the approved ivory plate and beige stone table, matching the supplied ingredients. Not a photograph of food served at the restaurant."
-      }
-    },
-    {
-      "name": "Filetto di salmone al sesamo nero con patate al forno",
-      "price": 12,
-      "description": "Filetto di salmone al sesamo nero, accompagnato da patate al forno.",
-      "allergens": [
-        4,
-        11
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/salmone-sesamo-20261015.webp",
-      "photoLayout": "side",
-      "orderCourse": "Secondo",
-      "translations": {
-        "en": {
-          "name": "Black sesame salmon fillet with oven-roasted potatoes",
-          "description": "Salmon fillet with black sesame, served with oven-roasted potatoes."
-        },
-        "zh": {
-          "name": "黑芝麻三文鱼柳配烤土豆",
-          "description": "黑芝麻三文鱼柳，搭配烤土豆。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-15",
-        "tool": "image_gen",
-        "note": "Internet recipe references reviewed; their ingredients, side dishes or presentation differ. Separate illustrative photograph generated on the approved ivory plate and beige stone table, matching the supplied ingredients. Not a photograph of food served at the restaurant."
-      }
-    },
-    {
-      "name": "Insalata di finocchi, arancia, avocado e bocconcini di salmone fresco",
-      "price": 12,
-      "description": "Finocchi, arancia e avocado con bocconcini di salmone fresco.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "cena-assets/insalatona-finocchi-arance-avocado-salmone-20261014.webp",
-      "photoLayout": "side",
-      "orderCourse": "Secondo",
-      "translations": {
-        "en": {
-          "name": "Fennel, orange and avocado salad with fresh salmon pieces",
-          "description": "Fennel, orange and avocado with pieces of fresh salmon."
-        },
-        "zh": {
-          "name": "茴香球橙子牛油果鲜三文鱼沙拉",
-          "description": "茴香球、橙子和牛油果，搭配鲜三文鱼块。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-14",
-        "tool": "image_gen",
-        "note": "Internet references inspected: examples use smoked salmon or add unrelated ingredients. Generated with the requested fennel, oranges, avocado and fresh salmon bites, matching the approved ivory plate, navy tabletop and soft light. Illustrative image, not a photograph of food served at the restaurant."
+        "note": "Internet references reviewed: ingredients, side dishes, plating or background differ. Separate illustrative photograph generated with the requested ingredients on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     }
   ],
