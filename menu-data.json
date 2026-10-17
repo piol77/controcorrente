@@ -171,30 +171,30 @@
         }
       },
       {
-        "name": "Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico",
+        "name": "Filetti di orata in crosta di mandorle con verza viola cruda all’aceto balsamico",
         "price": 14,
-        "description": "Filetti di branzino in crosta di mandorle, con verza viola cruda condita all’aceto balsamico.",
+        "description": "Filetti di orata in crosta di mandorle, con verza viola cruda condita all’aceto balsamico.",
         "allergens": [
           4,
           8
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/branzino-mandorle-verza-viola-20261009.webp",
+        "dishPhoto": "cena-assets/orata-mandorle-verza-viola-20261017.webp",
         "translations": {
           "en": {
-            "name": "Almond-crusted sea bass fillets with raw purple cabbage and balsamic vinegar",
-            "description": "Sea bass fillets in an almond crust, with raw purple cabbage dressed with balsamic vinegar."
+            "name": "Almond-crusted sea bream fillets with raw purple cabbage and balsamic vinegar",
+            "description": "Sea bream fillets in an almond crust, with raw purple cabbage dressed with balsamic vinegar."
           },
           "zh": {
-            "name": "杏仁脆皮海鲈鱼柳配香醋紫甘蓝",
-            "description": "海鲈鱼柳覆以杏仁脆皮，配意大利香醋调味的生紫甘蓝。"
+            "name": "杏仁脆皮海鲷鱼柳配香醋紫甘蓝",
+            "description": "海鲷鱼柳覆以杏仁脆皮，配意大利香醋调味的生紫甘蓝。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustration",
-          "date": "2026-10-09",
+          "type": "AI-adapted approved menu illustration",
+          "date": "2026-10-17",
           "tool": "image_gen",
-          "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
+          "note": "Internet references reviewed; other garnishes or ingredients differ. Approved almond-crusted fish photo edited to sea bream, preserving raw purple cabbage with balsamic vinegar, ivory plate and navy tabletop. Illustrative image, not a restaurant photograph."
         }
       },
       {
@@ -567,29 +567,30 @@
       }
     },
     {
-      "name": "Parmigiana di patate con prosciutto e scamorza",
+      "name": "Orecchiette con salsiccia e spinaci",
       "price": 10,
-      "description": "Strati di patate, prosciutto e scamorza, gratinati al forno.",
+      "description": "Orecchiette con salsiccia e spinaci.",
       "allergens": [
-        7
+        1
       ],
-      "icon": "CookingPot",
-      "dishPhoto": "offerta-assets/parmigiana-patate-prosciutto-scamorza-20261009.webp",
+      "icon": "Wheat",
+      "dishPhoto": "offerta-assets/orecchiette-salsiccia-spinaci-20261017.webp",
+      "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Potato parmigiana with ham and scamorza",
-          "description": "Layers of potatoes, ham and scamorza cheese, baked until golden."
+          "name": "Orecchiette with sausage and spinach",
+          "description": "Orecchiette pasta with sausage and spinach."
         },
         "zh": {
-          "name": "火腿斯卡莫扎奶酪焗土豆",
-          "description": "土豆片、火腿与斯卡莫扎奶酪层层叠放，烤至金黄。"
+          "name": "香肠菠菜猫耳朵面",
+          "description": "猫耳朵面搭配香肠和菠菜。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-09",
+        "type": "AI-adapted approved lunch illustration",
+        "date": "2026-10-17",
         "tool": "image_gen",
-        "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
+        "note": "Approved lunch orecchiette with sausage and spinach adapted to the ivory plate and navy tabletop of the evening offers. No recipe change. Illustrative image, not a restaurant photograph."
       }
     },
     {
