@@ -29,35 +29,50 @@
     }
   }
 
+  function validBadge(src) {
+    if (!src || !src.startsWith('data:image/svg+xml;charset=utf-8,')) return false;
+    try {
+      const svg = decodeURIComponent(src.slice(src.indexOf(',') + 1));
+      const root = new DOMParser().parseFromString(svg, 'image/svg+xml').documentElement;
+      return root.localName === 'svg' && !root.querySelector('parsererror');
+    } catch (_) { return false; }
+  }
+
+  let pendingCount = false;
+  let retryScheduled = false;
   function showBadge(src) {
     const badge = document.querySelector('[data-visitor-counter]');
-    if (!badge || !src) return;
+    if (!badge || !validBadge(src)) return;
     badge.alt = 'Accessi di oggi / accessi totali';
     badge.onerror = () => { badge.alt = 'Contatore temporaneamente non disponibile'; };
     badge.src = src;
   }
 
   async function countAccessOnce() {
+    if (pendingCount) return;
     const cachedBadge = getSessionItem(badgeKey);
 
     // Se questa sessione è già stata conteggiata, non contattare di nuovo
     // l'endpoint che incrementa il contatore. In Home riusa il badge salvato.
-    if (getSessionItem(countedKey) === '1') {
+    if (getSessionItem(countedKey) === '1' && validBadge(cachedBadge)) {
       showBadge(cachedBadge);
       return;
     }
 
     const requestUrl = endpoint + '&request=' + Date.now() + '-' + Math.random().toString(36).slice(2);
 
+    pendingCount = true;
     try {
       const response = await fetch(requestUrl, {
         cache: 'no-store',
-        credentials: 'omit'
+        credentials: 'omit',
+        signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(12000) : undefined
       });
       if (!response.ok) throw new Error('Counter request failed');
 
       const svg = await response.text();
       const badgeData = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+      if (!validBadge(badgeData)) throw new Error('Invalid counter badge');
 
       // Segna la sessione come conteggiata solo dopo una risposta valida.
       // Il badge viene conservato nella sessione per poterlo mostrare in Home
@@ -71,6 +86,13 @@
       if (badge) {
         badge.alt = 'Contatore temporaneamente non disponibile';
       }
+      // One recovery attempt for a temporary network/service failure.
+      if (!retryScheduled) {
+        retryScheduled = true;
+        window.setTimeout(countAccessOnce, 5000);
+      }
+    } finally {
+      pendingCount = false;
     }
   }
 
@@ -78,7 +100,7 @@
 })();
 
 // BEGIN CONTROCORRENTE RADIO TEST 2026-10-18
-// Rollback: remove only this marked block. The original counter above is unchanged.
+// Rollback radio: remove only this marked block.
 (() => {
   'use strict';
   if (document.getElementById('cc-jazz-toggle')) return;
