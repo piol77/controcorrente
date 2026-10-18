@@ -76,3 +76,97 @@
 
   countAccessOnce();
 })();
+
+// BEGIN CONTROCORRENTE RADIO TEST 2026-10-18
+// Rollback: remove only this marked block. The original counter above is unchanged.
+(() => {
+  'use strict';
+  if (document.getElementById('cc-jazz-toggle')) return;
+  const header = document.querySelector('header.top');
+  if (!header) return;
+  const preferenceKey = 'cc-jazz-test-enabled-v1';
+  let enabled = true;
+  try { enabled = sessionStorage.getItem(preferenceKey) !== 'off'; } catch (_) {}
+  let pending = false;
+  let failed = false;
+  const audio = document.createElement('audio');
+  audio.preload = 'none';
+  audio.volume = 0.25;
+  audio.setAttribute('playsinline', '');
+  const button = document.createElement('button');
+  button.id = 'cc-jazz-toggle';
+  button.type = 'button';
+  button.style.cssText = 'display:block;margin:8px 0 0 auto;width:36px;height:36px;padding:0;border:1px solid var(--gold,#cba76d);border-radius:50%;background:var(--navy,#082a43);color:var(--gold,#cba76d);font-size:18px;line-height:1;cursor:pointer;';
+  function render() {
+    const playing = !audio.paused && !failed;
+    button.textContent = playing ? '♫' : enabled ? '♪' : '×';
+    const label = playing ? 'Spegni 1st Greek Jazz' : failed
+      ? '1st Greek Jazz non disponibile: tocca per riprovare'
+      : enabled ? 'Ascolta 1st Greek Jazz' : 'Riattiva 1st Greek Jazz';
+    button.setAttribute('aria-label', label);
+    button.setAttribute('aria-pressed', String(playing));
+    button.title = label;
+  }
+  function remember() {
+    try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
+  }
+  function stop() {
+    audio.pause();
+    audio.removeAttribute('src');
+    audio.load();
+    pending = false;
+    render();
+  }
+  function start() {
+    if (!enabled || pending || (!audio.paused && !failed)) return;
+    pending = true;
+    failed = false;
+    if (!audio.getAttribute('src')) {
+      audio.src = 'https://stream.newageradio.gr/listen/jazz/radio.flac';
+    }
+    try {
+      const result = audio.play();
+      if (result && typeof result.then === 'function') {
+        result.then(() => { pending = false; render(); }).catch(error => {
+          pending = false;
+          failed = error.name !== 'NotAllowedError' && error.name !== 'AbortError';
+          render();
+        });
+      } else { pending = false; }
+    } catch (_) { pending = false; failed = true; render(); }
+  }
+  audio.addEventListener('playing', () => { pending = false; failed = false; render(); });
+  audio.addEventListener('pause', render);
+  audio.addEventListener('error', () => { pending = false; failed = true; render(); });
+  button.addEventListener('click', () => {
+    if (enabled && (pending || (!audio.paused && !failed))) {
+      enabled = false;
+      remember();
+      stop();
+    } else {
+      enabled = true;
+      remember();
+      failed = false;
+      // Release any failed stream before an explicit retry.
+      audio.removeAttribute('src');
+      audio.load();
+      start();
+    }
+    render();
+  });
+  const brandRow = header.querySelector('.brand-row');
+  if (brandRow) brandRow.insertAdjacentElement('afterend', button);
+  else header.appendChild(button);
+  render();
+  // No preventDefault/propagation changes: navigation, ordering and counter stay independent.
+  // A browser may require a new gesture after navigating to a different HTML page.
+  function onGesture(event) {
+    if (!event.isTrusted || button.contains(event.target) || failed) return;
+    if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
+    start();
+  }
+  document.addEventListener('click', onGesture, { capture: true, passive: true });
+  document.addEventListener('keydown', onGesture, { capture: true, passive: true });
+  window.addEventListener('pagehide', stop);
+})();
+// END CONTROCORRENTE RADIO TEST 2026-10-18
