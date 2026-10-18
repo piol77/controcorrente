@@ -4,35 +4,18 @@
   navStyle.textContent = 'header.top nav a{font-size:16px}';
   document.head.append(navStyle);
 
-  // Same server-side URL key, Rome timezone and once-per-tab session rule.
-  const endpoint = 'https://hitscounter.dev/api/hit?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F&tz=Europe%2FRome&output=json';
+  // Shared anonymous counts; preserve the original once-per-tab session flag.
+  const API = 'https://countapi.mileshilliard.com/api/v1/';
+  const PREFIX = 'piol77_controcorrente_visits_6ae6fd00_';
   const countedKey = 'controcorrente-visitor-counted-v1';
-  const badgeKey = 'controcorrente-visitor-badge-v1';
   const valuesKey = 'controcorrente-visitor-values-v1';
   const get = key => { try { return sessionStorage.getItem(key); } catch (_) { return null; } };
   const set = (key, value) => { try { sessionStorage.setItem(key, value); } catch (_) {} };
-  const valid = data => data && Number.isSafeInteger(data.today_hits) && data.today_hits >= 0 &&
-    Number.isSafeInteger(data.total_hits) && data.total_hits >= data.today_hits;
-
-  function cachedValues() {
-    try {
-      const data = JSON.parse(get(valuesKey));
-      if (valid(data)) return data;
-    } catch (_) {}
-    // Migrate the previous SVG cache without registering a second visit.
-    try {
-      const badge = get(badgeKey) || '';
-      const svg = decodeURIComponent(badge.slice(badge.indexOf(',') + 1));
-      const match = svg.match(/<title>[^<]*?:\s*(\d+)\s*\/\s*(\d+)<\/title>/);
-      if (match) {
-        const data = {today_hits: Number(match[1]), total_hits: Number(match[2])};
-        if (valid(data)) return data;
-      }
-    } catch (_) {}
-    return null;
+  function dayKey() {
+    const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+    return PREFIX + 'day_' + ['year','month','day'].map(type => parts.find(item => item.type === type).value).join('');
   }
-
-  function show(data) {
+  function show(data, failed = false) {
     const previous = document.querySelector('[data-visitor-counter]');
     if (!previous) return;
     let counter = previous;
@@ -44,72 +27,54 @@
       previous.replaceWith(counter);
     }
     counter.textContent = data ? 'Oggi: ' + data.today_hits.toLocaleString('it-IT') +
-      ' · Totale: ' + data.total_hits.toLocaleString('it-IT') : 'Caricamento contatore…';
+      ' · Totale: ' + data.total_hits.toLocaleString('it-IT') :
+      failed ? 'Contatore non raggiungibile. Riprova tra poco.' : 'Caricamento contatore…';
   }
-
+  async function request(action, key) {
+    const response = await fetch(API + action + '/' + key + '?request=' + Date.now(), {
+      cache:'no-store', credentials:'omit',
+      signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined
+    });
+    if (action === 'get' && response.status === 404 && key.includes('_day_')) return 0;
+    if (!response.ok) throw new Error('Counter unavailable');
+    const json = await response.json();
+    const value = Number(json.value);
+    if (!Number.isSafeInteger(value) || value < 0) throw new Error('Invalid count');
+    return value;
+  }
   let pending = false;
-  let recoveryScheduled = false;
-  async function countAccessOnce() {
+  let retryScheduled = false;
+  const today = dayKey();
+  async function update(readOnly = false) {
     if (pending) return;
-    const cached = cachedValues();
-    if (get(countedKey) === '1') {
-      if (cached) show(cached);
-      else { show(null); await readTotals(); }
-      return;
-    }
     pending = true;
-    show(null);
     try {
-      const response = await fetch(endpoint + '&request=' + Date.now() + '-' + Math.random().toString(36).slice(2), {
-        cache: 'no-store', credentials: 'omit',
-        signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined
-      });
-      if (!response.ok) throw new Error('Counter request failed');
-      // A successful HTTP response has already registered this session.
-      // Recovery below only reads totals and cannot add another visit.
+      const alreadyCounted = get(countedKey) === '1';
+      const keys = [PREFIX + 'total', today];
+      const values = await Promise.all(keys.map(key => {
+        const attemptedKey = 'cc-visit-attempt-v2-' + key;
+        const action = readOnly || alreadyCounted || get(attemptedKey) === '1' ? 'get' : 'hit';
+        // Never retry an uncertain increment: recovery only reads the values.
+        if (action === 'hit') set(attemptedKey, '1');
+        return request(action, key);
+      }));
+      const data = {total_hits:values[0], today_hits:values[1]};
       set(countedKey, '1');
-      const data = await response.json();
-      if (!valid(data)) throw new Error('Invalid counter values');
       set(valuesKey, JSON.stringify(data));
       show(data);
     } catch (_) {
-      if (cached) show(cached);
-      if (!recoveryScheduled) {
-        recoveryScheduled = true;
-        window.setTimeout(readTotals, 2500);
+      let cached;
+      try { cached = JSON.parse(get(valuesKey)); } catch (_) {}
+      const valid = cached && Number.isSafeInteger(cached.total_hits) && Number.isSafeInteger(cached.today_hits);
+      show(valid ? cached : null, true);
+      if (!retryScheduled) {
+        retryScheduled = true;
+        window.setTimeout(() => update(true), 3000);
       }
     } finally { pending = false; }
   }
-
-  async function readTotals() {
-    try {
-      const response = await fetch('https://hitscounter.dev/api/history?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F', {
-        cache: 'no-store', credentials: 'omit',
-        signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined
-      });
-      if (!response.ok) throw new Error('Counter unavailable');
-      const history = await response.json();
-      // History dates belong to the original counter's Europe/Rome day.
-      const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
-      const part = type => parts.find(value => value.type === type).value;
-      const day = part('year') + '-' + part('month') + '-' + part('day');
-      if (!Array.isArray(history.history)) throw new Error('Invalid history');
-      const row = history.history.find(item => String(item.hit_date).slice(0,10) === day);
-      const data = {today_hits: row ? Number(row.hit_count) : 0, total_hits: Number(history.total_hits)};
-      if (!valid(data)) throw new Error('Invalid totals');
-      set(valuesKey, JSON.stringify(data));
-      set(countedKey, '1');
-      show(data);
-    } catch (_) {
-      const cached = cachedValues();
-      if (cached) show(cached);
-      else {
-        const counter = document.querySelector('[data-visitor-counter]');
-        if (counter) counter.textContent = 'Contatore non raggiungibile. Riprova tra poco.';
-      }
-    }
-  }
-  countAccessOnce();
+  show(null);
+  update();
 })();
 
 // BEGIN CONTROCORRENTE RADIO TEST 2026-10-18
