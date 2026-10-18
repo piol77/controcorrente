@@ -1,101 +1,114 @@
 (() => {
   'use strict';
-
-  // Migliora la leggibilità dei soli link di navigazione, senza toccare gli altri testi.
   const navStyle = document.createElement('style');
   navStyle.textContent = 'header.top nav a{font-size:16px}';
   document.head.append(navStyle);
 
-  // Tutte le pagine condividono lo stesso contatore, ma ogni sessione della scheda
-  // deve incrementarlo una sola volta, indipendentemente dalla pagina visitata.
-  const endpoint = 'https://hitscounter.dev/api/hit?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F&label=Oggi%20%2F%20Totale&icon=people-fill&color=%23082a43&style=flat&tz=Europe%2FRome';
+  // Same server-side URL key, Rome timezone and once-per-tab session rule.
+  const endpoint = 'https://hitscounter.dev/api/hit?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F&tz=Europe%2FRome&output=json';
   const countedKey = 'controcorrente-visitor-counted-v1';
   const badgeKey = 'controcorrente-visitor-badge-v1';
+  const valuesKey = 'controcorrente-visitor-values-v1';
+  const get = key => { try { return sessionStorage.getItem(key); } catch (_) { return null; } };
+  const set = (key, value) => { try { sessionStorage.setItem(key, value); } catch (_) {} };
+  const valid = data => data && Number.isSafeInteger(data.today_hits) && data.today_hits >= 0 &&
+    Number.isSafeInteger(data.total_hits) && data.total_hits >= data.today_hits;
 
-  function getSessionItem(key) {
+  function cachedValues() {
     try {
-      return sessionStorage.getItem(key);
-    } catch (_) {
-      return null;
+      const data = JSON.parse(get(valuesKey));
+      if (valid(data)) return data;
+    } catch (_) {}
+    // Migrate the previous SVG cache without registering a second visit.
+    try {
+      const badge = get(badgeKey) || '';
+      const svg = decodeURIComponent(badge.slice(badge.indexOf(',') + 1));
+      const match = svg.match(/<title>[^<]*?:\s*(\d+)\s*\/\s*(\d+)<\/title>/);
+      if (match) {
+        const data = {today_hits: Number(match[1]), total_hits: Number(match[2])};
+        if (valid(data)) return data;
+      }
+    } catch (_) {}
+    return null;
+  }
+
+  function show(data) {
+    const previous = document.querySelector('[data-visitor-counter]');
+    if (!previous) return;
+    let counter = previous;
+    if (previous.tagName === 'IMG') {
+      counter = document.createElement('span');
+      counter.setAttribute('data-visitor-counter', '');
+      counter.setAttribute('role', 'status');
+      counter.style.cssText = 'display:inline-block;margin-top:8px;padding:6px 12px;border:1px solid var(--gold);border-radius:3px;color:var(--ink);font-size:1rem;line-height:1.5';
+      previous.replaceWith(counter);
     }
+    counter.textContent = data ? 'Oggi: ' + data.today_hits.toLocaleString('it-IT') +
+      ' · Totale: ' + data.total_hits.toLocaleString('it-IT') : 'Caricamento contatore…';
   }
 
-  function setSessionItem(key, value) {
-    try {
-      sessionStorage.setItem(key, value);
-      return true;
-    } catch (_) {
-      return false;
-    }
-  }
-
-  function validBadge(src) {
-    if (!src || !src.startsWith('data:image/svg+xml;charset=utf-8,')) return false;
-    try {
-      const svg = decodeURIComponent(src.slice(src.indexOf(',') + 1));
-      const root = new DOMParser().parseFromString(svg, 'image/svg+xml').documentElement;
-      return root.localName === 'svg' && !root.querySelector('parsererror');
-    } catch (_) { return false; }
-  }
-
-  let pendingCount = false;
-  let retryScheduled = false;
-  function showBadge(src) {
-    const badge = document.querySelector('[data-visitor-counter]');
-    if (!badge || !validBadge(src)) return;
-    badge.alt = 'Accessi di oggi / accessi totali';
-    badge.onerror = () => { badge.alt = 'Contatore temporaneamente non disponibile'; };
-    badge.src = src;
-  }
-
+  let pending = false;
+  let recoveryScheduled = false;
   async function countAccessOnce() {
-    if (pendingCount) return;
-    const cachedBadge = getSessionItem(badgeKey);
-
-    // Se questa sessione è già stata conteggiata, non contattare di nuovo
-    // l'endpoint che incrementa il contatore. In Home riusa il badge salvato.
-    if (getSessionItem(countedKey) === '1' && validBadge(cachedBadge)) {
-      showBadge(cachedBadge);
+    if (pending) return;
+    const cached = cachedValues();
+    if (get(countedKey) === '1') {
+      if (cached) show(cached);
+      else { show(null); await readTotals(); }
       return;
     }
-
-    const requestUrl = endpoint + '&request=' + Date.now() + '-' + Math.random().toString(36).slice(2);
-
-    pendingCount = true;
+    pending = true;
+    show(null);
     try {
-      const response = await fetch(requestUrl, {
-        cache: 'no-store',
-        credentials: 'omit',
-        signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(12000) : undefined
+      const response = await fetch(endpoint + '&request=' + Date.now() + '-' + Math.random().toString(36).slice(2), {
+        cache: 'no-store', credentials: 'omit',
+        signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined
       });
       if (!response.ok) throw new Error('Counter request failed');
-
-      const svg = await response.text();
-      const badgeData = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-      if (!validBadge(badgeData)) throw new Error('Invalid counter badge');
-
-      // Segna la sessione come conteggiata solo dopo una risposta valida.
-      // Il badge viene conservato nella sessione per poterlo mostrare in Home
-      // senza produrre un secondo accesso al servizio esterno.
-      if (setSessionItem(badgeKey, badgeData)) {
-        setSessionItem(countedKey, '1');
-      }
-      showBadge(badgeData);
+      // A successful HTTP response has already registered this session.
+      // Recovery below only reads totals and cannot add another visit.
+      set(countedKey, '1');
+      const data = await response.json();
+      if (!valid(data)) throw new Error('Invalid counter values');
+      set(valuesKey, JSON.stringify(data));
+      show(data);
     } catch (_) {
-      const badge = document.querySelector('[data-visitor-counter]');
-      if (badge) {
-        badge.alt = 'Contatore temporaneamente non disponibile';
+      if (cached) show(cached);
+      if (!recoveryScheduled) {
+        recoveryScheduled = true;
+        window.setTimeout(readTotals, 2500);
       }
-      // One recovery attempt for a temporary network/service failure.
-      if (!retryScheduled) {
-        retryScheduled = true;
-        window.setTimeout(countAccessOnce, 5000);
-      }
-    } finally {
-      pendingCount = false;
-    }
+    } finally { pending = false; }
   }
 
+  async function readTotals() {
+    try {
+      const response = await fetch('https://hitscounter.dev/api/history?url=https%3A%2F%2Fpiol77.github.io%2Fcontrocorrente%2F', {
+        cache: 'no-store', credentials: 'omit',
+        signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined
+      });
+      if (!response.ok) throw new Error('Counter unavailable');
+      const history = await response.json();
+      // History dates belong to the original counter's Europe/Rome day.
+      const parts = new Intl.DateTimeFormat('en-CA', {timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+      const part = type => parts.find(value => value.type === type).value;
+      const day = part('year') + '-' + part('month') + '-' + part('day');
+      if (!Array.isArray(history.history)) throw new Error('Invalid history');
+      const row = history.history.find(item => String(item.hit_date).slice(0,10) === day);
+      const data = {today_hits: row ? Number(row.hit_count) : 0, total_hits: Number(history.total_hits)};
+      if (!valid(data)) throw new Error('Invalid totals');
+      set(valuesKey, JSON.stringify(data));
+      set(countedKey, '1');
+      show(data);
+    } catch (_) {
+      const cached = cachedValues();
+      if (cached) show(cached);
+      else {
+        const counter = document.querySelector('[data-visitor-counter]');
+        if (counter) counter.textContent = 'Contatore non raggiungibile. Riprova tra poco.';
+      }
+    }
+  }
   countAccessOnce();
 })();
 
