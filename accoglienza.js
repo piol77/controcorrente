@@ -4,13 +4,14 @@
   const root = document.getElementById('accoglienza');
   if (!root) return;
   const startButton = root.querySelector('[data-welcome-start]');
+  const talkButton = root.querySelector('[data-welcome-talk]');
   const quietButton = root.querySelector('[data-welcome-quiet]');
   const status = root.querySelector('[data-welcome-voice-status]');
   const question = root.querySelector('[data-welcome-question]');
   const answer = root.querySelector('[data-welcome-answer]');
   const source = root.querySelector('[data-welcome-source]');
   const synth = window.speechSynthesis;
-  const key = 'cc-assistente-freddure-v1';
+  const key = 'cc-assistente-freddure-v2';
   // Short, checked selections; each source remains linked next to the answer.
   const jokes = [
     {text: 'Qual è il colmo per un matematico? Abitare in una frazione di Potenza.', url: 'https://www.barzellette.net/29560.htm', site: 'Barzellette.net'},
@@ -18,7 +19,11 @@
     {text: 'Il colmo per un elettricista? Bere birre alla spina!', url: 'https://www.barzellette.net/10439.htm', site: 'Barzellette.net'},
     {text: 'Perché i pesci vivono nell’acqua salata? Perché il pepe li farebbe starnutire!', url: 'https://barzellettebrutte.it/', site: 'Barzellette Brutte'},
     {text: 'Quanti programmatori ci vogliono per cambiare una lampadina? Nessuno. È un problema hardware!', url: 'https://www.barzellette.net/barzellette-top-96.html', site: 'Barzellette.net'},
-    {text: 'Un daino dice a un altro daino: giochiamo a nascondaino? Dai, no!', url: 'https://www.barzellette.net/barzellette-top-158.html', site: 'Barzellette.net'}
+    {text: 'Un daino dice a un altro daino: giochiamo a nascondaino? Dai, no!', url: 'https://www.barzellette.net/barzellette-top-158.html', site: 'Barzellette.net'},
+    {text: 'Cosa dicono delle patate in pericolo? Oh no, siamo fritte!', url: 'https://www.barzellette.net/29067.htm', site: 'Barzellette.net'},
+    {text: 'Cosa fa un cammello su un budino? Attraversa il dessert!', url: 'https://www.barzellette.net/705.htm', site: 'Barzellette.net'},
+    {text: 'Una duna nel deserto dice a un’altra duna: speriamo che passi qualche duno!', url: 'https://www.barzellette.net/1323.htm', site: 'Barzellette.net'},
+    {text: 'Qual è il colmo per un giardiniere? Scordarsi di innaffiare i nontiscordardimé!', url: 'https://www.barzellette.net/9889.htm', site: 'Barzellette.net'}
   ];
   let saved = {remaining: [], last: -1};
   try {
@@ -59,37 +64,56 @@
   let generation = 0;
   let timer = null;
   let currentUtterance = null;
-  function controls(playing) {
-    startButton.textContent = 'Parla con me';
-    startButton.setAttribute('aria-pressed', String(playing));
-    quietButton.disabled = !playing;
+  let active = false;
+  let hasSpoken = false;
+  let beepContext = null;
+  function controls(busy = false) {
+    startButton.textContent = active ? 'Disattiva assistente audio' : 'Attiva assistente audio';
+    startButton.setAttribute('aria-pressed', String(active));
+    talkButton.disabled = !active;
+    talkButton.textContent = hasSpoken ? '🎙 Continua a parlare' : '🎙 Parla con me';
+    talkButton.setAttribute('aria-pressed', String(busy));
+    quietButton.disabled = !busy;
   }
-  function stop(message = 'Voce fermata. Premi “Parla con me” per ricominciare.') {
+  function stop(message = 'Voce fermata. Premi “Continua a parlare” per proseguire.') {
     generation++;
     if (timer !== null) clearTimeout(timer);
     timer = null;
     if (currentUtterance) currentUtterance.onend = currentUtterance.onerror = null;
     currentUtterance = null;
     synth?.cancel();
-    controls(false);
+    if (beepContext) {
+      try { beepContext.close()?.catch(() => {}); } catch (_) {}
+      beepContext = null;
+    }
+    controls();
     status.textContent = message;
   }
-  startButton.addEventListener('click', () => {
-    stop('');
-    const joke = nextJoke();
-    question.textContent = 'Richiesta ricevuta.';
-    answer.textContent = joke.text;
-    source.href = joke.url;
-    source.textContent = joke.site;
-    source.hidden = false;
-    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
-      status.textContent = 'La voce non è disponibile in questo browser. Puoi leggere la risposta qui sotto.';
-      return;
-    }
-    controls(true);
-    status.textContent = 'Ti ascolto… risposta in corso.';
-    const token = generation;
-    const utterance = new SpeechSynthesisUtterance('Un momento… Ecco la mia risposta. ' + joke.text);
+  function beep() {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    try {
+      const context = new AudioContext();
+      beepContext = context;
+      context.resume()?.catch(() => {});
+      const oscillator = context.createOscillator();
+      const gain = context.createGain();
+      oscillator.frequency.value = 880;
+      gain.gain.setValueAtTime(0.0001, context.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.10, context.currentTime + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.14);
+      oscillator.connect(gain);
+      gain.connect(context.destination);
+      oscillator.onended = () => {
+        if (beepContext === context) beepContext = null;
+        try { context.close()?.catch(() => {}); } catch (_) {}
+      };
+      oscillator.start();
+      oscillator.stop(context.currentTime + 0.15);
+    } catch (_) { /* The visual listening cue works even without a beep. */ }
+  }
+  function say(text, token, done) {
+    const utterance = new SpeechSynthesisUtterance(text);
     currentUtterance = utterance;
     utterance.lang = 'it-IT';
     utterance.voice = bestVoice();
@@ -97,25 +121,74 @@
     utterance.pitch = 1;
     utterance.volume = 1;
     const finish = failed => {
-      if (token !== generation) return;
-      if (timer !== null) clearTimeout(timer);
-      timer = null;
+      if (token !== generation || currentUtterance !== utterance) return;
       currentUtterance = null;
-      controls(false);
-      status.textContent = failed
-        ? 'La voce si è interrotta. Riprova con “Parla con me” oppure leggi la risposta.'
-        : 'Premi “Parla con me” per una nuova risposta.';
+      done(failed);
     };
     utterance.onend = () => finish(false);
     utterance.onerror = () => finish(true);
-    // Keep speech in the click gesture so mobile browsers can start it.
-    timer = setTimeout(() => stop('Voce interrotta. Premi “Parla con me” per riprovare.'), 45000);
     try { synth.resume(); synth.speak(utterance); } catch (_) { finish(true); }
+  }
+  startButton.addEventListener('click', () => {
+    active = !active;
+    stop(active ? 'Assistente attivo. Premi “Parla con me” e parla dopo il bip.' : 'Assistente disattivato.');
+  });
+  talkButton.addEventListener('click', () => {
+    if (!active) return;
+    stop('🎙 Ti ascolto… parla dopo il bip.');
+    hasSpoken = true;
+    controls(true);
+    question.textContent = '🎙 In ascolto…';
+    answer.textContent = '—';
+    source.hidden = true;
+    beep();
+    const token = generation;
+    function reply() {
+      if (token !== generation || !active || document.hidden) return;
+      if (timer !== null) clearTimeout(timer);
+      timer = null;
+      if (currentUtterance) {
+        currentUtterance.onend = currentUtterance.onerror = null;
+        currentUtterance = null;
+        synth?.cancel();
+      }
+      const joke = nextJoke();
+      question.textContent = 'Richiesta ricevuta.';
+      answer.textContent = joke.text;
+      source.href = joke.url;
+      source.textContent = joke.site;
+      source.hidden = false;
+      if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
+        controls();
+        status.textContent = 'La voce non è disponibile in questo browser. Puoi leggere la risposta qui sotto.';
+        return;
+      }
+      status.textContent = 'Risposta in corso…';
+      timer = setTimeout(() => stop('Voce interrotta. Premi “Continua a parlare” per riprovare.'), 45000);
+      say(joke.text, token, failed => {
+        if (timer !== null) clearTimeout(timer);
+        timer = null;
+        controls();
+        status.textContent = failed
+          ? 'La voce si è interrotta. Premi “Continua a parlare” per riprovare.'
+          : 'Premi “Continua a parlare” per la prossima domanda.';
+      });
+    }
+    // This is a simulated listening turn, with no microphone permissions.
+    // Speak the acknowledgement in the tap gesture to unlock mobile speech.
+    if (synth && typeof SpeechSynthesisUtterance !== 'undefined') {
+      timer = setTimeout(reply, 3500);
+      say('Ti ascolto.', token, () => {
+        if (timer !== null) clearTimeout(timer);
+        timer = setTimeout(reply, 1800);
+      });
+    } else {
+      timer = setTimeout(reply, 2200);
+    }
   });
   quietButton.addEventListener('click', () => stop());
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
   window.addEventListener('pagehide', () => stop());
-  // getVoices can be empty until the browser finishes loading its voice list.
   if (synth) synth.getVoices();
-  controls(false);
+  controls();
 })();

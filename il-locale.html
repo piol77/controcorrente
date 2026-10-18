@@ -179,9 +179,10 @@
   </section>
   <section class="offer locale-welcome" id="accoglienza" aria-labelledby="accoglienza-title">
     <h2 id="accoglienza-title">Assistente vocale Controcorrente</h2>
-    <p class="welcome-copy">Hai una domanda? Premi “Parla con me” e chiedi al nostro assistente.</p>
+    <p class="welcome-copy">Attiva l’assistente, premi “Parla con me” e fai la tua domanda dopo il bip. Per proseguire, premi “Continua a parlare”.</p>
     <div class="welcome-controls">
-      <button type="button" class="button" data-welcome-start aria-pressed="false">Parla con me</button>
+      <button type="button" class="button" data-welcome-start aria-pressed="false">Attiva assistente audio</button>
+      <button type="button" class="button" data-welcome-talk aria-pressed="false" disabled>🎙 Parla con me</button>
       <button type="button" class="button" data-welcome-quiet disabled>Ferma la voce</button>
     </div>
     <p data-welcome-voice-status role="status" aria-live="polite">Assistente pronto.</p>
@@ -190,7 +191,7 @@
       <p><strong>La risposta:</strong> <span data-welcome-answer>—</span></p>
     </div>
     <p class="small-meta">Fonte della freddura: <a data-welcome-source href="https://www.barzellette.net/" target="_blank" rel="noopener noreferrer" hidden>Barzellette.net</a></p>
-    <p class="small-meta"><strong>Piccolo scherzetto per i nostri amici.</strong> Sembra un assistente vocale, ma al posto delle risposte racconta una freddura! Non ascolta e non registra: ogni clic sceglie una battuta dalla nostra selezione, senza ripeterla finché non le hai sentite tutte.</p>
+    <p class="small-meta"><strong>Piccolo scherzetto per i nostri amici.</strong> Sembra un assistente vocale, ma al posto delle risposte racconta una freddura! Il bip e l’ascolto sono simulati: il microfono non viene attivato e non registriamo nulla. Ogni turno sceglie una delle dieci freddure in memoria, senza ripeterla finché non le hai sentite tutte.</p>
   </section>
 </main>
 
@@ -203,7 +204,7 @@
 <script src="ui.js?v=20261003-nautica3"></script>
 <script src="site-session.js?v=20261018-jazz-persistent2"></script>
 <script src="locale-gallery.js?v=20261005-2gallery" defer></script>
-<script src="accoglienza.js?v=20261018-freddure1" defer></script>
+<script src="accoglienza.js?v=20261018-freddure2" defer></script>
 
 <script>
 (() => {
