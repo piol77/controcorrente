@@ -84,6 +84,21 @@
   if (document.getElementById('cc-jazz-toggle')) return;
   const header = document.querySelector('header.top');
   if (!header) return;
+  // The top document owns the stream; internal pages keep their normal scripts
+  // and share that player instead of creating one on every navigation.
+  let owner;
+  try { if (window.parent !== window) owner = window.parent.ccJazzPlayer; } catch (_) {}
+  if (owner) {
+    const button = owner.button.cloneNode(true);
+    button.addEventListener('click', owner.toggle);
+    const row = header.querySelector('.brand-row');
+    if (row) row.insertAdjacentElement('afterend', button);
+    else header.appendChild(button);
+    owner.attach(button, window);
+    // Preserve the existing preorder redirect outside the persistent page frame.
+    window.__DEMO_OPEN_WHATSAPP = url => { window.top.location.href = url; };
+    return;
+  }
   const preferenceKey = 'cc-jazz-test-enabled-v1';
   let enabled = true;
   try { enabled = sessionStorage.getItem(preferenceKey) !== 'off'; } catch (_) {}
@@ -97,6 +112,7 @@
   button.id = 'cc-jazz-toggle';
   button.type = 'button';
   button.style.cssText = 'display:block;margin:8px 0 0 auto;width:36px;height:36px;padding:0;border:1px solid var(--gold,#cba76d);border-radius:50%;background:var(--navy,#082a43);color:var(--gold,#cba76d);font-size:18px;line-height:1;cursor:pointer;';
+  let activeButton = button;
   function render() {
     const playing = !audio.paused && !failed;
     button.textContent = playing ? '♫' : enabled ? '♪' : '×';
@@ -106,6 +122,12 @@
     button.setAttribute('aria-label', label);
     button.setAttribute('aria-pressed', String(playing));
     button.title = label;
+    if (activeButton !== button) {
+      activeButton.textContent = button.textContent;
+      for (const name of ['aria-label', 'aria-pressed', 'title']) {
+        activeButton.setAttribute(name, button.getAttribute(name));
+      }
+    }
   }
   function remember() {
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
@@ -138,7 +160,7 @@
   audio.addEventListener('playing', () => { pending = false; failed = false; render(); });
   audio.addEventListener('pause', render);
   audio.addEventListener('error', () => { pending = false; failed = true; render(); });
-  button.addEventListener('click', () => {
+  function toggle() {
     if (enabled && (pending || (!audio.paused && !failed))) {
       enabled = false;
       remember();
@@ -153,20 +175,78 @@
       start();
     }
     render();
-  });
+  }
+  button.addEventListener('click', toggle);
   const brandRow = header.querySelector('.brand-row');
   if (brandRow) brandRow.insertAdjacentElement('afterend', button);
   else header.appendChild(button);
   render();
-  // No preventDefault/propagation changes: navigation, ordering and counter stay independent.
-  // A browser may require a new gesture after navigating to a different HTML page.
-  function onGesture(event) {
-    if (!event.isTrusted || button.contains(event.target) || failed) return;
-    if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
-    start();
+  const siteRoot = new URL('.', location.href);
+  let frame = null;
+  function navigate(url, push = true) {
+    if (!frame) {
+      frame = document.createElement('iframe');
+      frame.title = 'Controcorrente';
+      frame.allow = 'autoplay';
+      frame.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;border:0;background:var(--navy,#082a43);z-index:2147483647';
+      frame.addEventListener('load', () => {
+        try {
+          document.title = frame.contentDocument.title;
+          const url = frame.contentWindow.location.href;
+          if (url !== 'about:blank' && url !== location.href) history.pushState(null, '', url);
+        } catch (_) {}
+      });
+      frame.src = url;
+      document.body.appendChild(frame);
+      // Keep the original document alive for its audio, but remove it from
+      // keyboard/screen-reader navigation and prevent a second scrollbar.
+      for (const child of document.body.children) {
+        if (child !== frame) { child.hidden = true; child.inert = true; }
+      }
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Only the outer history owns cross-page entries (Back/Forward).
+      frame.contentWindow.location.replace(url);
+    }
+    if (push) history.pushState(null, '', url);
   }
-  document.addEventListener('click', onGesture, { capture: true, passive: true });
-  document.addEventListener('keydown', onGesture, { capture: true, passive: true });
+  function bindNavigation(view) {
+    view.document.addEventListener('click', event => {
+      if (event.defaultPrevented || event.button !== 0 || event.ctrlKey ||
+          event.metaKey || event.shiftKey || event.altKey) return;
+      const link = event.target.closest && event.target.closest('a[href]');
+      if (!link || link.hasAttribute('download') ||
+          (link.target && link.target !== '_self')) return;
+      const url = new URL(link.href, view.location.href);
+      const current = new URL(view.location.href);
+      if (url.origin !== siteRoot.origin || !url.pathname.startsWith(siteRoot.pathname) ||
+          !(/\.html$/.test(url.pathname) || url.pathname === siteRoot.pathname) ||
+          (url.pathname === current.pathname && url.search === current.search)) return;
+      event.preventDefault();
+      navigate(url.href);
+    });
+    function onGesture(event) {
+      if (!event.isTrusted || event.target.closest?.('#cc-jazz-toggle') || failed) return;
+      if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
+      start();
+    }
+    view.document.addEventListener('click', onGesture, { capture: true, passive: true });
+    view.document.addEventListener('keydown', onGesture, { capture: true, passive: true });
+  }
+  window.ccJazzPlayer = {
+    button, toggle,
+    attach(nextButton, view) {
+      activeButton = nextButton;
+      render();
+      bindNavigation(view);
+    }
+  };
+  bindNavigation(window);
+  window.addEventListener('popstate', () => {
+    if (frame) navigate(location.href, false);
+  });
   window.addEventListener('pagehide', stop);
 })();
 // END CONTROCORRENTE RADIO TEST 2026-10-18
+
