@@ -178,18 +178,19 @@
     <p class="locale-joke">Solo se positiva, ovviamente… 😂<br><span>Scherziamo: scrivi quello che pensi davvero!</span></p>
   </section>
   <section class="offer locale-welcome" id="accoglienza" aria-labelledby="accoglienza-title">
-    <h2 id="accoglienza-title">Assistente audio</h2>
-    <p class="welcome-copy">Premi il pulsante e parla.</p>
+    <h2 id="accoglienza-title">Assistente vocale Controcorrente</h2>
+    <p class="welcome-copy">Hai una domanda? Premi “Parla con me” e chiedi al nostro assistente.</p>
     <div class="welcome-controls">
-      <button type="button" class="button" data-welcome-start aria-pressed="false">Attiva assistente audio</button>
-      <button type="button" class="button" data-welcome-quiet disabled>Ferma voce</button>
+      <button type="button" class="button" data-welcome-start aria-pressed="false">Parla con me</button>
+      <button type="button" class="button" data-welcome-quiet disabled>Ferma la voce</button>
     </div>
-    <p data-welcome-voice-status role="status" aria-live="polite">Conversazione disattivata.</p>
+    <p data-welcome-voice-status role="status" aria-live="polite">Assistente pronto.</p>
     <div class="welcome-dialogue" aria-live="polite">
-      <p><strong>La tua domanda:</strong> <span data-welcome-question>—</span></p>
+      <p><strong>La tua richiesta:</strong> <span data-welcome-question>—</span></p>
       <p><strong>La risposta:</strong> <span data-welcome-answer>—</span></p>
     </div>
-    <p class="small-meta">Il riconoscimento vocale può utilizzare il servizio online del browser.</p>
+    <p class="small-meta">Fonte della freddura: <a data-welcome-source href="https://www.barzellette.net/" target="_blank" rel="noopener noreferrer" hidden>Barzellette.net</a></p>
+    <p class="small-meta"><strong>Piccolo scherzetto per i nostri amici.</strong> Sembra un assistente vocale, ma al posto delle risposte racconta una freddura! Non ascolta e non registra: ogni clic sceglie una battuta dalla nostra selezione, senza ripeterla finché non le hai sentite tutte.</p>
   </section>
 </main>
 
@@ -202,8 +203,7 @@
 <script src="ui.js?v=20261003-nautica3"></script>
 <script src="site-session.js?v=20261018-jazz-persistent2"></script>
 <script src="locale-gallery.js?v=20261005-2gallery" defer></script>
-<script src="voce-menu.js?v=20261010-6" defer></script>
-<script src="accoglienza.js?v=20261010-5" defer></script>
+<script src="accoglienza.js?v=20261018-freddure1" defer></script>
 
 <script>
 (() => {

@@ -1,273 +1,121 @@
-/* Assistente audio Controcorrente: sola lettura dei menù pubblicati. */
+/* Assistente audio scherzoso: freddure selezionate, nessuna registrazione. */
 (() => {
   'use strict';
   const root = document.getElementById('accoglienza');
   if (!root) return;
   const startButton = root.querySelector('[data-welcome-start]');
   const quietButton = root.querySelector('[data-welcome-quiet]');
-  const voiceStatus = root.querySelector('[data-welcome-voice-status]');
-  const questionText = root.querySelector('[data-welcome-question]');
-  const answerText = root.querySelector('[data-welcome-answer]');
-  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const MESSAGE = 'Benvenuti al Controcorrente, troverete esposto nel locale il QR code per accedere al sito con i menu relativi al pranzo, alla cena e anche qualche offerta del giorno.';
-  const VOICE_RATE = 1.18;
-  const TURN_PAUSE_MS = 900;
-
-  let active = false;
-  let recognition = null;
-  let restartTimer = null;
-  let turnTimer = null;
-  let audioTimer = null;
-  let speaking = false;
-  let replying = false;
-  let session = 0;
-  let request = 0;
-  let audioEpoch = 0;
-  let audioResolve = null;
-  let shortSessions = 0;
-
-  function controls() {
-    startButton.textContent = active ? 'Disattiva assistente audio' : 'Attiva assistente audio';
-    startButton.setAttribute('aria-pressed', String(active));
-    quietButton.disabled = !active;
-  }
-
-  function stopRecognition() {
-    if (restartTimer !== null) { clearTimeout(restartTimer); restartTimer = null; }
-    if (turnTimer !== null) { clearTimeout(turnTimer); turnTimer = null; }
-    const current = recognition;
-    recognition = null;
-    if (!current) return;
-    current.onstart = current.onspeechstart = current.onspeechend =
-      current.onresult = current.onerror = current.onend = null;
-    try { current.abort(); } catch (_) { /* già terminato */ }
-  }
-
-  function cancelAudio() {
-    if (audioTimer !== null) { clearTimeout(audioTimer); audioTimer = null; }
-    audioEpoch += 1;
-    speaking = false;
-    window.speechSynthesis?.cancel();
-    const resolve = audioResolve;
-    audioResolve = null;
-    resolve?.(false);
-  }
-
-  function scheduleListening(delay = 500) {
-    if (!active || document.hidden || replying || speaking || recognition) return;
-    if (restartTimer !== null) clearTimeout(restartTimer);
-    const token = session;
-    restartTimer = setTimeout(() => {
-      restartTimer = null;
-      if (active && token === session) listen();
-    }, delay);
-    voiceStatus.textContent = 'Pronto per la prossima domanda…';
-  }
-
-  function speak(message) {
-    stopRecognition();
-    cancelAudio();
-    if (!active || document.hidden) return Promise.resolve(false);
-    speaking = true;
-    const epoch = ++audioEpoch;
-    voiceStatus.textContent = 'Risposta in corso…';
-    return new Promise(resolve => {
-      audioResolve = resolve;
-      const utterance = new SpeechSynthesisUtterance(message);
-      utterance.lang = 'it-IT';
-      utterance.rate = VOICE_RATE;
-      utterance.volume = 1;
-      const voices = window.speechSynthesis.getVoices();
-      utterance.voice = voices.find(voice => voice.lang.toLowerCase() === 'it-it') ||
-        voices.find(voice => voice.lang.toLowerCase().startsWith('it')) || null;
-      const finish = ok => {
-        if (epoch !== audioEpoch) return;
-        if (audioTimer !== null) { clearTimeout(audioTimer); audioTimer = null; }
-        speaking = false;
-        audioResolve = null;
-        resolve(ok);
-      };
-      utterance.onend = () => finish(true);
-      utterance.onerror = () => finish(false);
-      try { window.speechSynthesis.speak(utterance); }
-      catch (_) { finish(false); }
-      if (speaking) audioTimer = setTimeout(() => {
-        if (epoch !== audioEpoch) return;
-        window.speechSynthesis.cancel();
-        finish(false);
-      }, Math.max(15000, message.length * 100 + 5000));
-    });
-  }
-
-  async function respond(phrase) {
-    if (!active || replying || speaking) return;
-    stopRecognition();
-    const token = session;
-    const turn = ++request;
-    replying = true;
-    questionText.textContent = phrase;
-    answerText.textContent = '…';
-    voiceStatus.textContent = 'Un momento…';
-    try {
-      const answer = await window.ControcorrenteMenuVoice.answer(phrase);
-      if (!active || document.hidden || token !== session || turn !== request) return;
-      answerText.textContent = answer;
-      await speak(answer);
-    } catch (_) {
-      if (active && token === session && turn === request) {
-        answerText.textContent = 'Non riesco a leggere i menù. Riprova fra un momento.';
-        await speak(answerText.textContent);
+  const status = root.querySelector('[data-welcome-voice-status]');
+  const question = root.querySelector('[data-welcome-question]');
+  const answer = root.querySelector('[data-welcome-answer]');
+  const source = root.querySelector('[data-welcome-source]');
+  const synth = window.speechSynthesis;
+  const key = 'cc-assistente-freddure-v1';
+  // Short, checked selections; each source remains linked next to the answer.
+  const jokes = [
+    {text: 'Qual è il colmo per un matematico? Abitare in una frazione di Potenza.', url: 'https://www.barzellette.net/29560.htm', site: 'Barzellette.net'},
+    {text: 'Qual è il colmo per un idraulico? Non capirci un tubo!', url: 'https://www.barzellette.net/9425.htm', site: 'Barzellette.net'},
+    {text: 'Il colmo per un elettricista? Bere birre alla spina!', url: 'https://www.barzellette.net/10439.htm', site: 'Barzellette.net'},
+    {text: 'Perché i pesci vivono nell’acqua salata? Perché il pepe li farebbe starnutire!', url: 'https://barzellettebrutte.it/', site: 'Barzellette Brutte'},
+    {text: 'Quanti programmatori ci vogliono per cambiare una lampadina? Nessuno. È un problema hardware!', url: 'https://www.barzellette.net/barzellette-top-96.html', site: 'Barzellette.net'},
+    {text: 'Un daino dice a un altro daino: giochiamo a nascondaino? Dai, no!', url: 'https://www.barzellette.net/barzellette-top-158.html', site: 'Barzellette.net'}
+  ];
+  let saved = {remaining: [], last: -1};
+  try {
+    const value = JSON.parse(sessionStorage.getItem(key));
+    if (value && Array.isArray(value.remaining) &&
+        value.remaining.every(i => Number.isInteger(i) && i >= 0 && i < jokes.length) &&
+        new Set(value.remaining).size === value.remaining.length &&
+        Number.isInteger(value.last) && value.last >= -1 && value.last < jokes.length) saved = value;
+  } catch (_) {}
+  function nextJoke() {
+    if (!saved.remaining.length) {
+      saved.remaining = jokes.map((_, i) => i);
+      for (let i = saved.remaining.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [saved.remaining[i], saved.remaining[j]] = [saved.remaining[j], saved.remaining[i]];
       }
-    } finally {
-      if (active && token === session && turn === request) {
-        replying = false;
-        scheduleListening();
+      if (saved.remaining.at(-1) === saved.last) {
+        [saved.remaining[0], saved.remaining[saved.remaining.length - 1]] =
+          [saved.remaining.at(-1), saved.remaining[0]];
       }
     }
+    const index = saved.remaining.pop();
+    saved.last = index;
+    try { sessionStorage.setItem(key, JSON.stringify(saved)); } catch (_) {}
+    return jokes[index];
   }
-
-  function listen() {
-    if (!active || document.hidden || replying || speaking || recognition) return;
-    const token = session;
-    const current = new Recognition();
-    recognition = current;
-    current.lang = 'it-IT';
-    current.continuous = true;
-    current.interimResults = true;
-    current.maxAlternatives = 3;
-    let openedAt = null;
-    let finalPhrase = '';
-    let interimPhrase = '';
-
-    const submit = () => {
-      turnTimer = null;
-      if (recognition === current && token === session && finalPhrase && !interimPhrase) respond(finalPhrase);
+  function bestVoice() {
+    // Prefer enhanced/neural Italian voices, then the device's Italian default.
+    const score = voice => {
+      const name = voice.name.toLowerCase();
+      return (/natural|neural|enhanced|premium/.test(name) ? 100 : 0) +
+        (/google|microsoft|elsa|isabella|alice/.test(name) ? 20 : 0) +
+        (voice.lang.toLowerCase() === 'it-it' ? 10 : 0) + (voice.default ? 5 : 0);
     };
-    const waitForPause = () => {
-      if (turnTimer !== null) clearTimeout(turnTimer);
-      turnTimer = finalPhrase && !interimPhrase ? setTimeout(submit, TURN_PAUSE_MS) : null;
-    };
-
-    voiceStatus.textContent = 'Microfono in avvio…';
-    current.onstart = () => {
-      if (recognition !== current || token !== session) return;
-      openedAt = performance.now();
-      voiceStatus.textContent = 'Ti ascolto…';
-    };
-    current.onspeechstart = () => {
-      if (recognition !== current || token !== session) return;
-      if (turnTimer !== null) { clearTimeout(turnTimer); turnTimer = null; }
-      voiceStatus.textContent = 'Ti ascolto…';
-    };
-    current.onspeechend = () => {
-      if (recognition === current && token === session) waitForPause();
-    };
-    current.onresult = event => {
-      if (recognition !== current || token !== session) return;
-      const finals = [];
-      const partials = [];
-      for (let i = 0; i < event.results.length; i += 1) {
-        const result = event.results[i];
-        const text = result[0]?.transcript?.trim();
-        if (text) (result.isFinal ? finals : partials).push(text);
-      }
-      finalPhrase = finals.join(' ');
-      interimPhrase = partials.join(' ');
-      const phrase = [finalPhrase, interimPhrase].filter(Boolean).join(' ');
-      if (phrase) questionText.textContent = phrase;
-      waitForPause();
-    };
-    current.onerror = event => {
-      if (recognition !== current || token !== session) return;
-      if (event.error === 'no-speech' || event.error === 'aborted') return;
-      const reasons = {
-        'not-allowed': 'Autorizza il microfono nelle impostazioni del browser.',
-        'service-not-allowed': 'Il browser non dispone del riconoscimento vocale.',
-        'audio-capture': 'Microfono non disponibile sul dispositivo.',
-        'network': 'Connessione al servizio vocale non disponibile.',
-        'language-not-supported': 'Il servizio vocale non supporta l’italiano.'
-      };
-      stop(reasons[event.error] || 'Riconoscimento vocale interrotto.');
-    };
-    current.onend = () => {
-      if (recognition !== current || token !== session) return;
-      if (turnTimer !== null) { clearTimeout(turnTimer); turnTimer = null; }
-      recognition = null;
-      if (finalPhrase) {
-        shortSessions = 0;
-        respond(finalPhrase);
-        return;
-      }
-      shortSessions = openedAt === null || performance.now() - openedAt < 1000 ? shortSessions + 1 : 0;
-      if (shortSessions >= 3) {
-        stop('Il servizio vocale del browser si interrompe subito. Riapri la pagina in Chrome e riattiva il microfono.');
-      } else {
-        scheduleListening(800);
-      }
-    };
-    try { current.start(); }
-    catch (_) {
-      recognition = null;
-      scheduleListening(1200);
-    }
+    return synth.getVoices().filter(v => /^it(?:-|_|$)/i.test(v.lang))
+      .sort((a, b) => score(b) - score(a))[0] || null;
   }
-
-  function stop(message = 'Conversazione disattivata.') {
-    session += 1;
-    request += 1;
-    active = false;
-    replying = false;
-    stopRecognition();
-    cancelAudio();
-    controls();
-    voiceStatus.textContent = message;
+  let generation = 0;
+  let timer = null;
+  let currentUtterance = null;
+  function controls(playing) {
+    startButton.textContent = 'Parla con me';
+    startButton.setAttribute('aria-pressed', String(playing));
+    quietButton.disabled = !playing;
   }
-
-  async function start() {
-    if (active) return;
-    if (!window.isSecureContext || !Recognition) {
-      voiceStatus.textContent = 'Apri il sito in Chrome tramite HTTPS per usare il microfono.';
+  function stop(message = 'Voce fermata. Premi “Parla con me” per ricominciare.') {
+    generation++;
+    if (timer !== null) clearTimeout(timer);
+    timer = null;
+    if (currentUtterance) currentUtterance.onend = currentUtterance.onerror = null;
+    currentUtterance = null;
+    synth?.cancel();
+    controls(false);
+    status.textContent = message;
+  }
+  startButton.addEventListener('click', () => {
+    stop('');
+    const joke = nextJoke();
+    question.textContent = 'Richiesta ricevuta.';
+    answer.textContent = joke.text;
+    source.href = joke.url;
+    source.textContent = joke.site;
+    source.hidden = false;
+    if (!synth || typeof SpeechSynthesisUtterance === 'undefined') {
+      status.textContent = 'La voce non è disponibile in questo browser. Puoi leggere la risposta qui sotto.';
       return;
     }
-    if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined' ||
-      !window.ControcorrenteMenuVoice) {
-      voiceStatus.textContent = 'Assistente audio non disponibile in questo browser.';
-      return;
-    }
-    session += 1;
-    active = true;
-    replying = false;
-    shortSessions = 0;
-    window.ControcorrenteMenuVoice.reset?.();
-    controls();
-    answerText.textContent = MESSAGE;
-    await speak(MESSAGE);
-    if (active) scheduleListening(300);
-  }
-
-  startButton.addEventListener('click', () => active ? stop() : start());
-  quietButton.addEventListener('click', () => {
-    const needsResume = speaking || replying;
-    request += 1;
-    replying = false;
-    if (needsResume) stopRecognition();
-    cancelAudio();
-    if (active) {
-      voiceStatus.textContent = recognition ? 'Ti ascolto…' : 'Voce fermata.';
-      scheduleListening(250);
-    }
+    controls(true);
+    status.textContent = 'Ti ascolto… risposta in corso.';
+    const token = generation;
+    const utterance = new SpeechSynthesisUtterance('Un momento… Ecco la mia risposta. ' + joke.text);
+    currentUtterance = utterance;
+    utterance.lang = 'it-IT';
+    utterance.voice = bestVoice();
+    utterance.rate = 0.96;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    const finish = failed => {
+      if (token !== generation) return;
+      if (timer !== null) clearTimeout(timer);
+      timer = null;
+      currentUtterance = null;
+      controls(false);
+      status.textContent = failed
+        ? 'La voce si è interrotta. Riprova con “Parla con me” oppure leggi la risposta.'
+        : 'Premi “Parla con me” per una nuova risposta.';
+    };
+    utterance.onend = () => finish(false);
+    utterance.onerror = () => finish(true);
+    // Keep speech in the click gesture so mobile browsers can start it.
+    timer = setTimeout(() => stop('Voce interrotta. Premi “Parla con me” per riprovare.'), 45000);
+    try { synth.resume(); synth.speak(utterance); } catch (_) { finish(true); }
   });
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      request += 1;
-      replying = false;
-      stopRecognition();
-      cancelAudio();
-      if (active) voiceStatus.textContent = 'Ascolto in pausa.';
-    } else if (active) {
-      scheduleListening();
-    }
-  });
+  quietButton.addEventListener('click', () => stop());
+  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
   window.addEventListener('pagehide', () => stop());
-  controls();
+  // getVoices can be empty until the browser finishes loading its voice list.
+  if (synth) synth.getVoices();
+  controls(false);
 })();
