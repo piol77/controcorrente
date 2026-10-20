@@ -376,34 +376,6 @@
       }
     },
     {
-      "name": "Tagliatelle con zucca, funghi misti e salsiccia",
-      "price": 10,
-      "description": "Tagliatelle con zucca, funghi misti e salsiccia.",
-      "allergens": [
-        1,
-        3
-      ],
-      "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/tagliatelle-zucca-20261009.webp",
-      "photoLayout": "side",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Tagliatelle with pumpkin, mixed mushrooms and sausage",
-          "description": "Tagliatelle pasta with pumpkin, mixed mushrooms and sausage."
-        },
-        "zh": {
-          "name": "南瓜什锦蘑菇香肠宽面",
-          "description": "意式宽面搭配南瓜、什锦蘑菇和香肠。"
-        }
-      },
-      "photoSource": {
-        "type": "Reused approved realistic illustration",
-        "date": "2026-10-20",
-        "note": "Existing approved lunch illustration of tagliatelle with pumpkin, mixed mushrooms and sausage; matching ivory plate and beige stone table. Illustrative image, not a restaurant photograph."
-      }
-    },
-    {
       "name": "Milanese di pollo con fagiolini lessi",
       "price": 10,
       "description": "Milanese di pollo dorata, accompagnata da fagiolini lessi.",
@@ -449,35 +421,6 @@
         "zh": {
           "name": "辣汁蔬菜猪肉条配清蒸白米饭",
           "description": "猪肉条搭配蔬菜和辣酱，佐以清蒸白米饭。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
-        "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
-      }
-    },
-    {
-      "name": "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino",
-      "price": 11,
-      "description": "Merluzzo* gratinato al forno con erbette aromatiche, accompagnato da patate al rosmarino.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/merluzzo-20261020.webp",
-      "photoLayout": "side",
-      "orderCourse": "Secondo",
-      "translations": {
-        "en": {
-          "name": "Oven-gratinated cod* with aromatic herbs and rosemary potatoes",
-          "description": "Cod* baked with an aromatic herb gratin, served with rosemary potatoes."
-        },
-        "zh": {
-          "name": "香草焗鳕鱼*配迷迭香土豆",
-          "description": "鳕鱼*覆以香草脆皮焗烤，搭配迷迭香土豆。"
         }
       },
       "photoSource": {
@@ -567,33 +510,6 @@
       }
     },
     {
-      "name": "Orecchiette con salsiccia e spinaci",
-      "price": 10,
-      "description": "Orecchiette con salsiccia e spinaci.",
-      "allergens": [
-        1
-      ],
-      "icon": "Wheat",
-      "dishPhoto": "offerta-assets/orecchiette-salsiccia-spinaci-20261017.webp",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Orecchiette with sausage and spinach",
-          "description": "Orecchiette pasta with sausage and spinach."
-        },
-        "zh": {
-          "name": "香肠菠菜猫耳朵面",
-          "description": "猫耳朵面搭配香肠和菠菜。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-adapted approved lunch illustration",
-        "date": "2026-10-17",
-        "tool": "image_gen",
-        "note": "Approved lunch orecchiette with sausage and spinach adapted to the ivory plate and navy tabletop of the evening offers. No recipe change. Illustrative image, not a restaurant photograph."
-      }
-    },
-    {
       "name": "Ravioli orientali di gamberetti* (5 pezzi)",
       "price": 6,
       "description": "Cinque ravioli in stile orientale, dal delicato ripieno di gamberetti*.",
@@ -622,59 +538,62 @@
       }
     },
     {
-      "name": "Cozze di Sardegna alla marinara con poco pomodoro",
+      "name": "Tagliatelle con zucca, funghi misti e salsiccia",
       "price": 10,
-      "description": "Cozze di Sardegna alla marinara, con un leggero tocco di pomodoro.",
-      "allergens": [
-        14
-      ],
-      "icon": "Shell",
-      "dishPhoto": "offerta-assets/cozze-sardegna-marinara-20261009.webp",
-      "translations": {
-        "en": {
-          "name": "Sardinian mussels alla marinara with a little tomato",
-          "description": "Sardinian mussels alla marinara, with a light touch of tomato."
-        },
-        "zh": {
-          "name": "少量番茄海员风味撒丁岛贻贝",
-          "description": "撒丁岛贻贝，以海员风味烹制，加入少量番茄。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-09",
-        "tool": "image_gen",
-        "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
-      }
-    },
-    {
-      "name": "Spaghetti con crema di zucca, speck affumicato croccante e mozzarella Santa Lucia",
-      "price": 10,
-      "description": "Crema di zucca, speck affumicato croccante e mozzarella Santa Lucia.",
+      "description": "Tagliatelle con zucca, funghi misti e salsiccia.",
       "allergens": [
         1,
-        7
+        3
       ],
       "icon": "Wheat",
-      "dishPhoto": "offerta-assets/spaghetti-zucca-speck-mozzarella-20261014.webp",
+      "dishPhoto": "offerta-assets/tagliatelle-zucca-funghi-salsiccia-20261020.webp",
+      "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Spaghetti with pumpkin cream, crispy smoked speck and Santa Lucia mozzarella",
-          "description": "Pumpkin cream, crispy smoked speck and Santa Lucia mozzarella."
+          "name": "Tagliatelle with pumpkin, mixed mushrooms and sausage",
+          "description": "Tagliatelle pasta with pumpkin, mixed mushrooms and sausage."
         },
         "zh": {
-          "name": "南瓜酱烟熏脆Speck火腿马苏里拉意面",
-          "description": "南瓜酱、烟熏脆Speck火腿和Santa Lucia马苏里拉奶酪。"
+          "name": "南瓜什锦蘑菇香肠宽面",
+          "description": "意式宽面搭配南瓜、什锦蘑菇和香肠。"
         }
       },
       "photoSource": {
         "type": "AI-adapted approved lunch illustration",
-        "date": "2026-10-14",
+        "date": "2026-10-20",
         "tool": "image_gen",
-        "note": "Internet references inspected; alternatives use other cheeses or pasta and extra ingredients. Approved lunch dish adapted to the ivory ceramic plate, navy tabletop, soft light and camera angle of the evening menu. Same pumpkin cream, crispy smoked speck and mozzarella; illustrative image, not a restaurant photograph."
+        "note": "Existing approved lunch dish adapted to match the ivory ceramic plate, dark navy tabletop, soft light and framing of the evening offers. Recipe and ingredients preserved. Illustrative image, not a restaurant photograph."
+      }
+    },
+    {
+      "name": "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino",
+      "price": 11,
+      "description": "Merluzzo* gratinato al forno con erbette aromatiche, accompagnato da patate al rosmarino.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "offerta-assets/merluzzo-erbette-patate-20261020.webp",
+      "photoLayout": "side",
+      "orderCourse": "Secondo",
+      "translations": {
+        "en": {
+          "name": "Oven-gratinated cod* with aromatic herbs and rosemary potatoes",
+          "description": "Cod* baked with an aromatic herb gratin, served with rosemary potatoes."
+        },
+        "zh": {
+          "name": "香草焗鳕鱼*配迷迭香土豆",
+          "description": "鳕鱼*覆以香草脆皮焗烤，搭配迷迭香土豆。"
+        }
       },
-      "course": "Primo"
+      "photoSource": {
+        "type": "AI-adapted approved lunch illustration",
+        "date": "2026-10-20",
+        "tool": "image_gen",
+        "note": "Existing approved lunch dish adapted to match the ivory ceramic plate, dark navy tabletop, soft light and framing of the evening offers. Recipe and ingredients preserved. Illustrative image, not a restaurant photograph."
+      }
     }
   ],
   "fixed": {
@@ -773,3 +692,4 @@
     }
   ]
 }
+
