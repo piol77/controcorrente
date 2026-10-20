@@ -41,81 +41,164 @@
 .bc-notice{padding:11px;background:var(--navy);border-left:2px solid var(--gold);font-size:.82rem;margin:8px 0}
 .bc-formlabel{display:block;color:var(--muted);font-size:.82rem;margin:10px 0 4px}
 @media(max-width:650px){.bc-controls{grid-template-columns:1fr 1fr}.bc-controls input{grid-column:1/-1}.bc-item{padding:10px}.bc-item p{font-size:.85rem}.bc-action{padding:8px;font-size:.72rem}.bc-instructions{grid-template-columns:1fr}.bc-modal{padding:14px}}
+
+.bc-banner{margin:0 auto 24px;max-width:950px;text-align:center;padding:20px 16px;border:2px solid var(--gold);background:linear-gradient(130deg,#16384e,#0e2940)}
+.bc-banner strong{display:block;font:700 clamp(1.3rem,3.5vw,2.1rem)/1.3 Georgia,serif;color:var(--gold)}
+.bc-banner p{margin:10px 0 0;font-size:1rem;color:var(--ink)}
+.bc-banner em{display:block;margin-top:7px;color:var(--gold);font:italic 1.1rem Georgia,serif}
+.bc-privacy{font-size:.76rem;color:var(--muted);margin-top:8px}
+.bc-controls{display:flex;flex-wrap:wrap;align-items:stretch}
+.bc-controls input{flex:2 1 220px}
+.bc-controls select{flex:1 1 150px}
+.bc-controls button{flex:0 0 auto}
+.bc-item-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.bc-item-actions .bc-action{white-space:normal}
+.bc-live{max-width:950px;margin:0 auto 14px;padding:12px 15px;border:1px solid var(--line);background:var(--panel);color:var(--muted);font-size:.85rem}
+.bc-live strong{color:var(--gold)}
+.bc-formnote{color:var(--muted);font-size:.78rem}
+.bc-status{font-size:.8rem;color:var(--muted);text-align:center;min-height:1.4rem}
+.bc-inputgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.bc-inputgrid > div{min-width:0}
+.bc-terms{display:flex;gap:10px;align-items:start}
+.bc-terms input{width:auto!important;margin-top:5px}
+@media(max-width:650px){.bc-controls{display:grid;grid-template-columns:1fr 1fr}.bc-controls input{grid-column:1/-1}.bc-item{grid-template-columns:1fr}.bc-item-actions{justify-content:start}.bc-inputgrid{grid-template-columns:1fr}}
 </style></head><body>
 <header class="top"><div class="brand-row"><a class="logo" href="index.html"><img class="brand-logo" src="logo-controcorrente.webp?v=202610031345" alt="Controcorrente" width="2172" height="724"></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><img class="icon" src="icons/Menu.svg" alt="" aria-hidden="true"><span>Menù</span></button></div>
 <nav id="site-nav"><a href="index.html">Novità</a><a href="il-locale.html">Il Locale</a><a href="pranzo.html">Offerta per pranzo</a><a href="cena.html">Offerta per cena</a><a href="offerta.html">Offerta del giorno</a><a href="bibite-vini.html">Bibite &amp; vini</a><a href="club.html">Club</a><a href="tessera-punti-pranzo.html">Tessera Punti Pranzo</a><a href="allergeni.html">Allergeni</a><a href="contatti.html">Contatti</a><a href="divertentismo.html">Divertentismo <span aria-hidden="true" style="font-size:.75em;color:var(--gold);margin-left:.35em">☺</span></a><span class="languages"><a href="english.html" lang="en">EN</a><a href="cinese.html" lang="zh">中文</a></span></nav></header>
 <main class="shell"><div class="page-head"><h1>La Bacheca</h1></div>
 <div class="bc-wrap">
 <p class="bc-intro">Un angolo per gli annunci di quartiere: vendo, cerco, regalo, scambio. Poche parole, pseudonimo, nessun recapito telefonico visibile.</p>
-<div class="bc-demo"><strong>ANTEPRIMA IN PROVA.</strong> Tutti gli annunci sono inventati. Chat, proposte e appuntamenti sono simulati soltanto su questo dispositivo: non vengono inviati né pubblicati.</div>
-<div class="bc-controls"><input type="search" id="bc-search" placeholder="Cerca un annuncio di esempio…" aria-label="Cerca annunci"><select id="bc-category" aria-label="Filtra categoria"><option value="">Tutte le categorie</option><option>Casa e arredi</option><option>Abbigliamento</option><option>Elettronica</option><option>Libri e hobby</option><option>Regalo e scambio</option><option>Cerco</option></select><button class="bc-action" type="button" id="bc-create">+ Prova annuncio</button></div>
+
+<div class="bc-banner" aria-label="Incontri riservati al Controcorrente">
+<strong>INCONTRI RISERVATI TRA PRIVATI<br>AL CONTROCORRENTE</strong>
+<p>Negli orari di apertura, <b>con o senza consumazione</b>.</p>
+<em>…ma con un caffè si conclude meglio! ☕ 😉</em>
+<p class="bc-privacy">Sul sito compaiono soltanto pseudonimi. Il numero WhatsApp viene comunicato al ristorante per gestire le richieste, mai pubblicato negli annunci. L'incontro di persona non garantisce anonimato assoluto.</p>
+</div>
+<div class="bc-live"><strong>La Bacheca è aperta alle richieste.</strong> Invia il tuo annuncio gratuitamente via WhatsApp: sarà visibile qui dopo l'approvazione. Per contattare un inserzionista o proporre un incontro, il ristorante inoltra la richiesta. Non è ancora disponibile una chat privata diretta fra utenti.</div>
+<div class="bc-controls"><input type="search" id="bc-search" placeholder="Cerca negli annunci…" aria-label="Cerca annunci"><select id="bc-category" aria-label="Filtra categoria"><option value="">Tutte le categorie</option><option>Casa e arredi</option><option>Abbigliamento</option><option>Elettronica</option><option>Libri e hobby</option><option>Regalo e scambio</option><option>Cerco</option></select><button class="bc-action" type="button" id="bc-refresh">↻ Aggiorna annunci</button><button class="bc-action" type="button" id="bc-create">+ Pubblica annuncio</button></div><div class="bc-status" id="bc-status" role="status"></div>
 <section id="bc-list" class="bc-list" aria-label="Annunci dimostrativi"></section><p id="bc-count" class="bc-count"></p>
-<div class="bc-instructions"><div><strong>1 · Annunci</strong>Consultazione senza registrazione. Ogni annuncio reale richiederà in futuro una verifica prima della pubblicazione.</div><div><strong>2 · Chat privata</strong>La futura conversazione sarà visibile soltanto ai due partecipanti attraverso accessi riservati, non con il solo pseudonimo.</div><div><strong>3 · Incontri</strong>Il ristorante riceverà soltanto il riepilogo degli appuntamenti confermati. Nessun deposito merci, commissione o obbligo di consumazione.</div></div>
-<div class="bc-bottom"><a class="button" href="bacheca/regolamento.pdf" target="_blank" rel="noopener">Leggi regolamento e privacy (PDF)</a><button class="bc-action" type="button" id="bc-owner">Esempio avviso al ristorante</button></div>
-<p class="bc-count">La chat effettiva e la cancellazione automatica verranno abilitate solo dopo l'installazione di un servizio privato sicuro. Il regolamento è ancora una bozza.</p>
+
+<div class="bc-instructions"><div><strong>1 · Scrivi</strong>Inserisci un annuncio breve e invialo su WhatsApp al Controcorrente. Dopo il controllo verrà pubblicato con il solo pseudonimo.</div><div><strong>2 · Interessati</strong>Chi è interessato invia una richiesta al ristorante indicando il codice annuncio. I recapiti dei privati non sono pubblici.</div><div><strong>3 · Incontratevi</strong>Dopo l'accordo tra le parti, richiedete un appuntamento a pranzo o cena. Vale soltanto dopo la conferma del locale. Nessun deposito o commissione.</div></div>
+
+<div class="bc-bottom"><a class="button" href="bacheca/regolamento.pdf" target="_blank" rel="noopener">Regolamento e informazioni privacy (PDF)</a></div>
+<p class="bc-count">Servizio gratuito fra privati. Nessun oggetto viene lasciato in custodia al ristorante. Non occorre consumare, anche se un caffè non ha mai rovinato una trattativa.</p>
 </div></main><footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
-<div class="bc-overlay" id="bc-chat-overlay" role="dialog" aria-modal="true" aria-label="Chat dimostrativa"><div class="bc-modal"><div class="bc-modalbar"><h2>Chat privata · prova</h2><button type="button" class="bc-close" data-bc-close aria-label="Chiudi">×</button></div>
-<p class="bc-muted">Simulazione locale: puoi alternare i due pseudonimi per vedere come funzionerà. Nessun messaggio raggiunge altre persone.</p><p class="bc-muted" id="bc-item-title"></p>
-<div class="bc-row"><button type="button" class="bc-action" id="bc-buyer">Vista interessato</button><button type="button" class="bc-action" id="bc-seller">Vista inserzionista</button></div>
-<div id="bc-thread" class="bc-chat" aria-live="polite"></div><div class="bc-row"><input id="bc-message" placeholder="Messaggio dimostrativo" maxlength="250" aria-label="Messaggio"><button type="button" class="bc-action" id="bc-send">Invia</button></div>
-<h3 style="margin:20px 0 7px">Incontro al Controcorrente</h3><p class="bc-muted">L'interessato propone un orario, il venditore conferma. L'avviso al ristorante non è una prenotazione di tavolo.</p><div id="bc-meet"></div>
-</div></div>
-<div class="bc-overlay" id="bc-create-overlay" role="dialog" aria-modal="true" aria-label="Annuncio dimostrativo"><div class="bc-modal"><div class="bc-modalbar"><h2>Nuovo annuncio · prova</h2><button type="button" class="bc-close" data-bc-close aria-label="Chiudi">×</button></div>
-<p class="bc-muted">Il modulo non invia dati né pubblica nulla. Non utilizzare informazioni personali reali.</p>
-<form id="bc-form"><label class="bc-formlabel" for="bc-nick">Pseudonimo inventato</label><input id="bc-nick" required maxlength="25" placeholder="Es. Gabbiano77"><label class="bc-formlabel" for="bc-cat">Categoria</label><select id="bc-cat"><option>Casa e arredi</option><option>Abbigliamento</option><option>Elettronica</option><option>Libri e hobby</option><option>Regalo e scambio</option><option>Cerco</option></select><label class="bc-formlabel" for="bc-desc">Testo annuncio (max 180 caratteri)</label><textarea id="bc-desc" rows="3" required maxlength="180" placeholder="Vendo un tavolino in legno · 25 €"></textarea><label class="bc-row bc-muted"><input required type="checkbox" style="width:auto"> So che è solo una simulazione e non inserirò dati personali.</label><button type="submit" class="bc-action">Simula pubblicazione</button><p id="bc-form-result" role="status" class="bc-notice" hidden></p></form>
-</div></div>
-<div class="bc-overlay" id="bc-owner-overlay" role="dialog" aria-modal="true" aria-label="Esempio avviso ristorante"><div class="bc-modal"><div class="bc-modalbar"><h2>Vista gestore · prova</h2><button type="button" class="bc-close" data-bc-close aria-label="Chiudi">×</button></div><p class="bc-muted">Questa vista è soltanto una simulazione. Il vero pannello del gestore dovrà essere protetto.</p><div id="bc-owner-content"></div></div></div>
+
+<div class="bc-overlay" id="bc-create-overlay" role="dialog" aria-modal="true" aria-label="Proponi un annuncio">
+ <div class="bc-modal">
+  <div class="bc-modalbar"><h2>Proponi un annuncio</h2><button class="bc-close" type="button" data-bc-close aria-label="Chiudi">×</button></div>
+  <p class="bc-muted">L'annuncio viene inviato al ristorante su WhatsApp e pubblicato dopo approvazione. Il tuo numero non comparirà sul sito.</p>
+  <form id="bc-form">
+   <label class="bc-formlabel" for="bc-nick">Pseudonimo pubblico</label><input id="bc-nick" required maxlength="25" autocomplete="off" placeholder="Es. Gabbiano77">
+   <div class="bc-inputgrid"><div><label class="bc-formlabel" for="bc-type">Tipo annuncio</label><select id="bc-type"><option>VENDO</option><option>COMPRO</option><option>REGALO</option><option>SCAMBIO</option><option>CERCO</option></select></div><div><label class="bc-formlabel" for="bc-cat">Categoria</label><select id="bc-cat"><option>Casa e arredi</option><option>Abbigliamento</option><option>Elettronica</option><option>Libri e hobby</option><option>Regalo e scambio</option><option>Cerco</option></select></div></div>
+   <label class="bc-formlabel" for="bc-price">Prezzo (se previsto)</label><input id="bc-price" maxlength="35" placeholder="25 € / gratuito / da concordare">
+   <label class="bc-formlabel" for="bc-desc">Descrizione (massimo 180 caratteri)</label><textarea id="bc-desc" maxlength="180" rows="3" required placeholder="Tavolino in legno, buone condizioni"></textarea>
+   <label class="bc-formlabel bc-terms"><input id="bc-consent" type="checkbox" required><span>Ho letto il <a href="bacheca/regolamento.pdf" target="_blank" rel="noopener">regolamento e le informazioni privacy</a> e chiedo la valutazione dell'annuncio. Non inserirò recapiti, documenti o dati di terzi nel testo pubblico.</span></label>
+   <button class="bc-action" type="submit">Invia annuncio su WhatsApp ↗</button>
+   <p class="bc-formnote">Si apre WhatsApp con un messaggio precompilato: premi <b>Invia</b> nell'app per consegnarlo al ristorante. Non viene pubblicato immediatamente.</p>
+  </form>
+ </div>
+</div>
+<div class="bc-overlay" id="bc-interest-overlay" role="dialog" aria-modal="true" aria-label="Contatta l'inserzionista">
+ <div class="bc-modal"><div class="bc-modalbar"><h2>Contatta l'inserzionista</h2><button class="bc-close" type="button" data-bc-close aria-label="Chiudi">×</button></div>
+ <p class="bc-muted" id="bc-interest-ref"></p>
+ <p class="bc-muted">Il messaggio arriva su WhatsApp del ristorante, che lo inoltrerà all'inserzionista. Il numero di telefono non viene pubblicato né consegnato automaticamente all'altra persona.</p>
+ <form id="bc-interest-form"><label class="bc-formlabel" for="bc-interested-nick">Il tuo pseudonimo</label><input id="bc-interested-nick" required maxlength="25" placeholder="Es. Interesse42"><label class="bc-formlabel" for="bc-interest-msg">Messaggio</label><textarea id="bc-interest-msg" required maxlength="250" rows="3" placeholder="È ancora disponibile?"></textarea><button class="bc-action" type="submit">Invia richiesta via WhatsApp ↗</button></form>
+ </div>
+</div>
+<div class="bc-overlay" id="bc-meet-overlay" role="dialog" aria-modal="true" aria-label="Richiedi appuntamento al ristorante">
+ <div class="bc-modal"><div class="bc-modalbar"><h2>Concludi l'affare e prendi appuntamento</h2><button class="bc-close" type="button" data-bc-close aria-label="Chiudi">×</button></div>
+ <p class="bc-muted" id="bc-meet-ref"></p><p class="bc-notice">Incontro fra privati presso il Controcorrente, negli orari di apertura. <b>Con o senza consumazione… ma meglio con!</b> ☕</p>
+ <p class="bc-muted">Questo pulsante invia una <b>richiesta</b> al ristorante. L'appuntamento non è confermato automaticamente: devono essere d'accordo entrambi i privati e deve arrivare la conferma del locale.</p>
+ <form id="bc-meet-form">
+  <label class="bc-formlabel" for="bc-meet-nick">Il tuo pseudonimo</label><input id="bc-meet-nick" maxlength="25" required placeholder="Es. Interesse42">
+  <div class="bc-inputgrid"><div><label class="bc-formlabel" for="bc-meet-day">Giorno</label><input type="date" id="bc-meet-day" required></div><div><label class="bc-formlabel" for="bc-meet-service">Fascia</label><select id="bc-meet-service"><option value="Pranzo">Pranzo (12:00-14:30)</option><option value="Cena">Cena (19:00-22:30)</option></select></div></div>
+  <label class="bc-formlabel" for="bc-meet-time">Ora proposta</label><input type="time" id="bc-meet-time" required>
+  <label class="bc-formlabel bc-terms"><input type="checkbox" id="bc-meet-agreed" required><span>Confermo di aver già concordato la proposta con l'altra persona; la conferma definitiva arriverà dal ristorante.</span></label>
+  <button class="bc-action" type="submit">Invia richiesta di appuntamento ↗</button>
+  <p class="bc-formnote">WhatsApp aprirà un messaggio riepilogativo con codice annuncio, pseudonimo, giorno, fascia e orario. Senza conferma del locale l'appuntamento non è valido.</p>
+ </form></div>
+</div>
 <script src="ui.js?v=20261020-bacheca-nav"></script><script src="site-session.js?v=20261018-counter-provider2"></script>
 <script>
 (function(){
 'use strict';
-var ads=[
-{id:"BC-101",type:"VENDO",text:"Tavolino in legno, buone condizioni",price:"25 €",cat:"Casa e arredi",nick:"Gabbiano77"},
-{id:"BC-102",type:"REGALO",text:"Giacca invernale taglia M",price:"gratis",cat:"Abbigliamento",nick:"LunaBlu"},
-{id:"BC-103",type:"VENDO",text:"Monitor 24 pollici funzionante",price:"45 €",cat:"Elettronica",nick:"Turbina"},
-{id:"BC-104",type:"SCAMBIO",text:"Romanzi gialli con altri libri",price:"scambio",cat:"Libri e hobby",nick:"Marea"},
-{id:"BC-105",type:"CERCO",text:"Bicicletta da città usata",price:"da concordare",cat:"Cerco",nick:"Lanterna"},
-{id:"BC-106",type:"REGALO",text:"Quattro vasi da balcone",price:"gratis",cat:"Regalo e scambio",nick:"Orizzonte"}
-];
-var $=function(id){return document.getElementById(id)},state={ad:ads[0],role:"buyer",messages:[],meeting:null};
-function safe(s){return String(s).replace(/[&<>"']/g,function(x){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]})}
-function show(id){$(id).classList.add("open");document.body.style.overflow="hidden"}
-function hide(){document.querySelectorAll(".bc-overlay.open").forEach(function(x){x.classList.remove("open")});document.body.style.overflow=""}
-document.querySelectorAll("[data-bc-close]").forEach(function(x){x.addEventListener("click",hide)});
-document.querySelectorAll(".bc-overlay").forEach(function(x){x.addEventListener("click",function(e){if(e.target===x)hide()})});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")hide()});
-function list(){
-var q=$("bc-search").value.trim().toLowerCase(),c=$("bc-category").value;
-var filtered=ads.filter(function(x){return (!c||x.cat===c)&&(x.text+" "+x.nick+" "+x.type+" "+x.price).toLowerCase().includes(q)});
-$("bc-list").innerHTML=filtered.map(function(a){return '<article class="bc-item"><div><p><b>'+safe(a.type)+'</b> · '+safe(a.text)+' · <b>'+safe(a.price)+'</b></p><span class="bc-sub">'+safe(a.cat)+' · '+safe(a.nick)+' · '+safe(a.id)+'</span></div><button type="button" class="bc-action" data-bc-chat="'+safe(a.id)+'">Chat di prova →</button></article>'}).join("")||'<p class="bc-count">Nessun risultato.</p>';
-$("bc-count").textContent=filtered.length+" annunci di esempio · nessun annuncio reale";
-document.querySelectorAll("[data-bc-chat]").forEach(function(btn){btn.onclick=function(){start(ads.find(function(a){return a.id===btn.dataset.bcChat}))}});
+const OWNER='393272292006';
+const $=id=>document.getElementById(id);
+const ads=[];
+let current=null,refreshing=false;
+const categories=['Casa e arredi','Abbigliamento','Elettronica','Libri e hobby','Regalo e scambio','Cerco'];
+const types=['VENDO','COMPRO','REGALO','SCAMBIO','CERCO'];
+function safe(x){return String(x??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+function clean(x,max){return String(x??'').trim().slice(0,max)}
+function wa(message){const url='https://wa.me/'+OWNER+'?text='+encodeURIComponent(message); window.location.assign(url)}
+function openModal(id){$(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.querySelectorAll('.bc-overlay.open').forEach(el=>el.classList.remove('open'));document.body.style.overflow=''}
+document.querySelectorAll('[data-bc-close]').forEach(el=>el.addEventListener('click',closeModal));
+document.querySelectorAll('.bc-overlay').forEach(el=>el.addEventListener('click',e=>{if(e.target===el)closeModal()}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+function dateIT(d){const parts=d.split('-');return parts.length===3?parts[2]+'/'+parts[1]+'/'+parts[0]:d}
+function status(s){$('bc-status').textContent=s}
+function valid(a){
+return a&&/^[A-Za-z0-9-]{2,20}$/.test(a.id||'')&&types.includes(a.type)&&categories.includes(a.cat)&&typeof a.text==='string'&&a.text.length<=180&&a.text.length>2&&typeof a.nick==='string'&&a.nick.length<=25&&typeof a.price==='string'&&a.price.length<=35&&a.status!=='chiuso'&&(!a.expires||(/^\d{4}-\d\d-\d\d$/.test(a.expires)&&a.expires>=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())))
 }
-function start(a){state={ad:a,role:"buyer",messages:[{role:"buyer",text:"Ciao, è ancora disponibile?"},{role:"seller",text:"Sì, ci possiamo incontrare al Controcorrente."}],meeting:null};$("bc-item-title").textContent=a.id+" · "+a.text+" · "+a.nick;draw();show("bc-chat-overlay")}
-function draw(){
-$("bc-buyer").setAttribute("aria-pressed",String(state.role==="buyer"));
-$("bc-seller").setAttribute("aria-pressed",String(state.role==="seller"));
-$("bc-thread").innerHTML=state.messages.map(function(m){return '<div class="bc-msg '+(m.role===state.role?"mine":"")+'"><small>'+(m.role==="buyer"?"Interesse42":safe(state.ad.nick))+"</small>"+safe(m.text)+"</div>"}).join("");
-$("bc-thread").scrollTop=$("bc-thread").scrollHeight;meet();
+function render(){
+const q=$('bc-search').value.trim().toLowerCase(),cat=$('bc-category').value;
+const items=ads.filter(a=>(!cat||a.cat===cat)&&[a.text,a.type,a.price,a.nick,a.id].join(' ').toLowerCase().includes(q));
+$('bc-list').innerHTML=items.length?items.map(a=>'<article class="bc-item"><div><p><b>'+safe(a.type)+'</b> · '+safe(a.text)+(a.price?' · <b>'+safe(a.price)+'</b>':'')+'</p><span class="bc-sub">'+safe(a.cat)+' · '+safe(a.nick)+' · '+safe(a.id)+'</span></div><div class="bc-item-actions"><button type="button" class="bc-action" data-interest="'+safe(a.id)+'">Sono interessato</button><button type="button" class="bc-action" data-meet="'+safe(a.id)+'">Concludi l’affare e prendi appuntamento</button></div></article>').join(''):'<p class="bc-count">'+(ads.length?'Nessun annuncio corrispondente alla ricerca.':'Nessun annuncio approvato per ora. Puoi proporre il primo!')+'</p>';
+$('bc-count').textContent=ads.length+' annunci approvati';
+$('bc-list').querySelectorAll('[data-interest]').forEach(button=>button.addEventListener('click',()=>{current=ads.find(a=>a.id===button.dataset.interest);if(!current)return;$('bc-interest-ref').textContent=current.id+' · '+current.type+' · '+current.text+' · '+current.nick;$('bc-interest-form').reset();openModal('bc-interest-overlay')}));
+$('bc-list').querySelectorAll('[data-meet]').forEach(button=>button.addEventListener('click',()=>{current=ads.find(a=>a.id===button.dataset.meet);if(!current)return;$('bc-meet-ref').textContent=current.id+' · '+current.text+' · '+current.nick;$('bc-meet-form').reset();$('bc-meet-day').min=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());openModal('bc-meet-overlay')}));
 }
-function meet(){
-var m=state.meeting,box=$("bc-meet");
-if(!m){box.innerHTML=state.role==="buyer"?'<div class="bc-row"><input type="datetime-local" id="bc-date" aria-label="Data e ora dell’incontro"><button class="bc-action" id="bc-propose">Proponi</button></div>':'<p class="bc-muted">In attesa della proposta dell’interessato.</p>';
-if(state.role==="buyer")$("bc-propose").onclick=function(){var d=$("bc-date").value;if(!d||new Date(d).getTime()<=Date.now()){alert("Scegli una data e un orario futuri.");return}state.meeting={date:d,confirmed:false};draw()};return}
-var day=new Date(m.date).toLocaleString("it-IT",{dateStyle:"long",timeStyle:"short"});
-if(m.confirmed){box.innerHTML='<div class="bc-notice">✓ Incontro di prova confermato per '+safe(day)+'. Controlla la vista gestore.</div>';return}
-if(state.role==="seller"){box.innerHTML='<div class="bc-notice">Interesse42 propone '+safe(day)+'</div><button class="bc-action" id="bc-confirm">Conferma (prova)</button>';$("bc-confirm").onclick=function(){state.meeting.confirmed=true;draw()}}
-else box.innerHTML='<div class="bc-notice">Proposta per '+safe(day)+' · in attesa di conferma.</div>';
+async function refresh(){
+if(refreshing)return;
+refreshing=true;
+$('bc-refresh').disabled=true;
+status('Aggiornamento annunci in corso…');
+try{
+const response=await fetch('bacheca/annunci.json?refresh='+Date.now(),{cache:'no-store',credentials:'omit'});
+if(!response.ok)throw Error('HTTP '+response.status);
+const data=await response.json();
+if(!data||!Array.isArray(data.annunci))throw Error('Dati non validi');
+const ids=new Set(),fresh=[];
+for(const raw of data.annunci){if(!valid(raw)||ids.has(raw.id))continue;ids.add(raw.id);fresh.push({id:clean(raw.id,20),type:raw.type,cat:raw.cat,text:clean(raw.text,180),price:clean(raw.price,35),nick:clean(raw.nick,25)})}
+ads.length=0;ads.push(...fresh);render();
+const now=new Intl.DateTimeFormat('it-IT',{timeZone:'Europe/Rome',hour:'2-digit',minute:'2-digit'}).format(new Date());
+status('Annunci aggiornati alle '+now+'.');
+}catch(err){render();status('Non riesco ad aggiornare gli annunci. Riprova premendo ↻.')}
+finally{refreshing=false;$('bc-refresh').disabled=false}
 }
-$("bc-buyer").onclick=function(){state.role="buyer";draw()};
-$("bc-seller").onclick=function(){state.role="seller";draw()};
-$("bc-send").onclick=function(){var msg=$("bc-message").value.trim();if(!msg)return;state.messages.push({role:state.role,text:msg.slice(0,250)});$("bc-message").value="";draw()};
-$("bc-message").onkeydown=function(e){if(e.key==="Enter"){e.preventDefault();$("bc-send").click()}};
-$("bc-owner").onclick=function(){var m=state.meeting;
-$("bc-owner-content").innerHTML=m&&m.confirmed?'<div class="bc-notice"><b>Appuntamento simulato</b><p>'+safe(state.ad.id)+' · '+safe(state.ad.nick)+' ↔ Interesse42<br>'+safe(new Date(m.date).toLocaleString("it-IT",{dateStyle:"long",timeStyle:"short"}))+'</p>Nessun messaggio privato visibile.</div>':'<div class="bc-notice">Nessun appuntamento confermato nella prova. Entra in una chat e proponi un orario, poi passa alla vista inserzionista e conferma.</div>';
-show("bc-owner-overlay")};
-$("bc-create").onclick=function(){$("bc-form").reset();$("bc-form-result").hidden=true;show("bc-create-overlay")};
-$("bc-form").onsubmit=function(e){e.preventDefault();$("bc-form-result").textContent="Prova completata. Nessun dato salvato o pubblicato.";$("bc-form-result").hidden=false};
-$("bc-search").oninput=list;$("bc-category").onchange=list;list();
+$('bc-search').addEventListener('input',render);
+$('bc-category').addEventListener('change',render);
+$('bc-refresh').addEventListener('click',refresh);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
+$('bc-create').addEventListener('click',()=>{$('bc-form').reset();openModal('bc-create-overlay')});
+$('bc-form').addEventListener('submit',function(e){
+ e.preventDefault();
+ const nick=clean($('bc-nick').value,25),type=$('bc-type').value,cat=$('bc-cat').value,desc=clean($('bc-desc').value,180),price=clean($('bc-price').value,35);
+ if(nick.length<2||desc.length<4||!$('bc-consent').checked)return;
+ wa('CONTROCORRENTE - PROPOSTA ANNUNCIO DA APPROVARE\nPseudonimo pubblico: '+nick+'\nTipo: '+type+'\nCategoria: '+cat+'\nOggetto: '+desc+'\nPrezzo: '+(price||'non indicato')+'\n\nChiedo la valutazione e l’eventuale pubblicazione nella Bacheca. Ho letto regolamento e informazioni privacy. Il mio numero WhatsApp non deve essere pubblicato.');
+});
+$('bc-interest-form').addEventListener('submit',function(e){
+e.preventDefault();if(!current)return;
+const nick=clean($('bc-interested-nick').value,25),msg=clean($('bc-interest-msg').value,250);
+if(nick.length<2||msg.length<2)return;
+wa('CONTROCORRENTE - INTERESSE PER ANNUNCIO\nCodice: '+current.id+'\nAnnuncio: '+current.text+'\nInserzionista: '+current.nick+'\nInteressato: '+nick+'\nMessaggio da inoltrare: '+msg+'\n\nVi chiedo di inoltrare il messaggio senza rendere pubblici i recapiti.');
+});
+$('bc-meet-service').addEventListener('change',function(){$('bc-meet-time').value=this.value==='Pranzo'?'12:30':'19:30'});
+$('bc-meet-service').dispatchEvent(new Event('change'));
+$('bc-meet-form').addEventListener('submit',function(e){
+e.preventDefault();if(!current)return;
+const day=$('bc-meet-day').value,time=$('bc-meet-time').value,slot=$('bc-meet-service').value,nick=clean($('bc-meet-nick').value,25);
+const minutes=time.split(':').map(Number),clock=minutes[0]*60+minutes[1];
+const inRange=slot==='Pranzo'?(clock>=720&&clock<=870):(clock>=1140&&clock<=1350);
+if(!day||!nick||!inRange){alert('Scegli un orario nella fascia indicata: pranzo 12:00-14:30 o cena 19:00-22:30.');return}
+const nowRome=new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+if(day<nowRome){alert('La data proposta non può essere nel passato.');return}
+if(!$('bc-meet-agreed').checked)return;
+wa('CONTROCORRENTE - RICHIESTA INCONTRO IN BACHECA\nCodice annuncio: '+current.id+'\nOggetto: '+current.text+'\nInserzionista: '+current.nick+'\nInteressato: '+nick+'\nGiorno: '+dateIT(day)+'\nServizio: '+slot+'\nOra proposta: '+time+'\nCon o senza consumazione.\n\nLe parti dichiarano di essersi accordate. Chiedo conferma della disponibilità del ristorante. NON è una prenotazione di tavolo.');
+});
+render();refresh();
 })();
 </script></body></html>
