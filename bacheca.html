@@ -111,13 +111,16 @@ function normalizeAd(a){
  if(!a||typeof a!=='object')return null;
  var item={id:String(a.id||'').slice(0,24),type:String(a.type||'').slice(0,28),
  text:String(a.text||'').slice(0,230),price:String(a.price||'').slice(0,60),
- cat:String(a.cat||'').slice(0,65),nick:String(a.nick||'').slice(0,40)};
+ cat:String(a.cat||'').slice(0,65),nick:String(a.nick||'').slice(0,40),expiresAt:String(a.expiresAt||'').slice(0,10)};
  return item.id&&item.text&&item.nick?item:null;
 }
 function filter(){
  var q=$('bc-search').value.trim().toLocaleLowerCase('it'),category=$('bc-category').value;
+ var todayParts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+ var part=function(k){return todayParts.find(function(p){return p.type===k}).value};
+ var today=part('year')+'-'+part('month')+'-'+part('day');
  var matches=ads.filter(function(a){
-   return (!category||a.cat===category)&&[a.id,a.type,a.text,a.price,a.nick].join(' ').toLocaleLowerCase('it').includes(q);
+   return (!a.expiresAt||a.expiresAt>=today)&&(!category||a.cat===category)&&[a.id,a.type,a.text,a.price,a.nick].join(' ').toLocaleLowerCase('it').includes(q);
  });
  var target=$('bc-list');target.replaceChildren();
  if(!matches.length){
@@ -140,7 +143,13 @@ function filter(){
 async function refresh(){
  var btn=$('bc-refresh');btn.disabled=true;status.textContent='Aggiornamento annunci in corso…';
  try{
-  var response=await fetch('bacheca/annunci.json?aggiornamento='+Date.now(),{cache:'no-store'});
+  var response;
+  try{
+    response=await fetch('https://raw.githubusercontent.com/piol77/controcorrente/main/bacheca/annunci.json?aggiornamento='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw Error('Repository '+response.status);
+  }catch(err){
+    response=await fetch('bacheca/annunci.json?aggiornamento='+Date.now(),{cache:'no-store'});
+  }
   if(!response.ok)throw Error('HTTP '+response.status);
   var data=await response.json();
   if(!data||!Array.isArray(data.ads))throw Error('Archivio annunci non valido');

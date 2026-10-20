@@ -1,5 +1,4 @@
 %PDF-1.4
-%‚„œ”
 1 0 obj
 << /Type /Catalog /Pages 2 0 R >>
 endobj
@@ -13,216 +12,212 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
 endobj
 5 0 obj
-<< /Length 1862 >>
+<< /Length 1980 >>
 stream
-0.04 0.13 0.22 rg
-0 774 595 68 re f
-0.94 0.79 0.52 rg
-BT /F2 19 Tf 40 804 Td (La Bacheca - Regolamento d'uso) Tj ET
-0.32 0.42 0.49 rg
-BT /F1 10 Tf 40 747 Td (Controcorrente / Via San Paolo 16, Torino / 20 ottobre 2026) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 710 Td (0. Stato del servizio) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 690 Td (Bacheca pubblica di annunci testuali con invio delle richieste tramite WhatsApp al) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 676 Td (ristorante. Non esiste ancora una chat privata diretta tra gli utenti, ne' un sistema di) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 662 Td (approvazione automatica o cancellazione automatica dei messaggi.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 632 Td (1. Oggetto e gratuitita') Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 612 Td (La Bacheca ospita richieste occasionali tra privati di vendita, acquisto, scambio,) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 598 Td (regalo e ricerca di oggetti usati leciti. La consultazione e l'invio di proposte sono) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 584 Td (gratuiti. Il ristorante non incassa pagamenti, non chiede commissioni e non e' parte) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 570 Td (delle transazioni.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 540 Td (2. Come inviare un annuncio) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 520 Td (L'utente compila sul sito pseudonimo, categoria, prezzo o condizione e descrizione. Il) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 506 Td (pulsante apre WhatsApp con il testo precompilato: l'utente deve premere Invia. Il) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 492 Td (ristorante esamina la proposta e decide se pubblicarla. Non esiste pubblicazione) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 478 Td (immediata o automatica.) Tj ET
-0.3 0.44 0.5 rg
-BT /F1 9 Tf 40 29 Td (Bozza da completare e verificare - 1 / 4) Tj ET
+0.05 0.13 0.22 rg
+0 777 595 65 re f
+0.95 0.83 0.55 rg
+BT /F2 18 Tf 40 802 Td (La Bacheca | Regolamento aggiornato) Tj ET
+0.33 0.43 0.50 rg
+BT /F1 10 Tf 40 749 Td (Controcorrente - Torino - 20 ottobre 2026) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 713 Td (1. Servizio gratuito e bacheca) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 693 Td (La Bacheca ospita annunci occasionali di privati. Il ristorante non compra, non vende e) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 679 Td (non percepisce commissioni. Non custodisce ne' riceve in deposito gli oggetti. Sono) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 665 Td (vietati annunci illeciti, beni rubati, armi, farmaci, alimenti deperibili e contenuti che) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 651 Td (violino i diritti di terzi.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 624 Td (2. Invio e approvazione) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 604 Td (L'utente invia la richiesta tramite WhatsApp al numero pubblico del locale. Il numero del) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 590 Td (mittente rimane visibile al gestore di WhatsApp ma non appare nella scheda pubblica. Solo) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 576 Td (il gestore, accedendo al proprio account GitHub, puo' approvare o rimuovere il testo: non) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 562 Td (esiste pubblicazione automatica. Sul sito compaiono pseudonimo, descrizione, categoria,) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 548 Td (prezzo e codice.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 521 Td (3. Durata annunci) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 501 Td (L'approvazione registra una scadenza orientativa di 30 giorni. La rimozione effettiva puo') Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 487 Td (richiedere un intervento amministrativo. Gli annunci possono essere rimossi prima per) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 473 Td (segnalazione o violazione delle regole.) Tj ET
+0.32 0.43 0.50 rg
+BT /F1 9 Tf 40 30 Td (La Bacheca - Bozza - 1/4) Tj ET
 endstream
 endobj
 6 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
 endobj
 7 0 obj
-<< /Length 2634 >>
+<< /Length 2807 >>
 stream
-0.04 0.13 0.22 rg
-0 774 595 68 re f
-0.94 0.79 0.52 rg
-BT /F2 19 Tf 40 804 Td (Contatti e appuntamenti) Tj ET
-0.32 0.42 0.49 rg
-BT /F1 10 Tf 40 747 Td (Comunicazioni e incontri tra i partecipanti) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 710 Td (3. Come vengono gestite le richieste) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 690 Td (Un interessato sceglie Chiedi informazioni e invia una richiesta WhatsApp al ristorante) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 676 Td (indicando il codice dell'annuncio. Il gestore puo' inoltrarla all'inserzionista. Questo) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 662 Td (e' un contatto mediato: il gestore legge la richiesta ed e' necessario il suo) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 648 Td (intervento. La risposta della controparte non e' garantita.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 618 Td (4. Affare fatto? Proposta di incontro) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 598 Td (Il pulsante Affare fatto? Incontro apre un modulo per pseudonimo, giorno, fascia) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 584 Td (pranzo/cena e ora. Il messaggio viene aperto su WhatsApp e poi inviato dall'utente. Non) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 570 Td (basta l'invio per fissare l'incontro: sono necessarie la conferma dell'altra persona e) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 556 Td (quella del ristorante, che verifica disponibilita' e orari.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 526 Td (5. Luogo e regole dell'incontro) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 506 Td (Gli incontri sono possibili presso Controcorrente, via San Paolo 16, Torino, negli orari) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 492 Td (di effettiva apertura e previa conferma. Con o senza consumazione: nessun obbligo di) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 478 Td (acquisto. Il locale non custodisce, riceve in deposito, spedisce o consegna oggetti per) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 464 Td (conto degli utenti. Nessuna vendita nel locale e' gestita dal ristorante.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 434 Td (6. Pseudonimo e anonimato) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 414 Td (Nel sito e' visibile il solo pseudonimo; il telefono non compare negli annunci. Gli) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 400 Td (utenti, tuttavia, non sono completamente anonimi: il ristorante vede il numero e il) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 386 Td (profilo WhatsApp del mittente e durante l'incontro fisico le persone possono) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 372 Td (riconoscersi.) Tj ET
-0.3 0.44 0.5 rg
-BT /F1 9 Tf 40 29 Td (Bozza da completare e verificare - 2 / 4) Tj ET
+0.05 0.13 0.22 rg
+0 777 595 65 re f
+0.95 0.83 0.55 rg
+BT /F2 18 Tf 40 802 Td (Chat temporanea tra due browser) Tj ET
+0.33 0.43 0.50 rg
+BT /F1 10 Tf 40 749 Td (Funzionalita' sperimentale senza registrazione) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 713 Td (4. Come funziona) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 693 Td (La funzione Chat dal vivo crea una stanza WebRTC tramite un collegamento riservato e) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 679 Td (casuale. I partecipanti devono aprire lo stesso collegamento contemporaneamente e indicare) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 665 Td (uno pseudonimo. Le comunicazioni viaggiano tramite una connessione WebRTC cifrata; una) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 651 Td (rete pubblica di segnalazione puo' essere usata per stabilire il contatto.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 624 Td (5. Limitazioni della chat) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 604 Td (La chat e' sperimentale e non garantisce disponibilita', connettivita' su tutte le reti o) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 590 Td (consegna. Non invia notifiche, non e' un archivio messaggi e non puo' recapitarli quando) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 576 Td (il destinatario e' offline. La pagina non salva lo storico nel sito. Chiudendo la chat i) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 562 Td (messaggi visibili non saranno recuperabili dal sito. Screenshot o registrazioni effettuate) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 548 Td (dagli utenti restano possibili.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 521 Td (6. Chi vede la chat) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 501 Td (Chi possiede il link riservato puo' entrare nella stanza. Se il link viene trasmesso al) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 487 Td (ristorante per l'inoltro, anche il gestore lo conosce e potrebbe entrare. Il solo) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 473 Td (pseudonimo non verifica l'identita' e non garantisce anonimato assoluto. Non inserire dati) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 459 Td (sensibili, credenziali, recapiti o informazioni bancarie. Il servizio non va presentato) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 445 Td (come una messaggistica privata con accesso verificato.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 418 Td (7. Fornitori tecnici) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 398 Td (La prova dipende anche dalla disponibilita' di infrastrutture terze di segnalazione WebRTC) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 384 Td (\(es. relay Nostr\). Questi fornitori possono conoscere dati tecnici di connessione e hanno) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 370 Td (proprie condizioni. Non utilizzare la chat come unico metodo per accordi importanti.) Tj ET
+0.32 0.43 0.50 rg
+BT /F1 9 Tf 40 30 Td (La Bacheca - Bozza - 2/4) Tj ET
 endstream
 endobj
 8 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
 endobj
 9 0 obj
-<< /Length 2543 >>
+<< /Length 2191 >>
 stream
-0.04 0.13 0.22 rg
-0 774 595 68 re f
-0.94 0.79 0.52 rg
-BT /F2 19 Tf 40 804 Td (Responsabilita' e sicurezza) Tj ET
-0.32 0.42 0.49 rg
-BT /F1 10 Tf 40 747 Td (Regole prudenziali per gli annunci e gli scambi) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 710 Td (7. Responsabilita' dei partecipanti) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 690 Td (Ogni autore risponde della liceita', proprieta', veridicita' e correttezza del suo) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 676 Td (annuncio e del bene. Gli accordi, pagamenti, controlli del bene e rimedi per eventuali) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 662 Td (difetti sono materia tra privati. Il Controcorrente non garantisce transazioni o) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 648 Td (caratteristiche dei beni. Tali clausole non escludono obblighi inderogabili di legge.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 618 Td (8. Materiale non ammesso) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 598 Td (Non sono consentiti annunci illeciti, ingannevoli o discriminatori; prodotti) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 584 Td (contraffatti, rubati o pericolosi; armi e munizioni; medicinali; sostanze vietate;) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 570 Td (alimenti deperibili; informazioni personali di terzi o altre categorie soggette a) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 556 Td (restrizioni particolari.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 526 Td (9. Moderazione e segnalazioni) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 506 Td (Il gestore puo' rifiutare, correggere previa autorizzazione o rimuovere annunci contrari) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 492 Td (alle regole. Per segnalare un annuncio, inviare il codice dell'annuncio al numero) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 478 Td (WhatsApp pubblico del ristorante: 327 229 2006. L'invio non implica accettazione o) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 464 Td (pubblicazione.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 434 Td (10. Sicurezza degli incontri) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 414 Td (Non condividere nel testo pubblico numeri privati, indirizzi di casa, documenti, dati) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 400 Td (bancari o password. Verificare di persona stato e titolarita' dei beni e concordare le) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 386 Td (condizioni prima del pagamento. Appuntamenti fuori dall'orario di apertura non sono) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 372 Td (ammessi.) Tj ET
-0.3 0.44 0.5 rg
-BT /F1 9 Tf 40 29 Td (Bozza da completare e verificare - 3 / 4) Tj ET
+0.05 0.13 0.22 rg
+0 777 595 65 re f
+0.95 0.83 0.55 rg
+BT /F2 18 Tf 40 802 Td (Incontri, accordi e sicurezza) Tj ET
+0.33 0.43 0.50 rg
+BT /F1 10 Tf 40 749 Td (Controcorrente - Via San Paolo 16, Torino) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 713 Td (8. Richiesta di appuntamento) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 693 Td (I partecipanti possono proporre un appuntamento comunicando tramite WhatsApp al ristorante) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 679 Td (giorno, ora e fascia pranzo/cena. La proposta non costituisce prenotazione di un tavolo e) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 665 Td (non e' confermata fino all'accettazione del locale e della controparte.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 638 Td (9. Luogo e consumazione) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 618 Td (Gli incontri si tengono durante gli orari effettivi di apertura, previo accordo. Sono) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 604 Td (consentiti con o senza consumazione, senza obbligo di acquistare. Il Controcorrente non) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 590 Td (ritira, spedisce, consegna o deposita merce. Le parti portano con se' gli oggetti e) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 576 Td (controllano il bene prima di pagare.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 549 Td (10. Responsabilita') Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 529 Td (Le trattative e le obbligazioni tra privati restano a carico delle parti. Il ristorante) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 515 Td (non garantisce qualita', provenienza o funzionalita' dei beni. Queste avvertenze non) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 501 Td (eliminano gli obblighi inderogabili di sicurezza, privacy o corretta gestione del) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 487 Td (servizio.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 460 Td (11. Contatti, segnalazioni e rimozioni) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 440 Td (Per segnalare un annuncio, inviare il codice al WhatsApp del ristorante: 327 229 2006. Il) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 426 Td (gestore potra' rifiutare o rimuovere testi non conformi.) Tj ET
+0.32 0.43 0.50 rg
+BT /F1 9 Tf 40 30 Td (La Bacheca - Bozza - 3/4) Tj ET
 endstream
 endobj
 10 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
 endobj
 11 0 obj
-<< /Length 2845 >>
+<< /Length 2762 >>
 stream
-0.04 0.13 0.22 rg
-0 774 595 68 re f
-0.94 0.79 0.52 rg
-BT /F2 19 Tf 40 804 Td (Informazioni privacy preliminari) Tj ET
-0.32 0.42 0.49 rg
-BT /F1 10 Tf 40 747 Td (Da completare e verificare prima dell'uso continuativo) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 710 Td (11. Dati e titolarita' del trattamento) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 690 Td (Il gestore del Ristorante Controcorrente, via San Paolo 16, Torino, riceve richieste) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 676 Td (tramite il numero WhatsApp 327 229 2006. L'identificazione giuridica completa del) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 662 Td (titolare e i suoi recapiti privacy devono essere integrati nell'informativa finale da) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 648 Td (pubblicare sul sito.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 618 Td (12. Quali dati vengono trattati) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 598 Td (Nei messaggi WhatsApp sono visibili al ristorante numero telefonico, eventuale nome) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 584 Td (profilo, pseudonimo, testo e dati necessari all'incontro. Sul sito pubblico sono) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 570 Td (previsti soltanto pseudonimo e contenuto dell'annuncio approvato. Il servizio puo') Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 556 Td (produrre dati tecnici di accesso presso i fornitori web.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 526 Td (13. Finalita' e conservazione) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 506 Td (Finalita': ricevere e valutare annunci, pubblicare quelli approvati, mediare le) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 492 Td (richieste e concordare appuntamenti. I messaggi WhatsApp non si cancellano) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 478 Td (automaticamente dopo 48 ore: eventuali eliminazioni, tempi di conservazione e) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 464 Td (informazioni su backup dipendono dalle impostazioni e dall'organizzazione del gestore e) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 450 Td (dei fornitori.) Tj ET
-0.48 0.32 0.14 rg
-BT /F2 11.6 Tf 40 420 Td (14. Fornitori, diritti e pubblicazione finale) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 400 Td (L'uso di WhatsApp comporta trattamento anche da parte del relativo fornitore secondo le) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 386 Td (sue condizioni. Sono necessari l'esame delle basi giuridiche, l'indicazione completa dei) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 372 Td (fornitori, dei periodi di conservazione e delle modalita' per esercitare i diritti GDPR.) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 358 Td (Questo PDF e' una bozza informativa: non sostituisce un'informativa privacy completa,) Tj ET
-0.11 0.19 0.27 rg
-BT /F1 10 Tf 40 344 Td (ne' la valutazione di un consulente.) Tj ET
-0.3 0.44 0.5 rg
-BT /F1 9 Tf 40 29 Td (Bozza da completare e verificare - 4 / 4) Tj ET
+0.05 0.13 0.22 rg
+0 777 595 65 re f
+0.95 0.83 0.55 rg
+BT /F2 18 Tf 40 802 Td (Nota sul trattamento dei dati) Tj ET
+0.33 0.43 0.50 rg
+BT /F1 10 Tf 40 749 Td (Testo informativo preliminare, non sostitutivo dell'informativa GDPR) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 713 Td (12. Dati trattati) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 693 Td (Attraverso WhatsApp il ristorante riceve numeri telefonici, nomi del profilo, pseudonimi,) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 679 Td (messaggi e richieste di appuntamento. La chat dal vivo tratta pseudonimi e dati tecnici di) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 665 Td (connessione tra peer e sulle reti di segnalazione, senza uno storico centralizzato gestito) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 651 Td (dal sito. Sul repository pubblico compaiono solo i dati espressamente approvati per gli) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 637 Td (annunci.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 610 Td (13. Conservazione e sicurezza) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 590 Td (I messaggi WhatsApp non vengono cancellati automaticamente dalla chiusura della chat) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 576 Td (WebRTC. Le informazioni presenti sui dispositivi, eventuali copie o screenshot e i log di) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 562 Td (piattaforme terze possono persistere. Si raccomanda di evitare la diffusione di dati) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 548 Td (privati e di limitare l'accesso ai collegamenti di invito.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 521 Td (14. Informativa da completare) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 501 Td (Prima di utilizzare stabilmente il servizio, integrare una vera informativa privacy con) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 487 Td (dati identificativi completi del titolare, basi giuridiche, fornitori, tempi di) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 473 Td (conservazione, trasferimenti, diritti degli interessati e contatti. Verificare la) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 459 Td (normativa di intermediazione e sui servizi digitali con un professionista. Questo) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 445 Td (documento e' una bozza operativa, non una validazione legale.) Tj ET
+0.53 0.38 0.19 rg
+BT /F2 11.8 Tf 40 418 Td (15. Approvazione amministrativa) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 398 Td (Gli annunci sono approvati dal proprietario del sito tramite un flusso GitHub Actions,) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 384 Td (accessibile solo a chi dispone dei permessi del repository. I clienti non necessitano di) Tj ET
+0.12 0.18 0.24 rg
+BT /F1 10 Tf 40 370 Td (account GitHub e non hanno accesso a tale gestione.) Tj ET
+0.32 0.43 0.50 rg
+BT /F1 9 Tf 40 30 Td (La Bacheca - Bozza - 4/4) Tj ET
 endstream
 endobj
 12 0 obj
@@ -231,20 +226,20 @@ endobj
 xref
 0 13
 0000000000 65535 f 
-0000000015 00000 n 
-0000000064 00000 n 
-0000000141 00000 n 
-0000000211 00000 n 
-0000000286 00000 n 
-0000002199 00000 n 
-0000002335 00000 n 
-0000005020 00000 n 
-0000005156 00000 n 
-0000007750 00000 n 
-0000007887 00000 n 
-0000010784 00000 n 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000135 00000 n 
+0000000205 00000 n 
+0000000280 00000 n 
+0000002311 00000 n 
+0000002447 00000 n 
+0000005305 00000 n 
+0000005441 00000 n 
+0000007683 00000 n 
+0000007820 00000 n 
+0000010634 00000 n 
 trailer
 << /Size 13 /Root 1 0 R >>
 startxref
-10922
+10772
 %%EOF
