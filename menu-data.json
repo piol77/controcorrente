@@ -376,32 +376,31 @@
       }
     },
     {
-      "name": "Tagliatelle con funghi misti e salsiccia",
+      "name": "Tagliatelle con zucca, funghi misti e salsiccia",
       "price": 10,
-      "description": "Tagliatelle con funghi misti e salsiccia.",
+      "description": "Tagliatelle con zucca, funghi misti e salsiccia.",
       "allergens": [
         1,
         3
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/tagliatelle-20261020.webp",
+      "dishPhoto": "pranzo-assets/tagliatelle-zucca-20261009.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Tagliatelle with mixed mushrooms and sausage",
-          "description": "Tagliatelle pasta with mixed mushrooms and sausage."
+          "name": "Tagliatelle with pumpkin, mixed mushrooms and sausage",
+          "description": "Tagliatelle pasta with pumpkin, mixed mushrooms and sausage."
         },
         "zh": {
-          "name": "什锦蘑菇香肠宽面",
-          "description": "意式宽面搭配什锦蘑菇和香肠。"
+          "name": "南瓜什锦蘑菇香肠宽面",
+          "description": "意式宽面搭配南瓜、什锦蘑菇和香肠。"
         }
       },
       "photoSource": {
-        "type": "AI-generated realistic illustration",
+        "type": "Reused approved realistic illustration",
         "date": "2026-10-20",
-        "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "note": "Existing approved lunch illustration of tagliatelle with pumpkin, mixed mushrooms and sausage; matching ivory plate and beige stone table. Illustrative image, not a restaurant photograph."
       }
     },
     {

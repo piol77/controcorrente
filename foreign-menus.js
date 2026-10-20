@@ -18,9 +18,9 @@
       "Soy glass noodles with vegetables, chicken and shrimp*",
       "Stir-fried soy glass noodles with courgettes, carrots, savoy cabbage, soybeans, chicken and shrimp*."
     ],
-    "Tagliatelle con funghi misti e salsiccia": [
-      "Tagliatelle with mixed mushrooms and sausage",
-      "Tagliatelle pasta with mixed mushrooms and sausage."
+    "Tagliatelle con zucca, funghi misti e salsiccia": [
+      "Tagliatelle with pumpkin, mixed mushrooms and sausage",
+      "Tagliatelle pasta with pumpkin, mixed mushrooms and sausage."
     ],
     "Milanese di pollo con fagiolini lessi": [
       "Chicken Milanese with boiled green beans",
@@ -56,9 +56,9 @@
       "蔬菜鸡肉虾仁*粉丝",
       "粉丝搭配西葫芦、胡萝卜、皱叶甘蓝、大豆、鸡肉和虾仁*炒制。"
     ],
-    "Tagliatelle con funghi misti e salsiccia": [
-      "什锦蘑菇香肠宽面",
-      "意式宽面搭配什锦蘑菇和香肠。"
+    "Tagliatelle con zucca, funghi misti e salsiccia": [
+      "南瓜什锦蘑菇香肠宽面",
+      "意式宽面搭配南瓜、什锦蘑菇和香肠。"
     ],
     "Milanese di pollo con fagiolini lessi": [
       "米兰式炸鸡排配水煮四季豆",
