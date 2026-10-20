@@ -6,79 +6,79 @@
 
   const LUNCH={
   "en": {
-    "Spaghetti ai frutti di mare": [
-      "Seafood spaghetti",
-      "Spaghetti with mussels, clams, shrimp*, langoustines* and tomato."
+    "Gnocchi di patate al pesto genovese con pollo e fagiolini": [
+      "Potato gnocchi with Genovese pesto, chicken and green beans",
+      "Potato gnocchi with Genovese pesto, chicken and green beans."
     ],
-    "Conchigliette con branzino e melanzane": [
-      "Small shell pasta with sea bass and aubergine",
-      "Small shell pasta with sea bass and aubergine, with a little tomato."
+    "Penne con panna e salmone fresco": [
+      "Penne with cream and fresh salmon",
+      "Penne in a delicate cream sauce with fresh salmon."
     ],
-    "Riso alla cantonese": [
-      "Cantonese fried rice",
-      "Fried rice with eggs, peas and cooked ham."
+    "Spaghetti di soia con verdure, pollo e gamberetti*": [
+      "Soy glass noodles with vegetables, chicken and shrimp*",
+      "Stir-fried soy glass noodles with courgettes, carrots, savoy cabbage, soybeans, chicken and shrimp*."
     ],
-    "Orecchiette con salsiccia e spinaci": [
-      "Orecchiette with sausage and spinach",
-      "Orecchiette pasta with sausage and spinach."
+    "Tagliatelle con funghi misti e salsiccia": [
+      "Tagliatelle with mixed mushrooms and sausage",
+      "Tagliatelle pasta with mixed mushrooms and sausage."
     ],
-    "Gnocchi di patate con zucca e gorgonzola": [
-      "Potato gnocchi with pumpkin and gorgonzola",
-      "Potato gnocchi with pumpkin and gorgonzola cheese."
+    "Milanese di pollo con fagiolini lessi": [
+      "Chicken Milanese with boiled green beans",
+      "Golden breaded chicken cutlet served with boiled green beans."
     ],
-    "Salmone alla griglia con verza e carote saltate": [
-      "Grilled salmon with sautéed savoy cabbage and carrots",
-      "Grilled salmon served with sautéed savoy cabbage and carrots."
+    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
+      "Pork strips with vegetables and spicy sauce, served with steamed white rice",
+      "Pork strips with vegetables and spicy sauce, accompanied by steamed white rice."
     ],
-    "Orata alla griglia con verza e carote saltate": [
-      "Grilled sea bream with sautéed savoy cabbage and carrots",
-      "Grilled sea bream served with sautéed savoy cabbage and carrots."
+    "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino": [
+      "Oven-gratinated cod* with aromatic herbs and rosemary potatoes",
+      "Cod* baked with an aromatic herb gratin, served with rosemary potatoes."
     ],
-    "Branzino alla griglia con verza e carote saltate": [
-      "Grilled sea bass with sautéed savoy cabbage and carrots",
-      "Grilled sea bass served with sautéed savoy cabbage and carrots."
+    "Insalata tiepida di patate, fagiolini e pollo con scaglie di Grana": [
+      "Warm potato, green bean and chicken salad with Grana shavings",
+      "Warm salad of potatoes, green beans and chicken, finished with Grana cheese shavings."
     ],
-    "Petti di pollo con zucca e gorgonzola, accompagnati da patate": [
-      "Chicken breasts with pumpkin, gorgonzola and potatoes",
-      "Chicken breasts with pumpkin and gorgonzola cheese, served with potatoes."
+    "Trancio di salmone all’arancia e pepe rosa con finocchi crudi all’aceto balsamico": [
+      "Salmon steak with orange and pink peppercorns, served with raw fennel and balsamic vinegar",
+      "Salmon steak with orange and pink peppercorns, accompanied by raw fennel dressed with balsamic vinegar."
     ]
   },
   "zh": {
-    "Spaghetti ai frutti di mare": [
-      "海鲜意大利面",
-      "意大利面搭配贻贝、蛤蜊、虾仁*、海螯虾*和番茄。"
+    "Gnocchi di patate al pesto genovese con pollo e fagiolini": [
+      "热那亚青酱鸡肉四季豆土豆团子",
+      "土豆团子搭配热那亚青酱、鸡肉和四季豆。"
     ],
-    "Conchigliette con branzino e melanzane": [
-      "鲈鱼茄子小贝壳面",
-      "小贝壳面搭配鲈鱼、茄子和少量番茄。"
+    "Penne con panna e salmone fresco": [
+      "奶油鲜三文鱼通心粉",
+      "通心粉搭配细腻奶油酱和鲜三文鱼。"
     ],
-    "Riso alla cantonese": [
-      "广式炒饭",
-      "米饭搭配鸡蛋、豌豆和熟火腿炒制。"
+    "Spaghetti di soia con verdure, pollo e gamberetti*": [
+      "蔬菜鸡肉虾仁*粉丝",
+      "粉丝搭配西葫芦、胡萝卜、皱叶甘蓝、大豆、鸡肉和虾仁*炒制。"
     ],
-    "Orecchiette con salsiccia e spinaci": [
-      "香肠菠菜猫耳朵面",
-      "猫耳朵面搭配香肠和菠菜。"
+    "Tagliatelle con funghi misti e salsiccia": [
+      "什锦蘑菇香肠宽面",
+      "意式宽面搭配什锦蘑菇和香肠。"
     ],
-    "Gnocchi di patate con zucca e gorgonzola": [
-      "南瓜戈贡佐拉奶酪土豆团子",
-      "土豆团子搭配南瓜和戈贡佐拉蓝纹奶酪。"
+    "Milanese di pollo con fagiolini lessi": [
+      "米兰式炸鸡排配水煮四季豆",
+      "金黄酥脆的裹面包糠鸡排，搭配水煮四季豆。"
     ],
-    "Salmone alla griglia con verza e carote saltate": [
-      "烤三文鱼配炒皱叶甘蓝和胡萝卜",
-      "烤三文鱼，搭配炒皱叶甘蓝和胡萝卜。"
+    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
+      "辣汁蔬菜猪肉条配清蒸白米饭",
+      "猪肉条搭配蔬菜和辣酱，佐以清蒸白米饭。"
     ],
-    "Orata alla griglia con verza e carote saltate": [
-      "烤海鲷鱼配炒皱叶甘蓝和胡萝卜",
-      "烤海鲷鱼，搭配炒皱叶甘蓝和胡萝卜。"
+    "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino": [
+      "香草焗鳕鱼*配迷迭香土豆",
+      "鳕鱼*覆以香草脆皮焗烤，搭配迷迭香土豆。"
     ],
-    "Branzino alla griglia con verza e carote saltate": [
-      "烤鲈鱼配炒皱叶甘蓝和胡萝卜",
-      "烤鲈鱼，搭配炒皱叶甘蓝和胡萝卜。"
+    "Insalata tiepida di patate, fagiolini e pollo con scaglie di Grana": [
+      "温拌土豆四季豆鸡肉沙拉配格拉纳奶酪薄片",
+      "温拌土豆、四季豆和鸡肉，搭配格拉纳奶酪薄片。"
     ],
-    "Petti di pollo con zucca e gorgonzola, accompagnati da patate": [
-      "鸡胸肉配南瓜、戈贡佐拉奶酪和土豆",
-      "鸡胸肉搭配南瓜和戈贡佐拉蓝纹奶酪，佐以土豆。"
+    "Trancio di salmone all’arancia e pepe rosa con finocchi crudi all’aceto balsamico": [
+      "香橙粉红胡椒三文鱼排配香醋生茴香",
+      "三文鱼排搭配香橙和粉红胡椒，佐以意大利香醋调味的生茴香。"
     ]
   }
 };
