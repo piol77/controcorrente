@@ -1,0 +1,190 @@
+/* Chat di incontri Controcorrente: stanza pubblica, effimera, peer-to-peer.
+   Il filtro è locale (sia all'invio sia alla ricezione): non è moderazione centralizzata. */
+(function () {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const APP_ID = 'it.controcorrente.incontri.pubblico.v1';
+  const ROOM_ID = 'salotto-controcorrente-2026-v1';
+  const MAX_MSG = 280, MAX_VISIBLE = 70;
+  const SEND_INTERVAL = 4000, RECEIVE_INTERVAL = 1000;
+  const peers = new Map(), lastByPeer = new Map(), ignored = new Set();
+  let room = null, messageAction = null, helloAction = null;
+  let mine = '', mode = '', connected = false, joining = false, lastSent = 0;
+
+  function cleanText(v, length) {
+    return String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f]/g, ' ')
+      .replace(/\s+/g, ' ').trim().slice(0, length);
+  }
+  function norm(v) {
+    return String(v || '').normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '').toLowerCase()
+      .replace(/0/g,'o').replace(/[1!]/g,'i').replace(/3/g,'e')
+      .replace(/4/g,'a').replace(/5/g,'s').replace(/7/g,'t');
+  }
+  function unsuitable(v) {
+    const text = norm(v);
+    const words = text.replace(/[^a-z0-9]+/g, ' ').trim();
+    const joined = text.replace(/[^a-z0-9]/g, '');
+    const bad = ['vaffanculo','puttana','troia','stronzo','stronza','cazzo','merda',
+      'frocio','negro','nazista','pedofilo','stupro','porcodio'];
+    if (bad.some(w => new RegExp('(?:^| )'+w+'(?:$| )').test(words))) return 'Messaggio non consentito: contiene espressioni offensive o inappropriate.';
+    if (['vaffanculo','porcodio'].some(w => joined.includes(w))) return 'Messaggio non consentito.';
+    if (/(?:https?:\/\/|www\.|(?:[a-z0-9-]+\.)+(?:com|it|net|org|io|me|gg|ru|xyz)\b)/i.test(v)) return 'Niente collegamenti esterni nella chat.';
+    if (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i.test(v)) return 'Non pubblicare indirizzi email.';
+    if (/(?:\+?\d[\d\s()\-./]{7,}\d)/.test(v)) return 'Non pubblicare numeri di telefono.';
+    if (/\b(?:whatsapp|telegram|onlyfans|paypal)\b/i.test(v)) return 'Usa la chat pubblica senza richiedere contatti privati o pagamenti.';
+    return '';
+  }
+  function status(msg, type) {
+    const box = $('chat-status'); box.textContent = msg;
+    box.dataset.state = type || 'info';
+  }
+  function roomSize() {
+    $('chat-online').textContent = String(connected ? peers.size + 1 : 0);
+    const list = $('chat-people'); list.replaceChildren();
+    if (connected) {
+      const self = document.createElement('span');
+      self.className='cc-person'; self.textContent='Tu · '+mine+' · '+mode; list.appendChild(self);
+    }
+    [...peers.entries()].forEach(([id, info]) => {
+      if (ignored.has(id)) return;
+      const el = document.createElement('span'); el.className='cc-person';
+      el.textContent=(info.nick || 'Ospite')+' · '+(info.mode || 'collegato'); list.appendChild(el);
+    });
+    $('chat-send').disabled = !connected || peers.size < 1;
+    $('chat-composer').disabled = !connected;
+    if (connected) {
+      status(peers.size ? 'Connesso: chat attiva. I messaggi sono pubblici per chi è online.'
+        : 'Sei nella stanza. Nessun altro collegato in questo momento.', peers.size ? 'ok' : 'info');
+    }
+  }
+  function message(kind, who, txt, peerId, time) {
+    const box = $('chat-feed'), article = document.createElement('article');
+    article.className='cc-message'+(kind==='mine'?' cc-message--mine':'');
+    const head = document.createElement('div'); head.className='cc-message-head';
+    const label = document.createElement('strong'); label.textContent=who;
+    const stamp=document.createElement('time');stamp.textContent=new Intl.DateTimeFormat('it-IT',{
+      timeZone:'Europe/Rome',hour:'2-digit',minute:'2-digit'
+    }).format(new Date(time || Date.now()));
+    head.append(label,stamp);
+    const body=document.createElement('p');body.textContent=txt;article.append(head,body);
+    if (kind === 'other') {
+      const tools=document.createElement('div');tools.className='cc-message-tools';
+      const report=document.createElement('button');report.type='button';report.textContent='Segnala';
+      report.addEventListener('click',()=>{
+        const reportText='[SEGNALAZIONE CHAT INCONTRI CONTROCORRENTE]\nPseudonimo: '+who+
+        '\nOrario locale: '+stamp.textContent+'\nEstratto: '+txt.slice(0,160)+
+        '\n\nRichiedo al ristorante di valutare questa segnalazione.';
+        window.open('https://wa.me/393272292006?text='+encodeURIComponent(reportText),'_blank','noopener,noreferrer');
+      });
+      const silence=document.createElement('button');silence.type='button';silence.textContent='Ignora utente';
+      silence.addEventListener('click',()=>{
+        ignored.add(peerId);
+        [...box.querySelectorAll('[data-peer]')].forEach(el=>{if(el.dataset.peer===peerId)el.remove()});
+        roomSize();note('L’utente è stato nascosto solo su questo dispositivo.');
+      });
+      tools.append(report,silence);article.appendChild(tools);
+      article.dataset.peer=peerId;
+    }
+    box.append(article);
+    while (box.children.length > MAX_VISIBLE) box.firstElementChild.remove();
+    box.scrollTop=box.scrollHeight;
+  }
+  function note(v) { $('chat-help').textContent=v; }
+  function formStatus() {
+    $('chat-join').disabled=joining||connected;
+  }
+  async function enter() {
+    if (joining || connected) return;
+    const nick=cleanText($('chat-nick').value,24);
+    if (nick.length<2 || nick.length>24) {note('Scegli uno pseudonimo tra 2 e 24 caratteri.');return}
+    if (unsuitable(nick)) {note('Scegli uno pseudonimo rispettoso, senza recapiti o parole offensive.');return}
+    if (!$('chat-age').checked || !$('chat-rules').checked) {
+      note('Per entrare occorre confermare la maggiore età e accettare le regole.');return;
+    }
+    mine=nick;mode=$('chat-mode').value;joining=true;formStatus();
+    status('Connessione alla stanza pubblica in corso…');
+    try {
+      const api=await import('https://esm.run/trystero@0.26.0');
+      room=api.joinRoom({appId:APP_ID},ROOM_ID);
+      messageAction=room.makeAction('pubmsg');
+      helloAction=room.makeAction('hello');
+      messageAction.onMessage = (obj, {peerId}={}) => {
+        if (!connected || typeof peerId!=='string' || ignored.has(peerId) || !peers.has(peerId)) return;
+        if (!obj || typeof obj!=='object' || typeof obj.text!=='string')return;
+        const text=cleanText(obj.text,MAX_MSG), nick=cleanText(obj.nick,24);
+        if (!text || !nick || unsuitable(text) || unsuitable(nick))return;
+        const t=Date.now(),old=lastByPeer.get(peerId)||0;
+        if (t-old < RECEIVE_INTERVAL) return;
+        lastByPeer.set(peerId,t);
+        const p=peers.get(peerId);
+        if(p) p.nick=nick;
+        message('other',nick,text,peerId,t);
+        roomSize();
+      };
+      helloAction.onMessage=(obj,{peerId}={})=>{
+        if (!peers.has(peerId) || !obj || typeof obj!=='object')return;
+        const name=cleanText(obj.nick,24),where=cleanText(obj.mode,30);
+        if (name&&!unsuitable(name)) peers.get(peerId).nick=name;
+        if (where==='Al locale'||where==='Da fuori')peers.get(peerId).mode=where;
+        roomSize();
+      };
+      room.onPeerJoin=peerId=>{
+        peers.set(peerId,{nick:'Ospite',mode:'collegato'});
+        Promise.resolve(helloAction.send({nick:mine,mode}, {target:peerId})).catch(()=>{});
+        roomSize();
+      };
+      room.onPeerLeave=peerId=>{
+        peers.delete(peerId);lastByPeer.delete(peerId);ignored.delete(peerId);roomSize();
+      };
+      connected=true;joining=false;
+      $('chat-start').hidden=true;$('chat-live').hidden=false;
+      roomSize();
+      note('I messaggi sono temporanei e visibili solo ai presenti in questa stanza.');
+      $('chat-composer').focus();
+    }catch(err){
+      console.warn('Chat incontri: connessione non riuscita',err);
+      connected=false;joining=false;room=null;formStatus();
+      status('Collegamento non riuscito: riprova con un’altra rete o un browser aggiornato.','error');
+      note('La chat richiede WebRTC e la disponibilità della rete pubblica di segnalazione.');
+    }
+  }
+  async function send() {
+    if(!connected||!messageAction||peers.size===0) return;
+    const input=$('chat-composer'),text=cleanText(input.value,MAX_MSG);
+    if(!text) return;
+    if(input.value.trim().length>MAX_MSG){note('Il messaggio supera i 280 caratteri.');return}
+    const reason=unsuitable(text);
+    if(reason){note(reason);return}
+    if(Date.now()-lastSent<SEND_INTERVAL){
+      note('Per evitare spam, lascia passare qualche secondo tra i messaggi.');return;
+    }
+    lastSent=Date.now();$('chat-send').disabled=true;
+    try{
+      await messageAction.send({nick:mine,mode,text});
+      message('mine',mine+' (tu)',text,null,Date.now());input.value='';
+      note('Messaggio inviato ai partecipanti collegati. Non viene archiviato sul sito.');
+    }catch(e){
+      status('Invio fallito. Verifica la connessione dei partecipanti.','error');
+    }finally{roomSize()}
+  }
+  async function leave() {
+    connected=false;
+    try{if(room)await room.leave()}catch(_){}
+    room=null;messageAction=null;helloAction=null;peers.clear();
+    lastByPeer.clear();ignored.clear();$('chat-feed').replaceChildren();
+    $('chat-start').hidden=false;$('chat-live').hidden=true;joining=false;
+    $('chat-nick').value='';$('chat-age').checked=false;$('chat-rules').checked=false;
+    formStatus();roomSize();status('Sei uscito. I messaggi locali sono stati cancellati.');
+    note('Scegli uno pseudonimo per rientrare.');
+  }
+  $('chat-join').addEventListener('click',enter);
+  $('chat-send').addEventListener('click',send);
+  $('chat-composer').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});
+  $('chat-exit').addEventListener('click',leave);
+  $('chat-clear').addEventListener('click',()=>{
+    $('chat-feed').replaceChildren();note('Cronologia cancellata solo da questo dispositivo.');
+  });
+  window.addEventListener('pagehide',()=>{try{room?.leave()}catch(_){}});
+  roomSize();
+})();

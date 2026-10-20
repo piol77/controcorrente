@@ -60,15 +60,19 @@ if(/\/(?:pranzo|cena|antipasti|primi|secondi)\.html$/.test(window.location.pathn
 document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(function(section){if(section.querySelector(':scope > .nautical-head-spacer'))return;const spacer=document.createElement('div');spacer.className='nautical-head-spacer';spacer.setAttribute('aria-hidden','true');spacer.style.height='1.8em';spacer.style.pointerEvents='none';section.appendChild(spacer);});
 
 
-// Solo navigazione: voce autonoma Bacheca, senza modificare altre sezioni.
+// Navigazione condivisa: Chat di incontri Controcorrente (sostituisce il mercatino).
 (function(){
   var nav=document.querySelector('#site-nav');
-  if(!nav || nav.querySelector('a[href="bacheca.html"]'))return;
-  var link=document.createElement('a');
-  link.href='bacheca.html';
-  link.textContent='La Bacheca';
-  if(/\/bacheca\.html$/.test(window.location.pathname))link.setAttribute('aria-current','page');
-  var langs=nav.querySelector('.languages');
-  if(langs)nav.insertBefore(link,langs);
-  else nav.appendChild(link);
+  if(!nav)return;
+  nav.querySelectorAll('a[href="bacheca.html"],a[href="bacheca-chat.html"]').forEach(function(a){a.remove()});
+  var link=nav.querySelector('a[href="chat-incontri.html"]');
+  if(!link){
+    link=document.createElement('a');
+    link.href='chat-incontri.html';
+    var langs=nav.querySelector('.languages');
+    if(langs)nav.insertBefore(link,langs);
+    else nav.appendChild(link);
+  }
+  link.textContent='Chat di incontri Controcorrente';
+  if(/\/(?:chat-incontri|chat-regole)\.html$/.test(window.location.pathname))link.setAttribute('aria-current','page');
 })();
