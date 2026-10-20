@@ -70,12 +70,15 @@
     const body=document.createElement('p');body.textContent=txt;article.append(head,body);
     if (kind === 'other') {
       const tools=document.createElement('div');tools.className='cc-message-tools';
-      const report=document.createElement('button');report.type='button';report.textContent='Segnala';
+      const report=document.createElement('button');report.type='button';report.textContent='🚩 Segnala su WhatsApp';report.setAttribute('aria-label','Segnala questo messaggio al Controcorrente tramite WhatsApp');
       report.addEventListener('click',()=>{
         const reportText='[SEGNALAZIONE CHAT INCONTRI CONTROCORRENTE]\nPseudonimo: '+who+
         '\nOrario locale: '+stamp.textContent+'\nEstratto: '+txt.slice(0,160)+
-        '\n\nRichiedo al ristorante di valutare questa segnalazione.';
-        window.open('https://wa.me/393272292006?text='+encodeURIComponent(reportText),'_blank','noopener,noreferrer');
+        '\n\nSegnalazione di un messaggio pubblico della chat. Richiedo al ristorante di valutarla. Il messaggio verrà inviato solo dopo che premo Invia su WhatsApp.';
+        note('Si apre WhatsApp con la segnalazione: premi Invia nell’app per avvisare il ristorante.');
+        const url='https://wa.me/393272292006?text='+encodeURIComponent(reportText);
+        const opened=window.open(url,'_blank','noopener,noreferrer');
+        if(!opened) window.location.href=url;
       });
       const silence=document.createElement('button');silence.type='button';silence.textContent='Ignora utente';
       silence.addEventListener('click',()=>{
