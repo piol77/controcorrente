@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="it"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081c30">
+<title>La Bacheca · Controcorrente Torino</title>
+<meta name="description" content="Bacheca di quartiere del Ristorante Controcorrente Torino. Annunci gratuiti, compro, vendo, regalo e scambio.">
+<link rel="stylesheet" href="styles.css?v=20261018-logo-menu">
+<link rel="icon" href="icons/Anchor.svg">
+<style>
+.bc-intro{max-width:900px;margin:0 auto 18px;text-align:center;color:var(--muted);font-size:.94rem;line-height:1.7}
+.bc-demo{max-width:950px;margin:0 auto 22px;text-align:center;border:1px solid var(--gold);background:#18394d;color:var(--ink);padding:11px 17px;font-size:.84rem}
+.bc-wrap{max-width:950px;margin:auto}
+.bc-controls{display:grid;grid-template-columns:1fr 185px auto;gap:9px;margin:16px 0 12px}
+.bc-controls input,.bc-controls select,.bc-modal input,.bc-modal select,.bc-modal textarea{width:100%;min-width:0;background:var(--navy);border:1px solid #5b7080;color:var(--ink);font-size:.9rem;padding:10px;border-radius:3px}
+.bc-controls input::placeholder,.bc-modal input::placeholder,.bc-modal textarea::placeholder{color:#9aafc0}
+.bc-action{background:transparent;color:var(--gold);font-weight:600;font-size:.8rem;line-height:1.4;padding:8px 12px;border:1px solid var(--gold);border-radius:3px;cursor:pointer}
+.bc-action:hover{background:var(--gold);color:var(--navy)}
+.bc-list{background:var(--panel);border:1px solid var(--line)}
+.bc-item{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px 15px;border-bottom:1px solid var(--line)}
+.bc-item:last-child{border-bottom:0}
+.bc-item p{margin:0;color:var(--ink);font-size:.9rem;line-height:1.5;overflow-wrap:anywhere}
+.bc-item b{color:var(--gold)}
+.bc-sub{font-size:.76rem;color:var(--muted)}
+.bc-count{font-size:.82rem;text-align:center;margin:11px;color:var(--muted)}
+.bc-instructions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:25px 0}
+.bc-instructions div{background:var(--panel);border:1px solid var(--line);padding:15px;color:var(--muted);font-size:.82rem;line-height:1.65}
+.bc-instructions strong{display:block;font:1.15rem Georgia,serif;color:var(--gold);margin-bottom:6px}
+.bc-bottom{text-align:center;margin:24px 0}
+.bc-overlay{display:none;position:fixed;inset:0;background:#001222db;z-index:1000;padding:15px;align-items:center;justify-content:center}
+.bc-overlay.open{display:flex}
+.bc-modal{max-width:620px;width:100%;max-height:94vh;overflow:auto;background:var(--panel);border:1px solid var(--gold);padding:21px}
+.bc-modalbar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);margin-bottom:13px;padding-bottom:12px}
+.bc-modal h2{font-size:1.45rem;margin:0}
+.bc-close{background:none;border:0;color:var(--ink);font-size:1.7rem;cursor:pointer}
+.bc-muted{color:var(--muted);font-size:.84rem;line-height:1.6}
+.bc-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:9px 0}
+.bc-chat{background:var(--navy);padding:13px;border:1px solid var(--line);margin:12px 0;height:194px;overflow:auto}
+.bc-msg{background:#17394e;border:1px solid var(--line);padding:7px 11px;margin:8px 0;max-width:86%;font-size:.87rem;line-height:1.5;overflow-wrap:anywhere}
+.bc-msg.mine{margin-left:auto;border-color:#97835d}
+.bc-msg small{display:block;color:var(--gold);font-size:.73rem}
+.bc-notice{padding:11px;background:var(--navy);border-left:2px solid var(--gold);font-size:.82rem;margin:8px 0}
+.bc-formlabel{display:block;color:var(--muted);font-size:.82rem;margin:10px 0 4px}
+@media(max-width:650px){.bc-controls{grid-template-columns:1fr 1fr}.bc-controls input{grid-column:1/-1}.bc-item{padding:10px}.bc-item p{font-size:.85rem}.bc-action{padding:8px;font-size:.72rem}.bc-instructions{grid-template-columns:1fr}.bc-modal{padding:14px}}
+</style></head><body>
+<header class="top"><div class="brand-row"><a class="logo" href="index.html"><img class="brand-logo" src="logo-controcorrente.webp?v=202610031345" alt="Controcorrente" width="2172" height="724"></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><img class="icon" src="icons/Menu.svg" alt="" aria-hidden="true"><span>Menù</span></button></div>
+<nav id="site-nav"><a href="index.html">Novità</a><a href="il-locale.html">Il Locale</a><a href="pranzo.html">Offerta per pranzo</a><a href="cena.html">Offerta per cena</a><a href="offerta.html">Offerta del giorno</a><a href="bibite-vini.html">Bibite &amp; vini</a><a href="club.html">Club</a><a href="tessera-punti-pranzo.html">Tessera Punti Pranzo</a><a href="allergeni.html">Allergeni</a><a href="contatti.html">Contatti</a><a href="divertentismo.html">Divertentismo <span aria-hidden="true" style="font-size:.75em;color:var(--gold);margin-left:.35em">☺</span></a><span class="languages"><a href="english.html" lang="en">EN</a><a href="cinese.html" lang="zh">中文</a></span></nav></header>
+<main class="shell"><div class="page-head"><h1>La Bacheca</h1></div>
+<div class="bc-wrap">
+<p class="bc-intro">Un angolo per gli annunci di quartiere: vendo, cerco, regalo, scambio. Poche parole, pseudonimo, nessun recapito telefonico visibile.</p>
+<div class="bc-demo"><strong>ANTEPRIMA IN PROVA.</strong> Tutti gli annunci sono inventati. Chat, proposte e appuntamenti sono simulati soltanto su questo dispositivo: non vengono inviati né pubblicati.</div>
+<div class="bc-controls"><input type="search" id="bc-search" placeholder="Cerca un annuncio di esempio…" aria-label="Cerca annunci"><select id="bc-category" aria-label="Filtra categoria"><option value="">Tutte le categorie</option><option>Casa e arredi</option><option>Abbigliamento</option><option>Elettronica</option><option>Libri e hobby</option><option>Regalo e scambio</option><option>Cerco</option></select><button class="bc-action" type="button" id="bc-create">+ Prova annuncio</button></div>
+<section id="bc-list" class="bc-list" aria-label="Annunci dimostrativi"></section><p id="bc-count" class="bc-count"></p>
+<div class="bc-instructions"><div><strong>1 · Annunci</strong>Consultazione senza registrazione. Ogni annuncio reale richiederà in futuro una verifica prima della pubblicazione.</div><div><strong>2 · Chat privata</strong>La futura conversazione sarà visibile soltanto ai due partecipanti attraverso accessi riservati, non con il solo pseudonimo.</div><div><strong>3 · Incontri</strong>Il ristorante riceverà soltanto il riepilogo degli appuntamenti confermati. Nessun deposito merci, commissione o obbligo di consumazione.</div></div>
+<div class="bc-bottom"><a class="button" href="bacheca/regolamento.pdf" target="_blank" rel="noopener">Leggi regolamento e privacy (PDF)</a><button class="bc-action" type="button" id="bc-owner">Esempio avviso al ristorante</button></div>
+<p class="bc-count">La chat effettiva e la cancellazione automatica verranno abilitate solo dopo l'installazione di un servizio privato sicuro. Il regolamento è ancora una bozza.</p>
+</div></main><footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
+<div class="bc-overlay" id="bc-chat-overlay" role="dialog" aria-modal="true" aria-label="Chat dimostrativa"><div class="bc-modal"><div class="bc-modalbar"><h2>Chat privata · prova</h2><button type="button" class="bc-close" data-bc-close aria-label="Chiudi">×</button></div>
+<p class="bc-muted">Simulazione locale: puoi alternare i due pseudonimi per vedere come funzionerà. Nessun messaggio raggiunge altre persone.</p><p class="bc-muted" id="bc-item-title"></p>
+<div class="bc-row"><button type="button" class="bc-action" id="bc-buyer">Vista interessato</button><button type="button" class="bc-action" id="bc-seller">Vista inserzionista</button></div>
+<div id="bc-thread" class="bc-chat" aria-live="polite"></div><div class="bc-row"><input id="bc-message" placeholder="Messaggio dimostrativo" maxlength="250" aria-label="Messaggio"><button type="button" class="bc-action" id="bc-send">Invia</button></div>
+<h3 style="margin:20px 0 7px">Incontro al Controcorrente</h3><p class="bc-muted">L'interessato propone un orario, il venditore conferma. L'avviso al ristorante non è una prenotazione di tavolo.</p><div id="bc-meet"></div>
+</div></div>
+<div class="bc-overlay" id="bc-create-overlay" role="dialog" aria-modal="true" aria-label="Annuncio dimostrativo"><div class="bc-modal"><div class="bc-modalbar"><h2>Nuovo annuncio · prova</h2><button type="button" class="bc-close" data-bc-close aria-label="Chiudi">×</button></div>
+<p class="bc-muted">Il modulo non invia dati né pubblica nulla. Non utilizzare informazioni personali reali.</p>
+<form id="bc-form"><label class="bc-formlabel" for="bc-nick">Pseudonimo inventato</label><input id="bc-nick" required maxlength="25" placeholder="Es. Gabbiano77"><label class="bc-formlabel" for="bc-cat">Categoria</label><select id="bc-cat"><option>Casa e arredi</option><option>Abbigliamento</option><option>Elettronica</option><option>Libri e hobby</option><option>Regalo e scambio</option><option>Cerco</option></select><label class="bc-formlabel" for="bc-desc">Testo annuncio (max 180 caratteri)</label><textarea id="bc-desc" rows="3" required maxlength="180" placeholder="Vendo un tavolino in legno · 25 €"></textarea><label class="bc-row bc-muted"><input required type="checkbox" style="width:auto"> So che è solo una simulazione e non inserirò dati personali.</label><button type="submit" class="bc-action">Simula pubblicazione</button><p id="bc-form-result" role="status" class="bc-notice" hidden></p></form>
+</div></div>
+<div class="bc-overlay" id="bc-owner-overlay" role="dialog" aria-modal="true" aria-label="Esempio avviso ristorante"><div class="bc-modal"><div class="bc-modalbar"><h2>Vista gestore · prova</h2><button type="button" class="bc-close" data-bc-close aria-label="Chiudi">×</button></div><p class="bc-muted">Questa vista è soltanto una simulazione. Il vero pannello del gestore dovrà essere protetto.</p><div id="bc-owner-content"></div></div></div>
+<script src="ui.js?v=20261020-bacheca-nav"></script><script src="site-session.js?v=20261018-counter-provider2"></script>
+<script>
+(function(){
+'use strict';
+var ads=[
+{id:"BC-101",type:"VENDO",text:"Tavolino in legno, buone condizioni",price:"25 €",cat:"Casa e arredi",nick:"Gabbiano77"},
+{id:"BC-102",type:"REGALO",text:"Giacca invernale taglia M",price:"gratis",cat:"Abbigliamento",nick:"LunaBlu"},
+{id:"BC-103",type:"VENDO",text:"Monitor 24 pollici funzionante",price:"45 €",cat:"Elettronica",nick:"Turbina"},
+{id:"BC-104",type:"SCAMBIO",text:"Romanzi gialli con altri libri",price:"scambio",cat:"Libri e hobby",nick:"Marea"},
+{id:"BC-105",type:"CERCO",text:"Bicicletta da città usata",price:"da concordare",cat:"Cerco",nick:"Lanterna"},
+{id:"BC-106",type:"REGALO",text:"Quattro vasi da balcone",price:"gratis",cat:"Regalo e scambio",nick:"Orizzonte"}
+];
+var $=function(id){return document.getElementById(id)},state={ad:ads[0],role:"buyer",messages:[],meeting:null};
+function safe(s){return String(s).replace(/[&<>"']/g,function(x){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[x]})}
+function show(id){$(id).classList.add("open");document.body.style.overflow="hidden"}
+function hide(){document.querySelectorAll(".bc-overlay.open").forEach(function(x){x.classList.remove("open")});document.body.style.overflow=""}
+document.querySelectorAll("[data-bc-close]").forEach(function(x){x.addEventListener("click",hide)});
+document.querySelectorAll(".bc-overlay").forEach(function(x){x.addEventListener("click",function(e){if(e.target===x)hide()})});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")hide()});
+function list(){
+var q=$("bc-search").value.trim().toLowerCase(),c=$("bc-category").value;
+var filtered=ads.filter(function(x){return (!c||x.cat===c)&&(x.text+" "+x.nick+" "+x.type+" "+x.price).toLowerCase().includes(q)});
+$("bc-list").innerHTML=filtered.map(function(a){return '<article class="bc-item"><div><p><b>'+safe(a.type)+'</b> · '+safe(a.text)+' · <b>'+safe(a.price)+'</b></p><span class="bc-sub">'+safe(a.cat)+' · '+safe(a.nick)+' · '+safe(a.id)+'</span></div><button type="button" class="bc-action" data-bc-chat="'+safe(a.id)+'">Chat di prova →</button></article>'}).join("")||'<p class="bc-count">Nessun risultato.</p>';
+$("bc-count").textContent=filtered.length+" annunci di esempio · nessun annuncio reale";
+document.querySelectorAll("[data-bc-chat]").forEach(function(btn){btn.onclick=function(){start(ads.find(function(a){return a.id===btn.dataset.bcChat}))}});
+}
+function start(a){state={ad:a,role:"buyer",messages:[{role:"buyer",text:"Ciao, è ancora disponibile?"},{role:"seller",text:"Sì, ci possiamo incontrare al Controcorrente."}],meeting:null};$("bc-item-title").textContent=a.id+" · "+a.text+" · "+a.nick;draw();show("bc-chat-overlay")}
+function draw(){
+$("bc-buyer").setAttribute("aria-pressed",String(state.role==="buyer"));
+$("bc-seller").setAttribute("aria-pressed",String(state.role==="seller"));
+$("bc-thread").innerHTML=state.messages.map(function(m){return '<div class="bc-msg '+(m.role===state.role?"mine":"")+'"><small>'+(m.role==="buyer"?"Interesse42":safe(state.ad.nick))+"</small>"+safe(m.text)+"</div>"}).join("");
+$("bc-thread").scrollTop=$("bc-thread").scrollHeight;meet();
+}
+function meet(){
+var m=state.meeting,box=$("bc-meet");
+if(!m){box.innerHTML=state.role==="buyer"?'<div class="bc-row"><input type="datetime-local" id="bc-date" aria-label="Data e ora dell’incontro"><button class="bc-action" id="bc-propose">Proponi</button></div>':'<p class="bc-muted">In attesa della proposta dell’interessato.</p>';
+if(state.role==="buyer")$("bc-propose").onclick=function(){var d=$("bc-date").value;if(!d||new Date(d).getTime()<=Date.now()){alert("Scegli una data e un orario futuri.");return}state.meeting={date:d,confirmed:false};draw()};return}
+var day=new Date(m.date).toLocaleString("it-IT",{dateStyle:"long",timeStyle:"short"});
+if(m.confirmed){box.innerHTML='<div class="bc-notice">✓ Incontro di prova confermato per '+safe(day)+'. Controlla la vista gestore.</div>';return}
+if(state.role==="seller"){box.innerHTML='<div class="bc-notice">Interesse42 propone '+safe(day)+'</div><button class="bc-action" id="bc-confirm">Conferma (prova)</button>';$("bc-confirm").onclick=function(){state.meeting.confirmed=true;draw()}}
+else box.innerHTML='<div class="bc-notice">Proposta per '+safe(day)+' · in attesa di conferma.</div>';
+}
+$("bc-buyer").onclick=function(){state.role="buyer";draw()};
+$("bc-seller").onclick=function(){state.role="seller";draw()};
+$("bc-send").onclick=function(){var msg=$("bc-message").value.trim();if(!msg)return;state.messages.push({role:state.role,text:msg.slice(0,250)});$("bc-message").value="";draw()};
+$("bc-message").onkeydown=function(e){if(e.key==="Enter"){e.preventDefault();$("bc-send").click()}};
+$("bc-owner").onclick=function(){var m=state.meeting;
+$("bc-owner-content").innerHTML=m&&m.confirmed?'<div class="bc-notice"><b>Appuntamento simulato</b><p>'+safe(state.ad.id)+' · '+safe(state.ad.nick)+' ↔ Interesse42<br>'+safe(new Date(m.date).toLocaleString("it-IT",{dateStyle:"long",timeStyle:"short"}))+'</p>Nessun messaggio privato visibile.</div>':'<div class="bc-notice">Nessun appuntamento confermato nella prova. Entra in una chat e proponi un orario, poi passa alla vista inserzionista e conferma.</div>';
+show("bc-owner-overlay")};
+$("bc-create").onclick=function(){$("bc-form").reset();$("bc-form-result").hidden=true;show("bc-create-overlay")};
+$("bc-form").onsubmit=function(e){e.preventDefault();$("bc-form-result").textContent="Prova completata. Nessun dato salvato o pubblicato.";$("bc-form-result").hidden=false};
+$("bc-search").oninput=list;$("bc-category").onchange=list;list();
+})();
+</script></body></html>

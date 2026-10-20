@@ -58,3 +58,17 @@ if(/\/(?:pranzo|cena|antipasti|primi|secondi)\.html$/.test(window.location.pathn
 })();
 
 document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(function(section){if(section.querySelector(':scope > .nautical-head-spacer'))return;const spacer=document.createElement('div');spacer.className='nautical-head-spacer';spacer.setAttribute('aria-hidden','true');spacer.style.height='1.8em';spacer.style.pointerEvents='none';section.appendChild(spacer);});
+
+
+// Solo navigazione: voce autonoma Bacheca, senza modificare altre sezioni.
+(function(){
+  var nav=document.querySelector('#site-nav');
+  if(!nav || nav.querySelector('a[href="bacheca.html"]'))return;
+  var link=document.createElement('a');
+  link.href='bacheca.html';
+  link.textContent='La Bacheca';
+  if(/\/bacheca\.html$/.test(window.location.pathname))link.setAttribute('aria-current','page');
+  var langs=nav.querySelector('.languages');
+  if(langs)nav.insertBefore(link,langs);
+  else nav.appendChild(link);
+})();
