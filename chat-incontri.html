@@ -72,7 +72,8 @@
 <div id="chat-feed" class="cc-feed" role="log" aria-live="polite" aria-label="Messaggi visibili in questa sessione"></div>
 <div class="cc-compose"><input id="chat-composer" class="cc-input" maxlength="280" placeholder="Scrivi qualcosa di simpatico… (max 280 caratteri)" aria-label="Scrivi un messaggio" disabled><button type="button" id="chat-send" class="cc-button" disabled>Invia</button></div>
 <p class="cc-help" id="chat-help" role="status"></p>
-<div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:13px"><button type="button" id="chat-report-conversation" class="cc-button cc-button--quiet" style="border-color:#d7a58b;color:#efd1c1">🚩 Segnala la conversazione al ristorante</button><button type="button" id="chat-clear" class="cc-button cc-button--quiet">Pulisci lo schermo</button><button type="button" id="chat-exit" class="cc-button cc-button--quiet">Esci dalla chat</button></div>
+<div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:13px"><button type="button" id="chat-report-conversation" class="cc-button cc-button--quiet" style="border-color:#d7a58b;color:#efd1c1">🚩 Segnala la conversazione al ristorante</button><button type="button" id="chat-reconnect" class="cc-button cc-button--quiet">↻ Riconnetti</button><button type="button" id="chat-clear" class="cc-button cc-button--quiet">Pulisci lo schermo</button><button type="button" id="chat-exit" class="cc-button cc-button--quiet">Esci dalla chat</button></div>
+<p class="cc-small">Dopo una segnalazione puoi tornare da WhatsApp e continuare a scrivere: la chat prova a riconnettersi automaticamente con lo stesso pseudonimo. Se la rete non riparte, premi <strong>Riconnetti</strong>. I messaggi precedenti non si recuperano dopo un ricaricamento.</p>
 <p class="cc-small">Segnalazione volontaria: prima di aprire WhatsApp vedrai un’anteprima degli ultimi 12 messaggi visibili sul tuo dispositivo. Il ristorante riceverà anche il link per entrare nella chat. L’avviso parte solo quando premi <strong>Invia</strong> su WhatsApp; il tuo numero sarà visibile al gestore.</p>
 <p class="cc-small" style="margin:14px 0 0">*Il numero e l’elenco mostrano solo i dispositivi rilevati dal tuo browser. Gli pseudonimi sono dichiarati dagli utenti e non verificati. La chat peer-to-peer è pensata per piccoli gruppi e può non funzionare su alcune reti.</p>
 </section>
@@ -87,5 +88,5 @@
 <footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
 <script src="ui.js?v=20261020-chat-commensali"></script>
 <script src="site-session.js?v=20261018-counter-provider2"></script>
-<script src="chat-incontri.js?v=20261020-chat-commensali" defer></script>
+<script src="chat-incontri.js?v=20261020-auto-riconnessione" defer></script>
 </body></html>

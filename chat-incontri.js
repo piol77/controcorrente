@@ -10,6 +10,36 @@
   const peers = new Map(), lastByPeer = new Map(), ignored = new Set();
   let room = null, messageAction = null, helloAction = null;
   let mine = '', mode = '', connected = false, joining = false, lastSent = 0;
+  const SESSION_KEY = 'controcorrente-chat-commensali-session-v1';
+  const SESSION_LIFETIME = 2 * 60 * 60 * 1000; // massimo due ore per il ritorno da WhatsApp
+  let backgroundAt = 0, reconnecting = null;
+
+  // Ricorda solo pseudonimo e provenienza nella scheda corrente: mai i messaggi.
+  function saveSession() {
+    if (!mine || !mode) return;
+    try {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({
+        nick: mine, mode, validUntil: Date.now() + SESSION_LIFETIME
+      }));
+    } catch (_) {}
+  }
+  function readSession() {
+    try {
+      const data = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+      if (!data || !Number.isFinite(data.validUntil) ||
+          data.validUntil < Date.now() || data.validUntil > Date.now() + SESSION_LIFETIME ||
+          !['Al locale', 'Da fuori'].includes(data.mode) ||
+          typeof data.nick !== 'string' ||
+          cleanText(data.nick, 24) !== data.nick ||
+          data.nick.length < 2 || unsuitable(data.nick)) {
+        sessionStorage.removeItem(SESSION_KEY); return null;
+      }
+      return data;
+    } catch (_) {return null}
+  }
+  function clearSession() {
+    try {sessionStorage.removeItem(SESSION_KEY)} catch (_) {}
+  }
 
   function cleanText(v, length) {
     return String(v == null ? '' : v).replace(/[\u0000-\u001f\u007f]/g, ' ')
@@ -96,60 +126,111 @@
   function formStatus() {
     $('chat-join').disabled=joining||connected;
   }
-  async function enter() {
+  async function enter(automatic = false) {
     if (joining || connected) return;
-    const nick=cleanText($('chat-nick').value,24);
-    if (nick.length<2 || nick.length>24) {note('Scegli uno pseudonimo tra 2 e 24 caratteri.');return}
-    if (unsuitable(nick)) {note('Scegli uno pseudonimo rispettoso, senza recapiti o parole offensive.');return}
+    if (automatic) {
+      const remembered = readSession();
+      if (!remembered) return;
+      $('chat-nick').value = remembered.nick;
+      $('chat-mode').value = remembered.mode;
+      // La sessione esiste solo dopo l'ingresso con entrambe le conferme.
+      $('chat-age').checked = true;
+      $('chat-rules').checked = true;
+    }
+    const nick = cleanText($('chat-nick').value, 24);
+    if (nick.length < 2 || nick.length > 24) {
+      note('Scegli uno pseudonimo tra 2 e 24 caratteri.'); return;
+    }
+    if (unsuitable(nick)) {
+      note('Scegli uno pseudonimo rispettoso, senza recapiti o parole offensive.'); return;
+    }
     if (!$('chat-age').checked || !$('chat-rules').checked) {
-      note('Per entrare occorre confermare la maggiore età e accettare le regole.');return;
+      note('Per entrare occorre confermare la maggiore età e accettare le regole.'); return;
     }
-    mine=nick;mode=$('chat-mode').value;joining=true;formStatus();
-    status('Connessione alla stanza pubblica in corso…');
+    mine = nick; mode = $('chat-mode').value;
+    joining = true; formStatus();
+    status(automatic ? 'Riconnessione automatica alla Chat commensali…'
+                     : 'Connessione alla stanza pubblica in corso…');
+    $('chat-send').disabled = true;
+    $('chat-composer').disabled = true;
     try {
-      const api=await import('https://esm.run/trystero@0.26.0');
-      room=api.joinRoom({appId:APP_ID},ROOM_ID);
-      messageAction=room.makeAction('pubmsg');
-      helloAction=room.makeAction('hello');
-      messageAction.onMessage = (obj, {peerId}={}) => {
-        if (!connected || typeof peerId!=='string' || ignored.has(peerId) || !peers.has(peerId)) return;
-        if (!obj || typeof obj!=='object' || typeof obj.text!=='string')return;
-        const text=cleanText(obj.text,MAX_MSG), nick=cleanText(obj.nick,24);
-        if (!text || !nick || unsuitable(text) || unsuitable(nick))return;
-        const t=Date.now(),old=lastByPeer.get(peerId)||0;
-        if (t-old < RECEIVE_INTERVAL) return;
-        lastByPeer.set(peerId,t);
-        const p=peers.get(peerId);
-        if(p) p.nick=nick;
-        message('other',nick,text,peerId,t);
+      const api = await import('https://esm.run/trystero@0.26.0');
+      const currentRoom = api.joinRoom({appId: APP_ID}, ROOM_ID);
+      room = currentRoom;
+      messageAction = room.makeAction('pubmsg');
+      helloAction = room.makeAction('hello');
+      messageAction.onMessage = (obj, {peerId} = {}) => {
+        if (room !== currentRoom || !connected || typeof peerId !== 'string' ||
+            ignored.has(peerId) || !peers.has(peerId)) return;
+        if (!obj || typeof obj !== 'object' || typeof obj.text !== 'string') return;
+        const text = cleanText(obj.text, MAX_MSG), nick = cleanText(obj.nick, 24);
+        if (!text || !nick || unsuitable(text) || unsuitable(nick)) return;
+        const t = Date.now(), old = lastByPeer.get(peerId) || 0;
+        if (t - old < RECEIVE_INTERVAL) return;
+        lastByPeer.set(peerId, t);
+        const p = peers.get(peerId);
+        if (p) p.nick = nick;
+        message('other', nick, text, peerId, t);
         roomSize();
       };
-      helloAction.onMessage=(obj,{peerId}={})=>{
-        if (!peers.has(peerId) || !obj || typeof obj!=='object')return;
-        const name=cleanText(obj.nick,24),where=cleanText(obj.mode,30);
-        if (name&&!unsuitable(name)) peers.get(peerId).nick=name;
-        if (where==='Al locale'||where==='Da fuori')peers.get(peerId).mode=where;
+      helloAction.onMessage = (obj, {peerId} = {}) => {
+        if (room !== currentRoom || !peers.has(peerId) ||
+            !obj || typeof obj !== 'object') return;
+        const name = cleanText(obj.nick, 24), where = cleanText(obj.mode, 30);
+        if (name && !unsuitable(name)) peers.get(peerId).nick = name;
+        if (where === 'Al locale' || where === 'Da fuori') peers.get(peerId).mode = where;
         roomSize();
       };
-      room.onPeerJoin=peerId=>{
-        peers.set(peerId,{nick:'Ospite',mode:'collegato'});
-        Promise.resolve(helloAction.send({nick:mine,mode}, {target:peerId})).catch(()=>{});
+      room.onPeerJoin = peerId => {
+        if (room !== currentRoom) return;
+        peers.set(peerId, {nick: 'Ospite', mode: 'collegato'});
+        Promise.resolve(helloAction.send({nick: mine, mode}, {target: peerId})).catch(() => {});
         roomSize();
       };
-      room.onPeerLeave=peerId=>{
-        peers.delete(peerId);lastByPeer.delete(peerId);ignored.delete(peerId);roomSize();
+      room.onPeerLeave = peerId => {
+        if (room !== currentRoom) return;
+        peers.delete(peerId); lastByPeer.delete(peerId); ignored.delete(peerId);
+        roomSize();
       };
-      connected=true;joining=false;
-      $('chat-start').hidden=true;$('chat-live').hidden=false;
-      roomSize();
-      note('I messaggi sono temporanei e visibili solo ai presenti in questa stanza.');
-      $('chat-composer').focus();
-    }catch(err){
-      console.warn('Chat commensali: connessione non riuscita',err);
-      connected=false;joining=false;room=null;formStatus();
-      status('Collegamento non riuscito: riprova con un’altra rete o un browser aggiornato.','error');
-      note('La chat richiede WebRTC e la disponibilità della rete pubblica di segnalazione.');
+      connected = true; joining = false;
+      $('chat-start').hidden = true; $('chat-live').hidden = false;
+      saveSession();
+      formStatus(); roomSize();
+      note(automatic ? 'Rientrato con lo stesso pseudonimo. I messaggi passati non sono recuperabili.'
+                     : 'I messaggi sono temporanei e visibili solo ai presenti in questa stanza.');
+      if (!automatic) $('chat-composer').focus();
+    } catch (err) {
+      console.warn('Chat commensali: connessione non riuscita', err);
+      const old = room;
+      room = null; messageAction = null; helloAction = null;
+      try {await old?.leave()} catch (_) {}
+      connected = false; joining = false; formStatus();
+      $('chat-composer').disabled = true;
+      $('chat-send').disabled = true;
+      status('Collegamento interrotto. Premi «Riconnetti» oppure rientra nella chat.', 'error');
+      note('La chat richiede WebRTC e una rete disponibile. Lo pseudonimo è conservato temporaneamente su questo dispositivo.');
     }
+  }
+
+  // Dopo una sospensione di Android/WhatsApp la rete P2P può non riprendersi da sola.
+  // Ricrea il collegamento, senza cancellare la conversazione ancora visibile.
+  async function reconnect() {
+    if (joining) return;
+    if (reconnecting) return reconnecting;
+    const saved = readSession();
+    if (!saved) return;
+    reconnecting = (async () => {
+      const old = room;
+      room = null; connected = false;
+      messageAction = null; helloAction = null;
+      peers.clear(); lastByPeer.clear(); ignored.clear();
+      $('chat-send').disabled = true;
+      $('chat-composer').disabled = true;
+      status('Riconnessione alla chat in corso…');
+      try {await old?.leave()} catch (_) {}
+      await enter(true);
+    })();
+    try {await reconnecting} finally {reconnecting = null}
   }
   async function send() {
     if(!connected||!messageAction||peers.size===0) return;
@@ -171,6 +252,7 @@
     }finally{roomSize()}
   }
   async function leave() {
+    clearSession();
     connected=false;
     try{if(room)await room.leave()}catch(_){}
     room=null;messageAction=null;helloAction=null;peers.clear();
@@ -224,14 +306,41 @@
     note('WhatsApp si apre con la segnalazione. Premi Invia nell’app per avvertire il ristorante.');
     window.open('https://wa.me/393272292006?text='+encodeURIComponent(body),'_blank','noopener,noreferrer');
   }
-  $('chat-join').addEventListener('click',enter);
+  $('chat-join').addEventListener('click', () => enter(false));
   $('chat-send').addEventListener('click',send);
   $('chat-report-conversation').addEventListener('click',reportConversation);
   $('chat-composer').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});
   $('chat-exit').addEventListener('click',leave);
+  $('chat-reconnect').addEventListener('click', reconnect);
   $('chat-clear').addEventListener('click',()=>{
     $('chat-feed').replaceChildren();note('Cronologia cancellata solo da questo dispositivo.');
   });
-  window.addEventListener('pagehide',()=>{try{room?.leave()}catch(_){}});
+  // pagehide può essere causato da WhatsApp o dal ripristino della scheda.
+  // Non cancellare la sessione: alla riapertura lo pseudonimo si ripristina.
+  window.addEventListener('pagehide', () => {
+    backgroundAt = Date.now();
+    const old = room;
+    room = null; connected = false;
+    messageAction = null; helloAction = null;
+    peers.clear(); lastByPeer.clear();
+    try {old?.leave()} catch (_) {}
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {backgroundAt = Date.now(); return}
+    const away = backgroundAt ? Date.now() - backgroundAt : 0;
+    backgroundAt = 0;
+    if (readSession() && !joining && (!connected || away > 5000)) reconnect();
+  });
+  window.addEventListener('pageshow', () => {
+    if (!document.hidden && !connected && !joining && readSession()) reconnect();
+  });
+  window.addEventListener('focus', () => {
+    if (document.hidden || joining) return;
+    const away = backgroundAt ? Date.now() - backgroundAt : 0;
+    if (readSession() && (!connected || away > 5000)) reconnect();
+  });
   roomSize();
+  // Anche dopo un ricaricamento forzato da Android: sessionStorage conserva
+  // temporaneamente solo pseudonimo e provenienza, mai testi o cronologia.
+  if (readSession() && !document.hidden) reconnect();
 })();
