@@ -77,8 +77,7 @@
         '\n\nSegnalazione di un messaggio pubblico della chat. Richiedo al ristorante di valutarla. Il messaggio verrà inviato solo dopo che premo Invia su WhatsApp.';
         note('Si apre WhatsApp con la segnalazione: premi Invia nell’app per avvisare il ristorante.');
         const url='https://wa.me/393272292006?text='+encodeURIComponent(reportText);
-        const opened=window.open(url,'_blank','noopener,noreferrer');
-        if(!opened) window.location.href=url;
+        window.open(url,'_blank','noopener,noreferrer');
       });
       const silence=document.createElement('button');silence.type='button';silence.textContent='Ignora utente';
       silence.addEventListener('click',()=>{
