@@ -4,27 +4,59 @@
   "dinner": {
     "antipasti": [
       {
-        "name": "Bruschette con crema di zucca e speck croccante (2 pezzi)",
+        "name": "Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)",
         "price": 10,
-        "description": "Pane tostato con una spalmata di gorgonzola, crema di zucca vellutata e speck croccante.",
+        "description": "Due fette di pane tostato con formaggio spalmabile e salmone affumicato.",
         "allergens": [
           1,
+          4,
           7
         ],
-        "icon": "Wheat",
-        "dishPhoto": "bruschetta-zucca-speck-gorgonzola.webp"
+        "icon": "Fish",
+        "dishPhoto": "cena-assets/bruschette-salmone-formaggio-20261020.webp",
+        "translations": {
+          "en": {
+            "name": "Smoked salmon and cream cheese bruschetta (2 pieces)",
+            "description": "Two slices of toasted bread with cream cheese and smoked salmon."
+          },
+          "zh": {
+            "name": "烟熏三文鱼奶油奶酪烤面包（2片）",
+            "description": "两片烤面包，搭配涂抹奶酪和烟熏三文鱼。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-edited approved dinner illustration",
+          "date": "2026-10-20",
+          "tool": "image_gen",
+          "note": "Approved two-piece bruschetta photograph edited to change toppings only, preserving the ivory plate, navy tabletop, warm light and framing. Web references reviewed but contained extra ingredients or different presentation. Illustrative image, not a photograph of restaurant food."
+        }
       },
       {
-        "name": "Gamberetti* in salsa rosa",
+        "name": "Bruschette con avocado e gamberetti* (2 pezzi)",
         "price": 10,
-        "description": "Gamberetti* e delicata salsa rosa, su un letto di fresca insalata.",
+        "description": "Due fette di pane tostato con avocado e gamberetti*.",
         "allergens": [
-          2,
-          3,
-          10
+          1,
+          2
         ],
         "icon": "Shrimp",
-        "dishPhoto": "cena-gamberetti.webp"
+        "dishPhoto": "cena-assets/bruschette-avocado-gamberetti-20261020.webp",
+        "translations": {
+          "en": {
+            "name": "Avocado and shrimp* bruschetta (2 pieces)",
+            "description": "Two slices of toasted bread with avocado and shrimp*."
+          },
+          "zh": {
+            "name": "牛油果虾仁*烤面包（2片）",
+            "description": "两片烤面包，搭配牛油果和虾仁*。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-edited approved dinner illustration",
+          "date": "2026-10-20",
+          "tool": "image_gen",
+          "note": "Approved two-piece bruschetta photograph edited to change toppings only, preserving the ivory plate, navy tabletop, warm light and framing. Web references reviewed but contained extra ingredients or different presentation. Illustrative image, not a photograph of restaurant food."
+        }
       },
       {
         "name": "Funghi champignon fritti",
@@ -206,33 +238,6 @@
         ],
         "icon": "Fish",
         "dishPhoto": "cena-salmone.webp"
-      },
-      {
-        "name": "Petti di pollo su crema di cavolfiore bianco",
-        "price": 10,
-        "description": "Petti di pollo su una vellutata di cavolfiore bianco con burro, senape, panna e miele.",
-        "allergens": [
-          7,
-          10
-        ],
-        "icon": "Drumstick",
-        "dishPhoto": "cena-assets/petti-pollo-cavolfiore-20261015.webp",
-        "translations": {
-          "en": {
-            "name": "Chicken breasts on white cauliflower cream",
-            "description": "Chicken breasts on silky white cauliflower purée with butter, mustard, cream and honey."
-          },
-          "zh": {
-            "name": "鸡胸肉配白花椰菜泥",
-            "description": "鸡胸肉佐细滑白花椰菜泥，搭配黄油、芥末、奶油和蜂蜜。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustration",
-          "date": "2026-10-15",
-          "tool": "image_gen",
-          "note": "Approved lunch chicken breasts adapted to the dinner menu ivory speckled plate, navy tabletop, camera angle and lighting. Ingredients unchanged. Illustrative image, not an actual restaurant photograph."
-        }
       },
       {
         "name": "Galletto ripieno con salsiccia, frutta e castagne",
@@ -692,4 +697,3 @@
     }
   ]
 }
-
