@@ -694,6 +694,57 @@
       "price": 20,
       "icon": "Wine",
       "photoViewBox": "380 0 210 800"
+    },
+    {
+      "name": "Chardonnay",
+      "designation": "Trentino DOC · Terrazze della Luna · Cavit",
+      "description": "Bianco dal profilo fruttato, con richiami di mela gialla e frutta tropicale. Morbido e persistente al palato.",
+      "photo": "wine-assets/terrazze-chardonnay-20261020.webp",
+      "price": 15,
+      "icon": "Wine",
+      "photoViewBox": "280 0 240 800",
+      "wineGroup": "trentino",
+      "descriptionSource": "https://www.ilpontedeisapori.com/prodotto/chardonnay-terrazze-della-luna/",
+      "photoSource": {
+        "type": "AI-reconstructed user bottle photograph",
+        "date": "2026-10-20",
+        "tool": "image_gen",
+        "note": "Exact bottle selected from Paolo’s supplied photograph, corrected to an upright centered view on pure white. Label and brand preserved; retailer photo used only as supporting reference. No external shop tags."
+      }
+    },
+    {
+      "name": "Müller Thurgau",
+      "designation": "Trentino DOC · Terrazze della Luna · Cavit",
+      "description": "Bianco fresco e delicatamente aromatico, con note floreali, pesca e melissa. Sorso morbido ed equilibrato.",
+      "photo": "wine-assets/terrazze-muller-thurgau-20261020.webp",
+      "price": 16,
+      "icon": "Wine",
+      "photoViewBox": "280 0 240 800",
+      "wineGroup": "trentino",
+      "descriptionSource": "https://www.ilpontedeisapori.com/prodotto/muller-thurgau-terrazze-della-luna/",
+      "photoSource": {
+        "type": "AI-reconstructed user bottle photograph",
+        "date": "2026-10-20",
+        "tool": "image_gen",
+        "note": "Exact bottle selected from Paolo’s supplied photograph, corrected to an upright centered view on pure white. Label and brand preserved; retailer photo used only as supporting reference. No external shop tags."
+      }
+    },
+    {
+      "name": "Gewürztraminer",
+      "designation": "Trentino DOC · Terrazze della Luna · Cavit",
+      "description": "Bianco aromatico e avvolgente, con sentori di rosa, fiori d’arancio e spezie. Morbido ed equilibrato.",
+      "photo": "wine-assets/terrazze-gewurztraminer-20261020.webp",
+      "price": 18,
+      "icon": "Wine",
+      "photoViewBox": "280 0 240 800",
+      "wineGroup": "trentino",
+      "descriptionSource": "https://www.ilpontedeisapori.com/prodotto/gewurztraminerterrazze-della-luna/",
+      "photoSource": {
+        "type": "AI-reconstructed user bottle photograph",
+        "date": "2026-10-20",
+        "tool": "image_gen",
+        "note": "Exact bottle selected from Paolo’s supplied photograph, corrected to an upright centered view on pure white. Label and brand preserved; retailer photo used only as supporting reference. No external shop tags."
+      }
     }
   ]
 }
