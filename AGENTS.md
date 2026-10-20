@@ -329,3 +329,24 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - L’avviso aggiuntivo per richieste inviate dopo le 12:00 (menù pranzo) o le 18:00 (menù cena/offerte) si applica esclusivamente quando il giorno prenotato coincide con il giorno corrente in Europe/Rome. Non mostrarlo per domani o date successive valide.
 - Nel testo distinguere l’orario di invio per oggi dalla data prenotata; non descrivere una prenotazione futura come successiva a una data valida per prenotare.
 - Conservare i controlli su passato, lunedì, fasce di ingresso, validità del menù pranzo e servizio/festivi, oltre alla normale conferma del Ristorante e al flusso WhatsApp.
+
+
+## Meteo dinamico e registro riservato delle presenze — regola permanente, 2026-10-20
+
+### Meteo dinamico — scheda pubblica nelle Novità
+- Mantenere nella sezione Novità una scheda meteo piccola, discreta, leggibile da mobile e coerente con font, palette e stile nautico del sito; nessuna riprogettazione delle altre sezioni.
+- Riferimento geografico: Torino, zona San Paolo / Controcorrente (via San Paolo 16). Visualizzare solo due previsioni del giorno: pranzo 12:00–14:30 e cena 19:00–22:30, senza bollettini per altre fasce.
+- Dati previsti: condizioni meteorologiche e relativo simbolo, intervallo della temperatura e precipitazioni attese; indicare quando la previsione è stata aggiornata.
+- Usare i dati del fornitore meteo effettivamente integrato nel sito (attualmente MET Norway, non attribuirli a Google). La logica di lettura e riepilogo è in scripts/update-weather.py, la scheda legge weather.json tramite weather.js.
+- Aggiornare il meteo automaticamente una sola volta al mattino, preferibilmente intorno alle 08:30 Europe/Rome, tramite un processo pianificato e verificabile. Dopo l'aggiornamento pubblicare weather.json; tutte le visite al sito riutilizzano il file locale senza nuove richieste al provider. Controllare che la pianificazione esista e funzioni: la presenza del solo script non equivale a un aggiornamento automatico.
+- Se il fornitore non risponde, i dati sono incompleti o la previsione del giorno non è aggiornata, mostrare «Previsione non disponibile» o un'avvertenza di aggiornamento senza inventare condizioni o riutilizzare dati vecchi come se fossero attuali.
+- Non modificare prenotazioni, menù, WhatsApp, contatori, club e altre funzionalità per aggiornare il meteo.
+
+### Registro privato presenze effettive a pranzo — solo numeri
+- A partire dal 20 ottobre 2026 mantenere uno storico giornaliero dei **coperti effettivamente presenti** a pranzo, separato da visite al sito e richieste WhatsApp: questi ultimi non rappresentano presenze confermate.
+- Per ogni giornata registrare esclusivamente data, numero di presenze ordinarie, numero di presenze «a parte» e totale (somma esatta dei due valori). Non raccogliere né conservare nomi dei partecipanti, nominativi, recapiti, tavoli, ordini, note nominative o altri identificativi personali in questo registro.
+- Salvare lo storico unicamente in un archivio con accesso privato del proprietario, attualmente il foglio Google «Controcorrente — Registro privato presenze», scheda «Pranzi»; non mettere i numeri giornalieri, dati dell'archivio, indirizzi del foglio, chiavi, credenziali o collegamenti di accesso nel repository pubblico, in pagine web, HTML, JavaScript, JSON pubblico o GitHub Pages. Una pagina web soltanto nascosta dal menu non è privata.
+- La statistica privata deve consentire il grafico giornaliero dei coperti e il calcolo dei totali e delle medie, distinguendo le presenze ordinarie da quelle «a parte» ed evitando conteggi doppi.
+- Quando Paolo comunica un numero a fine servizio, inserire/aggiornare la riga corrispondente alla stessa data senza duplicarla. Una correzione esplicita sostituisce il numero precedente; non stimare mai i presenti dalle richieste di prenotazione, dagli accessi, dai piatti ordinati o dalle altre statistiche del sito.
+- Se Paolo non ha ancora fornito il conteggio finale, chiederglielo a fine turno pranzo (indicativamente dopo le 14:30, nel fuso Europe/Rome) e, solo quando risponde, aggiornare il dato. Non inviare domande ai clienti né pubblicare i risultati. Non considerare lo zero equivalente a un dato mancante.
+- Questa è una funzione gestionale riservata a Paolo. Preservare l'attuale struttura pubblica del sito; non aggiungere sezioni o pulsanti visibili ai visitatori.
