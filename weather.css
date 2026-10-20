@@ -1,0 +1,12 @@
+/* Only the small weather card on Novità; the shared visual master is unchanged. */
+.weather-card{grid-column:1/-1;width:100%;max-width:440px;height:auto;padding:16px 20px;margin:0 auto 20px}
+.weather-card h2{font-size:1.2rem;color:var(--gold);margin:0 0 3px}
+.weather-card__place,.weather-card__meta{color:var(--muted);font-size:.75rem;line-height:1.5;margin:0}
+.weather-card__rows{margin:10px 0}
+.weather-card__row{display:grid;grid-template-columns:105px minmax(0,1fr);gap:8px;border-top:1px solid var(--line);padding:7px 0;font-size:.8125rem;line-height:1.5}
+.weather-card__row strong{font-weight:600}
+.weather-card__row small{display:block;font-size:.75rem;color:var(--muted)}
+.weather-card__forecast{min-width:0;overflow-wrap:break-word}
+.weather-card__forecast span{display:block;color:var(--muted)}
+.weather-card__meta a{color:inherit}
+@media(max-width:380px){.weather-card{padding:14px}.weather-card__row{grid-template-columns:95px minmax(0,1fr)}}

@@ -1,0 +1,45 @@
+{
+  "source": "MET Norway",
+  "source_url": "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=45.0641&lon=7.6525",
+  "location": "Torino · zona San Paolo",
+  "latitude": 45.0641,
+  "longitude": 7.6525,
+  "fetched_at": "2026-10-20T09:25:47+00:00",
+  "provider_updated_at": "2026-10-20T09:20:21+00:00",
+  "days": [
+    {
+      "date": "2026-10-20",
+      "lunch": {
+        "condition": "Pioggia intensa",
+        "icon": "🌧",
+        "min_c": 14,
+        "max_c": 14,
+        "precipitation_mm": 4.5
+      },
+      "dinner": {
+        "condition": "Pioggia intensa",
+        "icon": "🌧",
+        "min_c": 14,
+        "max_c": 14,
+        "precipitation_mm": 10.5
+      }
+    },
+    {
+      "date": "2026-10-21",
+      "lunch": {
+        "condition": "Coperto",
+        "icon": "☁",
+        "min_c": 16,
+        "max_c": 18,
+        "precipitation_mm": 0.0
+      },
+      "dinner": {
+        "condition": "Parzialmente nuvoloso",
+        "icon": "⛅",
+        "min_c": 12,
+        "max_c": 15,
+        "precipitation_mm": 0.0
+      }
+    }
+  ]
+}
