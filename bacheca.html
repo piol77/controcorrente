@@ -58,14 +58,14 @@
 <p>In orario di apertura, <strong>con o senza consumazione</strong>.<br><em>Ma meglio con…</em> 😉</p>
 <p class="bc-help" style="margin:12px 0 0">Via San Paolo 16, Torino · Nessun obbligo di consumazione. Non è un servizio di deposito o consegna merci.</p></section>
 <p class="bc-note">Piccoli annunci testuali, gratuiti e senza registrazione al sito. Compro, vendo, regalo, cerco o scambio. Sul sito compare soltanto lo pseudonimo.</p>
-<div class="bc-notice"><strong>Come funziona davvero:</strong> gli annunci e le richieste passano dal WhatsApp del ristorante, che li verifica e fa da tramite. Il numero non viene pubblicato, ma il gestore lo vede su WhatsApp. <strong>Non è ancora disponibile una chat privata diretta tra utenti.</strong> L'incontro fisico non garantisce anonimato personale.</div>
+<div class="bc-notice"><strong>Come funziona davvero:</strong> gli annunci e le richieste passano dal WhatsApp del ristorante, che li verifica e fa da tramite. Il numero non viene pubblicato, ma il gestore lo vede su WhatsApp. <strong>È disponibile una chat temporanea tra browser tramite link riservato.</strong> Funziona solo quando entrambi sono online; nessuno storico viene salvato sul sito. L'incontro fisico non garantisce anonimato personale.</div>
 <div class="bc-tools"><input class="bc-input" type="search" id="bc-search" placeholder="Cerca negli annunci…" aria-label="Cerca annunci">
 <select class="bc-input" id="bc-category" aria-label="Filtra categoria"><option value="">Tutte le categorie</option><option>Casa e arredi</option><option>Abbigliamento</option><option>Elettronica</option><option>Libri e hobby</option><option>Regalo e scambio</option><option>Cerco</option></select>
 <button class="bc-btn" id="bc-refresh" type="button">⟳ Aggiorna annunci</button>
 <button class="bc-btn bc-btn--main" id="bc-new" type="button">+ Invia annuncio</button></div>
-<div class="bc-meta"><span id="bc-status" role="status" aria-live="polite">Caricamento annunci…</span><span id="bc-updated"></span></div>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0"><a class="bc-btn bc-btn--main" href="bacheca-chat.html">💬 Prova la chat dal vivo su due telefoni</a><span class="bc-note">Link privato, nessun login. Entrambi i partecipanti devono essere online.</span></div><div class="bc-meta"><span id="bc-status" role="status" aria-live="polite">Caricamento annunci…</span><span id="bc-updated"></span></div>
 <section class="bc-list" id="bc-list" aria-label="Annunci approvati"><div class="bc-empty">Caricamento…</div></section>
-<div class="bc-how"><div><h3>1 · Pubblica un annuncio</h3>Compila poche righe e inviale su WhatsApp al ristorante. Dopo il controllo sarà pubblicato con lo pseudonimo, senza recapiti.</div><div><h3>2 · Chiedi informazioni</h3>Indica il codice dell'annuncio tramite WhatsApp. Il ristorante gira la richiesta all'inserzionista: nessun telefono viene esposto online.</div><div><h3>3 · Concludi e incontrati</h3>Dopo l'accordo invia la proposta di appuntamento indicando giorno, orario e pranzo/cena. <strong>Attendi la conferma del ristorante.</strong></div></div>
+<div class="bc-how"><div><h3>1 · Pubblica un annuncio</h3>Compila poche righe e inviale su WhatsApp al ristorante. Dopo il controllo sarà pubblicato con lo pseudonimo, senza recapiti.</div><div><h3>2 · Chiedi informazioni</h3>Indica il codice dell'annuncio tramite WhatsApp. Il ristorante inoltra la richiesta o il link per una chat diretta; nessun recapito compare negli annunci pubblici.</div><div><h3>3 · Concludi e incontrati</h3>Dopo l'accordo invia la proposta di appuntamento indicando giorno, orario e pranzo/cena. <strong>Attendi la conferma del ristorante.</strong></div></div>
 <div class="bc-bottom"><a class="button" href="bacheca/regolamento.pdf" target="_blank" rel="noopener">Regolamento e privacy · PDF</a>
 <p>L'iniziativa è gratuita. Il Controcorrente non compra, vende, incassa o custodisce gli oggetti. Sabato e domenica soltanto previa apertura confermata; lunedì normalmente chiuso.</p></div>
 </div></main><footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
@@ -137,7 +137,7 @@ function filter(){
    interested.addEventListener('click',function(){selected=a;$('bc-selected-interest').textContent=a.id+' · '+a.text;$('bc-interest-form').reset();openModal('bc-interest-layer')});
    var meeting=label('button','🤝 Affare fatto? Incontro');meeting.type='button';meeting.className='bc-btn';
    meeting.addEventListener('click',function(){selected=a;$('bc-selected-meeting').textContent=a.id+' · '+a.text;$('bc-meeting-form').reset();$('bc-meeting-error').textContent='';dateLimits();openModal('bc-meeting-layer')});
-   actions.append(interested,meeting);row.append(left,actions);target.appendChild(row);
+   var chat=label("a","💬 Chat dal vivo");chat.className="bc-btn";chat.href="bacheca-chat.html?annuncio="+encodeURIComponent(a.id);actions.append(chat,interested,meeting);row.append(left,actions);target.appendChild(row);
  });
 }
 async function refresh(){
