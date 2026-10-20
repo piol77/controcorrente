@@ -180,8 +180,53 @@
     formStatus();roomSize();status('Sei uscito. I messaggi locali sono stati cancellati.');
     note('Scegli uno pseudonimo per rientrare.');
   }
+
+  // Segnalazione su richiesta: nessun salvataggio dei messaggi su server.
+  // La bozza contiene esclusivamente gli ultimi messaggi ancora visibili sul dispositivo.
+  function reportConversation() {
+    if (!connected) {
+      note('Entra nella chat per segnalare la conversazione.');
+      return;
+    }
+    const items=Array.from($('chat-feed').querySelectorAll('.cc-message')).slice(-12);
+    if (!items.length) {
+      note('Non ci sono messaggi visibili da segnalare.');
+      return;
+    }
+    const transcript=items.map(el=>{
+      const who=(el.querySelector('.cc-message-head strong')?.textContent||'Partecipante').trim();
+      const time=(el.querySelector('.cc-message-head time')?.textContent||'').trim();
+      const body=(el.querySelector(':scope > p')?.textContent||'').trim().slice(0,MAX_MSG);
+      return '['+time+'] '+who+': '+body;
+    }).filter(Boolean).join('\n');
+    const today=new Intl.DateTimeFormat('it-IT',{
+      timeZone:'Europe/Rome',day:'2-digit',month:'2-digit',year:'numeric',
+      hour:'2-digit',minute:'2-digit'
+    }).format(new Date());
+    const body='🚩 [CHAT DI INCONTRI CONTROCORRENTE - SEGNALAZIONE CONVERSAZIONE]\n'+
+      'Data e ora: '+today+'\n'+
+      'Segnalazione da pseudonimo: '+mine+'\n'+
+      'Ultimi '+items.length+' messaggi visibili sul dispositivo:\n\n'+transcript+
+      '\n\nENTRA NELLA STANZA PER MODERARE:\n'+
+      'https://piol77.github.io/controcorrente/chat-incontri.html\n\n'+
+      'La conversazione è temporanea: al tuo ingresso vedrai solo i nuovi messaggi. '+
+      'Il testo sopra è la copia inviata volontariamente da chi segnala. '+
+      'Questa è una segnalazione, non una richiesta di prenotazione.';
+    const ok=window.confirm(
+      'Segnalare la conversazione al Controcorrente?\n\n'+
+      'Si aprirà WhatsApp con una copia degli ultimi '+items.length+
+      ' messaggi presenti sul TUO schermo. Il tuo numero WhatsApp sarà visibile al ristorante. '+
+      'Per inviare davvero la segnalazione dovrai premere Invia nell’app.\n\n'+
+      'ANTEPRIMA DEI MESSAGGI:\n'+transcript.slice(0,1300)+
+      (transcript.length>1300?'\n[Altri messaggi inclusi nella bozza WhatsApp]':'')
+    );
+    if(!ok)return;
+    note('WhatsApp si apre con la segnalazione. Premi Invia nell’app per avvertire il ristorante.');
+    window.open('https://wa.me/393272292006?text='+encodeURIComponent(body),'_blank','noopener,noreferrer');
+  }
   $('chat-join').addEventListener('click',enter);
   $('chat-send').addEventListener('click',send);
+  $('chat-report-conversation').addEventListener('click',reportConversation);
   $('chat-composer').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}});
   $('chat-exit').addEventListener('click',leave);
   $('chat-clear').addEventListener('click',()=>{

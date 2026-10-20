@@ -72,19 +72,20 @@
 <div id="chat-feed" class="cc-feed" role="log" aria-live="polite" aria-label="Messaggi visibili in questa sessione"></div>
 <div class="cc-compose"><input id="chat-composer" class="cc-input" maxlength="280" placeholder="Scrivi qualcosa di simpatico… (max 280 caratteri)" aria-label="Scrivi un messaggio" disabled><button type="button" id="chat-send" class="cc-button" disabled>Invia</button></div>
 <p class="cc-help" id="chat-help" role="status"></p>
-<div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:13px"><button type="button" id="chat-clear" class="cc-button cc-button--quiet">Pulisci lo schermo</button><button type="button" id="chat-exit" class="cc-button cc-button--quiet">Esci dalla chat</button></div>
+<div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:13px"><button type="button" id="chat-report-conversation" class="cc-button cc-button--quiet" style="border-color:#d7a58b;color:#efd1c1">🚩 Segnala la conversazione al ristorante</button><button type="button" id="chat-clear" class="cc-button cc-button--quiet">Pulisci lo schermo</button><button type="button" id="chat-exit" class="cc-button cc-button--quiet">Esci dalla chat</button></div>
+<p class="cc-small">Segnalazione volontaria: prima di aprire WhatsApp vedrai un’anteprima degli ultimi 12 messaggi visibili sul tuo dispositivo. Il ristorante riceverà anche il link per entrare nella chat. L’avviso parte solo quando premi <strong>Invia</strong> su WhatsApp; il tuo numero sarà visibile al gestore.</p>
 <p class="cc-small" style="margin:14px 0 0">*Il conteggio riguarda solo i dispositivi con cui il browser riesce a collegarsi. La chat peer-to-peer è pensata per piccoli gruppi e può non funzionare su alcune reti.</p>
 </section>
 <div class="cc-status" id="chat-status" role="status" aria-live="polite">Scegli uno pseudonimo per entrare.</div>
-<div class="cc-reminder"><strong style="color:var(--gold)">Un salotto pubblico, non una chat segreta.</strong> Evita nomi reali, numeri, indirizzi, foto, collegamenti, dati bancari e informazioni su terzi. Il filtro automatico blocca alcune parole e recapiti, ma può essere aggirato: <strong>non garantisce una moderazione completa.</strong> Sotto ogni messaggio ricevuto c’è il tasto <strong>🚩 Segnala su WhatsApp</strong>: apre l’avviso per il ristorante, che dovrai inviare dall’app. Non parte da solo.</div>
+<div class="cc-reminder"><strong style="color:var(--gold)">Un salotto pubblico, non una chat segreta.</strong> Evita nomi reali, numeri, indirizzi, foto, collegamenti, dati bancari e informazioni su terzi. Il filtro automatico blocca alcune parole e recapiti, ma può essere aggirato: <strong>non garantisce una moderazione completa.</strong> Puoi segnalare un singolo messaggio o <strong>l’intera conversazione visibile</strong>: WhatsApp prepara un avviso al gestore, che potrà entrare nella stessa chat. Non parte da solo.</div>
 <div class="cc-footer">
 <a class="button" href="chat-regole.html" target="_blank" rel="noopener">Regole, privacy e responsabilità</a>
-<p>Messaggi non archiviati dal sito · Visibili ai soli utenti collegati nel momento dello scambio · Pseudonimi non verificati</p><p>I report periodici automatici non sono ancora disponibili: richiedono un servizio di archiviazione limitata e invio WhatsApp Business autorizzato.</p>
+<p>Messaggi non archiviati dal sito · Visibili ai soli utenti collegati nel momento dello scambio · Pseudonimi non verificati</p>
 </div>
 </div>
 </main>
 <footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
 <script src="ui.js?v=20261020-chat-incontri"></script>
 <script src="site-session.js?v=20261018-counter-provider2"></script>
-<script src="chat-incontri.js?v=20261020-2" defer></script>
+<script src="chat-incontri.js?v=20261020-segnala-conversazione" defer></script>
 </body></html>
