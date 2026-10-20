@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#081c30">
-<meta name="description" content="Chat di incontri Controcorrente: chiacchiere di quartiere e tra tavoli, con pseudonimo, senza registrazione e senza storico dei messaggi.">
-<title>Chat di incontri Controcorrente | Il salotto fuori dal piatto</title>
+<meta name="description" content="Chat commensali del Controcorrente: chiacchiere di quartiere e tra tavoli, con pseudonimo, senza registrazione e senza storico dei messaggi.">
+<title>Chat commensali | Controcorrente Torino</title>
 <link rel="stylesheet" href="styles.css?v=20261018-logo-menu"><link rel="icon" href="icons/Anchor.svg">
 <style>
 .cc-wrap{max-width:900px;margin:0 auto}
@@ -29,7 +29,7 @@
 .cc-live-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
 .cc-live-top h2{margin:0}
 .cc-online{color:var(--gold);font-weight:700}
-.cc-people{display:flex;gap:7px;flex-wrap:wrap;margin:15px 0}
+.cc-connected{border:1px solid var(--line);border-radius:3px;background:var(--navy);padding:13px 14px;margin:15px 0}.cc-connected h3{font-size:1.14rem;margin:0 0 7px;color:var(--gold)}.cc-connected p{color:var(--muted);font-size:.78rem;margin:0 0 9px}.cc-people{display:flex;gap:7px;flex-wrap:wrap;list-style:none;padding:0;margin:0}
 .cc-person{border:1px solid var(--line);padding:5px 9px;font-size:.76rem;color:var(--muted);border-radius:24px;overflow-wrap:anywhere}
 .cc-feed{height:355px;max-height:57vh;min-height:240px;overflow-y:auto;background:var(--navy);border:1px solid var(--line);padding:14px;display:flex;flex-direction:column;gap:10px;scrollbar-color:#4a6b83 var(--navy)}
 .cc-feed:empty::before{content:'Ancora nessun messaggio. Il primo saluto potrebbe essere il tuo!';color:var(--muted);font-size:.86rem;line-height:1.7}
@@ -51,7 +51,7 @@
 </style></head><body>
 <header class="top"><div class="brand-row"><a class="logo" href="index.html"><img class="brand-logo" src="logo-controcorrente.webp?v=202610031345" alt="Controcorrente" width="2172" height="724"></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><img class="icon " src="icons/Menu.svg" alt="" aria-hidden="true"><span>Menù</span></button></div><nav id="site-nav"><a href="index.html" aria-current="page">Novità</a><a href="il-locale.html">Il Locale</a><a href="pranzo.html">Menù pranzo</a><a href="cena.html">Menù cena</a><a href="offerta.html">Offerta del giorno</a><a href="bibite-vini.html">Bibite & vini</a><a href="club.html">Club</a><a href="tessera-punti-pranzo.html">Tessera Punti Pranzo</a><a href="allergeni.html">Allergeni</a><a href="contatti.html">Contatti</a><a href="divertentismo.html">Divertentismo <span aria-hidden="true" style="font-size:.75em;color:var(--gold);margin-left:.35em">☺</span></a><span class="languages"><a href="english.html" lang="en">EN</a><a href="cinese.html" lang="zh">中文</a></span></nav></header>
 <main class="shell">
-<div class="page-head"><div class="eyebrow">⚓ · IL SALOTTO DEGLI AFFEZIONATI · ⚓</div><h1>Chat di incontri<br>Controcorrente</h1></div>
+<div class="page-head"><div class="eyebrow">⚓ · IL SALOTTO DEGLI AFFEZIONATI · ⚓</div><h1>Chat commensali</h1></div>
 <div class="cc-wrap">
 <section class="cc-intro" aria-label="Presentazione"><h2>Il tavolo accanto è a un messaggio di distanza.</h2><p>Qui si fanno due chiacchiere, si conoscono persone e si scambiano idee. Il caffè, invece, lo serviamo noi. ☕</p></section>
 <p class="cc-description">Una sola stanza pubblica, sia dal ristorante sia da casa. <strong>Senza account, senza foto e senza obbligo di consumazione.</strong> Ma meglio con… 😉</p>
@@ -64,17 +64,17 @@
 </div>
 <label class="cc-check"><input type="checkbox" id="chat-age"><span>Dichiaro di avere almeno 18 anni. <em>È una dichiarazione, non una verifica dell’identità.</em></span></label>
 <label class="cc-check"><input type="checkbox" id="chat-rules"><span>Ho letto le <a class="cc-rules-link" href="chat-regole.html" target="_blank" rel="noopener">regole e le avvertenze della chat</a> e so che non devo inserire dati personali.</span></label>
-<button type="button" id="chat-join" class="cc-button">Entra nella Chat Controcorrente →</button>
+<button type="button" id="chat-join" class="cc-button">Entra nella Chat commensali →</button>
 </section>
 <section class="cc-panel" id="chat-live" hidden aria-label="Stanza chat pubblica">
-<div class="cc-live-top"><h2>La conversazione</h2><span class="cc-online"><span id="chat-online">0</span> collegati*</span></div>
-<div id="chat-people" class="cc-people" aria-label="Persone collegate"></div>
+<div class="cc-live-top"><h2>La conversazione</h2><span class="cc-online"><span id="chat-online">0</span> connessi*</span></div>
+<section class="cc-connected" aria-label="Elenco commensali connessi"><h3>Commensali connessi</h3><p>Pseudonimi dei partecipanti attualmente collegati, aggiornati in tempo reale.</p><ul id="chat-people" class="cc-people" aria-live="polite"></ul></section>
 <div id="chat-feed" class="cc-feed" role="log" aria-live="polite" aria-label="Messaggi visibili in questa sessione"></div>
 <div class="cc-compose"><input id="chat-composer" class="cc-input" maxlength="280" placeholder="Scrivi qualcosa di simpatico… (max 280 caratteri)" aria-label="Scrivi un messaggio" disabled><button type="button" id="chat-send" class="cc-button" disabled>Invia</button></div>
 <p class="cc-help" id="chat-help" role="status"></p>
 <div style="display:flex;flex-wrap:wrap;gap:9px;margin-top:13px"><button type="button" id="chat-report-conversation" class="cc-button cc-button--quiet" style="border-color:#d7a58b;color:#efd1c1">🚩 Segnala la conversazione al ristorante</button><button type="button" id="chat-clear" class="cc-button cc-button--quiet">Pulisci lo schermo</button><button type="button" id="chat-exit" class="cc-button cc-button--quiet">Esci dalla chat</button></div>
 <p class="cc-small">Segnalazione volontaria: prima di aprire WhatsApp vedrai un’anteprima degli ultimi 12 messaggi visibili sul tuo dispositivo. Il ristorante riceverà anche il link per entrare nella chat. L’avviso parte solo quando premi <strong>Invia</strong> su WhatsApp; il tuo numero sarà visibile al gestore.</p>
-<p class="cc-small" style="margin:14px 0 0">*Il conteggio riguarda solo i dispositivi con cui il browser riesce a collegarsi. La chat peer-to-peer è pensata per piccoli gruppi e può non funzionare su alcune reti.</p>
+<p class="cc-small" style="margin:14px 0 0">*Il numero e l’elenco mostrano solo i dispositivi rilevati dal tuo browser. Gli pseudonimi sono dichiarati dagli utenti e non verificati. La chat peer-to-peer è pensata per piccoli gruppi e può non funzionare su alcune reti.</p>
 </section>
 <div class="cc-status" id="chat-status" role="status" aria-live="polite">Scegli uno pseudonimo per entrare.</div>
 <div class="cc-reminder"><strong style="color:var(--gold)">Un salotto pubblico, non una chat segreta.</strong> Evita nomi reali, numeri, indirizzi, foto, collegamenti, dati bancari e informazioni su terzi. Il filtro automatico blocca alcune parole e recapiti, ma può essere aggirato: <strong>non garantisce una moderazione completa.</strong> Puoi segnalare un singolo messaggio o <strong>l’intera conversazione visibile</strong>: WhatsApp prepara un avviso al gestore, che potrà entrare nella stessa chat. Non parte da solo.</div>
@@ -85,7 +85,7 @@
 </div>
 </main>
 <footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
-<script src="ui.js?v=20261020-chat-incontri"></script>
+<script src="ui.js?v=20261020-chat-commensali"></script>
 <script src="site-session.js?v=20261018-counter-provider2"></script>
-<script src="chat-incontri.js?v=20261020-segnala-conversazione" defer></script>
+<script src="chat-incontri.js?v=20261020-chat-commensali" defer></script>
 </body></html>

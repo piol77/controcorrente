@@ -60,7 +60,7 @@ if(/\/(?:pranzo|cena|antipasti|primi|secondi)\.html$/.test(window.location.pathn
 document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(function(section){if(section.querySelector(':scope > .nautical-head-spacer'))return;const spacer=document.createElement('div');spacer.className='nautical-head-spacer';spacer.setAttribute('aria-hidden','true');spacer.style.height='1.8em';spacer.style.pointerEvents='none';section.appendChild(spacer);});
 
 
-// Navigazione condivisa: Chat di incontri Controcorrente (sostituisce il mercatino).
+// Navigazione condivisa: Chat commensali (sostituisce il mercatino).
 (function(){
   var nav=document.querySelector('#site-nav');
   if(!nav)return;
@@ -73,6 +73,6 @@ document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(fu
     if(langs)nav.insertBefore(link,langs);
     else nav.appendChild(link);
   }
-  link.textContent='Chat di incontri Controcorrente';
+  link.textContent='Chat commensali';
   if(/\/(?:chat-incontri|chat-regole)\.html$/.test(window.location.pathname))link.setAttribute('aria-current','page');
 })();

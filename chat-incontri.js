@@ -1,4 +1,4 @@
-/* Chat di incontri Controcorrente: stanza pubblica, effimera, peer-to-peer.
+/* Chat commensali: stanza pubblica, effimera, peer-to-peer.
    Il filtro è locale (sia all'invio sia alla ricezione): non è moderazione centralizzata. */
 (function () {
   'use strict';
@@ -43,12 +43,12 @@
     $('chat-online').textContent = String(connected ? peers.size + 1 : 0);
     const list = $('chat-people'); list.replaceChildren();
     if (connected) {
-      const self = document.createElement('span');
+      const self = document.createElement('li');
       self.className='cc-person'; self.textContent='Tu · '+mine+' · '+mode; list.appendChild(self);
     }
     [...peers.entries()].forEach(([id, info]) => {
       if (ignored.has(id)) return;
-      const el = document.createElement('span'); el.className='cc-person';
+      const el = document.createElement('li'); el.className='cc-person';
       el.textContent=(info.nick || 'Ospite')+' · '+(info.mode || 'collegato'); list.appendChild(el);
     });
     $('chat-send').disabled = !connected || peers.size < 1;
@@ -72,7 +72,7 @@
       const tools=document.createElement('div');tools.className='cc-message-tools';
       const report=document.createElement('button');report.type='button';report.textContent='🚩 Segnala su WhatsApp';report.setAttribute('aria-label','Segnala questo messaggio al Controcorrente tramite WhatsApp');
       report.addEventListener('click',()=>{
-        const reportText='[SEGNALAZIONE CHAT INCONTRI CONTROCORRENTE]\nPseudonimo: '+who+
+        const reportText='[SEGNALAZIONE CHAT COMMENSALI CONTROCORRENTE]\nPseudonimo: '+who+
         '\nOrario locale: '+stamp.textContent+'\nEstratto: '+txt.slice(0,160)+
         '\n\nSegnalazione di un messaggio pubblico della chat. Richiedo al ristorante di valutarla. Il messaggio verrà inviato solo dopo che premo Invia su WhatsApp.';
         note('Si apre WhatsApp con la segnalazione: premi Invia nell’app per avvisare il ristorante.');
@@ -145,7 +145,7 @@
       note('I messaggi sono temporanei e visibili solo ai presenti in questa stanza.');
       $('chat-composer').focus();
     }catch(err){
-      console.warn('Chat incontri: connessione non riuscita',err);
+      console.warn('Chat commensali: connessione non riuscita',err);
       connected=false;joining=false;room=null;formStatus();
       status('Collegamento non riuscito: riprova con un’altra rete o un browser aggiornato.','error');
       note('La chat richiede WebRTC e la disponibilità della rete pubblica di segnalazione.');
@@ -203,7 +203,7 @@
       timeZone:'Europe/Rome',day:'2-digit',month:'2-digit',year:'numeric',
       hour:'2-digit',minute:'2-digit'
     }).format(new Date());
-    const body='🚩 [CHAT DI INCONTRI CONTROCORRENTE - SEGNALAZIONE CONVERSAZIONE]\n'+
+    const body='🚩 [CHAT COMMENSALI CONTROCORRENTE - SEGNALAZIONE CONVERSAZIONE]\n'+
       'Data e ora: '+today+'\n'+
       'Segnalazione da pseudonimo: '+mine+'\n'+
       'Ultimi '+items.length+' messaggi visibili sul dispositivo:\n\n'+transcript+
