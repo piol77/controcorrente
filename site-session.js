@@ -144,7 +144,7 @@
     pending = true;
     failed = false;
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://stream.newageradio.gr/listen/jazz/radio.flac';
+      audio.src = 'https://cdn1.zetcast.net/flac';
     }
     try {
       const result = audio.play();
