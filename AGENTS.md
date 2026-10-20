@@ -353,5 +353,5 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 
 ## Etichette offerte e data puramente informativa — 2026-10-20
 - Le voci pubbliche di navigazione e le intestazioni delle relative pagine sono **«Offerta per pranzo»** (pranzo.html) e **«Offerta per cena»** (cena.html). **«Offerta del giorno»** (offerta.html) rimane invariata. Non rinominare file, URL o sezioni del catalogo.
-- Nelle pagine di cena e Offerta del giorno mostrare in grafica coerente la **data corrente dinamica in Europe/Rome**, come informazione, senza renderla vincolo della prenotazione né modificare regole, calendario, carrello o procedura d'ordine. La cena conserva «Valido nella settimana in corso».
+- Nelle pagine di cena e Offerta del giorno mostrare in grafica coerente la **data corrente dinamica in Europe/Rome**, come informazione, senza renderla vincolo della prenotazione né modificare regole, calendario, carrello o procedura d'ordine. La cena NON mostra più «Valido nella settimana in corso»: si visualizza soltanto la data odierna dinamica, senza cambiamento dei vincoli di prenotazione.
 - Il pranzo conserva la sua data della proposta e gli attuali controlli sulla prenotazione legati a quella data: NON sostituirla con la data corrente generica. Le modifiche delle sole etichette non alterano preordine.js né i controlli in riepilogo.
