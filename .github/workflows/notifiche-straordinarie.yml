@@ -1,0 +1,117 @@
+name: Avvisi straordinari Controcorrente
+
+# L'invio e' possibile solo per modifiche autorizzate sul branch main
+# oppure manualmente da Actions. Non e' legato ai cambi di menu.
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        description: "Messaggio per i browser iscritti (massimo 180 caratteri)"
+        required: true
+        type: string
+      ttl_minutes:
+        description: "Validita' del messaggio (minuti, massimo 10)"
+        required: false
+        default: "3"
+        type: string
+  push:
+    branches: [main]
+    paths:
+      - ".github/notifiche/invio.json"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: controcorrente-avvisi-straordinari
+  cancel-in-progress: false
+
+jobs:
+  avvisa:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        if: github.event_name == 'push'
+
+      - name: Invia soltanto avvisi recenti e autorizzati
+        env:
+          PUSH_ADMIN_TOKEN: ${{ secrets.CC_PUSH_ADMIN_TOKEN }}
+          EVENT_NAME: ${{ github.event_name }}
+          RUN_ID: ${{ github.run_id }}
+          COMMIT_SHA: ${{ github.sha }}
+          INPUT_MESSAGE: ${{ inputs.message }}
+          INPUT_TTL: ${{ inputs.ttl_minutes }}
+          PUSH_URL: https://controcorrente-notifiche.superlion129.chatgpt.site/admin/notify
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import json
+          import os
+          import pathlib
+          import urllib.error
+          import urllib.request
+
+          token = os.environ.get("PUSH_ADMIN_TOKEN", "")
+          if not token:
+              raise SystemExit("Secret CC_PUSH_ADMIN_TOKEN assente: nessun avviso inviato.")
+          now = dt.datetime.now(dt.timezone.utc)
+          if os.environ["EVENT_NAME"] == "push":
+              data = json.loads(pathlib.Path(".github/notifiche/invio.json").read_text("utf-8"))
+              body = data["body"]
+              request_id = data["requestId"]
+              expiry = dt.datetime.fromisoformat(data["expiresAt"].replace("Z", "+00:00"))
+              if expiry.tzinfo is None:
+                  raise SystemExit("expiresAt deve contenere il fuso UTC.")
+              ttl = (expiry - now).total_seconds()
+              if ttl <= 0:
+                  print("Avviso scaduto: non inviare.")
+                  raise SystemExit(0)
+              if ttl > 600:
+                  raise SystemExit("Scadenza superiore a 10 minuti non consentita.")
+          else:
+              body = os.environ["INPUT_MESSAGE"]
+              request_id = "github-run-" + os.environ["RUN_ID"]
+              try:
+                  ttl = 60 * int(os.environ.get("INPUT_TTL") or "3")
+              except ValueError:
+                  raise SystemExit("TTL non valido.")
+              if not 60 <= ttl <= 600:
+                  raise SystemExit("TTL consentito: 1-10 minuti.")
+              expiry = now + dt.timedelta(seconds=ttl)
+
+          if not isinstance(body, str) or not 1 <= len(body.strip()) <= 180:
+              raise SystemExit("Messaggio obbligatorio: 1-180 caratteri.")
+          if not isinstance(request_id, str) or not (8 <= len(request_id) <= 120) or any(c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_" for c in request_id):
+              raise SystemExit("requestId non valido.")
+          payload = {
+              "requestId": request_id,
+              "kind": "manual",
+              "body": body.strip(),
+              "url": "https://piol77.github.io/controcorrente/",
+              "expiresAt": int(expiry.timestamp() * 1000),
+          }
+          req = urllib.request.Request(
+              os.environ["PUSH_URL"],
+              data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
+              method="POST",
+              headers={
+                  "Authorization": "Bearer " + token,
+                  "Content-Type": "application/json",
+                  "Cache-Control": "no-store",
+              },
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  result = json.load(response)
+          except urllib.error.HTTPError as exc:
+              raise SystemExit("Server notifiche: HTTP " + str(exc.code))
+          if not isinstance(result, dict):
+              raise SystemExit("Risposta del servizio notifiche non valida.")
+          print("Esito provider:", json.dumps({
+              key: result.get(key) for key in ("subscribers", "accepted", "failed", "duplicate") if key in result
+          }, ensure_ascii=False))
+          if result.get("failed", 0):
+              raise SystemExit("Alcuni invii push sono falliti.")
+          PY
