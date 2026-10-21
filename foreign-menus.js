@@ -6,79 +6,71 @@
 
   const LUNCH={
   "en": {
-    "Gnocchi di patate al pesto genovese con pollo e fagiolini": [
-      "Potato gnocchi with Genovese pesto, chicken and green beans",
-      "Potato gnocchi with Genovese pesto, chicken and green beans."
+    "Spaghetti con zucchine e ricotta al profumo di limone": [
+      "Spaghetti with courgettes, ricotta and lemon",
+      "Spaghetti with courgettes and ricotta, scented with lemon."
     ],
-    "Penne con panna e salmone fresco": [
-      "Penne with cream and fresh salmon",
-      "Penne in a delicate cream sauce with fresh salmon."
+    "Lasagne al ragù": [
+      "Lasagne with meat ragù",
+      "Oven-baked lasagne with meat ragù."
     ],
-    "Spaghetti di soia con verdure, pollo e gamberetti*": [
-      "Soy glass noodles with vegetables, chicken and shrimp*",
-      "Stir-fried soy glass noodles with courgettes, carrots, savoy cabbage, soybeans, chicken and shrimp*."
+    "Fusilli con tonno fresco e melanzane, con poco pomodoro": [
+      "Fusilli with fresh tuna, aubergine and a little tomato",
+      "Fusilli with fresh tuna and aubergine, with a little tomato."
     ],
-    "Tagliatelle con zucca, funghi misti e salsiccia": [
-      "Tagliatelle with pumpkin, mixed mushrooms and sausage",
-      "Tagliatelle pasta with pumpkin, mixed mushrooms and sausage."
+    "Noodles in brodo di carne con pollo, uova e verdure": [
+      "Noodles in meat broth with chicken, eggs and vegetables",
+      "Noodles in meat broth with chicken, eggs and vegetables."
     ],
-    "Milanese di pollo con fagiolini lessi": [
-      "Chicken Milanese with boiled green beans",
-      "Golden breaded chicken cutlet served with boiled green beans."
+    "Zuppa frantoiana": [
+      "Tuscan vegetable and bean soup",
+      "Soup with celery, carrots, onion, pumpkin, Tuscan kale and beans."
     ],
-    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
-      "Pork strips with vegetables and spicy sauce, served with steamed white rice",
-      "Pork strips with vegetables and spicy sauce, accompanied by steamed white rice."
+    "Maiale alla pizzaiola con patate al forno": [
+      "Pork alla pizzaiola with roast potatoes",
+      "Pork with tomato and olives, served with roast potatoes."
     ],
-    "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino": [
-      "Oven-gratinated cod* with aromatic herbs and rosemary potatoes",
-      "Cod* baked with an aromatic herb gratin, served with rosemary potatoes."
+    "Bocconcini di pollo alle arachidi con riso bianco al vapore": [
+      "Peanut chicken bites with steamed white rice",
+      "Bite-sized chicken with peanuts, served with steamed white rice."
     ],
-    "Insalata tiepida di patate, fagiolini e pollo con scaglie di Grana": [
-      "Warm potato, green bean and chicken salad with Grana shavings",
-      "Warm salad of potatoes, green beans and chicken, finished with Grana cheese shavings."
-    ],
-    "Trancio di salmone all’arancia e pepe rosa con finocchi crudi all’aceto balsamico": [
-      "Salmon steak with orange and pink peppercorns, served with raw fennel and balsamic vinegar",
-      "Salmon steak with orange and pink peppercorns, accompanied by raw fennel dressed with balsamic vinegar."
+    "Insalatona con arance, finocchi, avocado e bocconcini di salmone fresco": [
+      "Salad with oranges, fennel, avocado and fresh salmon bites",
+      "Oranges, fennel and avocado with bite-sized pieces of fresh salmon."
     ]
   },
   "zh": {
-    "Gnocchi di patate al pesto genovese con pollo e fagiolini": [
-      "热那亚青酱鸡肉四季豆土豆团子",
-      "土豆团子搭配热那亚青酱、鸡肉和四季豆。"
+    "Spaghetti con zucchine e ricotta al profumo di limone": [
+      "西葫芦乳清奶酪柠檬意大利面",
+      "意大利面搭配西葫芦与乳清奶酪，带有清新柠檬香。"
     ],
-    "Penne con panna e salmone fresco": [
-      "奶油鲜三文鱼通心粉",
-      "通心粉搭配细腻奶油酱和鲜三文鱼。"
+    "Lasagne al ragù": [
+      "肉酱千层面",
+      "烤制千层面，搭配肉酱。"
     ],
-    "Spaghetti di soia con verdure, pollo e gamberetti*": [
-      "蔬菜鸡肉虾仁*粉丝",
-      "粉丝搭配西葫芦、胡萝卜、皱叶甘蓝、大豆、鸡肉和虾仁*炒制。"
+    "Fusilli con tonno fresco e melanzane, con poco pomodoro": [
+      "鲜金枪鱼茄子螺旋面，配少量番茄",
+      "螺旋面搭配鲜金枪鱼、茄子和少量番茄。"
     ],
-    "Tagliatelle con zucca, funghi misti e salsiccia": [
-      "南瓜什锦蘑菇香肠宽面",
-      "意式宽面搭配南瓜、什锦蘑菇和香肠。"
+    "Noodles in brodo di carne con pollo, uova e verdure": [
+      "肉汤面配鸡肉、鸡蛋和蔬菜",
+      "面条搭配肉汤、鸡肉、鸡蛋和蔬菜。"
     ],
-    "Milanese di pollo con fagiolini lessi": [
-      "米兰式炸鸡排配水煮四季豆",
-      "金黄酥脆的裹面包糠鸡排，搭配水煮四季豆。"
+    "Zuppa frantoiana": [
+      "托斯卡纳蔬菜豆汤",
+      "芹菜、胡萝卜、洋葱、南瓜、黑甘蓝与豆类熬制的汤。"
     ],
-    "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore": [
-      "辣汁蔬菜猪肉条配清蒸白米饭",
-      "猪肉条搭配蔬菜和辣酱，佐以清蒸白米饭。"
+    "Maiale alla pizzaiola con patate al forno": [
+      "番茄橄榄烩猪肉配烤土豆",
+      "猪肉搭配番茄与橄榄，佐以烤土豆。"
     ],
-    "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino": [
-      "香草焗鳕鱼*配迷迭香土豆",
-      "鳕鱼*覆以香草脆皮焗烤，搭配迷迭香土豆。"
+    "Bocconcini di pollo alle arachidi con riso bianco al vapore": [
+      "花生鸡丁配清蒸白米饭",
+      "鸡丁搭配花生，佐以清蒸白米饭。"
     ],
-    "Insalata tiepida di patate, fagiolini e pollo con scaglie di Grana": [
-      "温拌土豆四季豆鸡肉沙拉配格拉纳奶酪薄片",
-      "温拌土豆、四季豆和鸡肉，搭配格拉纳奶酪薄片。"
-    ],
-    "Trancio di salmone all’arancia e pepe rosa con finocchi crudi all’aceto balsamico": [
-      "香橙粉红胡椒三文鱼排配香醋生茴香",
-      "三文鱼排搭配香橙和粉红胡椒，佐以意大利香醋调味的生茴香。"
+    "Insalatona con arance, finocchi, avocado e bocconcini di salmone fresco": [
+      "橙子茴香牛油果鲜三文鱼沙拉",
+      "橙子、茴香和牛油果，搭配鲜三文鱼块。"
     ]
   }
 };

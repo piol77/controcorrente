@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-10-20",
-  "lunchDateLabel": "Martedì 20 ottobre 2026",
+  "lunchUpdatedAt": "2026-10-21",
+  "lunchDateLabel": "Mercoledì 21 ottobre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -293,202 +293,228 @@
   },
   "lunch": [
     {
-      "name": "Gnocchi di patate al pesto genovese con pollo e fagiolini",
+      "name": "Spaghetti con zucchine e ricotta al profumo di limone",
       "price": 10,
-      "description": "Gnocchi di patate con pesto genovese, pollo e fagiolini.",
+      "description": "Spaghetti con zucchine e ricotta, profumati al limone.",
       "allergens": [
         1,
         7
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/gnocchi-20261020.webp",
+      "dishPhoto": "pranzo-assets/spaghetti-20261021.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Potato gnocchi with Genovese pesto, chicken and green beans",
-          "description": "Potato gnocchi with Genovese pesto, chicken and green beans."
+          "name": "Spaghetti with courgettes, ricotta and lemon",
+          "description": "Spaghetti with courgettes and ricotta, scented with lemon."
         },
         "zh": {
-          "name": "热那亚青酱鸡肉四季豆土豆团子",
-          "description": "土豆团子搭配热那亚青酱、鸡肉和四季豆。"
+          "name": "西葫芦乳清奶酪柠檬意大利面",
+          "description": "意大利面搭配西葫芦与乳清奶酪，带有清新柠檬香。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "note": "Web reference images reviewed; recipes, garnishes or presentation differed. Individual illustration made for the requested dish using the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Penne con panna e salmone fresco",
-      "price": 12,
-      "description": "Penne avvolte da una delicata panna con salmone fresco.",
+      "name": "Lasagne al ragù",
+      "price": 10,
+      "description": "Lasagne al forno con ragù di carne.",
       "allergens": [
         1,
-        4,
+        3,
         7
       ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/penne-20261020.webp",
+      "icon": "Wheat",
+      "dishPhoto": "pranzo-assets/lasagne-20261021.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Penne with cream and fresh salmon",
-          "description": "Penne in a delicate cream sauce with fresh salmon."
+          "name": "Lasagne with meat ragù",
+          "description": "Oven-baked lasagne with meat ragù."
         },
         "zh": {
-          "name": "奶油鲜三文鱼通心粉",
-          "description": "通心粉搭配细腻奶油酱和鲜三文鱼。"
+          "name": "肉酱千层面",
+          "description": "烤制千层面，搭配肉酱。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "note": "Web reference images reviewed; recipes, garnishes or presentation differed. Individual illustration made for the requested dish using the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Spaghetti di soia con verdure, pollo e gamberetti*",
-      "price": 10,
-      "description": "Spaghetti di soia saltati con zucchine, carote, verza, soia, pollo e gamberetti*.",
+      "name": "Fusilli con tonno fresco e melanzane, con poco pomodoro",
+      "price": 12,
+      "description": "Fusilli con tonno fresco e melanzane, con poco pomodoro.",
       "allergens": [
-        2,
-        6
+        1,
+        4
       ],
-      "icon": "Shrimp",
-      "dishPhoto": "pranzo-assets/soia-20261020.webp",
+      "icon": "Fish",
+      "dishPhoto": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Soy glass noodles with vegetables, chicken and shrimp*",
-          "description": "Stir-fried soy glass noodles with courgettes, carrots, savoy cabbage, soybeans, chicken and shrimp*."
+          "name": "Fusilli with fresh tuna, aubergine and a little tomato",
+          "description": "Fusilli with fresh tuna and aubergine, with a little tomato."
         },
         "zh": {
-          "name": "蔬菜鸡肉虾仁*粉丝",
-          "description": "粉丝搭配西葫芦、胡萝卜、皱叶甘蓝、大豆、鸡肉和虾仁*炒制。"
+          "name": "鲜金枪鱼茄子螺旋面，配少量番茄",
+          "description": "螺旋面搭配鲜金枪鱼、茄子和少量番茄。"
         }
       },
       "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
-        "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "type": "Reused approved illustration",
+        "date": "2026-10-21",
+        "note": "Approved photograph reused for the same dish already present on the dinner menu."
       }
     },
     {
-      "name": "Milanese di pollo con fagiolini lessi",
+      "name": "Noodles in brodo di carne con pollo, uova e verdure",
       "price": 10,
-      "description": "Milanese di pollo dorata, accompagnata da fagiolini lessi.",
+      "description": "Noodles in brodo di carne con pollo, uova e verdure.",
       "allergens": [
         1,
         3
       ],
-      "icon": "Drumstick",
-      "dishPhoto": "pranzo-assets/milanese-20261020.webp",
+      "icon": "CookingPot",
+      "dishPhoto": "pranzo-assets/noodles-20261021.webp",
       "photoLayout": "side",
-      "orderCourse": "Secondo",
+      "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Chicken Milanese with boiled green beans",
-          "description": "Golden breaded chicken cutlet served with boiled green beans."
+          "name": "Noodles in meat broth with chicken, eggs and vegetables",
+          "description": "Noodles in meat broth with chicken, eggs and vegetables."
         },
         "zh": {
-          "name": "米兰式炸鸡排配水煮四季豆",
-          "description": "金黄酥脆的裹面包糠鸡排，搭配水煮四季豆。"
+          "name": "肉汤面配鸡肉、鸡蛋和蔬菜",
+          "description": "面条搭配肉汤、鸡肉、鸡蛋和蔬菜。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "note": "Web reference images reviewed; recipes, garnishes or presentation differed. Individual illustration made for the requested dish using the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Straccetti di maiale con verdure e salsa piccante, con riso bianco al vapore",
+      "name": "Zuppa frantoiana",
       "price": 10,
-      "description": "Straccetti di maiale con verdure e salsa piccante, accompagnati da riso bianco al vapore.",
+      "description": "Zuppa di sedano, carote, cipolla, zucca, cavolo nero e fagioli.",
+      "allergens": [
+        9
+      ],
+      "icon": "CookingPot",
+      "dishPhoto": "pranzo-assets/zuppa-20261021.webp",
+      "photoLayout": "side",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Tuscan vegetable and bean soup",
+          "description": "Soup with celery, carrots, onion, pumpkin, Tuscan kale and beans."
+        },
+        "zh": {
+          "name": "托斯卡纳蔬菜豆汤",
+          "description": "芹菜、胡萝卜、洋葱、南瓜、黑甘蓝与豆类熬制的汤。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated realistic illustration",
+        "date": "2026-10-21",
+        "tool": "image_gen",
+        "note": "Web reference images reviewed; recipes, garnishes or presentation differed. Individual illustration made for the requested dish using the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+      }
+    },
+    {
+      "name": "Maiale alla pizzaiola con patate al forno",
+      "price": 10,
+      "description": "Maiale alla pizzaiola con pomodoro e olive, accompagnato da patate al forno.",
       "allergens": [],
       "icon": "Drumstick",
-      "dishPhoto": "pranzo-assets/maiale-20261020.webp",
+      "dishPhoto": "pranzo-assets/pizzaiola-20261021.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Pork strips with vegetables and spicy sauce, served with steamed white rice",
-          "description": "Pork strips with vegetables and spicy sauce, accompanied by steamed white rice."
+          "name": "Pork alla pizzaiola with roast potatoes",
+          "description": "Pork with tomato and olives, served with roast potatoes."
         },
         "zh": {
-          "name": "辣汁蔬菜猪肉条配清蒸白米饭",
-          "description": "猪肉条搭配蔬菜和辣酱，佐以清蒸白米饭。"
+          "name": "番茄橄榄烩猪肉配烤土豆",
+          "description": "猪肉搭配番茄与橄榄，佐以烤土豆。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "note": "Web reference images reviewed; recipes, garnishes or presentation differed. Individual illustration made for the requested dish using the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Insalata tiepida di patate, fagiolini e pollo con scaglie di Grana",
+      "name": "Bocconcini di pollo alle arachidi con riso bianco al vapore",
       "price": 10,
-      "description": "Patate, fagiolini e pollo in un’insalata tiepida, completata da scaglie di Grana.",
+      "description": "Bocconcini di pollo alle arachidi, accompagnati da riso bianco al vapore.",
       "allergens": [
-        7
+        5
       ],
       "icon": "Drumstick",
-      "dishPhoto": "pranzo-assets/insalata-20261020.webp",
+      "dishPhoto": "pranzo-assets/pollo-20261021.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Warm potato, green bean and chicken salad with Grana shavings",
-          "description": "Warm salad of potatoes, green beans and chicken, finished with Grana cheese shavings."
+          "name": "Peanut chicken bites with steamed white rice",
+          "description": "Bite-sized chicken with peanuts, served with steamed white rice."
         },
         "zh": {
-          "name": "温拌土豆四季豆鸡肉沙拉配格拉纳奶酪薄片",
-          "description": "温拌土豆、四季豆和鸡肉，搭配格拉纳奶酪薄片。"
+          "name": "花生鸡丁配清蒸白米饭",
+          "description": "鸡丁搭配花生，佐以清蒸白米饭。"
         }
       },
       "photoSource": {
         "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
+        "date": "2026-10-21",
         "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "note": "Web reference images reviewed; recipes, garnishes or presentation differed. Individual illustration made for the requested dish using the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
       }
     },
     {
-      "name": "Trancio di salmone all’arancia e pepe rosa con finocchi crudi all’aceto balsamico",
+      "name": "Insalatona con arance, finocchi, avocado e bocconcini di salmone fresco",
       "price": 12,
-      "description": "Trancio di salmone all’arancia e pepe rosa, accompagnato da finocchi crudi all’aceto balsamico.",
+      "description": "Arance, finocchi e avocado, con bocconcini di salmone fresco.",
       "allergens": [
         4
       ],
       "icon": "Fish",
-      "dishPhoto": "pranzo-assets/salmone-20261020.webp",
+      "dishPhoto": "cena-assets/insalatona-finocchi-arance-avocado-salmone-20261014.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Salmon steak with orange and pink peppercorns, served with raw fennel and balsamic vinegar",
-          "description": "Salmon steak with orange and pink peppercorns, accompanied by raw fennel dressed with balsamic vinegar."
+          "name": "Salad with oranges, fennel, avocado and fresh salmon bites",
+          "description": "Oranges, fennel and avocado with bite-sized pieces of fresh salmon."
         },
         "zh": {
-          "name": "香橙粉红胡椒三文鱼排配香醋生茴香",
-          "description": "三文鱼排搭配香橙和粉红胡椒，佐以意大利香醋调味的生茴香。"
+          "name": "橙子茴香牛油果鲜三文鱼沙拉",
+          "description": "橙子、茴香和牛油果，搭配鲜三文鱼块。"
         }
       },
       "photoSource": {
-        "type": "AI-generated realistic illustration",
-        "date": "2026-10-20",
-        "tool": "image_gen",
-        "note": "Web references reviewed; different sauces, ingredients, side dishes or presentation. Individual illustration generated for the requested dish on the approved ivory plate and beige stone table. Not a photograph of food served at the restaurant."
+        "type": "Reused approved illustration",
+        "date": "2026-10-21",
+        "note": "Approved photograph reused for the same dish already present on the dinner menu."
       }
     }
   ],
