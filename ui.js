@@ -76,3 +76,12 @@ document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(fu
   link.textContent='Chat commensali';
   if(/\/(?:chat-incontri|chat-regole)\.html$/.test(window.location.pathname))link.setAttribute('aria-current','page');
 })();
+
+// Opt-in notifiche condiviso da tutte le sezioni, anche nel frame della radio.
+(function(){
+  if(document.querySelector('script[data-cc-notifications]'))return;
+  const script=document.createElement('script');
+  script.src=new URL('notifications.js?v=20261021-1',document.currentScript.src).href;
+  script.setAttribute('data-cc-notifications','');
+  document.head.appendChild(script);
+})();
