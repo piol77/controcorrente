@@ -42,6 +42,7 @@
   function message(text) {
     status.textContent = text; panel.hidden = false; button.setAttribute('aria-expanded', 'true');
   }
+  const manualPermissionHelp = 'Su Chrome per Android, tocca il simbolo con i due cursori a sinistra dell’indirizzo (prima di “piol77”), poi Autorizzazioni → Notifiche → Consenti. Torna al sito, ricarica la pagina e premi Notifiche per la prova. Su iPhone, dopo aver aggiunto il sito alla schermata Home, usa Impostazioni → Notifiche → Controcorrente.';
   let owner = window;
   try { if (window.top.location.origin === location.origin) owner = window.top; } catch (_) {}
   // The outer document stays alive while the radio navigates between sections.
@@ -103,20 +104,23 @@
       return;
     }
     if (controller.permission() === 'denied') {
-      message('Le notifiche sono bloccate. Per abilitarle, apri le impostazioni delle notifiche di questo sito nel browser; su iPhone usa Impostazioni → Notifiche → Controcorrente. Poi torna qui e riprova.');
+      message('Le notifiche sono bloccate. ' + manualPermissionHelp);
       return;
     }
     button.disabled = true;
     let permission;
     try {
+      if (controller.permission() !== 'granted') {
+        message('Se non compare la richiesta di consenso, puoi attivare le notifiche manualmente. ' + manualPermissionHelp);
+      }
       // No await or registration before this call: Safari requires a direct tap.
       const request = controller.permission() === 'granted' ? Promise.resolve('granted') : controller.request();
       permission = await request;
       render();
       if (permission === 'denied') {
-        message('Consenso non accordato. Puoi modificare la scelta nelle impostazioni delle notifiche del sito.');
+        message('Consenso non accordato. Se vuoi attivare le notifiche manualmente: ' + manualPermissionHelp);
       } else if (permission !== 'granted') {
-        message('Notifiche non attivate. Premi di nuovo Notifiche quando vuoi riprovare. Se la richiesta non appare, controlla le impostazioni del sito nel browser.');
+        message('Notifiche non attivate. Se la richiesta è stata chiusa oppure non è comparsa, puoi attivarle manualmente. ' + manualPermissionHelp);
       } else {
         await controller.test();
         message('Permesso accordato: notifica di prova inviata al dispositivo. Se non la vedi, controlla il centro notifiche e le impostazioni del telefono. Per ora è una prova: gli avvisi del ristorante non sono ancora attivi. Premi di nuovo Notifiche per ripetere il test.');
@@ -124,7 +128,7 @@
     } catch (_) {
       message(permission === 'granted' || controller.permission() === 'granted'
         ? 'Il permesso è accordato, ma non è stato possibile mostrare la notifica di prova. Controlla la connessione e premi di nuovo Notifiche per riprovare.'
-        : 'Non è stato possibile richiedere il permesso. Apri il sito nel browser principale e riprova.');
+        : 'Non è stato possibile richiedere il permesso. ' + manualPermissionHelp);
     } finally { button.disabled = false; render(); }
   });
   window.addEventListener('focus', render);
