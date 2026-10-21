@@ -3,6 +3,7 @@
   const header = document.querySelector('header.top');
   if (!header || document.getElementById('cc-notification-toggle')) return;
   const root = new URL('.', document.currentScript.src);
+  const pushService = 'https://controcorrente-notifiche.superlion129.chatgpt.site';
   // Regenerated menu pages also receive the manifest through the shared loader.
   if (!document.querySelector('link[rel="manifest"]')) {
     const link = document.createElement('link');
@@ -42,13 +43,14 @@
   function message(text) {
     status.textContent = text; panel.hidden = false; button.setAttribute('aria-expanded', 'true');
   }
-  const manualPermissionHelp = 'Su Chrome per Android, tocca il simbolo con i due cursori a sinistra dell’indirizzo (prima di “piol77”), poi Autorizzazioni → Notifiche → Consenti. Torna al sito, ricarica la pagina e premi Notifiche per la prova. Su iPhone, dopo aver aggiunto il sito alla schermata Home, usa Impostazioni → Notifiche → Controcorrente.';
+  const manualPermissionHelp = 'Su Chrome per Android, tocca il simbolo con i due cursori a sinistra dell’indirizzo (prima di “piol77”), poi Autorizzazioni → Notifiche → Consenti. Torna al sito, ricarica la pagina e premi Notifiche per completare l’attivazione. Su iPhone, dopo aver aggiunto il sito alla schermata Home, usa Impostazioni → Notifiche → Controcorrente.';
   let owner = window;
   try { if (window.top.location.origin === location.origin) owner = window.top; } catch (_) {}
   // The outer document stays alive while the radio navigates between sections.
   // Permission requests are made synchronously within the click's user activation.
-  if (!owner.ccNotifications) {
-    let registrationPromise;
+  if (!owner.ccNotifications || typeof owner.ccNotifications.subscribe !== 'function') {
+    let registrationPromise, subscriptionPromise;
+    let subscribed = false;
     const controller = {
       permission: () => 'Notification' in owner ? owner.Notification.permission : 'unsupported',
       needsHome: () => (/iPad|iPhone|iPod/.test(owner.navigator.userAgent) ||
@@ -72,15 +74,28 @@
         return registrationPromise;
       },
       request: () => owner.Notification.requestPermission(),
-      async test() {
-        const registration = await controller.prepare();
-        if (controller.permission() !== 'granted') throw new Error('Permission not granted');
-        await registration.showNotification('Controcorrente · Notifica di prova', {
-          body:'Se leggi questo messaggio, il permesso per le notifiche funziona su questo dispositivo.',
-          icon:new URL('notification-icon-192.png', root).href,
-          tag:'controcorrente-permission-test',
-          data:{url:new URL('index.html', root).href}
-        });
+      subscribed: () => subscribed,
+      async subscribe() {
+        if (subscriptionPromise) return subscriptionPromise;
+        subscriptionPromise = (async () => {
+          if (controller.permission() !== 'granted') throw new Error('Permission required');
+          const registration = await controller.prepare();
+          if (!registration.pushManager) throw new Error('Push not supported');
+          const response = await owner.fetch(pushService + '/config', {credentials:'omit',cache:'no-store'});
+          if (!response.ok) throw new Error('Configuration unavailable');
+          const config = await response.json();
+          const base64 = config.publicKey.replace(/-/g,'+').replace(/_/g,'/');
+          const bytes = Uint8Array.from(owner.atob(base64 + '='.repeat((4-base64.length%4)%4)), ch => ch.charCodeAt(0));
+          let subscription = await registration.pushManager.getSubscription();
+          if (!subscription) subscription = await registration.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:bytes});
+          const saved = await owner.fetch(pushService + '/subscribe', {
+            method:'POST',credentials:'omit',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({endpoint:subscription.endpoint})
+          });
+          if (!saved.ok) throw new Error('Subscription unavailable');
+          subscribed = true;
+        })().catch(error => { subscriptionPromise = null; throw error; });
+        return subscriptionPromise;
       }
     };
     owner.ccNotifications = controller;
@@ -88,12 +103,18 @@
   const controller = owner.ccNotifications;
   function render() {
     const granted = controller.permission() === 'granted';
-    button.querySelector('span').textContent = granted ? 'Notifiche ✓' : 'Notifiche';
-    const label = granted ? 'Notifiche consentite: invia una notifica di prova' : 'Attiva le notifiche';
+    const active = granted && controller.subscribed();
+    button.querySelector('span').textContent = active ? 'Notifiche ✓' : 'Notifiche';
+    const label = active ? 'Notifiche attive: informazioni' : granted ? 'Completa attivazione notifiche' : 'Attiva le notifiche';
     button.title = label; button.setAttribute('aria-label', label);
   }
   render();
-  if (controller.supported() && !controller.needsHome()) controller.prepare().catch(() => {});
+  if (controller.supported() && !controller.needsHome()) {
+    controller.prepare().catch(() => {});
+    // Existing consent is enough to attempt enrolment on the next visit.
+    // Registration and page loads never send a test notification.
+    if (controller.permission() === 'granted') controller.subscribe().then(render).catch(() => {});
+  }
   button.addEventListener('click', async () => {
     if (controller.needsHome()) {
       message('Su iPhone e iPad: apri questo sito in Safari, tocca Condividi e scegli “Aggiungi alla schermata Home”. Se compare “Apri come app web”, lascialo attivo. Poi apri Controcorrente dalla nuova icona e premi di nuovo Notifiche. È necessario iOS/iPadOS 16.4 o successivo.');
@@ -122,12 +143,12 @@
       } else if (permission !== 'granted') {
         message('Notifiche non attivate. Se la richiesta è stata chiusa oppure non è comparsa, puoi attivarle manualmente. ' + manualPermissionHelp);
       } else {
-        await controller.test();
-        message('Permesso accordato: notifica di prova inviata al dispositivo. Se non la vedi, controlla il centro notifiche e le impostazioni del telefono. Per ora è una prova: gli avvisi del ristorante non sono ancora attivi. Premi di nuovo Notifiche per ripetere il test.');
+        await controller.subscribe();
+        message('Notifiche attive: riceverai gli avvisi quando cambiano le proposte per pranzo, cena o le offerte del giorno. Non inviamo prove ripetute. Se Chrome segnala “Possibile spam” su un avviso che riconosci del ristorante, puoi toccare “Mostra notifica” e poi “Mostra sempre”.');
       }
     } catch (_) {
       message(permission === 'granted' || controller.permission() === 'granted'
-        ? 'Il permesso è accordato, ma non è stato possibile mostrare la notifica di prova. Controlla la connessione e premi di nuovo Notifiche per riprovare.'
+        ? 'Il permesso è accordato, ma non è stato possibile completare l’attivazione degli avvisi. Controlla la connessione e premi di nuovo Notifiche per riprovare.'
         : 'Non è stato possibile richiedere il permesso. ' + manualPermissionHelp);
     } finally { button.disabled = false; render(); }
   });
