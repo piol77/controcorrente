@@ -102,13 +102,14 @@ jobs:
                   "Authorization": "Bearer " + token,
                   "Content-Type": "application/json",
                   "Cache-Control": "no-store",
+                  "User-Agent": "Controcorrente-Notifications/1.0",
               },
           )
           try:
               with urllib.request.urlopen(req, timeout=30) as response:
                   result = json.load(response)
           except urllib.error.HTTPError as exc:
-              raise SystemExit("Server notifiche: HTTP " + str(exc.code))
+              raise SystemExit("Server notifiche: HTTP " + str(exc.code) + "; server=" + str(exc.headers.get("Server")) + "; tipo=" + str(exc.headers.get("Content-Type")))
           if not isinstance(result, dict):
               raise SystemExit("Risposta del servizio notifiche non valida.")
           print("Esito provider:", json.dumps({
