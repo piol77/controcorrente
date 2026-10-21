@@ -598,6 +598,36 @@
       }
     },
     {
+      "name": "Lasagne al ragù",
+      "price": 10,
+      "description": "Lasagne al forno con ragù di carne.",
+      "allergens": [
+        1,
+        3,
+        7
+      ],
+      "icon": "Wheat",
+      "dishPhoto": "offerta-assets/lasagne-ragu-20261021.webp",
+      "photoLayout": "side",
+      "orderCourse": "Primo",
+      "translations": {
+        "en": {
+          "name": "Lasagne with meat ragù",
+          "description": "Oven-baked lasagne with meat ragù."
+        },
+        "zh": {
+          "name": "肉酱千层面",
+          "description": "烤制千层面，搭配肉酱。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-adapted approved lunch illustration",
+        "date": "2026-10-21",
+        "tool": "image_gen",
+        "note": "Approved lasagne lunch illustration adapted to the ivory speckled plate and navy tabletop of the daily offers. Same dish, individual serving, ingredients and camera angle preserved. Illustrative image, not a restaurant photograph."
+      }
+    },
+    {
       "name": "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino",
       "price": 11,
       "description": "Merluzzo* gratinato al forno con erbette aromatiche, accompagnato da patate al rosmarino.",
