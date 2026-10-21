@@ -14,6 +14,51 @@
   const SESSION_LIFETIME = 2 * 60 * 60 * 1000; // massimo due ore per il ritorno da WhatsApp
   let backgroundAt = 0, reconnecting = null;
 
+  // Solo avvisi anonimi di ingresso: nessun messaggio o pseudonimo inviato.
+  // La chat non ha backend: per le notifiche al gestore usa il servizio esterno ntfy.
+  const JOIN_ALERT_TOPIC = 'ccchat-4p8e2x60m9n5a7v3j2k6r4q8d1w0t6b5';
+  const JOIN_ALERT_LAST = 'cc-chat-ingresso-avviso-ultimo-v1';
+  const OWNER_DEVICE = 'cc-chat-dispositivo-gestore-v1';
+  const JOIN_ALERT_COOLDOWN = 10 * 60 * 1000;
+
+  // Il gestore può identificare il proprio browser una volta tramite URL dedicato.
+  // È una preferenza locale, non un'autenticazione da moderatore.
+  try {
+    const q = new URLSearchParams(location.search);
+    if (q.get('dispositivo_gestore') === '1') {
+      localStorage.setItem(OWNER_DEVICE, '1');
+      q.delete('dispositivo_gestore');
+      const clean = location.pathname + (q.toString() ? '?' + q : '') + location.hash;
+      history.replaceState(history.state, '', clean);
+    }
+  } catch (_) {}
+
+  async function announceJoin() {
+    try {
+      if (localStorage.getItem(OWNER_DEVICE) === '1') return;
+      const now = Date.now(), last = Number(localStorage.getItem(JOIN_ALERT_LAST) || 0);
+      if (last > 0 && now >= last && now - last < JOIN_ALERT_COOLDOWN) return;
+      localStorage.setItem(JOIN_ALERT_LAST, String(now));
+      const response = await fetch('https://ntfy.sh/', {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'omit',
+        keepalive: true,
+        body: JSON.stringify({
+          topic: JOIN_ALERT_TOPIC,
+          title: 'Controcorrente · Chat commensali',
+          message: 'Un commensale è entrato nella chat.',
+          click: 'https://piol77.github.io/controcorrente/chat-incontri.html',
+          priority: 3
+        })
+      });
+      if (!response.ok) throw new Error('Notifica non accettata');
+    } catch (_) {
+      // Non interrompere la chat quando il servizio esterno è irraggiungibile.
+      try { localStorage.removeItem(JOIN_ALERT_LAST); } catch (_) {}
+    }
+  }
+
   // Ricorda solo pseudonimo e provenienza nella scheda corrente: mai i messaggi.
   function saveSession() {
     if (!mine || !mode) return;
@@ -198,7 +243,10 @@
       formStatus(); roomSize();
       note(automatic ? 'Rientrato con lo stesso pseudonimo. I messaggi passati non sono recuperabili.'
                      : 'I messaggi sono temporanei e visibili solo ai presenti in questa stanza.');
-      if (!automatic) $('chat-composer').focus();
+      if (!automatic) {
+        $('chat-composer').focus();
+        void announceJoin();
+      }
     } catch (err) {
       console.warn('Chat commensali: connessione non riuscita', err);
       const old = room;
