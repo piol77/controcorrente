@@ -24,7 +24,7 @@ Esempio di struttura (non creare il file se non è davvero richiesto un invio):
 {
   "requestId": "avviso-YYYYMMDDTHHMMSSZ-unico",
   "body": "Questa sera siamo in ritardo di circa 10 minuti. Ci scusiamo per l'attesa!",
-  "expiresAt": "2026-10-21T19:10:00Z"
+  "expiresAt": "YYYY-MM-DDTHH:MM:SSZ"
 }
 ```
 Ogni avviso è una richiesta autonoma, **mai** da accodare per il futuro: se è scaduto, il workflow non invia nulla. In alternativa si può avviare manualmente il workflow in Actions inserendo messaggio e TTL.
