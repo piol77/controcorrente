@@ -21,6 +21,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 concurrency:
   group: controcorrente-avvisi-straordinari
@@ -37,7 +38,6 @@ jobs:
 
       - name: Invia soltanto avvisi recenti e autorizzati
         env:
-          PUSH_ADMIN_TOKEN: ${{ secrets.CC_PUSH_ADMIN_TOKEN }}
           EVENT_NAME: ${{ github.event_name }}
           RUN_ID: ${{ github.run_id }}
           COMMIT_SHA: ${{ github.sha }}
@@ -53,9 +53,6 @@ jobs:
           import urllib.error
           import urllib.request
 
-          token = os.environ.get("PUSH_ADMIN_TOKEN", "")
-          if not token:
-              raise SystemExit("Secret CC_PUSH_ADMIN_TOKEN assente: nessun avviso inviato.")
           now = dt.datetime.now(dt.timezone.utc)
           if os.environ["EVENT_NAME"] == "push":
               data = json.loads(pathlib.Path(".github/notifiche/invio.json").read_text("utf-8"))
@@ -92,6 +89,11 @@ jobs:
               "url": "https://piol77.github.io/controcorrente/",
               "expiresAt": int(expiry.timestamp() * 1000),
           }
+          payload["dryRun"] = data.get("dryRun") is True if os.environ["EVENT_NAME"] == "push" else False
+          oidc_url = os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience=https%3A%2F%2Fcontrocorrente-notifiche.superlion129.chatgpt.site"
+          oidc_req = urllib.request.Request(oidc_url, headers={"Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
+          with urllib.request.urlopen(oidc_req, timeout=15) as response:
+              token = json.load(response)["value"]
           req = urllib.request.Request(
               os.environ["PUSH_URL"],
               data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
@@ -110,7 +112,7 @@ jobs:
           if not isinstance(result, dict):
               raise SystemExit("Risposta del servizio notifiche non valida.")
           print("Esito provider:", json.dumps({
-              key: result.get(key) for key in ("subscribers", "accepted", "failed", "duplicate") if key in result
+              key: result.get(key) for key in ("ready", "dryRun", "subscribers", "accepted", "failed", "expired", "duplicate") if key in result
           }, ensure_ascii=False))
           if result.get("failed", 0):
               raise SystemExit("Alcuni invii push sono falliti.")
