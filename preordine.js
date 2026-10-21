@@ -306,11 +306,13 @@
       if (requestedDay === todayInRome() && ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60))) {
         window.alert('Stai inviando la richiesta per oggi dopo le ' + (isLunch() ? '12:00' : '18:00') + '. Attendi la conferma specifica del Ristorante.');
       }
-      const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '', ...dishes,
+      const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
+        '*Nome e cognome: ' + data.get('nome') + '*',
+        '*Persone: ' + data.get('persone') + '*',
+        '*Orario richiesto: ' + data.get('orario') + '*', '',
+        ...dishes,
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
-        'Nome e cognome: ' + data.get('nome'),
-        'Persone: ' + data.get('persone'), 'Giorno: ' + requestDate(requestedDay),
-        'Orario richiesto: ' + data.get('orario'),
+        'Giorno: ' + requestDate(requestedDay),
         'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const encodedMessage = encodeURIComponent(lines.join('\n'));
