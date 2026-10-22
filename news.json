@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-22T16:34:04+00:00",
+  "fetched_at": "2026-10-22T17:33:57+00:00",
   "items": [
+    {
+      "title": "Quali sono le regole d'ingaggio dei militari in arrivo a Milano",
+      "url": "https://www.rainews.it/video/2026/10/regole-ingaggio-militari-milano-dopo-scontri-e-saccheggi--3c16faa7-93d1-4e15-98a8-88827a371be5.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792670832698_Militari.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-22T12:07:00+00:00"
+    },
+    {
+      "title": "Carte Pokémon da record, pensionato inglese le vende all'asta e diventa milionario",
+      "url": "https://www.rainews.it/articoli/2026/10/carte-pokemon-da-record-pensionato-inglese-le-vende-allasta-e-diventa-milionario-c996f6d2-47fb-49b7-979e-9a5420e676d6.html",
+      "image": "https://www.rainews.it/dl/img/2026/02/27/1772182519712_GettyImages.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-22T17:05:00+00:00"
+    },
     {
       "title": "Panetta: \"Prudenza fiscale è buona cosa, non va contrapposta a coesione sociale\"",
       "url": "https://www.rainews.it/articoli/2026/10/bankitalia-panetta-prudenza-fiscale-e-buona-cosa-non-va-contrapposta-a-coesione-sociale-d2eff822-2a8b-4926-95d4-43ed1083ff46.html",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-22T15:35:00+00:00"
-    },
-    {
-      "title": "Usa: mega multa da 25 miliardi per Meta, \"ha ingannato utenti su privacy\"",
-      "url": "https://www.rainews.it/articoli/2026/10/usa-mega-multa-da-25-miliardi-per-meta-ha-ingannato-utenti-su-privacy-91eccaa0-e3aa-4d9a-bc15-7b0a46e9cf9d.html",
-      "image": "https://www.rainews.it/dl/img/2026/08/07/1786096236052_large.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-22T15:01:00+00:00"
-    },
-    {
-      "title": "Blocco TIR: dal Cdm via libera al decreto con gli aiuti, ma la protesta non si ferma",
-      "url": "https://www.rainews.it/maratona/2026/10/emergenza-sud-carburanti-blocchi-tir-dl-misure-sostegno-protesta-autotrasporto-agricoltura-disagi-rete-nazionale-34e5c228-5522-45d1-8882-60f103767510.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792672313790_.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-22T15:21:00+00:00"
     }
   ]
 }
