@@ -319,10 +319,10 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 
 
 ## Messaggio ordine WhatsApp — regola permanente, 2026-10-11
-- Nel messaggio WhatsApp destinato a Paolo, evidenziare in grassetto il nome di ogni piatto mediante la sintassi WhatsApp `*nome del piatto*`. Quantità, prezzi, dati del cliente e altre righe mantengono il formato attuale.
+- Nel messaggio WhatsApp destinato a Paolo, evidenziare in grassetto con la sintassi WhatsApp `*testo*` l'intera riga di ogni piatto (quantità, nome e prezzo), nome e cognome, numero di persone, orario richiesto e allergie/note (se presenti). Le altre righe mantengono il formato attuale.
 - Ordinare le righe per tipologia: antipasti, primi, secondi, quindi menù completi/alla coppia e altre proposte composte. Non dipendere dall'ordine dei clic; all'interno della stessa tipologia conservare la sequenza originale.
 - La regola riguarda la composizione del messaggio WhatsApp, non il layout dei menù o del riepilogo. Applicarla anche ai piatti pranzo e alle offerte; usare la sezione del catalogo e, per le schede giornaliere, l'eventuale `data-order-course` (Antipasto, Primo o Secondo) o l'intestazione della portata, con riconoscimento del nome come ripiego. Per nuovi nomi ambigui specificare la portata nella scheda.
-- Nel solo testo WhatsApp rappresentare l'asterisco dei surgelati con il segno tipografico `＊`, così rimane visibile e non interrompe il grassetto. Conservare gli asterischi originali nei menù e nei dati.
+- Nel solo testo WhatsApp rappresentare gli asterischi letterali nei nomi dei piatti e nelle note con il segno tipografico `＊`, così rimangono visibili e non interrompono il grassetto. Conservare gli asterischi originali nei menù e nei dati.
 - Preservare quantità, prezzi, totale, data, orario, note, controlli di validità, apertura WhatsApp e azzeramento del carrello. Aggiornare il riferimento cache di `preordine.js` in `ordine.html`, verificare con selezioni in ordine inverso/misto e pubblicare su GitHub Pages.
 
 ## Avviso richieste tardive e prenotazioni future — 2026-10-14
