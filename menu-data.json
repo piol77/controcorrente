@@ -68,6 +68,33 @@
         ],
         "icon": "Leaf",
         "dishPhoto": "cena-funghi.webp"
+      },
+      {
+        "name": "Vellutata di zucca con gamberetti* e crostone di pane bruschettato",
+        "price": 10,
+        "description": "Vellutata di zucca con gamberetti* e un crostone di pane bruschettato.",
+        "allergens": [
+          1,
+          2
+        ],
+        "icon": "Shrimp",
+        "dishPhoto": "cena-assets/vellutata-zucca-gamberetti-crostone-20261022.webp",
+        "translations": {
+          "en": {
+            "name": "Pumpkin velouté with shrimp* and grilled bread",
+            "description": "Smooth pumpkin soup with shrimp* and a slice of grilled bread."
+          },
+          "zh": {
+            "name": "南瓜浓汤配虾仁*和烤面包",
+            "description": "细腻南瓜浓汤搭配虾仁*及一片烤面包。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration matching approved dinner setup",
+          "date": "2026-10-22",
+          "tool": "image_gen",
+          "note": "Web references inspected; they contained additional ingredients or inconsistent presentation. Generated with pumpkin soup, shrimp and one grilled bread slice only, matching the approved ivory ceramic plate, navy table, warm light and angle."
+        }
       }
     ],
     "primi": [
@@ -509,27 +536,6 @@
   ],
   "offers": [
     {
-      "name": "Carne cruda con limone e Grana",
-      "price": 10,
-      "description": "Carne cruda, limone e scaglie di Grana.",
-      "dishPhoto": "offerta-assets/torretta-carne-cruda.webp",
-      "allergens": [
-        7
-      ],
-      "icon": "Beef",
-      "course": "Antipasto",
-      "translations": {
-        "en": {
-          "name": "Beef Tartare with Lemon and Grana",
-          "description": "Raw beef with lemon and shavings of Grana cheese."
-        },
-        "zh": {
-          "name": "柠檬格拉纳奶酪生牛肉",
-          "description": "生牛肉配柠檬和格拉纳奶酪薄片。"
-        }
-      }
-    },
-    {
       "name": "Ravioli orientali di gamberetti* (5 pezzi)",
       "price": 6,
       "description": "Cinque ravioli in stile orientale, dal delicato ripieno di gamberetti*.",
@@ -555,35 +561,6 @@
         "date": "2026-10-14",
         "tool": "image_gen",
         "note": "Internet references inspected: examples add sauces and garnishes or use different portions and plates. Approved five-dumpling photograph edited to show shrimp filling, preserving ivory plate, navy tabletop, composition and light. Illustrative image, not a photograph of food served at the restaurant."
-      }
-    },
-    {
-      "name": "Tagliatelle con zucca, funghi misti e salsiccia",
-      "price": 10,
-      "description": "Tagliatelle con zucca, funghi misti e salsiccia.",
-      "allergens": [
-        1,
-        3
-      ],
-      "icon": "Wheat",
-      "dishPhoto": "offerta-assets/tagliatelle-zucca-funghi-salsiccia-20261020.webp",
-      "photoLayout": "side",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Tagliatelle with pumpkin, mixed mushrooms and sausage",
-          "description": "Tagliatelle pasta with pumpkin, mixed mushrooms and sausage."
-        },
-        "zh": {
-          "name": "南瓜什锦蘑菇香肠宽面",
-          "description": "意式宽面搭配南瓜、什锦蘑菇和香肠。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-adapted approved lunch illustration",
-        "date": "2026-10-20",
-        "tool": "image_gen",
-        "note": "Existing approved lunch dish adapted to match the ivory ceramic plate, dark navy tabletop, soft light and framing of the evening offers. Recipe and ingredients preserved. Illustrative image, not a restaurant photograph."
       }
     },
     {
@@ -617,32 +594,54 @@
       }
     },
     {
-      "name": "Merluzzo* gratinato al forno alle erbette aromatiche, con patate al rosmarino",
-      "price": 11,
-      "description": "Merluzzo* gratinato al forno con erbette aromatiche, accompagnato da patate al rosmarino.",
+      "name": "Baozi gigante di carne e verdure (1 pezzo)",
+      "price": 5,
+      "description": "Un baozi gigante al vapore, ripieno di carne, uovo, cipolla e verza.",
       "allergens": [
         1,
-        4
+        3
       ],
-      "icon": "Fish",
-      "dishPhoto": "offerta-assets/merluzzo-erbette-patate-20261020.webp",
+      "icon": "Wheat",
+      "dishPhoto": "offerta-assets/baozi-gigante-un-pezzo-20261022.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Oven-gratinated cod* with aromatic herbs and rosemary potatoes",
-          "description": "Cod* baked with an aromatic herb gratin, served with rosemary potatoes."
+          "name": "Giant meat and vegetable baozi (1 piece)",
+          "description": "One giant steamed baozi filled with meat, egg, onion and cabbage."
         },
         "zh": {
-          "name": "香草焗鳕鱼*配迷迭香土豆",
-          "description": "鳕鱼*覆以香草脆皮焗烤，搭配迷迭香土豆。"
+          "name": "肉菜大包子（1个）",
+          "description": "一个大蒸包子，内馅为肉、鸡蛋、洋葱和卷心菜。"
         }
       },
       "photoSource": {
-        "type": "AI-adapted approved lunch illustration",
-        "date": "2026-10-20",
+        "type": "AI-edited approved illustration",
+        "date": "2026-10-22",
         "tool": "image_gen",
-        "note": "Existing approved lunch dish adapted to match the ivory ceramic plate, dark navy tabletop, soft light and framing of the evening offers. Recipe and ingredients preserved. Illustrative image, not a restaurant photograph."
+        "note": "Approved lunch photo edited to show exactly one opened giant baozi, preserving meat, egg, onion and cabbage filling, ivory plate, navy table, warm light and angle."
+      }
+    },
+    {
+      "name": "Parmigiana di patate con prosciutto cotto e formaggio",
+      "price": 10,
+      "description": "Patate al forno a strati con prosciutto cotto e formaggio.",
+      "allergens": [
+        7
+      ],
+      "icon": "Milk",
+      "dishPhoto": "offerta-assets/parmigiana-patate-prosciutto-scamorza-20261009.webp",
+      "photoLayout": "side",
+      "orderCourse": "Secondo",
+      "translations": {
+        "en": {
+          "name": "Potato parmigiana with cooked ham and cheese",
+          "description": "Layered baked potatoes with cooked ham and cheese."
+        },
+        "zh": {
+          "name": "火腿奶酪焗土豆",
+          "description": "烤土豆分层搭配熟火腿和奶酪。"
+        }
       }
     }
   ],
