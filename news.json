@@ -1,15 +1,31 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-22T18:26:54+00:00",
+  "fetched_at": "2026-10-22T19:26:06+00:00",
   "items": [
     {
-      "title": "Fine vita, in Umbria via libera alla legge sul suicidio assistito",
-      "url": "https://www.rainews.it/video/2026/10/fine-vita-in-umbria-via-libera-alla-legge-sul-suicidio-assistito-86e06476-1243-4efd-b0f9-79a01471fdaf.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792691474945_videoframe.png",
+      "title": "Scontri Milano, i genitori del 12enne: \"Nostro figlio ha sbagliato, non esce più\"",
+      "url": "https://www.rainews.it/video/2026/10/scontri-milano-i-genitori-del-12enne-nostro-figlio-ha-sbagliato-non-esce-piu-faf4c108-b282-45c0-ba41-10d86a95c8ab.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792695768595_.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T17:49:00+00:00"
+      "published_at": "2026-10-22T19:01:00+00:00"
+    },
+    {
+      "title": "C'è anche un po' di Italia tra le 300 invenzioni più originali secondo \"Time\"",
+      "url": "https://www.rainews.it/video/2026/10/ce-anche-un-po-di-italia-tra-le-300-invenzioni-piu-originali-secondo-time-39ef3c92-2b7d-4038-ad7d-33ca89c06139.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792695661585_.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-22T19:00:00+00:00"
+    },
+    {
+      "title": "Carburante, assalto a distributore nel Napoletano: la polizia presidia",
+      "url": "https://www.rainews.it/video/2026/10/carburante-assalto-a-distributore-nel-napoletano-polizia-presidia-c658f821-6859-4dcc-ae07-7cf8bdd18872.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792692535897_Cattura.PNG",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-22T17:47:00+00:00"
     },
     {
       "title": "Carte Pokémon da record, pensionato inglese le vende all'asta e diventa milionario",
@@ -20,28 +36,12 @@
       "published_at": "2026-10-22T17:05:00+00:00"
     },
     {
-      "title": "L'Umbria ha approvato la legge sul suicidio medicalmente assistito",
-      "url": "https://www.rainews.it/articoli/2026/10/umbria-ha-approvato-la-legge-sul-suicidio-medicalmente-assistito-6fb0301e-6814-4159-a4ab-a3e0d1827f5b.html",
-      "image": "https://www.rainews.it/dl/img/2025/06/12/1749683358853_son_severi_fine_vita.transferframe.jpeg",
+      "title": "Fine vita, in Umbria via libera alla legge sul suicidio assistito",
+      "url": "https://www.rainews.it/video/2026/10/fine-vita-in-umbria-via-libera-alla-legge-sul-suicidio-assistito-86e06476-1243-4efd-b0f9-79a01471fdaf.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792691474945_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T17:45:00+00:00"
-    },
-    {
-      "title": "Ue, premio Daphne Caruana Galizia 2026 all'inchiesta sull'accordo Italia-Albania",
-      "url": "https://www.rainews.it/articoli/2026/10/ue-premio-daphne-caruana-galizia-2026-allinchiesta-sullaccordo-italia-albania-5023b933-2c8c-4661-b088-da829f60f229.html",
-      "image": "https://www.rainews.it/dl/img/2026/9/04/1788480344049_dafnhe.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-22T15:36:00+00:00"
-    },
-    {
-      "title": "Quali sono le regole d'ingaggio dei militari in arrivo a Milano",
-      "url": "https://www.rainews.it/video/2026/10/regole-ingaggio-militari-milano-dopo-scontri-e-saccheggi--3c16faa7-93d1-4e15-98a8-88827a371be5.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792670832698_Militari.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-22T12:07:00+00:00"
+      "published_at": "2026-10-22T17:49:00+00:00"
     }
   ]
 }
