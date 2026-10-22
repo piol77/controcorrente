@@ -187,6 +187,33 @@
           "type": "Reused approved illustration",
           "note": "Existing dinner-menu illustration with aubergine, tuna and a little tomato; approved plate and navy background preserved."
         }
+      },
+      {
+        "name": "Spaghetti con zucchine, ricotta e pinoli al profumo di limone",
+        "price": 12.5,
+        "description": "Spaghetti con zucchine, ricotta cremosa e pinoli, al profumo di limone.",
+        "allergens": [
+          1,
+          7
+        ],
+        "icon": "Wheat",
+        "dishPhoto": "cena-assets/spaghetti-zucchine-ricotta-pinoli-limone-20261022.webp",
+        "translations": {
+          "en": {
+            "name": "Spaghetti with courgettes, ricotta, pine nuts and lemon",
+            "description": "Spaghetti with courgettes, creamy ricotta and pine nuts, scented with lemon."
+          },
+          "zh": {
+            "name": "西葫芦乳清奶酪松子柠檬意大利面",
+            "description": "意大利面搭配西葫芦、绵滑乳清奶酪和松子，带有清新柠檬香。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration matching approved dinner setup",
+          "date": "2026-10-22",
+          "tool": "image_gen",
+          "note": "Illustrative spaghetti with zucchini, ricotta, pine nuts and lemon zest; matched to the approved ivory speckled plate, navy tabletop, warm upper-left lighting and three-quarter framing. No restaurant food photograph."
+        }
       }
     ],
     "secondi": [
