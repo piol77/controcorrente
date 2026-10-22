@@ -10,3 +10,10 @@
 .weather-card__forecast span{display:block;color:var(--muted)}
 .weather-card__meta a{color:inherit}
 @media(max-width:380px){.weather-card{padding:14px}.weather-card__row{grid-template-columns:95px minmax(0,1fr)}}
+
+.weather-card__locations{display:flex;gap:6px;margin-top:7px}
+.weather-card__locations button{font:600 .6875rem/1.2 system-ui,sans-serif;color:var(--gold);background:transparent;border:1px solid var(--line);border-radius:6px;padding:5px 8px;min-height:26px;cursor:pointer}
+.weather-card__locations button[aria-pressed="true"]{border-color:var(--gold);background:rgba(203,167,109,.14)}
+.weather-card__locations button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.weather-card__locations button:disabled{opacity:.6;cursor:wait}
+.weather-card__status{font-size:.75rem;line-height:1.5;color:var(--muted);margin:7px 0 0}

@@ -104,6 +104,8 @@
   try { enabled = sessionStorage.getItem(preferenceKey) !== 'off'; } catch (_) {}
   let pending = false;
   let failed = false;
+  let attempt = 0;
+  let audible = false;
   const audio = document.createElement('audio');
   audio.preload = 'none';
   audio.volume = 0.25;
@@ -111,28 +113,32 @@
   const button = document.createElement('button');
   button.id = 'cc-jazz-toggle';
   button.type = 'button';
-  button.style.cssText = 'display:block;margin:8px 0 0 auto;width:36px;height:36px;padding:0;border:1px solid var(--gold,#cba76d);border-radius:50%;background:var(--navy,#082a43);color:var(--gold,#cba76d);font-size:18px;line-height:1;cursor:pointer;';
+  button.style.cssText = 'display:block;margin:8px 0 0 auto;width:44px;height:44px;padding:4px;border:1px solid var(--gold,#cba76d);border-radius:50%;background:var(--navy,#082a43);color:var(--gold,#cba76d);font-size:18px;line-height:1;cursor:pointer;';
   let activeButton = button;
   function render() {
-    const playing = !audio.paused && !failed;
-    button.textContent = playing ? '♫' : enabled ? '♪' : '×';
-    const label = playing ? 'Spegni 1st Greek Jazz' : failed
-      ? '1st Greek Jazz non disponibile: tocca per riprovare'
-      : enabled ? 'Ascolta 1st Greek Jazz' : 'Riattiva 1st Greek Jazz';
-    button.setAttribute('aria-label', label);
-    button.setAttribute('aria-pressed', String(playing));
-    button.title = label;
-    if (activeButton !== button) {
-      activeButton.textContent = button.textContent;
-      for (const name of ['aria-label', 'aria-pressed', 'title']) {
-        activeButton.setAttribute(name, button.getAttribute(name));
-      }
+    const playing = enabled && audible && !audio.paused && !failed;
+    const label = playing ? 'Musica ON · Spegni la radio' : pending
+      ? 'Avvio della radio · Tocca per spegnere' : failed
+      ? 'Musica OFF · Radio non disponibile: tocca per riprovare'
+      : 'Musica OFF · Accendi la radio';
+    const icon = '<svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" focusable="false" style="display:block;margin:0 auto;pointer-events:none">'
+      + '<path d="M9 18V5l12-2v13M9 8l12-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+      + '<ellipse cx="6" cy="18" rx="3" ry="2.5" fill="currentColor"/><ellipse cx="18" cy="16" rx="3" ry="2.5" fill="currentColor"/>'
+      + (playing ? '' : '<path d="M3 3l18 18" stroke="var(--navy,#082a43)" stroke-width="5"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>') + '</svg>';
+    for (const target of new Set([button, activeButton])) {
+      target.innerHTML = icon + '<span aria-hidden="true" style="display:block;font:700 9px/1.1 system-ui;letter-spacing:.04em;pointer-events:none">' + (playing ? 'ON' : 'OFF') + '</span>';
+      target.setAttribute('aria-label', label);
+      target.setAttribute('aria-pressed', String(playing));
+      target.setAttribute('data-music-state', playing ? 'on' : 'off');
+      target.title = label;
+      target.style.boxShadow = playing ? '0 0 0 2px var(--gold,#cba76d)' : 'none';
     }
   }
   function remember() {
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
   }
   function stop() {
+    attempt++;
     audio.pause();
     audio.removeAttribute('src');
     audio.load();
@@ -142,14 +148,17 @@
   function start() {
     if (!enabled || pending || (!audio.paused && !failed)) return;
     pending = true;
+    const currentAttempt = ++attempt;
     failed = false;
+    render();
     if (!audio.getAttribute('src')) {
       audio.src = 'https://cdn1.zetcast.net/flac';
     }
     try {
       const result = audio.play();
       if (result && typeof result.then === 'function') {
-        result.then(() => { pending = false; render(); }).catch(error => {
+        result.then(() => { if (currentAttempt !== attempt) return; pending = false; render(); }).catch(error => {
+          if (currentAttempt !== attempt) return;
           pending = false;
           failed = error.name !== 'NotAllowedError' && error.name !== 'AbortError';
           render();
@@ -157,9 +166,9 @@
       } else { pending = false; }
     } catch (_) { pending = false; failed = true; render(); }
   }
-  audio.addEventListener('playing', () => { pending = false; failed = false; render(); });
-  audio.addEventListener('pause', render);
-  audio.addEventListener('error', () => { pending = false; failed = true; render(); });
+  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); });
+  audio.addEventListener('pause', () => { audible = false; render(); });
+  audio.addEventListener('error', () => { audible = false; pending = false; failed = true; render(); });
   function toggle() {
     if (enabled && (pending || (!audio.paused && !failed))) {
       enabled = false;
@@ -187,7 +196,7 @@
     if (!frame) {
       frame = document.createElement('iframe');
       frame.title = 'Controcorrente';
-      frame.allow = 'autoplay';
+      frame.allow = 'autoplay; geolocation';
       frame.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;border:0;background:var(--navy,#082a43);z-index:2147483647';
       frame.addEventListener('load', () => {
         try {
