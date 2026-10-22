@@ -295,30 +295,30 @@
     {
       "name": "Orecchiette ai due cavolfiori con acciughe e capperi, leggermente piccanti",
       "price": 9,
-      "description": "Orecchiette con cavolfiore bianco e viola, acciughe, capperi e una nota piccante.",
+      "description": "Orecchiette con cavolfiore verde e bianco, acciughe, capperi e una nota piccante.",
       "allergens": [
         1,
         4
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/orecchiette-cavolfiori-20261022.webp",
+      "dishPhoto": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
           "name": "Orecchiette with two cauliflowers, anchovies and capers, mildly spicy",
-          "description": "Orecchiette with white and purple cauliflower, anchovies, capers and a touch of chili."
+          "description": "Orecchiette with green and white cauliflower, anchovies, capers and a touch of chili."
         },
         "zh": {
           "name": "双花椰菜鳀鱼酸豆猫耳朵面（微辣）",
-          "description": "白色和紫色花椰菜搭配鳀鱼、酸豆和少许辣椒。"
+          "description": "绿色和白色花椰菜搭配鳀鱼、酸豆和少许辣椒。"
         }
       },
       "photoSource": {
-        "type": "AI-generated realistic illustration",
+        "type": "AI-edited approved illustration",
         "date": "2026-10-22",
         "tool": "image_gen",
-        "note": "Illustrative image matching ingredients; not a photograph of restaurant food."
+        "note": "Matched the approved potato parmigiana photographic setup: ivory ceramic plate, navy tabletop, warm upper-left lighting, three-quarter camera angle and landscape framing. Target dish ingredients preserved; cauliflower corrected to green and white. Illustrative image, not restaurant food photography."
       }
     },
     {
@@ -329,7 +329,7 @@
         1
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/rigatoni-melanzane-salsiccia-20261022.webp",
+      "dishPhoto": "pranzo-assets/rigatoni-melanzane-salsiccia-coerente-20261022.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
@@ -343,10 +343,10 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated realistic illustration",
+        "type": "AI-edited approved illustration",
         "date": "2026-10-22",
         "tool": "image_gen",
-        "note": "Illustrative image matching ingredients; not a photograph of restaurant food."
+        "note": "Matched the approved potato parmigiana photographic setup: ivory ceramic plate, navy tabletop, warm upper-left lighting, three-quarter camera angle and landscape framing. Target dish ingredients preserved. Illustrative image, not restaurant food photography."
       }
     },
     {
@@ -358,7 +358,7 @@
         3
       ],
       "icon": "Shrimp",
-      "dishPhoto": "pranzo-assets/riso-pollo-gamberetti-verdure.webp",
+      "dishPhoto": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
@@ -370,6 +370,12 @@
           "name": "香料鸡肉蔬菜虾仁*炒饭",
           "description": "米饭搭配鸡肉、虾仁*、胡萝卜、西葫芦、豌豆和鸡蛋。"
         }
+      },
+      "photoSource": {
+        "type": "AI-edited approved illustration",
+        "date": "2026-10-22",
+        "tool": "image_gen",
+        "note": "Matched the approved potato parmigiana photographic setup: ivory ceramic plate, navy tabletop, warm upper-left lighting, three-quarter camera angle and landscape framing. Target dish ingredients preserved. Illustrative image, not restaurant food photography."
       }
     },
     {
@@ -393,12 +399,12 @@
           "description": "螺旋面搭配海鲈鱼、西葫芦和番茄。"
         }
       },
-      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodori-20261022.webp",
+      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodori-coerente-20261022.webp",
       "photoSource": {
-        "type": "AI-generated realistic illustration",
+        "type": "AI-edited approved illustration",
         "date": "2026-10-22",
         "tool": "image_gen",
-        "note": "Illustrative image matching ingredients; not a photograph of restaurant food."
+        "note": "Matched the approved potato parmigiana photographic setup: ivory ceramic plate, navy tabletop, warm upper-left lighting, three-quarter camera angle and landscape framing. Target dish ingredients preserved. Illustrative image, not restaurant food photography."
       }
     },
     {
@@ -432,7 +438,7 @@
         3
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/baozhi-20261022.webp",
+      "dishPhoto": "pranzo-assets/baozhi-coerente-20261022.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
@@ -446,10 +452,10 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated realistic illustration",
+        "type": "AI-edited approved illustration",
         "date": "2026-10-22",
         "tool": "image_gen",
-        "note": "Illustrative image matching ingredients; not a photograph of restaurant food."
+        "note": "Matched the approved potato parmigiana photographic setup: ivory ceramic plate, navy tabletop, warm upper-left lighting, three-quarter camera angle and landscape framing. Target dish ingredients preserved. Illustrative image, not restaurant food photography."
       }
     },
     {
@@ -458,7 +464,7 @@
       "description": "Anatra* con zucchine, carote e cipolla in salsa piccante, accompagnata da riso bianco al vapore.",
       "allergens": [],
       "icon": "Drumstick",
-      "dishPhoto": "pranzo-assets/anatra-piccante-riso-20261022.webp",
+      "dishPhoto": "pranzo-assets/anatra-piccante-riso-coerente-20261022.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
@@ -472,10 +478,10 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated realistic illustration",
+        "type": "AI-edited approved illustration",
         "date": "2026-10-22",
         "tool": "image_gen",
-        "note": "Illustrative image matching ingredients; not a photograph of restaurant food."
+        "note": "Matched the approved potato parmigiana photographic setup: ivory ceramic plate, navy tabletop, warm upper-left lighting, three-quarter camera angle and landscape framing. Target dish ingredients preserved. Illustrative image, not restaurant food photography."
       }
     },
     {
