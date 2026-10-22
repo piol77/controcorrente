@@ -38,7 +38,7 @@
     updated.textContent = 'Agg. ' + new Intl.DateTimeFormat('it-IT', {timeZone:'Europe/Rome',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(data.fetched_at));
   }
   function advance() {
-    if (paused || document.hidden || root.matches(':hover') || root.contains(document.activeElement) || slides.length < 2) return;
+    if (paused || document.hidden || root.matches(':hover') || viewport.contains(document.activeElement) || slides.length < 2) return;
     slides.forEach(function (a) { a.classList.remove('is-leaving'); });
     var old = slides[current]; old.classList.remove('is-current'); old.classList.add('is-leaving');
     old.tabIndex = -1; old.setAttribute('aria-hidden','true');
