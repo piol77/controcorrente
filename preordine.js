@@ -303,7 +303,7 @@
         .forEach(([, item]) => {
           // A typographic frozen marker preserves the note without closing WhatsApp bold.
           const name = item.name.replace(/\*/g, '＊');
-          dishes.push(item.qty + ' × *' + name + '* — ' + euro(item.qty * item.price));
+          dishes.push('*' + item.qty + ' × ' + name + ' — ' + euro(item.qty * item.price) + '*');
         });
       if (!dishes.length) { list.focus(); return; }
       const holiday = isHoliday(requestedDay);
@@ -332,7 +332,7 @@
         ...dishes,
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
         'Giorno: ' + requestDate(requestedDay),
-        'Allergie / note: ' + (data.get('note') || 'Nessuna nota'), '',
+        '*Allergie / note: ' + String(data.get('note') || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const encodedMessage = encodeURIComponent(lines.join('\n'));
       const webWhatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodedMessage;
