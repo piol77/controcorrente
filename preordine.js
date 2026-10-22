@@ -196,6 +196,8 @@
     const list = document.querySelector('[data-order-list]'), total = document.querySelector('[data-order-total]');
     if (!list || !total) return;
     const form = document.querySelector('[data-order-form]');
+    // Collect all missing fields before asking the browser to validate values.
+    form.noValidate = true;
     const submit = form.querySelector('[type="submit"]');
     const dayInput = form.querySelector('[name="giorno"]');
     dayInput.min = todayInRome();
@@ -249,6 +251,23 @@
       event.preventDefault();
       if (!menuReady) return;
       dayInput.min = todayInRome();
+      const requiredFields = [
+        ['nome', 'nome e cognome'],
+        ['giorno', 'giorno di arrivo'],
+        ['persone', 'numero di persone'],
+        ['orario', 'orario di arrivo']
+      ];
+      const missing = requiredFields.filter(([name]) => {
+        const field = form.elements.namedItem(name);
+        return !field.value.trim() && !field.validity.badInput;
+      });
+      if (missing.length) {
+        window.alert((missing.length === 1 ? 'Manca il dato:' : 'Mancano i dati:')
+          + '\n' + missing.map(([, label]) => '• ' + label).join('\n')
+          + '\n\nI dati già inseriti e i piatti selezionati sono stati conservati.');
+        form.elements.namedItem(missing[0][0]).focus();
+        return;
+      }
       if (!form.reportValidity()) return;
       const data = new FormData(form);
       const requestedDay = String(data.get('giorno') || '');
