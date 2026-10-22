@@ -26,7 +26,7 @@
     }).format(now);
     var day = forecast && forecast.days.find(function (d) { return d.date === localDate(now); });
     if (!day || now - new Date(forecast.fetched_at) > 48 * 3600000) {
-      unavailable('In attesa dell’aggiornamento del mattino');
+      unavailable('In attesa dell’aggiornamento meteo');
       return;
     }
     ['lunch', 'dinner'].forEach(function (service) {
@@ -41,6 +41,11 @@
         maximumFractionDigits: 1
       }).format(value.precipitation_mm) + ' mm previsti';
       target.appendChild(details);
+      if (value.forecast_at) {
+        var archived = document.createElement('small');
+        archived.textContent = 'Previsione del mattino';
+        target.appendChild(archived);
+      }
     });
     card.querySelector('[data-weather-updated]').textContent = 'Agg. ' + new Intl.DateTimeFormat('it-IT', {
       timeZone: 'Europe/Rome', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
@@ -67,13 +72,8 @@
     if (document.hidden) return;
     render();
     // Only read the small local JSON; visitors never contact the weather provider.
-    // Refresh open tabs after the daily update, and retry a failed read after 5 minutes.
-    var today = localDate(new Date());
-    var refreshedToday = forecast && localDate(new Date(forecast.fetched_at)) === today;
-    var hour = Number(new Intl.DateTimeFormat('en-GB', {
-      timeZone: 'Europe/Rome', hour: '2-digit', hourCycle: 'h23'
-    }).format(new Date()));
-    if ((!fetched || (!refreshedToday && hour >= 8)) && Date.now() - lastAttempt >= 300000) load();
+    // Poll only the site's local JSON so open tabs receive both daily editions.
+    if (Date.now() - lastAttempt >= 300000) load();
   }
   render();
   load();
