@@ -1,15 +1,15 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-22T23:26:50+00:00",
+  "fetched_at": "2026-10-23T00:35:13+00:00",
   "items": [
     {
-      "title": "Scontri Milano, i genitori del 12enne: \"Nostro figlio ha sbagliato, non esce più\"",
-      "url": "https://www.rainews.it/video/2026/10/scontri-milano-i-genitori-del-12enne-nostro-figlio-ha-sbagliato-non-esce-piu-faf4c108-b282-45c0-ba41-10d86a95c8ab.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792695768595_.png",
+      "title": "Napoli, le voci della protesta: \"I blocchi continuano, ci trattano come mafiosi\"",
+      "url": "https://www.rainews.it/video/2026/10/rivolta-tir-carburanti-proteste-napoli-voci-blocchi-cointinuano-vendemmia-f5cb2a02-bbd7-46cb-96da-c2738b92736e.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/23/1792710542020_ranframe.jpeg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T19:01:00+00:00"
+      "published_at": "2026-10-22T23:07:00+00:00"
     },
     {
       "title": "Ucraina, spiragli di negoziati ma pioggia di missili",
@@ -20,12 +20,12 @@
       "published_at": "2026-10-22T19:09:00+00:00"
     },
     {
-      "title": "Carburante, assalto a distributore nel Napoletano: la polizia presidia",
-      "url": "https://www.rainews.it/video/2026/10/carburante-assalto-a-distributore-nel-napoletano-polizia-presidia-c658f821-6859-4dcc-ae07-7cf8bdd18872.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792692535897_Cattura.PNG",
+      "title": "Scontri Milano, i genitori del 12enne: \"Nostro figlio ha sbagliato, non esce più\"",
+      "url": "https://www.rainews.it/video/2026/10/scontri-milano-i-genitori-del-12enne-nostro-figlio-ha-sbagliato-non-esce-piu-faf4c108-b282-45c0-ba41-10d86a95c8ab.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792695768595_.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T17:47:00+00:00"
+      "published_at": "2026-10-22T19:01:00+00:00"
     },
     {
       "title": "Perché Bismillah è lo slogan delle proteste in Francia",
@@ -36,12 +36,12 @@
       "published_at": "2026-10-22T19:03:00+00:00"
     },
     {
-      "title": "La città meneghina si blinda per le nuove manifestazioni",
-      "url": "https://www.rainews.it/video/2026/10/la-citta-meneghina-si-blinda-per-le-nuove-manifestazioni-c5f1519c-2971-4076-bfcc-abc3b202a53a.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792692153921_videoframe.png",
+      "title": "Carburante, assalto a distributore nel Napoletano: la polizia presidia",
+      "url": "https://www.rainews.it/video/2026/10/carburante-assalto-a-distributore-nel-napoletano-polizia-presidia-c658f821-6859-4dcc-ae07-7cf8bdd18872.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792692535897_Cattura.PNG",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T17:59:00+00:00"
+      "published_at": "2026-10-22T17:47:00+00:00"
     }
   ]
 }
