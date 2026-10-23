@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-23T16:27:41+00:00",
+  "fetched_at": "2026-10-23T17:26:58+00:00",
   "items": [
+    {
+      "title": "Terremoto: parla il Capo della Protezione Civile Salvo Cocina",
+      "url": "https://www.rainews.it/video/2026/10/salvo-cocina-protezione-civile-terremoto-maremoto-dbbfcfa8-cdab-47d2-8783-18624f70de08.html",
+      "image": "https://www.rainews.it/dl/img/2024/07/27/1722089661984_Il_capo_della_Protezione_civile_regionale_Salvo_Cocina.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-23T12:10:00+00:00"
+    },
+    {
+      "title": "Il governo in Gran Bretagna: \"Ogni cittadino abbia cibo in scatola, acqua e radio a manovella\"",
+      "url": "https://www.rainews.it/articoli/2026/10/il-governo-in-gran-bretagna-ogni-cittadino-abbia-cibo-in-scatola-acqua-e-radio-a-manovella-153b94ab-8188-4fa6-b82f-5595ff906801.html",
+      "image": "https://www.rainews.it/dl/img/2022/01/24/1643013316277_GettyImages.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-23T16:25:00+00:00"
+    },
     {
       "title": "Eni conferma il tetto al prezzo dei carburanti fino a fine anno, rivalutato ogni mese",
       "url": "https://www.rainews.it/articoli/2026/10/eni-conferma-il-tetto-al-prezzo-dei-carburanti-fino-a-fine-anno-impatto-centinaia-di-milioni-34ac5825-8e49-4ccb-aeac-e21dbb06eba5.html",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-23T12:08:00+00:00"
-    },
-    {
-      "title": "Netanyahu ordina la chiusura della Cisgiordania dopo i morti a Hebron",
-      "url": "https://www.rainews.it/articoli/2026/10/netanyahu-ordina-la-chiusura-della-cisgiordania-dopo-i-fatti-di-hebron-56eaad26-1160-4552-9c41-8d6bfebaff9c.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/18/1792334082189_IPA.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-23T13:06:00+00:00"
-    },
-    {
-      "title": "L'ombra della criminalità organizzata sulle proteste dei camionisti",
-      "url": "https://www.rainews.it/video/2026/10/lombra-della-criminalita-organizzata-sulle-proteste-dei-camionisti-ba7d3ce0-7807-4db2-a666-75cba100da33.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792756047093_videoframe.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-23T11:44:00+00:00"
     }
   ]
 }
