@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-23T05:27:17+00:00",
+  "fetched_at": "2026-10-23T06:35:28+00:00",
   "items": [
+    {
+      "title": "24MM. Dopo l'alluvione: Emilia-Romagna, ricostruire in un clima che cambia",
+      "url": "https://www.rainews.it/video/2026/10/24mm-dopo-lalluvione-emilia-romagna-ricostruire-in-un-clima-che-cambia-fca184a4-1eaf-4a8f-96ad-ea345c44a268.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/23/1792735473999_MM__ottobre_web_frame.jpeg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-22T21:55:00+00:00"
+    },
+    {
+      "title": "Drone in picchiata si scaglia sul sistema missilistico terra-aria russo Buk-M1",
+      "url": "https://www.rainews.it/video/2026/10/drone-in-picchiata-si-scaglia-sul-sistema-missilistico-terra-aria-russo-huliaipole-f9b70167-9909-42b7-8190-0c881713555a.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/23/1792737203845_.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-23T06:33:00+00:00"
+    },
     {
       "title": "Il tam tam della protesta, in chat la guida per i cortei, \"gridare slogan e sfondare\"",
       "url": "https://www.rainews.it/articoli/2026/10/il-tam-tam-della-protesta-in-chat-la-guida-per-i-cortei-gridare-slogan-e-sfondare-la-protesta-e-le-devastazioni-d00c18e5-f214-42dd-bafc-07dfcc4c9832.html",
@@ -12,12 +28,12 @@
       "published_at": "2026-10-23T03:26:00+00:00"
     },
     {
-      "title": "Il resort abusivo in bilico sull'oceano: le immagini dal drone",
-      "url": "https://www.rainews.it/video/2026/10/un-drone-riprende-il-crollo-di-un-complesso-abusivo-su-una-spiaggia-messicana-in-seguito-al-passagg-4ee25a17-5e11-4d6c-90b4-679b81690f79.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792730055882_Immagine__.png",
+      "title": "Saette notturne: raffiche cercano di fermare i droni ucraini a Nižnij Novgorod",
+      "url": "https://www.rainews.it/video/2026/10/saette-notturne-raffiche-cercano-di-fermare-i-droni-ucraini-a-niznij-novgorod-video-3044d415-952e-47cd-a257-157d82ddb028.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/23/1792736620600_.jpg",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-23T04:28:00+00:00"
+      "published_at": "2026-10-23T06:25:00+00:00"
     },
     {
       "title": "Napoli, le voci della protesta: \"I blocchi continuano, ci trattano come mafiosi\"",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-22T23:07:00+00:00"
-    },
-    {
-      "title": "El Niño preoccupa l'Australia, con l'estate \"forte pericolo incendi\"",
-      "url": "https://www.rainews.it/articoli/2026/10/el-nino-preoccupa-laustralia-con-lestate-forte-pericolo-incendi-4f8cf170-7a6f-4f2e-ace4-a7be334752d7.html",
-      "image": "https://www.rainews.it/dl/img/2023/05/08/1683541276829_GettyImages.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-23T04:22:00+00:00"
-    },
-    {
-      "title": "Scontri Milano, i genitori del 12enne: \"Nostro figlio ha sbagliato, non esce più\"",
-      "url": "https://www.rainews.it/video/2026/10/scontri-milano-i-genitori-del-12enne-nostro-figlio-ha-sbagliato-non-esce-piu-faf4c108-b282-45c0-ba41-10d86a95c8ab.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792695768595_.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-22T19:01:00+00:00"
     }
   ]
 }
