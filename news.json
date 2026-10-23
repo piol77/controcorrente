@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-23T14:25:38+00:00",
+  "fetched_at": "2026-10-23T16:27:41+00:00",
   "items": [
+    {
+      "title": "Eni conferma il tetto al prezzo dei carburanti fino a fine anno, rivalutato ogni mese",
+      "url": "https://www.rainews.it/articoli/2026/10/eni-conferma-il-tetto-al-prezzo-dei-carburanti-fino-a-fine-anno-impatto-centinaia-di-milioni-34ac5825-8e49-4ccb-aeac-e21dbb06eba5.html",
+      "image": "https://www.rainews.it/dl/img/2026/9/28/1790589361703_large.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-23T16:08:00+00:00"
+    },
+    {
+      "title": "Settimana in rosso per le Borse europee, Wall Street ancora giù",
+      "url": "https://www.rainews.it/articoli/2026/10/settimana-in-rosso-per-le-borse-europee-wall-street-ancora-giu-a7ee83e5-e849-45d5-a2a1-fba76e3f64a2.html",
+      "image": "https://www.rainews.it/dl/img/2022/11/04/1667580634747_Immagine.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-23T14:15:00+00:00"
+    },
     {
       "title": "Bimba di 3 anni trovata morta in casa, arrestata la madre",
       "url": "https://www.rainews.it/articoli/2026/10/bimba-di-3-anni-trovata-morta-in-casa-arrestata-la-madre-ff82b1f3-0a0e-4fd7-9da8-bae6a0d6cce3.html",
@@ -23,22 +39,6 @@
       "title": "L'ombra della criminalità organizzata sulle proteste dei camionisti",
       "url": "https://www.rainews.it/video/2026/10/lombra-della-criminalita-organizzata-sulle-proteste-dei-camionisti-ba7d3ce0-7807-4db2-a666-75cba100da33.html",
       "image": "https://www.rainews.it/dl/img/2026/10/23/1792756047093_videoframe.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-23T11:44:00+00:00"
-    },
-    {
-      "title": "Drone in picchiata si scaglia sul sistema missilistico terra-aria russo Buk-M1",
-      "url": "https://www.rainews.it/video/2026/10/drone-in-picchiata-si-scaglia-sul-sistema-missilistico-terra-aria-russo-huliaipole-f9b70167-9909-42b7-8190-0c881713555a.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792737203845_.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-23T06:33:00+00:00"
-    },
-    {
-      "title": "Milano blindata per le manifestazioni: scatta il piano di sicurezza, arrivati i parà della Folgore",
-      "url": "https://www.rainews.it/video/2026/10/milano-blindata-per-le-manifestazioni-scatta-il-piano-di-sicurezza-arrivati-i-para-della-folgore-4f5a9dcf-e2a0-463e-a577-69dd328cd65c.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792756062217_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-23T11:44:00+00:00"
