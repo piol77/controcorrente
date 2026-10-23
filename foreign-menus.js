@@ -6,71 +6,79 @@
 
   const LUNCH={
   "en": {
-    "Spaghetti con zucchine e ricotta al profumo di limone": [
-      "Spaghetti with courgettes, ricotta and lemon",
-      "Spaghetti with courgettes and ricotta, scented with lemon."
+    "Spaghetti ai frutti di mare": [
+      "Seafood spaghetti",
+      "Spaghetti with langoustines*, clams, shrimp* and squid, with a little tomato."
     ],
-    "Lasagne al ragù": [
-      "Lasagne with meat ragù",
-      "Oven-baked lasagne with meat ragù."
+    "Casarecce con branzino e melanzane": [
+      "Casarecce with sea bass and aubergine",
+      "Casarecce pasta with sea bass and aubergine, with a little tomato."
     ],
-    "Fusilli con tonno fresco e melanzane, con poco pomodoro": [
-      "Fusilli with fresh tuna, aubergine and a little tomato",
-      "Fusilli with fresh tuna and aubergine, with a little tomato."
+    "Orecchiette con salsiccia e cavolo nero": [
+      "Orecchiette with sausage and Tuscan kale",
+      "Orecchiette pasta with sausage and Tuscan kale."
     ],
-    "Noodles in brodo di carne con pollo, uova e verdure": [
-      "Noodles in meat broth with chicken, eggs and vegetables",
-      "Noodles in meat broth with chicken, eggs and vegetables."
+    "Spaghetti di riso con maiale, verdure e uova": [
+      "Rice noodles with pork, vegetables and egg",
+      "Rice noodles with pork, courgettes, carrots, egg and savoy cabbage."
     ],
-    "Zuppa frantoiana": [
-      "Tuscan vegetable and bean soup",
-      "Soup with celery, carrots, onion, pumpkin, Tuscan kale and beans."
+    "Orata alla griglia con verza e carote saltate": [
+      "Grilled sea bream with sautéed savoy cabbage and carrots",
+      "Grilled sea bream served with sautéed savoy cabbage and carrots."
     ],
-    "Maiale alla pizzaiola con patate al forno": [
-      "Pork alla pizzaiola with roast potatoes",
-      "Pork with tomato and olives, served with roast potatoes."
+    "Branzino alla griglia con verza e carote saltate": [
+      "Grilled sea bass with sautéed savoy cabbage and carrots",
+      "Grilled sea bass served with sautéed savoy cabbage and carrots."
     ],
-    "Bocconcini di pollo alle arachidi con riso bianco al vapore": [
-      "Peanut chicken bites with steamed white rice",
-      "Bite-sized chicken with peanuts, served with steamed white rice."
+    "Salmone alla griglia con verza e carote saltate": [
+      "Grilled salmon with sautéed savoy cabbage and carrots",
+      "Grilled salmon served with sautéed savoy cabbage and carrots."
     ],
-    "Insalatona con arance, finocchi, avocado e bocconcini di salmone fresco": [
-      "Salad with oranges, fennel, avocado and fresh salmon bites",
-      "Oranges, fennel and avocado with bite-sized pieces of fresh salmon."
+    "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco": [
+      "Salad with fennel, oranges, avocado and fresh salmon bites",
+      "Fennel, oranges and avocado with bite-sized pieces of fresh salmon."
+    ],
+    "Petti di pollo con zucca e gorgonzola, con contorno di patate": [
+      "Chicken breast with pumpkin, gorgonzola and potatoes",
+      "Chicken breast with pumpkin and gorgonzola, served with potatoes."
     ]
   },
   "zh": {
-    "Spaghetti con zucchine e ricotta al profumo di limone": [
-      "西葫芦乳清奶酪柠檬意大利面",
-      "意大利面搭配西葫芦与乳清奶酪，带有清新柠檬香。"
+    "Spaghetti ai frutti di mare": [
+      "海鲜意大利面",
+      "意大利面搭配海螯虾*、蛤蜊、虾仁*和鱿鱼，配少量番茄。"
     ],
-    "Lasagne al ragù": [
-      "肉酱千层面",
-      "烤制千层面，搭配肉酱。"
+    "Casarecce con branzino e melanzane": [
+      "海鲈鱼茄子扭管面",
+      "扭管面搭配海鲈鱼和茄子，配少量番茄。"
     ],
-    "Fusilli con tonno fresco e melanzane, con poco pomodoro": [
-      "鲜金枪鱼茄子螺旋面，配少量番茄",
-      "螺旋面搭配鲜金枪鱼、茄子和少量番茄。"
+    "Orecchiette con salsiccia e cavolo nero": [
+      "香肠黑甘蓝猫耳朵面",
+      "猫耳朵面搭配香肠和黑甘蓝。"
     ],
-    "Noodles in brodo di carne con pollo, uova e verdure": [
-      "肉汤面配鸡肉、鸡蛋和蔬菜",
-      "面条搭配肉汤、鸡肉、鸡蛋和蔬菜。"
+    "Spaghetti di riso con maiale, verdure e uova": [
+      "猪肉蔬菜鸡蛋米粉",
+      "米粉搭配猪肉、西葫芦、胡萝卜、鸡蛋和皱叶甘蓝。"
     ],
-    "Zuppa frantoiana": [
-      "托斯卡纳蔬菜豆汤",
-      "芹菜、胡萝卜、洋葱、南瓜、黑甘蓝与豆类熬制的汤。"
+    "Orata alla griglia con verza e carote saltate": [
+      "烤海鲷鱼配炒皱叶甘蓝和胡萝卜",
+      "烤海鲷鱼，搭配炒皱叶甘蓝和胡萝卜。"
     ],
-    "Maiale alla pizzaiola con patate al forno": [
-      "番茄橄榄烩猪肉配烤土豆",
-      "猪肉搭配番茄与橄榄，佐以烤土豆。"
+    "Branzino alla griglia con verza e carote saltate": [
+      "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
+      "烤海鲈鱼，搭配炒皱叶甘蓝和胡萝卜。"
     ],
-    "Bocconcini di pollo alle arachidi con riso bianco al vapore": [
-      "花生鸡丁配清蒸白米饭",
-      "鸡丁搭配花生，佐以清蒸白米饭。"
+    "Salmone alla griglia con verza e carote saltate": [
+      "烤三文鱼配炒皱叶甘蓝和胡萝卜",
+      "烤三文鱼，搭配炒皱叶甘蓝和胡萝卜。"
     ],
-    "Insalatona con arance, finocchi, avocado e bocconcini di salmone fresco": [
-      "橙子茴香牛油果鲜三文鱼沙拉",
-      "橙子、茴香和牛油果，搭配鲜三文鱼块。"
+    "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco": [
+      "茴香橙子牛油果鲜三文鱼沙拉",
+      "茴香、橙子和牛油果，搭配鲜三文鱼块。"
+    ],
+    "Petti di pollo con zucca e gorgonzola, con contorno di patate": [
+      "南瓜戈贡佐拉奶酪鸡胸肉配土豆",
+      "鸡胸肉搭配南瓜和戈贡佐拉奶酪，佐以土豆。"
     ]
   }
 };
