@@ -1,15 +1,15 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-23T02:35:39+00:00",
+  "fetched_at": "2026-10-23T03:33:45+00:00",
   "items": [
     {
-      "title": "Napoli, le voci della protesta: \"I blocchi continuano, ci trattano come mafiosi\"",
-      "url": "https://www.rainews.it/video/2026/10/rivolta-tir-carburanti-proteste-napoli-voci-blocchi-cointinuano-vendemmia-f5cb2a02-bbd7-46cb-96da-c2738b92736e.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792710542020_ranframe.jpeg",
+      "title": "Il tam tam della protesta, in chat la guida per i cortei, \"gridare slogan e sfondare\"",
+      "url": "https://www.rainews.it/articoli/2026/10/il-tam-tam-della-protesta-in-chat-la-guida-per-i-cortei-gridare-slogan-e-sfondare-la-protesta-e-le-devastazioni-d00c18e5-f214-42dd-bafc-07dfcc4c9832.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/19/1792410800157_rainewsbacfadfebceecb.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T23:07:00+00:00"
+      "published_at": "2026-10-23T03:26:00+00:00"
     },
     {
       "title": "Guerra alla dipendenza digitale, la Grecia vieta i social agli under 15",
@@ -20,12 +20,12 @@
       "published_at": "2026-10-23T00:52:00+00:00"
     },
     {
-      "title": "Scontri Milano, i genitori del 12enne: \"Nostro figlio ha sbagliato, non esce più\"",
-      "url": "https://www.rainews.it/video/2026/10/scontri-milano-i-genitori-del-12enne-nostro-figlio-ha-sbagliato-non-esce-piu-faf4c108-b282-45c0-ba41-10d86a95c8ab.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792695768595_.png",
+      "title": "Napoli, le voci della protesta: \"I blocchi continuano, ci trattano come mafiosi\"",
+      "url": "https://www.rainews.it/video/2026/10/rivolta-tir-carburanti-proteste-napoli-voci-blocchi-cointinuano-vendemmia-f5cb2a02-bbd7-46cb-96da-c2738b92736e.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/23/1792710542020_ranframe.jpeg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T19:01:00+00:00"
+      "published_at": "2026-10-22T23:07:00+00:00"
     },
     {
       "title": "Ucraina, spiragli di negoziati ma pioggia di missili",
@@ -36,12 +36,12 @@
       "published_at": "2026-10-22T19:09:00+00:00"
     },
     {
-      "title": "Carburante, assalto a distributore nel Napoletano: la polizia presidia",
-      "url": "https://www.rainews.it/video/2026/10/carburante-assalto-a-distributore-nel-napoletano-polizia-presidia-c658f821-6859-4dcc-ae07-7cf8bdd18872.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/22/1792692535897_Cattura.PNG",
+      "title": "Scontri Milano, i genitori del 12enne: \"Nostro figlio ha sbagliato, non esce più\"",
+      "url": "https://www.rainews.it/video/2026/10/scontri-milano-i-genitori-del-12enne-nostro-figlio-ha-sbagliato-non-esce-piu-faf4c108-b282-45c0-ba41-10d86a95c8ab.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/22/1792695768595_.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-22T17:47:00+00:00"
+      "published_at": "2026-10-22T19:01:00+00:00"
     }
   ]
 }
