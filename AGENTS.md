@@ -407,3 +407,5 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Nuova sessione: musica spenta e pulsante ON, senza partenza al primo clic generico. Soltanto una scelta esplicita abilita la radio; conservarla almeno per la sessione di browser e durante tutta la navigazione con il lettore condiviso esistente.
 - Il testo è l’azione: ON per accendere, OFF per spegnere (anche per annullare un avvio in corso). I cerchi concentrici animati indicano esclusivamente riproduzione effettiva; interromperli in pausa, caricamento, errore o fine stream e rispettare il movimento ridotto.
 - Restano invariati stream FLAC, volume, dimensione del pulsante, notifiche, condivisioni, contatori, ordini e altri contenuti.
+
+- Simbolo della radio (correzione esplicita 25/10): nota normale con ON quando la musica è spenta; nota sbarrata con OFF quando è accesa o in avvio. I due cerchi concentrici sono più visibili, con tratto luminoso di 2 px e vibrazione continua; movimento soltanto durante la riproduzione effettiva.

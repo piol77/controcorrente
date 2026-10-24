@@ -88,10 +88,10 @@
   const radioStyle = document.createElement('style');
   radioStyle.textContent = `
     #cc-jazz-toggle{position:relative;isolation:isolate}
-    #cc-jazz-toggle::before,#cc-jazz-toggle::after{content:"";position:absolute;inset:-5px;border:1px solid currentColor;border-radius:50%;pointer-events:none;opacity:0}
-    #cc-jazz-toggle[data-music-state="on"]::before,#cc-jazz-toggle[data-music-state="on"]::after{animation:cc-radio-ripple 1.6s ease-out infinite}
-    #cc-jazz-toggle[data-music-state="on"]::after{animation-delay:.8s}
-    @keyframes cc-radio-ripple{0%{transform:scale(.88);opacity:.75}100%{transform:scale(1.3);opacity:0}}
+    #cc-jazz-toggle::before,#cc-jazz-toggle::after{content:"";position:absolute;inset:-4px;border:2px solid currentColor;box-shadow:0 0 6px rgba(203,167,109,.7);border-radius:50%;pointer-events:none;opacity:0}
+    #cc-jazz-toggle[data-music-state="on"]::before,#cc-jazz-toggle[data-music-state="on"]::after{animation:cc-radio-ripple 1s ease-in-out infinite}
+    #cc-jazz-toggle[data-music-state="on"]::after{inset:-9px;animation-delay:.3s;animation-direction:reverse}
+    @keyframes cc-radio-ripple{0%,100%{transform:scale(.96);opacity:.95}50%{transform:scale(1.13);opacity:.5}}
     @media(prefers-reduced-motion:reduce){#cc-jazz-toggle[data-music-state="on"]::before,#cc-jazz-toggle[data-music-state="on"]::after{animation:none;opacity:.45}#cc-jazz-toggle[data-music-state="on"]::after{inset:-9px}}
   `;
   document.head.appendChild(radioStyle);
@@ -135,7 +135,7 @@
     const icon = '<svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true" focusable="false" style="display:block;margin:0 auto;pointer-events:none">'
       + '<path d="M9 18V5l12-2v13M9 8l12-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
       + '<ellipse cx="6" cy="18" rx="3" ry="2.5" fill="currentColor"/><ellipse cx="18" cy="16" rx="3" ry="2.5" fill="currentColor"/>'
-      + (playing ? '' : '<path d="M3 3l18 18" stroke="var(--navy,#082a43)" stroke-width="5"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>') + '</svg>';
+      + (playing || pending ? '<path d="M3 3l18 18" stroke="var(--navy,#082a43)" stroke-width="5"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' : '') + '</svg>';
     for (const target of new Set([button, activeButton])) {
       target.innerHTML = icon + '<span aria-hidden="true" style="display:block;font:700 9px/1.1 system-ui;letter-spacing:.04em;pointer-events:none">' + (playing || pending ? 'OFF' : 'ON') + '</span>';
       target.setAttribute('aria-label', label);
