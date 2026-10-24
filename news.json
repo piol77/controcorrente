@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-24T16:26:03+00:00",
+  "fetched_at": "2026-10-24T17:34:33+00:00",
   "items": [
+    {
+      "title": "Italia prima in Ue per tasse sul gasolio, pesano per il 48%",
+      "url": "https://www.rainews.it/articoli/2026/10/italia-prima-in-ue-per-tasse-sul-gasolio-pesano-per-il-48-74159de9-92fc-4798-b036-88ddc8992720.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/02/1790935065578_vlcsnaphms.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-24T16:32:00+00:00"
+    },
+    {
+      "title": "Lione: la polizia spara lacrimogeni contro i manifestanti",
+      "url": "https://www.rainews.it/video/2026/10/scontri-con-la-polizia-a-lione-648fb252-a47b-472e-82b3-e99fd2b85021.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792861052191_DBGF.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-24T16:55:00+00:00"
+    },
     {
       "title": "Youssef Siher è il ricercatore che alimentava l'account Instagram del Movimento 17 ottobre",
       "url": "https://www.rainews.it/video/2026/10/youssef-siher-e-il-ricercatore-che-alimentava-laccount-instagram-del-movimento-17-ottobre-4c5000d0-ef52-4d58-b8f1-7c4ff42fbbe1.html",
@@ -12,12 +28,12 @@
       "published_at": "2026-10-24T15:51:00+00:00"
     },
     {
-      "title": "DIRETTA - Francia, nuovo giorno di proteste: cortei senza gravi incidenti, 70mila agenti mobilitati",
+      "title": "DIRETTA-Francia: 70mila agenti dispiegati, in tutto il paese manifestano in 800mila secondo la CGT",
       "url": "https://www.rainews.it/maratona/2026/10/francia-ancora-tensioni-nelle-citta-scontri-tra-manifestanti-e-forze-dellordine-a151916e-529a-4834-ad39-e3080a6ac984.html",
       "image": "https://www.rainews.it/dl/img/2026/10/24/1792838987011_DAPRR.jpg",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-24T14:53:00+00:00"
+      "published_at": "2026-10-24T17:00:00+00:00"
     },
     {
       "title": "Torino, tafferugli tra manifestanti e polizia in Piazza Castello",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-24T15:51:00+00:00"
-    },
-    {
-      "title": "Gli studenti sfidano Vucic, la Serbia e le elezioni dall'esito più incerto degli ultimi 14 anni",
-      "url": "https://www.rainews.it/articoli/2026/10/gli-studenti-sfidano-vucic-la-serbia-e-le-elezioni-dallesito-piu-incerto-degli-ultimi-14-anni-0ffaaf00-4a97-4405-adb8-82f5b50ea6f1.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792852828797_DT.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-24T14:53:00+00:00"
-    },
-    {
-      "title": "Torino, accoltellato a Parco Dora: muore poco dopo in ospedale. Si cerca l'assassino",
-      "url": "https://www.rainews.it/articoli/2026/10/torino-accoltellato-a-parco-dora-muore-poco-dopo-in-ospedale-si-cerca-lassassino-83139d8b-9946-4e7f-87c1-ff9bd67e1f0c.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792851322805_hoppiopllagraffitiparcodoratorinoseo.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-24T14:26:00+00:00"
     }
   ]
 }
