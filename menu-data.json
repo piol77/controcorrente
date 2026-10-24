@@ -68,6 +68,33 @@
         ],
         "icon": "Leaf",
         "dishPhoto": "cena-funghi.webp"
+      },
+      {
+        "name": "Vitello tonnato",
+        "price": 12,
+        "description": "Fettine di vitello con salsa di tonno, uova, acciughe e capperi.",
+        "allergens": [
+          3,
+          4
+        ],
+        "icon": "Fish",
+        "dishPhoto": "cena-assets/vitello-tonnato-20261024.webp",
+        "translations": {
+          "en": {
+            "name": "Vitello tonnato",
+            "description": "Thinly sliced veal with tuna, egg, anchovy and caper sauce."
+          },
+          "zh": {
+            "name": "金枪鱼酱小牛肉",
+            "description": "薄切小牛肉配金枪鱼、鸡蛋、凤尾鱼和刺山柑酱。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-24",
+          "tool": "image_gen",
+          "note": "Restaurant menu illustration with sliced veal, tuna sauce and capers on an ivory plate over a navy table; recipe and visual references inspected online. Not a photograph of restaurant food."
+        }
       }
     ],
     "primi": [
@@ -137,28 +164,31 @@
         }
       },
       {
-        "name": "Fusilli con melanzane e tonno fresco",
+        "name": "Fusilli con melanzane e branzino",
         "price": 12.5,
-        "description": "Fusilli con melanzane e tonno fresco, con poco pomodoro.",
+        "description": "Fusilli con melanzane e branzino, con poco pomodoro.",
         "allergens": [
           1,
           4
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
+        "dishPhoto": "cena-assets/fusilli-melanzane-branzino-20261024.webp",
         "translations": {
           "en": {
-            "name": "Fusilli with aubergine and fresh tuna",
-            "description": "Fusilli with aubergine and fresh tuna, with a little tomato."
+            "name": "Fusilli with aubergine and sea bass",
+            "description": "Fusilli with aubergine and sea bass, with a little tomato."
           },
           "zh": {
-            "name": "茄子鲜金枪鱼螺旋面",
-            "description": "螺旋面搭配茄子、鲜金枪鱼和少量番茄。"
+            "name": "茄子海鲈鱼螺旋面",
+            "description": "螺旋面搭配茄子和海鲈鱼，配少量番茄。"
           }
         },
         "photoSource": {
-          "type": "Reused approved illustration",
-          "note": "Existing dinner-menu illustration with aubergine, tuna and a little tomato; approved plate and navy background preserved."
+          "type": "AI-edited approved dinner photograph",
+          "date": "2026-10-24",
+          "tool": "image_gen",
+          "reference": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
+          "note": "Replaced tuna pieces with cooked sea bass; kept fusilli, aubergine, scant tomato, original white plate and navy tabletop. Illustrative, not restaurant photography."
         }
       }
     ],
@@ -580,34 +610,6 @@
   ],
   "offers": [
     {
-      "name": "Ravioli orientali di gamberetti* (5 pezzi)",
-      "price": 6,
-      "description": "Cinque ravioli in stile orientale, dal delicato ripieno di gamberetti*.",
-      "allergens": [
-        1,
-        2
-      ],
-      "icon": "Wheat",
-      "course": "Antipasto",
-      "dishPhoto": "offerta-assets/ravioli-orientali-gamberetti-20261014.webp",
-      "translations": {
-        "en": {
-          "name": "Oriental shrimp* dumplings (5 pieces)",
-          "description": "Five oriental-style dumplings with a delicate shrimp* filling."
-        },
-        "zh": {
-          "name": "东方风味虾仁*饺子（5个）",
-          "description": "五个东方风味饺子，包裹细腻的虾仁*馅。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-14",
-        "tool": "image_gen",
-        "note": "Internet references inspected: examples add sauces and garnishes or use different portions and plates. Approved five-dumpling photograph edited to show shrimp filling, preserving ivory plate, navy tabletop, composition and light. Illustrative image, not a photograph of food served at the restaurant."
-      }
-    },
-    {
       "name": "Lasagne al ragù",
       "price": 10,
       "description": "Lasagne al forno con ragù di carne.",
@@ -638,32 +640,32 @@
       }
     },
     {
-      "name": "Orecchiette con salsiccia e cavolo nero",
+      "name": "Orecchiette fresche con salsiccia e spinaci",
       "price": 10,
-      "description": "Orecchiette con salsiccia e cavolo nero.",
+      "description": "Orecchiette fresche con salsiccia e spinaci saltati.",
       "allergens": [
         1
       ],
       "icon": "Wheat",
-      "dishPhoto": "pranzo-assets/orecchiette-cavolo-nero-coerente-20261023.webp",
+      "dishPhoto": "offerta-assets/orecchiette-salsiccia-spinaci-20261024.webp",
       "photoLayout": "side",
       "orderCourse": "Primo",
       "translations": {
         "en": {
-          "name": "Orecchiette with sausage and Tuscan kale",
-          "description": "Orecchiette pasta with sausage and Tuscan kale."
+          "name": "Fresh orecchiette with sausage and spinach",
+          "description": "Fresh orecchiette with sausage and sautéed spinach."
         },
         "zh": {
-          "name": "香肠黑甘蓝猫耳朵面",
-          "description": "猫耳朵面搭配香肠和黑甘蓝。"
+          "name": "香肠菠菜鲜猫耳朵面",
+          "description": "鲜猫耳朵面搭配香肠和炒菠菜。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustration matching approved lunch setup",
-        "date": "2026-10-23",
+        "type": "AI-edited approved offer photograph",
+        "date": "2026-10-24",
         "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Approved ivory ceramic plate, navy tabletop, warm upper-left light, three-quarter angle and framing preserved. Ingredients follow Paolo’s recipe; illustrative image, not restaurant food photography."
+        "reference": "pranzo-assets/orecchiette-cavolo-nero-coerente-20261023.webp",
+        "note": "Replaced only Tuscan kale with spinach; kept the original sausage, orecchiette, plate, navy background, angle and light. Illustrative, not restaurant photography."
       }
     },
     {
@@ -693,28 +695,6 @@
         "date": "2026-10-22",
         "tool": "image_gen",
         "note": "Approved lunch photo edited to show exactly one opened giant baozi, preserving meat, egg, onion and cabbage filling, ivory plate, navy table, warm light and angle."
-      }
-    },
-    {
-      "name": "Parmigiana di patate con prosciutto cotto e formaggio",
-      "price": 10,
-      "description": "Patate al forno a strati con prosciutto cotto e formaggio.",
-      "allergens": [
-        7
-      ],
-      "icon": "Milk",
-      "dishPhoto": "offerta-assets/parmigiana-patate-prosciutto-scamorza-20261009.webp",
-      "photoLayout": "side",
-      "orderCourse": "Secondo",
-      "translations": {
-        "en": {
-          "name": "Potato parmigiana with cooked ham and cheese",
-          "description": "Layered baked potatoes with cooked ham and cheese."
-        },
-        "zh": {
-          "name": "火腿奶酪焗土豆",
-          "description": "烤土豆分层搭配熟火腿和奶酪。"
-        }
       }
     }
   ],

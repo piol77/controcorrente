@@ -78,9 +78,11 @@ for target in targets:
     path = ROOT / (name+'.html'); doc = html.fromstring(path.read_text())
     if target == 'offerta':
         fill(doc.cssselect('.daily-menu:not(.daily-fixed-menu) .dish-grid')[0], data['offers'], 'offerta')
-        fill(doc.cssselect('.daily-fixed-menu .dish-grid')[0], data['fixed']['dishes'], 'offerta', True)
+        fixed_grid = doc.cssselect('.daily-fixed-menu .dish-grid')
+        if fixed_grid: fill(fixed_grid[0], data['fixed']['dishes'], 'offerta', True)
         doc.cssselect('.daily-menu:not(.daily-fixed-menu) .course-heading h2')[0].text = 'Piatti del giorno'
-        doc.cssselect('.daily-price strong')[0].text = f"{data['fixed']['price']:.2f} €".replace('.', ',')
+        fixed_price = doc.cssselect('.daily-price strong')
+        if fixed_price: fixed_price[0].text = f"{data['fixed']['price']:.2f} €".replace('.', ',')
     elif target == 'bibite':
         for grid, key in zip(doc.cssselect('.menu-course .dish-grid'), ['drinks', 'wines']): fill(grid, data[key], 'bibite')
     elif target == 'cena':
