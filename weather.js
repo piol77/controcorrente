@@ -6,6 +6,8 @@
   var pending = false;
   var lastAttempt = 0;
   var mode = 'restaurant';
+  var dayOffset = 0;
+  var calendarDay = null;
   var requestId = 0;
   var providerCache = {};
   var liveRaw = null;
@@ -14,6 +16,8 @@
   var gpsButton = card.querySelector('[data-weather-gps]');
   var restaurantButton = card.querySelector('[data-weather-restaurant]');
   var status = card.querySelector('[data-weather-status]');
+  var dayButton = card.querySelector('[data-weather-day]');
+  var rows = card.querySelector('.weather-card__rows');
   function message(text) {
     status.textContent = text;
     status.hidden = !text;
@@ -35,6 +39,12 @@
     function part(type) { return parts.find(function (p) { return p.type === type; }).value; }
     return part('year') + '-' + part('month') + '-' + part('day');
   }
+  function dateAtOffset(now, offset) {
+    // Calendar arithmetic avoids 23/25-hour day errors around daylight saving changes.
+    var date = new Date(localDate(now) + 'T12:00:00Z');
+    date.setUTCDate(date.getUTCDate() + offset);
+    return date.toISOString().slice(0, 10);
+  }
   function unavailable(message) {
     ['lunch', 'dinner'].forEach(function (service) {
       card.querySelector('[data-weather-' + service + ']').textContent = 'Previsione non disponibile';
@@ -43,14 +53,25 @@
   }
   function render() {
     var now = new Date();
+    var today = localDate(now);
+    if (calendarDay && calendarDay !== today) dayOffset = 0;
+    calendarDay = today;
+    var selectedDate = dateAtOffset(now, dayOffset);
+    dayButton.textContent = dayOffset ? '←' : '→';
+    dayButton.setAttribute('aria-label', dayOffset ? 'Torna al meteo di oggi' : 'Mostra il meteo di domani');
+    dayButton.title = dayOffset ? 'Torna a oggi' : 'Mostra domani';
     if (liveRaw) {
       try { forecast = summarize(liveRaw, liveFetchedAt); }
       catch (_) { liveRaw = null; forecast = null; message('Previsione da aggiornare: premi GPS o Controcorrente.'); }
     }
     card.querySelector('[data-weather-date]').textContent = new Intl.DateTimeFormat('it-IT', {
-      timeZone: timezone(), day: 'numeric', month: 'long'
-    }).format(now);
-    var day = forecast && forecast.days.find(function (d) { return d.date === localDate(now); });
+      timeZone: 'UTC', day: 'numeric', month: 'long'
+    }).format(new Date(selectedDate + 'T12:00:00Z'));
+    ['lunch', 'dinner'].forEach(function (service) {
+      card.querySelector('[data-weather-' + service + ']').parentElement.querySelector('small').textContent =
+        service === 'lunch' ? '12:00–14:30' : '19:00–22:30';
+    });
+    var day = forecast && forecast.days.find(function (d) { return d.date === selectedDate; });
     if (!day || now - new Date(forecast.fetched_at) > 48 * 3600000) {
       unavailable('In attesa dell’aggiornamento meteo');
       return;
@@ -59,7 +80,8 @@
       var target = card.querySelector('[data-weather-' + service + ']');
       var value = day[service];
       var hours = target.parentElement.querySelector('small');
-      hours.textContent = value && value.period_label ? value.period_label : service === 'lunch' ? '12:00–14:30' : '19:00–22:30';
+      hours.textContent = !dayOffset && value && value.period_label ? value.period_label
+        : service === 'lunch' ? '12:00–14:30' : '19:00–22:30';
       target.textContent = '';
       if (!value) {
         target.textContent = 'Previsione non disponibile';
@@ -135,10 +157,10 @@
     function timeLabel(hour) {
       return String(Math.floor(hour)).padStart(2, '0') + ':' + String(Math.round((hour % 1) * 60)).padStart(2, '0');
     }
-    function period(start, end) {
-      // A completed service rolls to tomorrow; a running service uses only its remaining hours.
-      var date = currentHour >= end ? tomorrow : today;
-      if (date === today) start = Math.max(start, currentHour);
+    function period(date, start, end, refreshToday) {
+      // Preserve the existing click refresh for completed/running services on today's view.
+      if (refreshToday && currentHour >= end) date = tomorrow;
+      if (refreshToday && date === today) start = Math.max(start, currentHour);
       var temperatures = [], conditions = [], precipitation = 0, covered = 0;
       points.forEach(function (point, index) {
         var at = new Date(point.time);
@@ -168,7 +190,10 @@
         max_c: Math.round(Math.max.apply(null, temperatures)), precipitation_mm: Math.round(precipitation * 10) / 10,
         service_date: date, period_label: (date === today ? 'Oggi ' : 'Domani ') + timeLabel(start) + '–' + timeLabel(end) };
     }
-    return { fetched_at: fetchedAt || now.toISOString(), days: [{ date: today, lunch: period(12, 14.5), dinner: period(19, 22.5) }] };
+    return { fetched_at: fetchedAt || now.toISOString(), days: [
+      { date: today, lunch: period(today, 12, 14.5, true), dinner: period(today, 19, 22.5, true) },
+      { date: tomorrow, lunch: period(tomorrow, 12, 14.5, false), dinner: period(tomorrow, 19, 22.5, false) }
+    ] };
   }
   function refreshPosition(lat, lon, nextMode, id) {
     var key = lat + ',' + lon;
@@ -205,6 +230,22 @@
       if (id === requestId) message('Aggiornamento meteo non disponibile. Riprova tra poco.');
     }).finally(function () { if (id === requestId) gpsButton.disabled = false; });
   }
+  dayButton.addEventListener('click', function () {
+    dayOffset = dayOffset ? 0 : 1;
+    render();
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && rows.animate) {
+      rows.getAnimations().forEach(function (animation) { animation.cancel(); });
+      rows.animate([
+        { transform: 'translateX(' + (dayOffset ? '28px' : '-28px') + ')', opacity: 0 },
+        { transform: 'translateX(0)', opacity: 1 }
+      ], { duration: 240, easing: 'ease-out' });
+    }
+    // Older cached JSON may not yet include tomorrow after midnight.
+    var selectedDate = dateAtOffset(new Date(), dayOffset);
+    if (mode === 'restaurant' && (!forecast || !forecast.days.some(function (day) { return day.date === selectedDate; }))) {
+      refreshPosition('45.0641', '7.6525', 'restaurant', ++requestId);
+    }
+  });
   gpsButton.addEventListener('click', function () {
     if (!navigator.geolocation) { message('GPS non disponibile su questo dispositivo.'); return; }
     var id = ++requestId;

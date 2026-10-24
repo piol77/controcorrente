@@ -76,8 +76,9 @@ def summarize(raw, now):
         raise ValueError('Provider forecast is older than 24 hours')
     points = {p['time']: p for p in raw['properties']['timeseries']}
     days = []
-    # Tomorrow is retained so the card also works between midnight and the morning update.
-    for offset in range(2):
+    # Keep a third date so tomorrow remains available after midnight until the morning update.
+    # Only today and tomorrow are exposed by the card controls.
+    for offset in range(3):
         day = now.astimezone(ROME).date() + timedelta(days=offset)
         lunch = period(points, day, 12, 14.5)
         dinner = period(points, day, 19, 22.5)

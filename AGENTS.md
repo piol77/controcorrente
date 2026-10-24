@@ -395,3 +395,9 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Il primo conteggio del pulsante avviene solo dopo il completamento della condivisione nativa o della copia automatica riuscita; annullamenti, clic successivi e fallimenti della copia non aumentano il valore. WhatsApp non conferma l'effettivo recapito: non dichiarare messaggi inviati.
 - Contare un ingresso tramite parametro cc_share una sola volta per browser, non ogni visita, ricaricamento o scheda. Non registrare identità, contatti, destinatari, dati di WhatsApp o impronte digitali.
 - Le vecchie statistiche di clic e visite (v1) rimangono storiche ma non deduplicabili: mostrare i nuovi contatori v2, partendo da zero, senza sommare i v1. Non modificare il contatore generale degli accessi.
+
+
+## Meteo oggi/domani — 2026-10-25
+- All’apertura della pagina la scheda mostra sempre il giorno corrente. Una sola freccia accanto alla data passa con un breve slide a domani, poi diventa una freccia indietro che torna a oggi: non mostrare giorni ulteriori e non salvare il giorno scelto tra aperture.
+- Conservare dimensioni e stile della scheda, le sole fasce pranzo/cena, i pulsanti GPS/Controcorrente, aggiornamenti e avvisi esistenti. La scelta della posizione resta valida passando tra oggi e domani; rispettare la preferenza di movimento ridotto.
+- Conservare internamente tre date nei dati pianificati per rendere disponibile domani anche tra mezzanotte e l’aggiornamento del mattino; la navigazione pubblica resta limitata a oggi e domani. Gestire il cambio di data e l’ora legale con giorni di calendario, mai aggiungendo semplicemente 24 ore.
