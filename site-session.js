@@ -266,8 +266,29 @@
   'use strict';
   if (document.querySelector('[data-cc-share-button]')) return;
   const endpoint = 'https://countapi.mileshilliard.com/api/v1/';
-  const clickKey = 'piol77_controcorrente_share_clicks_v1';
-  const referralKey = 'piol77_controcorrente_share_referrals_v1';
+  // New counters: the previous totals counted repeated taps and cannot be repaired retrospectively.
+  const clickKey = 'piol77_controcorrente_share_unique_browsers_v2';
+  const referralKey = 'piol77_controcorrente_referral_unique_browsers_v2';
+  const clickFlag = 'cc-share-used-browser-v2';
+  const referralFlag = 'cc-share-referred-browser-v2';
+  function firstTime(key) {
+    // Only two anonymous boolean markers: one per browser, across sessions when possible.
+    // If storage is unavailable entirely, do not increment: duplicates would be misleading.
+    try {
+      if (localStorage.getItem(key) === '1') return false;
+      localStorage.setItem(key, '1');
+      return true;
+    } catch (_) {
+      try {
+        if (sessionStorage.getItem(key) === '1') return false;
+        sessionStorage.setItem(key, '1');
+        return true;
+      } catch (_) { return false; }
+    }
+  }
+  function recordOnce(key, flag) {
+    if (firstTime(flag)) counter('hit', key).then(refresh).catch(() => {});
+  }
   let stats = null;
   const style = document.createElement('style');
   style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}';
@@ -312,8 +333,8 @@
     if (!stats || document.hidden) return;
     try {
       const counts = await Promise.all([counter('get',clickKey),counter('get',referralKey)]);
-      stats.textContent = 'Clic su Condividi: ' + counts[0].toLocaleString('it-IT') +
-        ' · Visite da link condivisi: ' + counts[1].toLocaleString('it-IT');
+      stats.textContent = 'Browser che hanno usato Condividi: ' + counts[0].toLocaleString('it-IT') +
+        ' · Browser arrivati da link condivisi: ' + counts[1].toLocaleString('it-IT');
     } catch (_) {
       stats.textContent = 'Statistiche condivisioni temporaneamente non disponibili';
     }
@@ -333,9 +354,11 @@
         if (!ok) throw new Error('Copy unavailable');
       }
       feedback.textContent = 'Link copiato';
+      return true;
     } catch (_) {
       window.prompt('Copia questo link:',url);
       feedback.textContent = 'Link pronto da copiare';
+      return false; // The manual copy cannot be confirmed.
     }
   }
   button.addEventListener('click',() => {
@@ -346,15 +369,15 @@
       try { shared = navigator.share({title:'Controcorrente',text:document.title,url}); }
       catch (error) { shared = Promise.reject(error); }
     }
-    // Counts button taps, not messages actually delivered in WhatsApp.
-    counter('hit',clickKey).then(refresh).catch(() => {});
+    // Do not count cancelled share sheets or repeat shares from the same browser.
+    // The browser cannot confirm final delivery within WhatsApp.
     if (shared) {
-      Promise.resolve(shared).catch(error => {
+      Promise.resolve(shared).then(() => recordOnce(clickKey, clickFlag)).catch(error => {
         if (error && error.name === 'AbortError') return;
-        return copy(url);
+        return copy(url).then(copied => { if (copied) recordOnce(clickKey, clickFlag); });
       });
     } else {
-      copy(url);
+      copy(url).then(copied => { if (copied) recordOnce(clickKey, clickFlag); });
     }
   });
 
@@ -403,12 +426,7 @@
       url.searchParams.delete('cc_share');
       history.replaceState(history.state,'',url.pathname + url.search + url.hash);
     } catch (_) {}
-    let already = false;
-    try {
-      already = sessionStorage.getItem('cc-share-referral-counted-tab-v1') === '1';
-      if (!already) sessionStorage.setItem('cc-share-referral-counted-tab-v1','1');
-    } catch (_) {}
-    if (!already) counter('hit',referralKey).then(refresh).catch(() => {});
+    recordOnce(referralKey, referralFlag);
   }
 })();
 // END SITE SHARING 2026-10-24
