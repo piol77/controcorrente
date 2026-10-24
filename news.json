@@ -1,7 +1,7 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-24T03:26:20+00:00",
+  "fetched_at": "2026-10-24T04:34:30+00:00",
   "items": [
     {
       "title": "Paura a Ostia nella notte, esplode un ordigno davanti a una palazzina popolare: due feriti",
@@ -10,6 +10,22 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-24T02:46:00+00:00"
+    },
+    {
+      "title": "Zelensky alla Abc, 'pronti a fare pace subito, ma non cederemo altri territori'",
+      "url": "https://www.rainews.it/articoli/2026/10/zelensky-alla-abc-pronti-a-fare-pace-subito-ma-non-cederemo-altri-territori-guerra-in-ucraina-dd9f5815-406d-4b0b-ac70-9f2c35b6dbb5.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/20/1792518487245_DVXKR.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-24T04:18:00+00:00"
+    },
+    {
+      "title": "Le previsioni del tempo per sabato 24 ottobre",
+      "url": "https://www.rainews.it/video/2026/10/le-previsioni-del-tempo-408acd4b-285a-4edd-bb0e-5b0e58ddd170.html",
+      "image": "https://www.rainews.it/dl/img/2024/12/06/1733462386435_meteo.PNG",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-23T23:50:00+00:00"
     },
     {
       "title": "Presidenziali in Brasile. Testa a testa Lula-Bolsonaro, domenica il giorno della verità",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-23T23:33:00+00:00"
-    },
-    {
-      "title": "Forze Kiev aderiranno a tregua Oleshky",
-      "url": "https://www.rainews.it/video/2026/10/forze-kiev-aderiranno-a-tregua-oleshky-bd548066-8008-4b4d-bafb-20ee563b0a22.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792767816854_powcombo.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-23T23:49:00+00:00"
-    },
-    {
-      "title": "Tragedia a Tortona: bimba di tre anni uccisa in casa, arrestata la madre",
-      "url": "https://www.rainews.it/video/2026/10/tragedia-a-tortona-bimba-di-tre-anni-uccisa-in-casa-arrestata-la-madre-6d31045f-ec86-4af5-9e4b-24c98bdb784b.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792780681389_.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-23T18:39:00+00:00"
     }
   ]
 }
