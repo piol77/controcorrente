@@ -1,15 +1,31 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-24T11:32:32+00:00",
+  "fetched_at": "2026-10-24T12:26:47+00:00",
   "items": [
     {
-      "title": "Sit-in a Milano degli \"Studenti col Tricolore\", tra gli slogan: \"Milano è nostra e ci appartiene\"",
-      "url": "https://www.rainews.it/video/2026/10/sit-in-a-milano-degli-studenti-col-tricolore-tra-gli-slogan-milano-e-nostra-e-ci-appartiene-c1cc0ba6-d37e-4906-9ee2-1f59d3e0228b.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792837557605_vlcsnaphms.png",
+      "title": "Brucia sulle Alpi bavaresi il \"Nido dell'Aquila\" di Hitler, una persona fermata",
+      "url": "https://www.rainews.it/articoli/2026/10/brucia-il-nido-dellaquila-di-hitler-sulle-alpi-una-persona-fermata-f3831077-c248-4944-8a00-25a589ae2387.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792828309337_ebacdadfabcf.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-24T10:21:00+00:00"
+      "published_at": "2026-10-24T11:55:00+00:00"
+    },
+    {
+      "title": "Accuse shock di pedofilia al padre di Meghan, la duchessa lo ripudia",
+      "url": "https://www.rainews.it/video/2026/10/accuse-shock-di-pedofilia-al-padre-di-meghan-la-duchessa-lo-ripudia-c1fb4bfd-b029-4aa6-a042-9e69420c9232.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792843484300_videoframe.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-24T12:16:00+00:00"
+    },
+    {
+      "title": "Polizia Postale e Antiterrorismo individuano mente dietro al Movimento 17 ottobre",
+      "url": "https://www.rainews.it/video/2026/10/polizia-postale-e-antiterrorismo-individuano-mente-dietro-al-movimento-17-ottobre-perquisizioni-in-corso-c2a14009-007b-494d-93c3-2c02cb9ab02a.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792842062786_videoframe.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-24T12:11:00+00:00"
     },
     {
       "title": "DIRETTA - Francia, nuovo giorno di proteste: attese in piazza mezzo milione di persone",
@@ -17,31 +33,15 @@
       "image": "https://www.rainews.it/dl/img/2026/10/24/1792838987011_DAPRR.jpg",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-24T10:54:00+00:00"
+      "published_at": "2026-10-24T12:00:00+00:00"
     },
     {
-      "title": "Presidio contro carovita a Milano, letame davanti alla sede Arera. Bruciata una enorme bolletta",
-      "url": "https://www.rainews.it/video/2026/10/presidio-contro-carovita-a-milano-letame-davanti-alla-sede-arera-bruciata-una-enorme-bolletta--c234961c-e63e-4fa9-a9bb-198a8089bda2.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792837580532_RainewsScreenshotms.png",
+      "title": "Tra i negozi blindati nel centro di Milano. Massima allerta in via Monte Napoleone",
+      "url": "https://www.rainews.it/video/2026/10/tra-i-negozi-blindati-nel-centro-di-milano-massima-allerta-in-via-monte-napoleone-6cbd96d2-984b-40a9-a33e-c4907064098c.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792841930280_RainewsScreenshotms.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-24T10:47:00+00:00"
-    },
-    {
-      "title": "Attacco armato contro una chiesa in Giordania, sei morti",
-      "url": "https://www.rainews.it/video/2026/10/attacco-armato-contro-una-chiesa-in-giordania-morti-e524abf6-cfeb-4c5b-acbd-5527b4322798.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792817672578_giordania.PNG",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-24T04:52:00+00:00"
-    },
-    {
-      "title": "Francia, uomo spara in strada: almeno un morto e 4 feriti. Arrestato. Macron: \"Crimine razzista\"",
-      "url": "https://www.rainews.it/articoli/2026/10/francia-uomo-spara-in-strada-almeno-un-morto-e-quattro-feriti-arrestato-un-sospetto-7cc8ae6c-d83a-4f58-b8b2-a9db030d7e99.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/23/1792753575244_DRU.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-24T10:26:00+00:00"
+      "published_at": "2026-10-24T11:47:00+00:00"
     }
   ]
 }
