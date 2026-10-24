@@ -259,3 +259,156 @@
 })();
 // END CONTROCORRENTE RADIO TEST 2026-10-18
 
+
+
+// BEGIN SITE SHARING 2026-10-24 — shared across all pages, anonymous counts
+(() => {
+  'use strict';
+  if (document.querySelector('[data-cc-share-button]')) return;
+  const endpoint = 'https://countapi.mileshilliard.com/api/v1/';
+  const clickKey = 'piol77_controcorrente_share_clicks_v1';
+  const referralKey = 'piol77_controcorrente_share_referrals_v1';
+  let stats = null;
+  const style = document.createElement('style');
+  style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}';
+  document.head.appendChild(style);
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'cc-share-button';
+  button.setAttribute('data-cc-share-button','');
+  button.setAttribute('aria-label','Condividi questa pagina');
+  button.title = 'Condividi questa pagina';
+  button.textContent = '↗ Condividi';
+  const feedback = document.createElement('span');
+  feedback.className = 'cc-share-feedback';
+  feedback.setAttribute('role','status');
+
+  function shareUrl() {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('menu');
+    url.searchParams.delete('cc_share');
+    if (url.hash) {
+      let realAnchor = false;
+      try { realAnchor = !!document.getElementById(decodeURIComponent(url.hash.slice(1))); } catch (_) {}
+      if (!realAnchor) url.hash = '';
+    }
+    url.searchParams.set('cc_share','1');
+    return url.href;
+  }
+  async function counter(action,key) {
+    const response = await fetch(endpoint + action + '/' + key + '?t=' + Date.now(), {
+      cache:'no-store',credentials:'omit',
+      signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(10000) : undefined
+    });
+    if (action === 'get' && response.status === 404) return 0;
+    if (!response.ok) throw new Error('Counter unavailable');
+    const data = await response.json();
+    const value = Number(data.value);
+    if (!Number.isSafeInteger(value) || value < 0) throw new Error('Invalid counter');
+    return value;
+  }
+  async function refresh() {
+    if (!stats || document.hidden) return;
+    try {
+      const counts = await Promise.all([counter('get',clickKey),counter('get',referralKey)]);
+      stats.textContent = 'Clic su Condividi: ' + counts[0].toLocaleString('it-IT') +
+        ' · Visite da link condivisi: ' + counts[1].toLocaleString('it-IT');
+    } catch (_) {
+      stats.textContent = 'Statistiche condivisioni temporaneamente non disponibili';
+    }
+  }
+  async function copy(url) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(url);
+      } else {
+        const input = document.createElement('textarea');
+        input.value = url;
+        input.style.cssText='position:fixed;left:-9999px;top:0';
+        document.body.appendChild(input);
+        input.select();
+        const ok = document.execCommand('copy');
+        input.remove();
+        if (!ok) throw new Error('Copy unavailable');
+      }
+      feedback.textContent = 'Link copiato';
+    } catch (_) {
+      window.prompt('Copia questo link:',url);
+      feedback.textContent = 'Link pronto da copiare';
+    }
+  }
+  button.addEventListener('click',() => {
+    const url = shareUrl();
+    feedback.textContent = '';
+    let shared = null;
+    if (typeof navigator.share === 'function') {
+      try { shared = navigator.share({title:'Controcorrente',text:document.title,url}); }
+      catch (error) { shared = Promise.reject(error); }
+    }
+    // Counts button taps, not messages actually delivered in WhatsApp.
+    counter('hit',clickKey).then(refresh).catch(() => {});
+    if (shared) {
+      Promise.resolve(shared).catch(error => {
+        if (error && error.name === 'AbortError') return;
+        return copy(url);
+      });
+    } else {
+      copy(url);
+    }
+  });
+
+  const homeCounter = document.querySelector('[data-notification-counter]');
+  if (homeCounter && homeCounter.parentElement) {
+    const home = document.createElement('div');
+    home.className = 'cc-share-home';
+    stats = document.createElement('small');
+    stats.className = 'cc-share-stats';
+    stats.setAttribute('role','status');
+    stats.textContent = 'Statistiche condivisioni: caricamento…';
+    home.append(button,feedback,stats);
+    homeCounter.parentElement.appendChild(home);
+    refresh();
+    window.addEventListener('focus',refresh);
+    document.addEventListener('visibilitychange',() => { if (!document.hidden) refresh(); });
+  } else {
+    const header = document.querySelector('header.top');
+    if (header) {
+      function mount() {
+        const controls = document.getElementById('cc-notification-actions');
+        if (!controls) return false;
+        controls.insertBefore(button,controls.firstChild);
+        controls.appendChild(feedback);
+        return true;
+      }
+      if (!mount()) {
+        const observer = new MutationObserver(() => {
+          if (mount()) observer.disconnect();
+        });
+        observer.observe(header,{childList:true,subtree:true});
+        window.setTimeout(() => {
+          observer.disconnect();
+          if (!button.isConnected) {
+            const brand = header.querySelector('.brand-row');
+            if (brand) brand.insertAdjacentElement('afterend',button);
+            else header.appendChild(button);
+          }
+        },4000);
+      }
+    }
+  }
+  if (new URLSearchParams(window.location.search).get('cc_share') === '1') {
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('cc_share');
+      history.replaceState(history.state,'',url.pathname + url.search + url.hash);
+    } catch (_) {}
+    let already = false;
+    try {
+      already = sessionStorage.getItem('cc-share-referral-counted-tab-v1') === '1';
+      if (!already) sessionStorage.setItem('cc-share-referral-counted-tab-v1','1');
+    } catch (_) {}
+    if (!already) counter('hit',referralKey).then(refresh).catch(() => {});
+  }
+})();
+// END SITE SHARING 2026-10-24
