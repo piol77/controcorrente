@@ -19,7 +19,8 @@
 .weather-card__status{font-size:.75rem;line-height:1.5;color:var(--muted);margin:7px 0 0}
 
 /* The day control stays inside the existing heading and card dimensions. */
-.weather-card h2{position:relative;padding-right:30px}
+.weather-card h2{position:relative;padding-right:68px}
+.weather-card__day-label{position:absolute;right:32px;top:50%;transform:translateY(-50%);font-size:.625rem;font-weight:400;line-height:1;color:var(--muted);letter-spacing:0}
 .weather-card__day{position:absolute;right:0;top:50%;transform:translateY(-50%);width:26px;height:26px;padding:0;border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--gold);font:inherit;line-height:1;cursor:pointer}
 .weather-card__day:hover{border-color:var(--gold);background:rgba(203,167,109,.14)}
 .weather-card__day:focus-visible{outline:2px solid var(--gold);outline-offset:2px}

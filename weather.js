@@ -60,6 +60,7 @@
     calendarDay = today;
     var selectedDate = dateAtOffset(now, dayOffset);
     dayButton.textContent = dayOffset ? '←' : '→';
+    card.querySelector('[data-weather-day-label]').textContent = dayOffset ? 'oggi' : 'domani';
     dayButton.setAttribute('aria-label', dayOffset ? 'Torna al meteo di oggi' : 'Mostra il meteo di domani');
     dayButton.title = dayOffset ? 'Torna a oggi' : 'Mostra domani';
     if (liveRaw) {
