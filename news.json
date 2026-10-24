@@ -1,7 +1,7 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-24T20:25:49+00:00",
+  "fetched_at": "2026-10-24T21:26:11+00:00",
   "items": [
     {
       "title": "In duemila al corteo di Firenze, momenti di tensione a ponte Santa Trinita",
@@ -12,12 +12,12 @@
       "published_at": "2026-10-24T17:06:00+00:00"
     },
     {
-      "title": "Oltre 100.000 parigini in corteo: \"Vogliamo vivere, non solo sopravvivere\"",
-      "url": "https://www.rainews.it/video/2026/10/oltre-100000-parigini-in-corteo-vogliamo-vivere-non-solo-sopravvivere-89b26d27-42b9-4f9e-9d17-5df92d8fdfe3.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872083288_Cattura.PNG",
+      "title": "Scontri a Marsiglia alla fine del corteo",
+      "url": "https://www.rainews.it/video/2026/10/disordini-a-marsiglia-alla-fine-del-corteo-9e1d9376-2f59-4927-ba59-9b3664c90e36.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872374442_Cattura.PNG",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-24T20:00:00+00:00"
+      "published_at": "2026-10-24T20:04:00+00:00"
     },
     {
       "title": "Cortei a Torino, fitto lancio oggetti e fumogeni contro la polizia",
@@ -28,20 +28,20 @@
       "published_at": "2026-10-24T20:04:00+00:00"
     },
     {
-      "title": "Scontri a Parigi",
-      "url": "https://www.rainews.it/video/2026/10/scontri-a-parigi-f883442a-fcd7-4b42-a90d-f7184922d325.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792866834910_DBHK.jpg",
+      "title": "Oltre 100.000 parigini in corteo: \"Vogliamo vivere, non solo sopravvivere\"",
+      "url": "https://www.rainews.it/video/2026/10/oltre-100000-parigini-in-corteo-vogliamo-vivere-non-solo-sopravvivere-89b26d27-42b9-4f9e-9d17-5df92d8fdfe3.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872083288_Cattura.PNG",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-24T18:32:00+00:00"
+      "published_at": "2026-10-24T20:00:00+00:00"
     },
     {
-      "title": "Politica divisa tra legge di bilancio e gestione dell'ordine pubblico nelle piazze",
-      "url": "https://www.rainews.it/video/2026/10/politica-divisa-tra-legge-di-bilancio-e-gestione-dellordine-pubblico-nelle-piazze-8865174b-0bf8-456e-ad1d-aa2e6ce78fb2.html",
-      "image": "https://www.rainews.it/dl/img/2024/01/19/1705643984773_ipiccyimage.jpg",
+      "title": "Lancio petardi e lacrimogeni, continuano in serata le tensioni tra polizia e manifestanti a Torino",
+      "url": "https://www.rainews.it/video/2026/10/a-torino-identificate-oltre-400-persone-prima-della-manifestazione-di-oggi-video-1a4e8593-4c59-43bd-8d9d-1e09f1fa12a4.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872074732_Cattura.PNG",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-24T18:41:00+00:00"
+      "published_at": "2026-10-24T20:01:00+00:00"
     }
   ]
 }
