@@ -190,6 +190,37 @@
           "reference": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
           "note": "Replaced tuna pieces with cooked sea bass; kept fusilli, aubergine, scant tomato, original white plate and navy tabletop. Illustrative, not restaurant photography."
         }
+      },
+      {
+        "name": "Linguine con gamberetti* e granella di pistacchi",
+        "price": 12.5,
+        "description": "Linguine con gamberetti*, granella di pistacchi e un tocco di panna.",
+        "allergens": [
+          1,
+          2,
+          7,
+          8
+        ],
+        "icon": "Shrimp",
+        "dishPhoto": "cena-assets/linguine-gamberetti-pistacchi-20261024.webp",
+        "translations": {
+          "en": {
+            "name": "Linguine with shrimp* and chopped pistachios",
+            "description": "Linguine with shrimp*, chopped pistachios and a touch of cream."
+          },
+          "zh": {
+            "name": "虾仁*开心果碎扁意面",
+            "description": "扁意面搭配虾仁*、开心果碎和少量奶油。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration matching approved dinner photograph",
+          "date": "2026-10-24",
+          "tool": "image_gen",
+          "reference": "cena-assets/fusilli-melanzane-branzino-20261024.webp",
+          "webReference": "pranzo-assets/linguine-gamberetti-pistacchio.webp",
+          "note": "Existing web reference inspected; its wooden table and different plate do not match dinner. Generated linguine with shrimp, chopped pistachios and little cream using the approved dinner ivory plate, navy tabletop, light and angle. Illustrative image, not restaurant food photography."
+        }
       }
     ],
     "secondi": [
