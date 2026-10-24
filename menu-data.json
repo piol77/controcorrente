@@ -810,7 +810,7 @@
       "designation": "Irpinia Rosato DOC · Biologico",
       "description": "Aglianico in versione rosata e biologica. Al naso richiama mele e piccoli frutti rossi; il sorso unisce freschezza e intensità, chiudendo su note speziate. Ottimo con aperitivi e tartare di pesce.",
       "photo": "wine-assets/emmente.jpg",
-      "price": 20,
+      "price": 24,
       "icon": "Wine",
       "photoViewBox": "290 0 220 800"
     },
@@ -819,7 +819,7 @@
       "designation": "Irpinia Coda di Volpe DOC · Biologico",
       "description": "Il primo bianco di Cantine Delite: un Coda di Volpe biologico nato a Montemarano. Un vitigno antico dell’Irpinia, valorizzato in un vino dalla forte identità territoriale.",
       "photo": "wine-assets/seicentododici.png",
-      "price": 20,
+      "price": 24,
       "icon": "Wine",
       "photoViewBox": "380 0 210 800"
     },
