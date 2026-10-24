@@ -1,10 +1,26 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-24T18:34:02+00:00",
+  "fetched_at": "2026-10-24T19:34:05+00:00",
   "items": [
     {
-      "title": "Scontri in via V.E.Orlando a Roma, idrante contro manifestanti",
+      "title": "Milano blindata: cortei di protesta e negozi protetti",
+      "url": "https://www.rainews.it/video/2026/10/milano-blindata-cortei-di-protesta-e-negozi-protetti-957cecc8-8649-4741-be3d-72bf1a084396.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792852747115_rainewsbededabceafec.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-24T18:28:00+00:00"
+    },
+    {
+      "title": "Scontri a Parigi",
+      "url": "https://www.rainews.it/video/2026/10/scontri-a-parigi-f883442a-fcd7-4b42-a90d-f7184922d325.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792866834910_DBHK.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-24T18:32:00+00:00"
+    },
+    {
+      "title": "Scontri in via Vittorio Emanuele.Orlando a Roma, idrante contro manifestanti",
       "url": "https://www.rainews.it/video/2026/10/scontri-in-via-veorlando-a-roma-idrante-contro-manifestanti-video-c92aeb59-3317-4675-ae45-61f597e4793d.html",
       "image": "https://www.rainews.it/dl/img/2026/10/24/1792866053709_Cattura.PNG",
       "source": "RaiNews",
@@ -12,12 +28,12 @@
       "published_at": "2026-10-24T18:20:00+00:00"
     },
     {
-      "title": "Hebron il giorno dopo l'incursione israeliana",
-      "url": "https://www.rainews.it/video/2026/10/tg3-cisgiordania-israele-hebron-goracci-b546e43b-2af0-4af6-9c6e-a4b0e4928afd.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792864329971_.png",
+      "title": "Lacrimogeni e idranti in una Parigi blindata",
+      "url": "https://www.rainews.it/video/2026/10/tg1-servizio-n-11-de-giuli-lacrimogeni-idranti-parigi-blindata-2815ab79-58f6-4f81-845a-c28aaefeebd0.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792866558665_.png",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-24T17:50:00+00:00"
+      "published_at": "2026-10-24T18:30:00+00:00"
     },
     {
       "title": "Scontri a Roma, idrante in azione: contro i manifestanti",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-24T18:17:00+00:00"
-    },
-    {
-      "title": "Lione: la polizia spara lacrimogeni contro i manifestanti",
-      "url": "https://www.rainews.it/video/2026/10/scontri-con-la-polizia-a-lione-648fb252-a47b-472e-82b3-e99fd2b85021.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792861052191_DBGF.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-24T16:55:00+00:00"
-    },
-    {
-      "title": "Piazze blindate e tensioni in tutta Italia: scontri da Torino a Roma",
-      "url": "https://www.rainews.it/maratona/2026/10/piazze-blindate-e-tensioni-in-tutta-italia-scontri-da-torino-a-roma-5fb7e07d-915d-4050-9725-56cc14b50cc6.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792864228283_TZRCTOAXJXCRTRMADPITALYPROTEST.JPG",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-24T17:54:00+00:00"
     }
   ]
 }
