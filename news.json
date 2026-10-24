@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-24T09:36:01+00:00",
+  "fetched_at": "2026-10-24T10:27:33+00:00",
   "items": [
+    {
+      "title": "Francia, uomo spara in strada: almeno un morto e 4 feriti. Arrestato. Macron: \"Crimine razzista\"",
+      "url": "https://www.rainews.it/articoli/2026/10/francia-uomo-spara-in-strada-almeno-un-morto-e-quattro-feriti-arrestato-un-sospetto-7cc8ae6c-d83a-4f58-b8b2-a9db030d7e99.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/23/1792753575244_DRU.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-24T10:26:00+00:00"
+    },
+    {
+      "title": "Francia, nuovo giorno di proteste: attese in piazza mezzo milione di persone",
+      "url": "https://www.rainews.it/maratona/2026/10/francia-ancora-tensioni-nelle-citta-scontri-tra-manifestanti-e-forze-dellordine-a151916e-529a-4834-ad39-e3080a6ac984.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792817989440_rainewsdecbedecf.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-24T09:47:00+00:00"
+    },
     {
       "title": "Brucia il \"Nido dell'Aquila\" di Hitler sulle Alpi, una persona fermata",
       "url": "https://www.rainews.it/articoli/2026/10/brucia-il-nido-dellaquila-di-hitler-sulle-alpi-una-persona-fermata-f3831077-c248-4944-8a00-25a589ae2387.html",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-24T06:58:00+00:00"
-    },
-    {
-      "title": "Impianto di guerra russo di Tolyattikauchuk brucia dopo un attacco droni ucraini, regione di Samara",
-      "url": "https://www.rainews.it/video/2026/10/raffineria-russa-di-tolyattikauchuk-brucia-dopo-un-attacco-droni-ucraino-regione-di-samara-video-eed048eb-c3c1-4b72-aec1-e5560b237262.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792817199345_vlcsnap.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-24T04:47:00+00:00"
-    },
-    {
-      "title": "Agguato in Calabria, uccisa la moglie di un boss, lui ferito",
-      "url": "https://www.rainews.it/articoli/2026/10/agguato-in-calabria-uccisa-la-moglie-di-un-boss-lui-ferito-ddbc5d43-822c-42c3-a6b1-0dc5baef7738.html",
-      "image": "https://www.rainews.it/dl/img/2024/05/04/1714853827620_macchina_dei_carabinieri.jpeg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-24T05:38:00+00:00"
     }
   ]
 }
