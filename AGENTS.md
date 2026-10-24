@@ -386,3 +386,12 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Non inventare notizie o immagini: utilizzare la miniatura fornita nel feed; in sua assenza usare lo sfondo nautico esistente. Se la fonte fallisce preservare l’ultima edizione con data reale; dopo 24 ore mostrare indisponibilità. Nessuna notifica push per le notizie o il meteo.
 - La scheda sulle notifiche precede immediatamente Accessi al sito: testo breve e simpatico, indicazione del pulsante Notifiche vicino alla musica, consenso e istruzioni sintetiche per permessi/iPhone. Non cambiare il meccanismo di iscrizione.
 - Meteo: l’automazione unica condivisa con le notizie acquisisce il meteo soltanto nelle fasce 08:30–09:29 e 17:30–18:29 Europe/Rome (orari indicativi 08:30 e 17:30), senza duplicati; scripts/update-weather.py evita doppioni nella stessa fascia mattino/sera. La sera conserva il riepilogo pranzo della stessa giornata solo se realmente acquisito in precedenza e lo etichetta come previsione del mattino.
+
+
+## Contatore condivisioni unico per browser — 2026-10-24
+- Il pulsante compatto «Condividi» resta disponibile in tutte le pagine e apre la condivisione nativa della pagina corrente; in mancanza di questa copia il link tracciabile.
+- Nelle Novità, sotto gli accessi e i browser autorizzati alle notifiche, mostrare due totali anonimi: browser che hanno usato Condividi e browser arrivati mediante link condivisi.
+- Conteggiare al massimo una volta per browser per ciascun totale usando un segnalibro booleano in localStorage, persistente tra sessioni; usare sessionStorage come ripiego. Se non è disponibile nessuno dei due, non incrementare il totale per evitare duplicati.
+- Il primo conteggio del pulsante avviene solo dopo il completamento della condivisione nativa o della copia automatica riuscita; annullamenti, clic successivi e fallimenti della copia non aumentano il valore. WhatsApp non conferma l'effettivo recapito: non dichiarare messaggi inviati.
+- Contare un ingresso tramite parametro cc_share una sola volta per browser, non ogni visita, ricaricamento o scheda. Non registrare identità, contatti, destinatari, dati di WhatsApp o impronte digitali.
+- Le vecchie statistiche di clic e visite (v1) rimangono storiche ma non deduplicabili: mostrare i nuovi contatori v2, partendo da zero, senza sommare i v1. Non modificare il contatore generale degli accessi.
