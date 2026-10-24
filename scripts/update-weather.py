@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch two daily MET Norway forecasts; publish only lunch/dinner summaries."""
+"""Fetch MET Norway forecasts every three hours; publish only lunch/dinner summaries."""
 import argparse
 from datetime import datetime, timedelta, timezone
 import gzip
@@ -82,10 +82,10 @@ def summarize(raw, now):
         day = now.astimezone(ROME).date() + timedelta(days=offset)
         lunch = period(points, day, 12, 14.5)
         dinner = period(points, day, 19, 22.5)
-        if lunch or dinner:
+        if offset == 0 or lunch or dinner:
             days.append({'date': day.isoformat(), 'lunch': lunch, 'dinner': dinner})
-    if not days or days[0]['date'] != now.astimezone(ROME).date().isoformat():
-        raise ValueError('No usable forecast for today; previous file preserved')
+    if not any(day['lunch'] or day['dinner'] for day in days):
+        raise ValueError('No usable forecast; previous file preserved')
     return {'source': 'MET Norway', 'source_url': ENDPOINT,
             'location': 'Torino · zona San Paolo', 'latitude': 45.0641, 'longitude': 7.6525,
             'fetched_at': now.isoformat(timespec='seconds'), 'provider_updated_at': updated.isoformat(),
@@ -103,9 +103,9 @@ def main():
         old = json.loads(args.output.read_text())
         fetched = datetime.fromisoformat(old['fetched_at'])
         local_now, local_fetched = now.astimezone(ROME), fetched.astimezone(ROME)
-        slot = lambda value: (value.date(), value.hour * 60 + value.minute >= 17 * 60 + 30)
+        slot = lambda value: (value.date(), value.hour // 3)
         if slot(local_fetched) == slot(local_now):
-            print('Forecast already fetched in this morning/evening slot; no API request or file change.')
+            print('Forecast already fetched in this three-hour slot; no API request or file change.')
             return
     if args.input:
         raw = json.loads(args.input.read_text())
@@ -119,15 +119,15 @@ def main():
                 payload = gzip.decompress(payload)
             raw = json.loads(payload)
     result = summarize(raw, now)
-    # The evening provider response no longer contains past lunch hours. Keep that day's
-    # last actual forecast, clearly dated, rather than lose the lunch row or invent data.
+    # Later responses omit past hours, including the start of an ongoing service.
+    # Retain only that same day's actual earlier forecast, with its original timestamp.
     if old:
         for day in result['days']:
             prior = next((d for d in old.get('days', []) if d['date'] == day['date']), None)
             if prior and day['date'] == now.astimezone(ROME).date().isoformat():
-                for service, end in [('lunch', 14.5), ('dinner', 22.5)]:
-                    if day[service] is None and now.astimezone(ROME).hour >= end and prior.get(service):
-                        day[service] = dict(prior[service], forecast_at=old['fetched_at'])
+                for service, start in [('lunch', 12), ('dinner', 19)]:
+                    if day[service] is None and now.astimezone(ROME).hour >= start and prior.get(service):
+                        day[service] = dict(prior[service], forecast_at=prior[service].get('forecast_at', old['fetched_at']))
     temporary = args.output.with_suffix('.tmp')
     temporary.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
     temporary.replace(args.output)

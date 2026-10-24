@@ -12,6 +12,8 @@
   var providerCache = {};
   var liveRaw = null;
   var liveFetchedAt = null;
+  var livePosition = null;
+  var lastLiveAttempt = 0;
   var restaurantForecast = null;
   var gpsButton = card.querySelector('[data-weather-gps]');
   var restaurantButton = card.querySelector('[data-weather-restaurant]');
@@ -96,7 +98,9 @@
       target.appendChild(details);
       if (value.forecast_at) {
         var archived = document.createElement('small');
-        archived.textContent = 'Previsione del mattino';
+        archived.textContent = 'Previsione delle ' + new Intl.DateTimeFormat('it-IT', {
+          timeZone: timezone(), hour: '2-digit', minute: '2-digit'
+        }).format(new Date(value.forecast_at));
         target.appendChild(archived);
       }
     });
@@ -196,6 +200,7 @@
     ] };
   }
   function refreshPosition(lat, lon, nextMode, id) {
+    lastLiveAttempt = Date.now();
     var key = lat + ',' + lon;
     var cached = providerCache[key];
     var result = cached && Date.now() < cached.expires
@@ -222,6 +227,7 @@
       finally { mode = previousMode; }
       select(nextMode);
       liveRaw = entry.raw;
+      livePosition = { lat: lat, lon: lon, mode: nextMode };
       liveFetchedAt = entry.fetchedAt;
       forecast = data;
       render();
@@ -277,6 +283,10 @@
   function check() {
     if (document.hidden) return;
     render();
+    // Refresh an explicitly selected position without asking for GPS again.
+    if (livePosition && livePosition.mode === mode && Date.now() - lastLiveAttempt >= 3 * 3600000) {
+      refreshPosition(livePosition.lat, livePosition.lon, mode, ++requestId);
+    }
     // The fixed restaurant forecast keeps its existing local JSON updates.
     if (mode === 'restaurant' && Date.now() - lastAttempt >= 300000) load();
   }
