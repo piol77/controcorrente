@@ -1,15 +1,31 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-24T19:34:05+00:00",
+  "fetched_at": "2026-10-24T20:25:49+00:00",
   "items": [
     {
-      "title": "Milano blindata: cortei di protesta e negozi protetti",
-      "url": "https://www.rainews.it/video/2026/10/milano-blindata-cortei-di-protesta-e-negozi-protetti-957cecc8-8649-4741-be3d-72bf1a084396.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792852747115_rainewsbededabceafec.jpg",
+      "title": "In duemila al corteo di Firenze, momenti di tensione a ponte Santa Trinita",
+      "url": "https://www.rainews.it/video/2026/10/in-migliaia-al-corteo-di-firenze-momenti-di-tensione-a-ponte-santa-trinita-761889d8-a660-4db1-8e3b-480f0f19ad75.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792861281481_sfondamento_.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-24T18:28:00+00:00"
+      "published_at": "2026-10-24T17:06:00+00:00"
+    },
+    {
+      "title": "Oltre 100.000 parigini in corteo: \"Vogliamo vivere, non solo sopravvivere\"",
+      "url": "https://www.rainews.it/video/2026/10/oltre-100000-parigini-in-corteo-vogliamo-vivere-non-solo-sopravvivere-89b26d27-42b9-4f9e-9d17-5df92d8fdfe3.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872083288_Cattura.PNG",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-24T20:00:00+00:00"
+    },
+    {
+      "title": "Cortei a Torino, fitto lancio oggetti e fumogeni contro la polizia",
+      "url": "https://www.rainews.it/video/2026/10/torino-fitto-lancio-oggetti-e-fumogeni-contro-la-polizia-da7a0418-56eb-4f32-946e-b9ae175f8b1e.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872288859_Cattura.PNG",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-24T20:04:00+00:00"
     },
     {
       "title": "Scontri a Parigi",
@@ -20,28 +36,12 @@
       "published_at": "2026-10-24T18:32:00+00:00"
     },
     {
-      "title": "Scontri in via Vittorio Emanuele.Orlando a Roma, idrante contro manifestanti",
-      "url": "https://www.rainews.it/video/2026/10/scontri-in-via-veorlando-a-roma-idrante-contro-manifestanti-video-c92aeb59-3317-4675-ae45-61f597e4793d.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792866053709_Cattura.PNG",
+      "title": "Politica divisa tra legge di bilancio e gestione dell'ordine pubblico nelle piazze",
+      "url": "https://www.rainews.it/video/2026/10/politica-divisa-tra-legge-di-bilancio-e-gestione-dellordine-pubblico-nelle-piazze-8865174b-0bf8-456e-ad1d-aa2e6ce78fb2.html",
+      "image": "https://www.rainews.it/dl/img/2024/01/19/1705643984773_ipiccyimage.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-24T18:20:00+00:00"
-    },
-    {
-      "title": "Lacrimogeni e idranti in una Parigi blindata",
-      "url": "https://www.rainews.it/video/2026/10/tg1-servizio-n-11-de-giuli-lacrimogeni-idranti-parigi-blindata-2815ab79-58f6-4f81-845a-c28aaefeebd0.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792866558665_.png",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-24T18:30:00+00:00"
-    },
-    {
-      "title": "Scontri a Roma, idrante in azione: contro i manifestanti",
-      "url": "https://www.rainews.it/video/2026/10/scontri-a-roma-idrante-in-azione-contro-manifestanti-6dd6e5ab-5a80-4ca4-80b7-8e0333569ac7.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792865980466_rainewscabdecceebefecaae.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-24T18:17:00+00:00"
+      "published_at": "2026-10-24T18:41:00+00:00"
     }
   ]
 }
