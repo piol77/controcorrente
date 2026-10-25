@@ -1,100 +1,69 @@
-name: Avvisi straordinari Controcorrente
+name: Saluto quotidiano Controcorrente
 
-# L'invio e' possibile solo per modifiche autorizzate sul branch main
-# oppure manualmente da Actions. Non e' legato ai cambi di menu.
+# Solo questa routine invia notifiche: niente trigger su modifiche, richieste
+# manuali, meteo o menù. 09:00 UTC = 10:00 CET / 11:00 CEST.
 on:
-  workflow_dispatch:
-    inputs:
-      message:
-        description: "Messaggio per i browser iscritti (massimo 180 caratteri)"
-        required: true
-        type: string
-      ttl_minutes:
-        description: "Validita' del messaggio (minuti, massimo 10)"
-        required: false
-        default: "3"
-        type: string
-  push:
-    branches: [main]
-    paths:
-      - ".github/notifiche/invio.json"
+  schedule:
+    - cron: '0 9 * * *'
 
 permissions:
   contents: read
   id-token: write
 
 concurrency:
-  group: controcorrente-avvisi-straordinari
+  group: controcorrente-notifica-giornaliera
   cancel-in-progress: false
 
 jobs:
-  avvisa:
-    if: github.ref == 'refs/heads/main'
+  saluto:
+    if: github.repository == 'piol77/controcorrente' && github.ref == 'refs/heads/main' && github.event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-        if: github.event_name == 'push'
-
-      - name: Invia soltanto avvisi recenti e autorizzati
+      - name: Invia un saluto e invita alle proposte del giorno
         env:
-          EVENT_NAME: ${{ github.event_name }}
-          RUN_ID: ${{ github.run_id }}
-          COMMIT_SHA: ${{ github.sha }}
-          INPUT_MESSAGE: ${{ inputs.message }}
-          INPUT_TTL: ${{ inputs.ttl_minutes }}
           PUSH_URL: https://controcorrente-notifiche.superlion129.chatgpt.site/admin/notify
         run: |
           python3 - <<'PY'
-          import datetime as dt
+          from datetime import datetime, timedelta, timezone
+          from zoneinfo import ZoneInfo
           import json
           import os
-          import pathlib
           import urllib.error
           import urllib.request
 
-          now = dt.datetime.now(dt.timezone.utc)
-          if os.environ["EVENT_NAME"] == "push":
-              data = json.loads(pathlib.Path(".github/notifiche/invio.json").read_text("utf-8"))
-              body = data["body"]
-              request_id = data["requestId"]
-              expiry = dt.datetime.fromisoformat(data["expiresAt"].replace("Z", "+00:00"))
-              if expiry.tzinfo is None:
-                  raise SystemExit("expiresAt deve contenere il fuso UTC.")
-              ttl = (expiry - now).total_seconds()
-              if ttl <= 0:
-                  print("Avviso scaduto: non inviare.")
-                  raise SystemExit(0)
-              if ttl > 600:
-                  raise SystemExit("Scadenza superiore a 10 minuti non consentita.")
+          now = datetime.now(timezone.utc)
+          local = now.astimezone(ZoneInfo("Europe/Rome"))
+          weekday = local.weekday()
+          if weekday == 0:
+              body = "Buon lunedì da Controcorrente! 🌊 Oggi siamo chiusi, ma puoi dare un'occhiata alle nostre proposte sul sito."
+          elif weekday == 5:
+              body = "Buon sabato da Controcorrente! 🌊🍽️ Guarda le proposte sul sito. Nel weekend siamo aperti su prenotazione."
+          elif weekday == 6:
+              body = "Buona domenica da Controcorrente! 🌊🍽️ Scopri le proposte sul sito. Nel weekend siamo aperti su prenotazione."
           else:
-              body = os.environ["INPUT_MESSAGE"]
-              request_id = "github-run-" + os.environ["RUN_ID"]
-              try:
-                  ttl = 60 * int(os.environ.get("INPUT_TTL") or "3")
-              except ValueError:
-                  raise SystemExit("TTL non valido.")
-              if not 60 <= ttl <= 600:
-                  raise SystemExit("TTL consentito: 1-10 minuti.")
-              expiry = now + dt.timedelta(seconds=ttl)
+              body = "Buongiorno da Controcorrente! 🌊🍽️ Scopri le proposte del giorno aggiornate sul nostro sito."
 
-          if not isinstance(body, str) or not 1 <= len(body.strip()) <= 180:
-              raise SystemExit("Messaggio obbligatorio: 1-180 caratteri.")
-          if not isinstance(request_id, str) or not (8 <= len(request_id) <= 120) or any(c not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_" for c in request_id):
-              raise SystemExit("requestId non valido.")
+          # Stesso identificatore per la medesima data italiana anche in caso
+          # di riavvio/riesecuzione: il server gestisce il requestId idempotente.
+          request_id = "cc-saluto-" + local.strftime("%Y%m%d")
           payload = {
               "requestId": request_id,
               "kind": "manual",
-              "body": body.strip(),
+              "body": body,
               "url": "https://piol77.github.io/controcorrente/",
-              "expiresAt": int(expiry.timestamp() * 1000),
+              "expiresAt": int((now + timedelta(minutes=3)).timestamp() * 1000),
           }
-          payload["dryRun"] = data.get("dryRun") is True if os.environ["EVENT_NAME"] == "push" else False
-          oidc_url = os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience=https%3A%2F%2Fcontrocorrente-notifiche.superlion129.chatgpt.site"
-          oidc_req = urllib.request.Request(oidc_url, headers={"Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
+          audience = "https%3A%2F%2Fcontrocorrente-notifiche.superlion129.chatgpt.site"
+          oidc_url = os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"] + "&audience=" + audience
+          oidc_req = urllib.request.Request(
+              oidc_url,
+              headers={"Authorization": "Bearer " + os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]},
+          )
           with urllib.request.urlopen(oidc_req, timeout=15) as response:
               token = json.load(response)["value"]
-          req = urllib.request.Request(
+
+          request = urllib.request.Request(
               os.environ["PUSH_URL"],
               data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
               method="POST",
@@ -102,19 +71,21 @@ jobs:
                   "Authorization": "Bearer " + token,
                   "Content-Type": "application/json",
                   "Cache-Control": "no-store",
-                  "User-Agent": "Controcorrente-Notifications/1.0",
+                  "User-Agent": "Controcorrente-Daily-Greetings/1.0",
               },
           )
           try:
-              with urllib.request.urlopen(req, timeout=30) as response:
+              with urllib.request.urlopen(request, timeout=30) as response:
                   result = json.load(response)
           except urllib.error.HTTPError as exc:
-              raise SystemExit("Server notifiche: HTTP " + str(exc.code) + "; server=" + str(exc.headers.get("Server")) + "; tipo=" + str(exc.headers.get("Content-Type")))
+              raise SystemExit("Servizio notifiche HTTP " + str(exc.code))
           if not isinstance(result, dict):
-              raise SystemExit("Risposta del servizio notifiche non valida.")
-          print("Esito provider:", json.dumps({
-              key: result.get(key) for key in ("ready", "dryRun", "subscribers", "accepted", "failed", "expired", "duplicate") if key in result
+              raise SystemExit("Esito invio non valido.")
+          print("Saluto quotidiano:", local.strftime("%Y-%m-%d"), json.dumps({
+              key: result.get(key)
+              for key in ("subscribers", "accepted", "failed", "expired", "duplicate")
+              if key in result
           }, ensure_ascii=False))
           if result.get("failed", 0):
-              raise SystemExit("Alcuni invii push sono falliti.")
+              raise SystemExit("Alcuni invii non sono stati accettati dal provider Push.")
           PY
