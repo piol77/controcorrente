@@ -210,7 +210,7 @@
     if (!frame) {
       frame = document.createElement('iframe');
       frame.title = 'Controcorrente';
-      frame.allow = 'autoplay; geolocation';
+      frame.allow = 'autoplay; geolocation; web-share';
       frame.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;border:0;background:var(--navy,#082a43);z-index:2147483647';
       frame.addEventListener('load', () => {
         try {
@@ -353,7 +353,7 @@
       stats.textContent = 'Statistiche condivisioni temporaneamente non disponibili';
     }
   }
-  async function copy(url) {
+  async function copy(url,activeFeedback) {
     try {
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(url);
@@ -367,33 +367,59 @@
         input.remove();
         if (!ok) throw new Error('Copy unavailable');
       }
-      feedback.textContent = 'Link copiato';
+      activeFeedback.textContent = 'Link copiato';
       return true;
     } catch (_) {
       window.prompt('Copia questo link:',url);
-      feedback.textContent = 'Link pronto da copiare';
+      activeFeedback.textContent = 'Link pronto da copiare';
       return false; // The manual copy cannot be confirmed.
     }
   }
-  button.addEventListener('click',() => {
+  // Both positions use the same share action and the same browser-unique counters.
+  // Feedback is local to the button pressed; the totals remain global.
+  function handleShare(activeFeedback) {
     const url = shareUrl();
-    feedback.textContent = '';
+    activeFeedback.textContent = '';
     let shared = null;
     if (typeof navigator.share === 'function') {
       try { shared = navigator.share({title:'Controcorrente',text:document.title,url}); }
       catch (error) { shared = Promise.reject(error); }
     }
-    // Do not count cancelled share sheets or repeat shares from the same browser.
-    // The browser cannot confirm final delivery within WhatsApp.
+    // Never count dismissed shares, failed copies or a second share from this browser.
     if (shared) {
-      Promise.resolve(shared).then(() => recordOnce(clickKey, clickFlag)).catch(error => {
+      Promise.resolve(shared).then(() => recordOnce(clickKey,clickFlag)).catch(error => {
         if (error && error.name === 'AbortError') return;
-        return copy(url).then(copied => { if (copied) recordOnce(clickKey, clickFlag); });
+        return copy(url,activeFeedback).then(copied => { if (copied) recordOnce(clickKey,clickFlag); });
       });
     } else {
-      copy(url).then(copied => { if (copied) recordOnce(clickKey, clickFlag); });
+      copy(url,activeFeedback).then(copied => { if (copied) recordOnce(clickKey,clickFlag); });
     }
-  });
+  }
+
+  button.addEventListener('click', () => handleShare(feedback));
+
+  function mountHeader(shareButton,shareFeedback) {
+    const header = document.querySelector('header.top');
+    if (!header) return;
+    function inNotificationRow() {
+      const controls = header.querySelector('#cc-notification-actions');
+      if (!controls) return false;
+      if (shareButton.parentElement !== controls) controls.insertBefore(shareButton,controls.firstChild);
+      if (shareFeedback.parentElement !== controls) shareButton.insertAdjacentElement('afterend',shareFeedback);
+      return true;
+    }
+    // Make the button immediately visible even if the notification script loads late.
+    if (inNotificationRow()) return;
+    const brand = header.querySelector('.brand-row');
+    if (brand) brand.insertAdjacentElement('afterend',shareButton);
+    else header.appendChild(shareButton);
+    shareButton.insertAdjacentElement('afterend',shareFeedback);
+    const observer = new MutationObserver(() => {
+      if (inNotificationRow()) observer.disconnect();
+    });
+    observer.observe(header,{childList:true,subtree:true});
+    window.setTimeout(() => observer.disconnect(),20000);
+  }
 
   const homeCounter = document.querySelector('[data-notification-counter]');
   if (homeCounter && homeCounter.parentElement) {
@@ -408,31 +434,13 @@
     refresh();
     window.addEventListener('focus',refresh);
     document.addEventListener('visibilitychange',() => { if (!document.hidden) refresh(); });
+    // Novità keeps its counter button and ALSO has the same control as every other page.
+    const headerButton = button.cloneNode(true);
+    const headerFeedback = feedback.cloneNode(true);
+    headerButton.addEventListener('click',() => handleShare(headerFeedback));
+    mountHeader(headerButton,headerFeedback);
   } else {
-    const header = document.querySelector('header.top');
-    if (header) {
-      function mount() {
-        const controls = document.getElementById('cc-notification-actions');
-        if (!controls) return false;
-        controls.insertBefore(button,controls.firstChild);
-        controls.appendChild(feedback);
-        return true;
-      }
-      if (!mount()) {
-        const observer = new MutationObserver(() => {
-          if (mount()) observer.disconnect();
-        });
-        observer.observe(header,{childList:true,subtree:true});
-        window.setTimeout(() => {
-          observer.disconnect();
-          if (!button.isConnected) {
-            const brand = header.querySelector('.brand-row');
-            if (brand) brand.insertAdjacentElement('afterend',button);
-            else header.appendChild(button);
-          }
-        },4000);
-      }
-    }
+    mountHeader(button,feedback);
   }
   if (new URLSearchParams(window.location.search).get('cc_share') === '1') {
     try {

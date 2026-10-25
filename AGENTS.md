@@ -390,6 +390,7 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Il primo conteggio del pulsante avviene solo dopo il completamento della condivisione nativa o della copia automatica riuscita; annullamenti, clic successivi e fallimenti della copia non aumentano il valore. WhatsApp non conferma l'effettivo recapito: non dichiarare messaggi inviati.
 - Contare un ingresso tramite parametro cc_share una sola volta per browser, non ogni visita, ricaricamento o scheda. Non registrare identità, contatti, destinatari, dati di WhatsApp o impronte digitali.
 - Le vecchie statistiche di clic e visite (v1) rimangono storiche ma non deduplicabili: mostrare i nuovi contatori v2, partendo da zero, senza sommare i v1. Non modificare il contatore generale degli accessi.
+- Dal 25 ottobre 2026 nella pagina Novità mostrare due pulsanti «Condividi»: quello storico nel riquadro Accessi e un secondo nell'intestazione, nella stessa posizione delle altre pagine accanto a Notifiche/musica. Il medesimo comportamento vale per entrambi; condividono esattamente lo stesso flag v2 e gli stessi contatori anonimi, senza duplicazioni. Sulle altre pagine il pulsante nell'intestazione deve apparire anche se lo script delle notifiche carica in ritardo.
 
 
 ## Meteo oggi/domani — 2026-10-25
