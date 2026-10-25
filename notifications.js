@@ -51,6 +51,17 @@
   if (!owner.ccNotifications || typeof owner.ccNotifications.subscribe !== 'function') {
     let registrationPromise, subscriptionPromise;
     let subscribed = false;
+    const optOutKey = 'cc-notifications-disabled-v1';
+    const optedOut = () => {
+      try { return owner.localStorage.getItem(optOutKey) === '1'; }
+      catch (_) { return false; }
+    };
+    const setOptedOut = value => {
+      try {
+        if (value) owner.localStorage.setItem(optOutKey, '1');
+        else owner.localStorage.removeItem(optOutKey);
+      } catch (_) {}
+    };
     const controller = {
       permission: () => 'Notification' in owner ? owner.Notification.permission : 'unsupported',
       needsHome: () => (/iPad|iPhone|iPod/.test(owner.navigator.userAgent) ||
@@ -75,6 +86,31 @@
       },
       request: () => owner.Notification.requestPermission(),
       subscribed: () => subscribed,
+      optedOut,
+      setOptedOut,
+      async unsubscribe() {
+        // Store this BEFORE cancelling: returning to the website must not re-enrol.
+        setOptedOut(true);
+        if (subscriptionPromise) await subscriptionPromise.catch(() => {});
+        const registration = await controller.prepare();
+        const subscription = await registration.pushManager?.getSubscription();
+        if (subscription) {
+          // Best effort server-side removal. Browser-side unsubscribe is essential
+          // and still proceeds if the server does not provide this endpoint.
+          try {
+            await owner.fetch(pushService + '/unsubscribe', {
+              method:'POST',credentials:'omit',
+              headers:{'Content-Type':'application/json'},
+              body:JSON.stringify({endpoint:subscription.endpoint}),
+              signal:AbortSignal.timeout(6000)
+            });
+          } catch (_) {}
+          const removed = await subscription.unsubscribe();
+          if (!removed) throw new Error('Browser unsubscribe failed');
+        }
+        subscribed = false;
+        subscriptionPromise = null;
+      },
       async subscribe() {
         if (subscriptionPromise) return subscriptionPromise;
         subscriptionPromise = (async () => {
@@ -103,9 +139,10 @@
   const controller = owner.ccNotifications;
   function render() {
     const granted = controller.permission() === 'granted';
-    const active = granted && controller.subscribed();
-    button.querySelector('span').textContent = active ? 'Notifiche ✓' : 'Notifiche';
-    const label = active ? 'Notifiche attive: informazioni' : granted ? 'Completa attivazione notifiche' : 'Attiva le notifiche';
+    const disabled = controller.optedOut();
+    const active = granted && controller.subscribed() && !disabled;
+    button.querySelector('span').textContent = active ? 'Notifiche ✓' : disabled ? 'Notifiche OFF' : 'Notifiche';
+    const label = active ? 'Disattiva le notifiche' : disabled ? 'Riattiva le notifiche' : granted ? 'Completa attivazione notifiche' : 'Attiva le notifiche';
     button.title = label; button.setAttribute('aria-label', label);
   }
   render();
@@ -113,9 +150,20 @@
     controller.prepare().catch(() => {});
     // Existing consent is enough to attempt enrolment on the next visit.
     // Registration and page loads never send a test notification.
-    if (controller.permission() === 'granted') controller.subscribe().then(render).catch(() => {});
+    if (controller.permission() === 'granted' && !controller.optedOut()) controller.subscribe().then(render).catch(() => {});
   }
   button.addEventListener('click', async () => {
+    // A second tap unsubscribes; it does not merely hide this button.
+    if (controller.subscribed() && !controller.optedOut()) {
+      button.disabled = true;
+      try {
+        await controller.unsubscribe();
+        message('Notifiche disattivate su questo browser. Non riceverai più avvisi. Premi Notifiche OFF per riattivarle.');
+      } catch (_) {
+        message('Non è stato possibile disattivare completamente le notifiche. Riprova.');
+      } finally { button.disabled = false; render(); }
+      return;
+    }
     if (controller.needsHome()) {
       message('Su iPhone e iPad: apri questo sito in Safari, tocca Condividi e scegli “Aggiungi alla schermata Home”. Se compare “Apri come app web”, lascialo attivo. Poi apri Controcorrente dalla nuova icona e premi di nuovo Notifiche. È necessario iOS/iPadOS 16.4 o successivo.');
       return;
@@ -129,6 +177,7 @@
       return;
     }
     button.disabled = true;
+    const restoring = controller.optedOut();
     let permission;
     try {
       if (controller.permission() !== 'granted') {
@@ -143,10 +192,12 @@
       } else if (permission !== 'granted') {
         message('Notifiche non attivate. Se la richiesta è stata chiusa oppure non è comparsa, puoi attivarle manualmente. ' + manualPermissionHelp);
       } else {
+        controller.setOptedOut(false);
         await controller.subscribe();
-        message('Notifiche attive: riceverai gli avvisi quando cambiano le proposte per pranzo, cena o le offerte del giorno. Non inviamo prove ripetute. Se Chrome segnala “Possibile spam” su un avviso che riconosci del ristorante, puoi toccare “Mostra notifica” e poi “Mostra sempre”.');
+        message('Notifiche attive. Riceverai al massimo un avviso al giorno su questo browser. Premi di nuovo Notifiche ✓ per disattivarle.');
       }
     } catch (_) {
+      if (restoring) controller.setOptedOut(true);
       message(permission === 'granted' || controller.permission() === 'granted'
         ? 'Il permesso è accordato, ma non è stato possibile completare l’attivazione degli avvisi. Controlla la connessione e premi di nuovo Notifiche per riprovare.'
         : 'Non è stato possibile richiedere il permesso. ' + manualPermissionHelp);
