@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-25T02:34:49+00:00",
+  "fetched_at": "2026-10-25T05:33:42+00:00",
   "items": [
+    {
+      "title": "Il governo stringe i tempi: asse di maggioranza tra prudenza sui conti e pressing sui dossier",
+      "url": "https://www.rainews.it/articoli/2026/10/il-governo-stringe-i-tempi-asse-di-maggioranza-tra-prudenza-sui-conti-e-pressing-sui-dossier-8cd08187-5d58-49a1-8f59-c670cb9f2d5c.html",
+      "image": "https://www.rainews.it/dl/img/2025/12/27/1766834353758_ecfdedaa.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-25T03:28:00+00:00"
+    },
+    {
+      "title": "Brasile al voto, è un testa a testa da brivido tra Lula e Bolsonaro",
+      "url": "https://www.rainews.it/articoli/2026/10/brasile-al-voto-e-un-testa-a-testa-da-brivido-tra-lula-e-bolsonaro-a6b52a25-7aff-4e37-9bfc-a3075f32849b.html",
+      "image": "https://www.rainews.it/dl/img/2022/10/29/1667010025890_lula_bolsonaro_ultimo_dibattito_tv.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-25T03:18:00+00:00"
+    },
     {
       "title": "In duemila al corteo di Firenze, momenti di tensione a ponte Santa Trinita",
       "url": "https://www.rainews.it/video/2026/10/in-migliaia-al-corteo-di-firenze-momenti-di-tensione-a-ponte-santa-trinita-761889d8-a660-4db1-8e3b-480f0f19ad75.html",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-24T20:04:00+00:00"
-    },
-    {
-      "title": "Scontri a Marsiglia alla fine del corteo",
-      "url": "https://www.rainews.it/video/2026/10/disordini-a-marsiglia-alla-fine-del-corteo-9e1d9376-2f59-4927-ba59-9b3664c90e36.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872374442_Cattura.PNG",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-24T20:04:00+00:00"
-    },
-    {
-      "title": "Lancio petardi e lacrimogeni, continuano in serata le tensioni tra polizia e manifestanti a Torino",
-      "url": "https://www.rainews.it/video/2026/10/a-torino-identificate-oltre-400-persone-prima-della-manifestazione-di-oggi-video-1a4e8593-4c59-43bd-8d9d-1e09f1fa12a4.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/24/1792872074732_Cattura.PNG",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-24T20:01:00+00:00"
     }
   ]
 }
