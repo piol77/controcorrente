@@ -1,47 +1,47 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-25T20:35:36+00:00",
+  "fetched_at": "2026-10-25T23:36:09+00:00",
   "items": [
     {
-      "title": "Brasile, sfida tra Lula e Bolsonaro: la Corte suprema proroga di due ore la chiusura dei seggi",
+      "title": "Ururi, madre e figlio trovati morti in casa: disposte le autopsie",
+      "url": "https://www.rainews.it/video/2026/10/ururi-madre-e-figlio-trovati-morti-in-casa-disposte-le-autopsie-19b3be1d-0d63-4836-b9c8-75a60fe6251c.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/25/1792949919935_CatturaUruri.PNG",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-25T17:25:00+00:00"
+    },
+    {
+      "title": "Il ballottaggio tra Lula e Bolsonaro a rischio annullamento: decisioni last minute e caos nei seggi",
+      "url": "https://www.rainews.it/articoli/2026/10/il-ballottaggio-tra-lula-e-bolsonaro-a-rischio-annullamento-decisioni-last-minute-e-caos-nei-seggi-dbb4e7e6-72ff-477e-8314-45f179e0be1a.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/19/1792388702674_rainewsbfdefeebd.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-25T22:26:00+00:00"
+    },
+    {
+      "title": "Brasile, sfida tra Lula e Bolsonaro: seggi chiusi dopo una proroga di due ore, spoglio al via",
       "url": "https://www.rainews.it/maratona/2026/10/brasile-lula-bolsonaro-sfida-presidenziali-ballottaggio-89d004db-61bd-44cf-94c9-db714e2fa71a.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/25/1792943819499_DDF.jpg",
+      "image": "https://www.rainews.it/dl/img/2026/10/04/1791144693956_arte.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-25T20:16:00+00:00"
+      "published_at": "2026-10-25T23:28:00+00:00"
     },
     {
-      "title": "Brasile, il voto tra Lula e Bolsonaro si deciderà anche nelle favelas controllate dalle gang",
-      "url": "https://www.rainews.it/video/2026/10/brasile-il-voto-tra-lula-e-bolsonaro-si-decidera-anche-nelle-favelas-controllate-dalle-gang-228c4cb8-e351-4a8d-b4fd-e4169da97c84.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/25/1792957290927_.png",
+      "title": "Il presidente Aleksandar Vučić ammette la sconfitta",
+      "url": "https://www.rainews.it/video/2026/10/vucic-presidente-serbo-ammette-la-sconfitta-da18103a-0eff-4270-95a7-8b3fe0a6df62.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/25/1792962678745_Cattura.PNG",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-25T20:06:00+00:00"
+      "published_at": "2026-10-25T21:11:00+00:00"
     },
     {
-      "title": "Youssef Siher, la \"mente\" dei disordini di Milano, non risponde al Gip. Ecco le accuse della Procura",
-      "url": "https://www.rainews.it/video/2026/10/youssef-siher-la-mente-dei-disordini-di-milano-non-risponde-al-gip-ecco-le-accuse-della-procura-20f275d5-3f0a-44aa-bca4-2f6036d381d7.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/25/1792957119131_.png",
+      "title": "Movida violenta a Sassari: diciannovenne accoltella un minore per futili motivi",
+      "url": "https://www.rainews.it/video/2026/10/movida-violenta-a-sassari-diciannovenne-accoltella-un-minore-per-futili-motivi-74a9ba68-04ab-40e4-8e78-264cb501ed98.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/25/1792957448925_.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-25T19:45:00+00:00"
-    },
-    {
-      "title": "Spettacolare scia di fuoco rosso illumina il cielo notturno della Cina ieri sera",
-      "url": "https://www.rainews.it/video/2026/10/spettacolare-scia-di-fuoco-rosso-illumina-il-cielo-notturno-della-cina-ieri-sera-video-0d62a450-bd60-46e0-9c62-6474b0b68470.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/25/1792954450178_cop_lunga_marcia_canva.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-25T18:51:00+00:00"
-    },
-    {
-      "title": "Giovani senza futuro e rappresentanza: il grido d'allarme di Manconi",
-      "url": "https://www.rainews.it/video/2026/10/giovani-senza-futuro-e-rappresentanza-il-grido-dallarme-di-manconi-0f84a443-f37d-4a26-8581-ac5ed6de4df8.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/25/1792952965671_.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-25T18:30:00+00:00"
+      "published_at": "2026-10-25T19:44:00+00:00"
     }
   ]
 }
