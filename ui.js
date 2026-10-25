@@ -81,7 +81,7 @@ document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(fu
 (function(){
   if(document.querySelector('script[data-cc-notifications]'))return;
   const script=document.createElement('script');
-  script.src=new URL('notifications.js?v=20261021-3',document.currentScript.src).href;
+  script.src=new URL('notifications.js?v=20261025-toggle-daily',document.currentScript.src).href;
   script.setAttribute('data-cc-notifications','');
   document.head.appendChild(script);
 })();
