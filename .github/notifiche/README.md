@@ -1,33 +1,22 @@
-# Avvisi straordinari — integrazione amministrativa (21 ottobre 2026)
+# Notifiche Controcorrente — sistema quotidiano (dal 25 ottobre 2026)
 
-## Stato
-- Predisposto il workflow `.github/workflows/notifiche-straordinarie.yml` sul branch `main`.
-- **NON abilitato l'invio finché non è disponibile il server amministrativo.**
-- Restano invariati sito pubblico, notifiche automatiche dei menù e pulsante Notifiche.
-- Il servizio push già utilizzato dal sito è `https://controcorrente-notifiche.superlion129.chatgpt.site` (progetto Sites `appgprj_6ad8caae661c8191a65613c20478f911`).
+La sola notifica ammessa è **un saluto al giorno** agli iscritti con invito a consultare le proposte del giorno sul sito. Nessuna notifica sui singoli cambi di menu, meteo, news, interventi tecnici o comunicazioni straordinarie.
 
-## Lavoro da completare nel progetto Sites (es. con ChatGPT Work / Cloud Browser)
-Implementare esclusivamente `POST /admin/notify`:
-1. Autorizzazione obbligatoria con `Authorization: Bearer <token>`; token casuale lungo e segreto in variabile d'ambiente del servizio, confronto a tempo costante. Mai esporre token, subscription o VAPID in GitHub, nel sito o nei log.
-2. Accettare `{requestId,kind:"manual",body,url,expiresAt}`. Convalidare: requestId 8–120 caratteri alfanumerici/trattino/underscore; body tra 1 e 180 caratteri; URL del sito Controcorrente; expiresAt come millisecondi UTC, strettamente futuro e non oltre 10 minuti. Rifiutare eventuali campi non ammessi se opportuno.
-3. Idempotenza durevole su `requestId`, anche con ritentativi e richieste simultanee. Per ogni richiesta valida non duplicata, aggiornare `/feed` con `event:{kind:"manual",body,url,createdAt,expiresAt}` *prima* dei push e inviare una sola notifica a ogni browser effettivamente iscritto. La funzione di invio deve riusare l'infrastruttura VAPID e gli endpoint già presenti senza alterare `/sync`.
-4. Rispondere con JSON dei conteggi `{subscribers,accepted,failed,duplicate}`. Una risposta accettata dal provider non certifica la visualizzazione. Gestire iscrizioni scadute, protezione anti-spam, limitazione di frequenza e scadenza; non salvare nuovi avvisi dopo la scadenza.
-5. Distribuire il servizio e verificare senza inviare notifiche indesiderate.
+## Unico workflow attivo
+- `.github/workflows/notifiche-straordinarie.yml`: il percorso preesistente è mantenuto per preservare l'autorizzazione GitHub OIDC del backend, ma ora il workflow è denominato «Saluto quotidiano Controcorrente» e ha **solo** il trigger `schedule`.
+- Esecuzione giornaliera programmata alle 09:00 UTC (10:00 CET / 11:00 CEST, ora di Torino). Gli avvii pianificati di GitHub possono subire ritardi.
+- Per ogni giorno locale Europe/Rome, usa `requestId=cc-saluto-YYYYMMDD` deterministico: ritentativi dello stesso giorno risultano duplicati lato server se l'idempotenza è disponibile come previsto.
+- Ottiene un token OIDC temporaneo con audience `https://controcorrente-notifiche.superlion129.chatgpt.site` e chiama `POST /admin/notify` del servizio push. Credenziali e chiavi VAPID non sono incluse nel repository.
+- Messaggio: saluto e invito al sito; il lunedì specifica la chiusura, sabato e domenica ricordano la prenotazione. URL `https://piol77.github.io/controcorrente/`.
+- Nei log cercare «Saluto quotidiano» con `subscribers`, `accepted`, `failed` e `duplicate`. Gli invii accettati non certificano la visualizzazione sul telefono.
 
-## GitHub Actions — configurazione una tantum
-Creare il secret di repository `CC_PUSH_ADMIN_TOKEN` identico al token del server. In caso di secret assente il workflow si ferma **senza inviare nulla**.
+## Vecchi invii disabilitati
+- `.github/workflows/notifiche-menu.yml` eliminato: nessun trigger push del menu e nessuna chiamata automatica a `POST /sync`.
+- `.github/notifiche/invio.json` rimane soltanto come documento storico: modificarlo non invia notifiche.
+- Niente `workflow_dispatch`: l'invio manuale dal vecchio workflow non è più disponibile. Ogni nuova eccezione richiede un cambio esplicito della regola master in `AGENTS.md`.
+- Lato client, `notifications-sw.js` blocca la visualizzazione oltre il primo avviso nel giorno locale; `notifications.js` gestisce la disiscrizione tramite un secondo clic su «Notifiche ✓», senza reiscrizione automatica.
 
-Invio da chat con connettore GitHub: creare/aggiornare `.github/notifiche/invio.json` su `main`, con un `requestId` *nuovo* a ogni messaggio, `body` in italiano e `expiresAt` UTC ISO 8601 entro 10 minuti (preferibilmente 3). Il push del solo file attiva l'invio. Non usare questo flusso per aggiornamenti del menù.
+## Controlli
+Verificare GitHub Actions > «Saluto quotidiano Controcorrente» dopo la prima esecuzione prevista. In caso di assenza di invio, controllare esito OIDC, disponibilità del servizio e contatori senza creare notifiche di prova aggiuntive. Il progetto Sites del servizio è `appgprj_6ad8caae661c8191a65613c20478f911`.
 
-Esempio di struttura (non creare il file se non è davvero richiesto un invio):
-```json
-{
-  "requestId": "avviso-YYYYMMDDTHHMMSSZ-unico",
-  "body": "Questa sera siamo in ritardo di circa 10 minuti. Ci scusiamo per l'attesa!",
-  "expiresAt": "YYYY-MM-DDTHH:MM:SSZ"
-}
-```
-Ogni avviso è una richiesta autonoma, **mai** da accodare per il futuro: se è scaduto, il workflow non invia nulla. In alternativa si può avviare manualmente il workflow in Actions inserendo messaggio e TTL.
-
-## Verifica
-Controllare il risultato della Actions `Avvisi straordinari Controcorrente` e i conteggi restituiti dal backend; mai dichiarare invio riuscito sulla sola base del commit GitHub.
+Regola vincolante: **non più di una notifica al giorno e nessun altro tipo di push**. Vedi il master `AGENTS.md` per le istruzioni permanenti.
