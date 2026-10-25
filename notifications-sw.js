@@ -2,8 +2,19 @@
 const PUSH_SERVICE = 'https://controcorrente-notifiche.superlion129.chatgpt.site';
 self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
 self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
+// Suppress repeat notifications on the same local calendar day (Europe/Rome).
+// The independent cache survives browser/service-worker restarts.
+const DAILY_CACHE = 'cc-push-daily-limit-v1';
+let pendingPush = Promise.resolve();
 self.addEventListener('push', event => {
-  event.waitUntil((async () => {
+  const task = pendingPush.catch(() => {}).then(async () => {
+    const cache = await caches.open(DAILY_CACHE);
+    const marker = new URL('push-last-notification', self.registration.scope).href;
+    const today = new Intl.DateTimeFormat('sv-SE', {
+      timeZone:'Europe/Rome', year:'numeric', month:'2-digit', day:'2-digit'
+    }).format(new Date());
+    const previous = await cache.match(marker);
+    if (previous && (await previous.text()) === today) return;
     const home = new URL('index.html', self.registration.scope).href;
     let notice;
     try {
@@ -15,12 +26,15 @@ self.addEventListener('push', event => {
     await self.registration.showNotification('Ristorante Controcorrente', {
       body: current ? notice.body : 'È disponibile un aggiornamento dal ristorante. Apri il sito per leggerlo.',
       icon: new URL('notification-icon-192.png', self.registration.scope).href,
-      tag: current && notice.kind === 'test' ? 'cc-saluto-unico' : 'cc-menu-updates',
+      tag:'cc-daily-update',
       renotify:false,
       timestamp:current ? notice.createdAt : Date.now(),
       data:{url:target}
     });
-  })());
+    await cache.put(marker, new Response(today));
+  });
+  pendingPush = task.catch(() => {});
+  event.waitUntil(task);
 });
 self.addEventListener('notificationclick', event => {
   event.notification.close();
