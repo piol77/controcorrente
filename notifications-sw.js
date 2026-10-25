@@ -26,7 +26,7 @@ self.addEventListener('push', event => {
     await self.registration.showNotification('Ristorante Controcorrente', {
       body: current ? notice.body : 'È disponibile un aggiornamento dal ristorante. Apri il sito per leggerlo.',
       icon: new URL('notification-icon-192.png', self.registration.scope).href,
-      tag:'cc-daily-update',
+      tag:'cc-daily-' + today.replace(/-/g, ''),
       renotify:false,
       timestamp:current ? notice.createdAt : Date.now(),
       data:{url:target}
