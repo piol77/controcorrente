@@ -1,8 +1,12 @@
 name: Saluto quotidiano Controcorrente
 
-# Solo questa routine invia notifiche: niente trigger su modifiche, richieste
-# manuali, meteo o menù. 09:00 UTC = 10:00 CET / 11:00 CEST.
+# Invio quotidiano, con eccezione manuale una tantum del 26/10/2026.
+# Deduplica sempre per giorno italiano. 09:00 UTC = 10:00 CET / 11:00 CEST.
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/notifiche-straordinarie.yml'
   schedule:
     - cron: '0 9 * * *'
 
@@ -16,7 +20,7 @@ concurrency:
 
 jobs:
   saluto:
-    if: github.repository == 'piol77/controcorrente' && github.ref == 'refs/heads/main' && github.event_name == 'schedule'
+    if: github.repository == 'piol77/controcorrente' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'push')
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -36,7 +40,7 @@ jobs:
           local = now.astimezone(ZoneInfo("Europe/Rome"))
           weekday = local.weekday()
           if weekday == 0:
-              body = "Buon lunedì da Controcorrente! 🌊 Oggi siamo chiusi, ma puoi dare un'occhiata alle nostre proposte sul sito."
+              body = "Buon inizio settimana da Controcorrente! 🌊😅 Oggi siamo chiusi, ma domani si riapre! Scopri le proposte sul sito."
           elif weekday == 5:
               body = "Buon sabato da Controcorrente! 🌊🍽️ Guarda le proposte sul sito. Nel weekend siamo aperti su prenotazione."
           elif weekday == 6:
