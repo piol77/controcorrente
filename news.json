@@ -1,8 +1,24 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-26T09:10:29+00:00",
+  "fetched_at": "2026-10-26T11:27:18+00:00",
   "items": [
+    {
+      "title": "Strage di Castel D'Azzano, al via il processo ai fratelli Ramponi",
+      "url": "https://www.rainews.it/articoli/2026/10/strage-di-castel-dazzano-al-via-il-processo-ai-fratelli-ramponi-carabinieri-morti-sfratto-31db5548-765f-43a5-b4d1-36813efd03da.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793011765488_rainewsddabdabafadfaca.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-26T10:56:00+00:00"
+    },
+    {
+      "title": "Torna il Premio Morrione: a Torino tre giornate dedicate alle “Povere Parole”",
+      "url": "https://www.rainews.it/articoli/2026/10/torna-il-premio-morrione-a-torino-tre-giornate-dedicate-alle-povere-parole-d57dc4df-9519-4c4d-a58d-9bdbd001cb27.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793009748420_morrione.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-26T10:10:00+00:00"
+    },
     {
       "title": "Tifoso colpito con una mazza da baseball dopo Puteolana-Portici: è in coma farmacologico",
       "url": "https://www.rainews.it/articoli/2026/10/tifoso-colpito-con-una-mazza-da-baseball-dopo-puteolana-portici-e-in-coma-farmacologico-b3a0a063-24a0-4813-8d0b-b6fd9ed708d1.html",
@@ -12,12 +28,12 @@
       "published_at": "2026-10-26T09:01:00+00:00"
     },
     {
-      "title": "Lo spettacolo dei 110 robot ballerini: in Cina il record mondiale",
-      "url": "https://www.rainews.it/video/2026/10/nuovo-record-mondiale-guinness-110-robot-umanoidi-ballano-in-sincrono-in-cina-4e528db1-2da5-4e15-969b-c6bf645affcf.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/26/1792997741183_TZLOPSAQRTRMADPBASEIMAGEXCHINANEWSSERVICE.JPG",
+      "title": "Wsj: Trump con Cina e Russia pensano a Orbán come prossimo segretario Onu",
+      "url": "https://www.rainews.it/articoli/2026/10/wsj-trump-con-cina-e-russia-pensano-a-orban-come-prossimo-segretario-onu-7cf15944-639c-4cc1-a8ed-f85a0f1bbbe7.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793007156041_rainewsabaedacebcac.jpg",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-10-26T06:52:00+00:00"
+      "published_at": "2026-10-26T09:27:00+00:00"
     },
     {
       "title": "Ultras aggrediscono tifoso 34enne durante partita di Eccellenza: è gravissimo",
@@ -26,22 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-25T22:34:00+00:00"
-    },
-    {
-      "title": "Violenza delle onde mentre si infrangono sulla costa della Cumbria occidentale",
-      "url": "https://www.rainews.it/video/2026/10/violenza-delle-onde-mentre-si-infrangono-sulla-costa-della-cumbria-occidentale-il-mare-in-tempesta-689ac9cd-2b1e-4f32-a519-370fbb6bf6d3.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/26/1792995498383_TZLOPRPRTRMADPBASEIMAGEXEUROPEWEATHERBRITAINSTORM.JPG",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-26T06:14:00+00:00"
-    },
-    {
-      "title": "Monossido di carbonio, famiglia di 4 persone intossicata nel Vicentino",
-      "url": "https://www.rainews.it/articoli/2026/10/isola-vicentina-famiglia-4-persone-intossicata-monossido-carbonio-ricoverati-ospedale-san-bortolo-b1688aa4-0ead-435a-bd53-cdb9620c0510.html",
-      "image": "https://www.rainews.it/dl/img/2026/9/22/1790090105598_Vicenza_lingresso_dellospedale_San_Bortolo.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-26T08:52:00+00:00"
     }
   ]
 }
