@@ -1,8 +1,40 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-26T17:29:52+00:00",
+  "fetched_at": "2026-10-26T20:27:10+00:00",
   "items": [
+    {
+      "title": "Per 5 anni la gestione delle Acciaierie di Taranto piegata al profitto",
+      "url": "https://www.rainews.it/video/2026/10/per-5-anni-la-gestione-delle-acciaierie-di-taranto-piegata-al-profitto-1108bc72-15cb-4586-a7b3-48dd4f30bd89.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793039958231__.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-26T18:38:00+00:00"
+    },
+    {
+      "title": "Lutto nel Principato, trovato morto il cugino di Alberto II",
+      "url": "https://www.rainews.it/video/2026/10/lutto-principato-trovato-morto-cugino-alberto-secondo-717db47a-2bc8-4040-894e-418d3228ed6a.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793043011299_.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-26T19:29:00+00:00"
+    },
+    {
+      "title": "Il richiamo del presidente Mattarella sulla Sanità pubblica: è per tutti e non si tocca",
+      "url": "https://www.rainews.it/video/2026/10/il-richiamo-del-presidente-mattarella-sulla-sanita-pubblica-e-per-tutti-e-non-si-tocca-9f11e35a-0d65-40b3-8919-a84318ff712c.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793039158027_.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-26T18:24:00+00:00"
+    },
+    {
+      "title": "Ucraina, per la prima volta in 100 anni, la produzione di acciaio è ferma",
+      "url": "https://www.rainews.it/video/2026/10/ucraina-per-la-prima-volta-in-100-anni-la-produzione-di-acciaio-e-ferma-0c5efcbb-77e5-4f79-adcc-add3cc5e80aa.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793040805748_ranframe.jpeg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-26T19:49:00+00:00"
+    },
     {
       "title": "Mantovano sui cortei: “Molti giovani prima di darsi a devastazioni assumono droghe”",
       "url": "https://www.rainews.it/articoli/2026/10/mantovano-sui-cortei-molti-giovani-prima-di-darsi-a-devastazioni-assumono-droghe-3757156b-7bcb-49dc-ba52-baba88c096cc.html",
@@ -10,38 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-26T16:44:00+00:00"
-    },
-    {
-      "title": "Gadi Eisenkot, l'ex generale di destra che punta a spodestare Netanyahu",
-      "url": "https://www.rainews.it/articoli/2026/10/gadi-eisenkot-lex-generale-che-punta-a-spodestare-netanyahu-09a50473-c7c4-416c-bef8-cee75cd5dddd.html",
-      "image": "https://www.rainews.it/dl/img/2026/9/08/1788868590782_rainewsffffbfeaffeedb.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-26T16:10:00+00:00"
-    },
-    {
-      "title": "Contestazione all'Università di Torino: \"Fuori guerra e sionisti\"",
-      "url": "https://www.rainews.it/video/2026/10/contestazione-alluniversita-di-torino-fuori-guerra-e-sionisti-4140b6ac-8d1c-45c9-a432-1cb47fa50fca.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/26/1793030732952_Schermata__alle_...png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-26T16:23:00+00:00"
-    },
-    {
-      "title": "Svolta in Serbia, vince la lista studentesca col 52.9%. Vucic, al 38.8%, riconosce la sconfitta",
-      "url": "https://www.rainews.it/articoli/2026/10/gli-studenti-sfidano-vucic-la-serbia-e-le-elezioni-dallesito-piu-incerto-degli-ultimi-14-anni-0ffaaf00-4a97-4405-adb8-82f5b50ea6f1.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/26/1792976108645_DEEBE.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-26T15:38:00+00:00"
-    },
-    {
-      "title": "Brasile: Lula trionfa al ballottaggio, Bolsonaro chiede l'annullamento. Crolla la borsa",
-      "url": "https://www.rainews.it/maratona/2026/10/brasile-lula-bolsonaro-sfida-presidenziali-ballottaggio-89d004db-61bd-44cf-94c9-db714e2fa71a.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/26/1793027885577_CentroSaoPaulo.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-26T14:59:00+00:00"
     }
   ]
 }
