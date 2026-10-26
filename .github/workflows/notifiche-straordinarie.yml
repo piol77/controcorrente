@@ -1,12 +1,8 @@
 name: Saluto quotidiano Controcorrente
 
-# Invio quotidiano, con eccezione manuale una tantum del 26/10/2026.
-# Deduplica sempre per giorno italiano. 09:00 UTC = 10:00 CET / 11:00 CEST.
+# Solo la routine quotidiana invia notifiche. Un avviso massimo al giorno.
+# 09:00 UTC = 10:00 CET / 11:00 CEST.
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/notifiche-straordinarie.yml'
   schedule:
     - cron: '0 9 * * *'
 
@@ -20,7 +16,7 @@ concurrency:
 
 jobs:
   saluto:
-    if: github.repository == 'piol77/controcorrente' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'push')
+    if: github.repository == 'piol77/controcorrente' && github.ref == 'refs/heads/main' && github.event_name == 'schedule'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
