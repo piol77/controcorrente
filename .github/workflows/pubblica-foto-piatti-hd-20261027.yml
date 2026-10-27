@@ -1,5 +1,8 @@
 name: Pubblica foto piatti Controcorrente HD
 on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -72,5 +75,16 @@ jobs:
           rm -f '.github/workflows/pubblica-foto-piatti-hd-20261027.yml'
           git add cena.html offerta.html menu-data.json menu-translations.js cena-assets/porcini-fritti-hd-20261027.webp offerta-assets/pollo-zucca-gorgonzola-hd-20261027.webp '.github/workflows/pubblica-foto-piatti-hd-20261027.yml'
           git commit -m "Pubblica foto porcini e pollo in HD su sfondo nautico"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - name: Chiudi il processo temporaneo dopo un errore
+        if: failure()
+        run: |
+          git config user.name "Controcorrente AI"
+          git config user.email "actions@users.noreply.github.com"
+          rm -f '.github/workflows/pubblica-foto-piatti-hd-20261027.yml'
+          git add -u '.github/workflows/pubblica-foto-piatti-hd-20261027.yml'
+          git commit -m "Rimuove pubblicazione temporanea foto dopo errore" || true
           git pull --rebase origin main
           git push origin HEAD:main
