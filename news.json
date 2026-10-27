@@ -1,18 +1,34 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-27T02:26:03+00:00",
+  "fetched_at": "2026-10-27T05:26:50+00:00",
   "items": [
     {
-      "title": "Per 5 anni la gestione delle Acciaierie di Taranto piegata al profitto",
-      "url": "https://www.rainews.it/video/2026/10/per-5-anni-la-gestione-delle-acciaierie-di-taranto-piegata-al-profitto-1108bc72-15cb-4586-a7b3-48dd4f30bd89.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/26/1793039958231__.png",
+      "title": "Le previsioni del tempo per martedì 27 ottobre 2026",
+      "url": "https://www.rainews.it/video/2026/10/le-previsioni-del-tempo-per-martedi-27-ottobre-2026-aac8daa2-bcf5-429b-b3d7-aaf3101922d8.html",
+      "image": "https://www.rainews.it/dl/img/2024/12/06/1733462386435_meteo.PNG",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-26T18:38:00+00:00"
+      "published_at": "2026-10-27T04:20:00+00:00"
     },
     {
-      "title": "Israele al bivio, oggi Netanyahu si gioca tutto",
+      "title": "Rebus Knesset, il duello Netanyahu-Eisenkot e la caccia ai 61 seggi",
+      "url": "https://www.rainews.it/articoli/2026/10/israele-voto-rebus-knesset-blocchi-contrapposti-il-duello-netanyahu-eisenkot-e-la-caccia-ai-61-seggi--965cdc67-3383-49ff-b856-0fdcf579fd39.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793014599293_DNVL.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-27T03:26:00+00:00"
+    },
+    {
+      "title": "La manovra di bilancio domani in Consiglio dei ministri tra le incognite",
+      "url": "https://www.rainews.it/articoli/2026/10/la-manovra-di-bilancio-domani-in-consiglio-dei-ministri-tra-le-incognite-63370b9f-2e50-496c-830e-86706dc89658.html",
+      "image": "https://www.rainews.it/dl/img/2026/02/02/1770033467372_rainewsbeaeadfdbffdeafeee.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-27T01:30:00+00:00"
+    },
+    {
+      "title": "Seggi aperti in Israele, oggi Netanyahu si gioca tutto",
       "url": "https://www.rainews.it/maratona/2026/10/elezioni-israele-27-ottobre-2026-likud-netanyahu-eisenkot-partiti-presidente-medio-oriente-knesset-guerra-coloni-f34b883d-83d4-499c-9bcb-1a8285495044.html",
       "image": "https://www.rainews.it/dl/img/2026/10/27/1793060778100_DFANA.jpg",
       "source": "RaiNews",
@@ -20,28 +36,12 @@
       "published_at": "2026-10-26T22:05:00+00:00"
     },
     {
-      "title": "Il richiamo del presidente Mattarella sulla Sanità pubblica: è per tutti e non si tocca",
-      "url": "https://www.rainews.it/video/2026/10/il-richiamo-del-presidente-mattarella-sulla-sanita-pubblica-e-per-tutti-e-non-si-tocca-9f11e35a-0d65-40b3-8919-a84318ff712c.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/26/1793039158027_.png",
+      "title": "Per 5 anni la gestione delle Acciaierie di Taranto piegata al profitto",
+      "url": "https://www.rainews.it/video/2026/10/per-5-anni-la-gestione-delle-acciaierie-di-taranto-piegata-al-profitto-1108bc72-15cb-4586-a7b3-48dd4f30bd89.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793039958231__.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-26T18:24:00+00:00"
-    },
-    {
-      "title": "Tra i coloni che vogliono Gaza ebraica: \"Netanyahu è con noi\"",
-      "url": "https://www.rainews.it/video/2026/10/israele-voto-tra-i-coloni-che-vogliono-gaza-ebraica-netanyahu-e-con-noi-piagnerelli-87f66342-8ccb-4ab7-94e8-db412f9798ad.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/27/1793060134914_SON_Piagnerelli_itv_colona.transferframe.jpeg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-27T00:37:00+00:00"
-    },
-    {
-      "title": "Mantovano sui cortei: “Molti giovani prima di darsi a devastazioni assumono droghe”",
-      "url": "https://www.rainews.it/articoli/2026/10/mantovano-sui-cortei-molti-giovani-prima-di-darsi-a-devastazioni-assumono-droghe-3757156b-7bcb-49dc-ba52-baba88c096cc.html",
-      "image": "https://www.rainews.it/dl/img/2025/9/22/1758546610610_BeFunkycollage_.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-26T16:44:00+00:00"
+      "published_at": "2026-10-26T18:38:00+00:00"
     }
   ]
 }
