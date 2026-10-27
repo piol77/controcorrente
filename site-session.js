@@ -163,7 +163,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://cdn1.zetcast.net/flac';
+      audio.src = 'https://media-ssl.musicradio.com/CapitalUK';
     }
     try {
       const result = audio.play();
