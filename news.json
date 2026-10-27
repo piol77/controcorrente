@@ -1,15 +1,31 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-27T08:26:25+00:00",
+  "fetched_at": "2026-10-27T11:35:29+00:00",
   "items": [
     {
-      "title": "Tifoso in coma dopo Puteolana-Portici, otto arresti. Confessa un 19enne",
-      "url": "https://www.rainews.it/articoli/2026/10/tifoso-colpito-con-una-mazza-da-baseball-dopo-puteolana-portici-e-in-coma-farmacologico-eca7c280-0010-4e69-b0d3-5503e94d6853.html",
-      "image": "https://www.rainews.it/dl/img/2023/07/9/1688932087413_Ospedale_Pozzuoli.PNG",
+      "title": "Monza, accoltellato a morte dopo una lite: i Carabinieri fermano un 38enne senza fissa dimora",
+      "url": "https://www.rainews.it/articoli/2026/10/monza-accoltellato-a-morte-dopo-una-lite-i-carabinieri-fermano-un-38enne-senza-fissa-dimora-59d4e6f6-c183-4923-9584-5648a2fe9b9d.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/13/1791876657796_eddfeeaadefbc.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-26T09:01:00+00:00"
+      "published_at": "2026-10-27T11:05:00+00:00"
+    },
+    {
+      "title": "Germania: nave da crociera con 3.000 persone a bordo urta due portacontainer. Viaggio annullato",
+      "url": "https://www.rainews.it/video/2026/10/germania-nave-da-crociera-urta-due-portacontainer-viaggio-annullato-e-comandante-indagato-abafcfb2-05cd-468e-862b-48353d12c886.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/27/1793092267124_vlcsnaphms.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-27T09:07:00+00:00"
+    },
+    {
+      "title": "Dal robot alla realtà aumentata, la nuova frontiera della neurochirurgia",
+      "url": "https://www.rainews.it/video/2026/10/dal-robot-alla-realta-aumentata-la-nuova-frontiera-della-neurochirurgia-d19ef10b-e177-40fe-8858-248cc93e89e7.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/27/1793099333487_barb.PNG",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-27T11:05:00+00:00"
     },
     {
       "title": "Urne aperte in Israele, oggi il voto decisivo per il destino del Paese",
@@ -20,28 +36,12 @@
       "published_at": "2026-10-27T06:35:00+00:00"
     },
     {
-      "title": "Sciopero 30 ottobre, cortei e manifestazioni in tutta Italia: settori a rischio stop",
-      "url": "https://www.rainews.it/articoli/2026/10/sciopero-30-ottobre-cortei-e-manifestazioni-in-tutta-italia-settori-a-rischio-stop-29f3c920-31f1-4e99-812d-206c6bde8100.html",
-      "image": "https://www.rainews.it/dl/img/2025/12/12/1765534789139_rainewsdfebdcaedadcc.jpg",
+      "title": "Cure domiciliari, a Messina un nuovo modello per lo scompenso cardiaco",
+      "url": "https://www.rainews.it/video/2026/10/cure-domiciliari-a-messina-un-nuovo-modello-per-lo-scompenso-cardiaco-981d3786-32f5-4002-95ea-f2ee6c815882.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/27/1793097744294_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-27T05:37:00+00:00"
-    },
-    {
-      "title": "Spotlight. Il re e l'oro nero: la sfida alle multinazionali nel delta del Niger",
-      "url": "https://www.rainews.it/video/2026/10/spotlight-il-re-e-loro-nero-la-sfida-alle-multinazionali-nel-delta-del-niger-4f33ebe1-5d5d-4622-9955-09c9390fe6ce.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/27/1793081074758_Spotlight_il_re_e_l_oro_nero_Cataldiframe.jpeg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-26T22:58:00+00:00"
-    },
-    {
-      "title": "Cerca di fermare il treno, ma scivola e viene travolto: muore a 33 anni davanti alla compagna",
-      "url": "https://www.rainews.it/articoli/2026/10/cerca-di-fermare-il-treno-ma-scivola-e-viene-travolto-muore-a-33-anni-davanti-alla-compagna-5ba65140-5f4b-43aa-b01b-1e4903a06cff.html",
-      "image": "https://www.rainews.it/dl/img/2024/10/20/1729416722865_rainewseefccfca.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-27T05:07:00+00:00"
+      "published_at": "2026-10-27T10:39:00+00:00"
     }
   ]
 }
