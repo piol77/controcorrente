@@ -67,7 +67,7 @@
           3
         ],
         "icon": "Leaf",
-        "dishPhoto": "cena-assets/porcini-fritti-nitidi-20261027.webp",
+        "dishPhoto": "cena-assets/porcini-fritti-HD-20261027.webp",
         "translations": {
           "en": {
             "name": "Fresh fried porcini mushrooms",
@@ -588,7 +588,7 @@
         7
       ],
       "icon": "Drumstick",
-      "dishPhoto": "offerta-assets/pollo-zucca-gorgonzola-nitido-20261027.webp",
+      "dishPhoto": "offerta-assets/pollo-zucca-gorgonzola-HD-20261027.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
