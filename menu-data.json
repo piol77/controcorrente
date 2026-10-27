@@ -59,15 +59,31 @@
         }
       },
       {
-        "name": "Funghi champignon fritti",
-        "price": 10,
-        "description": "Champignon dorati e croccanti, serviti con spicchi di limone.",
+        "name": "Funghi porcini freschi fritti",
+        "price": 25,
+        "description": "Porcini freschi dorati e croccanti, serviti con spicchi di limone.",
         "allergens": [
           1,
           3
         ],
         "icon": "Leaf",
-        "dishPhoto": "cena-funghi.webp"
+        "dishPhoto": "cena-assets/porcini-freschi-fritti-20261027.webp",
+        "translations": {
+          "en": {
+            "name": "Fresh fried porcini mushrooms",
+            "description": "Fresh porcini mushrooms, fried until golden and crispy, served with lemon wedges."
+          },
+          "zh": {
+            "name": "香酥炸新鲜牛肝菌",
+            "description": "新鲜牛肝菌炸至金黄酥脆，佐以柠檬角。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustration",
+          "date": "2026-10-27",
+          "tool": "image_gen",
+          "note": "Fried porcini on a speckled ivory plate over a navy tabletop, warm light. Illustrative, not restaurant photography."
+        }
       },
       {
         "name": "Vitello tonnato",
@@ -190,37 +206,6 @@
           "reference": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
           "note": "Replaced tuna pieces with cooked sea bass; kept fusilli, aubergine, scant tomato, original white plate and navy tabletop. Illustrative, not restaurant photography."
         }
-      },
-      {
-        "name": "Linguine con gamberetti* e granella di pistacchi",
-        "price": 12.5,
-        "description": "Linguine con gamberetti*, granella di pistacchi e un tocco di panna.",
-        "allergens": [
-          1,
-          2,
-          7,
-          8
-        ],
-        "icon": "Shrimp",
-        "dishPhoto": "cena-assets/linguine-gamberetti-pistacchi-20261024.webp",
-        "translations": {
-          "en": {
-            "name": "Linguine with shrimp* and chopped pistachios",
-            "description": "Linguine with shrimp*, chopped pistachios and a touch of cream."
-          },
-          "zh": {
-            "name": "虾仁*开心果碎扁意面",
-            "description": "扁意面搭配虾仁*、开心果碎和少量奶油。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustration matching approved dinner photograph",
-          "date": "2026-10-24",
-          "tool": "image_gen",
-          "reference": "cena-assets/fusilli-melanzane-branzino-20261024.webp",
-          "webReference": "pranzo-assets/linguine-gamberetti-pistacchio.webp",
-          "note": "Existing web reference inspected; its wooden table and different plate do not match dinner. Generated linguine with shrimp, chopped pistachios and little cream using the approved dinner ivory plate, navy tabletop, light and angle. Illustrative image, not restaurant food photography."
-        }
       }
     ],
     "secondi": [
@@ -299,30 +284,6 @@
         ],
         "icon": "Fish",
         "dishPhoto": "cena-salmone.webp"
-      },
-      {
-        "name": "Galletto ripieno con salsiccia, frutta e castagne",
-        "price": 14,
-        "description": "Galletto al forno farcito con salsiccia, frutta e castagne, servito già affettato con patate al forno. (dopo le ore 20.)",
-        "allergens": [],
-        "icon": "Drumstick",
-        "dishPhoto": "cena-assets/galletto-ripieno-affettato-patate-20261015.webp",
-        "translations": {
-          "en": {
-            "name": "Cockerel stuffed with sausage, fruit and chestnuts",
-            "description": "Oven-roasted cockerel stuffed with sausage, fruit and chestnuts, served sliced with roast potatoes. (after 8 p.m.)"
-          },
-          "zh": {
-            "name": "香肠水果栗子馅烤小公鸡",
-            "description": "烤小公鸡内填香肠、水果和栗子，切片后配烤土豆。（20点后供应。）"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustration",
-          "date": "2026-10-15",
-          "tool": "image_gen",
-          "note": "Sliced individual portion showing sausage, fruit and chestnut stuffing with roast potatoes. Matched to the approved dinner ivory speckled plate, navy tabletop, camera angle and lighting. Illustrative image, not an actual restaurant photograph."
-        }
       },
       {
         "name": "Orata alla griglia con patate",
@@ -590,91 +551,61 @@
   ],
   "offers": [
     {
-      "name": "Lasagne al ragù",
+      "name": "Udon con verdure miste, pollo e gamberetti*",
       "price": 10,
-      "description": "Lasagne al forno con ragù di carne.",
+      "description": "Udon con carote, zucchine e verza, pollo e gamberetti*.",
       "allergens": [
         1,
-        3,
+        2
+      ],
+      "icon": "Wheat",
+      "orderCourse": "Primo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/udon-coerente-20261027.webp",
+      "translations": {
+        "en": {
+          "name": "Udon with mixed vegetables, chicken and shrimp*",
+          "description": "Udon noodles with carrots, courgettes, savoy cabbage, chicken and shrimp*."
+        },
+        "zh": {
+          "name": "蔬菜鸡肉虾仁*乌冬面",
+          "description": "乌冬面搭配胡萝卜、西葫芦、皱叶甘蓝、鸡肉和虾仁*。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative image",
+        "date": "2026-10-27",
+        "tool": "image_gen",
+        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
+        "note": "Foto riutilizzata senza modifiche dal pranzo del 27 ottobre 2026."
+      }
+    },
+    {
+      "name": "Bocconcini di pollo con zucca e gorgonzola",
+      "price": 10,
+      "description": "Bocconcini di pollo con zucca e crema di gorgonzola.",
+      "allergens": [
         7
       ],
-      "icon": "Wheat",
-      "dishPhoto": "offerta-assets/lasagne-ragu-20261021.webp",
-      "photoLayout": "side",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Lasagne with meat ragù",
-          "description": "Oven-baked lasagne with meat ragù."
-        },
-        "zh": {
-          "name": "肉酱千层面",
-          "description": "烤制千层面，搭配肉酱。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-adapted approved lunch illustration",
-        "date": "2026-10-21",
-        "tool": "image_gen",
-        "note": "Approved lasagne lunch illustration adapted to the ivory speckled plate and navy tabletop of the daily offers. Same dish, individual serving, ingredients and camera angle preserved. Illustrative image, not a restaurant photograph."
-      }
-    },
-    {
-      "name": "Orecchiette fresche con salsiccia e spinaci",
-      "price": 10,
-      "description": "Orecchiette fresche con salsiccia e spinaci saltati.",
-      "allergens": [
-        1
-      ],
-      "icon": "Wheat",
-      "dishPhoto": "offerta-assets/orecchiette-salsiccia-spinaci-20261024.webp",
-      "photoLayout": "side",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Fresh orecchiette with sausage and spinach",
-          "description": "Fresh orecchiette with sausage and sautéed spinach."
-        },
-        "zh": {
-          "name": "香肠菠菜鲜猫耳朵面",
-          "description": "鲜猫耳朵面搭配香肠和炒菠菜。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-edited approved offer photograph",
-        "date": "2026-10-24",
-        "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolo-nero-coerente-20261023.webp",
-        "note": "Replaced only Tuscan kale with spinach; kept the original sausage, orecchiette, plate, navy background, angle and light. Illustrative, not restaurant photography."
-      }
-    },
-    {
-      "name": "Baozi gigante di carne e verdure (1 pezzo)",
-      "price": 5,
-      "description": "Un baozi gigante al vapore, ripieno di carne, uovo, cipolla e verza.",
-      "allergens": [
-        1,
-        3
-      ],
-      "icon": "Wheat",
-      "dishPhoto": "offerta-assets/baozi-gigante-un-pezzo-20261022.webp",
+      "icon": "Drumstick",
+      "dishPhoto": "offerta-assets/pollo-zucca-gorgonzola-20261027.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Giant meat and vegetable baozi (1 piece)",
-          "description": "One giant steamed baozi filled with meat, egg, onion and cabbage."
+          "name": "Chicken bites with pumpkin and gorgonzola",
+          "description": "Bite-size pieces of chicken with pumpkin and creamy gorgonzola sauce."
         },
         "zh": {
-          "name": "肉菜大包子（1个）",
-          "description": "一个大蒸包子，内馅为肉、鸡蛋、洋葱和卷心菜。"
+          "name": "南瓜戈贡佐拉奶酪鸡块",
+          "description": "嫩鸡肉块搭配南瓜和浓郁的戈贡佐拉奶酪酱。"
         }
       },
       "photoSource": {
-        "type": "AI-edited approved illustration",
-        "date": "2026-10-22",
+        "type": "AI-generated illustration",
+        "date": "2026-10-27",
         "tool": "image_gen",
-        "note": "Approved lunch photo edited to show exactly one opened giant baozi, preserving meat, egg, onion and cabbage filling, ivory plate, navy table, warm light and angle."
+        "note": "Chicken pieces, pumpkin, gorgonzola on ivory plate over navy tabletop. Illustrative, not restaurant photography."
       }
     }
   ],
