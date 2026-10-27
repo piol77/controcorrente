@@ -6,7 +6,7 @@
       {
         "name": "Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)",
         "price": 10,
-        "description": "Due fette di pane tostato con formaggio spalmabile e salmone affumicato.",
+        "description": "Pane tostato e fragrante, formaggio delicato e una piacevole nota affumicata.",
         "allergens": [
           1,
           4,
@@ -17,11 +17,11 @@
         "translations": {
           "en": {
             "name": "Smoked salmon and cream cheese bruschetta (2 pieces)",
-            "description": "Two slices of toasted bread with cream cheese and smoked salmon."
+            "description": "Fragrant toasted bread, creamy cheese and a pleasant smoky note."
           },
           "zh": {
             "name": "烟熏三文鱼奶油奶酪烤面包（2片）",
-            "description": "两片烤面包，搭配涂抹奶酪和烟熏三文鱼。"
+            "description": "香脆烤面包、柔滑奶酪与淡淡烟熏香气相映成趣。"
           }
         },
         "photoSource": {
@@ -34,7 +34,7 @@
       {
         "name": "Bruschette con avocado e gamberetti* (2 pezzi)",
         "price": 10,
-        "description": "Due fette di pane tostato con avocado e gamberetti*.",
+        "description": "La morbidezza dell’avocado incontra la vivacità dei gamberetti* su pane caldo e croccante.",
         "allergens": [
           1,
           2
@@ -44,11 +44,11 @@
         "translations": {
           "en": {
             "name": "Avocado and shrimp* bruschetta (2 pieces)",
-            "description": "Two slices of toasted bread with avocado and shrimp*."
+            "description": "Creamy avocado meets lively shrimp* on warm, crisp toast."
           },
           "zh": {
             "name": "牛油果虾仁*烤面包（2片）",
-            "description": "两片烤面包，搭配牛油果和虾仁*。"
+            "description": "绵软牛油果与鲜美虾仁*相遇，搭配温热酥脆的烤面包。"
           }
         },
         "photoSource": {
@@ -61,7 +61,7 @@
       {
         "name": "Funghi porcini freschi fritti",
         "price": 25,
-        "description": "Porcini freschi dorati e croccanti, serviti con spicchi di limone.",
+        "description": "Croccanti fuori, teneri dentro: il profumo del bosco, con una nota di limone.",
         "allergens": [
           1,
           3
@@ -71,11 +71,11 @@
         "translations": {
           "en": {
             "name": "Fresh fried porcini mushrooms",
-            "description": "Fresh porcini mushrooms, fried until golden and crispy, served with lemon wedges."
+            "description": "Crisp on the outside and tender inside: a woodland aroma with a hint of lemon."
           },
           "zh": {
             "name": "香酥炸新鲜牛肝菌",
-            "description": "新鲜牛肝菌炸至金黄酥脆，佐以柠檬角。"
+            "description": "外酥内嫩，散发森林般的香气，点缀一丝柠檬清新。"
           }
         },
         "photoSource": {
@@ -129,7 +129,7 @@
       {
         "name": "Risotto con gorgonzola e pere",
         "price": 12.5,
-        "description": "Risotto cremoso con gorgonzola e la dolcezza delle pere.",
+        "description": "Il sapore deciso del gorgonzola trova il suo equilibrio nella dolcezza delle pere.",
         "allergens": [
           7
         ],
@@ -138,11 +138,11 @@
         "translations": {
           "en": {
             "name": "Risotto with gorgonzola and pears",
-            "description": "Creamy risotto with gorgonzola cheese and sweet pears."
+            "description": "Bold gorgonzola finds its balance in the sweetness of pears."
           },
           "zh": {
             "name": "戈贡佐拉奶酪梨烩饭",
-            "description": "绵滑意式烩饭，搭配戈贡佐拉奶酪与清甜的梨。"
+            "description": "浓郁的戈贡佐拉奶酪与梨子的清甜恰到好处地平衡。"
           }
         },
         "photoSource": {
@@ -182,7 +182,7 @@
       {
         "name": "Fusilli con melanzane e branzino",
         "price": 12.5,
-        "description": "Fusilli con melanzane e branzino, con poco pomodoro.",
+        "description": "Melanzane morbide, branzino delicato e appena un velo di pomodoro: il mare senza eccessi.",
         "allergens": [
           1,
           4
@@ -192,11 +192,11 @@
         "translations": {
           "en": {
             "name": "Fusilli with aubergine and sea bass",
-            "description": "Fusilli with aubergine and sea bass, with a little tomato."
+            "description": "Tender aubergine, delicate sea bass and just a little tomato: a subtle taste of the sea."
           },
           "zh": {
             "name": "茄子海鲈鱼螺旋面",
-            "description": "螺旋面搭配茄子和海鲈鱼，配少量番茄。"
+            "description": "柔嫩茄子、细腻海鲈鱼与少许番茄，呈现清新而克制的海洋风味。"
           }
         },
         "photoSource": {
@@ -251,7 +251,7 @@
       {
         "name": "Filetti di orata in crosta di mandorle con verza viola cruda all’aceto balsamico",
         "price": 14,
-        "description": "Filetti di orata in crosta di mandorle, con verza viola cruda condita all’aceto balsamico.",
+        "description": "Mandorle croccanti e verza viola all’aceto balsamico: delicatezza e carattere nello stesso piatto.",
         "allergens": [
           4,
           8
@@ -261,11 +261,11 @@
         "translations": {
           "en": {
             "name": "Almond-crusted sea bream fillets with raw purple cabbage and balsamic vinegar",
-            "description": "Sea bream fillets in an almond crust, with raw purple cabbage dressed with balsamic vinegar."
+            "description": "Crunchy almonds and purple cabbage with balsamic vinegar: delicacy and character together."
           },
           "zh": {
             "name": "杏仁脆皮海鲷鱼柳配香醋紫甘蓝",
-            "description": "海鲷鱼柳覆以杏仁脆皮，配意大利香醋调味的生紫甘蓝。"
+            "description": "香脆杏仁与香醋紫甘蓝相映，细腻口感与鲜明风味兼得。"
           }
         },
         "photoSource": {
@@ -288,7 +288,7 @@
       {
         "name": "Orata alla griglia con patate",
         "price": 14,
-        "description": "Orata alla griglia, accompagnata da patate.",
+        "description": "Una grigliata semplice e profumata, con patate che lasciano parlare il pesce.",
         "allergens": [
           4
         ],
@@ -297,11 +297,11 @@
         "translations": {
           "en": {
             "name": "Grilled sea bream with potatoes",
-            "description": "Grilled sea bream served with potatoes."
+            "description": "Simply grilled and beautifully fragrant, with potatoes letting the fish take centre stage."
           },
           "zh": {
             "name": "烤海鲷鱼配土豆",
-            "description": "烤海鲷鱼，搭配土豆。"
+            "description": "简洁而香气四溢的烤鱼，土豆衬托鱼肉本身的鲜美。"
           }
         },
         "photoSource": {
@@ -314,7 +314,7 @@
       {
         "name": "Branzino alla griglia con verza e carote saltate",
         "price": 14,
-        "description": "Branzino alla griglia, accompagnato da verza e carote saltate.",
+        "description": "Il gusto delicato del branzino si accompagna alla dolcezza delle carote e alla verza saltata.",
         "allergens": [
           4
         ],
@@ -324,11 +324,11 @@
         "translations": {
           "en": {
             "name": "Grilled sea bass with sautéed savoy cabbage and carrots",
-            "description": "Grilled sea bass served with sautéed savoy cabbage and carrots."
+            "description": "Delicate sea bass meets sweet carrots and sautéed savoy cabbage."
           },
           "zh": {
             "name": "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
-            "description": "烤海鲈鱼，搭配炒皱叶甘蓝和胡萝卜。"
+            "description": "细腻海鲈鱼搭配清甜胡萝卜与清炒皱叶甘蓝。"
           }
         },
         "photoSource": {
@@ -553,7 +553,7 @@
     {
       "name": "Udon con verdure miste, pollo e gamberetti*",
       "price": 10,
-      "description": "Udon con carote, zucchine e verza, pollo e gamberetti*.",
+      "description": "Carote, zucchine e verza saltate con pollo e gamberetti*: un incontro vivace di sapori orientali.",
       "allergens": [
         1,
         2
@@ -565,11 +565,11 @@
       "translations": {
         "en": {
           "name": "Udon with mixed vegetables, chicken and shrimp*",
-          "description": "Udon noodles with carrots, courgettes, savoy cabbage, chicken and shrimp*."
+          "description": "Carrots, courgettes and savoy cabbage tossed with chicken and shrimp*: lively flavours from the East."
         },
         "zh": {
           "name": "蔬菜鸡肉虾仁*乌冬面",
-          "description": "乌冬面搭配胡萝卜、西葫芦、皱叶甘蓝、鸡肉和虾仁*。"
+          "description": "胡萝卜、西葫芦、皱叶甘蓝与鸡肉、虾仁*同炒，演绎鲜活东方风味。"
         }
       },
       "photoSource": {
@@ -583,7 +583,7 @@
     {
       "name": "Bocconcini di pollo con zucca e gorgonzola",
       "price": 10,
-      "description": "Bocconcini di pollo con zucca e crema di gorgonzola.",
+      "description": "La dolcezza della zucca incontra il carattere del gorgonzola: un abbraccio cremoso per il pollo.",
       "allergens": [
         7
       ],
@@ -594,11 +594,11 @@
       "translations": {
         "en": {
           "name": "Chicken bites with pumpkin and gorgonzola",
-          "description": "Bite-size pieces of chicken with pumpkin and creamy gorgonzola sauce."
+          "description": "Sweet pumpkin meets bold gorgonzola in a velvety embrace for tender chicken."
         },
         "zh": {
           "name": "南瓜戈贡佐拉奶酪鸡块",
-          "description": "嫩鸡肉块搭配南瓜和浓郁的戈贡佐拉奶酪酱。"
+          "description": "南瓜的甘甜与戈贡佐拉奶酪的浓郁相遇，给嫩鸡肉一层丝滑包裹。"
         }
       },
       "photoSource": {

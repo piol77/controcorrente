@@ -8,17 +8,17 @@ const CONTROCORRENTE_MENU = {
         "dishes": [
           [
             "Smoked salmon and cream cheese bruschetta (2 pieces)",
-            "Two slices of toasted bread with cream cheese and smoked salmon.",
+            "Fragrant toasted bread, creamy cheese and a pleasant smoky note.",
             "€ 10,00"
           ],
           [
             "Avocado and shrimp* bruschetta (2 pieces)",
-            "Two slices of toasted bread with avocado and shrimp*.",
+            "Creamy avocado meets lively shrimp* on warm, crisp toast.",
             "€ 10,00"
           ],
           [
             "Fresh fried porcini mushrooms",
-            "Fresh porcini mushrooms, fried until golden and crispy, served with lemon wedges.",
+            "Crisp on the outside and tender inside: a woodland aroma with a hint of lemon.",
             "€ 25,00"
           ],
           [
@@ -38,7 +38,7 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "Risotto with gorgonzola and pears",
-            "Creamy risotto with gorgonzola cheese and sweet pears.",
+            "Bold gorgonzola finds its balance in the sweetness of pears.",
             "€ 12,50"
           ],
           [
@@ -48,7 +48,7 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "Fusilli with aubergine and sea bass",
-            "Fusilli with aubergine and sea bass, with a little tomato.",
+            "Tender aubergine, delicate sea bass and just a little tomato: a subtle taste of the sea.",
             "€ 12,50"
           ]
         ]
@@ -68,7 +68,7 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "Almond-crusted sea bream fillets with raw purple cabbage and balsamic vinegar",
-            "Sea bream fillets in an almond crust, with raw purple cabbage dressed with balsamic vinegar.",
+            "Crunchy almonds and purple cabbage with balsamic vinegar: delicacy and character together.",
             "€ 14,00"
           ],
           [
@@ -78,12 +78,12 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "Grilled sea bream with potatoes",
-            "Grilled sea bream served with potatoes.",
+            "Simply grilled and beautifully fragrant, with potatoes letting the fish take centre stage.",
             "€ 14,00"
           ],
           [
             "Grilled sea bass with sautéed savoy cabbage and carrots",
-            "Grilled sea bass served with sautéed savoy cabbage and carrots.",
+            "Delicate sea bass meets sweet carrots and sautéed savoy cabbage.",
             "€ 14,00"
           ]
         ]
@@ -93,12 +93,12 @@ const CONTROCORRENTE_MENU = {
     "daily": [
       [
         "Udon with mixed vegetables, chicken and shrimp*",
-        "Udon noodles with carrots, courgettes, savoy cabbage, chicken and shrimp*.",
+        "Carrots, courgettes and savoy cabbage tossed with chicken and shrimp*: lively flavours from the East.",
         "€ 10,00"
       ],
       [
         "Chicken bites with pumpkin and gorgonzola",
-        "Bite-size pieces of chicken with pumpkin and creamy gorgonzola sauce.",
+        "Sweet pumpkin meets bold gorgonzola in a velvety embrace for tender chicken.",
         "€ 10,00"
       ]
     ],
@@ -116,17 +116,17 @@ const CONTROCORRENTE_MENU = {
         "dishes": [
           [
             "烟熏三文鱼奶油奶酪烤面包（2片）",
-            "两片烤面包，搭配涂抹奶酪和烟熏三文鱼。",
+            "香脆烤面包、柔滑奶酪与淡淡烟熏香气相映成趣。",
             "€ 10,00"
           ],
           [
             "牛油果虾仁*烤面包（2片）",
-            "两片烤面包，搭配牛油果和虾仁*。",
+            "绵软牛油果与鲜美虾仁*相遇，搭配温热酥脆的烤面包。",
             "€ 10,00"
           ],
           [
             "香酥炸新鲜牛肝菌",
-            "新鲜牛肝菌炸至金黄酥脆，佐以柠檬角。",
+            "外酥内嫩，散发森林般的香气，点缀一丝柠檬清新。",
             "€ 25,00"
           ],
           [
@@ -146,7 +146,7 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "戈贡佐拉奶酪梨烩饭",
-            "绵滑意式烩饭，搭配戈贡佐拉奶酪与清甜的梨。",
+            "浓郁的戈贡佐拉奶酪与梨子的清甜恰到好处地平衡。",
             "€ 12,50"
           ],
           [
@@ -156,7 +156,7 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "茄子海鲈鱼螺旋面",
-            "螺旋面搭配茄子和海鲈鱼，配少量番茄。",
+            "柔嫩茄子、细腻海鲈鱼与少许番茄，呈现清新而克制的海洋风味。",
             "€ 12,50"
           ]
         ]
@@ -176,7 +176,7 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "杏仁脆皮海鲷鱼柳配香醋紫甘蓝",
-            "海鲷鱼柳覆以杏仁脆皮，配意大利香醋调味的生紫甘蓝。",
+            "香脆杏仁与香醋紫甘蓝相映，细腻口感与鲜明风味兼得。",
             "€ 14,00"
           ],
           [
@@ -186,12 +186,12 @@ const CONTROCORRENTE_MENU = {
           ],
           [
             "烤海鲷鱼配土豆",
-            "烤海鲷鱼，搭配土豆。",
+            "简洁而香气四溢的烤鱼，土豆衬托鱼肉本身的鲜美。",
             "€ 14,00"
           ],
           [
             "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
-            "烤海鲈鱼，搭配炒皱叶甘蓝和胡萝卜。",
+            "细腻海鲈鱼搭配清甜胡萝卜与清炒皱叶甘蓝。",
             "€ 14,00"
           ]
         ]
@@ -201,12 +201,12 @@ const CONTROCORRENTE_MENU = {
     "daily": [
       [
         "蔬菜鸡肉虾仁*乌冬面",
-        "乌冬面搭配胡萝卜、西葫芦、皱叶甘蓝、鸡肉和虾仁*。",
+        "胡萝卜、西葫芦、皱叶甘蓝与鸡肉、虾仁*同炒，演绎鲜活东方风味。",
         "€ 10,00"
       ],
       [
         "南瓜戈贡佐拉奶酪鸡块",
-        "嫩鸡肉块搭配南瓜和浓郁的戈贡佐拉奶酪酱。",
+        "南瓜的甘甜与戈贡佐拉奶酪的浓郁相遇，给嫩鸡肉一层丝滑包裹。",
         "€ 10,00"
       ]
     ],
@@ -218,7 +218,7 @@ const CONTROCORRENTE_MENU = {
 };
 
 const SHARED_ALLERGEN_SYMBOLS={"1": {"name": "Cereali contenenti glutine", "icon": "Wheat"}, "2": {"name": "Crostacei", "icon": "Shrimp"}, "3": {"name": "Uova", "icon": "Egg"}, "4": {"name": "Pesce", "icon": "Fish"}, "5": {"name": "Arachidi", "icon": "Nut"}, "6": {"name": "Soia", "icon": "Bean"}, "7": {"name": "Latte", "icon": "Milk"}, "8": {"name": "Frutta a guscio", "icon": "Nut"}, "9": {"name": "Sedano", "icon": "LeafyGreen"}, "10": {"name": "Senape", "icon": "Flower2"}, "11": {"name": "Semi di sesamo", "icon": "Ellipsis"}, "12": {"name": "Anidride solforosa e solfiti", "icon": "FlaskConical"}, "13": {"name": "Lupini", "icon": "Bean"}, "14": {"name": "Molluschi", "icon": "Shell"}};
-const SHARED_DINNER={"antipasti":[{"name":"Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)","price":10,"description":"Due fette di pane tostato con formaggio spalmabile e salmone affumicato.","allergens":[1,4,7],"icon":"Fish","dishPhoto":"cena-assets/bruschette-salmone-formaggio-20261020.webp","translations":{"en":{"name":"Smoked salmon and cream cheese bruschetta (2 pieces)","description":"Two slices of toasted bread with cream cheese and smoked salmon."},"zh":{"name":"烟熏三文鱼奶油奶酪烤面包（2片）","description":"两片烤面包，搭配涂抹奶酪和烟熏三文鱼。"}},"photoSource":{"type":"AI-edited approved dinner illustration","date":"2026-10-20","tool":"image_gen","note":"Approved two-piece bruschetta photograph edited to change toppings only, preserving the ivory plate, navy tabletop, warm light and framing. Web references reviewed but contained extra ingredients or different presentation. Illustrative image, not a photograph of restaurant food."}},{"name":"Bruschette con avocado e gamberetti* (2 pezzi)","price":10,"description":"Due fette di pane tostato con avocado e gamberetti*.","allergens":[1,2],"icon":"Shrimp","dishPhoto":"cena-assets/bruschette-avocado-gamberetti-20261020.webp","translations":{"en":{"name":"Avocado and shrimp* bruschetta (2 pieces)","description":"Two slices of toasted bread with avocado and shrimp*."},"zh":{"name":"牛油果虾仁*烤面包（2片）","description":"两片烤面包，搭配牛油果和虾仁*。"}},"photoSource":{"type":"AI-edited approved dinner illustration","date":"2026-10-20","tool":"image_gen","note":"Approved two-piece bruschetta photograph edited to change toppings only, preserving the ivory plate, navy tabletop, warm light and framing. Web references reviewed but contained extra ingredients or different presentation. Illustrative image, not a photograph of restaurant food."}},{"name":"Funghi porcini freschi fritti","price":25,"description":"Porcini freschi dorati e croccanti, serviti con spicchi di limone.","allergens":[1,3],"icon":"Leaf","dishPhoto":"cena-assets/porcini-freschi-fritti-20261027.webp","translations":{"en":{"name":"Fresh fried porcini mushrooms","description":"Fresh porcini mushrooms, fried until golden and crispy, served with lemon wedges."},"zh":{"name":"香酥炸新鲜牛肝菌","description":"新鲜牛肝菌炸至金黄酥脆，佐以柠檬角。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-27","tool":"image_gen","note":"Fried porcini on a speckled ivory plate over a navy tabletop, warm light. Illustrative, not restaurant photography."}},{"name":"Vitello tonnato","price":12,"description":"Fettine di vitello con salsa di tonno, uova, acciughe e capperi.","allergens":[3,4],"icon":"Fish","dishPhoto":"cena-assets/vitello-tonnato-20261024.webp","translations":{"en":{"name":"Vitello tonnato","description":"Thinly sliced veal with tuna, egg, anchovy and caper sauce."},"zh":{"name":"金枪鱼酱小牛肉","description":"薄切小牛肉配金枪鱼、鸡蛋、凤尾鱼和刺山柑酱。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-24","tool":"image_gen","note":"Restaurant menu illustration with sliced veal, tuna sauce and capers on an ivory plate over a navy table; recipe and visual references inspected online. Not a photograph of restaurant food."}}],"primi":[{"name":"Spaghetti ai frutti di mare","price":15,"description":"Cozze, vongole, gamberetti* e gamberone*, con un leggero pomodoro.","allergens":[1,2,14],"icon":"Shell","dishPhoto":"cena-spaghetti.webp"},{"name":"Risotto con gorgonzola e pere","price":12.5,"description":"Risotto cremoso con gorgonzola e la dolcezza delle pere.","allergens":[7],"icon":"CookingPot","dishPhoto":"cena-assets/risotto-gorgonzola-pere-20261009.webp","translations":{"en":{"name":"Risotto with gorgonzola and pears","description":"Creamy risotto with gorgonzola cheese and sweet pears."},"zh":{"name":"戈贡佐拉奶酪梨烩饭","description":"绵滑意式烩饭，搭配戈贡佐拉奶酪与清甜的梨。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-09","tool":"image_gen","note":"Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."}},{"name":"Linguine al nero di seppia","price":13,"description":"Linguine avvolte in un intenso e vellutato condimento al nero di seppia.","allergens":[1,14],"icon":"Shell","dishPhoto":"cena-assets/linguine-nero-seppia-20261009.webp","translations":{"en":{"name":"Linguine with cuttlefish ink","description":"Linguine coated in a rich, silky cuttlefish ink sauce."},"zh":{"name":"墨鱼汁扁意面","description":"扁意面裹上浓郁丝滑的墨鱼汁酱。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-09","tool":"image_gen","note":"Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."}},{"name":"Fusilli con melanzane e branzino","price":12.5,"description":"Fusilli con melanzane e branzino, con poco pomodoro.","allergens":[1,4],"icon":"Fish","dishPhoto":"cena-assets/fusilli-melanzane-branzino-20261024.webp","translations":{"en":{"name":"Fusilli with aubergine and sea bass","description":"Fusilli with aubergine and sea bass, with a little tomato."},"zh":{"name":"茄子海鲈鱼螺旋面","description":"螺旋面搭配茄子和海鲈鱼，配少量番茄。"}},"photoSource":{"type":"AI-edited approved dinner photograph","date":"2026-10-24","tool":"image_gen","reference":"cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp","note":"Replaced tuna pieces with cooked sea bass; kept fusilli, aubergine, scant tomato, original white plate and navy tabletop. Illustrative, not restaurant photography."}}],"secondi":[{"name":"Frittura mista di alici, calamari e gamberetti*","price":20,"description":"Alici, calamari e gamberetti* in una frittura leggera e croccante.","allergens":[1,2,4,14],"icon":"Fish","dishPhoto":"cena-frittura.webp"},{"name":"Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco","price":12,"description":"Finocchi croccanti, arance e avocado, con bocconcini di salmone fresco.","allergens":[4],"icon":"Fish","dishPhoto":"cena-assets/insalatona-finocchi-arance-avocado-salmone-20261014.webp","translations":{"en":{"name":"Salad with fennel, oranges, avocado and fresh salmon bites","description":"Crisp fennel, oranges and avocado with bite-sized pieces of fresh salmon."},"zh":{"name":"茴香橙子牛油果鲜三文鱼沙拉","description":"爽脆茴香、橙子和牛油果，搭配鲜三文鱼块。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-14","tool":"image_gen","note":"Internet references inspected: examples use smoked salmon or add unrelated ingredients. Generated with the requested fennel, oranges, avocado and fresh salmon bites, matching the approved ivory plate, navy tabletop and soft light. Illustrative image, not a photograph of food served at the restaurant."}},{"name":"Filetti di orata in crosta di mandorle con verza viola cruda all’aceto balsamico","price":14,"description":"Filetti di orata in crosta di mandorle, con verza viola cruda condita all’aceto balsamico.","allergens":[4,8],"icon":"Fish","dishPhoto":"cena-assets/orata-mandorle-verza-viola-20261017.webp","translations":{"en":{"name":"Almond-crusted sea bream fillets with raw purple cabbage and balsamic vinegar","description":"Sea bream fillets in an almond crust, with raw purple cabbage dressed with balsamic vinegar."},"zh":{"name":"杏仁脆皮海鲷鱼柳配香醋紫甘蓝","description":"海鲷鱼柳覆以杏仁脆皮，配意大利香醋调味的生紫甘蓝。"}},"photoSource":{"type":"AI-adapted approved menu illustration","date":"2026-10-17","tool":"image_gen","note":"Internet references reviewed; other garnishes or ingredients differ. Approved almond-crusted fish photo edited to sea bream, preserving raw purple cabbage with balsamic vinegar, ivory plate and navy tabletop. Illustrative image, not a restaurant photograph."}},{"name":"Trancio di salmone all’arancia e pepe rosa","price":14,"description":"Salmone alla griglia, arancia e pepe rosa, con finocchi crudi e aceto balsamico.","allergens":[4],"icon":"Fish","dishPhoto":"cena-salmone.webp"},{"name":"Orata alla griglia con patate","price":14,"description":"Orata alla griglia, accompagnata da patate.","allergens":[4],"icon":"Fish","dishPhoto":"cena-assets/orata-griglia-patate-20261016.webp","translations":{"en":{"name":"Grilled sea bream with potatoes","description":"Grilled sea bream served with potatoes."},"zh":{"name":"烤海鲷鱼配土豆","description":"烤海鲷鱼，搭配土豆。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-16","tool":"image_gen","note":"Existing sea bream and potato reference adapted to the approved dinner ivory plate, navy tabletop, lighting and viewpoint. One individual serving. Illustrative image, not an actual restaurant photograph."}},{"name":"Branzino alla griglia con verza e carote saltate","price":14,"description":"Branzino alla griglia, accompagnato da verza e carote saltate.","allergens":[4],"icon":"Fish","dishPhoto":"pranzo-assets/branzino-verza-coerente-20261023.webp","orderCourse":"Secondo","translations":{"en":{"name":"Grilled sea bass with sautéed savoy cabbage and carrots","description":"Grilled sea bass served with sautéed savoy cabbage and carrots."},"zh":{"name":"烤海鲈鱼配炒皱叶甘蓝和胡萝卜","description":"烤海鲈鱼，搭配炒皱叶甘蓝和胡萝卜。"}},"photoSource":{"type":"AI-generated illustration matching approved lunch setup","date":"2026-10-23","tool":"image_gen","reference":"pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp","note":"Approved ivory ceramic plate, navy tabletop, warm upper-left light, three-quarter angle and framing preserved. Ingredients follow Paolo’s recipe; illustrative image, not restaurant food photography."}}]}; const SHARED_OFFERS=[{"name":"Udon con verdure miste, pollo e gamberetti*","price":10,"description":"Udon con carote, zucchine e verza, pollo e gamberetti*.","allergens":[1,2],"icon":"Wheat","orderCourse":"Primo","photoLayout":"side","dishPhoto":"pranzo-assets/udon-coerente-20261027.webp","translations":{"en":{"name":"Udon with mixed vegetables, chicken and shrimp*","description":"Udon noodles with carrots, courgettes, savoy cabbage, chicken and shrimp*."},"zh":{"name":"蔬菜鸡肉虾仁*乌冬面","description":"乌冬面搭配胡萝卜、西葫芦、皱叶甘蓝、鸡肉和虾仁*。"}},"photoSource":{"type":"AI-generated illustrative image","date":"2026-10-27","tool":"image_gen","reference":"pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp","note":"Foto riutilizzata senza modifiche dal pranzo del 27 ottobre 2026."}},{"name":"Bocconcini di pollo con zucca e gorgonzola","price":10,"description":"Bocconcini di pollo con zucca e crema di gorgonzola.","allergens":[7],"icon":"Drumstick","dishPhoto":"offerta-assets/pollo-zucca-gorgonzola-foto-20261027.webp","photoLayout":"side","orderCourse":"Secondo","translations":{"en":{"name":"Chicken bites with pumpkin and gorgonzola","description":"Bite-size pieces of chicken with pumpkin and creamy gorgonzola sauce."},"zh":{"name":"南瓜戈贡佐拉奶酪鸡块","description":"嫩鸡肉块搭配南瓜和浓郁的戈贡佐拉奶酪酱。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-27","tool":"image_gen","note":"Chicken pieces, pumpkin, gorgonzola on ivory plate over navy tabletop. Illustrative, not restaurant photography."}}]; const SHARED_FIXED={"price": 25, "dishes": []};
+const SHARED_DINNER={"antipasti":[{"name":"Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)","price":10,"description":"Pane tostato e fragrante, formaggio delicato e una piacevole nota affumicata.","allergens":[1,4,7],"icon":"Fish","dishPhoto":"cena-assets/bruschette-salmone-formaggio-20261020.webp","translations":{"en":{"name":"Smoked salmon and cream cheese bruschetta (2 pieces)","description":"Fragrant toasted bread, creamy cheese and a pleasant smoky note."},"zh":{"name":"烟熏三文鱼奶油奶酪烤面包（2片）","description":"香脆烤面包、柔滑奶酪与淡淡烟熏香气相映成趣。"}},"photoSource":{"type":"AI-edited approved dinner illustration","date":"2026-10-20","tool":"image_gen","note":"Approved two-piece bruschetta photograph edited to change toppings only, preserving the ivory plate, navy tabletop, warm light and framing. Web references reviewed but contained extra ingredients or different presentation. Illustrative image, not a photograph of restaurant food."}},{"name":"Bruschette con avocado e gamberetti* (2 pezzi)","price":10,"description":"La morbidezza dell’avocado incontra la vivacità dei gamberetti* su pane caldo e croccante.","allergens":[1,2],"icon":"Shrimp","dishPhoto":"cena-assets/bruschette-avocado-gamberetti-20261020.webp","translations":{"en":{"name":"Avocado and shrimp* bruschetta (2 pieces)","description":"Creamy avocado meets lively shrimp* on warm, crisp toast."},"zh":{"name":"牛油果虾仁*烤面包（2片）","description":"绵软牛油果与鲜美虾仁*相遇，搭配温热酥脆的烤面包。"}},"photoSource":{"type":"AI-edited approved dinner illustration","date":"2026-10-20","tool":"image_gen","note":"Approved two-piece bruschetta photograph edited to change toppings only, preserving the ivory plate, navy tabletop, warm light and framing. Web references reviewed but contained extra ingredients or different presentation. Illustrative image, not a photograph of restaurant food."}},{"name":"Funghi porcini freschi fritti","price":25,"description":"Croccanti fuori, teneri dentro: il profumo del bosco, con una nota di limone.","allergens":[1,3],"icon":"Leaf","dishPhoto":"cena-assets/porcini-freschi-fritti-20261027.webp","translations":{"en":{"name":"Fresh fried porcini mushrooms","description":"Crisp on the outside and tender inside: a woodland aroma with a hint of lemon."},"zh":{"name":"香酥炸新鲜牛肝菌","description":"外酥内嫩，散发森林般的香气，点缀一丝柠檬清新。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-27","tool":"image_gen","note":"Fried porcini on a speckled ivory plate over a navy tabletop, warm light. Illustrative, not restaurant photography."}},{"name":"Vitello tonnato","price":12,"description":"Fettine di vitello con salsa di tonno, uova, acciughe e capperi.","allergens":[3,4],"icon":"Fish","dishPhoto":"cena-assets/vitello-tonnato-20261024.webp","translations":{"en":{"name":"Vitello tonnato","description":"Thinly sliced veal with tuna, egg, anchovy and caper sauce."},"zh":{"name":"金枪鱼酱小牛肉","description":"薄切小牛肉配金枪鱼、鸡蛋、凤尾鱼和刺山柑酱。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-24","tool":"image_gen","note":"Restaurant menu illustration with sliced veal, tuna sauce and capers on an ivory plate over a navy table; recipe and visual references inspected online. Not a photograph of restaurant food."}}],"primi":[{"name":"Spaghetti ai frutti di mare","price":15,"description":"Cozze, vongole, gamberetti* e gamberone*, con un leggero pomodoro.","allergens":[1,2,14],"icon":"Shell","dishPhoto":"cena-spaghetti.webp"},{"name":"Risotto con gorgonzola e pere","price":12.5,"description":"Il sapore deciso del gorgonzola trova il suo equilibrio nella dolcezza delle pere.","allergens":[7],"icon":"CookingPot","dishPhoto":"cena-assets/risotto-gorgonzola-pere-20261009.webp","translations":{"en":{"name":"Risotto with gorgonzola and pears","description":"Bold gorgonzola finds its balance in the sweetness of pears."},"zh":{"name":"戈贡佐拉奶酪梨烩饭","description":"浓郁的戈贡佐拉奶酪与梨子的清甜恰到好处地平衡。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-09","tool":"image_gen","note":"Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."}},{"name":"Linguine al nero di seppia","price":13,"description":"Linguine avvolte in un intenso e vellutato condimento al nero di seppia.","allergens":[1,14],"icon":"Shell","dishPhoto":"cena-assets/linguine-nero-seppia-20261009.webp","translations":{"en":{"name":"Linguine with cuttlefish ink","description":"Linguine coated in a rich, silky cuttlefish ink sauce."},"zh":{"name":"墨鱼汁扁意面","description":"扁意面裹上浓郁丝滑的墨鱼汁酱。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-09","tool":"image_gen","note":"Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."}},{"name":"Fusilli con melanzane e branzino","price":12.5,"description":"Melanzane morbide, branzino delicato e appena un velo di pomodoro: il mare senza eccessi.","allergens":[1,4],"icon":"Fish","dishPhoto":"cena-assets/fusilli-melanzane-branzino-20261024.webp","translations":{"en":{"name":"Fusilli with aubergine and sea bass","description":"Tender aubergine, delicate sea bass and just a little tomato: a subtle taste of the sea."},"zh":{"name":"茄子海鲈鱼螺旋面","description":"柔嫩茄子、细腻海鲈鱼与少许番茄，呈现清新而克制的海洋风味。"}},"photoSource":{"type":"AI-edited approved dinner photograph","date":"2026-10-24","tool":"image_gen","reference":"cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp","note":"Replaced tuna pieces with cooked sea bass; kept fusilli, aubergine, scant tomato, original white plate and navy tabletop. Illustrative, not restaurant photography."}}],"secondi":[{"name":"Frittura mista di alici, calamari e gamberetti*","price":20,"description":"Alici, calamari e gamberetti* in una frittura leggera e croccante.","allergens":[1,2,4,14],"icon":"Fish","dishPhoto":"cena-frittura.webp"},{"name":"Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco","price":12,"description":"Finocchi croccanti, arance e avocado, con bocconcini di salmone fresco.","allergens":[4],"icon":"Fish","dishPhoto":"cena-assets/insalatona-finocchi-arance-avocado-salmone-20261014.webp","translations":{"en":{"name":"Salad with fennel, oranges, avocado and fresh salmon bites","description":"Crisp fennel, oranges and avocado with bite-sized pieces of fresh salmon."},"zh":{"name":"茴香橙子牛油果鲜三文鱼沙拉","description":"爽脆茴香、橙子和牛油果，搭配鲜三文鱼块。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-14","tool":"image_gen","note":"Internet references inspected: examples use smoked salmon or add unrelated ingredients. Generated with the requested fennel, oranges, avocado and fresh salmon bites, matching the approved ivory plate, navy tabletop and soft light. Illustrative image, not a photograph of food served at the restaurant."}},{"name":"Filetti di orata in crosta di mandorle con verza viola cruda all’aceto balsamico","price":14,"description":"Mandorle croccanti e verza viola all’aceto balsamico: delicatezza e carattere nello stesso piatto.","allergens":[4,8],"icon":"Fish","dishPhoto":"cena-assets/orata-mandorle-verza-viola-20261017.webp","translations":{"en":{"name":"Almond-crusted sea bream fillets with raw purple cabbage and balsamic vinegar","description":"Crunchy almonds and purple cabbage with balsamic vinegar: delicacy and character together."},"zh":{"name":"杏仁脆皮海鲷鱼柳配香醋紫甘蓝","description":"香脆杏仁与香醋紫甘蓝相映，细腻口感与鲜明风味兼得。"}},"photoSource":{"type":"AI-adapted approved menu illustration","date":"2026-10-17","tool":"image_gen","note":"Internet references reviewed; other garnishes or ingredients differ. Approved almond-crusted fish photo edited to sea bream, preserving raw purple cabbage with balsamic vinegar, ivory plate and navy tabletop. Illustrative image, not a restaurant photograph."}},{"name":"Trancio di salmone all’arancia e pepe rosa","price":14,"description":"Salmone alla griglia, arancia e pepe rosa, con finocchi crudi e aceto balsamico.","allergens":[4],"icon":"Fish","dishPhoto":"cena-salmone.webp"},{"name":"Orata alla griglia con patate","price":14,"description":"Una grigliata semplice e profumata, con patate che lasciano parlare il pesce.","allergens":[4],"icon":"Fish","dishPhoto":"cena-assets/orata-griglia-patate-20261016.webp","translations":{"en":{"name":"Grilled sea bream with potatoes","description":"Simply grilled and beautifully fragrant, with potatoes letting the fish take centre stage."},"zh":{"name":"烤海鲷鱼配土豆","description":"简洁而香气四溢的烤鱼，土豆衬托鱼肉本身的鲜美。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-16","tool":"image_gen","note":"Existing sea bream and potato reference adapted to the approved dinner ivory plate, navy tabletop, lighting and viewpoint. One individual serving. Illustrative image, not an actual restaurant photograph."}},{"name":"Branzino alla griglia con verza e carote saltate","price":14,"description":"Il gusto delicato del branzino si accompagna alla dolcezza delle carote e alla verza saltata.","allergens":[4],"icon":"Fish","dishPhoto":"pranzo-assets/branzino-verza-coerente-20261023.webp","orderCourse":"Secondo","translations":{"en":{"name":"Grilled sea bass with sautéed savoy cabbage and carrots","description":"Delicate sea bass meets sweet carrots and sautéed savoy cabbage."},"zh":{"name":"烤海鲈鱼配炒皱叶甘蓝和胡萝卜","description":"细腻海鲈鱼搭配清甜胡萝卜与清炒皱叶甘蓝。"}},"photoSource":{"type":"AI-generated illustration matching approved lunch setup","date":"2026-10-23","tool":"image_gen","reference":"pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp","note":"Approved ivory ceramic plate, navy tabletop, warm upper-left light, three-quarter angle and framing preserved. Ingredients follow Paolo’s recipe; illustrative image, not restaurant food photography."}}]}; const SHARED_OFFERS=[{"name":"Udon con verdure miste, pollo e gamberetti*","price":10,"description":"Carote, zucchine e verza saltate con pollo e gamberetti*: un incontro vivace di sapori orientali.","allergens":[1,2],"icon":"Wheat","orderCourse":"Primo","photoLayout":"side","dishPhoto":"pranzo-assets/udon-coerente-20261027.webp","translations":{"en":{"name":"Udon with mixed vegetables, chicken and shrimp*","description":"Carrots, courgettes and savoy cabbage tossed with chicken and shrimp*: lively flavours from the East."},"zh":{"name":"蔬菜鸡肉虾仁*乌冬面","description":"胡萝卜、西葫芦、皱叶甘蓝与鸡肉、虾仁*同炒，演绎鲜活东方风味。"}},"photoSource":{"type":"AI-generated illustrative image","date":"2026-10-27","tool":"image_gen","reference":"pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp","note":"Foto riutilizzata senza modifiche dal pranzo del 27 ottobre 2026."}},{"name":"Bocconcini di pollo con zucca e gorgonzola","price":10,"description":"La dolcezza della zucca incontra il carattere del gorgonzola: un abbraccio cremoso per il pollo.","allergens":[7],"icon":"Drumstick","dishPhoto":"offerta-assets/pollo-zucca-gorgonzola-foto-20261027.webp","photoLayout":"side","orderCourse":"Secondo","translations":{"en":{"name":"Chicken bites with pumpkin and gorgonzola","description":"Sweet pumpkin meets bold gorgonzola in a velvety embrace for tender chicken."},"zh":{"name":"南瓜戈贡佐拉奶酪鸡块","description":"南瓜的甘甜与戈贡佐拉奶酪的浓郁相遇，给嫩鸡肉一层丝滑包裹。"}},"photoSource":{"type":"AI-generated illustration","date":"2026-10-27","tool":"image_gen","note":"Chicken pieces, pumpkin, gorgonzola on ivory plate over navy tabletop. Illustrative, not restaurant photography."}}]; const SHARED_FIXED={"price": 25, "dishes": []};
 Object.values(CONTROCORRENTE_MENU).forEach(menu=>{
  menu.courses.forEach((c,i)=>c.dishes.forEach((d,j)=>{const shared=SHARED_DINNER[['antipasti','primi','secondi'][i]][j]; d[2]=new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(shared.price);d[1]=d[1].replace(/\([\d, ]+\)[.]?$/, '')+(shared.allergens.length?' ('+shared.allergens.join(', ')+')':'');}));
  menu.daily.forEach((d,i)=>{d[1]=d[1].replace(/\([\d, ]+\)\.?$/, '').trim()+' ('+SHARED_OFFERS[i].allergens.join(', ')+')';d[2]=new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(SHARED_OFFERS[i].price);});
