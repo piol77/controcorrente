@@ -320,7 +320,7 @@
         "description": "Il profumo della griglia valorizza la carne, mentre le patate al prezzemolo completano il piatto con semplicità.",
         "allergens": [],
         "icon": "UtensilsCrossed",
-        "dishPhoto": "cena-assets/bistecca-vitello-osso-20261028.avif",
+        "dishPhoto": "cena-assets/bistecca-vitello-osso-patate-20261028.avif",
         "orderCourse": "Secondo",
         "translations": {
           "en": {
@@ -336,7 +336,7 @@
           "type": "AI-generated illustrative image",
           "date": "2026-10-28",
           "tool": "image_gen",
-          "note": "Bone-in grilled veal steak image generated, then cropped to the food-only 3:2 photograph and optimized as AVIF for the dinner menu. Wood-grill tabletop with no implied side dishes. Illustrative, not restaurant food photography."
+          "note": "New photo specifically depicting grilled bone-in veal steak with potatoes and parsley, without vegetables, in a coherent dark restaurant setting. Illustrative, not actual restaurant photography."
         }
       }
     ]
