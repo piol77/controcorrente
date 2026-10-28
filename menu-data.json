@@ -315,21 +315,21 @@
         }
       },
       {
-        "name": "Bistecca di vitello con l’osso alla griglia (500 g circa)",
+        "name": "Bistecca di vitello con l’osso alla griglia (500 g circa), servita con patate e prezzemolo",
         "price": 20,
-        "description": "Una bistecca generosa, con l’osso e il profumo inconfondibile della griglia.",
+        "description": "Il profumo della griglia valorizza la carne, mentre le patate al prezzemolo completano il piatto con semplicità.",
         "allergens": [],
         "icon": "UtensilsCrossed",
         "dishPhoto": "cena-assets/bistecca-vitello-osso-20261028.avif",
         "orderCourse": "Secondo",
         "translations": {
           "en": {
-            "name": "Grilled bone-in veal steak (approx. 500 g)",
-            "description": "A generous bone-in steak with the unmistakable aroma of the grill."
+            "name": "Grilled bone-in veal steak (approx. 500 g), served with potatoes and parsley",
+            "description": "The aroma of the grill enhances the veal, while parsley-seasoned potatoes make a simple, satisfying accompaniment."
           },
           "zh": {
-            "name": "带骨烤小牛排（约500克）",
-            "description": "分量十足的带骨小牛排，散发诱人的炭烤香气。"
+            "name": "带骨烤小牛排（约500克），配土豆和欧芹",
+            "description": "炙烤香气衬托小牛肉的鲜美，搭配欧芹点缀的土豆，朴实而美味。"
           }
         },
         "photoSource": {
