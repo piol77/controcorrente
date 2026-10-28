@@ -313,6 +313,31 @@
           "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
           "note": "Approved ivory ceramic plate, navy tabletop, warm upper-left light, three-quarter angle and framing preserved. Ingredients follow Paolo’s recipe; illustrative image, not restaurant food photography."
         }
+      },
+      {
+        "name": "Bistecca di vitello con l’osso alla griglia (500 g circa)",
+        "price": 20,
+        "description": "Una bistecca generosa, con l’osso e il profumo inconfondibile della griglia.",
+        "allergens": [],
+        "icon": "UtensilsCrossed",
+        "dishPhoto": "cena-assets/bistecca-vitello-osso-20261028.avif",
+        "orderCourse": "Secondo",
+        "translations": {
+          "en": {
+            "name": "Grilled bone-in veal steak (approx. 500 g)",
+            "description": "A generous bone-in steak with the unmistakable aroma of the grill."
+          },
+          "zh": {
+            "name": "带骨烤小牛排（约500克）",
+            "description": "分量十足的带骨小牛排，散发诱人的炭烤香气。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustrative image",
+          "date": "2026-10-28",
+          "tool": "image_gen",
+          "note": "Bone-in grilled veal steak image generated, then cropped to the food-only 3:2 photograph and optimized as AVIF for the dinner menu. Wood-grill tabletop with no implied side dishes. Illustrative, not restaurant food photography."
+        }
       }
     ]
   },
