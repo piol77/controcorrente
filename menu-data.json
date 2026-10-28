@@ -60,7 +60,7 @@
       },
       {
         "name": "Funghi porcini freschi fritti",
-        "price": 25,
+        "price": 18,
         "description": "Croccanti fuori, teneri dentro: il profumo del bosco, con una nota di limone.",
         "allergens": [
           1,
@@ -153,30 +153,30 @@
         }
       },
       {
-        "name": "Linguine al nero di seppia",
-        "price": 13,
-        "description": "Linguine avvolte in un intenso e vellutato condimento al nero di seppia.",
+        "name": "Tagliatelle aglio, olio, peperoncino e gamberoni*",
+        "price": 12.5,
+        "description": "Un filo d’olio profumato all’aglio, il brio del peperoncino e la dolcezza dei gamberoni*.",
         "allergens": [
           1,
-          14
+          2,
+          3
         ],
-        "icon": "Shell",
-        "dishPhoto": "cena-assets/linguine-nero-seppia-20261009.webp",
+        "icon": "Shrimp",
+        "dishPhoto": "pranzo-assets/tagliatelle-coerente-20261028.webp",
         "translations": {
           "en": {
-            "name": "Linguine with cuttlefish ink",
-            "description": "Linguine coated in a rich, silky cuttlefish ink sauce."
+            "name": "Tagliatelle with garlic, olive oil, chilli and king prawns*",
+            "description": "Fragrant garlic oil and a lively touch of chilli complement the sweetness of the king prawns*."
           },
           "zh": {
-            "name": "墨鱼汁扁意面",
-            "description": "扁意面裹上浓郁丝滑的墨鱼汁酱。"
+            "name": "蒜香橄榄油辣椒大虾*宽面",
+            "description": "蒜香橄榄油与微辣辣椒衬托出大虾*的鲜甜。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustration",
-          "date": "2026-10-09",
-          "tool": "image_gen",
-          "note": "Internet references inspected; generated to match requested ingredients and the approved ivory plate on navy-blue tabletop."
+          "type": "Previously approved lunch menu photo; temporary visual match",
+          "date": "2026-10-28",
+          "note": "Existing cohesive ivory plate and navy tabletop; dedicated image still required to depict the exact requested ingredients."
         }
       },
       {
@@ -546,33 +546,31 @@
   ],
   "offers": [
     {
-      "name": "Udon con verdure miste, pollo e gamberetti*",
+      "name": "Orecchiette con salsiccia e cime di rapa",
       "price": 10,
-      "description": "Carote, zucchine e verza saltate con pollo e gamberetti*: un incontro vivace di sapori orientali.",
+      "description": "Il gusto deciso della salsiccia incontra la piacevole nota amarognola delle cime di rapa.",
       "allergens": [
-        1,
-        2
+        1
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/udon-coerente-20261027.webp",
+      "dishPhoto": "pranzo-assets/orecchiette-coerente-20261028.webp",
       "translations": {
         "en": {
-          "name": "Udon with mixed vegetables, chicken and shrimp*",
-          "description": "Carrots, courgettes and savoy cabbage tossed with chicken and shrimp*: lively flavours from the East."
+          "name": "Orecchiette with sausage and broccoli rabe",
+          "description": "Savoury sausage meets the pleasingly bitter edge of broccoli rabe."
         },
         "zh": {
-          "name": "蔬菜鸡肉虾仁*乌冬面",
-          "description": "胡萝卜、西葫芦、皱叶甘蓝与鸡肉、虾仁*同炒，演绎鲜活东方风味。"
+          "name": "香肠芜菁叶猫耳朵面",
+          "description": "香肠的浓郁与芜菁叶的微苦巧妙融合。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
+        "date": "2026-10-28",
         "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Foto riutilizzata senza modifiche dal pranzo del 27 ottobre 2026."
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
       }
     },
     {
