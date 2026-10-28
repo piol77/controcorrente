@@ -6,63 +6,63 @@
 
   const LUNCH={
   "en": {
-    "Penne con zucchine e salsiccia": [
-      "Penne with courgettes and sausage",
-      "Penne with courgettes and sausage, with a little cream."
+    "Trofie fresche al pesto di melanzane e scaglie di parmigiano": [
+      "Fresh trofie with aubergine pesto and Parmesan shavings",
+      "Fresh trofie pasta with aubergine pesto, finished with Parmesan shavings."
     ],
-    "Udon con verdure miste, pollo e gamberetti*": [
-      "Udon with mixed vegetables, chicken and shrimp*",
-      "Udon noodles with carrots, courgettes, savoy cabbage, chicken and shrimp*."
+    "Orecchiette con salsiccia e cime di rapa": [
+      "Orecchiette with sausage and broccoli rabe",
+      "Orecchiette pasta with sausage and broccoli rabe."
     ],
-    "Bucatini al sugo di orata con olive e peperoncino": [
-      "Bucatini with sea bream sauce, olives and chilli",
-      "Bucatini with sea bream sauce, olives and a spicy touch."
+    "Tagliatelle con peperoni e gamberetti*": [
+      "Tagliatelle with peppers and shrimp*",
+      "Tagliatelle pasta with sweet peppers and shrimp*."
     ],
-    "Verdure al forno con ceci e salsa allo yogurt e tahina": [
-      "Roasted vegetables with chickpeas and yogurt-tahini sauce",
-      "Roasted onion, cauliflower, broccoli and pumpkin with chickpeas and a creamy yogurt and tahini (sesame paste) sauce."
+    "Casarecce con melanzane, branzino e un tocco di pomodoro": [
+      "Casarecce with aubergine and sea bass, with a touch of tomato",
+      "Casarecce pasta with aubergine and sea bass, lightly dressed with tomato."
     ],
-    "Orata alla griglia con patate bollite": [
-      "Grilled sea bream with boiled potatoes",
-      "Grilled sea bream served with boiled potatoes."
+    "Vellutata di zucca con gamberetti*": [
+      "Pumpkin soup with shrimp*",
+      "Smooth pumpkin soup served with shrimp*."
     ],
-    "Filetti di orata alle mandorle con patate al forno": [
-      "Sea bream fillets with almonds and roasted potatoes",
-      "Sea bream fillets with almonds, served with roasted potatoes."
+    "Milanese di pollo con cime di rapa": [
+      "Milanese-style chicken with broccoli rabe",
+      "Breaded chicken cutlet, Milanese style, served with broccoli rabe."
     ],
-    "Bocconcini di pollo al curry con riso bianco": [
-      "Chicken curry with white rice",
-      "Chicken pieces in curry sauce with carrots and potatoes, served with white rice."
+    "Straccetti di maiale ai funghi misti* con patate al prezzemolo": [
+      "Pork strips with mixed mushrooms* and parsley potatoes",
+      "Pork strips with mixed mushrooms*, served with parsley potatoes."
     ]
   },
   "zh": {
-    "Penne con zucchine e salsiccia": [
-      "西葫芦香肠通心粉",
-      "斜管通心粉搭配西葫芦、香肠及少量奶油。"
+    "Trofie fresche al pesto di melanzane e scaglie di parmigiano": [
+      "茄子酱鲜制特罗菲面配帕尔马干酪片",
+      "鲜制特罗菲意面拌茄子酱，配帕尔马干酪薄片。"
     ],
-    "Udon con verdure miste, pollo e gamberetti*": [
-      "蔬菜鸡肉虾仁*乌冬面",
-      "乌冬面搭配胡萝卜、西葫芦、皱叶甘蓝、鸡肉和虾仁*。"
+    "Orecchiette con salsiccia e cime di rapa": [
+      "香肠芜菁叶猫耳朵面",
+      "猫耳朵意面搭配香肠和芜菁叶。"
     ],
-    "Bucatini al sugo di orata con olive e peperoncino": [
-      "海鲷鱼酱橄榄辣椒粗管面",
-      "粗管意面搭配海鲷鱼酱和橄榄，带有辣味。"
+    "Tagliatelle con peperoni e gamberetti*": [
+      "甜椒虾仁*宽面",
+      "宽条意面搭配甜椒和虾仁*。"
     ],
-    "Verdure al forno con ceci e salsa allo yogurt e tahina": [
-      "烤蔬菜配鹰嘴豆及酸奶芝麻酱",
-      "烤洋葱、花椰菜、西兰花和南瓜，搭配鹰嘴豆及浓滑酸奶芝麻酱。"
+    "Casarecce con melanzane, branzino e un tocco di pomodoro": [
+      "茄子海鲈鱼卡萨雷切面配少量番茄",
+      "卡萨雷切意面搭配茄子和海鲈鱼，以少量番茄调味。"
     ],
-    "Orata alla griglia con patate bollite": [
-      "烤海鲷鱼配水煮土豆",
-      "烤海鲷鱼，搭配水煮土豆。"
+    "Vellutata di zucca con gamberetti*": [
+      "南瓜浓汤配虾仁*",
+      "细腻南瓜浓汤搭配虾仁*。"
     ],
-    "Filetti di orata alle mandorle con patate al forno": [
-      "杏仁海鲷鱼柳配烤土豆",
-      "海鲷鱼柳搭配杏仁，佐以烤土豆。"
+    "Milanese di pollo con cime di rapa": [
+      "米兰式炸鸡排配芜菁叶",
+      "米兰式裹面包糠炸鸡排，配芜菁叶。"
     ],
-    "Bocconcini di pollo al curry con riso bianco": [
-      "咖喱鸡块配白米饭",
-      "咖喱鸡块搭配胡萝卜和土豆，佐以白米饭。"
+    "Straccetti di maiale ai funghi misti* con patate al prezzemolo": [
+      "杂菌*猪肉条配欧芹土豆",
+      "猪肉条搭配杂菌*，配欧芹土豆。"
     ]
   }
 };

@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-10-27",
-  "lunchDateLabel": "Martedì 27 ottobre 2026",
+  "lunchUpdatedAt": "2026-10-28",
+  "lunchDateLabel": "Mercoledì 28 ottobre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -343,9 +343,9 @@
   },
   "lunch": [
     {
-      "name": "Penne con zucchine e salsiccia",
+      "name": "Trofie fresche al pesto di melanzane e scaglie di parmigiano",
       "price": 10,
-      "description": "Penne con zucchine e salsiccia, con poca panna.",
+      "description": "Trofie fresche con pesto di melanzane, completate da scaglie di parmigiano.",
       "allergens": [
         1,
         7
@@ -353,199 +353,192 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/penne-coerente-20261027.webp",
+      "dishPhoto": "pranzo-assets/trofie-coerente-20261028.webp",
       "translations": {
         "en": {
-          "name": "Penne with courgettes and sausage",
-          "description": "Penne with courgettes and sausage, with a little cream."
+          "name": "Fresh trofie with aubergine pesto and Parmesan shavings",
+          "description": "Fresh trofie pasta with aubergine pesto, finished with Parmesan shavings."
         },
         "zh": {
-          "name": "西葫芦香肠通心粉",
-          "description": "斜管通心粉搭配西葫芦、香肠及少量奶油。"
+          "name": "茄子酱鲜制特罗菲面配帕尔马干酪片",
+          "description": "鲜制特罗菲意面拌茄子酱，配帕尔马干酪薄片。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
+        "date": "2026-10-28",
         "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Ivory plate, navy tabletop and warm lighting matched to approved lunch photography. Ingredients from Paolo; illustrative, not an actual restaurant photograph."
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
       }
     },
     {
-      "name": "Udon con verdure miste, pollo e gamberetti*",
+      "name": "Orecchiette con salsiccia e cime di rapa",
       "price": 10,
-      "description": "Udon con carote, zucchine e verza, pollo e gamberetti*.",
+      "description": "Orecchiette con salsiccia e cime di rapa.",
       "allergens": [
-        1,
-        2
+        1
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/udon-coerente-20261027.webp",
+      "dishPhoto": "pranzo-assets/orecchiette-coerente-20261028.webp",
       "translations": {
         "en": {
-          "name": "Udon with mixed vegetables, chicken and shrimp*",
-          "description": "Udon noodles with carrots, courgettes, savoy cabbage, chicken and shrimp*."
+          "name": "Orecchiette with sausage and broccoli rabe",
+          "description": "Orecchiette pasta with sausage and broccoli rabe."
         },
         "zh": {
-          "name": "蔬菜鸡肉虾仁*乌冬面",
-          "description": "乌冬面搭配胡萝卜、西葫芦、皱叶甘蓝、鸡肉和虾仁*。"
+          "name": "香肠芜菁叶猫耳朵面",
+          "description": "猫耳朵意面搭配香肠和芜菁叶。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
+        "date": "2026-10-28",
         "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Ivory plate, navy tabletop and warm lighting matched to approved lunch photography. Ingredients from Paolo; illustrative, not an actual restaurant photograph."
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
       }
     },
     {
-      "name": "Bucatini al sugo di orata con olive e peperoncino",
+      "name": "Tagliatelle con peperoni e gamberetti*",
       "price": 12,
-      "description": "Bucatini al sugo di orata con olive e una nota piccante.",
+      "description": "Tagliatelle con peperoni e gamberetti*.",
+      "allergens": [
+        1,
+        2,
+        3
+      ],
+      "icon": "Wheat",
+      "orderCourse": "Primo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/tagliatelle-coerente-20261028.webp",
+      "translations": {
+        "en": {
+          "name": "Tagliatelle with peppers and shrimp*",
+          "description": "Tagliatelle pasta with sweet peppers and shrimp*."
+        },
+        "zh": {
+          "name": "甜椒虾仁*宽面",
+          "description": "宽条意面搭配甜椒和虾仁*。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative image",
+        "date": "2026-10-28",
+        "tool": "image_gen",
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+      }
+    },
+    {
+      "name": "Casarecce con melanzane, branzino e un tocco di pomodoro",
+      "price": 12,
+      "description": "Casarecce con melanzane e branzino, con un tocco di pomodoro.",
       "allergens": [
         1,
         4
       ],
-      "icon": "Fish",
+      "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/bucatini-coerente-20261027.webp",
+      "dishPhoto": "pranzo-assets/casarecce-coerente-20261028.webp",
       "translations": {
         "en": {
-          "name": "Bucatini with sea bream sauce, olives and chilli",
-          "description": "Bucatini with sea bream sauce, olives and a spicy touch."
+          "name": "Casarecce with aubergine and sea bass, with a touch of tomato",
+          "description": "Casarecce pasta with aubergine and sea bass, lightly dressed with tomato."
         },
         "zh": {
-          "name": "海鲷鱼酱橄榄辣椒粗管面",
-          "description": "粗管意面搭配海鲷鱼酱和橄榄，带有辣味。"
+          "name": "茄子海鲈鱼卡萨雷切面配少量番茄",
+          "description": "卡萨雷切意面搭配茄子和海鲈鱼，以少量番茄调味。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
+        "date": "2026-10-28",
         "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Ivory plate, navy tabletop and warm lighting matched to approved lunch photography. Ingredients from Paolo; illustrative, not an actual restaurant photograph."
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
       }
     },
     {
-      "name": "Verdure al forno con ceci e salsa allo yogurt e tahina",
-      "price": 10,
-      "description": "Cipolla, cavolfiore, broccoli e zucca al forno con ceci e salsa cremosa allo yogurt e tahina (crema di sesamo).",
-      "allergens": [
-        7,
-        11
-      ],
-      "icon": "Carrot",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/verdure-coerente-20261027.webp",
-      "translations": {
-        "en": {
-          "name": "Roasted vegetables with chickpeas and yogurt-tahini sauce",
-          "description": "Roasted onion, cauliflower, broccoli and pumpkin with chickpeas and a creamy yogurt and tahini (sesame paste) sauce."
-        },
-        "zh": {
-          "name": "烤蔬菜配鹰嘴豆及酸奶芝麻酱",
-          "description": "烤洋葱、花椰菜、西兰花和南瓜，搭配鹰嘴豆及浓滑酸奶芝麻酱。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
-        "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Ivory plate, navy tabletop and warm lighting matched to approved lunch photography. Ingredients from Paolo; illustrative, not an actual restaurant photograph."
-      }
-    },
-    {
-      "name": "Orata alla griglia con patate bollite",
+      "name": "Vellutata di zucca con gamberetti*",
       "price": 12,
-      "description": "Orata alla griglia, accompagnata da patate bollite.",
+      "description": "Vellutata di zucca accompagnata da gamberetti*.",
       "allergens": [
-        4
+        2
       ],
-      "icon": "Fish",
-      "orderCourse": "Secondo",
+      "icon": "Utensils",
+      "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/orata-coerente-20261027.webp",
+      "dishPhoto": "pranzo-assets/vellutata-coerente-20261028.webp",
       "translations": {
         "en": {
-          "name": "Grilled sea bream with boiled potatoes",
-          "description": "Grilled sea bream served with boiled potatoes."
+          "name": "Pumpkin soup with shrimp*",
+          "description": "Smooth pumpkin soup served with shrimp*."
         },
         "zh": {
-          "name": "烤海鲷鱼配水煮土豆",
-          "description": "烤海鲷鱼，搭配水煮土豆。"
+          "name": "南瓜浓汤配虾仁*",
+          "description": "细腻南瓜浓汤搭配虾仁*。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
+        "date": "2026-10-28",
         "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Ivory plate, navy tabletop and warm lighting matched to approved lunch photography. Ingredients from Paolo; illustrative, not an actual restaurant photograph."
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
       }
     },
     {
-      "name": "Filetti di orata alle mandorle con patate al forno",
-      "price": 12,
-      "description": "Filetti di orata alle mandorle, accompagnati da patate al forno.",
-      "allergens": [
-        4,
-        8
-      ],
-      "icon": "Fish",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/filetti-coerente-20261027.webp",
-      "translations": {
-        "en": {
-          "name": "Sea bream fillets with almonds and roasted potatoes",
-          "description": "Sea bream fillets with almonds, served with roasted potatoes."
-        },
-        "zh": {
-          "name": "杏仁海鲷鱼柳配烤土豆",
-          "description": "海鲷鱼柳搭配杏仁，佐以烤土豆。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
-        "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Ivory plate, navy tabletop and warm lighting matched to approved lunch photography. Ingredients from Paolo; illustrative, not an actual restaurant photograph."
-      }
-    },
-    {
-      "name": "Bocconcini di pollo al curry con riso bianco",
+      "name": "Milanese di pollo con cime di rapa",
       "price": 10,
-      "description": "Bocconcini di pollo al curry con carote e patate, accompagnati da riso bianco.",
+      "description": "Cotoletta di pollo alla milanese, accompagnata da cime di rapa.",
+      "allergens": [
+        1,
+        3
+      ],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/milanese-coerente-20261028.webp",
+      "translations": {
+        "en": {
+          "name": "Milanese-style chicken with broccoli rabe",
+          "description": "Breaded chicken cutlet, Milanese style, served with broccoli rabe."
+        },
+        "zh": {
+          "name": "米兰式炸鸡排配芜菁叶",
+          "description": "米兰式裹面包糠炸鸡排，配芜菁叶。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative image",
+        "date": "2026-10-28",
+        "tool": "image_gen",
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+      }
+    },
+    {
+      "name": "Straccetti di maiale ai funghi misti* con patate al prezzemolo",
+      "price": 10,
+      "description": "Straccetti di maiale con funghi misti*, accompagnati da patate al prezzemolo.",
       "allergens": [],
-      "icon": "Drumstick",
+      "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/pollo-coerente-20261027.webp",
+      "dishPhoto": "pranzo-assets/straccetti-coerente-20261028.webp",
       "translations": {
         "en": {
-          "name": "Chicken curry with white rice",
-          "description": "Chicken pieces in curry sauce with carrots and potatoes, served with white rice."
+          "name": "Pork strips with mixed mushrooms* and parsley potatoes",
+          "description": "Pork strips with mixed mushrooms*, served with parsley potatoes."
         },
         "zh": {
-          "name": "咖喱鸡块配白米饭",
-          "description": "咖喱鸡块搭配胡萝卜和土豆，佐以白米饭。"
+          "name": "杂菌*猪肉条配欧芹土豆",
+          "description": "猪肉条搭配杂菌*，配欧芹土豆。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-27",
+        "date": "2026-10-28",
         "tool": "image_gen",
-        "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-        "note": "Ivory plate, navy tabletop and warm lighting matched to approved lunch photography. Ingredients from Paolo; illustrative, not an actual restaurant photograph."
+        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
       }
     }
   ],
