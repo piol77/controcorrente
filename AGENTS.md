@@ -405,3 +405,9 @@ Questa richiesta prevale sulle precedenti eccezioni per le traduzioni senza foto
 - Dal 27 ottobre 2026 lo stream FLAC è sostituito, su richiesta di Paolo, da Capital UK (pop/hit contemporanee, AAC a basso bitrate) all'URL `https://media-ssl.musicradio.com/CapitalUK`. Non ripristinare il FLAC in aggiornamenti successivi. Restano invariati volume, dimensione del pulsante, comportamento ON/OFF, notifiche, condivisioni, contatori, ordini e altri contenuti.
 
 - Simbolo della radio (correzione esplicita 25/10): nota normale con ON quando la musica è spenta; nota sbarrata con OFF quando è accesa o in avvio. I due cerchi concentrici sono più visibili, con tratto luminoso di 2 px e vibrazione continua; movimento soltanto durante la riproduzione effettiva.
+
+
+## Descrizioni dei piatti — regola permanente, 2026-10-28
+- Le descrizioni non devono ripetere semplicemente il nome o l’elenco degli ingredienti. Scrivere una breve frase curata, piacevole e descrittiva, coerente con il piatto: valorizzare sapori, consistenze e abbinamenti effettivamente presenti.
+- Anche quando non emerge un dettaglio particolare, preferire una frase naturale e pertinente alla ripetizione degli ingredienti; evitare formule vuote o enfatiche. Non inventare ingredienti, tecniche, provenienze o caratteristiche non fornite o ricavabili con certezza dal piatto.
+- Applicare la stessa cura alle traduzioni EN/ZH. In un intervento limitato a un piatto, applicare la regola alla sua descrizione senza riscrivere gli altri piatti non richiesti.

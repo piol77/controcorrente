@@ -459,34 +459,6 @@
       }
     },
     {
-      "name": "Vellutata di zucca con gamberetti*",
-      "price": 12,
-      "description": "Vellutata di zucca accompagnata da gamberetti*.",
-      "allergens": [
-        2
-      ],
-      "icon": "Utensils",
-      "orderCourse": "Primo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/vellutata-coerente-20261028.webp",
-      "translations": {
-        "en": {
-          "name": "Pumpkin soup with shrimp*",
-          "description": "Smooth pumpkin soup served with shrimp*."
-        },
-        "zh": {
-          "name": "南瓜浓汤配虾仁*",
-          "description": "细腻南瓜浓汤搭配虾仁*。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
-        "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
-      }
-    },
-    {
       "name": "Milanese di pollo con cime di rapa",
       "price": 10,
       "description": "Cotoletta di pollo alla milanese, accompagnata da cime di rapa.",
@@ -513,6 +485,36 @@
         "date": "2026-10-28",
         "tool": "image_gen",
         "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+      }
+    },
+    {
+      "name": "Vellutata di zucca con gamberetti* e crostone di pane bruschettato",
+      "price": 12,
+      "description": "La dolcezza della zucca incontra i gamberetti*, con un crostone di pane bruschettato a dare croccantezza.",
+      "allergens": [
+        1,
+        2
+      ],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/vellutata-crostone-coerente-20261028.webp",
+      "translations": {
+        "en": {
+          "name": "Pumpkin soup with shrimp* and toasted rustic bread",
+          "description": "The sweetness of pumpkin meets shrimp*, with a slice of toasted rustic bread adding a crisp bite."
+        },
+        "zh": {
+          "name": "南瓜浓汤配虾仁*及烤乡村面包",
+          "description": "南瓜的清甜与虾仁*相融，佐以一片烤乡村面包，增添酥脆口感。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative image",
+        "date": "2026-10-28",
+        "tool": "image_gen",
+        "note": "Edited the existing illustrative pumpkin-and-shrimp photo to add one slice of toasted rustic bread. Preserved ivory bowl, navy background, light and camera angle. Not an actual restaurant photograph.",
+        "reference": "pranzo-assets/vellutata-coerente-20261028.webp"
       }
     },
     {

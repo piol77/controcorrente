@@ -22,9 +22,9 @@
       "Casarecce with aubergine and sea bass, with a touch of tomato",
       "Casarecce pasta with aubergine and sea bass, lightly dressed with tomato."
     ],
-    "Vellutata di zucca con gamberetti*": [
-      "Pumpkin soup with shrimp*",
-      "Smooth pumpkin soup served with shrimp*."
+    "Vellutata di zucca con gamberetti* e crostone di pane bruschettato": [
+      "Pumpkin soup with shrimp* and toasted rustic bread",
+      "The sweetness of pumpkin meets shrimp*, with a slice of toasted rustic bread adding a crisp bite."
     ],
     "Milanese di pollo con cime di rapa": [
       "Milanese-style chicken with broccoli rabe",
@@ -52,9 +52,9 @@
       "茄子海鲈鱼卡萨雷切面配少量番茄",
       "卡萨雷切意面搭配茄子和海鲈鱼，以少量番茄调味。"
     ],
-    "Vellutata di zucca con gamberetti*": [
-      "南瓜浓汤配虾仁*",
-      "细腻南瓜浓汤搭配虾仁*。"
+    "Vellutata di zucca con gamberetti* e crostone di pane bruschettato": [
+      "南瓜浓汤配虾仁*及烤乡村面包",
+      "南瓜的清甜与虾仁*相融，佐以一片烤乡村面包，增添酥脆口感。"
     ],
     "Milanese di pollo con cime di rapa": [
       "米兰式炸鸡排配芜菁叶",
