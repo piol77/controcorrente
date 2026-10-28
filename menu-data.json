@@ -162,7 +162,7 @@
           3
         ],
         "icon": "Shrimp",
-        "dishPhoto": "pranzo-assets/tagliatelle-coerente-20261028.webp",
+        "dishPhoto": "cena-assets/tagliatelle-gamberoni-polvere-20261028.webp",
         "translations": {
           "en": {
             "name": "Tagliatelle with garlic, olive oil, chilli and king prawns*",
@@ -174,9 +174,10 @@
           }
         },
         "photoSource": {
-          "type": "Previously approved lunch menu photo; temporary visual match",
+          "type": "AI-generated illustrative food photo",
           "date": "2026-10-28",
-          "note": "Existing cohesive ivory plate and navy tabletop; dedicated image still required to depict the exact requested ingredients."
+          "tool": "image_gen",
+          "note": "Large king prawns, golden tagliatelle with garlic and olive oil, a light dusting of powdered chilli and optional parsley; no whole peppers. Cream-speckled ivory plate on navy background with warm light. Illustration, not a photo of restaurant food."
         }
       },
       {
