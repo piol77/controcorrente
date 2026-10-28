@@ -250,7 +250,7 @@
         }
       },
       {
-        "name": "Filetti di orata in crosta di mandorle con verza viola cruda all’aceto balsamico",
+        "name": "Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico",
         "price": 14,
         "description": "Mandorle croccanti e verza viola all’aceto balsamico: delicatezza e carattere nello stesso piatto.",
         "allergens": [
@@ -258,22 +258,22 @@
           8
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/orata-mandorle-verza-viola-20261017.webp",
+        "dishPhoto": "cena-assets/branzino-mandorle-verza-viola-20261009.webp",
         "translations": {
           "en": {
-            "name": "Almond-crusted sea bream fillets with raw purple cabbage and balsamic vinegar",
+            "name": "Almond-crusted sea bass fillets with raw purple cabbage and balsamic vinegar",
             "description": "Crunchy almonds and purple cabbage with balsamic vinegar: delicacy and character together."
           },
           "zh": {
-            "name": "杏仁脆皮海鲷鱼柳配香醋紫甘蓝",
+            "name": "杏仁脆皮海鲈鱼柳配香醋紫甘蓝",
             "description": "香脆杏仁与香醋紫甘蓝相映，细腻口感与鲜明风味兼得。"
           }
         },
         "photoSource": {
-          "type": "AI-adapted approved menu illustration",
-          "date": "2026-10-17",
+          "type": "Previously approved AI-generated illustration",
+          "date": "2026-10-09",
           "tool": "image_gen",
-          "note": "Internet references reviewed; other garnishes or ingredients differ. Approved almond-crusted fish photo edited to sea bream, preserving raw purple cabbage with balsamic vinegar, ivory plate and navy tabletop. Illustrative image, not a restaurant photograph."
+          "note": "Existing approved sea bass with almond crust and raw purple cabbage, ivory plate/navy backdrop, illustrative image; reuse of existing site asset."
         }
       },
       {
@@ -285,32 +285,6 @@
         ],
         "icon": "Fish",
         "dishPhoto": "cena-salmone.webp"
-      },
-      {
-        "name": "Orata alla griglia con patate",
-        "price": 14,
-        "description": "Una grigliata semplice e profumata, con patate che lasciano parlare il pesce.",
-        "allergens": [
-          4
-        ],
-        "icon": "Fish",
-        "dishPhoto": "cena-assets/orata-griglia-patate-20261016.webp",
-        "translations": {
-          "en": {
-            "name": "Grilled sea bream with potatoes",
-            "description": "Simply grilled and beautifully fragrant, with potatoes letting the fish take centre stage."
-          },
-          "zh": {
-            "name": "烤海鲷鱼配土豆",
-            "description": "简洁而香气四溢的烤鱼，土豆衬托鱼肉本身的鲜美。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustration",
-          "date": "2026-10-16",
-          "tool": "image_gen",
-          "note": "Existing sea bream and potato reference adapted to the approved dinner ivory plate, navy tabletop, lighting and viewpoint. One individual serving. Illustrative image, not an actual restaurant photograph."
-        }
       },
       {
         "name": "Branzino alla griglia con verza e carote saltate",
