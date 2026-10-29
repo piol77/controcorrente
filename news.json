@@ -1,8 +1,40 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-29T02:34:54+00:00",
+  "fetched_at": "2026-10-29T05:26:43+00:00",
   "items": [
+    {
+      "title": "Irpef, affitti, sanità e bollo auto: ecco cosa prevede la manovra 2027",
+      "url": "https://www.rainews.it/articoli/2026/10/irpef-affitti-sanita-e-bollo-auto-ecco-cosa-prevede-la-manovra-2027-27cc2e08-8cac-455b-8063-a7b54387cb82.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/27/1793060226213_son_bagnacani_manovra.transferframe.jpeg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-29T05:08:15+00:00"
+    },
+    {
+      "title": "Disastro ferroviario in Spagna, a Madrid proteste con scontri e lacrimogeni",
+      "url": "https://www.rainews.it/video/2026/10/disastro-ferroviario-in-spagna-a-madrid-proteste-con-scontri-e-lacrimogeni-1700a67e-0ff3-4dda-8381-bd21c79ce25f.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/29/1793250823609_spainriot.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-29T04:55:00+00:00"
+    },
+    {
+      "title": "Youssef Siher torna in libertà: l'uscita dal carcere di San Vittore",
+      "url": "https://www.rainews.it/video/2026/10/youssef-siher-torna-in-liberta-luscita-dal-carcere-di-san-vittore-c074699e-983e-4d34-ae40-e33f44020003.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/29/1793249297747_vlcsnaphms.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-29T04:46:00+00:00"
+    },
+    {
+      "title": "Soccorritori al lavoro tutta la notte sul luogo dello scontro tra i treni in Spagna",
+      "url": "https://www.rainews.it/video/2026/10/proseguono-per-tutta-la-notte-i-soccorsi-dopo-il-grave-incidente-ferroviario-in-spagna-c1cf7e02-5f62-44e3-a8a5-1bc6eaee9799.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/29/1793250126086_TZLOPRPRTRMADPBASEIMAGEXSPAINACCIDENTNIGHT.JPG",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-29T05:01:00+00:00"
+    },
     {
       "title": "Tifoso del Portici ferito: \"Condizioni stazionarie, non servirà nuovo intervento chirurgico\"",
       "url": "https://www.rainews.it/video/2026/10/calcio-tifoso-ferito-portici-puteolana-a5ca8586-d208-4f52-9958-b4ff72767fd9.html",
@@ -10,38 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-28T13:26:00+00:00"
-    },
-    {
-      "title": "Flavio Bolsonaro è negli Stati Uniti ma la sua partenza è da film",
-      "url": "https://www.rainews.it/video/2026/10/brasile-flavio-bolsonaro-negli-stati-uniti-la-sua-partenza-sembra-un-film-874dd7c8-1d27-4668-8efe-e4b36fb22247.html",
-      "image": "https://www.rainews.it/dl/img/2026/08/16/1786887382209_afcebacaaceeacbec.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-28T19:37:00+00:00"
-    },
-    {
-      "title": "Siher è libero, la gip: \"Non ha incitato alla violenza\"",
-      "url": "https://www.rainews.it/video/2026/10/siher-libero-gip-non-ha-incitato-alla-violenza-jari-pilati-tg3-db83ca42-4b9d-4fcd-a9c1-bdac9ab4d325.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/28/1793212235652_videoframe.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-28T18:27:00+00:00"
-    },
-    {
-      "title": "Israele: nessuno dei due blocchi ha la maggioranza",
-      "url": "https://www.rainews.it/video/2026/10/voto-israele-nessuno-dei-due-blocchi-ha-la-maggioranza-a5c9ee1f-8bbc-4aad-98ec-6a2208f0631f.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/28/1793213091802_videoframe.png",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-28T18:41:00+00:00"
-    },
-    {
-      "title": "Due morti sul lavoro nel ragusano e nel palermitano",
-      "url": "https://www.rainews.it/articoli/2026/10/due-morti-sul-lavoro-nel-ragusano-e-nel-palermitano--a090d3e8-9199-4f5c-8689-92e131fe1511.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/28/1793199179235_guanti.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-28T14:46:00+00:00"
     }
   ]
 }
