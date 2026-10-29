@@ -1,15 +1,31 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-29T08:26:00+00:00",
+  "fetched_at": "2026-10-29T11:27:25+00:00",
   "items": [
     {
-      "title": "Propaganda terroristica sui social e contatti con Isis, ragazza in comunità",
-      "url": "https://www.rainews.it/articoli/2026/10/propaganda-terroristica-sui-social-adolescente-in-comunita-7bb2ca0d-67de-4a03-b564-4efdb9f22c06.html",
-      "image": "https://www.rainews.it/dl/img/2022/08/23/1661258258397_rainewsbacabbafc.jpg",
+      "title": "Spagna, nuovo disastro ferroviario per un errore umano: 69 morti. Si teme per due italiane disperse",
+      "url": "https://www.rainews.it/maratona/2026/10/cronaca-incidente-collisione-spagna-scontro-tra-treni-precipitano-vagoni-almeno-10-morti-e-numerosi-feriti-a0b68a32-ce3f-4ab6-b519-3441d9cb78c8.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/28/1793186176186_rainewsfedcbacbb.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-29T07:08:00+00:00"
+      "published_at": "2026-10-29T11:15:00+00:00"
+    },
+    {
+      "title": "Scrutinato oltre il 90% dei seggi, rebus maggioranza. Il presidente Herzog: \"Evitare un nuovo voto\"",
+      "url": "https://www.rainews.it/maratona/2026/10/elezioni-israele-27-ottobre-2026-likud-netanyahu-eisenkot-partiti-presidente-medio-oriente-knesset-guerra-coloni-f34b883d-83d4-499c-9bcb-1a8285495044.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/26/1793014416245_rainewsbfbcaddedddb.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-29T11:23:00+00:00"
+    },
+    {
+      "title": "Cortei, Piantedosi rassicura: \"Allarmi ci sono ma nulla di diverso a quanto trattato finora\"",
+      "url": "https://www.rainews.it/articoli/2026/10/cortei-piantedosi-rassicura-allarmi-ci-sono-ma-nulla-di-diverso-a-quanto-trattato-finora-849ef8a2-5d81-40b2-829c-a00a6b31da56.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/21/1792584871929_rainewsfdabeface.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-29T09:32:00+00:00"
     },
     {
       "title": "Maree da record in California, l’oceano invade le città costiere",
@@ -20,28 +36,12 @@
       "published_at": "2026-10-29T06:30:00+00:00"
     },
     {
-      "title": "Professore picchiato da uno studente a scuola: calci e pugni, poi colpito con una sedia",
-      "url": "https://www.rainews.it/video/2026/10/professore-picchiato-da-uno-studente-a-scuola-calci-e-pugni-poi-colpito-con-una-sedia-8632dc8d-a7ff-4743-b582-9b58ce3e5df7.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/29/1793256179284_videoframe.png",
+      "title": "Arrivano le targhe auto e moto personalizzate: quanto costeranno e come averle",
+      "url": "https://www.rainews.it/articoli/2026/10/arrivano-le-targhe-auto-personalizzate-meloni-si-potra-fare-con-un-costo-la-d4106358-83d4-431c-8a24-dca92fdd2174.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/29/1793263581648_targhe.PNG",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-10-29T06:41:00+00:00"
-    },
-    {
-      "title": "La danza della Via Lattea tra le dune del Badain Jaran: il suggestivo timelapse",
-      "url": "https://www.rainews.it/video/2026/10/la-danza-della-via-lattea-tra-le-dune-del-deserto-di-badain-jaran-il-suggestivo-timelapse-8824f25c-02d8-45dc-86cc-b6b5cd223af8.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/29/1793251543670_vlcsnaphms.png",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-29T05:22:00+00:00"
-    },
-    {
-      "title": "\"Così mi ha colpito con un pugno e una sedia\": parla il docente aggredito",
-      "url": "https://www.rainews.it/video/2026/10/aggressione-docente-istituto-grassi-6cf10b7c-8bb9-451d-b6f9-db9974331ced.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/28/1793211692242_Gprof_aggredito.bmp",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-29T06:30:00+00:00"
+      "published_at": "2026-10-29T08:59:00+00:00"
     }
   ]
 }
