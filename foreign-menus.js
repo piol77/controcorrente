@@ -6,63 +6,63 @@
 
   const LUNCH={
   "en": {
-    "Trofie fresche al pesto di melanzane e scaglie di parmigiano": [
-      "Fresh trofie with aubergine pesto and Parmesan shavings",
-      "Fresh trofie pasta with aubergine pesto, finished with Parmesan shavings."
+    "Orecchiette con broccoli, cavolfiori e scaglie di Parmigiano": [
+      "Orecchiette with broccoli, cauliflower and Parmesan shavings",
+      "Sweet cauliflower meets broccoli and anchovies, finished with Parmesan shavings and a gentle touch of chilli."
     ],
-    "Orecchiette con salsiccia e cime di rapa": [
-      "Orecchiette with sausage and broccoli rabe",
-      "Orecchiette pasta with sausage and broccoli rabe."
+    "Riso saltato speziato con verdure, pollo e gamberetti*": [
+      "Spiced fried rice with vegetables, chicken and shrimp*",
+      "A colourful stir-fry with carrots, courgettes, peas and egg alongside chicken and shrimp*."
     ],
-    "Tagliatelle con peperoni e gamberetti*": [
-      "Tagliatelle with peppers and shrimp*",
-      "Tagliatelle pasta with sweet peppers and shrimp*."
+    "Penne al salmone fresco con un tocco di panna": [
+      "Penne with fresh salmon and a touch of cream",
+      "Delicate fresh salmon coats the penne, with just a little cream for a light, silky finish."
     ],
-    "Casarecce con melanzane, branzino e un tocco di pomodoro": [
-      "Casarecce with aubergine and sea bass, with a touch of tomato",
-      "Casarecce pasta with aubergine and sea bass, lightly dressed with tomato."
+    "Straccetti di pollo al sedano con riso bianco al vapore": [
+      "Chicken strips with celery and steamed white rice",
+      "Fresh celery complements the chicken, served with simple steamed white rice."
     ],
-    "Vellutata di zucca con gamberetti* e crostone di pane bruschettato": [
-      "Pumpkin soup with shrimp* and toasted rustic bread",
-      "The sweetness of pumpkin meets shrimp*, with a slice of toasted rustic bread adding a crisp bite."
+    "Straccetti di maiale in agrodolce con peperoni, ananas e riso bianco al vapore": [
+      "Sweet-and-sour pork strips with peppers, pineapple and steamed white rice",
+      "Lively sweet-and-sour flavours meet sweet pineapple and peppers, balanced by steamed white rice."
     ],
-    "Milanese di pollo con cime di rapa": [
-      "Milanese-style chicken with broccoli rabe",
-      "Breaded chicken cutlet, Milanese style, served with broccoli rabe."
+    "Gamberetti* saltati con verdure al curry e riso bianco al vapore": [
+      "Stir-fried shrimp* with curry vegetables and steamed white rice",
+      "Aromatic curry brings out the shrimp* and vegetables, served with fluffy steamed white rice."
     ],
-    "Straccetti di maiale ai funghi misti* con patate al prezzemolo": [
-      "Pork strips with mixed mushrooms* and parsley potatoes",
-      "Pork strips with mixed mushrooms*, served with parsley potatoes."
+    "Bistecca di vitello alla griglia con patate al forno": [
+      "Grilled veal steak with oven-roasted potatoes",
+      "Grilled veal and golden oven-roasted potatoes for a satisfying plate. 5 portions available."
     ]
   },
   "zh": {
-    "Trofie fresche al pesto di melanzane e scaglie di parmigiano": [
-      "茄子酱鲜制特罗菲面配帕尔马干酪片",
-      "鲜制特罗菲意面拌茄子酱，配帕尔马干酪薄片。"
+    "Orecchiette con broccoli, cavolfiori e scaglie di Parmigiano": [
+      "西兰花花椰菜猫耳朵面配帕尔马干酪片",
+      "花椰菜的清甜搭配西兰花与鳀鱼，佐以帕尔马干酪薄片，略带微辣。"
     ],
-    "Orecchiette con salsiccia e cime di rapa": [
-      "香肠芜菁叶猫耳朵面",
-      "猫耳朵意面搭配香肠和芜菁叶。"
+    "Riso saltato speziato con verdure, pollo e gamberetti*": [
+      "香料炒饭配蔬菜、鸡肉和虾仁*",
+      "胡萝卜、西葫芦、豌豆与鸡蛋，为鸡肉虾仁*炒饭增添丰富色彩与风味。"
     ],
-    "Tagliatelle con peperoni e gamberetti*": [
-      "甜椒虾仁*宽面",
-      "宽条意面搭配甜椒和虾仁*。"
+    "Penne al salmone fresco con un tocco di panna": [
+      "鲜三文鱼通心粉配少量奶油",
+      "鲜三文鱼的细腻滋味包裹通心粉，少量奶油带来轻盈柔滑的口感。"
     ],
-    "Casarecce con melanzane, branzino e un tocco di pomodoro": [
-      "茄子海鲈鱼卡萨雷切面配少量番茄",
-      "卡萨雷切意面搭配茄子和海鲈鱼，以少量番茄调味。"
+    "Straccetti di pollo al sedano con riso bianco al vapore": [
+      "芹菜鸡肉条配清蒸白米饭",
+      "芹菜的清香衬托鸡肉，搭配朴素清爽的清蒸白米饭。"
     ],
-    "Vellutata di zucca con gamberetti* e crostone di pane bruschettato": [
-      "南瓜浓汤配虾仁*及烤乡村面包",
-      "南瓜的清甜与虾仁*相融，佐以一片烤乡村面包，增添酥脆口感。"
+    "Straccetti di maiale in agrodolce con peperoni, ananas e riso bianco al vapore": [
+      "菠萝彩椒糖醋猪肉条配清蒸白米饭",
+      "鲜明酸甜与菠萝的香甜、彩椒的风味交融，搭配清蒸白米饭，滋味平衡。"
     ],
-    "Milanese di pollo con cime di rapa": [
-      "米兰式炸鸡排配芜菁叶",
-      "米兰式裹面包糠炸鸡排，配芜菁叶。"
+    "Gamberetti* saltati con verdure al curry e riso bianco al vapore": [
+      "咖喱蔬菜炒虾仁*配清蒸白米饭",
+      "咖喱的香料气息衬托虾仁*和蔬菜，搭配松软的清蒸白米饭。"
     ],
-    "Straccetti di maiale ai funghi misti* con patate al prezzemolo": [
-      "杂菌*猪肉条配欧芹土豆",
-      "猪肉条搭配杂菌*，配欧芹土豆。"
+    "Bistecca di vitello alla griglia con patate al forno": [
+      "烤小牛排配烤土豆",
+      "炙烤小牛肉搭配金黄烤土豆，滋味饱满。供应5份。"
     ]
   }
 };
@@ -169,5 +169,6 @@
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
+
 
 

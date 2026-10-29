@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-10-28",
-  "lunchDateLabel": "Mercoledì 28 ottobre 2026",
+  "lunchUpdatedAt": "2026-10-29",
+  "lunchDateLabel": "Giovedì 29 ottobre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -343,205 +343,208 @@
   },
   "lunch": [
     {
-      "name": "Trofie fresche al pesto di melanzane e scaglie di parmigiano",
+      "name": "Orecchiette con broccoli, cavolfiori e scaglie di Parmigiano",
       "price": 10,
-      "description": "Trofie fresche con pesto di melanzane, completate da scaglie di parmigiano.",
+      "description": "La dolcezza dei cavolfiori incontra broccoli e acciughe, con scaglie di Parmigiano e una leggera nota piccante.",
       "allergens": [
         1,
+        4,
         7
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/trofie-coerente-20261028.webp",
+      "dishPhoto": "pranzo-assets/orecchiette-broccoli-cavolfiori-parmigiano-20261029.webp",
       "translations": {
         "en": {
-          "name": "Fresh trofie with aubergine pesto and Parmesan shavings",
-          "description": "Fresh trofie pasta with aubergine pesto, finished with Parmesan shavings."
+          "name": "Orecchiette with broccoli, cauliflower and Parmesan shavings",
+          "description": "Sweet cauliflower meets broccoli and anchovies, finished with Parmesan shavings and a gentle touch of chilli."
         },
         "zh": {
-          "name": "茄子酱鲜制特罗菲面配帕尔马干酪片",
-          "description": "鲜制特罗菲意面拌茄子酱，配帕尔马干酪薄片。"
+          "name": "西兰花花椰菜猫耳朵面配帕尔马干酪片",
+          "description": "花椰菜的清甜搭配西兰花与鳀鱼，佐以帕尔马干酪薄片，略带微辣。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+        "reference": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
+        "note": "Illustrative image with the approved ivory plate, navy tabletop, warm light and three-quarter angle. Recipe follows Paolo’s supplied ingredients; web results did not match the dish and setup. Not an actual restaurant photograph."
       }
     },
     {
-      "name": "Orecchiette con salsiccia e cime di rapa",
+      "name": "Riso saltato speziato con verdure, pollo e gamberetti*",
       "price": 10,
-      "description": "Orecchiette con salsiccia e cime di rapa.",
+      "description": "Un salto di sapori e colori, con carote, zucchine, piselli e uova ad accompagnare pollo e gamberetti*.",
       "allergens": [
-        1
-      ],
-      "icon": "Wheat",
-      "orderCourse": "Primo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/orecchiette-coerente-20261028.webp",
-      "translations": {
-        "en": {
-          "name": "Orecchiette with sausage and broccoli rabe",
-          "description": "Orecchiette pasta with sausage and broccoli rabe."
-        },
-        "zh": {
-          "name": "香肠芜菁叶猫耳朵面",
-          "description": "猫耳朵意面搭配香肠和芜菁叶。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
-        "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
-      }
-    },
-    {
-      "name": "Tagliatelle con peperoni e gamberetti*",
-      "price": 12,
-      "description": "Tagliatelle con peperoni e gamberetti*.",
-      "allergens": [
-        1,
         2,
         3
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/tagliatelle-coerente-20261028.webp",
+      "dishPhoto": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
       "translations": {
         "en": {
-          "name": "Tagliatelle with peppers and shrimp*",
-          "description": "Tagliatelle pasta with sweet peppers and shrimp*."
+          "name": "Spiced fried rice with vegetables, chicken and shrimp*",
+          "description": "A colourful stir-fry with carrots, courgettes, peas and egg alongside chicken and shrimp*."
         },
         "zh": {
-          "name": "甜椒虾仁*宽面",
-          "description": "宽条意面搭配甜椒和虾仁*。"
+          "name": "香料炒饭配蔬菜、鸡肉和虾仁*",
+          "description": "胡萝卜、西葫芦、豌豆与鸡蛋，为鸡肉虾仁*炒饭增添丰富色彩与风味。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
+        "type": "Previously approved AI-generated illustrative image",
+        "date": "2026-10-22",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+        "note": "Reused approved photo depicting rice, chicken, shrimp, carrots, zucchini, peas and egg. Consistent ivory plate and navy backdrop. Illustrative, not restaurant food photography."
       }
     },
     {
-      "name": "Casarecce con melanzane, branzino e un tocco di pomodoro",
+      "name": "Penne al salmone fresco con un tocco di panna",
       "price": 12,
-      "description": "Casarecce con melanzane e branzino, con un tocco di pomodoro.",
+      "description": "Il gusto delicato del salmone fresco avvolge le penne, con poca panna per una cremosità leggera.",
       "allergens": [
         1,
-        4
+        4,
+        7
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/casarecce-coerente-20261028.webp",
+      "dishPhoto": "pranzo-assets/penne-salmone-fresco-20261029.webp",
       "translations": {
         "en": {
-          "name": "Casarecce with aubergine and sea bass, with a touch of tomato",
-          "description": "Casarecce pasta with aubergine and sea bass, lightly dressed with tomato."
+          "name": "Penne with fresh salmon and a touch of cream",
+          "description": "Delicate fresh salmon coats the penne, with just a little cream for a light, silky finish."
         },
         "zh": {
-          "name": "茄子海鲈鱼卡萨雷切面配少量番茄",
-          "description": "卡萨雷切意面搭配茄子和海鲈鱼，以少量番茄调味。"
+          "name": "鲜三文鱼通心粉配少量奶油",
+          "description": "鲜三文鱼的细腻滋味包裹通心粉，少量奶油带来轻盈柔滑的口感。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+        "reference": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
+        "note": "Illustrative image with the approved ivory plate, navy tabletop, warm light and three-quarter angle. Recipe follows Paolo’s supplied ingredients; web results did not match the dish and setup. Not an actual restaurant photograph."
       }
     },
     {
-      "name": "Milanese di pollo con cime di rapa",
+      "name": "Straccetti di pollo al sedano con riso bianco al vapore",
       "price": 10,
-      "description": "Cotoletta di pollo alla milanese, accompagnata da cime di rapa.",
+      "description": "Il profumo fresco del sedano accompagna il pollo, servito con la semplicità del riso bianco al vapore.",
       "allergens": [
-        1,
-        3
+        9
       ],
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/milanese-coerente-20261028.webp",
+      "dishPhoto": "pranzo-assets/pollo-sedano-riso-20261029.webp",
       "translations": {
         "en": {
-          "name": "Milanese-style chicken with broccoli rabe",
-          "description": "Breaded chicken cutlet, Milanese style, served with broccoli rabe."
+          "name": "Chicken strips with celery and steamed white rice",
+          "description": "Fresh celery complements the chicken, served with simple steamed white rice."
         },
         "zh": {
-          "name": "米兰式炸鸡排配芜菁叶",
-          "description": "米兰式裹面包糠炸鸡排，配芜菁叶。"
+          "name": "芹菜鸡肉条配清蒸白米饭",
+          "description": "芹菜的清香衬托鸡肉，搭配朴素清爽的清蒸白米饭。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+        "reference": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
+        "note": "Illustrative image with the approved ivory plate, navy tabletop, warm light and three-quarter angle. Recipe follows Paolo’s supplied ingredients; web results did not match the dish and setup. Not an actual restaurant photograph."
       }
     },
     {
-      "name": "Vellutata di zucca con gamberetti* e crostone di pane bruschettato",
+      "name": "Straccetti di maiale in agrodolce con peperoni, ananas e riso bianco al vapore",
+      "price": 10,
+      "description": "La vivacità dell’agrodolce e la dolcezza dell’ananas incontrano i peperoni, con riso al vapore a bilanciare i sapori.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/maiale-agrodolce-riso-20261029.webp",
+      "translations": {
+        "en": {
+          "name": "Sweet-and-sour pork strips with peppers, pineapple and steamed white rice",
+          "description": "Lively sweet-and-sour flavours meet sweet pineapple and peppers, balanced by steamed white rice."
+        },
+        "zh": {
+          "name": "菠萝彩椒糖醋猪肉条配清蒸白米饭",
+          "description": "鲜明酸甜与菠萝的香甜、彩椒的风味交融，搭配清蒸白米饭，滋味平衡。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative image",
+        "date": "2026-10-29",
+        "tool": "image_gen",
+        "reference": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
+        "note": "Illustrative image with the approved ivory plate, navy tabletop, warm light and three-quarter angle. Recipe follows Paolo’s supplied ingredients; web results did not match the dish and setup. Not an actual restaurant photograph."
+      }
+    },
+    {
+      "name": "Gamberetti* saltati con verdure al curry e riso bianco al vapore",
       "price": 12,
-      "description": "La dolcezza della zucca incontra i gamberetti*, con un crostone di pane bruschettato a dare croccantezza.",
+      "description": "Le note speziate del curry esaltano gamberetti* e verdure, accompagnati da soffice riso bianco al vapore.",
       "allergens": [
-        1,
         2
       ],
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/vellutata-crostone-coerente-20261028.webp",
+      "dishPhoto": "pranzo-assets/gamberetti-curry-verdure-riso-20261029.webp",
       "translations": {
         "en": {
-          "name": "Pumpkin soup with shrimp* and toasted rustic bread",
-          "description": "The sweetness of pumpkin meets shrimp*, with a slice of toasted rustic bread adding a crisp bite."
+          "name": "Stir-fried shrimp* with curry vegetables and steamed white rice",
+          "description": "Aromatic curry brings out the shrimp* and vegetables, served with fluffy steamed white rice."
         },
         "zh": {
-          "name": "南瓜浓汤配虾仁*及烤乡村面包",
-          "description": "南瓜的清甜与虾仁*相融，佐以一片烤乡村面包，增添酥脆口感。"
+          "name": "咖喱蔬菜炒虾仁*配清蒸白米饭",
+          "description": "咖喱的香料气息衬托虾仁*和蔬菜，搭配松软的清蒸白米饭。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "tool": "image_gen",
-        "note": "Edited the existing illustrative pumpkin-and-shrimp photo to add one slice of toasted rustic bread. Preserved ivory bowl, navy background, light and camera angle. Not an actual restaurant photograph.",
-        "reference": "pranzo-assets/vellutata-coerente-20261028.webp"
+        "reference": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
+        "note": "Illustrative image with the approved ivory plate, navy tabletop, warm light and three-quarter angle. Recipe follows Paolo’s supplied ingredients; web results did not match the dish and setup. Not an actual restaurant photograph."
       }
     },
     {
-      "name": "Straccetti di maiale ai funghi misti* con patate al prezzemolo",
-      "price": 10,
-      "description": "Straccetti di maiale con funghi misti*, accompagnati da patate al prezzemolo.",
+      "name": "Bistecca di vitello alla griglia con patate al forno",
+      "price": 16,
+      "description": "Il profumo della griglia e la doratura delle patate per un piatto dal gusto pieno. Disponibili 5 porzioni.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/straccetti-coerente-20261028.webp",
+      "dishPhoto": "pranzo-assets/bistecca-vitello-patate-forno-20261029.webp",
       "translations": {
         "en": {
-          "name": "Pork strips with mixed mushrooms* and parsley potatoes",
-          "description": "Pork strips with mixed mushrooms*, served with parsley potatoes."
+          "name": "Grilled veal steak with oven-roasted potatoes",
+          "description": "Grilled veal and golden oven-roasted potatoes for a satisfying plate. 5 portions available."
         },
         "zh": {
-          "name": "杂菌*猪肉条配欧芹土豆",
-          "description": "猪肉条搭配杂菌*，配欧芹土豆。"
+          "name": "烤小牛排配烤土豆",
+          "description": "炙烤小牛肉搭配金黄烤土豆，滋味饱满。供应5份。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
+        "date": "2026-10-29",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
-      }
+        "reference": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
+        "note": "Illustrative image with the approved ivory plate, navy tabletop, warm light and three-quarter angle. Recipe follows Paolo’s supplied ingredients; web results did not match the dish and setup. Not an actual restaurant photograph."
+      },
+      "availablePortions": 5
     }
   ],
   "offers": [
