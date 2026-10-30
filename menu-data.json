@@ -32,30 +32,27 @@
         }
       },
       {
-        "name": "Bruschette con avocado e gamberetti* (2 pezzi)",
-        "price": 10,
-        "description": "La morbidezza dell’avocado incontra la vivacità dei gamberetti* su pane caldo e croccante.",
-        "allergens": [
-          1,
-          2
-        ],
-        "icon": "Shrimp",
-        "dishPhoto": "cena-assets/bruschette-avocado-gamberetti-20261020.webp",
+        "name": "Carciofi fritti",
+        "price": 13,
+        "description": "Dorati e croccanti, con un cuore tenero e tutto il gusto del carciofo.",
+        "allergens": [],
+        "icon": "Leaf",
+        "dishPhoto": "cena-assets/carciofi-fritti-20261030.png",
         "translations": {
           "en": {
-            "name": "Avocado and shrimp* bruschetta (2 pieces)",
-            "description": "Creamy avocado meets lively shrimp* on warm, crisp toast."
+            "name": "Fried artichokes",
+            "description": "Golden and crisp on the outside, tender within, with the delicate flavour of artichokes."
           },
           "zh": {
-            "name": "牛油果虾仁*烤面包（2片）",
-            "description": "绵软牛油果与鲜美虾仁*相遇，搭配温热酥脆的烤面包。"
+            "name": "香酥炸朝鲜蓟",
+            "description": "外层金黄酥脆，内里柔嫩，保留朝鲜蓟的清香。"
           }
         },
         "photoSource": {
-          "type": "AI-edited approved dinner illustration",
-          "date": "2026-10-20",
+          "type": "AI-generated illustrative image, optimized website thumbnail",
+          "date": "2026-10-30",
           "tool": "image_gen",
-          "note": "Approved two-piece bruschetta photograph edited to change toppings only, preserving the ivory plate, navy tabletop, warm light and framing. Web references reviewed but contained extra ingredients or different presentation. Illustrative image, not a photograph of restaurant food."
+          "note": "Original HD generated illustration with ivory plate and navy table; web thumbnail uploaded via Canva/GitHub Actions; not actual restaurant photography."
         }
       },
       {
@@ -153,59 +150,59 @@
         }
       },
       {
-        "name": "Tagliatelle aglio, olio, peperoncino e gamberoni*",
-        "price": 12.5,
-        "description": "Un filo d’olio profumato all’aglio, il brio del peperoncino e la dolcezza dei gamberoni*.",
+        "name": "Linguine con stracciatella, pistacchi e gamberetti*",
+        "price": 13,
+        "description": "La stracciatella avvolge le linguine in una morbida cremosità, tra la dolcezza dei gamberetti* e il tocco croccante dei pistacchi.",
         "allergens": [
           1,
           2,
-          3
+          7,
+          8
         ],
         "icon": "Shrimp",
-        "dishPhoto": "cena-assets/tagliatelle-gamberoni-polvere-20261028.webp",
+        "dishPhoto": "cena-assets/linguine-stracciatella-pistacchi-gamberetti-20261030.png",
         "translations": {
           "en": {
-            "name": "Tagliatelle with garlic, olive oil, chilli and king prawns*",
-            "description": "Fragrant garlic oil and a lively touch of chilli complement the sweetness of the king prawns*."
+            "name": "Linguine with stracciatella, pistachios and shrimp*",
+            "description": "Creamy stracciatella embraces the pasta, balancing sweet shrimp* with a delicate pistachio crunch."
           },
           "zh": {
-            "name": "蒜香橄榄油辣椒大虾*宽面",
-            "description": "蒜香橄榄油与微辣辣椒衬托出大虾*的鲜甜。"
+            "name": "奶酪丝开心果虾仁*扁意面",
+            "description": "柔滑的奶酪丝包裹意面，虾仁*的鲜甜与开心果的香脆相映成趣。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustrative food photo",
-          "date": "2026-10-28",
+          "type": "AI-generated illustrative image, optimized website thumbnail",
+          "date": "2026-10-30",
           "tool": "image_gen",
-          "note": "Large king prawns, golden tagliatelle with garlic and olive oil, a light dusting of powdered chilli and optional parsley; no whole peppers. Cream-speckled ivory plate on navy background with warm light. Illustration, not a photo of restaurant food."
+          "note": "Original HD generated illustration, same ivory plate and navy table; website thumbnail imported via Canva/GitHub Actions."
         }
       },
       {
-        "name": "Fusilli con melanzane e branzino",
-        "price": 12.5,
-        "description": "Melanzane morbide, branzino delicato e appena un velo di pomodoro: il mare senza eccessi.",
+        "name": "Fusilli con zucchine e branzino (poco pomodoro)",
+        "price": 13,
+        "description": "La delicatezza del branzino incontra le zucchine, con appena un velo di pomodoro ad accompagnare i fusilli.",
         "allergens": [
           1,
           4
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/fusilli-melanzane-branzino-20261024.webp",
+        "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodori-coerente-20261022.webp",
         "translations": {
           "en": {
-            "name": "Fusilli with aubergine and sea bass",
-            "description": "Tender aubergine, delicate sea bass and just a little tomato: a subtle taste of the sea."
+            "name": "Fusilli with courgettes and sea bass (a little tomato)",
+            "description": "Delicate sea bass meets tender courgettes, with just a hint of tomato coating the fusilli."
           },
           "zh": {
-            "name": "茄子海鲈鱼螺旋面",
-            "description": "柔嫩茄子、细腻海鲈鱼与少许番茄，呈现清新而克制的海洋风味。"
+            "name": "西葫芦海鲈鱼螺旋面（少量番茄）",
+            "description": "鲜嫩海鲈鱼与西葫芦相融，少许番茄为螺旋面添上清爽滋味。"
           }
         },
         "photoSource": {
-          "type": "AI-edited approved dinner photograph",
-          "date": "2026-10-24",
+          "type": "Previously approved AI-generated illustrative image",
+          "date": "2026-10-22",
           "tool": "image_gen",
-          "reference": "cena-assets/fusilli-melanzane-tonno-poco-pomodoro-20261006.webp",
-          "note": "Replaced tuna pieces with cooked sea bass; kept fusilli, aubergine, scant tomato, original white plate and navy tabletop. Illustrative, not restaurant photography."
+          "note": "Reuses matching photograph with fusilli, sea bass, courgettes and light tomato, ivory plate and navy table."
         }
       }
     ],
@@ -287,31 +284,30 @@
         "dishPhoto": "cena-salmone.webp"
       },
       {
-        "name": "Branzino alla griglia con verza e carote saltate",
+        "name": "Orata alla griglia con verza e carote saltate",
         "price": 14,
-        "description": "Il gusto delicato del branzino si accompagna alla dolcezza delle carote e alla verza saltata.",
+        "description": "L’orata alla griglia si accompagna alla dolcezza delle carote e alla verza saltata, in un abbinamento semplice e delicato.",
         "allergens": [
           4
         ],
         "icon": "Fish",
-        "dishPhoto": "pranzo-assets/branzino-verza-coerente-20261023.webp",
+        "dishPhoto": "pranzo-assets/orata-verza-coerente-20261023.webp",
         "orderCourse": "Secondo",
         "translations": {
           "en": {
-            "name": "Grilled sea bass with sautéed savoy cabbage and carrots",
-            "description": "Delicate sea bass meets sweet carrots and sautéed savoy cabbage."
+            "name": "Grilled gilthead bream with sautéed savoy cabbage and carrots",
+            "description": "Grilled gilthead bream pairs gently with sweet carrots and sautéed savoy cabbage."
           },
           "zh": {
-            "name": "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
-            "description": "细腻海鲈鱼搭配清甜胡萝卜与清炒皱叶甘蓝。"
+            "name": "香烤金头鲷配炒皱叶甘蓝和胡萝卜",
+            "description": "香烤金头鲷搭配清甜胡萝卜与清炒皱叶甘蓝，鲜美而清爽。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustration matching approved lunch setup",
+          "type": "Previously approved AI-generated illustrative image",
           "date": "2026-10-23",
           "tool": "image_gen",
-          "reference": "pranzo-assets/orecchiette-cavolfiori-coerente-20261022.webp",
-          "note": "Approved ivory ceramic plate, navy tabletop, warm upper-left light, three-quarter angle and framing preserved. Ingredients follow Paolo’s recipe; illustrative image, not restaurant food photography."
+          "note": "Existing approved photo with orata and savoy cabbage setting; preserves previous side dish instead of generated potato image."
         }
       },
       {
@@ -549,59 +545,58 @@
   ],
   "offers": [
     {
-      "name": "Orecchiette con salsiccia e cime di rapa",
+      "name": "Orecchiette con cavolfiori, broccoli, acciughe e capperi, leggermente piccanti",
       "price": 10,
-      "description": "Il gusto deciso della salsiccia incontra la piacevole nota amarognola delle cime di rapa.",
+      "description": "La dolcezza degli ortaggi incontra il carattere delle acciughe e dei capperi, con una lieve nota piccante.",
       "allergens": [
-        1
+        1,
+        4
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/orecchiette-coerente-20261028.webp",
+      "dishPhoto": "offerta-assets/orecchiette-broccoli-cavolfiori-acciughe-capperi-20261030.png",
       "translations": {
         "en": {
-          "name": "Orecchiette with sausage and broccoli rabe",
-          "description": "Savoury sausage meets the pleasingly bitter edge of broccoli rabe."
+          "name": "Orecchiette with cauliflower, broccoli, anchovies and capers, mildly spicy",
+          "description": "Sweet vegetables meet savoury anchovies and capers, with a gentle touch of chilli."
         },
         "zh": {
-          "name": "香肠芜菁叶猫耳朵面",
-          "description": "香肠的浓郁与芜菁叶的微苦巧妙融合。"
+          "name": "花椰菜西兰花鳀鱼刺山柑猫耳朵面（微辣）",
+          "description": "蔬菜的清甜与鳀鱼、刺山柑的咸鲜相映，略带微辣。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative image",
-        "date": "2026-10-28",
+        "type": "AI-generated illustrative image, optimized website thumbnail",
+        "date": "2026-10-30",
         "tool": "image_gen",
-        "note": "Uniform ivory plate, navy tabletop, three-quarter angle and warm light. Web references found did not match all ingredients and the approved photo style; generated from Paolo’s dish list. Illustrative image, not an actual restaurant photograph."
+        "note": "Original HD image with orecchiette, broccoli, cauliflower, anchovies, capers and chilli; website thumbnail imported through Canva."
       }
     },
     {
-      "name": "Bocconcini di pollo con zucca e gorgonzola",
+      "name": "Straccetti di maiale in agrodolce con ananas e peperoni, serviti con riso bianco al vapore",
       "price": 10,
-      "description": "La dolcezza della zucca incontra il carattere del gorgonzola: un abbraccio cremoso per il pollo.",
-      "allergens": [
-        7
-      ],
-      "icon": "Drumstick",
-      "dishPhoto": "offerta-assets/pollo-zucca-gorgonzola-HD-20261027.webp",
+      "description": "Il contrasto tra dolce e acidulo vivacizza il maiale, con riso al vapore ad accompagnare il piatto.",
+      "allergens": [],
+      "icon": "CookingPot",
+      "dishPhoto": "pranzo-assets/maiale-agrodolce-riso-20261029.webp",
       "photoLayout": "side",
       "orderCourse": "Secondo",
       "translations": {
         "en": {
-          "name": "Chicken bites with pumpkin and gorgonzola",
-          "description": "Sweet pumpkin meets bold gorgonzola in a velvety embrace for tender chicken."
+          "name": "Sweet-and-sour pork strips with pineapple and peppers, served with steamed white rice",
+          "description": "Sweet and tangy flavours enliven the pork, balanced by gently steamed white rice."
         },
         "zh": {
-          "name": "南瓜戈贡佐拉奶酪鸡块",
-          "description": "南瓜的甘甜与戈贡佐拉奶酪的浓郁相遇，给嫩鸡肉一层丝滑包裹。"
+          "name": "菠萝彩椒糖醋猪肉丝配白米饭",
+          "description": "酸甜酱汁为猪肉增添活泼风味，搭配清淡的蒸白米饭。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustration",
-        "date": "2026-10-27",
+        "type": "Previously approved AI-generated illustrative image",
+        "date": "2026-10-29",
         "tool": "image_gen",
-        "note": "Chicken pieces, pumpkin, gorgonzola on ivory plate over navy tabletop. Illustrative, not restaurant photography."
+        "note": "Reuses matching photo of sweet-and-sour pork with pineapple, peppers and steamed white rice on navy background."
       }
     }
   ],
