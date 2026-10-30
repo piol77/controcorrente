@@ -334,6 +334,31 @@
           "tool": "image_gen",
           "note": "New photo specifically depicting grilled bone-in veal steak with potatoes and parsley, without vegetables, in a coherent dark restaurant setting. Illustrative, not actual restaurant photography."
         }
+      },
+      {
+        "name": "Galletto ripieno con salsiccia, frutta e castagne",
+        "price": 14,
+        "description": "Mela e pera addolciscono il ripieno di salsiccia e castagne, mentre le prugne regalano una nota intensa. Servito affettato con patate al forno, dopo le ore 20.",
+        "allergens": [],
+        "icon": "Drumstick",
+        "dishPhoto": "cena-assets/galletto-ripieno-affettato-patate-20261015.webp",
+        "orderCourse": "Secondo",
+        "translations": {
+          "en": {
+            "name": "Cockerel stuffed with sausage, fruit and chestnuts",
+            "description": "Apple and pear soften the savoury sausage and chestnut stuffing, while prunes bring a rich, sweet note. Served sliced with roast potatoes, after 8 p.m."
+          },
+          "zh": {
+            "name": "香肠水果栗子馅烤小公鸡",
+            "description": "苹果与梨子柔和了香肠和栗子馅的咸香，西梅带来浓郁的甘甜。切片后搭配烤土豆，晚上20点后供应。"
+          }
+        },
+        "photoSource": {
+          "type": "Previously approved AI-generated illustrative image",
+          "date": "2026-10-15",
+          "tool": "image_gen",
+          "note": "Restored approved illustration of sliced stuffed cockerel with sausage, fruit, chestnuts and roast potatoes, matching dinner menu photography. Illustrative image, not a restaurant photo."
+        }
       }
     ]
   },
