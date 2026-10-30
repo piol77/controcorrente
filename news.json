@@ -1,8 +1,40 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-10-30T20:33:49+00:00",
+  "fetched_at": "2026-10-30T23:26:45+00:00",
   "items": [
+    {
+      "title": "Manovra, via libera del Quirinale, trasmessa alla presidenza della Camera",
+      "url": "https://www.rainews.it/articoli/2026/10/manovra-via-libera-del-quirinale-trasmessa-alla-presidenza-della-camera-8ab054c7-006a-416a-8ad3-4e94e09f07df.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/27/1793100069068_dfccfbbca.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-30T22:13:00+00:00"
+    },
+    {
+      "title": "Varsavia, rimosso il capo della Corte costituzionale: agenti blindano l'edificio",
+      "url": "https://www.rainews.it/video/2026/10/varsavia-silurato-il-capo-della-corte-costituzionale-agenti-blindano-ledificio-7af8206c-59b6-479a-a309-0ba461b14590.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/30/1793398979762_videoframe.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-30T23:09:00+00:00"
+    },
+    {
+      "title": "I volti e la dedizione: chi erano le quattro vittime del tragico incidente in Bosnia",
+      "url": "https://www.rainews.it/video/2026/10/i-volti-e-la-dedizione-chi-erano-le-quattro-vittime-del-tragico-incidente-in-bosnia-dcb98b41-a8c4-4ecb-a5c1-92ac507878bc.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/30/1793389204385_videoframe.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-10-30T19:38:00+00:00"
+    },
+    {
+      "title": "Manifestazione di protesta davanti alla sede del Tribunale Costituzionale polacco a Varsavia",
+      "url": "https://www.rainews.it/video/2026/10/manifestazione-di-protesta-davanti-alla-sede-del-tribunale-costituzionale-polacco-a-varsavia-video-7f0f320f-da2b-43b8-96f4-a4b83bd0089a.html",
+      "image": "https://www.rainews.it/dl/img/2026/10/30/1793397816327_videoframe.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-10-30T22:02:00+00:00"
+    },
     {
       "title": "Elicottero militare caduto: \"Dal video ipotesi guasto meccanico\"",
       "url": "https://www.rainews.it/video/2026/10/elicottero-militare-caduto-dal-video-ipotesi-guasto-meccanico-8b5cb2e2-58fd-44d0-ac69-20b30727d4e0.html",
@@ -10,38 +42,6 @@
       "source": "RaiNews",
       "area": "Italia",
       "published_at": "2026-10-30T19:20:00+00:00"
-    },
-    {
-      "title": "Hebron, Israele distrugge l'abitazione di palestinesi accusati di una sparatoria",
-      "url": "https://www.rainews.it/video/2026/10/il-momento-in-cui-le-forze-israeliane-distruggono-labitazione-di-palestinesi-accusati-di-una-sparat-bd25b0d3-ffd6-4eae-abad-c154ef6b776f.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/30/1793389004123_TZLOPRPRTRMADPBASEIMAGEXISRAELPALESTINIANSHEBRONATTACKDEMOLITION.JPG",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-30T19:35:00+00:00"
-    },
-    {
-      "title": "La politica si divide sulle misure economiche",
-      "url": "https://www.rainews.it/video/2026/10/la-politica-si-divide-sulle-misure-economiche-d82ff7b9-f786-4217-a310-0a6924540182.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/30/1793387817669_videoframe.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-30T19:14:00+00:00"
-    },
-    {
-      "title": "Christa Pike parla dopo l'esecuzione fallita: \"Provo un dolore costante\"",
-      "url": "https://www.rainews.it/articoli/2026/10/christa-pike-parla-dopo-la-fallita-esecuzione-provo-un-dolore-costante-d0b03b95-614a-400e-b6ed-dc0c97b8cb7d.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/02/1790971381908_TZMTUSATODAYRTRMADPJULYKNOXVILLETNUSACHRISTAGAILPIKEAND.JPG",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-10-30T16:52:00+00:00"
-    },
-    {
-      "title": "Roma, camionetta polizia resta intrappolata: manifestante si arrampica",
-      "url": "https://www.rainews.it/video/2026/10/roma-camionetta-polizia-resta-intrappolata-manifestante-si-arrampica-dc91c9a6-6b3e-4191-bd0d-81e289c997d3.html",
-      "image": "https://www.rainews.it/dl/img/2026/10/30/1793387057508_Cattura.PNG",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-10-30T19:03:00+00:00"
     }
   ]
 }
