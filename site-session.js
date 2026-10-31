@@ -163,7 +163,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://media-ssl.musicradio.com/CapitalUK';
+      audio.src = 'https://stream.radioparadise.com/aac-320';
     }
     try {
       const result = audio.play();
