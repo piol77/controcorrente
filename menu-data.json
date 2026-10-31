@@ -179,30 +179,30 @@
         }
       },
       {
-        "name": "Fusilli con zucchine e branzino (poco pomodoro)",
-        "price": 13,
-        "description": "La delicatezza del branzino incontra le zucchine, con appena un velo di pomodoro ad accompagnare i fusilli.",
+        "name": "Tagliatelle carciofi e orata",
+        "price": 14,
+        "description": "Tagliatelle condite con carciofi teneri e delicati bocconcini di orata, in un incontro di sapori di mare e di stagione.",
         "allergens": [
           1,
           4
         ],
         "icon": "Fish",
-        "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodori-coerente-20261022.webp",
+        "dishPhoto": "cena-assets/tagliatelle-carciofi-orata-20261031.svg",
         "translations": {
           "en": {
-            "name": "Fusilli with courgettes and sea bass (a little tomato)",
-            "description": "Delicate sea bass meets tender courgettes, with just a hint of tomato coating the fusilli."
+            "name": "Tagliatelle with artichokes and sea bream",
+            "description": "Tagliatelle with tender artichokes and delicate pieces of sea bream, bringing together flavours of the sea and the season."
           },
           "zh": {
-            "name": "西葫芦海鲈鱼螺旋面（少量番茄）",
-            "description": "鲜嫩海鲈鱼与西葫芦相融，少许番茄为螺旋面添上清爽滋味。"
+            "name": "朝鲜蓟金头鲷宽面",
+            "description": "柔嫩朝鲜蓟与细腻金头鲷鱼肉拌入宽面，融合海洋鲜味与时令清香。"
           }
         },
         "photoSource": {
-          "type": "Previously approved AI-generated illustrative image",
-          "date": "2026-10-22",
+          "type": "AI-generated illustrative food photograph optimized for website",
+          "date": "2026-10-31",
           "tool": "image_gen",
-          "note": "Reuses matching photograph with fusilli, sea bass, courgettes and light tomato, ivory plate and navy table."
+          "note": "Reconstructed realistic tagliatelle with artichokes and sea bream, with the approved ivory plate, dark navy tabletop, warm light and close-up framing. Self-contained SVG embedding a 1200x800 WebP for reliable website delivery; illustrative, not a restaurant photograph."
         }
       }
     ],
