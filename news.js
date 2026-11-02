@@ -22,8 +22,14 @@
     p.textContent = 'Notizie temporaneamente non disponibili'; viewport.appendChild(p);
     updated.textContent = 'In attesa di aggiornamento';
   }
+  function updateLabel(delayed) {
+    if (!data) return;
+    var stamp = Date.parse(data.fetched_at);
+    var dateLabel = new Intl.DateTimeFormat('it-IT', {timeZone:'Europe/Rome',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(stamp));
+    updated.textContent = (delayed || Date.now() - stamp > 24 * 3600000 ? 'Aggiornamento in ritardo · ' : 'Agg. ') + dateLabel;
+  }
   function render() {
-    if (!data || Date.now() - Date.parse(data.fetched_at) > 24 * 3600000) { unavailable(); return; }
+    if (!data) { unavailable(); return; }
     viewport.textContent = ''; current = 0;
     slides = data.items.slice(0, 5).map(function (item, index) {
       var a = document.createElement('a'); a.href = item.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
@@ -35,7 +41,7 @@
       var title = document.createElement('strong'); title.textContent = item.title;
       a.append(meta, title); viewport.appendChild(a); return a;
     });
-    updated.textContent = 'Agg. ' + new Intl.DateTimeFormat('it-IT', {timeZone:'Europe/Rome',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(data.fetched_at));
+    updateLabel(false);
   }
   function advance() {
     if (paused || document.hidden || root.matches(':hover') || viewport.contains(document.activeElement) || slides.length < 2) return;
@@ -52,12 +58,13 @@
       if (!Number.isFinite(Date.parse(value.fetched_at)) || !Array.isArray(value.items) || value.items.length !== 5 ||
           !value.items.every(function (item) { return typeof item.title === 'string' && safeUrl(item.url); })) throw Error();
       if (!data || data.fetched_at !== value.fetched_at) { data = value; render(); }
-    }).catch(function () { if (!data || Date.now() - Date.parse(data.fetched_at) > 24*3600000) unavailable(); else updated.textContent = 'Aggiornamento in ritardo'; })
+      else updateLabel(false);
+    }).catch(function () { if (!data) unavailable(); else updateLabel(true); })
     .finally(function () { busy = false; });
   }
   pause.addEventListener('click', function () { paused = !paused; controls(); });
   controls(); load();
   window.setInterval(advance, 8500);
-  window.setInterval(function () { if (Date.now() - lastFetch >= 300000) load(); if(data && Date.now()-Date.parse(data.fetched_at)>24*3600000) unavailable(); }, 60000);
+  window.setInterval(function () { if (Date.now() - lastFetch >= 300000) load(); if(data) updateLabel(false); }, 60000);
   document.addEventListener('visibilitychange', function () { if (!document.hidden && Date.now()-lastFetch>=300000) load(); });
 })();
