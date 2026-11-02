@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fetch MET Norway forecasts every three hours; publish only lunch/dinner summaries."""
+"""Fetch MET Norway forecasts twice daily; publish only lunch/dinner summaries."""
 import argparse
 from datetime import datetime, timedelta, timezone
 import gzip
@@ -101,12 +101,6 @@ def main():
     old = None
     if args.output.exists():
         old = json.loads(args.output.read_text())
-        fetched = datetime.fromisoformat(old['fetched_at'])
-        local_now, local_fetched = now.astimezone(ROME), fetched.astimezone(ROME)
-        slot = lambda value: (value.date(), value.hour // 3)
-        if slot(local_fetched) == slot(local_now):
-            print('Forecast already fetched in this three-hour slot; no API request or file change.')
-            return
     if args.input:
         raw = json.loads(args.input.read_text())
     else:
