@@ -1,0 +1,91 @@
+name: Aggiorna notizie e meteo Controcorrente
+
+# Due aggiornamenti giornalieri locali, indipendenti da ChatGPT.
+on:
+  schedule:
+    - cron: '35 8 * * *'
+      timezone: 'Europe/Rome'
+    - cron: '35 17 * * *'
+      timezone: 'Europe/Rome'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/aggiorna-novita.yml'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: controcorrente-notizie-meteo
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    if: github.repository == 'piol77/controcorrente' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Leggi versione corrente
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Acquisisci entrambe le fonti (con un tentativo di recupero)
+        id: sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          successes=0
+          failures=0
+          for kind in news weather; do
+            if python3 "scripts/update-$kind.py" --output "$kind.json"; then
+              successes=$((successes + 1))
+            else
+              echo "::warning::Acquisizione $kind fallita; riprovo."
+              sleep 10
+              if python3 "scripts/update-$kind.py" --output "$kind.json"; then
+                successes=$((successes + 1))
+              else
+                failures=$((failures + 1))
+                echo "::error::Fonte $kind non disponibile; precedente JSON conservato."
+              fi
+            fi
+          done
+          echo "failures=$failures" >> "$GITHUB_OUTPUT"
+          if (( successes == 0 )); then
+            echo "::error::Nessuna delle due fonti ha prodotto dati validi."
+            exit 1
+          fi
+
+      - name: Salva solo i JSON aggiornati
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- news.json weather.json; then
+            echo "Nessun cambiamento dei due file."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- news.json weather.json
+          git commit -m "Novità: aggiorna notizie e meteo (automatico)"
+          if ! git push origin HEAD:main; then
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
+      - name: Richiedi la pubblicazione GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
+
+      - name: Segnala eventuali fonti non aggiornate
+        if: steps.sync.outputs.failures != '0'
+        run: |
+          echo "::error::Una fonte non si è aggiornata: verifica il log."
+          exit 1
