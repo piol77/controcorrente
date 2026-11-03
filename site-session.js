@@ -119,7 +119,7 @@
   let audible = false;
   const audio = document.createElement('audio');
   audio.preload = 'none';
-  audio.volume = 0.25;
+  audio.volume = 1;
   audio.setAttribute('playsinline', '');
   const button = document.createElement('button');
   button.id = 'cc-jazz-toggle';
@@ -163,7 +163,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://stream.radioparadise.com/aac-320';
+      audio.src = 'https://streams.kcrw.com/e24_mp3';
     }
     try {
       const result = audio.play();
