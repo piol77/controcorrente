@@ -1,47 +1,47 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-11-03T15:25:31+00:00",
+  "fetched_at": "2026-11-03T21:57:34+00:00",
   "items": [
     {
-      "title": "Bologna, perseguita la ex con 200 telefonate al giorno e un AirTag per pedinarla",
-      "url": "https://www.rainews.it/articoli/2026/11/bologna-perseguita-la-ex-con-200-telefonate-al-giorno-e-un-airtag-per-pedinarla-7a3917b2-ea3b-4617-b0b9-d7137d003f43.html",
-      "image": "https://www.rainews.it/dl/img/2026/02/13/1770969975262_pexelshands.jpg",
+      "title": "Alluvione di Firenze, 60 anni dopo tornano gli angeli del fango",
+      "url": "https://www.rainews.it/video/2026/11/alluvione-di-firenze-60-anni-dopo-tornano-gli-angeli-del-fango-4b11417b-c97c-4cbe-b72a-45d577bd201c.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/03/1793735192144_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-03T14:33:00+00:00"
+      "published_at": "2026-11-03T19:43:00+00:00"
     },
     {
-      "title": "Affluenza in crescita nel voto anticipato. Maltempo rischia di complicare le operazioni ai seggi",
-      "url": "https://www.rainews.it/maratona/2026/11/midterm-usa-2026-democratici-repubblicani-risultati-voto-donald-trump-cdee7466-51f5-4976-906e-c89377d0f963.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/03/1793713075551_.jpg",
+      "title": "A Praga sfilano in migliaia per difendere l'emittenza pubblica: indetto sciopero di 24 ore",
+      "url": "https://www.rainews.it/articoli/2026/11/a-praga-sfilano-in-migliaia-per-difendere-lemittenza-pubblica-sciopero-5614a771-7b44-4460-8a2c-5edcf1716e3e.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/03/1793741840468_DBP.jpg",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-11-03T14:35:00+00:00"
+      "published_at": "2026-11-03T21:15:00+00:00"
     },
     {
-      "title": "A Fiumicino falso allarme bomba su due voli Ryanair: controlli negativi",
-      "url": "https://www.rainews.it/articoli/2026/11/a-fiumicino-falso-allarme-bomba-su-due-voli-ryanair-controlli-negativi-487a120c-23f7-4522-a298-f08ec7a90cbb.html",
-      "image": "https://www.rainews.it/dl/img/2025/12/9/1765275394715_PEMB.jpg",
+      "title": "Delitto di Garlasco, Sempio verso il processo: la strategia della difesa",
+      "url": "https://www.rainews.it/video/2026/11/delitto-di-garlasco-sempio-verso-il-processo-la-strategia-della-difesa-7809013e-8c94-4924-a571-62c20a0115a7.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/03/1793735332080_.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-03T13:47:00+00:00"
+      "published_at": "2026-11-03T19:47:00+00:00"
     },
     {
-      "title": "California, Corte suprema boccia la richiesta di Trump di accantonare 20mila schede elettorali",
-      "url": "https://www.rainews.it/video/2026/11/california-corte-suprema-boccia-la-richiesta-di-trump-di-accantonare-20mila-schede-elettorali-52a892bc-c45b-4f66-9a3c-c0d2babb14a4.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/03/1793708707333_.png",
+      "title": "Gli elettori di Atlanta si recano alle urne in Georgia per le importanti elezioni di metà mandato",
+      "url": "https://www.rainews.it/video/2026/11/gli-elettori-di-atlanta-si-recano-alle-urne-in-georgia-per-le-importanti-elezioni-di-meta-mandato-1c69b051-ca6e-49ee-b0e8-3664f761e665.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/03/1793739993526_TZLOPRPRTRMADPBASEIMAGEXUSAELECTIONGEORGIAVOTING.JPG",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-11-03T12:22:00+00:00"
+      "published_at": "2026-11-03T21:00:00+00:00"
     },
     {
-      "title": "Nuovo giallo nel caso di Pamela Genini. Qualcuno si sarebbe introdotto nell'appartamento",
-      "url": "https://www.rainews.it/video/2026/11/nuovo-giallo-nel-caso-di-pamela-genini-qualcuno-si-sarebbe-introdotto-nellappartamento-c23d101f-390c-4f94-acd5-a1309dd1accc.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/03/1793709183266_.png",
+      "title": "Hacker minacciano la sicurezza alimentare",
+      "url": "https://www.rainews.it/video/2026/11/hacker-minacciano-la-sicurezza-alimentare-2f8de7a5-d349-4c1c-8f36-719e72a98009.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/03/1793734766603_.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-03T12:31:00+00:00"
+      "published_at": "2026-11-03T19:39:00+00:00"
     }
   ]
 }
