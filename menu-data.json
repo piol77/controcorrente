@@ -376,7 +376,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "cena-assets/linguine-stracciatella-pistacchi-gamberetti-20261030.png",
+      "dishPhoto": "pranzo-assets/linguine-20261103-hd.webp",
       "translations": {
         "en": {
           "name": "Linguine with stracciatella, pistachios and shrimp*",
@@ -388,10 +388,12 @@
         }
       },
       "photoSource": {
-        "type": "Previously approved AI-generated dinner illustration",
-        "date": "2026-10-30",
-        "tool": "reused existing asset",
-        "note": "The exact same dish and approved ivory-plate/navy-table illustration from the dinner menu is reused for lunch."
+        "type": "AI-generated HD illustrative food image",
+        "date": "2026-11-03",
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
@@ -406,7 +408,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/farfalle-20261103.jpg",
+      "dishPhoto": "pranzo-assets/farfalle-20261103-hd.webp",
       "translations": {
         "en": {
           "name": "Farfalle with fresh salmon, courgettes and tomatoes",
@@ -418,10 +420,12 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative photograph, optimized website thumbnail",
+        "type": "AI-generated HD illustrative food image",
         "date": "2026-11-03",
-        "tool": "image_gen; published via Canva/GitHub Actions",
-        "note": "Illustrative image reconstructed for the requested dish with an ivory plate and dark nautical-blue tabletop; not a photograph of the served restaurant dish."
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
@@ -435,7 +439,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/soia-20261103.jpg",
+      "dishPhoto": "pranzo-assets/soia-20261103-hd.webp",
       "translations": {
         "en": {
           "name": "Soya noodles with vegetables, shrimp* and chicken",
@@ -447,10 +451,12 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative photograph, optimized website thumbnail",
+        "type": "AI-generated HD illustrative food image",
         "date": "2026-11-03",
-        "tool": "image_gen; published via Canva/GitHub Actions",
-        "note": "Illustrative image reconstructed for the requested dish with an ivory plate and dark nautical-blue tabletop; not a photograph of the served restaurant dish."
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
@@ -464,7 +470,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/orecchiette-20261103.jpg",
+      "dishPhoto": "pranzo-assets/orecchiette-20261103-hd.webp",
       "translations": {
         "en": {
           "name": "Orecchiette with cauliflower, broccoli, anchovies and breadcrumbs",
@@ -476,10 +482,12 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative photograph, optimized website thumbnail",
+        "type": "AI-generated HD illustrative food image",
         "date": "2026-11-03",
-        "tool": "image_gen; published via Canva/GitHub Actions",
-        "note": "Illustrative image reconstructed for the requested dish with an ivory plate and dark nautical-blue tabletop; not a photograph of the served restaurant dish."
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
@@ -492,7 +500,7 @@
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/pollo-20261103.jpg",
+      "dishPhoto": "pranzo-assets/pollo-20261103-hd.webp",
       "translations": {
         "en": {
           "name": "Chicken breasts with pumpkin and gorgonzola, served with potatoes",
@@ -504,36 +512,40 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative photograph, optimized website thumbnail",
+        "type": "AI-generated HD illustrative food image",
         "date": "2026-11-03",
-        "tool": "image_gen; published via Canva/GitHub Actions",
-        "note": "Illustrative image reconstructed for the requested dish with an ivory plate and dark nautical-blue tabletop; not a photograph of the served restaurant dish."
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
-      "name": "Straccetti di maiale con verdure in salsa piccante e riso bianco",
+      "name": "Straccetti di maiale con verdure in salsa piccante e riso bianco al vapore",
       "price": 10,
-      "description": "La salsa piccante ravviva il maiale e le verdure, mentre il riso bianco ne bilancia i sapori.",
+      "description": "La salsa piccante ravviva il maiale e le verdure, mentre il riso bianco al vapore ne bilancia i sapori.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/maiale-20261103.jpg",
+      "dishPhoto": "pranzo-assets/maiale-20261103-hd.webp",
       "translations": {
         "en": {
-          "name": "Pork strips with vegetables in spicy sauce and white rice",
-          "description": "A lively spicy sauce brings together pork and vegetables, balanced by plain white rice."
+          "name": "Pork strips with vegetables in spicy sauce and steamed white rice",
+          "description": "A lively spicy sauce brings together pork and vegetables, balanced by steamed white rice."
         },
         "zh": {
-          "name": "香辣蔬菜猪肉丝配白米饭",
-          "description": "微辣酱汁衬托猪肉与蔬菜，白米饭让滋味更加平衡。"
+          "name": "香辣蔬菜猪肉丝配清蒸白米饭",
+          "description": "微辣酱汁衬托猪肉与蔬菜，清蒸白米饭让滋味更加平衡。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative photograph, optimized website thumbnail",
+        "type": "AI-generated HD illustrative food image",
         "date": "2026-11-03",
-        "tool": "image_gen; published via Canva/GitHub Actions",
-        "note": "Illustrative image reconstructed for the requested dish with an ivory plate and dark nautical-blue tabletop; not a photograph of the served restaurant dish."
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
@@ -546,7 +558,7 @@
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/salmone-20261103.jpg",
+      "dishPhoto": "pranzo-assets/salmone-20261103-hd.webp",
       "translations": {
         "en": {
           "name": "Salmon fillet with lemon, raw fennel and balsamic vinegar",
@@ -558,10 +570,12 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative photograph, optimized website thumbnail",
+        "type": "AI-generated HD illustrative food image",
         "date": "2026-11-03",
-        "tool": "image_gen; published via Canva/GitHub Actions",
-        "note": "Illustrative image reconstructed for the requested dish with an ivory plate and dark nautical-blue tabletop; not a photograph of the served restaurant dish."
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
       }
     }
   ],
