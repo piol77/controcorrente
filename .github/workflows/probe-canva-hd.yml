@@ -1,0 +1,35 @@
+name: Probe Canva HD delivery
+on:
+  push:
+    paths:
+      - '.github/hd-photo-test.json'
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect image retrieval at full resolution
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error, re
+          from urllib.parse import urlsplit, urlunsplit, parse_qsl, urlencode, unquote
+          u=json.load(open('.github/hd-photo-test.json'))['url']
+          parts=urlsplit(u)
+          high=parts.path.replace('height:133','height:1024').replace('width:200','width:1536')
+          q=dict(parse_qsl(parts.query))
+          uri=re.search(r'uri:([^/]+)',parts.path).group(1)
+          original='https://media.canva.com/'+unquote(uri).replace('ifs://','')
+          variants={'standard':u,'high-with-sig':urlunsplit((parts.scheme,parts.netloc,high,parts.query,'')),'high-nosig':urlunsplit((parts.scheme,parts.netloc,high,urlencode({'token':q['token']}),'')),'high-noquery':urlunsplit((parts.scheme,parts.netloc,high,'','')),'direct-token':original+'?token='+q['token'],'direct':original}
+          for name,link in variants.items():
+            try:
+              with urllib.request.urlopen(urllib.request.Request(link,headers={'User-Agent':'Mozilla/5.0'}),timeout=15) as response:
+                data=response.read(3500000)
+                ct=response.headers.get('Content-Type')
+                dims='?'
+                if data[:8]==b'\\x89PNG\\r\\n\\x1a\\n': dims=str(tuple(int.from_bytes(data[i:i+4],'big') for i in (16,20)))
+                print(name,'HTTP',response.status,ct,'len',len(data),'size',dims,'magic',data[:8].hex(),flush=True)
+            except urllib.error.HTTPError as exc:print(name,'HTTP',exc.code,exc.read(250)[:200],flush=True)
+            except Exception as exc:print(name,'ERROR',repr(exc),flush=True)
+          PY
