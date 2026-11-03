@@ -163,7 +163,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://streams.kcrw.com/e24_mp3';
+      audio.src = 'https://newhitsradio.streamingmedia.it/play';
     }
     try {
       const result = audio.play();
