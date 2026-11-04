@@ -452,3 +452,131 @@
   }
 })();
 // END SITE SHARING 2026-10-24
+
+
+// BEGIN RADIO NOW PLAYING TICKER 2026-11-04
+// REVERSIBILE: eliminare esclusivamente questo blocco fino a END; il player radio resta intatto.
+(() => {
+  'use strict';
+  const radioButton = document.getElementById('cc-jazz-toggle');
+  if (!radioButton || document.getElementById('cc-nowplaying-ticker')) return;
+
+  const style = document.createElement('style');
+  style.textContent = `
+    #cc-nowplaying-ticker{box-sizing:border-box;width:min(260px,78vw);margin:5px 0 0 auto;padding:4px 7px;overflow:hidden;border:1px solid var(--gold,#cba76d);border-radius:5px;background:var(--navy,#082a43);color:var(--gold,#cba76d);font:11px/1.35 Georgia,"Times New Roman",serif;white-space:nowrap}
+    #cc-nowplaying-ticker[hidden]{display:none!important}
+    #cc-nowplaying-ticker .cc-nowplaying-text{display:inline-block;white-space:nowrap;padding-left:100%;animation:cc-nowplaying-scroll 19s linear infinite}
+    @keyframes cc-nowplaying-scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+    @media(prefers-reduced-motion:reduce){#cc-nowplaying-ticker .cc-nowplaying-text{padding-left:0;animation:none;white-space:normal}}
+  `;
+  document.head.appendChild(style);
+  const ticker = document.createElement('div');
+  ticker.id = 'cc-nowplaying-ticker';
+  ticker.hidden = true;
+  ticker.setAttribute('aria-label', 'Titolo e artista della canzone in onda');
+  ticker.setAttribute('aria-live', 'off');
+  const tickerText = document.createElement('span');
+  tickerText.className = 'cc-nowplaying-text';
+  tickerText.textContent = '♪ Brano in aggiornamento…';
+  ticker.appendChild(tickerText);
+  radioButton.insertAdjacentElement('afterend', ticker);
+
+  // Ogni pagina interna visualizza il ticker, ma solo il documento principale
+  // interroga i metadati: una sola radio, una sola richiesta periodica.
+  let shared;
+  try { if (window.parent !== window) shared = window.parent.ccNowPlayingTicker; } catch (_) {}
+  if (shared && typeof shared.attach === 'function') {
+    shared.attach(ticker, radioButton);
+    return;
+  }
+
+  const statusUrl = 'https://newhitsradio.streamingmedia.it/status-json.xsl';
+  let activeTicker = ticker;
+  let activeButton = radioButton;
+  let currentLabel = '♪ Brano in aggiornamento…';
+  let playing = false;
+  let interval = null;
+  let controller = null;
+  let inFlight = false;
+
+  function writeLabel() {
+    const target = activeTicker.querySelector('.cc-nowplaying-text');
+    if (!target || target.textContent === currentLabel) return;
+    target.textContent = currentLabel; // Mai inserire HTML proveniente dallo stream.
+    target.style.animation = 'none';
+    void target.offsetWidth;
+    target.style.animation = '';
+  }
+  function setLabel(value) {
+    currentLabel = value;
+    if (playing) writeLabel();
+  }
+  function extractTitle(data) {
+    const raw = data && data.icestats && data.icestats.source;
+    const sources = Array.isArray(raw) ? raw : raw ? [raw] : [];
+    const source = sources.find(item => item && typeof item.listenurl === 'string' &&
+      /\/play(?:\?.*)?$/.test(item.listenurl)) || (sources.length === 1 ? sources[0] : null);
+    if (!source) return null;
+    const title = typeof source.title === 'string' ? source.title :
+      typeof source.songtitle === 'string' ? source.songtitle : '';
+    const full = title || (typeof source.artist === 'string' &&
+      typeof source.song === 'string' ? source.artist + ' - ' + source.song : '');
+    const clean = full.replace(/\s+/g, ' ').trim().slice(0, 180);
+    return clean && !/^new hits radio(?: italia)?$/i.test(clean) ? clean : null;
+  }
+  async function refresh() {
+    if (!playing || inFlight) return;
+    inFlight = true;
+    const thisController = new AbortController();
+    controller = thisController;
+    const timeout = window.setTimeout(() => thisController.abort(), 8000);
+    try {
+      const response = await fetch(statusUrl + '?t=' + Date.now(), {
+        cache:'no-store', credentials:'omit', signal:thisController.signal
+      });
+      if (!response.ok) throw new Error('Metadata non disponibili');
+      const track = extractTitle(await response.json());
+      if (playing && !thisController.signal.aborted) {
+        setLabel(track ? '♪ ' + track + ' · NEW HITS RADIO' : '♪ Titolo non disponibile · NEW HITS RADIO');
+      }
+    } catch (_) {
+      if (playing && !thisController.signal.aborted) {
+        setLabel('♪ Titolo non disponibile · NEW HITS RADIO');
+      }
+    } finally {
+      window.clearTimeout(timeout);
+      if (controller === thisController) controller = null;
+      inFlight = false;
+    }
+  }
+  function sync() {
+    const on = activeButton.getAttribute('data-music-state') === 'on';
+    activeTicker.hidden = !on;
+    if (!on) {
+      if (playing) {
+        playing = false;
+        if (interval !== null) { window.clearInterval(interval); interval = null; }
+        if (controller) controller.abort();
+        currentLabel = '♪ Brano in aggiornamento…';
+      }
+      return;
+    }
+    writeLabel();
+    if (!playing) {
+      playing = true;
+      refresh();
+      interval = window.setInterval(refresh, 25000);
+    }
+  }
+  const observer = new MutationObserver(sync);
+  function attach(nextTicker, nextButton) {
+    observer.disconnect();
+    activeTicker = nextTicker;
+    activeButton = nextButton;
+    observer.observe(activeButton, {attributes:true, attributeFilter:['data-music-state']});
+    sync();
+  }
+  window.ccNowPlayingTicker = {attach};
+  attach(ticker, radioButton);
+})();
+// END RADIO NOW PLAYING TICKER 2026-11-04
