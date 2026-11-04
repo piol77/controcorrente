@@ -222,8 +222,8 @@
     const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
     // Prefer an explicitly identified Italian male voice; avoid named female voices.
     // Voice and pitch support depend on the device's speech synthesis engine.
-    const maleItalianName = /(?:\\b(?:cosimo|luca|diego|giorgio|marco|matteo|andrea|alessandro|fabrizio|edoardo|riccardo|stefano|paolo|enrico|francesco|roberto|giovanni|nicola|male|uomo|maschio)\\b)/i;
-    const femaleItalianName = /(?:\\b(?:elsa|isabella|alice|federica|giulia|lucia|silvia|francesca|anna|female|donna|femmina)\\b)/i;
+    const maleItalianName = /\b(cosimo|luca|diego|giorgio|marco|matteo|andrea|alessandro|fabrizio|edoardo|riccardo|stefano|paolo|enrico|francesco|roberto|giovanni|nicola|male|uomo|maschio)\b/i;
+    const femaleItalianName = /\b(elsa|isabella|alice|federica|giulia|lucia|silvia|francesca|anna|female|donna|femmina)\b/i;
     utterance.voice = italian.find(voice => maleItalianName.test(voice.name))
       || italian.find(voice => !femaleItalianName.test(voice.name))
       || italian[0] || null;
