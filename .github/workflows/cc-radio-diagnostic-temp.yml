@@ -1,0 +1,32 @@
+name: Radio metadata diagnostic temporary
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/cc-radio-diagnostic-temp.yml']
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check public metadata endpoints (no secrets)
+        run: |
+          python3 - <<'PY'
+          import urllib.request, urllib.error
+          endpoints={
+            'icecast_json':'https://newhitsradio.streamingmedia.it/status-json.xsl',
+            'icecast_html':'https://newhitsradio.streamingmedia.it/status.xsl',
+            'cors_dev_html':'https://proxy.cors.dev/https://newhitsradio.streamingmedia.it/status.xsl',
+            'allorigins_html':'https://api.allorigins.win/raw?url=https%3A%2F%2Fnewhitsradio.streamingmedia.it%2Fstatus.xsl',
+            'lautfm_song':'https://api.laut.fm/station/newhitsradio_italy/current_song'
+          }
+          for name,url in endpoints.items():
+            print('BEGIN',name,flush=True)
+            try:
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0','Origin':'https://piol77.github.io','Accept':'*/*'})
+              with urllib.request.urlopen(req,timeout=9) as res:
+                data=res.read(1200)
+                print('status',res.status,'CORS',res.headers.get('access-control-allow-origin'),'content_type',res.headers.get('content-type'),'body_sample',data[:450].decode('utf-8','replace'),flush=True)
+            except Exception as e: print('ERROR',type(e).__name__,str(e)[:200],flush=True)
+          PY
