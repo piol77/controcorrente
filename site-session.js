@@ -148,8 +148,110 @@
   function remember() {
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
   }
+  // CONTROCORRENTE RADIO JINGLE 2026-11-04
+  // Annuncio vocale automatico ogni 10 minuti di ascolto, senza comandi dedicati.
+  // Unicamente il documento proprietario del lettore gestisce il jingle.
+  const JINGLE_INTERVAL_MS = 10 * 60 * 1000;
+  const JINGLE_TEXT = 'Questa è la radio di Controcorrente, a Torino. Buon ascolto!';
+  let jingleTimer = null;
+  let jingleFadeTimer = null;
+  let jingleWatchdog = null;
+  let jingleUtterance = null;
+  let jingleBusy = false;
+  let jingleGeneration = 0;
+
+  function resetJingle() {
+    jingleGeneration += 1;
+    if (jingleTimer !== null) window.clearTimeout(jingleTimer);
+    if (jingleFadeTimer !== null) window.clearInterval(jingleFadeTimer);
+    if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
+    jingleTimer = null;
+    jingleFadeTimer = null;
+    jingleWatchdog = null;
+    if (jingleUtterance && window.speechSynthesis) {
+      try { window.speechSynthesis.cancel(); } catch (_) {}
+    }
+    jingleUtterance = null;
+    jingleBusy = false;
+    audio.volume = 1;
+  }
+
+  function scheduleJingle() {
+    if (jingleTimer !== null || jingleBusy || !enabled || !audible || audio.paused || failed) return;
+    jingleTimer = window.setTimeout(() => {
+      jingleTimer = null;
+      if (enabled && audible && !audio.paused && !failed) playJingle();
+    }, JINGLE_INTERVAL_MS);
+  }
+
+  function fadeRadioJingle(target, generation, done) {
+    if (jingleFadeTimer !== null) window.clearInterval(jingleFadeTimer);
+    const original = audio.volume;
+    let step = 0;
+    jingleFadeTimer = window.setInterval(() => {
+      if (generation !== jingleGeneration) {
+        window.clearInterval(jingleFadeTimer);
+        jingleFadeTimer = null;
+        return;
+      }
+      step += 1;
+      audio.volume = Math.max(0, Math.min(1, original + (target - original) * step / 8));
+      if (step >= 8) {
+        window.clearInterval(jingleFadeTimer);
+        jingleFadeTimer = null;
+        if (typeof done === 'function') done();
+      }
+    }, 65);
+  }
+
+  function playJingle() {
+    const speech = window.speechSynthesis;
+    if (!speech || typeof window.SpeechSynthesisUtterance !== 'function' || speech.speaking || speech.pending) {
+      scheduleJingle();
+      return;
+    }
+    const generation = ++jingleGeneration;
+    jingleBusy = true;
+    let settled = false;
+    const utterance = new window.SpeechSynthesisUtterance(JINGLE_TEXT);
+    utterance.lang = 'it-IT';
+    utterance.rate = 0.96;
+    utterance.pitch = 0.94;
+    utterance.volume = 1;
+    const voices = speech.getVoices();
+    const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
+    utterance.voice = italian.find(voice => /luca|diego|italiano|elsa|isabella|google/i.test(voice.name))
+      || italian[0] || null;
+    jingleUtterance = utterance;
+    function finish() {
+      if (settled || generation !== jingleGeneration) return;
+      settled = true;
+      if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
+      jingleWatchdog = null;
+      jingleUtterance = null;
+      fadeRadioJingle(1, generation, () => {
+        if (generation !== jingleGeneration) return;
+        jingleBusy = false;
+        scheduleJingle();
+      });
+    }
+    utterance.onend = finish;
+    utterance.onerror = finish;
+    fadeRadioJingle(0.18, generation, () => {
+      if (generation !== jingleGeneration) return;
+      jingleWatchdog = window.setTimeout(() => {
+        if (generation !== jingleGeneration) return;
+        try { speech.cancel(); } catch (_) {}
+        finish();
+      }, 20000);
+      try { speech.speak(utterance); } catch (_) { finish(); }
+    });
+  }
+  // END CONTROCORRENTE RADIO JINGLE 2026-11-04
+
   function stop() {
     attempt++;
+    resetJingle();
     audio.pause();
     audio.removeAttribute('src');
     audio.load();
@@ -177,12 +279,12 @@
       } else { pending = false; }
     } catch (_) { pending = false; failed = true; render(); }
   }
-  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); });
-  audio.addEventListener('pause', () => { audible = false; render(); });
-  audio.addEventListener('waiting', () => { audible = false; pending = enabled; render(); });
-  audio.addEventListener('stalled', () => { audible = false; pending = enabled; render(); });
-  audio.addEventListener('ended', () => { audible = false; pending = false; render(); });
-  audio.addEventListener('error', () => { audible = false; pending = false; failed = true; render(); });
+  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); });
+  audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); });
+  audio.addEventListener('waiting', () => { audible = false; pending = enabled; resetJingle(); render(); });
+  audio.addEventListener('stalled', () => { audible = false; pending = enabled; resetJingle(); render(); });
+  audio.addEventListener('ended', () => { audible = false; pending = false; resetJingle(); render(); });
+  audio.addEventListener('error', () => { audible = false; pending = false; failed = true; resetJingle(); render(); });
   function toggle() {
     if (enabled && (pending || (!audio.paused && !failed))) {
       enabled = false;
