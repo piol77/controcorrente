@@ -490,9 +490,9 @@
     return;
   }
 
+  // Dati dello stesso server Icecast dello stream audio (mount /play).
   const statusUrl = 'https://newhitsradio.streamingmedia.it/status-json.xsl';
-  // Fallback CORS per il MEDESIMO status Icecast: non cambiare stazione o playlist.
-  const proxyUrl = 'https://proxy.cors.dev/' + statusUrl;
+  const statusHtmlUrl = 'https://newhitsradio.streamingmedia.it/status.xsl';
   let activeTicker = ticker;
   let activeButton = radioButton;
   let currentLabel = '♪ Brano in aggiornamento…';
@@ -513,18 +513,32 @@
     currentLabel = value;
     if (playing) writeLabel();
   }
-  function extractTitle(data) {
+  function cleanTitle(value) {
+    if (typeof value !== 'string') return null;
+    const title = value.replace(/\s+/g, ' ').trim().slice(0, 180);
+    return title && !/^(?:new hits radio(?: italia)?|unknown|none|n\/a)$/i.test(title) ? title : null;
+  }
+  function extractJsonTitle(data) {
     const raw = data && data.icestats && data.icestats.source;
     const sources = Array.isArray(raw) ? raw : raw ? [raw] : [];
-    const source = sources.find(item => item && typeof item.listenurl === 'string' &&
-      /\/play(?:\?.*)?$/.test(item.listenurl)) || (sources.length === 1 ? sources[0] : null);
+    const source = sources.find(item => item && /\/play(?:\/|\?.*)?$/i.test(String(item.listenurl || ''))) ||
+      sources.find(item => item && /new hits radio/i.test(String(item.server_name || ''))) ||
+      (sources.length === 1 ? sources[0] : null);
     if (!source) return null;
-    const title = typeof source.title === 'string' ? source.title :
-      typeof source.songtitle === 'string' ? source.songtitle : '';
-    const full = title || (typeof source.artist === 'string' &&
-      typeof source.song === 'string' ? source.artist + ' - ' + source.song : '');
-    const clean = full.replace(/\s+/g, ' ').trim().slice(0, 180);
-    return clean && !/^new hits radio(?: italia)?$/i.test(clean) ? clean : null;
+    return cleanTitle(source.title) || cleanTitle(source.songtitle) ||
+      cleanTitle(source.artist && source.song ? source.artist + ' - ' + source.song : source.song);
+  }
+  function extractHtmlTitle(html) {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const candidates = [];
+    for (const row of doc.querySelectorAll('tr')) {
+      const cells = row.querySelectorAll('td, th');
+      if (cells.length < 2 || !/current song\s*:/i.test(cells[0].textContent || '')) continue;
+      const song = cleanTitle(cells[cells.length - 1].textContent);
+      if (song) candidates.push(song);
+    }
+    // Icecast elenca prima /flat (spesso vuoto) e poi /play.
+    return candidates.length ? candidates[candidates.length - 1] : null;
   }
   async function refresh() {
     if (!playing || inFlight) return;
@@ -532,30 +546,44 @@
     const sessionController = new AbortController();
     controller = sessionController;
     let track = null;
+    const stamp = Date.now();
+    const directJson = statusUrl + '?t=' + stamp;
+    const proxyHtml = 'https://proxy.cors.dev/' + statusHtmlUrl + '?t=' + stamp;
+    const backupHtml = 'https://api.allorigins.win/raw?url=' +
+      encodeURIComponent(statusHtmlUrl + '?t=' + stamp);
+    const proxyJson = 'https://proxy.cors.dev/' + directJson;
+    // HTML: il server espone Current Song anche quando il JSON non è leggibile.
+    const attempts = [
+      {url:proxyHtml, format:'html'},
+      {url:directJson, format:'json'},
+      {url:proxyJson, format:'json'},
+      {url:backupHtml, format:'html'}
+    ];
     try {
-      // Tentativo diretto; se il browser blocca CORS, proxy del solo JSON pubblico.
-      for (const endpoint of [statusUrl, proxyUrl]) {
+      for (const item of attempts) {
         if (!playing || sessionController.signal.aborted) break;
         const attemptController = new AbortController();
-        const stopAttempt = () => attemptController.abort();
-        sessionController.signal.addEventListener('abort', stopAttempt, {once:true});
-        const timeout = window.setTimeout(stopAttempt, 6500);
+        const onCancel = () => attemptController.abort();
+        sessionController.signal.addEventListener('abort', onCancel, {once:true});
+        const timeout = window.setTimeout(onCancel, 5500);
         try {
-          const response = await fetch(endpoint + (endpoint.includes('?') ? '&' : '?') + 't=' + Date.now(), {
+          const response = await fetch(item.url, {
             cache:'no-store', credentials:'omit', signal:attemptController.signal
           });
           if (!response.ok) continue;
-          track = extractTitle(await response.json());
+          track = item.format === 'html' ? extractHtmlTitle(await response.text()) :
+            extractJsonTitle(await response.json());
           if (track) break;
         } catch (_) {
-          // Esempio: CORS del server Icecast; prova la sorgente alternativa.
+          // Prova un altro percorso per il medesimo flusso Icecast.
         } finally {
           window.clearTimeout(timeout);
-          sessionController.signal.removeEventListener('abort', stopAttempt);
+          sessionController.signal.removeEventListener('abort', onCancel);
         }
       }
       if (playing && !sessionController.signal.aborted) {
-        setLabel(track ? '♪ ' + track + ' · NEW HITS RADIO' : '♪ Titolo non disponibile · NEW HITS RADIO');
+        setLabel(track ? '♪ ' + track + ' · NEW HITS RADIO' :
+          '♪ Dati brano temporaneamente non accessibili · NEW HITS RADIO');
       }
     } finally {
       if (controller === sessionController) controller = null;
