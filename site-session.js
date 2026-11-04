@@ -149,9 +149,9 @@
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
   }
   // CONTROCORRENTE RADIO JINGLE 2026-11-04
-  // Annuncio vocale automatico ogni 10 minuti di ascolto, senza comandi dedicati.
+  // Annuncio vocale automatico ogni 4 minuti di ascolto, senza comandi dedicati.
   // Unicamente il documento proprietario del lettore gestisce il jingle.
-  const JINGLE_INTERVAL_MS = 10 * 60 * 1000;
+  const JINGLE_INTERVAL_MS = 4 * 60 * 1000;
   const JINGLE_TEXT = 'Questa è la radio di Controcorrente, a Torino. Buon ascolto!';
   let jingleTimer = null;
   let jingleFadeTimer = null;
@@ -216,7 +216,7 @@
     const utterance = new window.SpeechSynthesisUtterance(JINGLE_TEXT);
     utterance.lang = 'it-IT';
     utterance.rate = 0.96;
-    utterance.pitch = 0.94;
+    utterance.pitch = 0.88;
     utterance.volume = 1;
     const voices = speech.getVoices();
     const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
@@ -237,7 +237,7 @@
     }
     utterance.onend = finish;
     utterance.onerror = finish;
-    fadeRadioJingle(0.18, generation, () => {
+    fadeRadioJingle(0.10, generation, () => {
       if (generation !== jingleGeneration) return;
       jingleWatchdog = window.setTimeout(() => {
         if (generation !== jingleGeneration) return;
