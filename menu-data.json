@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-11-03",
-  "lunchDateLabel": "Martedì 3 novembre 2026",
+  "lunchUpdatedAt": "2026-11-04",
+  "lunchDateLabel": "Mercoledì 4 novembre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -369,218 +369,244 @@
   },
   "lunch": [
     {
-      "name": "Linguine con stracciatella, pistacchi e gamberetti*",
-      "price": 12,
-      "description": "La cremosità delicata della stracciatella incontra i gamberetti*, con la nota croccante dei pistacchi.",
+      "name": "Penne con zucchine e salsiccia (poca panna)",
+      "price": 10,
+      "description": "Penne con zucchine e salsiccia rosolata, legate da un leggero tocco di panna.",
       "allergens": [
         1,
-        2,
+        7
+      ],
+      "icon": "Wheat",
+      "orderCourse": "Primo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/penne-zucchine-salsiccia-20261104.webp",
+      "translations": {
+        "en": {
+          "name": "Penne with courgettes and sausage (a little cream)",
+          "description": "Penne with sautéed courgettes and browned sausage, finished with a light touch of cream."
+        },
+        "zh": {
+          "name": "西葫芦香肠奶油通心粉（少量奶油）",
+          "description": "通心粉搭配西葫芦与香煎香肠，仅用少许奶油调和。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
+      }
+    },
+    {
+      "name": "Tagliatelle ai funghi misti, mascarpone e noci",
+      "price": 10,
+      "description": "Funghi misti e mascarpone avvolgono le tagliatelle, completate dalla croccantezza delle noci.",
+      "allergens": [
+        1,
+        3,
         7,
         8
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/linguine-20261103-hd.webp",
+      "dishPhoto": "pranzo-assets/tagliatelle-funghi-mascarpone-noci-20261104.webp",
       "translations": {
         "en": {
-          "name": "Linguine with stracciatella, pistachios and shrimp*",
-          "description": "Delicate stracciatella brings creaminess to the shrimp*, balanced by the crunch of pistachios."
+          "name": "Tagliatelle with mixed mushrooms, mascarpone and walnuts",
+          "description": "Mixed mushrooms and creamy mascarpone dress the tagliatelle, finished with crunchy walnuts."
         },
         "zh": {
-          "name": "奶酪丝开心果虾仁*扁意面",
-          "description": "柔滑的奶酪丝衬托虾仁*的鲜甜，开心果增添香脆口感。"
+          "name": "什锦蘑菇马斯卡彭奶酪核桃宽面",
+          "description": "什锦蘑菇与马斯卡彭奶酪包裹宽面，撒上香脆核桃。"
         }
       },
       "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-03",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
       }
     },
     {
-      "name": "Farfalle con salmone fresco, zucchine e pomodori",
-      "price": 12,
-      "description": "Il salmone fresco si abbina alla dolcezza delle zucchine e alla vivacità dei pomodori, con un leggero velo di panna.",
+      "name": "Udon con verdure miste, pollo e gamberetti*",
+      "price": 10,
+      "description": "Udon saltati con pollo, gamberetti*, carote, zucchine e verza.",
       "allergens": [
         1,
-        4,
-        7
-      ],
-      "icon": "Wheat",
-      "orderCourse": "Primo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/farfalle-20261103-hd.webp",
-      "translations": {
-        "en": {
-          "name": "Farfalle with fresh salmon, courgettes and tomatoes",
-          "description": "Fresh salmon pairs with tender courgettes and lively tomatoes, finished with just a little cream."
-        },
-        "zh": {
-          "name": "鲜三文鱼西葫芦番茄蝴蝶面",
-          "description": "鲜三文鱼搭配清甜西葫芦与番茄，只加少量奶油，口感柔和。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-03",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Spaghetti di soia con verdure, gamberetti* e pollo",
-      "price": 10,
-      "description": "Verdure croccanti, pollo e gamberetti* si intrecciano agli spaghetti di soia, con carote, zucchine e verza.",
-      "allergens": [
         2,
         6
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/soia-20261103-hd.webp",
+      "dishPhoto": "pranzo-assets/udon-verdure-pollo-gamberetti-20261104.webp",
       "translations": {
         "en": {
-          "name": "Soya noodles with vegetables, shrimp* and chicken",
-          "description": "Crisp carrots, courgettes and savoy cabbage mingle with chicken and shrimp* in delicate soya noodles."
+          "name": "Udon with mixed vegetables, chicken and shrimp*",
+          "description": "Stir-fried udon with chicken, shrimp*, carrots, courgettes and savoy cabbage."
         },
         "zh": {
-          "name": "什锦蔬菜鸡肉虾仁*炒粉丝",
-          "description": "爽脆的胡萝卜、西葫芦和卷心菜搭配鸡肉、虾仁*与细粉丝，口感丰富。"
+          "name": "什锦蔬菜鸡肉虾仁*乌冬面",
+          "description": "乌冬面搭配鸡肉、虾仁*、胡萝卜、西葫芦和皱叶甘蓝。"
         }
       },
       "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-03",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
       }
     },
     {
-      "name": "Orecchiette con cavolfiore, broccoli, acciughe e pangrattato",
-      "price": 9,
-      "description": "La dolcezza delle verdure incontra il carattere delle acciughe e la croccantezza del pangrattato, con una lieve nota piccante.",
+      "name": "Calamarata al sugo di orata, olive e pomodoro",
+      "price": 12,
+      "description": "Calamarata con delicati bocconcini di orata, olive e pomodoro, leggermente piccante.",
       "allergens": [
         1,
         4
       ],
-      "icon": "Wheat",
+      "icon": "Fish",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/orecchiette-20261103-hd.webp",
+      "dishPhoto": "pranzo-assets/calamarata-orata-olive-20261104.webp",
       "translations": {
         "en": {
-          "name": "Orecchiette with cauliflower, broccoli, anchovies and breadcrumbs",
-          "description": "Sweet vegetables meet savoury anchovies and crisp breadcrumbs, with a mild spicy note."
+          "name": "Calamarata with sea bream, olives and tomato",
+          "description": "Calamarata pasta with tender sea bream, olives and tomato sauce, mildly spicy."
         },
         "zh": {
-          "name": "花椰菜西兰花鳀鱼面包屑猫耳朵面",
-          "description": "蔬菜清甜、鳀鱼咸鲜和面包屑的香脆相互融合，略带微辣。"
+          "name": "金头鲷橄榄番茄鱿鱼圈形意面",
+          "description": "鱿鱼圈形意面搭配鲜嫩金头鲷、橄榄与番茄酱，略带微辣。"
         }
       },
       "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-03",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
       }
     },
     {
-      "name": "Petti di pollo con zucca e gorgonzola, serviti con patate",
-      "price": 10,
-      "description": "La dolcezza della zucca stempera il sapore deciso del gorgonzola, con le patate ad accompagnare il pollo.",
-      "allergens": [
-        7
-      ],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/pollo-20261103-hd.webp",
-      "translations": {
-        "en": {
-          "name": "Chicken breasts with pumpkin and gorgonzola, served with potatoes",
-          "description": "Sweet pumpkin softens the bold flavour of gorgonzola, accompanied by tender chicken and potatoes."
-        },
-        "zh": {
-          "name": "南瓜戈贡佐拉奶酪鸡胸肉配土豆",
-          "description": "南瓜的清甜柔和了戈贡佐拉奶酪的浓郁滋味，搭配鸡胸肉与土豆。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-03",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Straccetti di maiale con verdure in salsa piccante e riso bianco al vapore",
-      "price": 10,
-      "description": "La salsa piccante ravviva il maiale e le verdure, mentre il riso bianco al vapore ne bilancia i sapori.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/maiale-20261103-hd.webp",
-      "translations": {
-        "en": {
-          "name": "Pork strips with vegetables in spicy sauce and steamed white rice",
-          "description": "A lively spicy sauce brings together pork and vegetables, balanced by steamed white rice."
-        },
-        "zh": {
-          "name": "香辣蔬菜猪肉丝配清蒸白米饭",
-          "description": "微辣酱汁衬托猪肉与蔬菜，清蒸白米饭让滋味更加平衡。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-03",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Trancio di salmone al limone con finocchio crudo e aceto balsamico",
+      "name": "Orata alla griglia con patate lesse prezzemolate",
       "price": 12,
-      "description": "La freschezza del limone e la croccantezza del finocchio crudo accompagnano il salmone, con una nota di aceto balsamico.",
+      "description": "Orata grigliata, accompagnata da patate lesse condite con prezzemolo.",
       "allergens": [
         4
       ],
-      "icon": "Utensils",
+      "icon": "Fish",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/salmone-20261103-hd.webp",
+      "dishPhoto": "pranzo-assets/orata-griglia-patate-20261104.webp",
       "translations": {
         "en": {
-          "name": "Salmon fillet with lemon, raw fennel and balsamic vinegar",
-          "description": "Fresh lemon and crisp raw fennel accompany the salmon, with a touch of balsamic vinegar."
+          "name": "Grilled sea bream with parsley boiled potatoes",
+          "description": "Grilled sea bream served with boiled potatoes dressed with parsley."
         },
         "zh": {
-          "name": "柠檬三文鱼配生茴香和意大利黑醋",
-          "description": "清新的柠檬与爽脆的生茴香衬托三文鱼，点缀少许意大利黑醋。"
+          "name": "香烤金头鲷配欧芹水煮土豆",
+          "description": "烤金头鲷配以欧芹调味的水煮土豆。"
         }
       },
       "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-03",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
+      }
+    },
+    {
+      "name": "Filetti di orata alle mandorle con verza e carote saltate",
+      "price": 12,
+      "description": "Filetti di orata con mandorle croccanti, serviti su verza e carote saltate.",
+      "allergens": [
+        4,
+        8
+      ],
+      "icon": "Fish",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/orata-mandorle-verza-carote-20261104.webp",
+      "translations": {
+        "en": {
+          "name": "Almond sea bream fillets with sautéed savoy cabbage and carrots",
+          "description": "Sea bream fillets with crunchy almonds, accompanied by sautéed savoy cabbage and carrots."
+        },
+        "zh": {
+          "name": "杏仁金头鲷鱼柳配炒皱叶甘蓝与胡萝卜",
+          "description": "金头鲷鱼柳佐香脆杏仁，搭配炒皱叶甘蓝和胡萝卜。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
+      }
+    },
+    {
+      "name": "Straccetti di pollo con verdure in salsa di soia e riso bianco al vapore",
+      "price": 10,
+      "description": "Pollo saltato con carote e zucchine in salsa di soia, accompagnato da riso bianco al vapore.",
+      "allergens": [
+        1,
+        6
+      ],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/straccetti-pollo-soia-riso-20261104.webp",
+      "translations": {
+        "en": {
+          "name": "Chicken strips with vegetables in soy sauce and steamed white rice",
+          "description": "Chicken sautéed with carrots and courgettes in soy sauce, served with steamed white rice."
+        },
+        "zh": {
+          "name": "酱油蔬菜鸡肉条配蒸白米饭",
+          "description": "鸡肉条与胡萝卜、西葫芦一起用酱油翻炒，搭配蒸白米饭。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
+      }
+    },
+    {
+      "name": "Insalatona con arance, finocchi, avocado e salmone fresco all’aceto balsamico",
+      "price": 12,
+      "description": "Arance, finocchi croccanti e avocado con bocconcini di salmone fresco, conditi con aceto balsamico.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/insalatona-salmone-arance-avocado-20261104.webp",
+      "translations": {
+        "en": {
+          "name": "Large salad with orange, fennel, avocado and fresh salmon with balsamic vinegar",
+          "description": "Orange, crisp fennel and avocado with fresh salmon bites, dressed with balsamic vinegar."
+        },
+        "zh": {
+          "name": "橙子茴香牛油果鲜三文鱼沙拉配香醋",
+          "description": "橙子、爽脆茴香和牛油果搭配鲜三文鱼块，淋上意大利香醋。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated food illustration, website-optimized preview",
+        "date": "2026-11-04",
+        "tool": "image_gen / Canva media preview",
+        "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+        "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
       }
     }
   ],
