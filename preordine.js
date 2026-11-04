@@ -377,7 +377,7 @@
           return;
         }
         promoLine = '*Radio Premi: ' + promoCode + ' · riferimento ' + promoReference
-          + ' · RISERVA PROVVISORIA (20 minuti)*\n'
+          + ' · RISERVA PROVVISORIA (24 ore)*\n'
           + 'Sconto 5 € su un conto cena finale di almeno 50 €; valido solo previa conferma del ristorante. '
           + 'Non cumulare con altri sconti.';
       }
