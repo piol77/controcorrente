@@ -179,30 +179,33 @@
         }
       },
       {
-        "name": "Tagliatelle carciofi e orata",
-        "price": 14,
-        "description": "Tagliatelle condite con carciofi teneri e delicati bocconcini di orata, in un incontro di sapori di mare e di stagione.",
+        "name": "Tagliatelle ai funghi misti, mascarpone e noci",
+        "price": 12.5,
+        "description": "Funghi misti e mascarpone avvolgono le tagliatelle, completate dalla croccantezza delle noci.",
         "allergens": [
           1,
-          4
+          3,
+          7,
+          8
         ],
-        "icon": "Fish",
-        "dishPhoto": "cena-assets/tagliatelle-carciofi-orata-20261031.svg",
+        "icon": "Wheat",
+        "dishPhoto": "pranzo-assets/tagliatelle-funghi-mascarpone-noci-20261104.webp",
         "translations": {
           "en": {
-            "name": "Tagliatelle with artichokes and sea bream",
-            "description": "Tagliatelle with tender artichokes and delicate pieces of sea bream, bringing together flavours of the sea and the season."
+            "name": "Tagliatelle with mixed mushrooms, mascarpone and walnuts",
+            "description": "Mixed mushrooms and creamy mascarpone dress the tagliatelle, finished with crunchy walnuts."
           },
           "zh": {
-            "name": "朝鲜蓟金头鲷宽面",
-            "description": "柔嫩朝鲜蓟与细腻金头鲷鱼肉拌入宽面，融合海洋鲜味与时令清香。"
+            "name": "什锦蘑菇马斯卡彭奶酪核桃宽面",
+            "description": "什锦蘑菇与马斯卡彭奶酪包裹宽面，撒上香脆核桃。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustrative food photograph optimized for website",
-          "date": "2026-10-31",
-          "tool": "image_gen",
-          "note": "Reconstructed realistic tagliatelle with artichokes and sea bream, with the approved ivory plate, dark navy tabletop, warm light and close-up framing. Self-contained SVG embedding a 1200x800 WebP for reliable website delivery; illustrative, not a restaurant photograph."
+          "type": "AI-generated food illustration, website-optimized preview",
+          "date": "2026-11-04",
+          "tool": "image_gen / Canva media preview",
+          "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
+          "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
         }
       },
       {
