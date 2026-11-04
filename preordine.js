@@ -376,10 +376,15 @@
             + '\nLa richiesta non è stata inviata: correggi o elimina il codice dalle note.');
           return;
         }
-        promoLine = '*Radio Premi: ' + promoCode + ' · riferimento ' + promoReference
-          + ' · RISERVA PROVVISORIA (24 ore)*\n'
-          + 'Sconto 5 € su un conto cena finale di almeno 50 €; valido solo previa conferma del ristorante. '
-          + 'Non cumulare con altri sconti.';
+        promoLine = result.test === true
+          ? '*SOLO PROVA RADIO PREMI · ' + promoCode + ' · riferimento ' + promoReference
+            + ' · RISERVA DI TEST (24 ore)*\n'
+            + 'SIMULAZIONE TECNICA: NESSUNO SCONTO REALE, NON APPLICARE 5 EURO. '
+            + 'Questa prova serve a verificare il blocco della seconda richiesta.'
+          : '*Radio Premi: ' + promoCode + ' · riferimento ' + promoReference
+            + ' · RISERVA PROVVISORIA (24 ore)*\n'
+            + 'Sconto 5 € su un conto cena finale di almeno 50 €; valido solo previa conferma del ristorante. '
+            + 'Non cumulare con altri sconti.';
       }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
         '*Nome e cognome: ' + data.get('nome') + '*',
