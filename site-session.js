@@ -490,9 +490,10 @@
     return;
   }
 
-  // Dati dello stesso server Icecast dello stream audio (mount /play).
-  const statusUrl = 'https://newhitsradio.streamingmedia.it/status-json.xsl';
-  const statusHtmlUrl = 'https://newhitsradio.streamingmedia.it/status.xsl';
+  // L'API pubblica laut.fm espone brano e artista dello stesso palinsesto radio.
+  // Verifica sullo stream /play: "Dolcenera - Epopea" coincideva con l'API.
+  // Non modificare stream audio, pulsante, volume o navigazione.
+  const currentSongUrl = 'https://api.laut.fm/station/newhitsradio_italy/current_song';
   let activeTicker = ticker;
   let activeButton = radioButton;
   let currentLabel = '♪ Brano in aggiornamento…';
@@ -504,7 +505,7 @@
   function writeLabel() {
     const target = activeTicker.querySelector('.cc-nowplaying-text');
     if (!target || target.textContent === currentLabel) return;
-    target.textContent = currentLabel; // Mai inserire HTML proveniente dallo stream.
+    target.textContent = currentLabel;
     target.style.animation = 'none';
     void target.offsetWidth;
     target.style.animation = '';
@@ -513,80 +514,39 @@
     currentLabel = value;
     if (playing) writeLabel();
   }
-  function cleanTitle(value) {
-    if (typeof value !== 'string') return null;
-    const title = value.replace(/\s+/g, ' ').trim().slice(0, 180);
-    return title && !/^(?:new hits radio(?: italia)?|unknown|none|n\/a)$/i.test(title) ? title : null;
-  }
-  function extractJsonTitle(data) {
-    const raw = data && data.icestats && data.icestats.source;
-    const sources = Array.isArray(raw) ? raw : raw ? [raw] : [];
-    const source = sources.find(item => item && /\/play(?:\/|\?.*)?$/i.test(String(item.listenurl || ''))) ||
-      sources.find(item => item && /new hits radio/i.test(String(item.server_name || ''))) ||
-      (sources.length === 1 ? sources[0] : null);
-    if (!source) return null;
-    return cleanTitle(source.title) || cleanTitle(source.songtitle) ||
-      cleanTitle(source.artist && source.song ? source.artist + ' - ' + source.song : source.song);
-  }
-  function extractHtmlTitle(html) {
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    const candidates = [];
-    for (const row of doc.querySelectorAll('tr')) {
-      const cells = row.querySelectorAll('td, th');
-      if (cells.length < 2 || !/current song\s*:/i.test(cells[0].textContent || '')) continue;
-      const song = cleanTitle(cells[cells.length - 1].textContent);
-      if (song) candidates.push(song);
-    }
-    // Icecast elenca prima /flat (spesso vuoto) e poi /play.
-    return candidates.length ? candidates[candidates.length - 1] : null;
+  function songFromApi(data) {
+    if (!data || typeof data !== 'object') return null;
+    const artist = data.artist && typeof data.artist.name === 'string'
+      ? data.artist.name : '';
+    const title = typeof data.title === 'string' ? data.title : '';
+    const clean = (artist && title ? artist + ' - ' + title : title)
+      .replace(/\s+/g, ' ').trim().slice(0, 180);
+    return clean && !/^(?:new hits radio(?: italia)?|unknown|none|n\/a)$/i.test(clean)
+      ? clean : null;
   }
   async function refresh() {
     if (!playing || inFlight) return;
     inFlight = true;
-    const sessionController = new AbortController();
-    controller = sessionController;
-    let track = null;
-    const stamp = Date.now();
-    const directJson = statusUrl + '?t=' + stamp;
-    const proxyHtml = 'https://proxy.cors.dev/' + statusHtmlUrl + '?t=' + stamp;
-    const backupHtml = 'https://api.allorigins.win/raw?url=' +
-      encodeURIComponent(statusHtmlUrl + '?t=' + stamp);
-    const proxyJson = 'https://proxy.cors.dev/' + directJson;
-    // HTML: il server espone Current Song anche quando il JSON non è leggibile.
-    const attempts = [
-      {url:proxyHtml, format:'html'},
-      {url:directJson, format:'json'},
-      {url:proxyJson, format:'json'},
-      {url:backupHtml, format:'html'}
-    ];
+    const requestController = new AbortController();
+    controller = requestController;
+    const timeout = window.setTimeout(() => requestController.abort(), 9000);
     try {
-      for (const item of attempts) {
-        if (!playing || sessionController.signal.aborted) break;
-        const attemptController = new AbortController();
-        const onCancel = () => attemptController.abort();
-        sessionController.signal.addEventListener('abort', onCancel, {once:true});
-        const timeout = window.setTimeout(onCancel, 5500);
-        try {
-          const response = await fetch(item.url, {
-            cache:'no-store', credentials:'omit', signal:attemptController.signal
-          });
-          if (!response.ok) continue;
-          track = item.format === 'html' ? extractHtmlTitle(await response.text()) :
-            extractJsonTitle(await response.json());
-          if (track) break;
-        } catch (_) {
-          // Prova un altro percorso per il medesimo flusso Icecast.
-        } finally {
-          window.clearTimeout(timeout);
-          sessionController.signal.removeEventListener('abort', onCancel);
-        }
+      const response = await fetch(currentSongUrl + '?t=' + Date.now(), {
+        cache:'no-store', credentials:'omit', signal:requestController.signal
+      });
+      if (!response.ok) throw new Error('Metadata LAUT.fm non disponibili');
+      const song = songFromApi(await response.json());
+      if (playing && !requestController.signal.aborted) {
+        setLabel(song ? '♪ ' + song + ' · NEW HITS RADIO' :
+          '♪ Brano in aggiornamento · NEW HITS RADIO');
       }
-      if (playing && !sessionController.signal.aborted) {
-        setLabel(track ? '♪ ' + track + ' · NEW HITS RADIO' :
-          '♪ Dati brano temporaneamente non accessibili · NEW HITS RADIO');
+    } catch (_) {
+      if (playing && !requestController.signal.aborted) {
+        setLabel('♪ Dati brano temporaneamente non accessibili · NEW HITS RADIO');
       }
     } finally {
-      if (controller === sessionController) controller = null;
+      window.clearTimeout(timeout);
+      if (controller === requestController) controller = null;
       inFlight = false;
     }
   }
