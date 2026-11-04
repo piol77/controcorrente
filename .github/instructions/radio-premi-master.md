@@ -1,29 +1,20 @@
-# Controcorrente — Radio Premi (specifica tecnica, NON ATTIVA)
+# Controcorrente — Radio Premi, implementazione Supabase (5 novembre 2026)
 
-Stato al 4 novembre 2026: **solo preparazione dell'interfaccia pubblica**. Non esiste ancora un backend privato per i riscatti e NON si devono annunciare codici promozionali realmente utilizzabili.
+**STATO OPERATIVO: SOSPESO.** Il sistema è predisposto; si attiva esclusivamente con l'accesso amministrativo dopo registrazione/conferma email e test finale manuale. Non attivare senza titolare.
 
-## Regole approvate
-- Un codice alfanumerico casuale di **cinque caratteri**, senza caratteri ambigui 0/O, 1/I; un nuovo codice ogni giorno nel fuso Europe/Rome. Non riutilizzare mai i codici già emessi.
-- Annunciare ciascun codice **due volte al giorno** in momenti casuali, mantenendo separato il jingle identificativo ricorrente (attualmente ogni due minuti), senza doppioni nei cambi pagina e senza promettere orari fissi.
-- Concedere **5 € di sconto** su **un'unica cena dal conto complessivo di almeno 50 €**, qualunque sia il numero delle persone. Valore minimo al lordo dello sconto, importo effettivo verificato alla chiusura del conto.
-- Codice valido se inserito **una sola volta nel campo "Allergie e altre note" nel riepilogo di preordine sul sito** entro 7 giorni esatti dall'emissione. Non valgono codici comunicati con una prenotazione avviata direttamente in chat o per telefono; il giorno della cena può essere successivo alla prenotazione, purché il diritto sia stato ottenuto da una prenotazione completa e valida nel periodo.
-- Primo cliente con richiesta di prenotazione valida correttamente ricevuta, con codice corretto, vince il diritto condizionato a conferma della prenotazione e raggiungimento di almeno 50 € di conto finale. Una sola applicazione per codice e una per prenotazione; non cumulabile con altri sconti/promozioni. Gestire liberazione della prenotazione annullata e condizioni di decadenza, senza assegnare simultaneamente il diritto a due clienti.
-- Nel **Club pubblico** mostrare i codici già usati e scaduti, con data/ora di emissione, scadenza e stato; mai dati personali, contatti, prenotazioni, token o codici non ancora pronunciati alla radio. Fonte pubblica: `radio-premi-public.json`, sola copia depurata dal backend e senza credenziali.
-- **Gestione riservata al titolare**: stato completo, data/ora di emissione, primi due annunci, prima richiesta valida, ID prenotazione, conferma o annullamento, chiusura del conto, data utilizzo. Accesso autenticato al backend, mai una semplice pagina `noindex`, link nascosto o un file dentro il repository pubblico.
-- Attenzione: il programma Club punti corrente usa pagine HTML non indicizzate ma pubblicamente accessibili a chi conosce il link. Tale sistema NON è sufficiente per proteggere emissioni, premi riscattabili e privilegi di amministrazione.
+## Architettura reale
+- Progetto Supabase `lgjijnhhnjioiyvfmkvy`, regione eu-west-1. Schema Postgres privato `radio_premi`: tabelle `settings`, `admins`, `codes`, `claim_events`, `attempts`. RLS senza policy pubbliche, permessi negati a `anon` e `authenticated`. RPC `public.radio_reward_status`, `public.radio_reward_claim`, `public.radio_reward_admin` eseguibili soltanto da `service_role` dentro Edge Function server.
+- Edge `https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi`: GET stato/griglia pubblica e on-air; POST `action=claim` riserva atomica prima prenotazione; POST `action=admin` effettua login Auth validato e controllo lista privata admin per attivare/disattivare, confermare, usare o liberare. Nessuna service key sul sito. Il token di gestione viene mantenuto solo in sessionStorage dal pannello amministrativo.
+- `pg_cron` job `cc_radio_premi_daily_tick_v1` ogni 5 minuti; se promo attiva genera una sola volta al giorno tra le 08 e le 17 in fuso Europe/Rome con algoritmo crittografico, altrimenti solo pulizia scadenze/riserve. Codici random di 5 caratteri senza 0/O/1/I; indice unico su `issue_day`, primary key su `code`.
+- Due finestre casuali al giorno 10:00–12:59 e 17:00–19:59 nel fuso Europe/Rome. Per 4 minuti da ciascun orario l'API restituisce `on_air` soltanto se premio ancora disponibile; il jingle ordinario ogni 2 minuti, durante la finestra e se radio in riproduzione, lo sostituisce con la pronuncia del codice. È un annuncio per ascoltatore/browser, non una trasmissione inserita nel feed della radio esterna. Non garantire due annunci globali quando nessuno ha attivato il player.
+- Il codice scade **sette giorni esatti** dopo emissione; controllo su tempo server al riscatto, stati pubblici usato/scaduto. La prenotazione deve essere **di cena**, avviata dal modulo del sito, con codice nelle **note** dell'ordine; l'invio apre WhatsApp. Prima di aprire WhatsApp il modulo crea una **riserva provvisoria di 24 ore** con riferimento UUID; in caso di mancato invio o mancata conferma, la riserva si libera. Il conto finale di cena deve essere almeno **50 € prima dello sconto**, indipendentemente dai commensali; il titolare conferma e registra **5 € di sconto** solo alla chiusura del conto. Non cumulabile. Il titolare può liberare una prenotazione annullata.
+- Gestione titolare in `radio-premi-gestione.html`, **senza link di navigazione pubblica** ma autenticata tramite Supabase Auth + password. Prima registrazione con la stessa email dell'organizzazione proprietaria di Supabase; dopo conferma email accedere e premere «Attiva promozione». Elenco riservato di emissioni, due orari, date/scadenze, riserve, reference e importi. Se richiede modifica delle impostazioni di redirect delle email Auth, configurarle da pannello Supabase senza mai inviare password/chiavi.
+- Club pubblico `club.html`: sezione illustrativa con regole e griglia dei codici **usati o scaduti**, `radio-premi.js` legge l'Edge GET. Il file `radio-premi-public.json` è un antico segnaposto statico e non deve diventare una fonte alternativa di verità.
 
-## Architettura necessaria per l'attivazione
-1. Database privato con vincoli univoci, autenticazione per il titolare, permessi di sola lettura per lo stato pubblico, funzioni server di generazione e riscatto **atomico**.
-2. Timer server affidabile per una emissione al giorno e una pianificazione persistente di due annunci casuali/die. Se l'ascoltatore non ha la radio accesa durante l'annuncio, non compensare con annunci extra che superino due emissioni giornaliere nel sistema centrale.
-3. API pubblica che restituisca esclusivamente informazioni sicure (per esempio, codice annunciato e non ancora usato per poterlo leggere nel jingle, ma non prima del relativo orario; e registro dei soli codici già usati/scaduti).
-4. Verifica del codice dalle note nel riepilogo preordine; il sito oggi compone solo un link WhatsApp e non sa se il cliente abbia effettivamente inviato il messaggio. Non contrassegnare come usato definitivamente al clic su "Apri WhatsApp". Distinguere richiesta, prenotazione confermata e sconto effettivamente riconosciuto.
-5. Il risponditore WhatsApp locale richiede integrazione separata o conferma amministrativa tramite API protetta, così l'assegnazione del codice segue un evento verificabile.
-6. Workflow di sincronizzazione dello stato pubblico e aggiornamento Pages quando mutano i codici, senza informazioni segrete su GitHub Pages.
-7. In caso di backend irraggiungibile non emettere, pronunciare o promettere codici validi. Con errori del registro non dare conferme false.
-
-## File preparati
-- `club.html`: sezione Radio Premi, regole e griglia dei codici conclusi.
-- `radio-premi.js`: vista pubblica, fetch e rendering senza funzioni di scrittura.
-- `radio-premi-public.json`: archivio pubblico inizialmente vuoto, `active=false`.
-
-**Non attivare** l'offerta fino a collegamento sicuro del backend e test di doppio riscatto simultaneo, scadenza a sette giorni, riavvio e prenotazione via sito/WhatsApp.
+## Verifiche e limiti
+- Test DB in transazione con rollback: un primo claim ottiene riserva, il secondo diverso fallisce, ripetizione idempotente della prima riesce; dopo rollback nessun codice o tentativo di prova persistito.
+- Test HTTP Edge GET 200 `active:false`, `records:[]`, `on_air:null`; POST claim con promo sospesa riceve `reason:inactive`.
+- Cron verificato attivo ogni 5 minuti. Sicurezza database: advisor RLS no policy su tabelle private; è intenzionale. Consultare i log in caso di errori Edge.
+- **Non è stata ancora verificata la sequenza completa con una prenotazione WhatsApp reale e la registrazione account titolare.** La promozione va lasciata disattivata finché non sono completate queste verifiche.
+- Browser SpeechSynthesis dipende dalla disponibilità di una voce italiana e dalle policy del dispositivo; nessuna garanzia su audio in background. L'emittente esterna non riceve i nostri annunci.
+- In caso di connessione API non disponibile, il client non promette codici e non avvia il preordine con codice: deve dare errore e conservare i dati. I segreti di accesso al database non devono mai stare su GitHub Pages. Salvare solo la publishable key pubblica necessaria alla login Auth.
