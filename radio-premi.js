@@ -1,6 +1,6 @@
 /* Controcorrente Radio Premi — sola vista pubblica.
  * Nessuna generazione, modifica o convalida di voucher nel browser.
- * L'archivio pubblico contiene SOLO codici riscattati/scaduti.
+ * Il registro pubblico mostra i soli codici non disponibili: riservati, confermati, usati, scaduti o annullati.
  */
 (() => {
   'use strict';
@@ -19,7 +19,7 @@
   };
   const onlyPublic = item => item && typeof item === 'object' &&
     /^[A-HJ-NP-Z2-9]{5}$/.test(item.code) &&
-    (item.status === 'used' || item.status === 'expired');
+    ['held','confirmed','used','expired','void'].includes(item.status);
   async function refresh() {
     let data;
     try {
@@ -47,7 +47,7 @@
       const tr = document.createElement('tr');
       const td = document.createElement('td');
       td.colSpan = 4;
-      td.textContent = 'Nessun codice riscattato o scaduto.';
+      td.textContent = 'Nessun codice ancora riservato, utilizzato o scaduto.';
       tr.appendChild(td);
       body.appendChild(tr);
       return;
@@ -55,7 +55,7 @@
     for (const item of valid) {
       const tr = document.createElement('tr');
       const vals = [item.code, stamp(item.issued_at), stamp(item.expires_at),
-        item.status === 'used' ? 'Già utilizzato' : 'Scaduto'];
+        ({held:'Riservato (24 ore)',confirmed:'Prenotazione confermata',used:'Già utilizzato',expired:'Scaduto',void:'Annullato'})[item.status]];
       vals.forEach((value,i) => {
         const td = document.createElement('td');
         td.textContent = value;
