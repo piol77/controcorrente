@@ -22,12 +22,12 @@
   async function refresh() {
     let data;
     try {
-      const response = await fetch(new URL('radio-premi-public.json', location.href), {
+      const response = await fetch('https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi', {
         cache:'no-store', credentials:'omit'
       });
       if (!response.ok) throw new Error('No public ledger');
       data = await response.json();
-      if (!data || data.version !== 1 || !Array.isArray(data.records)) throw new Error('Invalid ledger');
+      if (!data || typeof data.active !== 'boolean' || !Array.isArray(data.records)) throw new Error('Invalid ledger');
     } catch (_) {
       status.textContent = 'Stato temporaneamente non disponibile. Non si possono verificare premi.';
       updated.textContent = 'Ultimo controllo non disponibile';
@@ -36,8 +36,7 @@
     status.textContent = data.active
       ? 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.'
       : 'Promozione in preparazione: nessun codice è ancora riscattabile.';
-    updated.textContent = data.updated_at ? 'Registro aggiornato: ' + stamp(data.updated_at)
-      : 'Nessun codice ancora emesso';
+    updated.textContent = 'Registro verificato: ' + stamp(data.server_time);
     body.replaceChildren();
     const valid = data.records.filter(onlyPublic).slice()
       .sort((a,b) => String(b.issued_at || '').localeCompare(String(a.issued_at || '')))
