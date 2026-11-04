@@ -9,6 +9,7 @@
   const status = root.querySelector('[data-radio-premi-status]');
   const body = root.querySelector('[data-radio-premi-rows]');
   const updated = root.querySelector('[data-radio-premi-updated]');
+  const inactiveNote = root.querySelector('[data-radio-premi-inactive]');
   const stamp = value => {
     const d = new Date(value);
     return Number.isFinite(d.getTime()) ? new Intl.DateTimeFormat('it-IT',{
@@ -33,6 +34,7 @@
       updated.textContent = 'Ultimo controllo non disponibile';
       return;
     }
+    if (inactiveNote) inactiveNote.hidden = data.active;
     status.textContent = data.active
       ? 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.'
       : 'Promozione in preparazione: nessun codice è ancora riscattabile.';
