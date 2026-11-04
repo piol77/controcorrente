@@ -325,6 +325,62 @@
       if (requestedDay === todayInRome() && ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60))) {
         window.alert('Stai inviando la richiesta per oggi dopo le ' + (isLunch() ? '12:00' : '18:00') + '. Attendi la conferma specifica del Ristorante.');
       }
+      // Radio Premi: l'utente inserisce il codice nelle note del preordine.
+      // Il backend concede solo una riserva temporanea, non uno sconto confermato.
+      const suppliedNotes = String(data.get('note') || '');
+      const promoMatch = suppliedNotes.match(/(?:^|[\s,;])(?:codice|radio|sconto|premio)\s*[:#-]?\s*([A-HJ-NP-Z2-9]{5})\b/i)
+        || suppliedNotes.match(/^\s*([A-HJ-NP-Z2-9]{5})\s*$/i);
+      const promoCode = promoMatch ? promoMatch[1].toUpperCase() : null;
+      let promoLine = null;
+      if (promoCode) {
+        if (!dinnerTime) {
+          window.alert('Il codice Radio Premi è valido soltanto per prenotazioni di cena. La richiesta non è stata inviata.');
+          return;
+        }
+        const promoReference = (window.crypto && typeof window.crypto.randomUUID === 'function')
+          ? window.crypto.randomUUID() : null;
+        if (!promoReference) {
+          window.alert('Non è possibile verificare il codice in questo browser. La richiesta non è stata inviata.');
+          return;
+        }
+        let result;
+        try {
+          const response = await fetch('https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi', {
+            method: 'POST',
+            mode: 'cors',
+            cache: 'no-store',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+              action: 'claim', code: promoCode, ref: promoReference,
+              day: requestedDay, time: requestedTime,
+              subtotal: Object.values(cart).reduce((sum,item) => sum
+                + (item && Number.isFinite(item.price) && Number.isInteger(item.qty)
+                  ? item.price * item.qty : 0), 0)
+            })
+          });
+          if (!response.ok) throw new Error('Radio Premi server unavailable');
+          result = await response.json();
+        } catch (_) {
+          window.alert('Non è possibile verificare il codice Radio Premi. La prenotazione non è stata inviata. Riprova più tardi.');
+          return;
+        }
+        if (!result || !result.ok) {
+          const reasons = {
+            inactive: 'La promozione Radio Premi non è ancora attiva.',
+            unavailable: 'Codice non valido, scaduto o già occupato da un altro cliente.',
+            rate_limited: 'Troppi tentativi. Riprova più tardi.',
+            dinner_only: 'Il premio si applica esclusivamente a una cena valida.',
+            invalid: 'Il codice non è valido.'
+          };
+          window.alert((reasons[result && result.reason] || 'Codice non disponibile.')
+            + '\nLa richiesta non è stata inviata: correggi o elimina il codice dalle note.');
+          return;
+        }
+        promoLine = '*Radio Premi: ' + promoCode + ' · riferimento ' + promoReference
+          + ' · RISERVA PROVVISORIA (20 minuti)*\n'
+          + 'Sconto 5 € su un conto cena finale di almeno 50 €; valido solo previa conferma del ristorante. '
+          + 'Non cumulare con altri sconti.';
+      }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
         '*Nome e cognome: ' + data.get('nome') + '*',
         '*Persone: ' + data.get('persone') + '*',
@@ -333,6 +389,7 @@
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
         'Giorno: ' + requestDate(requestedDay),
         '*Allergie / note: ' + String(data.get('note') || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
+        ...(promoLine ? [promoLine, ''] : []),
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const encodedMessage = encodeURIComponent(lines.join('\n'));
       const webWhatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodedMessage;
