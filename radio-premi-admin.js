@@ -74,14 +74,17 @@
   }
   document.querySelector('[data-premi-signin]').addEventListener('submit',async e=>{
     e.preventDefault();
-    const form=new FormData(e.currentTarget);
+    // Conserva il riferimento prima dell'await: dopo la callback
+    // event.currentTarget torna null, anche se il login è riuscito.
+    const formElement = e.currentTarget;
+    const form=new FormData(formElement);
     try{
       const data=await authRequest('token?grant_type=password',{
         email:String(form.get('email')),password:String(form.get('password'))
       });
       if(!data.access_token)throw new Error('Nessuna sessione ricevuta');
       accessToken=data.access_token;sessionStorage.setItem(tokenKey,accessToken);
-      e.currentTarget.reset(); await refresh();
+      formElement.reset(); await refresh();
     }catch(err){display(err instanceof Error?err.message:'Accesso fallito');}
   });
   document.querySelector('[data-premi-signup]').addEventListener('click',async()=>{
