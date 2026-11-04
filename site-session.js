@@ -270,7 +270,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://stream.laut.fm/newhitsradio_italy';
+      audio.src = 'https://tophits.radiomonster.fm/ultra';
     }
     try {
       const result = audio.play();
@@ -584,7 +584,7 @@
   ticker.setAttribute('aria-live', 'off');
   const tickerText = document.createElement('span');
   tickerText.className = 'cc-nowplaying-text';
-  tickerText.textContent = '♪ NEW HITS RADIO Italia · 320 kbps · Hit di oggi';
+  tickerText.textContent = '♪ RadioMonster.FM Tophits · 320 kbps · Hit di oggi';
   ticker.appendChild(tickerText);
   radioButton.insertAdjacentElement('afterend', ticker);
 
@@ -597,10 +597,15 @@
     return;
   }
 
-  // La radio scelta usa LAUT.fm: stream e API provengono dalla medesima stazione.
-  // Titoli reali, nessuna attribuzione inventata quando la fonte non risponde.
-  const currentSongUrl = 'https://api.laut.fm/station/newhitsradio_italy/current_song';
-  const stationLabel = '♪ NEW HITS RADIO Italia · 320 kbps · Hit di oggi';
+  // RadioMonster.FM Tophits (stream MP3 Ultra 320 kbps).
+  // Titoli: tentativi sui dati pubblici dello stesso broadcaster, mai dati di un'altra radio.
+  // Le API Icecast/AzuraCast non sono garantite accessibili dal browser (CORS).
+  const songEndpoints = [
+    'https://ic.radiomonster.fm/api/nowplaying/tophits',
+    'https://ic.radiomonster.fm/status-json.xsl',
+    'https://tophits.radiomonster.fm/status-json.xsl'
+  ];
+  const stationLabel = '♪ RadioMonster.FM Tophits · 320 kbps · Hit di oggi';
   let activeTicker = ticker;
   let activeButton = radioButton;
   let currentLabel = stationLabel;
@@ -608,6 +613,7 @@
   let interval = null;
   let controller = null;
   let inFlight = false;
+  let workingEndpoint = -1;
 
   function writeLabel() {
     const target = activeTicker.querySelector('.cc-nowplaying-text');
@@ -623,33 +629,65 @@
   }
   function songFromApi(data) {
     if (!data || typeof data !== 'object') return null;
-    const artist = typeof data.artist === 'string' ? data.artist
-      : data.artist && typeof data.artist.name === 'string' ? data.artist.name : '';
-    const title = typeof data.title === 'string' ? data.title : '';
-    const clean = (artist && title ? artist + ' - ' + title : title)
-      .replace(/\s+/g, ' ').trim().slice(0, 180);
-    return clean && !/^(?:new hits radio(?: italia)?|unknown|none|n\/a|live)$/i.test(clean)
+    // AzuraCast now-playing shape.
+    if (data.now_playing && data.now_playing.song) {
+      const song = data.now_playing.song;
+      const full = typeof song.text === 'string' ? song.text
+        : [song.artist, song.title].filter(Boolean).join(' - ');
+      return cleanSong(full);
+    }
+    // Icecast /status-json.xsl shape; require the matching Tophits mount.
+    if (data.icestats && data.icestats.source) {
+      const all = Array.isArray(data.icestats.source) ? data.icestats.source
+        : [data.icestats.source];
+      const source = all.find(item => item && /tophits/i.test([
+        item.listenurl, item.server_name, item.mount, item.server_description
+      ].filter(Boolean).join(' '))) || (all.length === 1 ? all[0] : null);
+      return source ? cleanSong(source.title || source.streamtitle) : null;
+    }
+    return null;
+  }
+  function cleanSong(value) {
+    if (typeof value !== 'string') return null;
+    const clean = value.replace(/\s+/g, ' ').trim().slice(0, 180);
+    return clean && !/^(?:radiomonster(?:\.fm)?(?:\s*-\s*tophits)?|tophits|unknown|none|n\/a|live)$/i.test(clean)
       ? clean : null;
+  }
+  async function tryEndpoint(url) {
+    const requestController = new AbortController();
+    controller = requestController;
+    const timeout = window.setTimeout(() => requestController.abort(), 4000);
+    try {
+      const response = await fetch(url + '?t=' + Date.now(), {
+        cache:'no-store', credentials:'omit', signal:requestController.signal
+      });
+      if (!response.ok) throw new Error('No metadata');
+      return songFromApi(await response.json());
+    } finally {
+      window.clearTimeout(timeout);
+      if (controller === requestController) controller = null;
+    }
   }
   async function refresh() {
     if (!playing || inFlight) return;
     inFlight = true;
-    const requestController = new AbortController();
-    controller = requestController;
-    const timeout = window.setTimeout(() => requestController.abort(), 9000);
+    let song = null;
     try {
-      const response = await fetch(currentSongUrl + '?t=' + Date.now(), {
-        cache: 'no-store', credentials: 'omit', signal: requestController.signal
-      });
-      if (!response.ok) throw new Error('Metadati LAUT.fm non disponibili');
-      const song = songFromApi(await response.json());
-      if (playing && !requestController.signal.aborted)
-        setLabel(song ? '♪ ' + song + ' · NEW HITS RADIO' : stationLabel);
-    } catch (_) {
-      if (playing && !requestController.signal.aborted) setLabel(stationLabel);
+      const indices = workingEndpoint >= 0
+        ? [workingEndpoint, ...songEndpoints.map((_, i) => i).filter(i => i !== workingEndpoint)]
+        : songEndpoints.map((_, i) => i);
+      for (const i of indices) {
+        if (!playing) break;
+        try {
+          song = await tryEndpoint(songEndpoints[i]);
+          if (song) { workingEndpoint = i; break; }
+        } catch (_) {
+          if (workingEndpoint === i) workingEndpoint = -1;
+        }
+      }
+      if (playing) setLabel(song ? '♪ ' + song + ' · RadioMonster.FM Tophits'
+        : stationLabel);
     } finally {
-      window.clearTimeout(timeout);
-      if (controller === requestController) controller = null;
       inFlight = false;
     }
   }
@@ -669,7 +707,7 @@
     if (!playing) {
       playing = true;
       refresh();
-      interval = window.setInterval(refresh, 25000);
+      interval = window.setInterval(refresh, 30000);
     }
   }
   const observer = new MutationObserver(sync);
