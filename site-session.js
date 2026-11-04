@@ -152,7 +152,7 @@
   // Annuncio vocale automatico ogni 2 minuti di ascolto, senza comandi dedicati.
   // Unicamente il documento proprietario del lettore gestisce il jingle.
   const JINGLE_INTERVAL_MS = 2 * 60 * 1000;
-  const JINGLE_TEXT = 'Questa è la radio di Controcorrente, a Torino. Buon ascolto!';
+  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente. Qui il ritmo è sempre quello giusto.';
   let jingleTimer = null;
   let jingleFadeTimer = null;
   let jingleWatchdog = null;
@@ -270,7 +270,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://stream.radioabf.com/abf2-hd.mp3';
+      audio.src = 'https://stream.laut.fm/newhitsradio_italy';
     }
     try {
       const result = audio.play();
@@ -584,7 +584,7 @@
   ticker.setAttribute('aria-live', 'off');
   const tickerText = document.createElement('span');
   tickerText.className = 'cc-nowplaying-text';
-  tickerText.textContent = '♪ ABF 2 · Pop, rock e hit di oggi · MP3 320 kbps';
+  tickerText.textContent = '♪ NEW HITS RADIO Italia · 320 kbps · Hit di oggi';
   ticker.appendChild(tickerText);
   radioButton.insertAdjacentElement('afterend', ticker);
 
@@ -597,10 +597,10 @@
     return;
   }
 
-  // ABF 2 HD 320 kbps. Tentativo best-effort Icecast; nessun titolo
-  // viene attribuito alla nuova emittente usando dati della vecchia.
-  const currentSongUrl = 'https://stream.radioabf.com/status-json.xsl';
-  const stationLabel = '♪ ABF 2 · Pop, rock e hit di oggi · MP3 320 kbps';
+  // La radio scelta usa LAUT.fm: stream e API provengono dalla medesima stazione.
+  // Titoli reali, nessuna attribuzione inventata quando la fonte non risponde.
+  const currentSongUrl = 'https://api.laut.fm/station/newhitsradio_italy/current_song';
+  const stationLabel = '♪ NEW HITS RADIO Italia · 320 kbps · Hit di oggi';
   let activeTicker = ticker;
   let activeButton = radioButton;
   let currentLabel = stationLabel;
@@ -622,18 +622,14 @@
     if (playing) writeLabel();
   }
   function songFromApi(data) {
-    if (!data || !data.icestats || !data.icestats.source) return null;
-    const sources = Array.isArray(data.icestats.source)
-      ? data.icestats.source : [data.icestats.source];
-    const source = sources.find(item => {
-      if (!item || typeof item !== 'object') return false;
-      return /abf[-_ ]?2/i.test([item.listenurl, item.server_name, item.server_description, item.mount].filter(Boolean).join(' '));
-    });
-    if (!source) return null;
-    const title = typeof source.title === 'string' ? source.title :
-      typeof source.streamtitle === 'string' ? source.streamtitle : '';
-    const clean = title.replace(/\s+/g, ' ').trim().slice(0, 180);
-    return clean && !/^(?:abf[-_ ]?2|unknown|none|n\/a|live)$/i.test(clean) ? clean : null;
+    if (!data || typeof data !== 'object') return null;
+    const artist = typeof data.artist === 'string' ? data.artist
+      : data.artist && typeof data.artist.name === 'string' ? data.artist.name : '';
+    const title = typeof data.title === 'string' ? data.title : '';
+    const clean = (artist && title ? artist + ' - ' + title : title)
+      .replace(/\s+/g, ' ').trim().slice(0, 180);
+    return clean && !/^(?:new hits radio(?: italia)?|unknown|none|n\/a|live)$/i.test(clean)
+      ? clean : null;
   }
   async function refresh() {
     if (!playing || inFlight) return;
@@ -645,11 +641,10 @@
       const response = await fetch(currentSongUrl + '?t=' + Date.now(), {
         cache: 'no-store', credentials: 'omit', signal: requestController.signal
       });
-      if (!response.ok) throw new Error('Metadati ABF 2 non disponibili');
+      if (!response.ok) throw new Error('Metadati LAUT.fm non disponibili');
       const song = songFromApi(await response.json());
-      if (playing && !requestController.signal.aborted) {
-        setLabel(song ? '♪ ' + song + ' · ABF 2' : stationLabel);
-      }
+      if (playing && !requestController.signal.aborted)
+        setLabel(song ? '♪ ' + song + ' · NEW HITS RADIO' : stationLabel);
     } catch (_) {
       if (playing && !requestController.signal.aborted) setLabel(stationLabel);
     } finally {
@@ -674,7 +669,7 @@
     if (!playing) {
       playing = true;
       refresh();
-      interval = window.setInterval(refresh, 30000);
+      interval = window.setInterval(refresh, 25000);
     }
   }
   const observer = new MutationObserver(sync);
