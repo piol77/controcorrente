@@ -189,7 +189,7 @@
           8
         ],
         "icon": "Wheat",
-        "dishPhoto": "pranzo-assets/tagliatelle-funghi-mascarpone-noci-20261104.webp",
+        "dishPhoto": "cena-assets/tagliatelle-funghi-mascarpone-noci-20261104-hd.png",
         "translations": {
           "en": {
             "name": "Tagliatelle with mixed mushrooms, mascarpone and walnuts",
@@ -201,11 +201,11 @@
           }
         },
         "photoSource": {
-          "type": "AI-generated food illustration, website-optimized preview",
+          "type": "AI-generated illustrative food image",
           "date": "2026-11-04",
-          "tool": "image_gen / Canva media preview",
-          "resolution": "1200x900 pixels (upscaled from 200x150 preview)",
-          "note": "Piatto illustrato con gli ingredienti richiesti, sfondo uniforme in ceramica avorio e legno scuro. Il file pubblicato è una versione ingrandita della miniatura, non la versione HD originale né una foto del piatto reale."
+          "tool": "image_gen",
+          "resolution": "1448x1086",
+          "note": "Sfondo blu navy uniforme, piatto avorio, luce calda e impiattamento coerenti con il master cena. Fotografia illustrativa generata in HD."
         }
       },
       {
