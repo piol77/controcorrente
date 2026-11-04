@@ -107,6 +107,7 @@
     if(!operation)return;
     if(operation==='activate'&&!confirm('Attivare gli sconti Radio Premi automatici?'))return;
     if(operation==='use'&&!confirm('Il conto finale della cena è almeno 50 €? Segnare questo codice utilizzato definitivamente?'))return;
+    if(operation==='release'&&!confirm('ANNULLARE PER SEMPRE questo codice? Non sarà più assegnabile ad altri clienti.'))return;
     try{
       await request(operation,{code:code||null,ref:ref||null,
         amount:amount?Number(amount):null});
