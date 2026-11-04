@@ -159,6 +159,54 @@
   let jingleUtterance = null;
   let jingleBusy = false;
   let jingleGeneration = 0;
+  // Radio Premi: un codice viene pronunciato una volta per finestra d'annuncio
+  // sul dispositivo in ascolto. La fonte è il backend privato, non il browser.
+  let promoOnAir = null;
+  let promoLastFetched = 0;
+  const promoSpokenPrefix = 'cc-radio-premio-annunciato-';
+  const promoApi = 'https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
+  function promoAlreadySpoken(token) {
+    try { return window.localStorage.getItem(promoSpokenPrefix + token) === '1'; }
+    catch (_) { return false; }
+  }
+  function promoMarkSpoken(token) {
+    try { window.localStorage.setItem(promoSpokenPrefix + token, '1'); } catch (_) {}
+  }
+  async function refreshRadioPromo() {
+    if (!enabled || !audible || audio.paused || failed) {
+      promoOnAir = null;
+      return;
+    }
+    try {
+      const response = await fetch(promoApi, {cache:'no-store',credentials:'omit'});
+      if (!response.ok) throw new Error('Premi non disponibili');
+      const result = await response.json();
+      promoOnAir = result && result.active && result.on_air
+        && /^[A-HJ-NP-Z2-9]{5}$/.test(result.on_air.code)
+        && [1,2].includes(result.on_air.slot)
+        ? result.on_air : null;
+      promoLastFetched = Date.now();
+    } catch (_) {
+      promoOnAir = null;
+    }
+  }
+  window.setInterval(() => {
+    if (enabled && audible && !audio.paused && !failed) refreshRadioPromo();
+  }, 17000);
+  function currentPromoAnnouncement() {
+    const slot = promoOnAir;
+    if (!slot || Date.now()-promoLastFetched>25000 || !slot.available_until
+      || Date.now()>=Date.parse(slot.available_until)) return null;
+    const token = slot.code + '-' + slot.slot;
+    if (promoAlreadySpoken(token)) return null;
+    const letters = slot.code.split('').join(', ');
+    return {token, text:'Attenzione, Radio Premi Controcorrente. '
+      + 'Ecco il codice sconto: ' + letters + '. '
+      + 'Cinque euro di sconto sulla cena di almeno cinquanta euro, '
+      + 'per chi prenota dal sito e inserisce il codice nelle note. '
+      + 'Solo per il primo utilizzo, entro sette giorni dalla sua emissione. '
+      + 'Controcorrente, Torino.'};
+  }
 
   function resetJingle() {
     jingleGeneration += 1;
@@ -213,7 +261,9 @@
     const generation = ++jingleGeneration;
     jingleBusy = true;
     let settled = false;
-    const utterance = new window.SpeechSynthesisUtterance(JINGLE_TEXT);
+    const promoAnnouncement = currentPromoAnnouncement();
+    const utterance = new window.SpeechSynthesisUtterance(promoAnnouncement ? promoAnnouncement.text : JINGLE_TEXT);
+    if (promoAnnouncement) utterance.onstart = () => promoMarkSpoken(promoAnnouncement.token);
     utterance.lang = 'it-IT';
     utterance.rate = 0.96;
     utterance.pitch = 0.66;
@@ -284,7 +334,7 @@
       } else { pending = false; }
     } catch (_) { pending = false; failed = true; render(); }
   }
-  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); });
+  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); refreshRadioPromo(); });
   audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); });
   audio.addEventListener('waiting', () => { audible = false; pending = enabled; resetJingle(); render(); });
   audio.addEventListener('stalled', () => { audible = false; pending = enabled; resetJingle(); render(); });
