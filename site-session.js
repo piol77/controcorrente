@@ -491,6 +491,8 @@
   }
 
   const statusUrl = 'https://newhitsradio.streamingmedia.it/status-json.xsl';
+  // Fallback CORS per il MEDESIMO status Icecast: non cambiare stazione o playlist.
+  const proxyUrl = 'https://proxy.cors.dev/' + statusUrl;
   let activeTicker = ticker;
   let activeButton = radioButton;
   let currentLabel = '♪ Brano in aggiornamento…';
@@ -527,25 +529,36 @@
   async function refresh() {
     if (!playing || inFlight) return;
     inFlight = true;
-    const thisController = new AbortController();
-    controller = thisController;
-    const timeout = window.setTimeout(() => thisController.abort(), 8000);
+    const sessionController = new AbortController();
+    controller = sessionController;
+    let track = null;
     try {
-      const response = await fetch(statusUrl + '?t=' + Date.now(), {
-        cache:'no-store', credentials:'omit', signal:thisController.signal
-      });
-      if (!response.ok) throw new Error('Metadata non disponibili');
-      const track = extractTitle(await response.json());
-      if (playing && !thisController.signal.aborted) {
+      // Tentativo diretto; se il browser blocca CORS, proxy del solo JSON pubblico.
+      for (const endpoint of [statusUrl, proxyUrl]) {
+        if (!playing || sessionController.signal.aborted) break;
+        const attemptController = new AbortController();
+        const stopAttempt = () => attemptController.abort();
+        sessionController.signal.addEventListener('abort', stopAttempt, {once:true});
+        const timeout = window.setTimeout(stopAttempt, 6500);
+        try {
+          const response = await fetch(endpoint + (endpoint.includes('?') ? '&' : '?') + 't=' + Date.now(), {
+            cache:'no-store', credentials:'omit', signal:attemptController.signal
+          });
+          if (!response.ok) continue;
+          track = extractTitle(await response.json());
+          if (track) break;
+        } catch (_) {
+          // Esempio: CORS del server Icecast; prova la sorgente alternativa.
+        } finally {
+          window.clearTimeout(timeout);
+          sessionController.signal.removeEventListener('abort', stopAttempt);
+        }
+      }
+      if (playing && !sessionController.signal.aborted) {
         setLabel(track ? '♪ ' + track + ' · NEW HITS RADIO' : '♪ Titolo non disponibile · NEW HITS RADIO');
       }
-    } catch (_) {
-      if (playing && !thisController.signal.aborted) {
-        setLabel('♪ Titolo non disponibile · NEW HITS RADIO');
-      }
     } finally {
-      window.clearTimeout(timeout);
-      if (controller === thisController) controller = null;
+      if (controller === sessionController) controller = null;
       inFlight = false;
     }
   }
