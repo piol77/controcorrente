@@ -270,7 +270,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://newhitsradio.streamingmedia.it/play';
+      audio.src = 'https://stream.radioabf.com/abf2-hd.mp3';
     }
     try {
       const result = audio.play();
@@ -580,11 +580,11 @@
   const ticker = document.createElement('div');
   ticker.id = 'cc-nowplaying-ticker';
   ticker.hidden = true;
-  ticker.setAttribute('aria-label', 'Titolo e artista della canzone in onda');
+  ticker.setAttribute('aria-label', 'Informazioni della radio in onda');
   ticker.setAttribute('aria-live', 'off');
   const tickerText = document.createElement('span');
   tickerText.className = 'cc-nowplaying-text';
-  tickerText.textContent = '♪ Brano in aggiornamento…';
+  tickerText.textContent = '♪ ABF 2 · Pop, rock e hit di oggi · MP3 320 kbps';
   ticker.appendChild(tickerText);
   radioButton.insertAdjacentElement('afterend', ticker);
 
@@ -597,13 +597,13 @@
     return;
   }
 
-  // L'API pubblica laut.fm espone brano e artista dello stesso palinsesto radio.
-  // Verifica sullo stream /play: "Dolcenera - Epopea" coincideva con l'API.
-  // Non modificare stream audio, pulsante, volume o navigazione.
-  const currentSongUrl = 'https://api.laut.fm/station/newhitsradio_italy/current_song';
+  // ABF 2 HD 320 kbps. Tentativo best-effort Icecast; nessun titolo
+  // viene attribuito alla nuova emittente usando dati della vecchia.
+  const currentSongUrl = 'https://stream.radioabf.com/status-json.xsl';
+  const stationLabel = '♪ ABF 2 · Pop, rock e hit di oggi · MP3 320 kbps';
   let activeTicker = ticker;
   let activeButton = radioButton;
-  let currentLabel = '♪ Brano in aggiornamento…';
+  let currentLabel = stationLabel;
   let playing = false;
   let interval = null;
   let controller = null;
@@ -622,14 +622,18 @@
     if (playing) writeLabel();
   }
   function songFromApi(data) {
-    if (!data || typeof data !== 'object') return null;
-    const artist = data.artist && typeof data.artist.name === 'string'
-      ? data.artist.name : '';
-    const title = typeof data.title === 'string' ? data.title : '';
-    const clean = (artist && title ? artist + ' - ' + title : title)
-      .replace(/\s+/g, ' ').trim().slice(0, 180);
-    return clean && !/^(?:new hits radio(?: italia)?|unknown|none|n\/a)$/i.test(clean)
-      ? clean : null;
+    if (!data || !data.icestats || !data.icestats.source) return null;
+    const sources = Array.isArray(data.icestats.source)
+      ? data.icestats.source : [data.icestats.source];
+    const source = sources.find(item => {
+      if (!item || typeof item !== 'object') return false;
+      return /abf[-_ ]?2/i.test([item.listenurl, item.server_name, item.server_description, item.mount].filter(Boolean).join(' '));
+    });
+    if (!source) return null;
+    const title = typeof source.title === 'string' ? source.title :
+      typeof source.streamtitle === 'string' ? source.streamtitle : '';
+    const clean = title.replace(/\s+/g, ' ').trim().slice(0, 180);
+    return clean && !/^(?:abf[-_ ]?2|unknown|none|n\/a|live)$/i.test(clean) ? clean : null;
   }
   async function refresh() {
     if (!playing || inFlight) return;
@@ -639,18 +643,15 @@
     const timeout = window.setTimeout(() => requestController.abort(), 9000);
     try {
       const response = await fetch(currentSongUrl + '?t=' + Date.now(), {
-        cache:'no-store', credentials:'omit', signal:requestController.signal
+        cache: 'no-store', credentials: 'omit', signal: requestController.signal
       });
-      if (!response.ok) throw new Error('Metadata LAUT.fm non disponibili');
+      if (!response.ok) throw new Error('Metadati ABF 2 non disponibili');
       const song = songFromApi(await response.json());
       if (playing && !requestController.signal.aborted) {
-        setLabel(song ? '♪ ' + song + ' · NEW HITS RADIO' :
-          '♪ Brano in aggiornamento · NEW HITS RADIO');
+        setLabel(song ? '♪ ' + song + ' · ABF 2' : stationLabel);
       }
     } catch (_) {
-      if (playing && !requestController.signal.aborted) {
-        setLabel('♪ Dati brano temporaneamente non accessibili · NEW HITS RADIO');
-      }
+      if (playing && !requestController.signal.aborted) setLabel(stationLabel);
     } finally {
       window.clearTimeout(timeout);
       if (controller === requestController) controller = null;
@@ -665,7 +666,7 @@
         playing = false;
         if (interval !== null) { window.clearInterval(interval); interval = null; }
         if (controller) controller.abort();
-        currentLabel = '♪ Brano in aggiornamento…';
+        currentLabel = stationLabel;
       }
       return;
     }
@@ -673,7 +674,7 @@
     if (!playing) {
       playing = true;
       refresh();
-      interval = window.setInterval(refresh, 25000);
+      interval = window.setInterval(refresh, 30000);
     }
   }
   const observer = new MutationObserver(sync);
