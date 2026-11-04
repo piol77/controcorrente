@@ -58,7 +58,7 @@
         const fields=[
           rec.code,formatDate(rec.issued_at),formatDate(rec.air_one),
           formatDate(rec.air_two),formatDate(rec.expires_at),
-          rec.state,(rec.hold_ref||'—'),rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
+          (rec.is_test ? 'SOLO PROVA · ' : '') + rec.state,(rec.hold_ref||'—'),rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
         ];
         fields.forEach(field=>{const td=document.createElement('td');td.textContent=String(field);tr.append(td);});
         rows.append(tr);
