@@ -11,6 +11,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/aggiorna-novita.yml'
+      - 'scripts/update-news.py'
+      - 'scripts/update-weather.py'
 
 permissions:
   contents: write
