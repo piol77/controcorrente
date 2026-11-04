@@ -1,11 +1,10 @@
 name: Aggiorna notizie e meteo Controcorrente
 
-# Due aggiornamenti giornalieri locali, indipendenti da ChatGPT.
+# Controllo ogni ora: pubblica solo nelle 4/2 finestre locali previste.
+# Se GitHub ritarda o salta un avvio, il controllo successivo recupera.
 on:
   schedule:
-    - cron: '35 8 * * *'
-      timezone: 'Europe/Rome'
-    - cron: '35 17 * * *'
+    - cron: '23 * * * *'
       timezone: 'Europe/Rome'
   workflow_dispatch:
   push:
@@ -27,19 +26,72 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Leggi versione corrente
+      - name: Leggi versione corrente del ramo main
         uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: true
 
-      - name: Acquisisci entrambe le fonti (con un tentativo di recupero)
+      - name: Verifica quali aggiornamenti sono dovuti
+        id: due
+        env:
+          FORCE_UPDATE: ${{ github.event_name != 'schedule' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          import os
+          from datetime import datetime, time
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          rome = ZoneInfo("Europe/Rome")
+          now = datetime.now(rome)
+          force = os.environ.get("FORCE_UPDATE", "").lower() == "true"
+          # Quattro acquisizioni notizie: 07:20, 11:20, 15:20, 20:20.
+          # Due acquisizioni meteo: 07:20 e 15:20.
+          def needed(filename, hours):
+              if force:
+                  return True
+              cutoffs = [datetime.combine(now.date(), time(hour, 20), tzinfo=rome)
+                         for hour in hours]
+              eligible = [value for value in cutoffs if now >= value]
+              if not eligible:
+                  return False
+              try:
+                  data = json.loads(Path(filename).read_text(encoding="utf-8"))
+                  fetched = datetime.fromisoformat(data["fetched_at"].replace("Z", "+00:00"))
+                  if fetched.tzinfo is None:
+                      return True
+                  return fetched.astimezone(rome) < max(eligible)
+              except (OSError, ValueError, KeyError, TypeError):
+                  return True
+
+          news = needed("news.json", [7, 11, 15, 20])
+          weather = needed("weather.json", [7, 15])
+          print("news=" + str(news).lower())
+          print("weather=" + str(weather).lower())
+          print("Notizie dovute:", news, "Meteo dovuto:", weather,
+                "Ora locale:", now.isoformat(), file=__import__("sys").stderr)
+          PY
+
+      - name: Acquisisci le fonti dovute in modo indipendente con ritentativo
         id: sync
+        env:
+          NEWS_DUE: ${{ steps.due.outputs.news }}
+          WEATHER_DUE: ${{ steps.due.outputs.weather }}
         shell: bash
         run: |
           set -euo pipefail
           successes=0
           failures=0
           for kind in news weather; do
+            due_var="${kind^^}_DUE"
+            if [[ "${!due_var}" != "true" ]]; then
+              echo "Salto $kind: finestra odierna già aggiornata (o non ancora prevista)."
+              continue
+            fi
             if python3 "scripts/update-$kind.py" --output "$kind.json"; then
               successes=$((successes + 1))
             else
@@ -54,29 +106,33 @@ jobs:
             fi
           done
           echo "failures=$failures" >> "$GITHUB_OUTPUT"
-          if (( successes == 0 )); then
-            echo "::error::Nessuna delle due fonti ha prodotto dati validi."
+          if (( successes == 0 && failures > 0 )); then
+            echo "::error::Nessuna fonte dovuta ha prodotto dati validi."
             exit 1
           fi
 
-      - name: Salva solo i JSON aggiornati
+      - name: Salva solo i JSON realmente aggiornati
+        id: commit
         shell: bash
         run: |
           set -euo pipefail
+          echo "changed=false" >> "$GITHUB_OUTPUT"
           if git diff --quiet -- news.json weather.json; then
-            echo "Nessun cambiamento dei due file."
+            echo "Nessun cambiamento da pubblicare."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- news.json weather.json
-          git commit -m "Novità: aggiorna notizie e meteo (automatico)"
+          git commit -m "Novità: aggiorna le fonti previste (4 notizie / 2 meteo)"
           if ! git push origin HEAD:main; then
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
 
       - name: Richiedi la pubblicazione GitHub Pages
+        if: steps.commit.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -84,8 +140,8 @@ jobs:
           set -euo pipefail
           gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"
 
-      - name: Segnala eventuali fonti non aggiornate
+      - name: Segnala fonti eventualmente non aggiornate
         if: steps.sync.outputs.failures != '0'
         run: |
-          echo "::error::Una fonte non si è aggiornata: verifica il log."
+          echo "::error::Almeno una fonte non si è aggiornata: verificare il log."
           exit 1
