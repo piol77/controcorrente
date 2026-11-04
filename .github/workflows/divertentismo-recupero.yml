@@ -53,12 +53,17 @@ jobs:
           git add -- divertentismo.html
           git commit -m "Divertentismo: recupera vignetta daily mancante"
           if ! git push origin HEAD:main; then
-            git pull --rebase origin main
-            # Controllo dopo rebase: non creare doppioni se l'altra automazione
-            # ha già pubblicato contemporaneamente.
+            # Il ramo è cambiato durante la scrittura: riparti dalla
+            # versione appena pubblicata e rivaluta la presenza del daily.
+            git fetch origin main
+            git reset --hard origin/main
             python3 scripts/recupera-divertentismo.py
+            if git diff --quiet -- divertentismo.html; then
+              echo "Un'altra esecuzione ha già pubblicato: niente doppione."
+              exit 0
+            fi
             git add -- divertentismo.html
-            git commit --amend --no-edit
+            git commit -m "Divertentismo: recupera vignetta daily mancante"
             git push origin HEAD:main
           fi
           echo "changed=true" >> "$GITHUB_OUTPUT"
