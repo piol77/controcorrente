@@ -1,46 +1,27 @@
 {
   "source": "MET Norway",
-  "source_url": "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=45.0641&lon=7.6525",
+  "source_url": "https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=45.0641&lon=7.6525",
   "location": "Torino · zona San Paolo",
   "latitude": 45.0641,
   "longitude": 7.6525,
-  "fetched_at": "2026-11-03T21:57:35+00:00",
-  "provider_updated_at": "2026-11-03T19:17:57+00:00",
+  "fetched_at": "2026-11-04T10:41:18+00:00",
+  "provider_updated_at": "2026-11-04T09:19:07+00:00",
   "days": [
-    {
-      "date": "2026-11-03",
-      "lunch": {
-        "condition": "Parzialmente nuvoloso",
-        "icon": "⛅",
-        "min_c": 14,
-        "max_c": 14,
-        "precipitation_mm": 0.0,
-        "forecast_at": "2026-11-02T23:39:49+00:00"
-      },
-      "dinner": {
-        "condition": "Pioggia",
-        "icon": "🌧",
-        "min_c": 9,
-        "max_c": 10,
-        "precipitation_mm": 0.6,
-        "forecast_at": "2026-11-03T15:25:32+00:00"
-      }
-    },
     {
       "date": "2026-11-04",
       "lunch": {
-        "condition": "Coperto",
-        "icon": "☁",
-        "min_c": 10,
-        "max_c": 11,
-        "precipitation_mm": 0.0
-      },
-      "dinner": {
         "condition": "Pioggia debole",
         "icon": "🌧",
         "min_c": 9,
         "max_c": 10,
-        "precipitation_mm": 0.1
+        "precipitation_mm": 0.4
+      },
+      "dinner": {
+        "condition": "Pioggia intensa",
+        "icon": "🌧",
+        "min_c": 8,
+        "max_c": 9,
+        "precipitation_mm": 1.7
       }
     },
     {
@@ -53,11 +34,28 @@
         "precipitation_mm": 0.0
       },
       "dinner": {
-        "condition": "Pioggia",
+        "condition": "Pioggia intensa",
         "icon": "🌧",
-        "min_c": 8,
+        "min_c": 7,
         "max_c": 8,
-        "precipitation_mm": 1.4
+        "precipitation_mm": 3.3
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "lunch": {
+        "condition": "Coperto",
+        "icon": "☁",
+        "min_c": 10,
+        "max_c": 12,
+        "precipitation_mm": 0.0
+      },
+      "dinner": {
+        "condition": "Coperto",
+        "icon": "☁",
+        "min_c": 8,
+        "max_c": 9,
+        "precipitation_mm": 0.0
       }
     }
   ]
