@@ -320,7 +320,7 @@
     failed = false;
     render();
     if (!audio.getAttribute('src')) {
-      audio.src = 'https://tophits.radiomonster.fm/ultra';
+      audio.src = 'https://cdn1.zetcast.net/stream';
     }
     try {
       const result = audio.play();
@@ -634,7 +634,7 @@
   ticker.setAttribute('aria-live', 'off');
   const tickerText = document.createElement('span');
   tickerText.className = 'cc-nowplaying-text';
-  tickerText.textContent = '♪ RadioMonster.FM Tophits · 320 kbps · Hit di oggi';
+  tickerText.textContent = '♪ 60 North Radio · MP3 320 kbps';
   ticker.appendChild(tickerText);
   radioButton.insertAdjacentElement('afterend', ticker);
 
@@ -647,15 +647,10 @@
     return;
   }
 
-  // RadioMonster.FM Tophits (stream MP3 Ultra 320 kbps).
-  // Titoli: tentativi sui dati pubblici dello stesso broadcaster, mai dati di un'altra radio.
-  // Le API Icecast/AzuraCast non sono garantite accessibili dal browser (CORS).
-  const songEndpoints = [
-    'https://ic.radiomonster.fm/api/nowplaying/tophits',
-    'https://ic.radiomonster.fm/status-json.xsl',
-    'https://tophits.radiomonster.fm/status-json.xsl'
-  ];
-  const stationLabel = '♪ RadioMonster.FM Tophits · 320 kbps · Hit di oggi';
+  // 60 North Radio (Shetland): stream MP3 320 kbps e brani sullo stesso CDN.
+  // Verificati il 5/11/2026: /status-json.xsl HTTPS 200, CORS *, /stream 320k.
+  const currentSongUrl = 'https://cdn1.zetcast.net/status-json.xsl';
+  const stationLabel = '♪ 60 North Radio · MP3 320 kbps';
   let activeTicker = ticker;
   let activeButton = radioButton;
   let currentLabel = stationLabel;
@@ -663,7 +658,6 @@
   let interval = null;
   let controller = null;
   let inFlight = false;
-  let workingEndpoint = -1;
 
   function writeLabel() {
     const target = activeTicker.querySelector('.cc-nowplaying-text');
@@ -678,67 +672,36 @@
     if (playing) writeLabel();
   }
   function songFromApi(data) {
-    if (!data || typeof data !== 'object') return null;
-    // AzuraCast now-playing shape.
-    if (data.now_playing && data.now_playing.song) {
-      const song = data.now_playing.song;
-      const full = typeof song.text === 'string' ? song.text
-        : [song.artist, song.title].filter(Boolean).join(' - ');
-      return cleanSong(full);
-    }
-    // Icecast /status-json.xsl shape; require the matching Tophits mount.
-    if (data.icestats && data.icestats.source) {
-      const all = Array.isArray(data.icestats.source) ? data.icestats.source
-        : [data.icestats.source];
-      const source = all.find(item => item && /tophits/i.test([
-        item.listenurl, item.server_name, item.mount, item.server_description
-      ].filter(Boolean).join(' '))) || (all.length === 1 ? all[0] : null);
-      return source ? cleanSong(source.title || source.streamtitle) : null;
-    }
-    return null;
-  }
-  function cleanSong(value) {
-    if (typeof value !== 'string') return null;
-    const clean = value.replace(/\s+/g, ' ').trim().slice(0, 180);
-    return clean && !/^(?:radiomonster(?:\.fm)?(?:\s*-\s*tophits)?|tophits|unknown|none|n\/a|live)$/i.test(clean)
+    if (!data || !data.icestats || !data.icestats.source) return null;
+    const all = Array.isArray(data.icestats.source)
+      ? data.icestats.source : [data.icestats.source];
+    // Esattamente la stessa fonte /stream che il lettore suona.
+    const source = all.find(item => item && item.mount === '/stream');
+    if (!source || typeof source.title !== 'string') return null;
+    const clean = source.title.replace(/\s+/g,' ').trim().slice(0,180);
+    return clean && !/^(?:60 north radio|unknown|none|n\/a|live)$/i.test(clean)
       ? clean : null;
-  }
-  async function tryEndpoint(url) {
-    const requestController = new AbortController();
-    controller = requestController;
-    const timeout = window.setTimeout(() => requestController.abort(), 4000);
-    try {
-      const response = await fetch(url + '?t=' + Date.now(), {
-        cache:'no-store', credentials:'omit', signal:requestController.signal
-      });
-      if (!response.ok) throw new Error('No metadata');
-      return songFromApi(await response.json());
-    } finally {
-      window.clearTimeout(timeout);
-      if (controller === requestController) controller = null;
-    }
   }
   async function refresh() {
     if (!playing || inFlight) return;
     inFlight = true;
-    let song = null;
+    const requestController = new AbortController();
+    controller = requestController;
+    const timeout = window.setTimeout(() => requestController.abort(), 8000);
     try {
-      const indices = workingEndpoint >= 0
-        ? [workingEndpoint, ...songEndpoints.map((_, i) => i).filter(i => i !== workingEndpoint)]
-        : songEndpoints.map((_, i) => i);
-      for (const i of indices) {
-        if (!playing) break;
-        try {
-          song = await tryEndpoint(songEndpoints[i]);
-          if (song) { workingEndpoint = i; break; }
-        } catch (_) {
-          if (workingEndpoint === i) workingEndpoint = -1;
-        }
-      }
-      if (playing) setLabel(song ? '♪ ' + song + ' · RadioMonster.FM Tophits'
-        : stationLabel);
+      const response = await fetch(currentSongUrl + '?t=' + Date.now(), {
+        cache:'no-store', credentials:'omit', signal:requestController.signal
+      });
+      if (!response.ok) throw new Error('Metadati 60 North non disponibili');
+      const song = songFromApi(await response.json());
+      if (playing && !requestController.signal.aborted)
+        setLabel(song ? '♪ '+song+' · 60 North Radio' : stationLabel);
+    } catch (_) {
+      if (playing && !requestController.signal.aborted) setLabel(stationLabel);
     } finally {
-      inFlight = false;
+      window.clearTimeout(timeout);
+      if (controller === requestController) controller=null;
+      inFlight=false;
     }
   }
   function sync() {
@@ -747,7 +710,7 @@
     if (!on) {
       if (playing) {
         playing = false;
-        if (interval !== null) { window.clearInterval(interval); interval = null; }
+        if (interval !== null) { window.clearInterval(interval); interval=null; }
         if (controller) controller.abort();
         currentLabel = stationLabel;
       }
@@ -757,7 +720,7 @@
     if (!playing) {
       playing = true;
       refresh();
-      interval = window.setInterval(refresh, 30000);
+      interval = window.setInterval(refresh, 25000);
     }
   }
   const observer = new MutationObserver(sync);
