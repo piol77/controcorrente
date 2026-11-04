@@ -5,6 +5,7 @@ from datetime import datetime, timedelta, timezone
 import gzip
 import json
 import math
+import time
 from pathlib import Path
 from urllib.request import Request, urlopen
 from zoneinfo import ZoneInfo
@@ -12,6 +13,7 @@ from zoneinfo import ZoneInfo
 ROME = ZoneInfo('Europe/Rome')
 ROOT = Path(__file__).resolve().parent.parent
 ENDPOINT = 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=45.0641&lon=7.6525'
+FALLBACK_ENDPOINT = ENDPOINT.replace('/compact?', '/complete?')
 
 
 def condition(symbol):
@@ -70,7 +72,7 @@ def period(points, day, start, end):
             'precipitation_mm': round(precipitation, 1)}
 
 
-def summarize(raw, now):
+def summarize(raw, now, source_url=ENDPOINT):
     updated = datetime.fromisoformat(raw['properties']['meta']['updated_at'].replace('Z', '+00:00'))
     if abs((now - updated).total_seconds()) > 24 * 3600:
         raise ValueError('Provider forecast is older than 24 hours')
@@ -86,7 +88,7 @@ def summarize(raw, now):
             days.append({'date': day.isoformat(), 'lunch': lunch, 'dinner': dinner})
     if not any(day['lunch'] or day['dinner'] for day in days):
         raise ValueError('No usable forecast; previous file preserved')
-    return {'source': 'MET Norway', 'source_url': ENDPOINT,
+    return {'source': 'MET Norway', 'source_url': source_url,
             'location': 'Torino · zona San Paolo', 'latitude': 45.0641, 'longitude': 7.6525,
             'fetched_at': now.isoformat(timespec='seconds'), 'provider_updated_at': updated.isoformat(),
             'days': days}
@@ -102,17 +104,35 @@ def main():
     if args.output.exists():
         old = json.loads(args.output.read_text())
     if args.input:
-        raw = json.loads(args.input.read_text())
+        result = summarize(json.loads(args.input.read_text()), now)
     else:
-        request = Request(ENDPOINT, headers={
-            'User-Agent': 'ControcorrenteWeather/1.0 (+https://piol77.github.io/controcorrente/contatti.html)',
-            'Accept': 'application/json', 'Accept-Encoding': 'gzip'})
-        with urlopen(request, timeout=30) as response:
-            payload = response.read()
-            if response.headers.get('Content-Encoding') == 'gzip':
-                payload = gzip.decompress(payload)
-            raw = json.loads(payload)
-    result = summarize(raw, now)
+        # Entrambi gli endpoint sono ufficiali MET Norway. Le risposte HTTP 502
+        # e i JSON troncati non devono azzerare la previsione pubblicata.
+        result = None
+        last_error = None
+        for endpoint in (ENDPOINT, FALLBACK_ENDPOINT):
+            for attempt in range(2):
+                try:
+                    request = Request(endpoint, headers={
+                        'User-Agent': 'ControcorrenteWeather/1.0 (+https://piol77.github.io/controcorrente/contatti.html)',
+                        'Accept': 'application/json', 'Accept-Encoding': 'gzip'})
+                    with urlopen(request, timeout=30) as response:
+                        payload = response.read()
+                        if response.headers.get('Content-Encoding') == 'gzip':
+                            payload = gzip.decompress(payload)
+                        raw = json.loads(payload)
+                    result = summarize(raw, now, source_url=endpoint)
+                    break
+                except (OSError, ValueError, EOFError, KeyError) as error:
+                    last_error = error
+                    print('MET Norway temporaneamente non disponibile:',
+                          endpoint.split('/2.0/')[1].split('?')[0], type(error).__name__)
+                    if attempt == 0:
+                        time.sleep(3)
+            if result is not None:
+                break
+        if result is None:
+            raise RuntimeError('Nessuna risposta meteorologica valida da MET Norway') from last_error
     # Later responses omit past hours, including the start of an ongoing service.
     # Retain only that same day's actual earlier forecast, with its original timestamp.
     if old:
