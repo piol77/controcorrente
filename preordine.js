@@ -328,10 +328,11 @@
       // Radio Premi: l'utente inserisce il codice nelle note del preordine.
       // Il backend concede solo una riserva temporanea, non uno sconto confermato.
       const suppliedNotes = String(data.get('note') || '');
-      const promoMatch = suppliedNotes.match(/(?:^|[\s,;])(?:codice|radio|sconto|premio)\s*[:#-]?\s*([A-HJ-NP-Z2-9]{5})\b/i)
-        || suppliedNotes.match(/^\s*([A-HJ-NP-Z2-9]{5})\s*$/i);
+      // Solo codice numerico a 5 cifre nelle note, senza UUID nel testo WhatsApp.
+      // Accetta il codice isolato oppure preceduto da una parola descrittiva.
+      const promoMatch = suppliedNotes.match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![0-9])/i)
+        || suppliedNotes.match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
       const promoCode = promoMatch ? promoMatch[1].toUpperCase() : null;
-      let promoLine = null;
       if (promoCode) {
         if (!dinnerTime) {
           window.alert('Il codice Radio Premi è valido soltanto per prenotazioni di cena. La richiesta non è stata inviata.');
@@ -376,15 +377,9 @@
             + '\nLa richiesta non è stata inviata: correggi o elimina il codice dalle note.');
           return;
         }
-        promoLine = result.test === true
-          ? '*SOLO PROVA RADIO PREMI · ' + promoCode + ' · riferimento ' + promoReference
-            + ' · RISERVA DI TEST (24 ore)*\n'
-            + 'SIMULAZIONE TECNICA: NESSUNO SCONTO REALE, NON APPLICARE 5 EURO. '
-            + 'Questa prova serve a verificare il blocco della seconda richiesta.'
-          : '*Radio Premi: ' + promoCode + ' · riferimento ' + promoReference
-            + ' · RISERVA PROVVISORIA (24 ore)*\n'
-            + 'Sconto 5 € su un conto cena finale di almeno 50 €; valido solo previa conferma del ristorante. '
-            + 'Non cumulare con altri sconti.';
+        // Riserva interna registrata in Supabase: la sola nota numerica sarà
+        // visibile nel WhatsApp, mentre l'UUID resta privato nella banca dati.
+        // Un codice di prova non dà alcuno sconto reale.
       }
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
         '*Nome e cognome: ' + data.get('nome') + '*',
@@ -394,7 +389,6 @@
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
         'Giorno: ' + requestDate(requestedDay),
         '*Allergie / note: ' + String(data.get('note') || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
-        ...(promoLine ? [promoLine, ''] : []),
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const encodedMessage = encodeURIComponent(lines.join('\n'));
       const webWhatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodedMessage;
