@@ -25,7 +25,7 @@
   };
   const actionDescriptions = {
     confirm:'Inserisci il codice numerico di 5 cifre presente nelle note WhatsApp. Blocca la riserva oltre le 24 ore.',
-    use:'Inserisci il codice numerico e il totale effettivo della cena (almeno 50 € prima dello sconto).',
+    use:'Inserisci il codice numerico e il conto finale prima dello sconto. Il premio vale 5 € ogni 50 € interi di conto (esempio: 100 € = 10 € di sconto).',
     release:'Annullamento definitivo di un codice: non sarà mai più utilizzabile.',
     free_hold:'Libera una prenotazione PROVVISORIA non seguita dal WhatsApp. Il codice torna disponibile.',
     activate:'Attiva i nuovi codici giornalieri. Non servono altri dati: confermerai prima di procedere.',
