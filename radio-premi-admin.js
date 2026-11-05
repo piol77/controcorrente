@@ -19,15 +19,17 @@
     confirm:['code'],
     use:['code','amount'],
     release:['code'],
+    free_hold:['code'],
     activate:[],
     deactivate:[]
   };
   const actionDescriptions = {
     confirm:'Inserisci il codice numerico di 5 cifre presente nelle note WhatsApp. Blocca la riserva oltre le 24 ore.',
     use:'Inserisci il codice numerico e il totale effettivo della cena (almeno 50 € prima dello sconto).',
-    release:'Serve soltanto il codice di 5 caratteri. Diventerà ANNULLATO e non potrà più essere usato.',
+    release:'Annullamento definitivo di un codice: non sarà mai più utilizzabile.',
+    free_hold:'Libera una prenotazione PROVVISORIA non seguita dal WhatsApp. Il codice torna disponibile.',
     activate:'Attiva i nuovi codici giornalieri. Non servono altri dati: confermerai prima di procedere.',
-    deactivate:'Sospende i nuovi riscatti e gli annunci premio. Non servono altri dati: confermerai prima di procedere.'
+    deactivate:'Ferma gli annunci radio SOLO per oggi. Domani il nuovo codice ripartirà automaticamente. Le prenotazioni già accettate restano valide.'
   };
   const stateLabels = {
     available:'DISPONIBILE', held:'RISERVATO (24 ore)',
@@ -85,11 +87,13 @@
     try {
       const data=await request('list');
       login.hidden=true;manager.hidden=false;
-      status.textContent=data.active?'PROMOZIONE ATTIVA':'Promozione disattivata';
+      status.textContent=!data.active?'PROMOZIONE DISATTIVATA'
+        :data.paused_today?'ANNUNCI RADIO SOSPESI FINO A DOMANI'
+        :'PROMOZIONE ATTIVA · ANNUNCI ABILITATI';
       rows.replaceChildren();
       if(!data.records.length) {
         const tr=document.createElement('tr'),td=document.createElement('td');
-        td.colSpan=7;td.textContent='Nessun codice ancora emesso.';
+        td.colSpan=8;td.textContent='Nessun codice ancora emesso.';
         tr.append(td);rows.append(tr);
       }
       data.records.forEach(rec=>{
@@ -101,6 +105,7 @@
             : [formatDate(rec.air_one),formatDate(rec.air_two)].join(' • ');
         const fields=[
           rec.code,formatDate(rec.issued_at),schedule,formatDate(rec.expires_at),
+          rec.dinner_day ? rec.dinner_day+(rec.dinner_time?' '+rec.dinner_time.slice(0,5):''):'—',
           (rec.is_test ? 'SOLO PROVA · ' : '') + (stateLabels[rec.state] || rec.state),
           rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
         ];
@@ -110,6 +115,26 @@
           tr.append(td);
         });
         const actionsCell=document.createElement('td');
+        if(rec.state==='held' && !rec.is_test){
+          const free=document.createElement('button');
+          free.type='button';free.className='rp-row-btn';
+          free.textContent='Libera riserva';
+          free.title='Rendi di nuovo disponibile il codice non confermato';
+          free.addEventListener('click',async()=>{
+            if(!window.confirm('Il cliente NON ha inviato WhatsApp? Liberare la riserva provvisoria '+rec.code+'?'))return;
+            free.disabled=true;
+            try{
+              await request('free_hold',{code:rec.code});
+              await refresh();
+              display('Riserva liberata: il codice '+rec.code+' è di nuovo disponibile.');
+            }catch(e){
+              free.disabled=false;
+              display('Impossibile liberare: '+(e instanceof Error?e.message:'errore'));
+            }
+          });
+          actionsCell.append(free);
+          actionsCell.append(document.createTextNode(' '));
+        }
         if (['available','held','confirmed'].includes(rec.state)) {
           const cancelButton=document.createElement('button');
           cancelButton.type='button';
@@ -191,9 +216,10 @@
     }
     const confirmations={
       activate:'Attivare la promozione Radio Premi? I codici validi potranno essere riscattati.',
-      deactivate:'Sospendere la promozione Radio Premi? I nuovi riscatti e annunci premio verranno fermati.',
+      deactivate:'Sospendere gli ANNUNCI RADIO solo per oggi? Domani riprendono con un nuovo codice. Le prenotazioni già riservate restano valide.',
       use:'Segnare questo codice come GIÀ UTILIZZATO? Confermi che il conto finale è di almeno 50 €?',
-      release:'Annullare DEFINITIVAMENTE il codice '+code+'? Non potrà più essere utilizzato.'
+      release:'Annullare DEFINITIVAMENTE il codice '+code+'? Non potrà più essere utilizzato.',
+      free_hold:'Il cliente NON ha inviato la prenotazione su WhatsApp? Liberare la riserva temporanea '+code+'?'
     };
     if(confirmations[operation]&&!window.confirm(confirmations[operation]))return;
     const submitButton=actionForm.querySelector('button[type="submit"]');
@@ -207,7 +233,8 @@
       await refresh();
       const done={
         activate:'Promozione ATTIVATA.',
-        deactivate:'Promozione SOSPESA.',
+        deactivate:'Annunci radio SOSPESI FINO A DOMANI.',
+        free_hold:'Codice '+code+' LIBERATO, nuovamente disponibile.',
         confirm:'Prenotazione con codice '+code+' CONFERMATA.',
         use:'Codice '+code+' segnato GIÀ UTILIZZATO.',
         release:'Codice '+code+' ANNULLATO definitivamente. Non è più disponibile.'
