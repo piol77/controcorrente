@@ -218,7 +218,15 @@
   // CONTROCORRENTE RADIO JINGLE 2026-11-04
   // Annuncio vocale automatico ogni 2 minuti di ascolto, senza comandi dedicati.
   // Unicamente il documento proprietario del lettore gestisce il jingle.
-  const JINGLE_INTERVAL_MS = 2 * 60 * 1000;
+  // Solo il 5 novembre 2026: prova del codice ogni minuto. Dalla mezzanotte
+  // locale successiva, ritorno automatico ai due minuti e agli slot abituali.
+  const romeToday = () => {
+    const parts=new Intl.DateTimeFormat('en-CA',{
+      timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'
+    }).formatToParts(new Date());
+    return ['year','month','day'].map(k=>parts.find(p=>p.type===k).value).join('-');
+  };
+  const jingleIntervalMs=()=>romeToday()==='2026-11-05' ? 60*1000 : 2*60*1000;
   const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente. Qui il ritmo è sempre quello giusto.';
   let jingleTimer = null;
   let jingleFadeTimer = null;
@@ -248,9 +256,10 @@
       const response = await fetch(promoApi, {cache:'no-store',credentials:'omit'});
       if (!response.ok) throw new Error('Premi non disponibili');
       const result = await response.json();
-      promoOnAir = result && result.active && result.on_air
-        && /^[A-HJ-NP-Z2-9]{5}$/.test(result.on_air.code)
-        && [1,2].includes(result.on_air.slot)
+      promoOnAir = result && result.on_air
+        && /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(result.on_air.code)
+        && ((result.active && [1,2].includes(result.on_air.slot))
+             || (result.on_air.demo_today === true && result.on_air.slot===0))
         ? result.on_air : null;
       promoLastFetched = Date.now();
     } catch (_) {
@@ -265,9 +274,10 @@
     if (!slot || Date.now()-promoLastFetched>25000 || !slot.available_until
       || Date.now()>=Date.parse(slot.available_until)) return null;
     const token = slot.code + '-' + slot.slot;
-    if (promoAlreadySpoken(token)) return null;
+    const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
+    if (!demoToday && promoAlreadySpoken(token)) return null;
     const letters = slot.code.split('').join(', ');
-    return {token, text:'Attenzione, Radio Premi Controcorrente. '
+    return {token, demoToday, text:'Attenzione, Radio Premi Controcorrente. '
       + 'Ecco il codice sconto: ' + letters + '. '
       + 'Cinque euro di sconto sulla cena di almeno cinquanta euro, '
       + 'per chi prenota dal sito e inserisce il codice nelle note. '
@@ -296,7 +306,7 @@
     jingleTimer = window.setTimeout(() => {
       jingleTimer = null;
       if (enabled && audible && !audio.paused && !failed) playJingle();
-    }, JINGLE_INTERVAL_MS);
+    }, jingleIntervalMs());
   }
 
   function fadeRadioJingle(target, generation, done) {
@@ -330,7 +340,7 @@
     let settled = false;
     const promoAnnouncement = currentPromoAnnouncement();
     const utterance = new window.SpeechSynthesisUtterance(promoAnnouncement ? promoAnnouncement.text : JINGLE_TEXT);
-    if (promoAnnouncement) utterance.onstart = () => promoMarkSpoken(promoAnnouncement.token);
+    if (promoAnnouncement && !promoAnnouncement.demoToday) utterance.onstart = () => promoMarkSpoken(promoAnnouncement.token);
     utterance.lang = 'it-IT';
     utterance.rate = 0.96;
     utterance.pitch = 0.66;
