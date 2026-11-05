@@ -40,8 +40,8 @@
       ? 'Annunci radio terminati per oggi. Le prenotazioni già confermate restano valide.'
       : data.active
         ? (data.code_released_today === true
-          ? 'Il codice di oggi è di nuovo disponibile! Accendi la radio per ascoltarlo.'
-          : 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.')
+          ? 'Il codice di oggi è di nuovo disponibile! Accendi la radio per visualizzarlo.'
+          : 'Promozione attiva: accendi la radio per vedere il codice quando appare.')
         : 'Promozione sospesa: nuovi codici non disponibili.';
     updated.textContent = 'Registro aggiornato: ' + stamp(data.server_time);
     body.replaceChildren();
@@ -61,7 +61,7 @@
       const tr = document.createElement('tr');
       const vals = [
         item.code,
-        stamp(item.status==='void' ? item.updated_at : (item.held_at || item.confirmed_at || item.used_at || item.issued_at)),
+        stamp(item.status==='used' ? item.used_at : item.status==='confirmed' ? item.confirmed_at : item.status==='void' ? item.updated_at : (item.held_at || item.issued_at)),
         ({held:'Riservato, in attesa di conferma',confirmed:'Prenotazione confermata',
           used:'Sconto utilizzato',void:'Annullato · non più valido'})[item.status]
       ];
