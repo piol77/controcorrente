@@ -605,7 +605,7 @@
   }
   let stats = null;
   const style = document.createElement('style');
-  style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}';
+  style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}header.top .cc-share-button{position:relative;left:8px}';
   document.head.appendChild(style);
 
   const button = document.createElement('button');
@@ -763,7 +763,7 @@
 
   const style = document.createElement('style');
   style.textContent = `
-    #cc-nowplaying-ticker{box-sizing:border-box;width:min(260px,78vw);margin:5px 0 0 auto;padding:4px 7px;overflow:hidden;border:1px solid var(--gold,#cba76d);border-radius:5px;background:var(--navy,#082a43);color:var(--gold,#cba76d);font:11px/1.35 Georgia,"Times New Roman",serif;white-space:nowrap}
+    #cc-nowplaying-ticker{box-sizing:border-box;display:block;width:calc(100% - 20px);max-width:1050px;height:23px;margin:5px auto 7px;padding:2px 9px;overflow:hidden;border:1px solid var(--gold,#cba76d);border-radius:5px;background:var(--navy,#082a43);color:var(--gold,#cba76d);font:11px/17px Georgia,"Times New Roman",serif;white-space:nowrap}
     #cc-nowplaying-ticker[hidden]{display:none!important}
     #cc-nowplaying-ticker .cc-nowplaying-text{display:inline-block;white-space:nowrap;padding-left:100%;animation:cc-nowplaying-scroll 19s linear infinite}
     @keyframes cc-nowplaying-scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
@@ -779,7 +779,11 @@
   tickerText.className = 'cc-nowplaying-text';
   tickerText.textContent = '♪ 60 North Radio · MP3 320 kbps';
   ticker.appendChild(tickerText);
-  radioButton.insertAdjacentElement('afterend', ticker);
+  // Una striscia stretta e lunga SOTTO la zona pulsanti del sito.
+  // Non inserirla nel gruppo flex del pulsante radio o si restringe.
+  const tickerHeader=radioButton.closest('header.top') || document.querySelector('header.top');
+  if (tickerHeader) tickerHeader.appendChild(ticker);
+  else radioButton.insertAdjacentElement('afterend', ticker);
 
   // Ogni pagina interna visualizza il ticker, ma solo il documento principale
   // interroga i metadati: una sola radio, una sola richiesta periodica.
