@@ -4,59 +4,58 @@
   "location": "Torino · zona San Paolo",
   "latitude": 45.0641,
   "longitude": 7.6525,
-  "fetched_at": "2026-11-04T18:44:51+00:00",
-  "provider_updated_at": "2026-11-04T17:19:20+00:00",
+  "fetched_at": "2026-11-05T08:00:20+00:00",
+  "provider_updated_at": "2026-11-05T07:17:51+00:00",
   "days": [
     {
-      "date": "2026-11-04",
+      "date": "2026-11-05",
       "lunch": {
         "condition": "Pioggia debole",
         "icon": "🌧",
         "min_c": 9,
         "max_c": 10,
-        "precipitation_mm": 0.4,
-        "forecast_at": "2026-11-04T10:41:18+00:00"
+        "precipitation_mm": 0.3
       },
       "dinner": {
-        "condition": "Pioggia",
-        "icon": "🌧",
-        "min_c": 8,
-        "max_c": 9,
-        "precipitation_mm": 1.1
-      }
-    },
-    {
-      "date": "2026-11-05",
-      "lunch": {
         "condition": "Coperto",
         "icon": "☁",
-        "min_c": 10,
-        "max_c": 10,
-        "precipitation_mm": 0.0
-      },
-      "dinner": {
-        "condition": "Pioggia debole",
-        "icon": "🌧",
         "min_c": 8,
         "max_c": 8,
-        "precipitation_mm": 0.1
+        "precipitation_mm": 0.0
       }
     },
     {
       "date": "2026-11-06",
       "lunch": {
-        "condition": "Pioggia intensa",
-        "icon": "🌧",
-        "min_c": 9,
-        "max_c": 10,
-        "precipitation_mm": 4.2
+        "condition": "Coperto",
+        "icon": "☁",
+        "min_c": 12,
+        "max_c": 13,
+        "precipitation_mm": 0.0
       },
       "dinner": {
         "condition": "Pioggia intensa",
         "icon": "🌧",
-        "min_c": 8,
+        "min_c": 9,
+        "max_c": 10,
+        "precipitation_mm": 5.4
+      }
+    },
+    {
+      "date": "2026-11-07",
+      "lunch": {
+        "condition": "Coperto",
+        "icon": "☁",
+        "min_c": 12,
+        "max_c": 13,
+        "precipitation_mm": 0.0
+      },
+      "dinner": {
+        "condition": "Coperto",
+        "icon": "☁",
+        "min_c": 7,
         "max_c": 9,
-        "precipitation_mm": 4.0
+        "precipitation_mm": 0.0
       }
     }
   ]
