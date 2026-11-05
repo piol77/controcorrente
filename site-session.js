@@ -377,6 +377,7 @@
   function promoMarkSpoken(token) {
     try { window.localStorage.setItem(promoSpokenPrefix + token, '1'); } catch (_) {}
   }
+  let stopClaimedPromo = null;
   async function refreshRadioPromo() {
     if (!enabled || !audible || audio.paused || failed) {
       promoOnAir = null;
@@ -386,6 +387,7 @@
       const response = await fetch(promoApi, {cache:'no-store',credentials:'omit'});
       if (!response.ok) throw new Error('Premi non disponibili');
       const result = await response.json();
+      if (stopClaimedPromo) stopClaimedPromo(result?.records);
       promoOnAir = result && result.on_air
         && /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(result.on_air.code)
         && ((result.active && Number.isInteger(result.on_air.slot) && result.on_air.slot>=1 && result.on_air.slot<=10)
@@ -405,7 +407,7 @@
     if (!slot || Date.now()<promoAllowedAt
       || Date.now()-promoLastFetched>15000 || !slot.available_until
       || Date.now()>=Date.parse(slot.available_until)) return null;
-    const token = slot.code + '-' + slot.slot;
+    const token = slot.code + '-' + (slot.reopened_at || slot.slot);
     const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
     if (!demoToday && promoAlreadySpoken(token)) return null;
     // Pronuncia ogni cifra come parola intera, con pause e una ripetizione
@@ -515,9 +517,18 @@
       if (completed && promoAnnouncement && !promoAnnouncement.demoToday)
         promoMarkSpoken(promoAnnouncement.token);
       jingleUtterance = null;
+      if (promoAnnouncement) stopClaimedPromo = null;
       jingleBusy=false;
       audio.volume=1;
       if(kind==='classic')scheduleJingle();
+    }
+    if (promoAnnouncement) {
+      const code = promoOnAir.code;
+      stopClaimedPromo = records => {
+        if (generation !== jingleGeneration || !records?.some(record => record.code===code && ['held','confirmed','used','void'].includes(record.status))) return;
+        try { speech.cancel(); } catch (_) {}
+        finish(false);
+      };
     }
     utterance.onend = () => finish(true);
     utterance.onerror = () => finish(false);
