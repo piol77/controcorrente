@@ -39,7 +39,9 @@
     status.textContent = data.paused_today
       ? 'Annunci radio terminati per oggi. Le prenotazioni già confermate restano valide.'
       : data.active
-        ? 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.'
+        ? (data.code_released_today === true
+          ? 'Il codice di oggi è di nuovo disponibile! Accendi la radio per ascoltarlo.'
+          : 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.')
         : 'Promozione sospesa: nuovi codici non disponibili.';
     updated.textContent = 'Registro aggiornato: ' + stamp(data.server_time);
     body.replaceChildren();
