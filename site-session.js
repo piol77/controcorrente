@@ -325,7 +325,7 @@
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
   }
   // CONTROCORRENTE RADIO JINGLE 2026-11-04
-  // Jingle classico su orologio di Torino: 06:00, 06:10, 06:20 ...;
+  // Jingle classico su orologio di Torino: 06:00, 06:05, 06:10 ...;
   // annunci premio indipendenti in dieci slot server giornalieri, mai sovrapposti.
   // Solo il documento proprietario del player annuncia: no doppioni nei frame.
   const romeToday = () => {
@@ -341,8 +341,8 @@
     }).formatToParts(new Date());
     return Number(parts.find(p=>p.type==='hour')?.value)<6;
   }
-  // Il fuso di Torino ha offset interi in ore; gli slot di 10 min coincidono con UTC.
-  const nextClassicDelayMs=()=>Math.max(1000,10*60*1000-(Date.now()%(10*60*1000)));
+  // Il fuso di Torino ha offset interi in ore; gli slot di 5 min coincidono con UTC.
+  const nextClassicDelayMs=()=>Math.max(1000,5*60*1000-(Date.now()%(5*60*1000)));
   const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente di Torino.';
   const JINGLE_ENDINGS = [
     'Qui la musica non paga il coperto.',
@@ -419,7 +419,9 @@
     if (!enabled || !audible || audio.paused || failed || jingleBusy) return;
     const item=currentPromoAnnouncement();
     if (!item) return;
-    if (item.demoToday && Date.now()-promoLastSpokenAt < 60000) return;
+    // Se la sintesi viene interrotta durante lo slot, riprova dopo 30 s.
+    // Nei giorni di prova conserva la cadenza di 60 s.
+    if (Date.now()-promoLastSpokenAt < (item.demoToday ? 60000 : 30000)) return;
     playJingle('promo');
   }
   window.setInterval(maybePlayPromo,9000);
@@ -487,45 +489,54 @@
     const classicText = JINGLE_TEXT+' '+JINGLE_ENDINGS[endingIndex];
     const utterance = new window.SpeechSynthesisUtterance(
       promoAnnouncement ? promoAnnouncement.text : classicText);
-    if (promoAnnouncement) utterance.onstart = () => {
-      promoLastSpokenAt = Date.now();
-      if (!promoAnnouncement.demoToday) promoMarkSpoken(promoAnnouncement.token);
+    // Si marca un codice come già letto SOLO alla fine dell'annuncio.
+    // Prima, un buffering/interruzione lo faceva risultare pronunciato
+    // anche quando l'ascoltatore non aveva sentito niente.
+    utterance.onstart = () => {
+      if (promoAnnouncement) promoLastSpokenAt = Date.now();
+      audio.volume = 0.10;
     };
     utterance.lang = 'it-IT';
+    // Mantiene la scelta della voce precedente, che sul telefono funzionava
+    // meglio del tentativo neural. Un pitch quasi neutro evita artefatti
+    // metallici; la qualità nativa dipende dal motore TTS installato.
     utterance.rate = 0.98;
-    utterance.pitch = 0.82;
+    utterance.pitch = 0.96;
     utterance.volume = 1;
     const voices = speech.getVoices();
     const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
-    // Prefer an explicitly identified Italian male voice; avoid named female voices.
-    // Voice and pitch support depend on the device's speech synthesis engine.
     const maleItalianName = /\b(cosimo|luca|diego|giorgio|marco|matteo|andrea|alessandro|fabrizio|edoardo|riccardo|stefano|paolo|enrico|francesco|roberto|giovanni|nicola|male|uomo|maschio)\b/i;
     const femaleItalianName = /\b(elsa|isabella|alice|federica|giulia|lucia|silvia|francesca|anna|female|donna|femmina)\b/i;
-    utterance.voice = italian.find(voice => maleItalianName.test(voice.name))
-      || italian.find(voice => !femaleItalianName.test(voice.name))
+    const lowQuality = /\b(compact|espeak|pico|robot|legacy)\b/i;
+    utterance.voice = italian.find(v=>maleItalianName.test(v.name) && !lowQuality.test(v.name))
+      || italian.find(v=>!femaleItalianName.test(v.name) && !lowQuality.test(v.name))
+      || italian.find(v=>maleItalianName.test(v.name))
+      || italian.find(v=>!femaleItalianName.test(v.name))
       || italian[0] || null;
     jingleUtterance = utterance;
-    function finish() {
+    function finish(completed=false) {
       if (settled || generation !== jingleGeneration) return;
       settled = true;
       if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
       jingleWatchdog = null;
+      if (completed && promoAnnouncement && !promoAnnouncement.demoToday)
+        promoMarkSpoken(promoAnnouncement.token);
       jingleUtterance = null;
       jingleBusy=false;
       audio.volume=1;
       if(kind==='classic')scheduleJingle();
     }
-    utterance.onend = finish;
-    utterance.onerror = finish;
+    utterance.onend = () => finish(true);
+    utterance.onerror = () => finish(false);
     try { if (speech.paused) speech.resume(); } catch (_) {}
-    // Riduci la radio al 10% solo durante il messaggio sintetico.
-    audio.volume=0.10;
+    // Il volume scende solo quando la voce inizia davvero; se il browser
+    // nega l'audio, la musica non rimane ingiustificatamente attenuata.
     jingleWatchdog=window.setTimeout(()=>{
       if(generation!==jingleGeneration)return;
       try{speech.cancel();}catch(_){}
-      finish();
+      finish(false);
     },promoAnnouncement ? 30000 : 20000);
-    try{speech.speak(utterance);}catch(_){finish();}
+    try{speech.speak(utterance);}catch(_){finish(false);}
   }
   // END CONTROCORRENTE RADIO JINGLE 2026-11-04
 
