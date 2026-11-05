@@ -367,6 +367,28 @@
           "tool": "image_gen",
           "note": "New photo specifically depicting grilled bone-in veal steak with potatoes and parsley, without vegetables, in a coherent dark restaurant setting. Illustrative, not actual restaurant photography."
         }
+      },
+      {
+        "name": "Galletto ripieno di frutta, salsiccia e castagne con patate al forno",
+        "price": 14,
+        "description": "Galletto arrosto con un ripieno di frutta, salsiccia e castagne, accompagnato da patate dorate al forno.",
+        "allergens": [],
+        "icon": "CookingPot",
+        "dishPhoto": "cena-assets/galletto-ripieno-affettato-patate-20261015.webp",
+        "translations": {
+          "en": {
+            "name": "Roasted young rooster stuffed with fruit, sausage and chestnuts, with roast potatoes",
+            "description": "Golden roasted young rooster with a rich fruit, sausage and chestnut stuffing, served with roast potatoes."
+          },
+          "zh": {
+            "name": "水果香肠栗子馅烤仔鸡配烤土豆",
+            "description": "烤仔鸡填入水果、香肠和栗子，搭配金黄烤土豆。"
+          }
+        },
+        "photoSource": {
+          "type": "Previously approved illustration of same dish",
+          "date": "2026-10-15"
+        }
       }
     ]
   },
@@ -606,9 +628,9 @@
   ],
   "offers": [
     {
-      "name": "Orecchiette con cavolfiori, broccoli, acciughe e capperi, leggermente piccanti",
+      "name": "Orecchiette con cavolfiori, broccoli, acciughe, capperi e pangrattato alle alici, leggermente piccanti",
       "price": 10,
-      "description": "La dolcezza degli ortaggi incontra il carattere delle acciughe e dei capperi, con una lieve nota piccante.",
+      "description": "Cavolfiori e broccoli incontrano acciughe e capperi, con una finitura croccante di pangrattato alle alici e una lieve nota piccante.",
       "allergens": [
         1,
         4
@@ -619,12 +641,12 @@
       "dishPhoto": "offerta-assets/orecchiette-broccoli-cavolfiori-acciughe-capperi-20261030.png",
       "translations": {
         "en": {
-          "name": "Orecchiette with cauliflower, broccoli, anchovies and capers, mildly spicy",
-          "description": "Sweet vegetables meet savoury anchovies and capers, with a gentle touch of chilli."
+          "name": "Orecchiette with cauliflower, broccoli, anchovies, capers and anchovy breadcrumbs, mildly spicy",
+          "description": "Cauliflower and broccoli with anchovies and capers, finished with crisp anchovy breadcrumbs and a gentle hint of chilli."
         },
         "zh": {
-          "name": "花椰菜西兰花鳀鱼刺山柑猫耳朵面（微辣）",
-          "description": "蔬菜的清甜与鳀鱼、刺山柑的咸鲜相映，略带微辣。"
+          "name": "花椰菜、西兰花、鳀鱼、刺山柑及鳀鱼面包糠猫耳朵面（微辣）",
+          "description": "花椰菜与西兰花搭配鳀鱼、刺山柑，再撒上香脆的鳀鱼面包糠，略带微辣。"
         }
       },
       "photoSource": {
@@ -635,29 +657,57 @@
       }
     },
     {
-      "name": "Straccetti di maiale in agrodolce con ananas e peperoni, serviti con riso bianco al vapore",
+      "name": "Straccetti di maiale alla birra con riso bianco al vapore",
       "price": 10,
-      "description": "Il contrasto tra dolce e acidulo vivacizza il maiale, con riso al vapore ad accompagnare il piatto.",
-      "allergens": [],
+      "description": "Straccetti di maiale teneri e profumati alla birra, serviti con riso bianco al vapore.",
+      "allergens": [
+        1
+      ],
       "icon": "CookingPot",
-      "dishPhoto": "pranzo-assets/maiale-agrodolce-riso-20261029.webp",
-      "photoLayout": "side",
       "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/straccetti-lonza-birra-patate-20261105.webp",
       "translations": {
         "en": {
-          "name": "Sweet-and-sour pork strips with pineapple and peppers, served with steamed white rice",
-          "description": "Sweet and tangy flavours enliven the pork, balanced by gently steamed white rice."
+          "name": "Beer-braised pork strips with steamed white rice",
+          "description": "Tender pork strips cooked with beer, served with steamed white rice."
         },
         "zh": {
-          "name": "菠萝彩椒糖醋猪肉丝配白米饭",
-          "description": "酸甜酱汁为猪肉增添活泼风味，搭配清淡的蒸白米饭。"
+          "name": "啤酒烩猪肉条配蒸白米饭",
+          "description": "啤酒烩制的鲜嫩猪肉条，搭配蒸白米饭。"
         }
       },
       "photoSource": {
-        "type": "Previously approved AI-generated illustrative image",
-        "date": "2026-10-29",
-        "tool": "image_gen",
-        "note": "Reuses matching photo of sweet-and-sour pork with pineapple, peppers and steamed white rice on navy background."
+        "type": "Temporary illustration of beer-cooked pork",
+        "date": "2026-11-05",
+        "note": "Existing picture shows a potato accompaniment and must be replaced with the correct HD pork-and-rice image before the visual update can be considered complete."
+      }
+    },
+    {
+      "name": "Casarecce con melanzane e branzino, con poco pomodoro",
+      "price": 12,
+      "description": "Melanzane morbide e branzino delicato si uniscono alle casarecce, con un leggero tocco di pomodoro.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Primo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/casarecce-melanzane-branzino-20261105.webp",
+      "translations": {
+        "en": {
+          "name": "Casarecce with eggplant and sea bass, lightly dressed with tomato",
+          "description": "Tender eggplant and delicate sea bass accompany the pasta with just a touch of tomato."
+        },
+        "zh": {
+          "name": "茄子海鲈鱼卡萨雷切短意面（少量番茄）",
+          "description": "柔嫩茄子与鲜美海鲈鱼搭配短意面，只加少许番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "Existing illustration of the same recipe reused from lunch",
+        "date": "2026-11-05"
       }
     }
   ],
