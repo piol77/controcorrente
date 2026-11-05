@@ -20,7 +20,7 @@
   };
   const onlyPublic = item => item && typeof item === 'object' &&
     /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(item.code) &&
-    ['held','confirmed','used'].includes(item.status);
+    ['held','confirmed','used','void'].includes(item.status);
   async function refresh() {
     let data;
     try {
@@ -59,9 +59,9 @@
       const tr = document.createElement('tr');
       const vals = [
         item.code,
-        stamp(item.held_at || item.confirmed_at || item.used_at || item.issued_at),
+        stamp(item.status==='void' ? item.updated_at : (item.held_at || item.confirmed_at || item.used_at || item.issued_at)),
         ({held:'Riservato, in attesa di conferma',confirmed:'Prenotazione confermata',
-          used:'Sconto utilizzato'})[item.status]
+          used:'Sconto utilizzato',void:'Annullato · non più valido'})[item.status]
       ];
       vals.forEach((value,i) => {
         const td = document.createElement('td');
