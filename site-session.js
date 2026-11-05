@@ -434,14 +434,14 @@
       if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
       jingleWatchdog = null;
       jingleUtterance = null;
-      audio.volume=1;
       jingleBusy=false;
+      audio.volume=1;
       if(kind==='classic')scheduleJingle();
     }
     utterance.onend = finish;
     utterance.onerror = finish;
-    // Niente attenuazione: il volume dello stream resta sempre al 100%.
-    audio.volume=1;
+    // Riduci la radio solo durante il messaggio sintetico.
+    audio.volume=0.24;
     jingleWatchdog=window.setTimeout(()=>{
       if(generation!==jingleGeneration)return;
       try{speech.cancel();}catch(_){}
@@ -482,7 +482,8 @@
     } catch (_) { pending = false; failed = true; render(); }
   }
   audio.addEventListener('volumechange',()=>{
-    if(audio.volume!==1)audio.volume=1;
+    const target=jingleBusy?0.24:1;
+    if(audio.volume!==target)audio.volume=target;
   });
   audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); refreshRadioPromo(); updateListenerPresence(); });
   audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); updateListenerPresence(true); });
