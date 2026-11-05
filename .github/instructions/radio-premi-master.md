@@ -70,3 +70,7 @@ Queste regole sostituiscono le precedenti dove non coincidono.
 ## Blocco definitivo della voce del mattino, 5 novembre 2026
 - Ripristinare e preservare senza modifiche il blocco vocale originale del mattino del 5 novembre: selezione della prima voce italiana maschile identificata per nome, altrimenti italiana non femminile, altrimenti la prima italiana; velocità 0.98, pitch 0.82, volume 1. Nessun filtraggio `lowQuality`, nessun punteggio neural/natural, nessun altro ritocco al timbro. Prevale sulle precedenti indicazioni sulla voce.
 - Il jingle generico resta ogni 5 minuti (ultima richiesta); gli annunci premio restano nei 10 slot server con retry in caso di interruzione e nessuna sovrapposizione. Non cambiare voce per sistemare gli annunci.
+
+## Revisione ultima voce sul sito, 5 novembre 2026
+- La selezione forzata di una voce maschile e l'abbassamento del pitch a 0.82 sono ora superati. Usare la voce italiana predefinita dal browser/dispositivo senza preferenze nominali maschili, con rate 0.94/pitch 1.0/volume 1, oppure lasciare `utterance.voice=null` con `lang='it-IT'` se nessuna voce italiana è indicata come default. La qualità è legata alle voci installate, non è una registrazione garantita. Prevale sulle precedenti istruzioni sulla voce.
+- Nessuna variazione a jingle ordinario ogni 5 minuti, slot promo, convalide, riprova in caso di errore, attenuazione della radio e ritorno del volume.
