@@ -18,7 +18,7 @@
     }).format(d) : '—';
   };
   const onlyPublic = item => item && typeof item === 'object' &&
-    /^[A-HJ-NP-Z2-9]{5}$/.test(item.code) &&
+    /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(item.code) &&
     ['held','confirmed','used','expired','void'].includes(item.status);
   async function refresh() {
     let data;
