@@ -382,7 +382,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/casarecce-melanzane-branzino-20261105.webp",
+      "dishPhoto": "pranzo-assets/casarecce-melanzane-branzino-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Casarecce with eggplant and sea bass (light tomato sauce)",
@@ -394,11 +394,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image, WebP optimized",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen / crop and image optimization",
-        "resolution": "1200×460 pixels from an original 1536×1024 illustration",
-        "note": "Illustrazione realistica coerente con lo stile dei piatti in ceramica chiara e fondo scuro. Non è una fotografia di cibo realmente servito nel ristorante."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     },
     {
@@ -412,7 +412,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/spaghetti-salsiccia-zafferano-20261105.webp",
+      "dishPhoto": "pranzo-assets/spaghetti-salsiccia-zafferano-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Spaghetti with sausage and saffron (a little cream)",
@@ -424,11 +424,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image, WebP optimized",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen / crop and image optimization",
-        "resolution": "1200×460 pixels; cropped from a 1199×1312 AI image containing seven dishes",
-        "note": "Illustrazione realistica coerente con lo stile dei piatti in ceramica chiara e fondo scuro. Non è una fotografia di cibo realmente servito nel ristorante."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     },
     {
@@ -442,7 +442,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/penne-panna-prosciutto-piselli-20261105.webp",
+      "dishPhoto": "pranzo-assets/penne-panna-prosciutto-piselli-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Penne with cream, cooked ham and peas",
@@ -454,11 +454,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image, WebP optimized",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen / crop and image optimization",
-        "resolution": "1200×460 pixels; cropped from a 1199×1312 AI image containing seven dishes",
-        "note": "Illustrazione realistica coerente con lo stile dei piatti in ceramica chiara e fondo scuro. Non è una fotografia di cibo realmente servito nel ristorante."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     },
     {
@@ -472,7 +472,7 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/rigatoni-cacio-pepe-20261105.webp",
+      "dishPhoto": "pranzo-assets/rigatoni-cacio-pepe-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Rigatoni cacio e pepe",
@@ -484,11 +484,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image, WebP optimized",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen / crop and image optimization",
-        "resolution": "1200×460 pixels; cropped from a 1199×1312 AI image containing seven dishes",
-        "note": "Illustrazione realistica coerente con lo stile dei piatti in ceramica chiara e fondo scuro. Non è una fotografia di cibo realmente servito nel ristorante."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     },
     {
@@ -501,7 +501,7 @@
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/straccetti-lonza-birra-patate-20261105.webp",
+      "dishPhoto": "pranzo-assets/straccetti-lonza-birra-patate-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Beer-flavoured pork loin strips with parsley potatoes",
@@ -513,11 +513,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image, WebP optimized",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen / crop and image optimization",
-        "resolution": "1200×460 pixels; cropped from a 1199×1312 AI image containing seven dishes",
-        "note": "Illustrazione realistica coerente con lo stile dei piatti in ceramica chiara e fondo scuro. Non è una fotografia di cibo realmente servito nel ristorante."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     },
     {
@@ -528,7 +528,7 @@
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/pollo-griglia-verza-viola-20261105.webp",
+      "dishPhoto": "pranzo-assets/pollo-griglia-verza-viola-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Grilled chicken with raw purple cabbage and balsamic vinegar",
@@ -540,11 +540,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image, WebP optimized",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen / crop and image optimization",
-        "resolution": "1200×460 pixels; cropped from a 1199×1312 AI image containing seven dishes",
-        "note": "Illustrazione realistica coerente con lo stile dei piatti in ceramica chiara e fondo scuro. Non è una fotografia di cibo realmente servito nel ristorante."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     },
     {
@@ -555,7 +555,7 @@
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/polpettine-carne-mista-sugo-patate-20261105.webp",
+      "dishPhoto": "pranzo-assets/polpettine-carne-mista-sugo-patate-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Mixed-meat meatballs in tomato sauce with parsley-seasoned boiled potatoes",
@@ -567,11 +567,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative image, optimized website crop",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen",
-        "resolution": "1200 × 460 pixels (from generated 1448 × 1086 source)",
-        "note": "Piatto avorio su sfondo blu scuro per uniformità fotografica con il pranzo. Immagine illustrativa e non fotografia del ristorante. Non sono stati assegnati allergeni senza conoscere gli ingredienti dell'impasto."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     },
     {
@@ -584,7 +584,7 @@
       "icon": "Fish",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/insalatona-salmone-arance-avocado-20261105.webp",
+      "dishPhoto": "pranzo-assets/insalatona-salmone-arance-avocado-uniform-20261105.svg",
       "translations": {
         "en": {
           "name": "Large salad with fennel, oranges, avocado and fresh salmon bites with balsamic vinegar",
@@ -596,11 +596,11 @@
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image, WebP optimized",
+        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
         "date": "2026-11-05",
-        "tool": "image_gen / crop and image optimization",
-        "resolution": "1200×460 pixels; cropped from a 1199×1312 AI image containing seven dishes",
-        "note": "Illustrazione realistica coerente con lo stile dei piatti in ceramica chiara e fondo scuro. Non è una fotografia di cibo realmente servito nel ristorante."
+        "tool": "image_gen e uniformazione fotografica in serie",
+        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
+        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
       }
     }
   ],
