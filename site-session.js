@@ -164,6 +164,7 @@
   const radioStyle = document.createElement('style');
   radioStyle.textContent = `
     .cc-radio-controls{display:flex;justify-content:flex-end;align-items:center;gap:9px;margin:8px 0 0 auto;min-height:44px}
+    @media(min-width:1101px){header.top .cc-radio-controls{justify-content:center;width:100%;box-sizing:border-box;margin:8px auto 0}}
     .cc-radio-listeners{display:inline-flex;align-items:center;min-height:28px;border:1px solid var(--gold,#cba76d);border-radius:20px;padding:1px 9px;color:var(--gold,#cba76d);font:600 11px/1.3 system-ui,sans-serif;white-space:nowrap}
     #cc-jazz-toggle{position:relative;isolation:isolate}
     #cc-jazz-toggle::before,#cc-jazz-toggle::after{content:"";position:absolute;inset:-4px;border:2px solid currentColor;box-shadow:0 0 6px rgba(203,167,109,.7);border-radius:50%;pointer-events:none;opacity:0}
