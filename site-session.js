@@ -87,6 +87,8 @@
   // Inject in every document, including internal pages attached to the shared player.
   const radioStyle = document.createElement('style');
   radioStyle.textContent = `
+    .cc-radio-controls{display:flex;justify-content:flex-end;align-items:center;gap:9px;margin:8px 0 0 auto;min-height:44px}
+    .cc-radio-listeners{display:inline-flex;align-items:center;min-height:28px;border:1px solid var(--gold,#cba76d);border-radius:20px;padding:1px 9px;color:var(--gold,#cba76d);font:600 11px/1.3 system-ui,sans-serif;white-space:nowrap}
     #cc-jazz-toggle{position:relative;isolation:isolate}
     #cc-jazz-toggle::before,#cc-jazz-toggle::after{content:"";position:absolute;inset:-4px;border:2px solid currentColor;box-shadow:0 0 6px rgba(203,167,109,.7);border-radius:50%;pointer-events:none;opacity:0}
     #cc-jazz-toggle[data-music-state="on"]::before,#cc-jazz-toggle[data-music-state="on"]::after{animation:cc-radio-ripple 1s ease-in-out infinite}
@@ -97,15 +99,28 @@
   document.head.appendChild(radioStyle);
   // The top document owns the stream; internal pages keep their normal scripts
   // and share that player instead of creating one on every navigation.
+  function placeRadioControls(button) {
+    const holder=document.createElement('div');
+    holder.className='cc-radio-controls';
+    button.style.margin='0';
+    const listeners=document.createElement('span');
+    listeners.className='cc-radio-listeners';
+    listeners.setAttribute('aria-label','Ascoltatori della radio dal sito');
+    listeners.title='Sessioni che ascoltano la radio sul sito, aggiornate circa ogni 25 secondi';
+    listeners.textContent='♫ — in ascolto';
+    holder.append(button,listeners);
+    const brandRow=header.querySelector('.brand-row');
+    if(brandRow)brandRow.insertAdjacentElement('afterend',holder);
+    else header.appendChild(holder);
+    return listeners;
+  }
   let owner;
   try { if (window.parent !== window) owner = window.parent.ccJazzPlayer; } catch (_) {}
   if (owner) {
     const button = owner.button.cloneNode(true);
     button.addEventListener('click', owner.toggle);
-    const row = header.querySelector('.brand-row');
-    if (row) row.insertAdjacentElement('afterend', button);
-    else header.appendChild(button);
-    owner.attach(button, window);
+    const listeners=placeRadioControls(button);
+    owner.attach(button, window, listeners);
     // Preserve the existing preorder redirect outside the persistent page frame.
     window.__DEMO_OPEN_WHATSAPP = url => { window.top.location.href = url; };
     return;
@@ -126,6 +141,58 @@
   button.type = 'button';
   button.style.cssText = 'display:block;margin:8px 0 0 auto;width:44px;height:44px;padding:4px;border:1px solid var(--gold,#cba76d);border-radius:50%;background:var(--navy,#082a43);color:var(--gold,#cba76d);font-size:18px;line-height:1;cursor:pointer;';
   let activeButton = button;
+  let activeListenerBadge=null;
+  let listenerCount=null;
+  let listenerPending=false;
+  const listenerApi='https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
+  const listenerKey='cc-radio-listener-session-v1';
+  let listenerSession=null;
+  try {
+    listenerSession=sessionStorage.getItem(listenerKey);
+    if (!listenerSession && window.crypto && typeof crypto.randomUUID==='function') {
+      listenerSession=crypto.randomUUID();
+      sessionStorage.setItem(listenerKey,listenerSession);
+    }
+  } catch (_) {
+    if (window.crypto && typeof crypto.randomUUID==='function') listenerSession=crypto.randomUUID();
+  }
+  function renderListenerCount(){
+    const label=Number.isSafeInteger(listenerCount) && listenerCount>=0
+      ? '♫ '+listenerCount+' in ascolto' : '♫ — in ascolto';
+    const title='Ascoltatori attivi dal sito negli ultimi 75 secondi (stima per sessioni)';
+    for(const el of [ownListenersRef(),activeListenerBadge]){
+      if(!el)continue;
+      el.textContent=label;
+      el.title=title;
+    }
+  }
+  let ownListenerBadge=null;
+  function ownListenersRef(){return ownListenerBadge;}
+  async function updateListenerPresence(forceOff=false){
+    if(listenerPending)return;
+    const playing=!forceOff && enabled && audible && !audio.paused && !failed;
+    if(!listenerSession && playing)return;
+    listenerPending=true;
+    try {
+      const request=playing||forceOff
+        ? {
+            method:'POST',headers:{'Content-Type':'application/json'},
+            body:JSON.stringify({action:'listener_presence',session:listenerSession,playing}),
+            cache:'no-store',credentials:'omit',keepalive:forceOff
+          }
+        : {method:'GET',cache:'no-store',credentials:'omit'};
+      const response=await fetch(listenerApi,request);
+      if(!response.ok)throw Error('Listener count temporarily unavailable');
+      const data=await response.json();
+      if(Number.isSafeInteger(data.listeners) && data.listeners>=0){
+        listenerCount=data.listeners;
+        renderListenerCount();
+      }
+    }catch(_){listenerCount=null;renderListenerCount();}
+    finally{listenerPending=false;}
+  }
+  window.setInterval(()=>updateListenerPresence(),25000);
+
   function render() {
     const playing = enabled && audible && !audio.paused && !failed;
     const label = playing ? 'OFF · Spegni la musica' : pending
@@ -334,8 +401,8 @@
       } else { pending = false; }
     } catch (_) { pending = false; failed = true; render(); }
   }
-  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); refreshRadioPromo(); });
-  audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); });
+  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); refreshRadioPromo(); updateListenerPresence(); });
+  audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); updateListenerPresence(true); });
   audio.addEventListener('waiting', () => { audible = false; pending = enabled; resetJingle(); render(); });
   audio.addEventListener('stalled', () => { audible = false; pending = enabled; resetJingle(); render(); });
   audio.addEventListener('ended', () => { audible = false; pending = false; resetJingle(); render(); });
@@ -357,10 +424,11 @@
     render();
   }
   button.addEventListener('click', toggle);
-  const brandRow = header.querySelector('.brand-row');
-  if (brandRow) brandRow.insertAdjacentElement('afterend', button);
-  else header.appendChild(button);
+  const ownListeners=placeRadioControls(button);
+  ownListenerBadge=ownListeners;
+  activeListenerBadge=ownListeners;
   render();
+  updateListenerPresence();
   const siteRoot = new URL('.', location.href);
   let frame = null;
   function navigate(url, push = true) {
@@ -416,9 +484,11 @@
   }
   window.ccJazzPlayer = {
     button, toggle,
-    attach(nextButton, view) {
+    attach(nextButton, view, nextListenerBadge) {
       activeButton = nextButton;
+      activeListenerBadge = nextListenerBadge || ownListenerBadge;
       render();
+      renderListenerCount();
       bindNavigation(view);
     }
   };
