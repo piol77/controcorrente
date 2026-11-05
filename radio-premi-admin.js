@@ -111,18 +111,20 @@
           tr.append(td);
         });
         const actionsCell=document.createElement('td');
-        if(rec.state==='held' && !rec.is_test){
+        const today = new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome'}).format(new Date());
+        const confirmedToday = rec.state==='confirmed' && rec.issue_day===today && rec.hold_ref;
+        if((rec.state==='held' || confirmedToday) && !rec.is_test && Date.parse(rec.expires_at)>Date.now()){
           const free=document.createElement('button');
           free.type='button';free.className='rp-row-btn';
           free.textContent='Libera riserva';
-          free.title='Rendi di nuovo disponibile il codice non confermato';
+          free.title='Rendi di nuovo disponibile il codice prima che lo sconto sia utilizzato';
           free.addEventListener('click',async()=>{
-            if(!window.confirm('Il cliente NON ha inviato WhatsApp? Liberare la riserva provvisoria '+rec.code+'?'))return;
+            if(!window.confirm((confirmedToday ? 'La prenotazione era confermata. Liberare il codice se lo sconto non è stato utilizzato? ' : 'Liberare la riserva provvisoria? ')+rec.code))return;
             free.disabled=true;
             try{
-              await request('free_hold',{code:rec.code});
+              await request('free_hold',{code:rec.code,ref:rec.hold_ref});
               await refresh();
-              display('Riserva liberata: il codice '+rec.code+' è di nuovo disponibile.');
+              display('Riserva liberata: il codice '+rec.code+' è di nuovo disponibile per gli slot radio di oggi.');
             }catch(e){
               free.disabled=false;
               display('Impossibile liberare: '+(e instanceof Error?e.message:'errore'));
