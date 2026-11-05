@@ -497,21 +497,17 @@
       audio.volume = 0.10;
     };
     utterance.lang = 'it-IT';
-    // Mantiene la scelta della voce precedente, che sul telefono funzionava
-    // meglio del tentativo neural. Un pitch quasi neutro evita artefatti
-    // metallici; la qualità nativa dipende dal motore TTS installato.
     utterance.rate = 0.98;
-    utterance.pitch = 0.96;
+    utterance.pitch = 0.82;
     utterance.volume = 1;
     const voices = speech.getVoices();
     const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
+    // Prefer an explicitly identified Italian male voice; avoid named female voices.
+    // Voice and pitch support depend on the device's speech synthesis engine.
     const maleItalianName = /\b(cosimo|luca|diego|giorgio|marco|matteo|andrea|alessandro|fabrizio|edoardo|riccardo|stefano|paolo|enrico|francesco|roberto|giovanni|nicola|male|uomo|maschio)\b/i;
     const femaleItalianName = /\b(elsa|isabella|alice|federica|giulia|lucia|silvia|francesca|anna|female|donna|femmina)\b/i;
-    const lowQuality = /\b(compact|espeak|pico|robot|legacy)\b/i;
-    utterance.voice = italian.find(v=>maleItalianName.test(v.name) && !lowQuality.test(v.name))
-      || italian.find(v=>!femaleItalianName.test(v.name) && !lowQuality.test(v.name))
-      || italian.find(v=>maleItalianName.test(v.name))
-      || italian.find(v=>!femaleItalianName.test(v.name))
+    utterance.voice = italian.find(voice => maleItalianName.test(voice.name))
+      || italian.find(voice => !femaleItalianName.test(voice.name))
       || italian[0] || null;
     jingleUtterance = utterance;
     function finish(completed=false) {
