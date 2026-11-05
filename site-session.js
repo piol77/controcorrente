@@ -247,8 +247,19 @@
     }).formatToParts(new Date());
     return ['year','month','day'].map(k=>parts.find(p=>p.type===k).value).join('-');
   };
-  const jingleIntervalMs=()=>romeToday()==='2026-11-05' ? 60*1000 : 2*60*1000;
-  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente. Qui il ritmo è sempre quello giusto.';
+  // Classico sempre ogni cinque minuti; annunci premio su un timer indipendente.
+  const jingleIntervalMs=()=>5*60*1000;
+  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente di Torino.';
+  const JINGLE_ENDINGS = [
+    'Qui la musica non paga il coperto.',
+    'Il ritmo è servito, senza attesa.',
+    'Un brano tira l’altro. Proprio come le patatine.',
+    'Buone vibrazioni, senza prenotazione.',
+    'Anche le note meritano un bel tavolo.',
+    'Qui il volume non arriva mai sul conto.',
+    'La musica è l’unica cosa che non si raffredda.',
+    'Tra un piatto e l’altro, una bella canzone.'
+  ];
   let jingleTimer = null;
   let jingleFadeTimer = null;
   let jingleWatchdog = null;
@@ -259,6 +270,7 @@
   // sul dispositivo in ascolto. La fonte è il backend privato, non il browser.
   let promoOnAir = null;
   let promoLastFetched = 0;
+  let promoLastSpokenAt = 0;
   const promoSpokenPrefix = 'cc-radio-premio-annunciato-';
   const promoApi = 'https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
   function promoAlreadySpoken(token) {
@@ -283,6 +295,7 @@
              || (result.on_air.demo_today === true && result.on_air.slot===0))
         ? Object.assign({},result.on_air,{promotion_active:result.active===true}) : null;
       promoLastFetched = Date.now();
+      maybePlayPromo();
     } catch (_) {
       promoOnAir = null;
     }
@@ -313,6 +326,21 @@
         + 'Controcorrente, Torino.'};
   }
 
+  // Annunci del codice con un timer INDIPENDENTE dal jingle classico.
+  function maybePlayPromo() {
+    if (!enabled || !audible || audio.paused || failed || jingleBusy) return;
+    const item=currentPromoAnnouncement();
+    if (!item) return;
+    if (item.demoToday && Date.now()-promoLastSpokenAt < 60000) return;
+    playJingle('promo');
+  }
+  window.setInterval(maybePlayPromo,9000);
+  window.addEventListener('focus',()=>{ refreshRadioPromo(); maybePlayPromo(); });
+  document.addEventListener('visibilitychange',()=>{
+    if (!document.hidden && enabled && !audio.paused) refreshRadioPromo();
+  });
+
+
   function resetJingle() {
     jingleGeneration += 1;
     if (jingleTimer !== null) window.clearTimeout(jingleTimer);
@@ -333,7 +361,7 @@
     if (jingleTimer !== null || jingleBusy || !enabled || !audible || audio.paused || failed) return;
     jingleTimer = window.setTimeout(() => {
       jingleTimer = null;
-      if (enabled && audible && !audio.paused && !failed) playJingle();
+      if (enabled && audible && !audio.paused && !failed) playJingle('classic');
     }, jingleIntervalMs());
   }
 
@@ -357,18 +385,25 @@
     }, 65);
   }
 
-  function playJingle() {
+  function playJingle(kind='classic') {
+    const promoAnnouncement = kind==='promo' ? currentPromoAnnouncement() : null;
+    if (kind==='promo' && !promoAnnouncement) return;
+    if (promoAnnouncement && promoAnnouncement.demoToday
+        && Date.now()-promoLastSpokenAt < 60000) return;
     const speech = window.speechSynthesis;
-    if (!speech || typeof window.SpeechSynthesisUtterance !== 'function' || speech.speaking || speech.pending) {
-      scheduleJingle();
-      return;
-    }
+    if (!speech || typeof window.SpeechSynthesisUtterance !== 'function'
+        || speech.speaking || speech.pending || jingleBusy) return;
     const generation = ++jingleGeneration;
     jingleBusy = true;
     let settled = false;
-    const promoAnnouncement = currentPromoAnnouncement();
-    const utterance = new window.SpeechSynthesisUtterance(promoAnnouncement ? promoAnnouncement.text : JINGLE_TEXT);
-    if (promoAnnouncement && !promoAnnouncement.demoToday) utterance.onstart = () => promoMarkSpoken(promoAnnouncement.token);
+    const classicText = JINGLE_TEXT + ' ' +
+      JINGLE_ENDINGS[Math.floor(Math.random()*JINGLE_ENDINGS.length)];
+    const utterance = new window.SpeechSynthesisUtterance(
+      promoAnnouncement ? promoAnnouncement.text : classicText);
+    if (promoAnnouncement) utterance.onstart = () => {
+      promoLastSpokenAt = Date.now();
+      if (!promoAnnouncement.demoToday) promoMarkSpoken(promoAnnouncement.token);
+    };
     utterance.lang = 'it-IT';
     utterance.rate = 0.96;
     utterance.pitch = 0.66;
@@ -403,7 +438,7 @@
         if (generation !== jingleGeneration) return;
         try { speech.cancel(); } catch (_) {}
         finish();
-      }, 20000);
+      }, promoAnnouncement ? 32000 : 20000);
       try { speech.speak(utterance); } catch (_) { finish(); }
     });
   }
