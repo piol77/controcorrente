@@ -11,6 +11,45 @@
   const status = document.querySelector('[data-premi-admin-active]');
   const tokenKey = 'cc-radio-premi-admin-session-v1';
   let accessToken = sessionStorage.getItem(tokenKey) || '';
+  const actionForm = document.querySelector('[data-premi-actions]');
+  const actionSelect = document.querySelector('[data-premi-operation]');
+  const actionHelp = document.querySelector('[data-premi-action-help]');
+  const actionFields = ['code','reference','amount'];
+  const requiredFields = {
+    confirm:['code','reference'],
+    use:['code','reference','amount'],
+    release:['code'],
+    activate:[],
+    deactivate:[]
+  };
+  const actionDescriptions = {
+    confirm:'Serve il codice e il riferimento UUID arrivato su WhatsApp. Blocca il codice oltre le 24 ore.',
+    use:'Serve il codice, lo stesso riferimento WhatsApp e il totale del conto (almeno 50 € prima dello sconto).',
+    release:'Serve soltanto il codice di 5 caratteri. Diventerà ANNULLATO e non potrà più essere usato.',
+    activate:'Attiva i nuovi codici giornalieri. Non servono altri dati: confermerai prima di procedere.',
+    deactivate:'Sospende i nuovi riscatti e gli annunci premio. Non servono altri dati: confermerai prima di procedere.'
+  };
+  const stateLabels = {
+    available:'DISPONIBILE', held:'RISERVATO (24 ore)',
+    confirmed:'PRENOTAZIONE CONFERMATA', used:'GIÀ UTILIZZATO',
+    expired:'SCADUTO', void:'ANNULLATO DEFINITIVAMENTE'
+  };
+  function updateActionForm() {
+    const operation=actionSelect.value;
+    const required=requiredFields[operation] || [];
+    for (const name of actionFields) {
+      const wrapper=actionForm.querySelector('[data-premi-field="'+name+'"]');
+      if (!wrapper) continue;
+      wrapper.hidden=!required.includes(name);
+      const input=wrapper.querySelector('input');
+      if (input) input.required=required.includes(name);
+    }
+    actionHelp.textContent=actionDescriptions[operation]
+      || 'Scegli un’operazione: compariranno soltanto i campi necessari.';
+  }
+  actionSelect.addEventListener('change',updateActionForm);
+  updateActionForm();
+
   const display = (s) => message.textContent = s;
   const formatDate = (iso) => {
     if (!iso) return '—';
@@ -50,7 +89,7 @@
       rows.replaceChildren();
       if(!data.records.length) {
         const tr=document.createElement('tr'),td=document.createElement('td');
-        td.colSpan=8;td.textContent='Nessun codice ancora emesso.';
+        td.colSpan=9;td.textContent='Nessun codice ancora emesso.';
         tr.append(td);rows.append(tr);
       }
       data.records.forEach(rec=>{
@@ -58,9 +97,38 @@
         const fields=[
           rec.code,formatDate(rec.issued_at),formatDate(rec.air_one),
           formatDate(rec.air_two),formatDate(rec.expires_at),
-          (rec.is_test ? 'SOLO PROVA · ' : '') + rec.state,(rec.hold_ref||'—'),rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
+          (rec.is_test ? 'SOLO PROVA · ' : '') + (stateLabels[rec.state] || rec.state),
+          (rec.hold_ref||'—'),rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
         ];
-        fields.forEach(field=>{const td=document.createElement('td');td.textContent=String(field);tr.append(td);});
+        fields.forEach(field=>{
+          const td=document.createElement('td');
+          td.textContent=String(field);
+          tr.append(td);
+        });
+        const actionsCell=document.createElement('td');
+        if (['available','held','confirmed'].includes(rec.state)) {
+          const cancelButton=document.createElement('button');
+          cancelButton.type='button';
+          cancelButton.className='rp-row-btn';
+          cancelButton.textContent='Annulla';
+          cancelButton.title='Invalida definitivamente il codice '+rec.code;
+          cancelButton.addEventListener('click',async()=>{
+            if(!window.confirm('Annullare DEFINITIVAMENTE il codice '+rec.code+'? Non sarà più utilizzabile.'))return;
+            cancelButton.disabled=true;
+            try{
+              await request('release',{code:rec.code});
+              await refresh();
+              display('Codice '+rec.code+' ANNULLATO definitivamente. Non è più disponibile.');
+            }catch(e){
+              cancelButton.disabled=false;
+              display('Annullamento non riuscito: '+(e instanceof Error?e.message:'errore imprevisto'));
+            }
+          });
+          actionsCell.append(cancelButton);
+        }else{
+          actionsCell.textContent='—';
+        }
+        tr.append(actionsCell);
         rows.append(tr);
       });
       display('Registro aggiornato. Gli orari sono quelli di Torino.');
@@ -100,23 +168,56 @@
     accessToken='';sessionStorage.removeItem(tokenKey);refresh();
   });
   document.querySelector('[data-premi-refresh]').addEventListener('click',refresh);
-  document.querySelector('[data-premi-actions]').addEventListener('submit',async e=>{
+  actionForm.addEventListener('submit',async e=>{
     e.preventDefault();
-    const fd=new FormData(e.currentTarget);
+    const fd=new FormData(actionForm);
     const operation=String(fd.get('operation')||'');
+    if(!Object.prototype.hasOwnProperty.call(requiredFields,operation)){
+      display('Seleziona un’operazione.');return;
+    }
     const code=String(fd.get('code')||'').trim().toUpperCase();
     const ref=String(fd.get('reference')||'').trim();
-    const amount=fd.get('amount');
-    if(!operation)return;
-    if(operation==='activate'&&!confirm('Attivare gli sconti Radio Premi automatici?'))return;
-    if(operation==='use'&&!confirm('Il conto finale della cena è almeno 50 €? Segnare questo codice utilizzato definitivamente?'))return;
-    if(operation==='release'&&!confirm('ANNULLARE PER SEMPRE questo codice? Non sarà più assegnabile ad altri clienti.'))return;
+    const amountRaw=String(fd.get('amount')||'').trim().replace(',','.');
+    const amount=amountRaw?Number(amountRaw):null;
+    const required=requiredFields[operation];
+    if(required.includes('code')&&!/^[A-HJ-NP-Z2-9]{5}$/.test(code)){
+      display('Inserisci un codice valido di cinque caratteri.');return;
+    }
+    if(required.includes('reference')&&!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(ref)){
+      display('Inserisci il riferimento completo UUID che trovi nel WhatsApp del cliente.');return;
+    }
+    if(required.includes('amount')&&(!Number.isFinite(amount)||amount<50)){
+      display('Il conto prima dello sconto deve essere di almeno 50 €.');return;
+    }
+    const confirmations={
+      activate:'Attivare la promozione Radio Premi? I codici validi potranno essere riscattati.',
+      deactivate:'Sospendere la promozione Radio Premi? I nuovi riscatti e annunci premio verranno fermati.',
+      use:'Segnare questo codice come GIÀ UTILIZZATO? Confermi che il conto finale è di almeno 50 €?',
+      release:'Annullare DEFINITIVAMENTE il codice '+code+'? Non potrà più essere utilizzato.'
+    };
+    if(confirmations[operation]&&!window.confirm(confirmations[operation]))return;
+    const submitButton=actionForm.querySelector('button[type="submit"]');
+    if(submitButton)submitButton.disabled=true;
     try{
-      await request(operation,{code:code||null,ref:ref||null,
-        amount:amount?Number(amount):null});
+      await request(operation,{
+        code:required.includes('code')?code:null,
+        ref:required.includes('reference')?ref:null,
+        amount:required.includes('amount')?amount:null
+      });
       await refresh();
-      display('Operazione eseguita: '+operation+'.');
-    }catch(err){display(err instanceof Error?err.message:'Errore');}
+      const done={
+        activate:'Promozione ATTIVATA.',
+        deactivate:'Promozione SOSPESA.',
+        confirm:'Prenotazione con codice '+code+' CONFERMATA.',
+        use:'Codice '+code+' segnato GIÀ UTILIZZATO.',
+        release:'Codice '+code+' ANNULLATO definitivamente. Non è più disponibile.'
+      };
+      display(done[operation]||'Operazione completata.');
+    }catch(err){
+      display('Operazione NON eseguita: '+(err instanceof Error?err.message:'errore imprevisto'));
+    }finally{
+      if(submitButton)submitButton.disabled=false;
+    }
   });
   refresh();
 })();
