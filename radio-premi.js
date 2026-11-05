@@ -36,9 +36,11 @@
       return;
     }
     if (inactiveNote) inactiveNote.hidden = data.active;
-    status.textContent = data.active
-      ? 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.'
-      : 'Promozione in preparazione: nessun codice è ancora riscattabile.';
+    status.textContent = data.paused_today
+      ? 'Annunci radio terminati per oggi. Le prenotazioni già confermate restano valide.'
+      : data.active
+        ? 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.'
+        : 'Promozione sospesa: nuovi codici non disponibili.';
     updated.textContent = 'Registro aggiornato: ' + stamp(data.server_time);
     body.replaceChildren();
     const valid = data.records.filter(onlyPublic).slice()
@@ -72,6 +74,6 @@
     }
   }
   refresh();
-  window.setInterval(() => { if (!document.hidden) refresh(); }, 60000);
+  window.setInterval(() => { if (!document.hidden) refresh(); }, 5000);
   document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
 })();
