@@ -77,6 +77,82 @@
   update();
 })();
 
+// BEGIN RADIO ON CLICK STATISTICS 2026-11-05
+// One click on ON per browser/day and per browser lifetime (from 5 November 2026).
+// Separate counters from listening sessions and from page visits; no identifiers sent.
+(() => {
+  'use strict';
+  const prefix='piol77_controcorrente_radio_unique_on_20261105_';
+  const endpoint='https://countapi.mileshilliard.com/api/v1/';
+  const totalKey=prefix+'total';
+  const todayKey=() => {
+    const p=new Intl.DateTimeFormat('en-CA',{
+      timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'
+    }).formatToParts(new Date());
+    const find=type=>p.find(x=>x.type===type).value;
+    return find('year')+find('month')+find('day');
+  };
+  const currentDayKey=()=>prefix+'day_'+todayKey();
+  const stat=document.querySelector('[data-radio-click-stats]');
+  let loading=false;
+  const markOnce=(key)=>{
+    try {
+      if(localStorage.getItem(key)==='1')return false;
+      localStorage.setItem(key,'1');
+      return true;
+    } catch (_) { return false; }
+  };
+  async function hitOrGet(action,key) {
+    const response=await fetch(endpoint+action+'/'+key+'?t='+Date.now(),{
+      cache:'no-store',credentials:'omit',
+      signal:typeof AbortSignal!=='undefined'&&AbortSignal.timeout?AbortSignal.timeout(10000):undefined
+    });
+    if(action==='get'&&response.status===404)return 0;
+    if(!response.ok)throw new Error('Radio statistic unavailable');
+    const data=await response.json();
+    const count=Number(data.value);
+    if(!Number.isSafeInteger(count)||count<0)throw new Error('Invalid radio counter');
+    return count;
+  }
+  function render(today,total) {
+    if(!stat)return;
+    stat.querySelector('[data-radio-click-today]').textContent=
+      Number.isSafeInteger(today)?today.toLocaleString('it-IT'):'–';
+    stat.querySelector('[data-radio-click-total]').textContent=
+      Number.isSafeInteger(total)?total.toLocaleString('it-IT'):'–';
+    stat.setAttribute('aria-label',
+      'Browser che hanno acceso la radio oggi: '+(Number.isSafeInteger(today)?today:'non disponibile')+
+      '. Totale da oggi: '+(Number.isSafeInteger(total)?total:'non disponibile'));
+  }
+  async function refresh() {
+    if(!stat||loading)return;
+    loading=true;
+    try {
+      const [today,total]=await Promise.all([
+        hitOrGet('get',currentDayKey()),hitOrGet('get',totalKey)]);
+      render(today,total);
+    } catch (_) { render(null,null); }
+    finally { loading=false; }
+  }
+  function record() {
+    // Triggered ONLY by the deliberate OFF -> ON click, never by page visits or retries.
+    const todayFlag='cc-radio-on-'+todayKey()+'-v1';
+    const actions=[];
+    if(markOnce(todayFlag))actions.push(hitOrGet('hit',currentDayKey()));
+    if(markOnce('cc-radio-on-ever-v1'))actions.push(hitOrGet('hit',totalKey));
+    Promise.allSettled(actions).then(()=>refresh());
+  }
+  window.ccRadioClickStats={record,refresh};
+  if(stat) {
+    render(null,null);
+    refresh();
+    window.setInterval(()=>{if(!document.hidden)refresh();},20000);
+    window.addEventListener('focus',refresh);
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});
+  }
+})();
+// END RADIO ON CLICK STATISTICS 2026-11-05
+
 // BEGIN CONTROCORRENTE RADIO TEST 2026-10-18
 // Rollback radio: remove only this marked block.
 (() => {
@@ -249,25 +325,24 @@
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
   }
   // CONTROCORRENTE RADIO JINGLE 2026-11-04
-  // Annuncio vocale automatico ogni 2 minuti di ascolto, senza comandi dedicati.
-  // Unicamente il documento proprietario del lettore gestisce il jingle.
-  // Solo il 5 novembre 2026: prova del codice ogni minuto. Dalla mezzanotte
-  // locale successiva, ritorno automatico ai due minuti e agli slot abituali.
+  // Jingle classico su orologio di Torino: 06:00, 06:10, 06:20 ...;
+  // annunci premio indipendenti in dieci slot server giornalieri, mai sovrapposti.
+  // Solo il documento proprietario del player annuncia: no doppioni nei frame.
   const romeToday = () => {
     const parts=new Intl.DateTimeFormat('en-CA',{
       timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'
     }).formatToParts(new Date());
     return ['year','month','day'].map(k=>parts.find(p=>p.type===k).value).join('-');
   };
-  // Classico sempre ogni cinque minuti; annunci premio su un timer indipendente.
-  function promoOnlyBeforeSix(){
-    if(romeToday()!=='2026-11-05')return false;
+  // Prima delle 06:00 italiane nessun messaggio pubblicitario.
+  function beforeSixRome(){
     const parts=new Intl.DateTimeFormat('en-GB',{
       timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'
     }).formatToParts(new Date());
     return Number(parts.find(p=>p.type==='hour')?.value)<6;
   }
-  const jingleIntervalMs=()=>10*60*1000;
+  // Il fuso di Torino ha offset interi in ore; gli slot di 10 min coincidono con UTC.
+  const nextClassicDelayMs=()=>Math.max(1000,10*60*1000-(Date.now()%(10*60*1000)));
   const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente di Torino.';
   const JINGLE_ENDINGS = [
     'Qui la musica non paga il coperto.',
@@ -365,12 +440,12 @@
     audio.volume = 1;
   }
 
-  function scheduleJingle(delay=jingleIntervalMs()) {
-    if(promoOnlyBeforeSix())return;
+  function scheduleJingle(delay=nextClassicDelayMs()) {
     if (jingleTimer !== null || !enabled || !audible || audio.paused || failed) return;
     jingleTimer = window.setTimeout(() => {
       jingleTimer = null;
       if (!enabled || !audible || audio.paused || failed) return;
+      if (beforeSixRome()) { scheduleJingle(); return; }
       // Un solo parlato alla volta; se il codice è pronto, rinvia il classico.
       const duePromo = currentPromoAnnouncement();
       if (jingleBusy ||
@@ -385,10 +460,9 @@
     }, delay);
   }
 
-  // Ripristino del jingle ordinario dopo le 06:00, senza ricarica pagina.
+  // Controlla la cadenza anche se la radio era già accesa prima delle 06:00.
   window.setInterval(()=>{
-    if(!promoOnlyBeforeSix() && enabled && audible && !audio.paused && !failed)
-      scheduleJingle();
+    if(enabled && audible && !audio.paused && !failed) scheduleJingle();
   },20000);
 
   function playJingle(kind='classic') {
@@ -440,8 +514,9 @@
     }
     utterance.onend = finish;
     utterance.onerror = finish;
-    // Riduci la radio solo durante il messaggio sintetico.
-    audio.volume=0.24;
+    try { if (speech.paused) speech.resume(); } catch (_) {}
+    // Riduci la radio al 10% solo durante il messaggio sintetico.
+    audio.volume=0.10;
     jingleWatchdog=window.setTimeout(()=>{
       if(generation!==jingleGeneration)return;
       try{speech.cancel();}catch(_){}
@@ -482,7 +557,7 @@
     } catch (_) { pending = false; failed = true; render(); }
   }
   audio.addEventListener('volumechange',()=>{
-    const target=jingleBusy?0.24:1;
+    const target=jingleBusy?0.10:1;
     if(audio.volume!==target)audio.volume=target;
   });
   audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); refreshRadioPromo(); updateListenerPresence(); });
@@ -498,6 +573,9 @@
       stop();
     } else {
       enabled = true;
+      // Risveglia la voce su pressione esplicita, utile sui browser mobili.
+      try { window.speechSynthesis?.resume(); } catch (_) {}
+      try { window.ccRadioClickStats?.record(); } catch (_) {}
       promoAllowedAt=Date.now()+60000;
       remember();
       failed = false;
