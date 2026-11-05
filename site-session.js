@@ -260,7 +260,7 @@
         && /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(result.on_air.code)
         && ((result.active && [1,2].includes(result.on_air.slot))
              || (result.on_air.demo_today === true && result.on_air.slot===0))
-        ? result.on_air : null;
+        ? Object.assign({},result.on_air,{promotion_active:result.active===true}) : null;
       promoLastFetched = Date.now();
     } catch (_) {
       promoOnAir = null;
@@ -277,12 +277,19 @@
     const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
     if (!demoToday && promoAlreadySpoken(token)) return null;
     const letters = slot.code.split('').join(', ');
-    return {token, demoToday, text:'Attenzione, Radio Premi Controcorrente. '
-      + 'Ecco il codice sconto: ' + letters + '. '
-      + 'Cinque euro di sconto sulla cena di almeno cinquanta euro, '
-      + 'per chi prenota dal sito e inserisce il codice nelle note. '
-      + 'Solo per il primo utilizzo, entro sette giorni dalla sua emissione. '
-      + 'Controcorrente, Torino.'};
+    const testOnly=demoToday && slot.promotion_active !== true;
+    return {token, demoToday, text:testOnly
+      ? 'Prova della radio di Controcorrente. '
+        + 'Il codice di oggi è: ' + letters + '. '
+        + 'Ripeto: '+letters+'. '
+        + 'Questa è soltanto una prova audio. La promozione è sospesa e il codice '
+        + 'non è riscattabile finché non viene attivata. Controcorrente, Torino.'
+      : 'Attenzione, Radio Premi Controcorrente. '
+        + 'Ecco il codice sconto: ' + letters + '. '
+        + 'Cinque euro di sconto sulla cena di almeno cinquanta euro, '
+        + 'per chi prenota dal sito e inserisce il codice nelle note. '
+        + 'Solo per il primo utilizzo, entro sette giorni dalla sua emissione. '
+        + 'Controcorrente, Torino.'};
   }
 
   function resetJingle() {
