@@ -267,8 +267,8 @@
     }).formatToParts(new Date());
     return Number(parts.find(p=>p.type==='hour')?.value)<6;
   }
-  const jingleIntervalMs=()=>5*60*1000;
-  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente.';
+  const jingleIntervalMs=()=>10*60*1000;
+  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente di Torino.';
   const JINGLE_ENDINGS = [
     'Qui la musica non paga il coperto.',
     'Il ritmo è servito, senza attesa.',
@@ -333,7 +333,7 @@
     const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
     if (!demoToday && promoAlreadySpoken(token)) return null;
     const letters = slot.code.split('').join(', ');
-    return {token,demoToday,text:'Il codice promo di oggi è: '+letters+'.'};
+    return {token,demoToday,text:'Il codice promo è: '+letters+'. Informazioni sul sito.'};
   }
 
   // Annunci del codice con un timer INDIPENDENTE dal jingle classico.
