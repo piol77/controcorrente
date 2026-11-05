@@ -352,6 +352,7 @@
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
               action: 'claim', code: promoCode, ref: promoReference,
+              customer_name: String(data.get('nome') || '').trim(),
               day: requestedDay, time: requestedTime,
               subtotal: Object.values(cart).reduce((sum,item) => sum
                 + (item && Number.isFinite(item.price) && Number.isInteger(item.qty)
@@ -377,11 +378,11 @@
           return;
         }
         promoLine = result.test === true
-          ? '*SOLO PROVA RADIO PREMI · ' + promoCode + ' · riferimento ' + promoReference
+          ? '*SOLO PROVA RADIO PREMI · Codice ' + promoCode
             + ' · RISERVA DI TEST (24 ore)*\n'
             + 'SIMULAZIONE TECNICA: NESSUNO SCONTO REALE, NON APPLICARE 5 EURO. '
             + 'Questa prova serve a verificare il blocco della seconda richiesta.'
-          : '*Radio Premi: ' + promoCode + ' · riferimento ' + promoReference
+          : '*Radio Premi: Codice ' + promoCode
             + ' · RISERVA PROVVISORIA (24 ore)*\n'
             + 'Sconto 5 € su un conto cena finale di almeno 50 €; valido solo previa conferma del ristorante. '
             + 'Non cumulare con altri sconti.';
