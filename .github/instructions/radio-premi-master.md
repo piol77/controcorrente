@@ -55,3 +55,8 @@ Queste regole sostituiscono le precedenti dove non coincidono.
 - La voce maschile sintetica scelta solo per nome e abbassata artificialmente a pitch 0,82 si è rivelata robotica e incomprensibile su dispositivo reale. In `site-session.js` preferire una voce italiana naturale/neural/enhanced o dei motori Google/Microsoft disponibili nel browser, anche rispetto a una vecchia voce maschile meccanica; tra voci di pari qualità preferire una voce maschile. La selezione può variare per dispositivo. Nessuna chiave TTS esterna o servizio a pagamento introdotto.
 - Rate 0,90 e pitch 1,00 per evitare distorsione metallica. Nei messaggi Radio Premi pronunciare le cinque cifre come parole italiane distinte e **ripeterle una volta**, con pause, poi «Informazioni sul sito». Non memorizzare o pubblicare il codice corrente nel repository. I jingle ordinari condividono la stessa selezione vocale.
 - Non alterare il player di 60 North Radio, calendario jingle classico ogni 10 minuti, 10 fasce premio giornaliere, attenuazione musica al 10%, ritorno al 100%, non sovrapposizione, attesa dopo ON, Supabase o regole di utilizzo. La qualità finale resta vincolata al browser/dispositivo: voce registrata davvero naturale e identica per tutti richiederebbe un servizio TTS dedicato, non incluso qui.
+
+## Ripristino voce radio (5 novembre 2026, prevalente)
+- Su richiesta del titolare è stata ripristinata la precedente selezione della voce italiana, preferibilmente maschile, con rate 0.98 e pitch 0.82.
+- Revocata la modifica che dava priorità alle voci dichiarate natural/neural e impostava rate 0.90 e pitch 1.00: non reintrodurla senza una nuova richiesta.
+- Conservarne invariati orari, radio, volume, promozioni e lettura scandita dei codici.
