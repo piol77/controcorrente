@@ -33,6 +33,10 @@
     "Bistecca di vitello alla griglia con patate al forno": [
       "Grilled veal steak with oven-roasted potatoes",
       "Grilled veal and golden oven-roasted potatoes for a satisfying plate. 5 portions available."
+    ],
+    "Polpettine di carne mista al sugo con patate lesse prezzemolate": [
+      "Mixed-meat meatballs in tomato sauce with parsley-seasoned boiled potatoes",
+      "Tender meatballs in tomato sauce, served with boiled potatoes seasoned with parsley."
     ]
   },
   "zh": {
@@ -63,6 +67,10 @@
     "Bistecca di vitello alla griglia con patate al forno": [
       "烤小牛排配烤土豆",
       "炙烤小牛肉搭配金黄烤土豆，滋味饱满。供应5份。"
+    ],
+    "Polpettine di carne mista al sugo con patate lesse prezzemolate": [
+      "番茄酱混合肉小肉丸配欧芹水煮土豆",
+      "鲜嫩的混合肉小肉丸佐番茄酱，搭配撒有欧芹的水煮土豆。"
     ]
   }
 };

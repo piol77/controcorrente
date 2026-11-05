@@ -548,6 +548,33 @@
       }
     },
     {
+      "name": "Polpettine di carne mista al sugo con patate lesse prezzemolate",
+      "price": 11,
+      "description": "Polpettine morbide al sugo di pomodoro, accompagnate da patate lesse insaporite con prezzemolo.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/polpettine-carne-mista-sugo-patate-20261105.webp",
+      "translations": {
+        "en": {
+          "name": "Mixed-meat meatballs in tomato sauce with parsley-seasoned boiled potatoes",
+          "description": "Tender meatballs in tomato sauce, served with boiled potatoes seasoned with parsley."
+        },
+        "zh": {
+          "name": "番茄酱混合肉小肉丸配欧芹水煮土豆",
+          "description": "鲜嫩的混合肉小肉丸佐番茄酱，搭配撒有欧芹的水煮土豆。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative image, optimized website crop",
+        "date": "2026-11-05",
+        "tool": "image_gen",
+        "resolution": "1200 × 460 pixels (from generated 1448 × 1086 source)",
+        "note": "Piatto avorio su sfondo blu scuro per uniformità fotografica con il pranzo. Immagine illustrativa e non fotografia del ristorante. Non sono stati assegnati allergeni senza conoscere gli ingredienti dell'impasto."
+      }
+    },
+    {
       "name": "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco all’aceto balsamico",
       "price": 12,
       "description": "Finocchi croccanti, arance e avocado accompagnano i bocconcini di salmone fresco, conditi con aceto balsamico.",
