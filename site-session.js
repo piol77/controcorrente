@@ -407,8 +407,11 @@
     const token = slot.code + '-' + slot.slot;
     const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
     if (!demoToday && promoAlreadySpoken(token)) return null;
-    const letters = slot.code.split('').join(', ');
-    return {token,demoToday,text:'Il codice promo è: '+letters+'. Informazioni sul sito.'};
+    // Pronuncia ogni cifra come parola intera, con pause e una ripetizione
+    // per evitare codici incomprensibili sui dispositivi mobili.
+    const digitWords=['zero','uno','due','tre','quattro','cinque','sei','sette','otto','nove'];
+    const spokenCode=slot.code.split('').map(c=>/^[0-9]$/.test(c)?digitWords[Number(c)]:c).join('. ');
+    return {token,demoToday,text:'Il codice promozionale è: '+spokenCode+'. Ripeto il codice: '+spokenCode+'. Informazioni sul sito.'};
   }
 
   // Annunci del codice con un timer INDIPENDENTE dal jingle classico.
@@ -465,6 +468,29 @@
     if(enabled && audible && !audio.paused && !failed) scheduleJingle();
   },20000);
 
+  // Scegli la voce italiana più naturale disponibile: una voce neurale/
+  // migliorata prevale su una vecchia voce maschile meccanica.
+  // La qualità dipende comunque dai motori di sintesi presenti nel browser.
+  function bestItalianVoice(speech) {
+    const italian=speech.getVoices().filter(v=>/^it(?:[-_]|$)/i.test(v.lang||''));
+    const male=/\b(cosimo|luca|diego|giorgio|marco|matteo|andrea|alessandro|fabrizio|edoardo|riccardo|stefano|paolo|enrico|francesco|roberto|giovanni|nicola|giuseppe|male|uomo|maschio)\b/i;
+    const female=/\b(elsa|isabella|alice|federica|giulia|lucia|silvia|francesca|anna|female|donna|femmina)\b/i;
+    const score=v=>{
+      const name=(v.name||'')+' '+(v.voiceURI||'');
+      let value=0;
+      if(/neural|natural|premium|enhanced|wavenet|studio/i.test(name))value+=250;
+      if(/google|microsoft|azure|siri/i.test(name))value+=120;
+      if(v.localService===false)value+=70;
+      if(male.test(name))value+=25;
+      if(female.test(name))value-=10;
+      if(/compact|espeak|pico|robot/i.test(name))value-=130;
+      if(/^it[-_]IT$/i.test(v.lang||''))value+=15;
+      return value;
+    };
+    italian.sort((a,b)=>score(b)-score(a));
+    return italian[0]||null;
+  }
+
   function playJingle(kind='classic') {
     const promoAnnouncement = kind==='promo' ? currentPromoAnnouncement() : null;
     if (kind==='promo' && !promoAnnouncement) return;
@@ -489,18 +515,12 @@
       if (!promoAnnouncement.demoToday) promoMarkSpoken(promoAnnouncement.token);
     };
     utterance.lang = 'it-IT';
-    utterance.rate = 0.98;
-    utterance.pitch = 0.82;
+    // Non forzare un tono basso: abbassare il pitch digitalmente
+    // rende molte voci Android metalliche e poco comprensibili.
+    utterance.rate = 0.90;
+    utterance.pitch = 1.0;
     utterance.volume = 1;
-    const voices = speech.getVoices();
-    const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
-    // Prefer an explicitly identified Italian male voice; avoid named female voices.
-    // Voice and pitch support depend on the device's speech synthesis engine.
-    const maleItalianName = /\b(cosimo|luca|diego|giorgio|marco|matteo|andrea|alessandro|fabrizio|edoardo|riccardo|stefano|paolo|enrico|francesco|roberto|giovanni|nicola|male|uomo|maschio)\b/i;
-    const femaleItalianName = /\b(elsa|isabella|alice|federica|giulia|lucia|silvia|francesca|anna|female|donna|femmina)\b/i;
-    utterance.voice = italian.find(voice => maleItalianName.test(voice.name))
-      || italian.find(voice => !femaleItalianName.test(voice.name))
-      || italian[0] || null;
+    utterance.voice = bestItalianVoice(speech);
     jingleUtterance = utterance;
     function finish() {
       if (settled || generation !== jingleGeneration) return;
@@ -521,7 +541,7 @@
       if(generation!==jingleGeneration)return;
       try{speech.cancel();}catch(_){}
       finish();
-    },promoAnnouncement ? 16000 : 20000);
+    },promoAnnouncement ? 30000 : 20000);
     try{speech.speak(utterance);}catch(_){finish();}
   }
   // END CONTROCORRENTE RADIO JINGLE 2026-11-04
