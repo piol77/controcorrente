@@ -500,11 +500,13 @@
     // Non forzare voci maschili sintetiche né alterare artificialmente
     // il timbro: l'effetto metallico dipende spesso da queste impostazioni.
     utterance.lang = 'it-IT';
-    utterance.rate = 0.94;
-    utterance.pitch = 1;
+    utterance.rate = 0.96;
+    utterance.pitch = 0.94;
     utterance.volume = 1;
-    const italianVoices = speech.getVoices().filter(v => /^it(?:-|_)/i.test(v.lang));
-    utterance.voice = italianVoices.find(v => v.default) || null;
+    const voices = speech.getVoices();
+    const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
+    utterance.voice = italian.find(voice => /luca|diego|italiano|elsa|isabella|google/i.test(voice.name))
+      || italian[0] || null;
     jingleUtterance = utterance;
     function finish(completed=false) {
       if (settled || generation !== jingleGeneration) return;
