@@ -1,6 +1,7 @@
 /* Controcorrente Radio Premi — sola vista pubblica.
  * Nessuna generazione, modifica o convalida di voucher nel browser.
- * Il registro pubblico mostra i soli codici non disponibili: riservati, confermati, usati, scaduti o annullati.
+ * Il registro pubblico mostra SOLTANTO codici già riservati, confermati o utilizzati.
+ * Codici annunciati ma ancora liberi restano segreti fino alla prenotazione.
  */
 (() => {
   'use strict';
@@ -19,7 +20,7 @@
   };
   const onlyPublic = item => item && typeof item === 'object' &&
     /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(item.code) &&
-    ['held','confirmed','used','expired','void'].includes(item.status);
+    ['held','confirmed','used'].includes(item.status);
   async function refresh() {
     let data;
     try {
@@ -38,7 +39,7 @@
     status.textContent = data.active
       ? 'Promozione attiva: ascolta la radio per conoscere il codice del giorno.'
       : 'Promozione in preparazione: nessun codice è ancora riscattabile.';
-    updated.textContent = 'Registro verificato: ' + stamp(data.server_time);
+    updated.textContent = 'Registro aggiornato: ' + stamp(data.server_time);
     body.replaceChildren();
     const valid = data.records.filter(onlyPublic).slice()
       .sort((a,b) => String(b.issued_at || '').localeCompare(String(a.issued_at || '')))
@@ -46,16 +47,20 @@
     if (!valid.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
-      td.colSpan = 4;
-      td.textContent = 'Nessun codice ancora riservato, utilizzato o scaduto.';
+      td.colSpan = 3;
+      td.textContent = 'Nessun codice ancora prenotato.';
       tr.appendChild(td);
       body.appendChild(tr);
       return;
     }
     for (const item of valid) {
       const tr = document.createElement('tr');
-      const vals = [item.code, stamp(item.issued_at), stamp(item.expires_at),
-        ({held:'Riservato (24 ore)',confirmed:'Prenotazione confermata',used:'Già utilizzato',expired:'Scaduto',void:'Annullato'})[item.status]];
+      const vals = [
+        item.code,
+        stamp(item.held_at || item.confirmed_at || item.used_at || item.issued_at),
+        ({held:'Riservato, in attesa di conferma',confirmed:'Prenotazione confermata',
+          used:'Sconto utilizzato'})[item.status]
+      ];
       vals.forEach((value,i) => {
         const td = document.createElement('td');
         td.textContent = value;
