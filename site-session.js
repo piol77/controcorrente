@@ -473,12 +473,12 @@
 
   function playJingle(kind='classic') {
     const promoAnnouncement = kind==='promo' ? currentPromoAnnouncement() : null;
-    if (kind==='promo' && !promoAnnouncement) return;
+    if (kind==='promo' && !promoAnnouncement) return false;
     if (promoAnnouncement && promoAnnouncement.demoToday
-        && Date.now()-promoLastSpokenAt < 60000) return;
+        && Date.now()-promoLastSpokenAt < 60000) return false;
     const speech = window.speechSynthesis;
     if (!speech || typeof window.SpeechSynthesisUtterance !== 'function'
-        || speech.speaking || speech.pending || jingleBusy) return;
+        || speech.speaking || speech.pending || jingleBusy) return false;
     const generation = ++jingleGeneration;
     jingleBusy = true;
     let settled = false;
@@ -529,7 +529,7 @@
       try{speech.cancel();}catch(_){}
       finish(false);
     },promoAnnouncement ? 30000 : 20000);
-    try{speech.speak(utterance);}catch(_){finish(false);}
+    try{speech.speak(utterance);return true;}catch(_){finish(false);return false;}
   }
   // END CONTROCORRENTE RADIO JINGLE 2026-11-04
 
@@ -570,18 +570,16 @@
   });
   audio.addEventListener('playing', () => {
     audible = true; pending = false; failed = false; render();
-    // Una sola presentazione per ogni clic ON; niente duplicati al buffering.
-    if (introJinglePending) {
-      introJinglePending = false;
-      playJingle('classic');
-    }
+    // Ripiego per i browser che rifiutano la prima richiesta di sintesi
+    // nonostante il clic. Non ripetere se è già stata accodata.
+    if (introJinglePending && playJingle('classic')) introJinglePending = false;
     scheduleJingle();
     refreshRadioPromo();
     updateListenerPresence();
   });
-  audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); updateListenerPresence(true); });
-  audio.addEventListener('waiting', () => { audible = false; pending = enabled; resetJingle(); render(); updateListenerPresence(true); });
-  audio.addEventListener('stalled', () => { audible = false; pending = enabled; resetJingle(); render(); updateListenerPresence(true); });
+  audio.addEventListener('pause', () => { audible = false; if (!jingleBusy) resetJingle(); render(); updateListenerPresence(true); });
+  audio.addEventListener('waiting', () => { audible = false; pending = enabled; if (!jingleBusy) resetJingle(); render(); updateListenerPresence(true); });
+  audio.addEventListener('stalled', () => { audible = false; pending = enabled; if (!jingleBusy) resetJingle(); render(); updateListenerPresence(true); });
   audio.addEventListener('ended', () => { audible = false; pending = false; resetJingle(); render(); updateListenerPresence(true); });
   audio.addEventListener('error', () => { audible = false; pending = false; failed = true; resetJingle(); render(); updateListenerPresence(true); });
   function toggle() {
@@ -601,6 +599,9 @@
       // Release any failed stream before an explicit retry.
       audio.removeAttribute('src');
       audio.load();
+      // La sintesi va richiesta NEL gesto del clic: Android può bloccare
+      // speechSynthesis.speak chiamato più tardi da audio.onplaying.
+      if (introJinglePending && playJingle('classic')) introJinglePending = false;
       start();
     }
     render();
