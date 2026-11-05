@@ -89,14 +89,18 @@
       rows.replaceChildren();
       if(!data.records.length) {
         const tr=document.createElement('tr'),td=document.createElement('td');
-        td.colSpan=8;td.textContent='Nessun codice ancora emesso.';
+        td.colSpan=7;td.textContent='Nessun codice ancora emesso.';
         tr.append(td);rows.append(tr);
       }
       data.records.forEach(rec=>{
         const tr=document.createElement('tr');
+        const schedule=Array.isArray(rec.announcements) && rec.announcements.length
+          ? rec.announcements.map((value,i)=>(i+1)+': '+formatDate(value)).join(' • ')
+          : rec.issue_day==='2026-11-05'
+            ? 'Solo oggi: codice ogni minuto'
+            : [formatDate(rec.air_one),formatDate(rec.air_two)].join(' • ');
         const fields=[
-          rec.code,formatDate(rec.issued_at),formatDate(rec.air_one),
-          formatDate(rec.air_two),formatDate(rec.expires_at),
+          rec.code,formatDate(rec.issued_at),schedule,formatDate(rec.expires_at),
           (rec.is_test ? 'SOLO PROVA · ' : '') + (stateLabels[rec.state] || rec.state),
           rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
         ];
