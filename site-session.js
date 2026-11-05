@@ -496,19 +496,15 @@
       if (promoAnnouncement) promoLastSpokenAt = Date.now();
       audio.volume = 0.10;
     };
+    // Usa la voce italiana predefinita del dispositivo/browser.
+    // Non forzare voci maschili sintetiche né alterare artificialmente
+    // il timbro: l'effetto metallico dipende spesso da queste impostazioni.
     utterance.lang = 'it-IT';
-    utterance.rate = 0.98;
-    utterance.pitch = 0.82;
+    utterance.rate = 0.94;
+    utterance.pitch = 1;
     utterance.volume = 1;
-    const voices = speech.getVoices();
-    const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
-    // Prefer an explicitly identified Italian male voice; avoid named female voices.
-    // Voice and pitch support depend on the device's speech synthesis engine.
-    const maleItalianName = /\b(cosimo|luca|diego|giorgio|marco|matteo|andrea|alessandro|fabrizio|edoardo|riccardo|stefano|paolo|enrico|francesco|roberto|giovanni|nicola|male|uomo|maschio)\b/i;
-    const femaleItalianName = /\b(elsa|isabella|alice|federica|giulia|lucia|silvia|francesca|anna|female|donna|femmina)\b/i;
-    utterance.voice = italian.find(voice => maleItalianName.test(voice.name))
-      || italian.find(voice => !femaleItalianName.test(voice.name))
-      || italian[0] || null;
+    const italianVoices = speech.getVoices().filter(v => /^it(?:-|_)/i.test(v.lang));
+    utterance.voice = italianVoices.find(v => v.default) || null;
     jingleUtterance = utterance;
     function finish(completed=false) {
       if (settled || generation !== jingleGeneration) return;
@@ -705,7 +701,7 @@
   }
   let stats = null;
   const style = document.createElement('style');
-  style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}header.top .cc-share-button{position:static;left:auto}header.top #cc-notification-actions{flex-wrap:wrap;max-width:100%;min-width:0;box-sizing:border-box;gap:8px}header.top #cc-notification-actions .cc-share-button{flex:0 0 auto;margin-right:auto}header.top #cc-notification-actions .cc-share-feedback:empty{display:none}header.top #cc-notification-actions .cc-share-feedback:not(:empty){order:4;flex-basis:100%;margin-left:0;overflow-wrap:anywhere}';
+  style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}header.top .cc-share-button{position:relative;left:3px}';
   document.head.appendChild(style);
 
   const button = document.createElement('button');
