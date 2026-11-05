@@ -14,17 +14,17 @@
   const actionForm = document.querySelector('[data-premi-actions]');
   const actionSelect = document.querySelector('[data-premi-operation]');
   const actionHelp = document.querySelector('[data-premi-action-help]');
-  const actionFields = ['code','reference','amount'];
+  const actionFields = ['code','amount'];
   const requiredFields = {
-    confirm:['code','reference'],
-    use:['code','reference','amount'],
+    confirm:['code'],
+    use:['code','amount'],
     release:['code'],
     activate:[],
     deactivate:[]
   };
   const actionDescriptions = {
-    confirm:'Serve il codice e il riferimento UUID arrivato su WhatsApp. Blocca il codice oltre le 24 ore.',
-    use:'Serve il codice, lo stesso riferimento WhatsApp e il totale del conto (almeno 50 € prima dello sconto).',
+    confirm:'Inserisci il codice numerico di 5 cifre presente nelle note WhatsApp. Blocca la riserva oltre le 24 ore.',
+    use:'Inserisci il codice numerico e il totale effettivo della cena (almeno 50 € prima dello sconto).',
     release:'Serve soltanto il codice di 5 caratteri. Diventerà ANNULLATO e non potrà più essere usato.',
     activate:'Attiva i nuovi codici giornalieri. Non servono altri dati: confermerai prima di procedere.',
     deactivate:'Sospende i nuovi riscatti e gli annunci premio. Non servono altri dati: confermerai prima di procedere.'
@@ -89,7 +89,7 @@
       rows.replaceChildren();
       if(!data.records.length) {
         const tr=document.createElement('tr'),td=document.createElement('td');
-        td.colSpan=9;td.textContent='Nessun codice ancora emesso.';
+        td.colSpan=8;td.textContent='Nessun codice ancora emesso.';
         tr.append(td);rows.append(tr);
       }
       data.records.forEach(rec=>{
@@ -98,7 +98,7 @@
           rec.code,formatDate(rec.issued_at),formatDate(rec.air_one),
           formatDate(rec.air_two),formatDate(rec.expires_at),
           (rec.is_test ? 'SOLO PROVA · ' : '') + (stateLabels[rec.state] || rec.state),
-          (rec.hold_ref||'—'),rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
+          rec.paid_subtotal===null?'—':rec.paid_subtotal+' €'
         ];
         fields.forEach(field=>{
           const td=document.createElement('td');
@@ -176,15 +176,11 @@
       display('Seleziona un’operazione.');return;
     }
     const code=String(fd.get('code')||'').trim().toUpperCase();
-    const ref=String(fd.get('reference')||'').trim();
     const amountRaw=String(fd.get('amount')||'').trim().replace(',','.');
     const amount=amountRaw?Number(amountRaw):null;
     const required=requiredFields[operation];
-    if(required.includes('code')&&!/^[A-HJ-NP-Z2-9]{5}$/.test(code)){
-      display('Inserisci un codice valido di cinque caratteri.');return;
-    }
-    if(required.includes('reference')&&!/^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(ref)){
-      display('Inserisci il riferimento completo UUID che trovi nel WhatsApp del cliente.');return;
+    if(required.includes('code')&&!/^[0-9]{5}$/.test(code)){
+      display('Inserisci un codice numerico valido di cinque cifre.');return;
     }
     if(required.includes('amount')&&(!Number.isFinite(amount)||amount<50)){
       display('Il conto prima dello sconto deve essere di almeno 50 €.');return;
@@ -201,7 +197,7 @@
     try{
       await request(operation,{
         code:required.includes('code')?code:null,
-        ref:required.includes('reference')?ref:null,
+        ref:null,
         amount:required.includes('amount')?amount:null
       });
       await refresh();
