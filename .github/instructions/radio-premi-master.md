@@ -60,3 +60,9 @@ Queste regole sostituiscono le precedenti dove non coincidono.
 - Su richiesta del titolare è stata ripristinata la precedente selezione della voce italiana, preferibilmente maschile, con rate 0.98 e pitch 0.82.
 - Revocata la modifica che dava priorità alle voci dichiarate natural/neural e impostava rate 0.90 e pitch 1.00: non reintrodurla senza una nuova richiesta.
 - Conservarne invariati orari, radio, volume, promozioni e lettura scandita dei codici.
+
+## Ultima regola di trasmissione, 5 novembre 2026: jingle 5 minuti e controllo promo
+- Il jingle classico passa da ogni 10 a **ogni 5 minuti**, su orologio Europe/Rome 06:00, 06:05, 06:10 ecc., esclusivamente mentre la radio del sito è in riproduzione, mai prima delle 06:00; formula e battute variabili inalterate.
+- La sintesi italiana per classico e codici conserva la scelta della voce precedente e privilegia quelle non compatte, senza selezione forzata neural/Google che è stata rigettata dopo ascolto reale; rate 0.98, pitch 0.96. La resa naturale non è garantibile senza file vocale/servizio TTS dedicato.
+- Nessuna variazione ai 10 slot server di codice premi, generati casualmente fra 06:00 e 21:59, né ai criteri di disponibilità. L'annuncio promo ha precedenza, non si sovrappone ai jingle. Il singolo browser marca come completato un codice solo su evento `onend`; errori, buffering e cancellazioni non lo marcano più come già pronunciato, e consentono ritentativo nel medesimo slot (attesa minima 30 s). Musica attenuata al 10% su `onstart`, 100% al termine/errore/stop.
+- Lo stato server `active=true` e la presenza degli slot non costituiscono prova di riproduzione audio sul telefono: dipende da browser, TTS e ascolto attivo.
