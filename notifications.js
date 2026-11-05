@@ -12,8 +12,11 @@
   }
   const style = document.createElement('style');
   style.textContent = `
-    #cc-notification-actions{display:flex;align-items:center;justify-content:flex-end;gap:10px;margin-top:8px;min-height:36px}
-    #cc-notification-actions #cc-jazz-toggle{margin:0!important;flex:none}
+    #cc-notification-actions{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:6px;width:100%;max-width:100%;box-sizing:border-box;margin-top:8px;min-height:36px}
+    header.top #cc-notification-actions .cc-share-button{grid-column:1;grid-row:1;position:static;left:auto;width:100%;min-width:0;padding:5px 6px}
+    #cc-notification-actions #cc-notification-toggle{grid-column:2;grid-row:1;justify-content:center;width:100%;min-width:0;padding:5px 6px}
+    #cc-notification-actions .cc-share-feedback{grid-column:1/-1;grid-row:2;margin-left:0;overflow-wrap:anywhere}
+    #cc-notification-actions .cc-share-feedback:empty{display:none}
     #cc-notification-toggle{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:5px 10px;border:1px solid var(--line,#294256);border-radius:18px;background:transparent;color:var(--muted,#b6c6d2);font:12px/1.4 Arial,sans-serif;white-space:nowrap}
     #cc-notification-toggle:hover{border-color:var(--gold,#bfa77c);color:var(--gold,#bfa77c)}
     #cc-notification-toggle svg{width:15px;height:15px;flex:none}
@@ -28,9 +31,11 @@
   button.id = 'cc-notification-toggle'; button.type = 'button';
   button.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span>Notifiche</span>';
   row.appendChild(button);
-  const radio = header.querySelector('#cc-jazz-toggle');
-  if (radio) { radio.before(row); row.appendChild(radio); }
+  // Keep the radio and its live listener count together. Put share/notifications below.
+  const radioControls = header.querySelector('.cc-radio-controls');
+  if (radioControls) radioControls.insertAdjacentElement('afterend', row);
   else header.querySelector('.brand-row').insertAdjacentElement('afterend', row);
+  // If the radio is injected later, it is inserted after brand-row, before this row.
   const panel = document.createElement('div');
   panel.id = 'cc-notification-panel'; panel.hidden = true;
   const status = document.createElement('p');
