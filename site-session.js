@@ -496,16 +496,20 @@
       if (promoAnnouncement) promoLastSpokenAt = Date.now();
       audio.volume = 0.10;
     };
-    // Usa la voce italiana predefinita del dispositivo/browser.
-    // Non forzare voci maschili sintetiche né alterare artificialmente
-    // il timbro: l'effetto metallico dipende spesso da queste impostazioni.
+    // Voce il più possibile naturale fra quelle realmente offerte dal dispositivo.
+    // Il browser TTS non garantisce una voce umana: per averla identica ovunque
+    // occorreranno registrazioni/audio TTS dedicati, non manipolare il pitch.
     utterance.lang = 'it-IT';
-    utterance.rate = 0.96;
-    utterance.pitch = 0.94;
+    utterance.rate = 1;
+    utterance.pitch = 1;
     utterance.volume = 1;
-    const voices = speech.getVoices();
-    const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
-    utterance.voice = italian.find(voice => /luca|diego|italiano|elsa|isabella|google/i.test(voice.name))
+    const italian = speech.getVoices().filter(voice => /^it(?:-|_)/i.test(voice.lang));
+    const clear = italian.filter(voice => !/compact|espeak|mbrola|pico|festival|svox/i.test(voice.name));
+    utterance.voice = clear.find(voice => /neural|natural|enhanced|premium|wavenet/i.test(voice.name))
+      || clear.find(voice => /google|microsoft/i.test(voice.name))
+      || clear.find(voice => voice.default)
+      || clear[0]
+      || italian.find(voice => voice.default)
       || italian[0] || null;
     jingleUtterance = utterance;
     function finish(completed=false) {
