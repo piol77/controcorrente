@@ -590,3 +590,10 @@ Queste istruzioni più recenti prevalgono sulle note precedenti dove divergono.
 - Il jingle classico successivo arriva **ogni 5 minuti d'ascolto** mentre lo stream suona. Rimangono i dieci slot server casuali della promozione ogni giorno, distinti dai jingle; codice mai subito all'accensione (almeno 60 s), e niente sovrapposizioni. Il promo ha priorità e in caso di coincidenza il classico è rinviato.
 - **Voce da preferire:** ripristinata la selezione esatta presente nel commit storico `b99c1d6616aa` (4 novembre sera), con `lang=it-IT`, `rate=0.96`, `pitch=0.94`, `volume=1`, preferenza voci italiane per nome `/luca|diego|italiano|elsa|isabella|google/i`, altrimenti prima voce italiana, altrimenti sintesi predefinita browser. Prevale sui parametri `rate=1/pitch=1` della prova del 5 novembre.
 - La Web Speech API usa voci installate sul dispositivo: **non promettere una resa uniforme o una voce umana garantita**. Non inventare asset vocali. Tutto il resto, dal flusso 60 North ai prezzi, al menù, al pannello Supabase, resta invariato.
+
+
+## Correzione primo clic radio Android — 5 novembre 2026
+- Il tentativo precedente di avviare il jingle al primo clic dentro `audio.onplaying` non ha funzionato sul dispositivo: la sintesi può richiedere il gesto di attivazione dell'utente.
+- Nel ramo ON di `toggle()` di `site-session.js`, invocare `playJingle('classic')` **sincronamente, durante il click dell'utente**, dopo il reset della sorgente e prima dell'avvio dello stream. Lasciare `audio.onplaying` solo come ripiego se il primo invio alla sintesi non è stato accodato.
+- Non annullare il jingle già avviato a causa degli eventi di buffering `waiting`/`stalled` o pausa tecnica, ma cancellarlo allo spegnimento esplicito e in caso di errore. Non creare saluti doppi; la richiesta di voce accodata libera il flag di primo clic.
+- Il jingle ordinario resta ogni 5 minuti, l'annuncio del codice rimane nei dieci slot casuali server dalle 6, con ritardo dopo ON, senza sovrapposizioni. Voce storica del 4/11 alle 22:47 invariata. Non confondere sintassi e verifiche statiche con prova effettiva su Android: la Web Speech API può essere limitata dal dispositivo.
