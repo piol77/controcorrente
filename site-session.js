@@ -341,8 +341,8 @@
     }).formatToParts(new Date());
     return Number(parts.find(p=>p.type==='hour')?.value)<6;
   }
-  // Il fuso di Torino ha offset interi in ore; gli slot di 5 min coincidono con UTC.
-  const nextClassicDelayMs=()=>Math.max(1000,5*60*1000-(Date.now()%(5*60*1000)));
+  // Il primo jingle parte con la radio; i successivi ogni cinque minuti d'ascolto.
+  const nextClassicDelayMs=()=>5*60*1000;
   const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente di Torino.';
   const JINGLE_ENDINGS = [
     'Qui la musica non paga il coperto.',
@@ -360,6 +360,7 @@
   let jingleUtterance = null;
   let jingleBusy = false;
   let jingleGeneration = 0;
+  let introJinglePending = false;
   // Radio Premi: un codice viene pronunciato una volta per finestra d'annuncio
   // sul dispositivo in ascolto. La fonte è il backend privato, non il browser.
   let promoOnAir = null;
@@ -496,20 +497,14 @@
       if (promoAnnouncement) promoLastSpokenAt = Date.now();
       audio.volume = 0.10;
     };
-    // Voce il più possibile naturale fra quelle realmente offerte dal dispositivo.
-    // Il browser TTS non garantisce una voce umana: per averla identica ovunque
-    // occorreranno registrazioni/audio TTS dedicati, non manipolare il pitch.
+    // Ripristino della voce approvata la sera del 4 novembre (commit b99c1d6616aa).
+    // La voce resta dipendente dal motore TTS disponibile sul dispositivo.
     utterance.lang = 'it-IT';
-    utterance.rate = 1;
-    utterance.pitch = 1;
+    utterance.rate = 0.96;
+    utterance.pitch = 0.94;
     utterance.volume = 1;
     const italian = speech.getVoices().filter(voice => /^it(?:-|_)/i.test(voice.lang));
-    const clear = italian.filter(voice => !/compact|espeak|mbrola|pico|festival|svox/i.test(voice.name));
-    utterance.voice = clear.find(voice => /neural|natural|enhanced|premium|wavenet/i.test(voice.name))
-      || clear.find(voice => /google|microsoft/i.test(voice.name))
-      || clear.find(voice => voice.default)
-      || clear[0]
-      || italian.find(voice => voice.default)
+    utterance.voice = italian.find(voice => /luca|diego|italiano|elsa|isabella|google/i.test(voice.name))
       || italian[0] || null;
     jingleUtterance = utterance;
     function finish(completed=false) {
@@ -540,6 +535,7 @@
 
   function stop() {
     attempt++;
+    introJinglePending = false;
     resetJingle();
     audio.pause();
     audio.removeAttribute('src');
@@ -572,7 +568,17 @@
     const target=jingleBusy?0.10:1;
     if(audio.volume!==target)audio.volume=target;
   });
-  audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); refreshRadioPromo(); updateListenerPresence(); });
+  audio.addEventListener('playing', () => {
+    audible = true; pending = false; failed = false; render();
+    // Una sola presentazione per ogni clic ON; niente duplicati al buffering.
+    if (introJinglePending) {
+      introJinglePending = false;
+      playJingle('classic');
+    }
+    scheduleJingle();
+    refreshRadioPromo();
+    updateListenerPresence();
+  });
   audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); updateListenerPresence(true); });
   audio.addEventListener('waiting', () => { audible = false; pending = enabled; resetJingle(); render(); updateListenerPresence(true); });
   audio.addEventListener('stalled', () => { audible = false; pending = enabled; resetJingle(); render(); updateListenerPresence(true); });
@@ -589,6 +595,7 @@
       try { window.speechSynthesis?.resume(); } catch (_) {}
       try { window.ccRadioClickStats?.record(); } catch (_) {}
       promoAllowedAt=Date.now()+60000;
+      introJinglePending = true;
       remember();
       failed = false;
       // Release any failed stream before an explicit retry.
