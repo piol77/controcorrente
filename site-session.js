@@ -106,8 +106,8 @@
     const listeners=document.createElement('span');
     listeners.className='cc-radio-listeners';
     listeners.setAttribute('aria-label','Ascoltatori della radio dal sito');
-    listeners.title='Sessioni con la radio in riproduzione sul sito, aggiornate ogni 10 secondi';
-    listeners.textContent='♫ — in ascolto ora';
+    listeners.title='Ascoltatori attivi';
+    listeners.textContent='–';
     holder.append(button,listeners);
     const brandRow=header.querySelector('.brand-row');
     if(brandRow)brandRow.insertAdjacentElement('afterend',holder);
@@ -127,7 +127,9 @@
   }
   const preferenceKey = 'cc-jazz-session-enabled-v2';
   let enabled = false;
-  try { enabled = sessionStorage.getItem(preferenceKey) === 'on'; } catch (_) {}
+  // Una nuova apertura parte sempre spenta; nelle navigazioni interne il
+  // player già acceso resta invece condiviso come prima.
+  try { sessionStorage.removeItem(preferenceKey); } catch (_) {}
   let pending = false;
   let failed = false;
   let attempt = 0;
@@ -159,8 +161,8 @@
   }
   function renderListenerCount(){
     const label=Number.isSafeInteger(listenerCount) && listenerCount>=0
-      ? '♫ '+listenerCount+' in ascolto ora' : '♫ — in ascolto ora';
-    const title='Ascolto effettivo del player negli ultimi 30 secondi, aggiornato circa ogni 10 secondi (sessioni, non visitatori)';
+      ? String(listenerCount) : '–';
+    const title='Ascoltatori';
     for(const el of [ownListenersRef(),activeListenerBadge]){
       if(!el)continue;
       el.textContent=label;
@@ -249,7 +251,7 @@
   };
   // Classico sempre ogni cinque minuti; annunci premio su un timer indipendente.
   const jingleIntervalMs=()=>5*60*1000;
-  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente di Torino.';
+  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente.';
   const JINGLE_ENDINGS = [
     'Qui la musica non paga il coperto.',
     'Il ritmo è servito, senza attesa.',
@@ -261,6 +263,7 @@
     'Tra un piatto e l’altro, una bella canzone.'
   ];
   let jingleTimer = null;
+  let lastJingleEndingIndex = -1;
   let jingleFadeTimer = null;
   let jingleWatchdog = null;
   let jingleUtterance = null;
@@ -291,7 +294,7 @@
       const result = await response.json();
       promoOnAir = result && result.on_air
         && /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(result.on_air.code)
-        && ((result.active && [1,2].includes(result.on_air.slot))
+        && ((result.active && Number.isInteger(result.on_air.slot) && result.on_air.slot>=1 && result.on_air.slot<=10)
              || (result.on_air.demo_today === true && result.on_air.slot===0))
         ? Object.assign({},result.on_air,{promotion_active:result.active===true}) : null;
       promoLastFetched = Date.now();
@@ -311,19 +314,7 @@
     const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
     if (!demoToday && promoAlreadySpoken(token)) return null;
     const letters = slot.code.split('').join(', ');
-    const testOnly=demoToday && slot.promotion_active !== true;
-    return {token, demoToday, text:testOnly
-      ? 'Prova della radio di Controcorrente. '
-        + 'Il codice di oggi è: ' + letters + '. '
-        + 'Ripeto: '+letters+'. '
-        + 'Questa è soltanto una prova audio. La promozione è sospesa e il codice '
-        + 'non è riscattabile finché non viene attivata. Controcorrente, Torino.'
-      : 'Attenzione, Radio Premi Controcorrente. '
-        + 'Ecco il codice sconto: ' + letters + '. '
-        + 'Cinque euro di sconto sulla cena di almeno cinquanta euro, '
-        + 'per chi prenota dal sito e inserisce il codice nelle note. '
-        + 'Solo per il primo utilizzo, entro sette giorni dalla sua emissione. '
-        + 'Controcorrente, Torino.'};
+    return {token,demoToday,text:'Il codice promo di oggi è: '+letters+'.'};
   }
 
   // Annunci del codice con un timer INDIPENDENTE dal jingle classico.
@@ -357,12 +348,23 @@
     audio.volume = 1;
   }
 
-  function scheduleJingle() {
-    if (jingleTimer !== null || jingleBusy || !enabled || !audible || audio.paused || failed) return;
+  function scheduleJingle(delay=jingleIntervalMs()) {
+    if (jingleTimer !== null || !enabled || !audible || audio.paused || failed) return;
     jingleTimer = window.setTimeout(() => {
       jingleTimer = null;
-      if (enabled && audible && !audio.paused && !failed) playJingle('classic');
-    }, jingleIntervalMs());
+      if (!enabled || !audible || audio.paused || failed) return;
+      // Un solo parlato alla volta; se il codice è pronto, rinvia il classico.
+      const duePromo = currentPromoAnnouncement();
+      if (jingleBusy ||
+          (duePromo && (!duePromo.demoToday
+            || Date.now()-promoLastSpokenAt >= 60000))) {
+        if (!jingleBusy) maybePlayPromo();
+        scheduleJingle(8000);
+        return;
+      }
+      playJingle('classic');
+      if (!jingleBusy) scheduleJingle(8000);
+    }, delay);
   }
 
   function fadeRadioJingle(target, generation, done) {
@@ -396,8 +398,12 @@
     const generation = ++jingleGeneration;
     jingleBusy = true;
     let settled = false;
-    const classicText = JINGLE_TEXT + ' ' +
-      JINGLE_ENDINGS[Math.floor(Math.random()*JINGLE_ENDINGS.length)];
+    // Mai la stessa frasetta in due jingle classici consecutivi.
+    let endingIndex = Math.floor(Math.random()*JINGLE_ENDINGS.length);
+    if (endingIndex===lastJingleEndingIndex)
+      endingIndex=(endingIndex+1+Math.floor(Math.random()*(JINGLE_ENDINGS.length-1)))%JINGLE_ENDINGS.length;
+    lastJingleEndingIndex=endingIndex;
+    const classicText = JINGLE_TEXT+' '+JINGLE_ENDINGS[endingIndex];
     const utterance = new window.SpeechSynthesisUtterance(
       promoAnnouncement ? promoAnnouncement.text : classicText);
     if (promoAnnouncement) utterance.onstart = () => {
@@ -405,8 +411,8 @@
       if (!promoAnnouncement.demoToday) promoMarkSpoken(promoAnnouncement.token);
     };
     utterance.lang = 'it-IT';
-    utterance.rate = 0.96;
-    utterance.pitch = 0.66;
+    utterance.rate = 0.98;
+    utterance.pitch = 0.82;
     utterance.volume = 1;
     const voices = speech.getVoices();
     const italian = voices.filter(voice => /^it(?:-|_)/i.test(voice.lang));
@@ -605,7 +611,7 @@
   }
   let stats = null;
   const style = document.createElement('style');
-  style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}header.top .cc-share-button{position:relative;left:8px}';
+  style.textContent = '.cc-share-button{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:5px 10px;border:1px solid var(--gold,#cba76d);border-radius:18px;background:transparent;color:var(--gold,#cba76d);font:12px/1.4 Arial,sans-serif;cursor:pointer;white-space:nowrap}.cc-share-button:hover,.cc-share-button:focus-visible{background:var(--gold,#cba76d);color:var(--navy,#081c30)}.cc-share-home{margin-top:9px;padding-top:9px;border-top:1px solid var(--line,#294256)}.cc-share-stats{display:block;margin-top:7px;color:var(--muted,#b6c6d2);font-size:.75rem;line-height:1.55}.cc-share-feedback{font:11px/1.5 Arial,sans-serif;color:var(--muted,#b6c6d2);margin-left:7px}#cc-notification-actions .cc-share-button{border-color:var(--line,#294256);color:var(--muted,#b6c6d2)}#cc-notification-actions .cc-share-button:hover{border-color:var(--gold,#cba76d);color:var(--gold,#cba76d);background:transparent}header.top .cc-share-button{position:relative;left:3px}';
   document.head.appendChild(style);
 
   const button = document.createElement('button');
@@ -763,7 +769,7 @@
 
   const style = document.createElement('style');
   style.textContent = `
-    #cc-nowplaying-ticker{box-sizing:border-box;display:block;width:calc(100% - 20px);max-width:1050px;height:23px;margin:5px auto 7px;padding:2px 9px;overflow:hidden;border:1px solid var(--gold,#cba76d);border-radius:5px;background:var(--navy,#082a43);color:var(--gold,#cba76d);font:11px/17px Georgia,"Times New Roman",serif;white-space:nowrap}
+    #cc-nowplaying-ticker{box-sizing:border-box;display:block;width:calc(100% - 12px);max-width:none;height:23px;margin:5px auto 7px;padding:2px 9px;overflow:hidden;border:1px solid var(--gold,#cba76d);border-radius:5px;background:var(--navy,#082a43);color:var(--gold,#cba76d);font:11px/17px Georgia,"Times New Roman",serif;white-space:nowrap}
     #cc-nowplaying-ticker[hidden]{display:none!important}
     #cc-nowplaying-ticker .cc-nowplaying-text{display:inline-block;white-space:nowrap;padding-left:100%;animation:cc-nowplaying-scroll 19s linear infinite}
     @keyframes cc-nowplaying-scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
