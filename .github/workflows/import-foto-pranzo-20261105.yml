@@ -1,0 +1,66 @@
+name: Importa fotografie pranzo 5 novembre 2026
+on:
+  push:
+    paths:
+      - '.github/workflows/import-foto-pranzo-20261105.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import-photo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Installa Pillow
+        run: python -m pip install --disable-pip-version-check Pillow
+      - name: Ricava sette fotografie autonome in formato WebP
+        env:
+          CASARECCE_URL: 'https://media.canva.com/v2/image-resize/format:PNG/height:1024/quality:100/uri:ifs%3A%2F%2FM%2F60199fab-ec3f-4757-b76c-dcab31ff9c37/watermark:F/width:1536?csig=AAAAAAAAAAAAAAAAAAAAAAgX91Zq6qrmzH7UooHUozPGGPPH8WkAz9lziYAnFGmL&exp=1793882978&osig=AAAAAAAAAAAAAAAAAAAAAIuxN8KDGgg06bnyig5AFGQdy7BOgAa0xjsyPSXpp46y&signer=media-rpc&token=AAIAAU0AJDYwMTk5ZmFiLWVjM2YtNDc1Ny1iNzZjLWRjYWIzMWZmOWMzNwAAAAABoavB9tB_mAQSVam340TLPTwl-K4ktxxUp689otrav8DX_fWUUg'
+          BOARD_URL: 'https://media.canva.com/v2/image-resize/format:PNG/height:1312/quality:100/uri:ifs%3A%2F%2FM%2F0f426d41-2cb9-4f73-b0eb-0d825c8326b0/watermark:F/width:1199?csig=AAAAAAAAAAAAAAAAAAAAAGd1XJlAd1Vu-olC8u-b7V7Eiv89BwX96u4U9GIA4Dt3&exp=1793885212&osig=AAAAAAAAAAAAAAAAAAAAAAluVzv4bo_rbWDLG4vmr0ataBBWIpENWuCmjbyrmF3F&signer=media-rpc&token=AAIAAU0AJDBmNDI2ZDQxLTJjYjktNGY3My1iMGViLTBkODI1YzgzMjZiMAAAAAABoavkDWC-1trZkKIUBkN153ubbtuok5pfxrGHEFsC0bbmeAetzw'
+        run: |
+          python3 - <<'PY'
+          import io, os, pathlib, urllib.request
+          from PIL import Image, ImageFilter
+          def download(key, minimum):
+              url=os.environ[key]
+              if not url.startswith('https://media.canva.com/'):
+                  raise RuntimeError('Host foto non consentito')
+              req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
+              raw=urllib.request.urlopen(req,timeout=60).read(15_000_000)
+              img=Image.open(io.BytesIO(raw)).convert('RGB')
+              print(key, img.size, len(raw), flush=True)
+              if min(img.size)<minimum: raise RuntimeError('Immagine sorgente troppo piccola: '+key)
+              return img
+          first=download('CASARECCE_URL',1000)
+          board=download('BOARD_URL',1100)
+          boxes={
+            'spaghetti-salsiccia-zafferano':(630,80,1165,282),
+            'penne-panna-prosciutto-piselli':(35,370,570,562),
+            'rigatoni-cacio-pepe':(630,370,1165,562),
+            'straccetti-lonza-birra-patate':(35,658,570,853),
+            'pollo-griglia-verza-viola':(630,658,1165,853),
+            'insalatona-salmone-arance-avocado':(210,940,995,1130)
+          }
+          destination=pathlib.Path('pranzo-assets');destination.mkdir(parents=True,exist_ok=True)
+          first=first.crop((120,260,1435,764))
+          photos={'casarecce-melanzane-branzino':first}
+          for name,box in boxes.items():photos[name]=board.crop(box)
+          for name,im in photos.items():
+              # Coerente con i riquadri esistenti: solo foto, nessuna scritta e nessun prezzo.
+              im=im.resize((1200,460), Image.Resampling.LANCZOS)
+              im=im.filter(ImageFilter.UnsharpMask(radius=1.0,percent=90,threshold=3))
+              dst=destination/(name+'-20261105.webp')
+              im.save(dst,format='WEBP',quality=90,method=6)
+              print('Foto pronta',str(dst),dst.stat().st_size,flush=True)
+          PY
+      - name: Salva soltanto le sette immagini del pranzo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pranzo-assets/*-20261105.webp
+          if ! git diff --cached --quiet; then
+            git commit -m "Importa sette foto illustrative coordinate pranzo 5 novembre"
+            git push
+          fi
