@@ -106,8 +106,8 @@
     const listeners=document.createElement('span');
     listeners.className='cc-radio-listeners';
     listeners.setAttribute('aria-label','Ascoltatori della radio dal sito');
-    listeners.title='Sessioni che ascoltano la radio sul sito, aggiornate circa ogni 25 secondi';
-    listeners.textContent='♫ — in ascolto';
+    listeners.title='Sessioni con la radio in riproduzione sul sito, aggiornate ogni 10 secondi';
+    listeners.textContent='♫ — in ascolto ora';
     holder.append(button,listeners);
     const brandRow=header.querySelector('.brand-row');
     if(brandRow)brandRow.insertAdjacentElement('afterend',holder);
@@ -158,8 +158,8 @@
   }
   function renderListenerCount(){
     const label=Number.isSafeInteger(listenerCount) && listenerCount>=0
-      ? '♫ '+listenerCount+' in ascolto' : '♫ — in ascolto';
-    const title='Ascoltatori attivi dal sito negli ultimi 75 secondi (stima per sessioni)';
+      ? '♫ '+listenerCount+' in ascolto ora' : '♫ — in ascolto ora';
+    const title='Ascolto effettivo del player negli ultimi 30 secondi, aggiornato circa ogni 10 secondi (sessioni, non visitatori)';
     for(const el of [ownListenersRef(),activeListenerBadge]){
       if(!el)continue;
       el.textContent=label;
@@ -191,7 +191,7 @@
     }catch(_){listenerCount=null;renderListenerCount();}
     finally{listenerPending=false;}
   }
-  window.setInterval(()=>updateListenerPresence(),25000);
+  window.setInterval(()=>updateListenerPresence(),10000);
 
   function render() {
     const playing = enabled && audible && !audio.paused && !failed;
