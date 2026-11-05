@@ -348,13 +348,16 @@
   let promoFlashUntil=0;
   let promoTimer=null;
   const promoSeenPrefix='cc-radio-premio-visto-';
+  const promoSeenThisSession=new Set();
   const promoApi='https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
   const realPlaying=()=>enabled && audible && !audio.paused && !failed;
   function alreadySeen(token) {
+    if(promoSeenThisSession.has(token))return true;
     try { return localStorage.getItem(promoSeenPrefix+token)==='1'; }
     catch (_) { return false; }
   }
   function markSeen(token) {
+    promoSeenThisSession.add(token);
     try { localStorage.setItem(promoSeenPrefix+token,'1'); }
     catch (_) { /* Anche con storage disabilitato il flash dura solo 10 s. */ }
   }
