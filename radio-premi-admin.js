@@ -184,15 +184,6 @@
       formElement.reset(); await refresh();
     }catch(err){display(err instanceof Error?err.message:'Accesso fallito');}
   });
-  document.querySelector('[data-premi-signup]').addEventListener('click',async()=>{
-    const f=document.querySelector('[data-premi-signin]'),fd=new FormData(f);
-    const email=String(fd.get('email')||''),password=String(fd.get('password')||'');
-    if(!email||password.length<8){display('Inserisci email e una password di almeno 8 caratteri.');return;}
-    try{
-      await authRequest('signup',{email,password});
-      display('Account richiesto. Conferma l’email ricevuta, poi torna qui e premi Accedi. Se hai già un account, premi soltanto Accedi.');
-    }catch(e){display(e instanceof Error?e.message:'Registrazione non riuscita');}
-  });
   document.querySelector('[data-premi-logout]').addEventListener('click',()=>{
     accessToken='';sessionStorage.removeItem(tokenKey);refresh();
   });
