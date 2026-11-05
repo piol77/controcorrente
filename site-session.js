@@ -166,6 +166,11 @@
     .cc-radio-controls{display:flex;justify-content:flex-end;align-items:center;gap:9px;margin:8px 0 0 auto;min-height:44px}
     @media(min-width:1101px){header.top .cc-radio-controls{justify-content:center;width:100%;box-sizing:border-box;margin:8px auto 0}}
     .cc-radio-listeners{display:inline-flex;align-items:center;min-height:28px;border:1px solid var(--gold,#cba76d);border-radius:20px;padding:1px 9px;color:var(--gold,#cba76d);font:600 11px/1.3 system-ui,sans-serif;white-space:nowrap}
+    .cc-radio-controls{flex-wrap:wrap}
+    .cc-radio-promo{font:800 14px/1.3 system-ui,sans-serif;letter-spacing:.08em;color:#082a43;background:#efbd36;border:1px solid #fff2ba;border-radius:9px;padding:9px 12px;box-shadow:0 0 0 2px rgba(239,189,54,.28);max-width:100%;overflow-wrap:anywhere;animation:cc-radio-promo-flash 1.2s ease-in-out infinite}
+    .cc-radio-promo[hidden]{display:none!important}
+    @keyframes cc-radio-promo-flash{0%,100%{box-shadow:0 0 0 2px rgba(239,189,54,.28)}50%{box-shadow:0 0 0 5px rgba(239,189,54,.66)}}
+    @media(prefers-reduced-motion:reduce){.cc-radio-promo{animation:none}}
     #cc-jazz-toggle{position:relative;isolation:isolate}
     #cc-jazz-toggle::before,#cc-jazz-toggle::after{content:"";position:absolute;inset:-4px;border:2px solid currentColor;box-shadow:0 0 6px rgba(203,167,109,.7);border-radius:50%;pointer-events:none;opacity:0}
     #cc-jazz-toggle[data-music-state="on"]::before,#cc-jazz-toggle[data-music-state="on"]::after{animation:cc-radio-ripple 1s ease-in-out infinite}
@@ -185,19 +190,24 @@
     listeners.setAttribute('aria-label','Ascoltatori della radio dal sito');
     listeners.title='Ascoltatori attivi';
     listeners.textContent='–';
-    holder.append(button,listeners);
+    const promo=document.createElement('span');
+    promo.className='cc-radio-promo';
+    promo.setAttribute('role','status');
+    promo.setAttribute('aria-live','polite');
+    promo.hidden=true;
+    holder.append(button,listeners,promo);
     const brandRow=header.querySelector('.brand-row');
     if(brandRow)brandRow.insertAdjacentElement('afterend',holder);
     else header.appendChild(holder);
-    return listeners;
+    return {listeners,promo};
   }
   let owner;
   try { if (window.parent !== window) owner = window.parent.ccJazzPlayer; } catch (_) {}
   if (owner) {
     const button = owner.button.cloneNode(true);
     button.addEventListener('click', owner.toggle);
-    const listeners=placeRadioControls(button);
-    owner.attach(button, window, listeners);
+    const controls=placeRadioControls(button);
+    owner.attach(button, window, controls.listeners, controls.promo);
     // Preserve the existing preorder redirect outside the persistent page frame.
     window.__DEMO_OPEN_WHATSAPP = url => { window.top.location.href = url; };
     return;
@@ -221,6 +231,8 @@
   button.style.cssText = 'display:block;margin:8px 0 0 auto;width:44px;height:44px;padding:4px;border:1px solid var(--gold,#cba76d);border-radius:50%;background:var(--navy,#082a43);color:var(--gold,#cba76d);font-size:18px;line-height:1;cursor:pointer;';
   let activeButton = button;
   let activeListenerBadge=null;
+  let activePromoBadge=null;
+  let ownPromoBadge=null;
   let listenerCount=null;
   let listenerPending=false;
   let listenerOffRequested=false;
@@ -325,230 +337,96 @@
   function remember() {
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
   }
-  // CONTROCORRENTE RADIO JINGLE 2026-11-04
-  // Jingle classico su orologio di Torino: 06:00, 06:05, 06:10 ...;
-  // annunci premio indipendenti in dieci slot server giornalieri, mai sovrapposti.
-  // Solo il documento proprietario del player annuncia: no doppioni nei frame.
-  const romeToday = () => {
-    const parts=new Intl.DateTimeFormat('en-CA',{
-      timeZone:'Europe/Rome',year:'numeric',month:'2-digit',day:'2-digit'
-    }).formatToParts(new Date());
-    return ['year','month','day'].map(k=>parts.find(p=>p.type===k).value).join('-');
-  };
-  // Prima delle 06:00 italiane nessun messaggio pubblicitario.
-  function beforeSixRome(){
-    const parts=new Intl.DateTimeFormat('en-GB',{
-      timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'
-    }).formatToParts(new Date());
-    return Number(parts.find(p=>p.type==='hour')?.value)<6;
-  }
-  // Il primo jingle parte con la radio; i successivi ogni cinque minuti d'ascolto.
-  const nextClassicDelayMs=()=>5*60*1000;
-  const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente di Torino.';
-  const JINGLE_ENDINGS = [
-    'Qui la musica non paga il coperto.',
-    'Il ritmo è servito, senza attesa.',
-    'Un brano tira l’altro. Proprio come le patatine.',
-    'Buone vibrazioni, senza prenotazione.',
-    'Anche le note meritano un bel tavolo.',
-    'Qui il volume non arriva mai sul conto.',
-    'La musica è l’unica cosa che non si raffredda.',
-    'Tra un piatto e l’altro, una bella canzone.'
-  ];
-  let jingleTimer = null;
-  let lastJingleEndingIndex = -1;
-  let jingleWatchdog = null;
-  let jingleUtterance = null;
-  let jingleBusy = false;
-  let jingleGeneration = 0;
-  let introJinglePending = false;
-  // Radio Premi: un codice viene pronunciato una volta per finestra d'annuncio
-  // sul dispositivo in ascolto. La fonte è il backend privato, non il browser.
-  let promoOnAir = null;
-  let promoLastFetched = 0;
-  let promoLastSpokenAt = 0;
-  // Non annunciare il codice subito dopo il click sulla radio.
-  let promoAllowedAt = Number.POSITIVE_INFINITY;
-  const promoSpokenPrefix = 'cc-radio-premio-annunciato-';
-  const promoApi = 'https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
-  function promoAlreadySpoken(token) {
-    try { return window.localStorage.getItem(promoSpokenPrefix + token) === '1'; }
+  // CONTROCORRENTE RADIO PREMI VISIVI 2026-11-06
+  // Nessun parlato: la musica non viene mai abbassata o interrotta.
+  // L'API decide codice, calendario e disponibilita; il browser mostra
+  // soltanto dieci secondi per slot a chi ha la radio realmente in ascolto.
+  let promoOnAir=null;
+  let promoLastFetched=0;
+  let promoAllowedAt=Number.POSITIVE_INFINITY;
+  let promoFlashCode=null;
+  let promoFlashUntil=0;
+  let promoTimer=null;
+  const promoSeenPrefix='cc-radio-premio-visto-';
+  const promoApi='https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
+  const realPlaying=()=>enabled && audible && !audio.paused && !failed;
+  function alreadySeen(token) {
+    try { return localStorage.getItem(promoSeenPrefix+token)==='1'; }
     catch (_) { return false; }
   }
-  function promoMarkSpoken(token) {
-    try { window.localStorage.setItem(promoSpokenPrefix + token, '1'); } catch (_) {}
+  function markSeen(token) {
+    try { localStorage.setItem(promoSeenPrefix+token,'1'); }
+    catch (_) { /* Anche con storage disabilitato il flash dura solo 10 s. */ }
   }
-  let stopClaimedPromo = null;
-  async function refreshRadioPromo() {
-    if (!enabled || !audible || audio.paused || failed) {
-      promoOnAir = null;
-      return;
-    }
-    try {
-      const response = await fetch(promoApi, {cache:'no-store',credentials:'omit'});
-      if (!response.ok) throw new Error('Premi non disponibili');
-      const result = await response.json();
-      if (stopClaimedPromo) stopClaimedPromo(result?.records);
-      promoOnAir = result && result.on_air
-        && /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(result.on_air.code)
-        && ((result.active && Number.isInteger(result.on_air.slot) && result.on_air.slot>=1 && result.on_air.slot<=10)
-             || (result.on_air.demo_today === true && result.on_air.slot===0))
-        ? Object.assign({},result.on_air,{promotion_active:result.active===true}) : null;
-      promoLastFetched = Date.now();
-      maybePlayPromo();
-    } catch (_) {
-      promoOnAir = null;
+  function renderPromoFlash() {
+    const visible=realPlaying() && promoFlashCode && Date.now()<promoFlashUntil;
+    for(const el of new Set([ownPromoBadge,activePromoBadge])) {
+      if(!el)continue;
+      el.hidden=!visible;
+      el.textContent=visible ? '🎟 CODICE CENA: '+promoFlashCode : '';
     }
   }
-  window.setInterval(() => {
-    if (enabled && audible && !audio.paused && !failed) refreshRadioPromo();
-  }, 5000);
-  function currentPromoAnnouncement() {
-    const slot = promoOnAir;
-    if (!slot || Date.now()<promoAllowedAt
+  function clearPromoFlash() {
+    if(promoTimer!==null)window.clearTimeout(promoTimer);
+    promoTimer=null;
+    promoFlashCode=null;
+    promoFlashUntil=0;
+    renderPromoFlash();
+  }
+  function currentPromoSlot() {
+    const slot=promoOnAir;
+    if(!slot || !realPlaying() || document.hidden || Date.now()<promoAllowedAt
       || Date.now()-promoLastFetched>15000 || !slot.available_until
-      || Date.now()>=Date.parse(slot.available_until)) return null;
-    const token = slot.code + '-' + (slot.reopened_at || slot.slot);
-    const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
-    if (!demoToday && promoAlreadySpoken(token)) return null;
-    // Pronuncia ogni cifra come parola intera, con pause e una ripetizione
-    // per evitare codici incomprensibili sui dispositivi mobili.
-    const digitWords=['zero','uno','due','tre','quattro','cinque','sei','sette','otto','nove'];
-    const spokenCode=slot.code.split('').map(c=>/^[0-9]$/.test(c)?digitWords[Number(c)]:c).join('. ');
-    return {token,demoToday,text:'Il codice promozionale è: '+spokenCode+'. Ripeto il codice: '+spokenCode+'. Informazioni sul sito.'};
+      || Date.now()>=Date.parse(slot.available_until))return null;
+    const token=slot.code+'-'+(slot.reopened_at||slot.slot);
+    if(alreadySeen(token))return null;
+    return {token,code:slot.code};
   }
-
-  // Annunci del codice con un timer INDIPENDENTE dal jingle classico.
-  function maybePlayPromo() {
-    if (!enabled || !audible || audio.paused || failed || jingleBusy) return;
-    const item=currentPromoAnnouncement();
-    if (!item) return;
-    // Se la sintesi viene interrotta durante lo slot, riprova dopo 30 s.
-    // Nei giorni di prova conserva la cadenza di 60 s.
-    if (Date.now()-promoLastSpokenAt < (item.demoToday ? 60000 : 30000)) return;
-    playJingle('promo');
+  function maybeShowPromo() {
+    if(promoFlashCode)return;
+    const slot=currentPromoSlot();
+    if(!slot)return;
+    markSeen(slot.token);
+    promoFlashCode=slot.code;
+    promoFlashUntil=Date.now()+10000;
+    renderPromoFlash();
+    promoTimer=window.setTimeout(clearPromoFlash,10000);
   }
-  window.setInterval(maybePlayPromo,9000);
-  window.addEventListener('focus',()=>{ refreshRadioPromo(); maybePlayPromo(); });
-  document.addEventListener('visibilitychange',()=>{
-    if (!document.hidden && enabled && !audio.paused) refreshRadioPromo();
-  });
-
-
-  function resetJingle() {
-    jingleGeneration += 1;
-    if (jingleTimer !== null) window.clearTimeout(jingleTimer);
-    if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
-    jingleTimer = null;
-    jingleWatchdog = null;
-    if (jingleUtterance && window.speechSynthesis) {
-      try { window.speechSynthesis.cancel(); } catch (_) {}
-    }
-    jingleUtterance = null;
-    jingleBusy = false;
-    audio.volume = 1;
-  }
-
-  function scheduleJingle(delay=nextClassicDelayMs()) {
-    if (jingleTimer !== null || !enabled || !audible || audio.paused || failed) return;
-    jingleTimer = window.setTimeout(() => {
-      jingleTimer = null;
-      if (!enabled || !audible || audio.paused || failed) return;
-      if (beforeSixRome()) { scheduleJingle(); return; }
-      // Un solo parlato alla volta; se il codice è pronto, rinvia il classico.
-      const duePromo = currentPromoAnnouncement();
-      if (jingleBusy ||
-          (duePromo && (!duePromo.demoToday
-            || Date.now()-promoLastSpokenAt >= 60000))) {
-        if (!jingleBusy) maybePlayPromo();
-        scheduleJingle(8000);
-        return;
+  async function refreshRadioPromo() {
+    if(!realPlaying()){promoOnAir=null;clearPromoFlash();return;}
+    try {
+      const response=await fetch(promoApi,{cache:'no-store',credentials:'omit'});
+      if(!response.ok)throw new Error('Premi non disponibili');
+      const result=await response.json();
+      const slot=result?.on_air;
+      promoOnAir=result?.active===true && result?.paused_today!==true && slot
+        && /^[0-9]{5}$/.test(slot.code) && Number.isInteger(slot.slot)
+        && slot.slot>=1 && slot.slot<=10
+        ? slot : null;
+      promoLastFetched=Date.now();
+      if(!promoOnAir || result?.records?.some(row=>row.code===promoFlashCode
+          && ['held','confirmed','used','void','expired'].includes(row.status))) {
+        clearPromoFlash();
       }
-      playJingle('classic');
-      if (!jingleBusy) scheduleJingle(8000);
-    }, delay);
+      maybeShowPromo();
+    } catch (_) {
+      promoOnAir=null;
+      clearPromoFlash();
+    }
   }
-
-  // Controlla la cadenza anche se la radio era già accesa prima delle 06:00.
   window.setInterval(()=>{
-    if(enabled && audible && !audio.paused && !failed) scheduleJingle();
-  },20000);
-
-  function playJingle(kind='classic') {
-    const promoAnnouncement = kind==='promo' ? currentPromoAnnouncement() : null;
-    if (kind==='promo' && !promoAnnouncement) return false;
-    if (promoAnnouncement && promoAnnouncement.demoToday
-        && Date.now()-promoLastSpokenAt < 60000) return false;
-    const speech = window.speechSynthesis;
-    if (!speech || typeof window.SpeechSynthesisUtterance !== 'function'
-        || speech.speaking || speech.pending || jingleBusy) return false;
-    const generation = ++jingleGeneration;
-    jingleBusy = true;
-    let settled = false;
-    // Mai la stessa frasetta in due jingle classici consecutivi.
-    let endingIndex = Math.floor(Math.random()*JINGLE_ENDINGS.length);
-    if (endingIndex===lastJingleEndingIndex)
-      endingIndex=(endingIndex+1+Math.floor(Math.random()*(JINGLE_ENDINGS.length-1)))%JINGLE_ENDINGS.length;
-    lastJingleEndingIndex=endingIndex;
-    const classicText = JINGLE_TEXT+' '+JINGLE_ENDINGS[endingIndex];
-    const utterance = new window.SpeechSynthesisUtterance(
-      promoAnnouncement ? promoAnnouncement.text : classicText);
-    // Si marca un codice come già letto SOLO alla fine dell'annuncio.
-    // Prima, un buffering/interruzione lo faceva risultare pronunciato
-    // anche quando l'ascoltatore non aveva sentito niente.
-    utterance.onstart = () => {
-      if (promoAnnouncement) promoLastSpokenAt = Date.now();
-      audio.volume = 0.10;
-    };
-    // Ripristino della voce approvata la sera del 4 novembre (commit b99c1d6616aa).
-    // La voce resta dipendente dal motore TTS disponibile sul dispositivo.
-    utterance.lang = 'it-IT';
-    utterance.rate = 0.96;
-    utterance.pitch = 0.94;
-    utterance.volume = 1;
-    const italian = speech.getVoices().filter(voice => /^it(?:-|_)/i.test(voice.lang));
-    utterance.voice = italian.find(voice => /luca|diego|italiano|elsa|isabella|google/i.test(voice.name))
-      || italian[0] || null;
-    jingleUtterance = utterance;
-    function finish(completed=false) {
-      if (settled || generation !== jingleGeneration) return;
-      settled = true;
-      if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
-      jingleWatchdog = null;
-      if (completed && promoAnnouncement && !promoAnnouncement.demoToday)
-        promoMarkSpoken(promoAnnouncement.token);
-      jingleUtterance = null;
-      if (promoAnnouncement) stopClaimedPromo = null;
-      jingleBusy=false;
-      audio.volume=1;
-      if(kind==='classic')scheduleJingle();
-    }
-    if (promoAnnouncement) {
-      const code = promoOnAir.code;
-      stopClaimedPromo = records => {
-        if (generation !== jingleGeneration || !records?.some(record => record.code===code && ['held','confirmed','used','void'].includes(record.status))) return;
-        try { speech.cancel(); } catch (_) {}
-        finish(false);
-      };
-    }
-    utterance.onend = () => finish(true);
-    utterance.onerror = () => finish(false);
-    try { if (speech.paused) speech.resume(); } catch (_) {}
-    // Il volume scende solo quando la voce inizia davvero; se il browser
-    // nega l'audio, la musica non rimane ingiustificatamente attenuata.
-    jingleWatchdog=window.setTimeout(()=>{
-      if(generation!==jingleGeneration)return;
-      try{speech.cancel();}catch(_){}
-      finish(false);
-    },promoAnnouncement ? 30000 : 20000);
-    try{speech.speak(utterance);return true;}catch(_){finish(false);return false;}
-  }
-  // END CONTROCORRENTE RADIO JINGLE 2026-11-04
+    if(realPlaying())refreshRadioPromo();
+  },5000);
+  window.addEventListener('focus',()=>{refreshRadioPromo();});
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden && realPlaying())refreshRadioPromo();
+  });
+  // END CONTROCORRENTE RADIO PREMI VISIVI 2026-11-06
 
   function stop() {
     attempt++;
-    introJinglePending = false;
-    resetJingle();
+    promoOnAir=null;
+    clearPromoFlash();
     audio.pause();
     audio.removeAttribute('src');
     audio.load();
@@ -576,24 +454,16 @@
       } else { pending = false; }
     } catch (_) { pending = false; failed = true; render(); }
   }
-  audio.addEventListener('volumechange',()=>{
-    const target=jingleBusy?0.10:1;
-    if(audio.volume!==target)audio.volume=target;
-  });
   audio.addEventListener('playing', () => {
     audible = true; pending = false; failed = false; render();
-    // Ripiego per i browser che rifiutano la prima richiesta di sintesi
-    // nonostante il clic. Non ripetere se è già stata accodata.
-    if (introJinglePending && playJingle('classic')) introJinglePending = false;
-    scheduleJingle();
     refreshRadioPromo();
     updateListenerPresence();
   });
-  audio.addEventListener('pause', () => { audible = false; if (!jingleBusy) resetJingle(); render(); updateListenerPresence(true); });
-  audio.addEventListener('waiting', () => { audible = false; pending = enabled; if (!jingleBusy) resetJingle(); render(); updateListenerPresence(true); });
-  audio.addEventListener('stalled', () => { audible = false; pending = enabled; if (!jingleBusy) resetJingle(); render(); updateListenerPresence(true); });
-  audio.addEventListener('ended', () => { audible = false; pending = false; resetJingle(); render(); updateListenerPresence(true); });
-  audio.addEventListener('error', () => { audible = false; pending = false; failed = true; resetJingle(); render(); updateListenerPresence(true); });
+  audio.addEventListener('pause', () => { audible = false; clearPromoFlash(); render(); updateListenerPresence(true); });
+  audio.addEventListener('waiting', () => { audible = false; pending = enabled; clearPromoFlash(); render(); updateListenerPresence(true); });
+  audio.addEventListener('stalled', () => { audible = false; pending = enabled; clearPromoFlash(); render(); updateListenerPresence(true); });
+  audio.addEventListener('ended', () => { audible = false; pending = false; clearPromoFlash(); render(); updateListenerPresence(true); });
+  audio.addEventListener('error', () => { audible = false; pending = false; failed = true; clearPromoFlash(); render(); updateListenerPresence(true); });
   function toggle() {
     if (enabled && (pending || (!audio.paused && !failed))) {
       enabled = false;
@@ -601,27 +471,23 @@
       stop();
     } else {
       enabled = true;
-      // Risveglia la voce su pressione esplicita, utile sui browser mobili.
-      try { window.speechSynthesis?.resume(); } catch (_) {}
       try { window.ccRadioClickStats?.record(); } catch (_) {}
       promoAllowedAt=Date.now()+60000;
-      introJinglePending = true;
       remember();
       failed = false;
       // Release any failed stream before an explicit retry.
       audio.removeAttribute('src');
       audio.load();
-      // La sintesi va richiesta NEL gesto del clic: Android può bloccare
-      // speechSynthesis.speak chiamato più tardi da audio.onplaying.
-      if (introJinglePending && playJingle('classic')) introJinglePending = false;
       start();
     }
     render();
   }
   button.addEventListener('click', toggle);
-  const ownListeners=placeRadioControls(button);
-  ownListenerBadge=ownListeners;
-  activeListenerBadge=ownListeners;
+  const ownControls=placeRadioControls(button);
+  ownListenerBadge=ownControls.listeners;
+  activeListenerBadge=ownControls.listeners;
+  ownPromoBadge=ownControls.promo;
+  activePromoBadge=ownControls.promo;
   render();
   updateListenerPresence();
   const siteRoot = new URL('.', location.href);
@@ -679,11 +545,13 @@
   }
   window.ccJazzPlayer = {
     button, toggle,
-    attach(nextButton, view, nextListenerBadge) {
+    attach(nextButton, view, nextListenerBadge, nextPromoBadge) {
       activeButton = nextButton;
       activeListenerBadge = nextListenerBadge || ownListenerBadge;
+      activePromoBadge = nextPromoBadge || ownPromoBadge;
       render();
       renderListenerCount();
+      renderPromoFlash();
       bindNavigation(view);
     }
   };
