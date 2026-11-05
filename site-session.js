@@ -144,6 +144,7 @@
   let activeListenerBadge=null;
   let listenerCount=null;
   let listenerPending=false;
+  let listenerOffRequested=false;
   const listenerApi='https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
   const listenerKey='cc-radio-listener-session-v1';
   let listenerSession=null;
@@ -169,29 +170,49 @@
   let ownListenerBadge=null;
   function ownListenersRef(){return ownListenerBadge;}
   async function updateListenerPresence(forceOff=false){
-    if(listenerPending)return;
+    // Le richieste alla radio restano sempre indipendenti dal refresh pagina.
+    // Se durante una richiesta l'utente spegne la radio, accoda l'OFF.
+    if(listenerPending){
+      if(forceOff)listenerOffRequested=true;
+      return;
+    }
     const playing=!forceOff && enabled && audible && !audio.paused && !failed;
     if(!listenerSession && playing)return;
     listenerPending=true;
-    try {
+    const ctrl=new AbortController();
+    const timeout=window.setTimeout(()=>ctrl.abort(),6500);
+    try{
       const request=playing||forceOff
-        ? {
-            method:'POST',headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({action:'listener_presence',session:listenerSession,playing}),
-            cache:'no-store',credentials:'omit',keepalive:forceOff
-          }
-        : {method:'GET',cache:'no-store',credentials:'omit'};
+        ? {method:'POST',headers:{'Content-Type':'application/json'},
+           body:JSON.stringify({action:'listener_presence',session:listenerSession,playing}),
+           cache:'no-store',credentials:'omit',keepalive:forceOff,signal:ctrl.signal}
+        : {method:'GET',cache:'no-store',credentials:'omit',signal:ctrl.signal};
       const response=await fetch(listenerApi,request);
-      if(!response.ok)throw Error('Listener count temporarily unavailable');
+      if(!response.ok)throw new Error('Listener service unavailable');
       const data=await response.json();
-      if(Number.isSafeInteger(data.listeners) && data.listeners>=0){
+      if(Number.isSafeInteger(data.listeners)&&data.listeners>=0){
         listenerCount=data.listeners;
         renderListenerCount();
       }
-    }catch(_){listenerCount=null;renderListenerCount();}
-    finally{listenerPending=false;}
+    }catch(_){
+      listenerCount=null;
+      renderListenerCount();
+    }finally{
+      window.clearTimeout(timeout);
+      listenerPending=false;
+      if(listenerOffRequested){
+        listenerOffRequested=false;
+        updateListenerPresence(true);
+      }
+    }
   }
-  window.setInterval(()=>updateListenerPresence(),10000);
+  // Poll continuo anche con radio spenta, per mostrare chi è rimasto in ascolto.
+  window.setInterval(()=>updateListenerPresence(),5000);
+  window.addEventListener('focus',()=>updateListenerPresence());
+  window.addEventListener('pageshow',()=>updateListenerPresence());
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden)updateListenerPresence();
+  });
 
   function render() {
     const playing = enabled && audible && !audio.paused && !failed;
