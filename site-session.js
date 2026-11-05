@@ -212,6 +212,16 @@
   window.setInterval(()=>updateListenerPresence(),5000);
   window.addEventListener('focus',()=>updateListenerPresence());
   window.addEventListener('pageshow',()=>updateListenerPresence());
+  window.addEventListener('pagehide',()=>{
+    if(!listenerSession)return;
+    // Congedo immediato anche se la pagina viene chiusa: il server
+    // smette comunque di contare la sessione dopo 12 secondi.
+    try{
+      if(navigator.sendBeacon)navigator.sendBeacon(listenerApi,
+        new Blob([JSON.stringify({action:'listener_presence',
+          session:listenerSession,playing:false})],{type:'text/plain'}));
+    }catch(_){}
+  });
   document.addEventListener('visibilitychange',()=>{
     if(!document.hidden)updateListenerPresence();
   });
@@ -250,6 +260,13 @@
     return ['year','month','day'].map(k=>parts.find(p=>p.type===k).value).join('-');
   };
   // Classico sempre ogni cinque minuti; annunci premio su un timer indipendente.
+  function promoOnlyBeforeSix(){
+    if(romeToday()!=='2026-11-05')return false;
+    const parts=new Intl.DateTimeFormat('en-GB',{
+      timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'
+    }).formatToParts(new Date());
+    return Number(parts.find(p=>p.type==='hour')?.value)<6;
+  }
   const jingleIntervalMs=()=>5*60*1000;
   const JINGLE_TEXT = 'Questa è la radio preferita dal Controcorrente.';
   const JINGLE_ENDINGS = [
@@ -264,7 +281,6 @@
   ];
   let jingleTimer = null;
   let lastJingleEndingIndex = -1;
-  let jingleFadeTimer = null;
   let jingleWatchdog = null;
   let jingleUtterance = null;
   let jingleBusy = false;
@@ -274,6 +290,8 @@
   let promoOnAir = null;
   let promoLastFetched = 0;
   let promoLastSpokenAt = 0;
+  // Non annunciare il codice subito dopo il click sulla radio.
+  let promoAllowedAt = Number.POSITIVE_INFINITY;
   const promoSpokenPrefix = 'cc-radio-premio-annunciato-';
   const promoApi = 'https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
   function promoAlreadySpoken(token) {
@@ -305,10 +323,11 @@
   }
   window.setInterval(() => {
     if (enabled && audible && !audio.paused && !failed) refreshRadioPromo();
-  }, 17000);
+  }, 5000);
   function currentPromoAnnouncement() {
     const slot = promoOnAir;
-    if (!slot || Date.now()-promoLastFetched>25000 || !slot.available_until
+    if (!slot || Date.now()<promoAllowedAt
+      || Date.now()-promoLastFetched>15000 || !slot.available_until
       || Date.now()>=Date.parse(slot.available_until)) return null;
     const token = slot.code + '-' + slot.slot;
     const demoToday=slot.demo_today===true && romeToday()==='2026-11-05';
@@ -335,10 +354,8 @@
   function resetJingle() {
     jingleGeneration += 1;
     if (jingleTimer !== null) window.clearTimeout(jingleTimer);
-    if (jingleFadeTimer !== null) window.clearInterval(jingleFadeTimer);
     if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
     jingleTimer = null;
-    jingleFadeTimer = null;
     jingleWatchdog = null;
     if (jingleUtterance && window.speechSynthesis) {
       try { window.speechSynthesis.cancel(); } catch (_) {}
@@ -349,6 +366,7 @@
   }
 
   function scheduleJingle(delay=jingleIntervalMs()) {
+    if(promoOnlyBeforeSix())return;
     if (jingleTimer !== null || !enabled || !audible || audio.paused || failed) return;
     jingleTimer = window.setTimeout(() => {
       jingleTimer = null;
@@ -367,25 +385,11 @@
     }, delay);
   }
 
-  function fadeRadioJingle(target, generation, done) {
-    if (jingleFadeTimer !== null) window.clearInterval(jingleFadeTimer);
-    const original = audio.volume;
-    let step = 0;
-    jingleFadeTimer = window.setInterval(() => {
-      if (generation !== jingleGeneration) {
-        window.clearInterval(jingleFadeTimer);
-        jingleFadeTimer = null;
-        return;
-      }
-      step += 1;
-      audio.volume = Math.max(0, Math.min(1, original + (target - original) * step / 8));
-      if (step >= 8) {
-        window.clearInterval(jingleFadeTimer);
-        jingleFadeTimer = null;
-        if (typeof done === 'function') done();
-      }
-    }, 65);
-  }
+  // Ripristino del jingle ordinario dopo le 06:00, senza ricarica pagina.
+  window.setInterval(()=>{
+    if(!promoOnlyBeforeSix() && enabled && audible && !audio.paused && !failed)
+      scheduleJingle();
+  },20000);
 
   function playJingle(kind='classic') {
     const promoAnnouncement = kind==='promo' ? currentPromoAnnouncement() : null;
@@ -430,23 +434,20 @@
       if (jingleWatchdog !== null) window.clearTimeout(jingleWatchdog);
       jingleWatchdog = null;
       jingleUtterance = null;
-      fadeRadioJingle(1, generation, () => {
-        if (generation !== jingleGeneration) return;
-        jingleBusy = false;
-        scheduleJingle();
-      });
+      audio.volume=1;
+      jingleBusy=false;
+      if(kind==='classic')scheduleJingle();
     }
     utterance.onend = finish;
     utterance.onerror = finish;
-    fadeRadioJingle(0.10, generation, () => {
-      if (generation !== jingleGeneration) return;
-      jingleWatchdog = window.setTimeout(() => {
-        if (generation !== jingleGeneration) return;
-        try { speech.cancel(); } catch (_) {}
-        finish();
-      }, promoAnnouncement ? 32000 : 20000);
-      try { speech.speak(utterance); } catch (_) { finish(); }
-    });
+    // Niente attenuazione: il volume dello stream resta sempre al 100%.
+    audio.volume=1;
+    jingleWatchdog=window.setTimeout(()=>{
+      if(generation!==jingleGeneration)return;
+      try{speech.cancel();}catch(_){}
+      finish();
+    },promoAnnouncement ? 16000 : 20000);
+    try{speech.speak(utterance);}catch(_){finish();}
   }
   // END CONTROCORRENTE RADIO JINGLE 2026-11-04
 
@@ -480,6 +481,9 @@
       } else { pending = false; }
     } catch (_) { pending = false; failed = true; render(); }
   }
+  audio.addEventListener('volumechange',()=>{
+    if(audio.volume!==1)audio.volume=1;
+  });
   audio.addEventListener('playing', () => { audible = true; pending = false; failed = false; render(); scheduleJingle(); refreshRadioPromo(); updateListenerPresence(); });
   audio.addEventListener('pause', () => { audible = false; resetJingle(); render(); updateListenerPresence(true); });
   audio.addEventListener('waiting', () => { audible = false; pending = enabled; resetJingle(); render(); updateListenerPresence(true); });
@@ -493,6 +497,7 @@
       stop();
     } else {
       enabled = true;
+      promoAllowedAt=Date.now()+60000;
       remember();
       failed = false;
       // Release any failed stream before an explicit retry.
