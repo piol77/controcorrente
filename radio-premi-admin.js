@@ -9,6 +9,36 @@
   const message = document.querySelector('[data-premi-message]');
   const rows = document.querySelector('[data-premi-admin-rows]');
   const status = document.querySelector('[data-premi-admin-active]');
+  const todaySchedule = document.querySelector('[data-premi-today-schedule]');
+  const todayScheduleLabel = document.querySelector('[data-premi-today-label]');
+  const romeDay = () => new Intl.DateTimeFormat('sv-SE',{timeZone:'Europe/Rome'}).format(new Date());
+  const romeTime = (iso) => new Intl.DateTimeFormat('it-IT',{
+    hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Rome'
+  }).format(new Date(iso));
+  function renderTodaySchedule(records) {
+    const day=romeDay();
+    todayScheduleLabel.textContent='Solo oggi · '+new Intl.DateTimeFormat('it-IT',{
+      day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Rome'
+    }).format(new Date());
+    todaySchedule.replaceChildren();
+    const item=records.find(rec=>rec.issue_day===day && rec.is_test!==true);
+    if(!item || !Array.isArray(item.announcements) || !item.announcements.length) {
+      todaySchedule.textContent='Orari non ancora generati per oggi.';
+      return;
+    }
+    item.announcements.forEach((iso,index)=>{
+      const time=romeTime(iso);
+      const span=document.createElement('span');
+      span.className='rp-slot';
+      span.textContent=time+(time<'07:00'?' · prova solo oggi':'');
+      span.title=(index+1)+'° passaggio di oggi, ora di Torino';
+      todaySchedule.append(span);
+    });
+    const note=document.createElement('p');
+    note.className='rp-sr';
+    note.textContent='Orari riservati al titolare. Il codice appare circa 10 secondi soltanto sui dispositivi che stanno ascoltando la radio, se il premio è disponibile.';
+    todaySchedule.append(note);
+  }
   const tokenKey = 'cc-radio-premi-admin-session-v1';
   let accessToken = sessionStorage.getItem(tokenKey) || '';
   const actionForm = document.querySelector('[data-premi-actions]');
@@ -90,6 +120,7 @@
       status.textContent=!data.active?'PROMOZIONE DISATTIVATA'
         :data.paused_today?'ANNUNCI RADIO SOSPESI FINO A DOMANI'
         :'PROMOZIONE ATTIVA · ANNUNCI ABILITATI';
+      renderTodaySchedule(data.records || []);
       rows.replaceChildren();
       if(!data.records.length) {
         const tr=document.createElement('tr'),td=document.createElement('td');
