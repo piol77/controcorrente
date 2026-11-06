@@ -126,6 +126,15 @@
             "name": "撒丁岛淡菜海员风味（少量番茄）",
             "description": "撒丁岛淡菜配蒜香、欧芹与少许番茄清煮。"
           }
+        },
+        "dishPhoto": "cena-assets/cozze-sardegna-marinara-20261106-hd.webp",
+        "photoSource": {
+          "type": "AI-generated HD illustrative food image",
+          "date": "2026-11-06",
+          "tool": "image_gen",
+          "resolution": "1536x1024",
+          "format": "WebP, quality 91",
+          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
         }
       }
     ],
@@ -210,6 +219,15 @@
             "name": "朝鲜蓟鲜三文鱼鸡蛋宽面",
             "description": "鸡蛋宽面搭配柔嫩朝鲜蓟与新鲜三文鱼。"
           }
+        },
+        "dishPhoto": "cena-assets/tagliatelle-carciofi-salmone-20261106-hd.webp",
+        "photoSource": {
+          "type": "AI-generated HD illustrative food image",
+          "date": "2026-11-06",
+          "tool": "image_gen",
+          "resolution": "1536x1024",
+          "format": "WebP, quality 91",
+          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
         }
       },
       {
@@ -230,6 +248,15 @@
             "name": "墨鱼汁扁意面",
             "description": "香浓墨鱼汁包裹扁意面，满载海洋鲜味。"
           }
+        },
+        "dishPhoto": "cena-assets/linguine-nero-seppia-20261106-hd.webp",
+        "photoSource": {
+          "type": "AI-generated HD illustrative food image",
+          "date": "2026-11-06",
+          "tool": "image_gen",
+          "resolution": "1536x1024",
+          "format": "WebP, quality 91",
+          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
         }
       },
       {
@@ -385,6 +412,15 @@
             "name": "大份香烤金头鲷（600克）配烤土豆",
             "description": "600克整条香烤金头鲷，搭配金黄烤土豆。"
           }
+        },
+        "dishPhoto": "cena-assets/orata-grande-patate-forno-20261106-hd.webp",
+        "photoSource": {
+          "type": "AI-generated HD illustrative food image",
+          "date": "2026-11-06",
+          "tool": "image_gen",
+          "resolution": "1536x1024",
+          "format": "WebP, quality 91",
+          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
         }
       },
       {
@@ -704,7 +740,7 @@
       "icon": "CookingPot",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/straccetti-lonza-birra-patate-20261105.webp",
+      "dishPhoto": "pranzo-assets/straccetti-maiale-birra-riso-20261106-hd.webp",
       "translations": {
         "en": {
           "name": "Beer-braised pork strips with steamed white rice",
@@ -716,9 +752,12 @@
         }
       },
       "photoSource": {
-        "type": "Temporary illustration of beer-cooked pork",
-        "date": "2026-11-05",
-        "note": "Existing picture shows a potato accompaniment and must be replaced with the correct HD pork-and-rice image before the visual update can be considered complete."
+        "type": "AI-generated HD illustrative food image",
+        "date": "2026-11-06",
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 91",
+        "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
       }
     },
     {
