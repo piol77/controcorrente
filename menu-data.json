@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-11-05",
-  "lunchDateLabel": "Giovedì 5 novembre 2026",
+  "lunchUpdatedAt": "2026-11-06",
+  "lunchDateLabel": "Venerdì 6 novembre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -394,9 +394,37 @@
   },
   "lunch": [
     {
-      "name": "Casarecce con melanzane e branzino (poco pomodoro)",
+      "name": "Riso alla cantonese con uovo, prosciutto cotto e piselli",
+      "price": 8,
+      "description": "Riso saltato alla cantonese con uovo, prosciutto cotto e piselli.",
+      "allergens": [
+        3
+      ],
+      "icon": "CookingPot",
+      "orderCourse": "Primo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/riso-cantonese-20261016.webp",
+      "translations": {
+        "en": {
+          "name": "Cantonese fried rice with egg, cooked ham and peas",
+          "description": "Stir-fried rice with egg, cooked ham and peas."
+        },
+        "zh": {
+          "name": "广式炒饭（鸡蛋、熟火腿、青豆）",
+          "description": "米饭与鸡蛋、熟火腿和青豆一同炒制。"
+        }
+      },
+      "photoSource": {
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
+      }
+    },
+    {
+      "name": "Fusilli con zucchine, orata e pomodorini",
       "price": 12,
-      "description": "Il sapore delicato del branzino incontra le melanzane, con un leggero tocco di pomodoro.",
+      "description": "Fusilli con zucchine, orata e pomodorini freschi.",
       "allergens": [
         1,
         4
@@ -404,29 +432,28 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/casarecce-melanzane-branzino-uniform-20261105.svg",
+      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodori-coerente-20261022.webp",
       "translations": {
         "en": {
-          "name": "Casarecce with eggplant and sea bass (light tomato sauce)",
-          "description": "Tender sea bass and eggplant meet in a delicate sauce with just a touch of tomato."
+          "name": "Fusilli with courgettes, sea bream and cherry tomatoes",
+          "description": "Fusilli with courgettes, sea bream and fresh cherry tomatoes."
         },
         "zh": {
-          "name": "茄子与海鲈鱼卷纹短面（少量番茄）",
-          "description": "海鲈鱼的细腻鲜味搭配茄子，只加少许番茄提味。"
+          "name": "西葫芦、金头鲷和小番茄螺旋面",
+          "description": "螺旋面搭配西葫芦、金头鲷和新鲜小番茄。"
         }
       },
       "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
       }
     },
     {
-      "name": "Spaghetti con salsiccia e zafferano (poca panna)",
+      "name": "Penne alla boscaiola con salsiccia, funghi, cipolla, pomodoro, olive e panna",
       "price": 10,
-      "description": "La salsiccia dona carattere agli spaghetti, mentre lo zafferano e un velo di panna legano i sapori.",
+      "description": "Penne alla boscaiola con salsiccia, funghi, cipolla, pomodoro, olive e un tocco di panna.",
       "allergens": [
         1,
         7
@@ -434,172 +461,140 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/spaghetti-salsiccia-zafferano-uniform-20261105.svg",
+      "dishPhoto": "pranzo-assets/penne-coerente-20261027.webp",
       "translations": {
         "en": {
-          "name": "Spaghetti with sausage and saffron (a little cream)",
-          "description": "Sausage gives the spaghetti character, while saffron and a touch of cream bring the flavours together."
+          "name": "Penne alla boscaiola with sausage, mushrooms, onion, tomato, olives and cream",
+          "description": "Penne with sausage, mushrooms, onion, tomato, olives and a little cream."
         },
         "zh": {
-          "name": "香肠藏红花意面（少量奶油）",
-          "description": "香肠为意面增添浓郁风味，藏红花与少量奶油使口感更加柔和。"
+          "name": "林间风味斜管面（香肠、蘑菇、洋葱、番茄、橄榄和奶油）",
+          "description": "斜管面搭配香肠、蘑菇、洋葱、番茄、橄榄和少量奶油。"
         }
       },
       "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
       }
     },
     {
-      "name": "Penne con panna, prosciutto cotto e piselli",
-      "price": 10,
-      "description": "La dolcezza dei piselli e del prosciutto cotto incontra la cremosità della panna.",
+      "name": "Spaghetti ai frutti di mare",
+      "price": 15,
+      "description": "Con gamberetti*, gamberoni*, vongole e cozze, con poco pomodoro.",
       "allergens": [
         1,
-        7
+        2,
+        14
       ],
-      "icon": "Wheat",
+      "icon": "Shell",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/penne-panna-prosciutto-piselli-uniform-20261105.svg",
+      "dishPhoto": "pranzo-assets/spaghetti-mare-coerente-20261023.webp",
       "translations": {
         "en": {
-          "name": "Penne with cream, cooked ham and peas",
-          "description": "Sweet peas and cooked ham come together in a delicate, creamy sauce."
+          "name": "Seafood spaghetti",
+          "description": "With shrimp*, king prawns*, clams, mussels and a light touch of tomato."
         },
         "zh": {
-          "name": "奶油火腿青豆斜管面",
-          "description": "青豆与熟火腿的清甜融入柔滑奶油酱中。"
+          "name": "海鲜意大利面",
+          "description": "配虾仁*、大虾*、蛤蜊和贻贝，加入少量番茄。"
         }
       },
       "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
       }
     },
     {
-      "name": "Rigatoni cacio e pepe",
-      "price": 10,
-      "description": "Il gusto deciso del formaggio incontra il profumo del pepe in un condimento essenziale e cremoso.",
-      "allergens": [
-        1,
-        7
-      ],
-      "icon": "Wheat",
-      "orderCourse": "Primo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/rigatoni-cacio-pepe-uniform-20261105.svg",
-      "translations": {
-        "en": {
-          "name": "Rigatoni cacio e pepe",
-          "description": "Rich cheese and fragrant black pepper make a simple, creamy coating for the pasta."
-        },
-        "zh": {
-          "name": "奶酪黑胡椒粗管面",
-          "description": "浓郁奶酪与黑胡椒香气交织，形成简洁而顺滑的酱汁。"
-        }
-      },
-      "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
-      }
-    },
-    {
-      "name": "Straccetti di lonza di maiale alla birra con patate al prezzemolo",
-      "price": 10,
-      "description": "Lonza di maiale in straccetti, insaporita alla birra e servita con patate profumate al prezzemolo.",
-      "allergens": [
-        1
-      ],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/straccetti-lonza-birra-patate-uniform-20261105.svg",
-      "translations": {
-        "en": {
-          "name": "Beer-flavoured pork loin strips with parsley potatoes",
-          "description": "Tender strips of pork loin flavoured with beer, served with parsley potatoes."
-        },
-        "zh": {
-          "name": "啤酒风味猪里脊肉条配欧芹土豆",
-          "description": "猪里脊肉条以啤酒调味，搭配欧芹土豆。"
-        }
-      },
-      "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
-      }
-    },
-    {
-      "name": "Pollo alla griglia con verza viola cruda all’aceto balsamico",
-      "price": 10,
-      "description": "Pollo grigliato accompagnato dalla freschezza croccante della verza viola e da una nota di aceto balsamico.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/pollo-griglia-verza-viola-uniform-20261105.svg",
-      "translations": {
-        "en": {
-          "name": "Grilled chicken with raw purple cabbage and balsamic vinegar",
-          "description": "Grilled chicken served with crisp raw purple cabbage and a touch of balsamic vinegar."
-        },
-        "zh": {
-          "name": "烤鸡肉配生紫甘蓝和意大利香醋",
-          "description": "烤鸡肉搭配爽脆的生紫甘蓝，以少许意大利香醋调味。"
-        }
-      },
-      "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
-      }
-    },
-    {
-      "name": "Polpettine di carne mista al sugo con patate lesse prezzemolate",
-      "price": 11,
-      "description": "Polpettine morbide al sugo di pomodoro, accompagnate da patate lesse insaporite con prezzemolo.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/polpettine-carne-mista-sugo-patate-uniform-20261105.svg",
-      "translations": {
-        "en": {
-          "name": "Mixed-meat meatballs in tomato sauce with parsley-seasoned boiled potatoes",
-          "description": "Tender meatballs in tomato sauce, served with boiled potatoes seasoned with parsley."
-        },
-        "zh": {
-          "name": "番茄酱混合肉小肉丸配欧芹水煮土豆",
-          "description": "鲜嫩的混合肉小肉丸佐番茄酱，搭配撒有欧芹的水煮土豆。"
-        }
-      },
-      "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
-      }
-    },
-    {
-      "name": "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco all’aceto balsamico",
+      "name": "Orata alla griglia con verza e carote saltate",
       "price": 12,
-      "description": "Finocchi croccanti, arance e avocado accompagnano i bocconcini di salmone fresco, conditi con aceto balsamico.",
+      "description": "Orata alla griglia servita con verza e carote saltate.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/orata-verza-coerente-20261023.webp",
+      "translations": {
+        "en": {
+          "name": "Grilled sea bream with sautéed savoy cabbage and carrots",
+          "description": "Grilled sea bream served with sautéed savoy cabbage and carrots."
+        },
+        "zh": {
+          "name": "烤金头鲷配炒皱叶甘蓝和胡萝卜",
+          "description": "烤金头鲷搭配炒皱叶甘蓝与胡萝卜。"
+        }
+      },
+      "photoSource": {
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
+      }
+    },
+    {
+      "name": "Salmone alla griglia con verza e carote saltate",
+      "price": 12,
+      "description": "Trancio di salmone alla griglia con verza e carote saltate.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/salmone-verza-coerente-20261023.webp",
+      "translations": {
+        "en": {
+          "name": "Grilled salmon with sautéed savoy cabbage and carrots",
+          "description": "Grilled salmon served with sautéed savoy cabbage and carrots."
+        },
+        "zh": {
+          "name": "烤三文鱼配炒皱叶甘蓝和胡萝卜",
+          "description": "烤三文鱼搭配炒皱叶甘蓝与胡萝卜。"
+        }
+      },
+      "photoSource": {
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
+      }
+    },
+    {
+      "name": "Straccetti di pollo con melanzane e riso bianco al vapore",
+      "price": 10,
+      "description": "Straccetti di pollo con melanzane, accompagnati da riso bianco al vapore.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/pollo-20261103-hd.webp",
+      "translations": {
+        "en": {
+          "name": "Chicken strips with eggplant and steamed white rice",
+          "description": "Chicken strips with eggplant, served with steamed white rice."
+        },
+        "zh": {
+          "name": "茄子鸡肉条配蒸白米饭",
+          "description": "鸡肉条搭配茄子，佐蒸白米饭。"
+        }
+      },
+      "photoSource": {
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
+      }
+    },
+    {
+      "name": "Insalata di finocchi, arancia, salmone fresco e avocado con aceto balsamico",
+      "price": 12,
+      "description": "Finocchi, arancia, salmone fresco e avocado, conditi con aceto balsamico.",
       "allergens": [
         4
       ],
@@ -609,20 +604,19 @@
       "dishPhoto": "pranzo-assets/insalatona-salmone-arance-avocado-uniform-20261105.svg",
       "translations": {
         "en": {
-          "name": "Large salad with fennel, oranges, avocado and fresh salmon bites with balsamic vinegar",
-          "description": "Crisp fennel, orange and avocado accompany fresh salmon bites, dressed with balsamic vinegar."
+          "name": "Fennel, orange, fresh salmon and avocado salad with balsamic vinegar",
+          "description": "Fennel, orange, fresh salmon and avocado dressed with balsamic vinegar."
         },
         "zh": {
-          "name": "茴香橙子牛油果鲜三文鱼沙拉配香醋",
-          "description": "爽脆茴香、橙子和牛油果搭配鲜三文鱼块，淋上意大利香醋。"
+          "name": "茴香、橙子、鲜三文鱼和牛油果沙拉配香醋",
+          "description": "茴香、橙子、鲜三文鱼和牛油果，佐意大利香醋。"
         }
       },
       "photoSource": {
-        "type": "Illustrazione alimentare AI, incorporata in un file SVG autonomo tramite immagine WebP",
-        "date": "2026-11-05",
-        "tool": "image_gen e uniformazione fotografica in serie",
-        "resolution": "1200 × 600 pixel, formato panoramico; fonte AI composita ottimizzata per le schede del sito",
-        "note": "Stesso piatto avorio, piano blu scuro, luce e prospettiva per gli otto piatti. Non sono fotografie delle preparazioni reali del ristorante. La grafica del sito e i dettagli di ogni ricetta restano invariati."
+        "type": "Immagine illustrativa già presente nel repository Controcorrente",
+        "date": "2026-11-06",
+        "tool": "riutilizzo fotografia/illustrazione esistente",
+        "note": "Riutilizzata una risorsa del sito per conservare l'impiattamento e l'identità visiva. Non è una fotografia verificata della preparazione servita oggi; la corrispondenza puntuale degli ingredienti non è certificata."
       }
     }
   ],
