@@ -437,7 +437,7 @@
         '*Persone: ' + data.get('persone') + '*',
         '*Orario richiesto: ' + data.get('orario') + '*', '',
         ...dishes,
-        'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale piatti: ' + total.textContent, '',
+        'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale preordine: ' + total.textContent, '',
         'Giorno: ' + requestDate(requestedDay),
         '*Allergie / note: ' + String(data.get('note') || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
