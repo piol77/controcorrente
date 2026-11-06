@@ -1,0 +1,43 @@
+name: Importa foto HD menu 2026-11-06
+on:
+  push:
+    paths:
+      - ".github/workflows/importa-foto-menu-20261106.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  importa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Scarica originali HD, verifica formato e dimensioni
+        env:
+          MENU_IMAGE_MAP: ${{ toJSON(vars.MENU_IMAGE_MAP) }}
+        run: |
+          python3 - <<'PY'
+          import urllib.request, os, struct, subprocess, sys
+          data = [["pranzo-assets/straccetti-maiale-birra-riso-20261106-hd.png","https://media.canva.com/v2/image-resize/format:PNG/height:1024/quality:100/uri:ifs%3A%2F%2FM%2F3ae88499-8e91-4b23-bfed-bba5179540eb/watermark:F/width:1536?csig=AAAAAAAAAAAAAAAAAAAAAGLUnRjXydtJZ9_TJ3ZhtNj7a4oVKvnKFCHoAn4ZJ7Rm&exp=1793999445&osig=AAAAAAAAAAAAAAAAAAAAAFTfXRX4knuDSPuRY8wKhRa-9wUvOBRgTRjDr-YhSnAR&signer=media-rpc&token=AAIAAU0AJDNhZTg4NDk5LThlOTEtNGIyMy1iZmVkLWJiYTUxNzk1NDBlYgAAAAABobKzHAjXGri668oPsoFb4nm9CL-Vlfh2e9xFvsALCiX0QJEkaA"],["cena-assets/cozze-sardegna-marinara-20261106-hd.png","https://media.canva.com/v2/image-resize/format:PNG/height:1024/quality:100/uri:ifs%3A%2F%2FM%2F0b4493d3-c497-439d-aea9-421462f4a7bc/watermark:F/width:1536?csig=AAAAAAAAAAAAAAAAAAAAAE4ui7Q_Ztk4T0nihEtE5eLprTV7v7G8eX4uvhV6CfOk&exp=1793999427&osig=AAAAAAAAAAAAAAAAAAAAAIXp73l5BlOkUhgfCdQ-Yjv5jBaQ4iZoAtlzauJGBCrr&signer=media-rpc&token=AAIAAU0AJDBiNDQ5M2QzLWM0OTctNDM5ZC1hZWE5LTQyMTQ2MmY0YTdiYwAAAAABobKy1bhROa4r5ERt2zASZt5dOpdocfMcQV0b2dqMPX4QmP79Xg"],["cena-assets/linguine-burrata-pistacchi-gamberetti-20261106-hd.png","https://media.canva.com/v2/image-resize/format:PNG/height:1024/quality:100/uri:ifs%3A%2F%2FM%2F4dbcebc1-95f6-408b-a3e8-f59187f2d5ca/watermark:F/width:1536?csig=AAAAAAAAAAAAAAAAAAAAAP0bcydkIvel43XqIRhBWYulQHxw3hNiFwmLKYwi_UKH&exp=1793999115&osig=AAAAAAAAAAAAAAAAAAAAAIsT3b4KNR57GHBqM3o_MJoojejP-UoOg-SZkkJ9Ohmg&signer=media-rpc&token=AAIAAU0AJDRkYmNlYmMxLTk1ZjYtNDA4Yi1hM2U4LWY1OTE4N2YyZDVjYQAAAAABobKuEvhN5N38vipZtJfggqcrXRtJ0n9_QX4uTWbewwMBT5TcaA"],["cena-assets/tagliatelle-carciofi-salmone-20261106-hd.png","https://media.canva.com/v2/image-resize/format:PNG/height:1024/quality:100/uri:ifs%3A%2F%2FM%2Fa3fc6ba9-3880-4724-ad28-a28f7916c507/watermark:F/width:1536?csig=AAAAAAAAAAAAAAAAAAAAAEXFYovfwzjyFoctp0zqXtpU9fc6P8jKt3OcygN9LVsq&exp=1793999913&osig=AAAAAAAAAAAAAAAAAAAAAOXm8x1whgxLJJFdLNFblnYcolzVXMDRmF4vzNWWuNli&signer=media-rpc&token=AAIAAU0AJGEzZmM2YmE5LTM4ODAtNDcyNC1hZDI4LWEyOGY3OTE2YzUwNwAAAAABobK6QCgXSeOHomuttaP_a0ho78ZFMQet2gsj5Mlap5bpG1i24A"],["cena-assets/linguine-nero-seppia-20261106-hd.png","https://media.canva.com/v2/image-resize/format:PNG/height:1024/quality:100/uri:ifs%3A%2F%2FM%2F2f72354e-9b06-4728-a5b0-feb10401d8bd/watermark:F/width:1536?csig=AAAAAAAAAAAAAAAAAAAAALIECiQOTqKJgJhdpu73PXPBp3-BU_PvyzXVc8nh224P&exp=1793999734&osig=AAAAAAAAAAAAAAAAAAAAAIWN4zn-AhON7n8AnJDBSryjd9wnbE7qCd-LtwZwd6iN&signer=media-rpc&token=AAIAAU0AJDJmNzIzNTRlLTliMDYtNDcyOC1hNWIwLWZlYjEwNDAxZDhiZAAAAAABobK3hPAYH4iYSVePjFRvAQOiE9n1Nul66Jclg1-hCjeOgQ2Wzw"],["cena-assets/orata-grande-patate-forno-20261106-hd.png","https://media.canva.com/v2/image-resize/format:PNG/height:1024/quality:100/uri:ifs%3A%2F%2FM%2F98550420-0597-4ee7-9007-65859e3ccbb3/watermark:F/width:1536?csig=AAAAAAAAAAAAAAAAAAAAAJSRS5mbcHa0TcTUVWjx0KrlRSPB8ArgODhGTmh7prBR&exp=1793998471&osig=AAAAAAAAAAAAAAAAAAAAAAHQwkIyZOiNoiS3b535fU_mPMSjt25oJXXttECntW28&signer=media-rpc&token=AAIAAU0AJDk4NTUwNDIwLTA1OTctNGVlNy05MDA3LTY1ODU5ZTNjY2JiMwAAAAABobKkP1i5mFewG74Lvusr4ZRIPz1nRI41mjrQimRgkKVQ-9V3Nw"]]
+          for path, url in data:
+              print("Acquisizione",path,flush=True)
+              req=urllib.request.Request(url,headers={"User-Agent":"Mozilla/5.0"})
+              with urllib.request.urlopen(req,timeout=35) as response:
+                  raw=response.read(15*1024*1024)
+              if raw[:8] != b"\\x89PNG\\r\\n\\x1a\\n":
+                  raise ValueError(f"PNG originale non disponibile: {path}; response={raw[:120]!r}")
+              width,height=struct.unpack(">II",raw[16:24])
+              if width < 1200 or height < 800: raise ValueError(f"Immagine non HD: {path} ({width}x{height})")
+              os.makedirs(os.path.dirname(path),exist_ok=True)
+              with open(path,"wb") as f:f.write(raw)
+              print(f"OK {path}: {width}x{height}, {len(raw)} byte",flush=True)
+          subprocess.run(["git","config","user.name","github-actions[bot]"],check=True)
+          subprocess.run(["git","config","user.email","41898282+github-actions[bot]@users.noreply.github.com"],check=True)
+          subprocess.run(["git","add","--"]+[path for path,_ in data],check=True)
+          if subprocess.run(["git","diff","--cached","--quiet"]).returncode==0:
+              print("Tutte le immagini già importate")
+          else:
+              subprocess.run(["git","commit","-m","Importa sei foto originali HD per menu cena e offerta del giorno"],check=True)
+              subprocess.run(["git","push"],check=True)
+          PY
