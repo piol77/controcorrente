@@ -5,6 +5,14 @@
   const catalog = {"antipasti":[["Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)",10],["Carciofi fritti",13],["Funghi champignon fritti",10],["Vitello tonnato",12]],"primi":[["Spaghetti ai frutti di mare",15],["Risotto con gorgonzola e pere",12.5],["Linguine con stracciatella, pistacchi e gamberetti*",13],["Tagliatelle ai funghi misti, mascarpone e noci",12.5],["Spaghetti di soia con verdure, gamberetti* e pollo",10]],"secondi":[["Frittura mista di alici, calamari e gamberetti*",20],["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",12],["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico",14],["Trancio di salmone all’arancia e pepe rosa",14],["Orata alla griglia con verza e carote saltate",14],["Bistecca di vitello con l’osso alla griglia (500 g circa), servita con patate e prezzemolo",20],["Galletto ripieno di frutta, salsiccia e castagne con patate al forno",14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
+  // Solo bottiglie Cantine Delite, ai prezzi esposti nella relativa carta.
+  catalog['vini-delite'] = [
+    ['Generoso · Cantine Delite (bottiglia)',20],
+    ['Nonna Seppa · Cantine Delite (bottiglia)',25],
+    ['Pentamerone · Cantine Delite (bottiglia)',30],
+    ['Emmente · Cantine Delite (bottiglia)',22],
+    ['Seicentododici · Cantine Delite (bottiglia)',20]
+  ];
   const minimumQuantity = (section, index) =>
     /^Risotto con gorgonzola e pere$/i.test(catalog[section]?.[Number(index)]?.[0] || '') ? 2 : 1;
   const read = () => { try {
@@ -19,6 +27,7 @@
         }
         if(section==='secondi' && item.name==='Filetti di maiale con fichi su crema di zucca') return [];
         const current=catalog[section]?.[Number(indexNow)];
+        if(section==='vini-delite' && !current)return [];
         return [[keyNow,current ? {...item,qty:Math.max(minimumQuantity(section,indexNow),item.qty),name:current[0],price:current[1]} : item]];
       }));
   } catch (_) { return {}; } };
@@ -87,6 +96,7 @@
     const courses = {antipasti: 0, primi: 1, secondi: 2};
     if (Object.prototype.hasOwnProperty.call(courses, section)) return courses[section];
     if (section === 'menu-fissi' || /^Menù completo:/i.test(item.name)) return 3;
+    if (section === 'vini-delite') return 4;
     const current = catalog[section]?.find(dish => dish[0] === item.name);
     if (Number.isInteger(current?.[2])) return current[2];
     return dishCourse(item.name);
@@ -136,7 +146,7 @@
     const minus = document.createElement('button'), count = document.createElement('output'), plus = document.createElement('button');
     minus.type = plus.type = 'button';
     minus.textContent = '−'; plus.textContent = '+';
-    const unit = section === 'menu-fissi' ? (index < 3 ? 'un menù alla coppia: ' : 'un aperitivo singolo: ') : 'una porzione di ';
+    const unit = section === 'vini-delite' ? 'una bottiglia di ' : section === 'menu-fissi' ? (index < 3 ? 'un menù alla coppia: ' : 'un aperitivo singolo: ') : 'una porzione di ';
     minus.setAttribute('aria-label', 'Togli ' + unit + item[0]);
     plus.setAttribute('aria-label', 'Aggiungi ' + unit + item[0]);
     count.setAttribute('aria-label', 'Quantità');
@@ -173,6 +183,18 @@
   }
   function setupMenu(section) {
     document.querySelectorAll('[data-order-section="'+section+'"]').forEach((dish,index)=>dish.append(controls(section,index)));
+  }
+  function setupWineDelite() {
+    // Solo Cantine Delite: i vini del Trentino e le bibite non sono prenotabili.
+    const cards=Array.from(document.querySelectorAll('[data-wine-group="irpinia"] .wine-card'));
+    cards.slice(0,catalog['vini-delite'].length).forEach((dish,index)=>{
+      const name=dish.querySelector('h3')?.textContent.trim();
+      const price=priceNumber(dish.querySelector('.dish-price')?.textContent || '');
+      const expected=catalog['vini-delite'][index];
+      if(!expected || !expected[0].startsWith(name+' ·') || price!==expected[1])return;
+      dish.append(controls('vini-delite',index));
+    });
+    if(cards.length)bar();
   }
   function setupDaily(section) {
     catalog[section] = dailyCatalog(document, section);
@@ -349,6 +371,19 @@
         return;
       }
       if (promoCode) {
+        const promoSubtotal=Object.values(cart).reduce((sum,item) => sum
+          + (item && Number.isFinite(item.price) && Number.isInteger(item.qty)
+            ? item.price * item.qty : 0), 0);
+        if (promoSubtotal < 50) {
+          window.alert('Per utilizzare il codice Radio Premi la cena deve raggiungere almeno 50 € di conto complessivo prima dello sconto. Mancano '
+            + euro(Math.round((50-promoSubtotal)*100)/100)
+            + '. Aggiungi altri piatti dal Menù cena oppure una o più bottiglie Cantine Delite dalla sezione Bibite & vini. La richiesta non è stata inviata.');
+          return;
+        }
+        if (Object.entries(cart).some(([key,item])=>key.startsWith('menu-fissi:') || /^Menù completo:/i.test(item?.name||''))) {
+          window.alert('Il codice Radio Premi non è cumulabile con i menù fissi. Rimuovi il menù fisso per utilizzare lo sconto.');
+          return;
+        }
         if (!dinnerTime) {
           window.alert('Il codice Radio Premi è valido soltanto per prenotazioni di cena. La richiesta non è stata inviata.');
           return;
@@ -369,9 +404,7 @@
             body: JSON.stringify({
               action: 'claim', code: promoCode, ref: promoReference,
               day: requestedDay, time: requestedTime,
-              subtotal: Object.values(cart).reduce((sum,item) => sum
-                + (item && Number.isFinite(item.price) && Number.isInteger(item.qty)
-                  ? item.price * item.qty : 0), 0)
+              subtotal: promoSubtotal
             })
           });
           if (!response.ok) throw new Error('Radio Premi server unavailable');
@@ -439,6 +472,7 @@
     const page = (window.__DEMO_ROUTE || location.pathname.split('/').pop()).split('#')[0].replace(/\.html$/, '');
     if (page === 'cena') { ['antipasti','primi','secondi','menu-fissi'].forEach(setupMenu); bar(); }
     if (page === 'offerta' || page === 'pranzo') setupDaily(page);
+    if (page === 'bibite-vini') setupWineDelite();
     if (page === 'ordine') setupSummary();
   });
 })();
