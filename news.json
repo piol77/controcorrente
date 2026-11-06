@@ -1,47 +1,47 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-11-06T12:18:13+00:00",
+  "fetched_at": "2026-11-06T19:35:58+00:00",
   "items": [
     {
-      "title": "Pietracatella, nuova perquisizione in casa Di Vita. E tornerà nella disponibilità della famiglia",
-      "url": "https://www.rainews.it/articoli/2026/11/-pietracatella-nuova-perquisizione-in-casa-di-vita-agenti-nello-stabile-avvelenamento-ricina-23971753-41be-463d-a612-edd4923c0c85.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/06/1793954248452_dfaadbbddcae.jpg",
+      "title": "Allarmi bomba su aerei, al lavoro gli 007 di mezza Europa e quattro procure italiane",
+      "url": "https://www.rainews.it/video/2026/11/cronaca-allarmi-bomba-aerei-indagini-servizi-segreti-procura-antimafia-antiterrorismo-milano-busto-arsizio-roma-video-15c5d96e-da6f-4677-825b-05d04701b17e.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/06/1793992056339_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-06T10:46:00+00:00"
+      "published_at": "2026-11-06T19:26:00+00:00"
     },
     {
-      "title": "Trump: \"Le nostre elezioni sono truccate\". Dipartimento di Stato smentisce dimissioni di Rubio",
+      "title": "La Borsa di Milano chiude in calo dello 0,9%",
+      "url": "https://www.rainews.it/articoli/2026/11/borse-europee-negative-piazza-affari-chiude-in-calo-f69e33ae-fcaf-4ab2-a72c-39d24c082e4b.html",
+      "image": "https://www.rainews.it/dl/img/2023/11/16/1700153641653_Immagine.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-11-06T17:19:00+00:00"
+    },
+    {
+      "title": "Neonato abbandonato in una chiesa di Roma, è in buone condizioni",
+      "url": "https://www.rainews.it/articoli/2026/11/roma-neonato-abbandonato-in-una-chiesa-in-buone-condizioni-0c68134d-1b41-449a-aa70-bf23cf96e7ee.html",
+      "image": "https://www.rainews.it/dl/img/2025/12/27/1766834158512_ambulanza.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-11-06T18:20:00+00:00"
+    },
+    {
+      "title": "Trump ammette: \"Elezioni di Midterm non sono andate come ci aspettavamo\"",
       "url": "https://www.rainews.it/maratona/2026/11/dopo-londa-blu-trump-possiamo-collaborare-con-i-dem-c445ff6c-6393-46d9-9dc9-3ffb08b44d4d.html",
       "image": "https://www.rainews.it/dl/img/2026/11/06/1793941813252_vlcsnap.jpg",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-11-06T10:59:00+00:00"
+      "published_at": "2026-11-06T19:19:00+00:00"
     },
     {
-      "title": "Inaugurata 128° Fieracavalli Verona, la più grande di sempre",
-      "url": "https://www.rainews.it/video/2026/11/inaugurata-128-fieracavalli-verona-la-piu-grande-di-sempre-3cd26dd4-f004-422f-a286-6a18678409d2.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/06/1793952091365_videoframe.png",
+      "title": "Allarmi bomba su voli, da qui sono partiti i caccia italiani",
+      "url": "https://www.rainews.it/video/2026/11/allarmi-bomba-su-voli-da-qui-sono-partiti-i-caccia-italiani-32b3eb54-51ae-4e7a-b0fe-b526534adf4a.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/06/1793989469629_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-06T07:59:00+00:00"
-    },
-    {
-      "title": "Scuolabus esce fuori strada in Francia: muoiono due giovani, uno è minore. Decine le persone ferite",
-      "url": "https://www.rainews.it/articoli/2026/11/scuolabus-esce-fuori-strada-in-francia-morti-feriti-minori-8cb291e2-3a48-4b50-8973-cd5df334a56b.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/06/1793959619171_DMKP.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-11-06T12:14:00+00:00"
-    },
-    {
-      "title": "Scioperi, novembre di mobilitazioni: trasporti, scuola e settore pubblico. Le date",
-      "url": "https://www.rainews.it/articoli/2026/11/scioperi-novembre-di-mobilitazioni-trasporti-scuola-e-settore-pubblico-le-proteste-88aa7da4-ad6b-4ec7-a964-d9829015bf04.html",
-      "image": "https://www.rainews.it/dl/img/2025/12/12/1765543373761_rainewsbcdeffeada.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-11-06T06:42:00+00:00"
+      "published_at": "2026-11-06T18:23:00+00:00"
     }
   ]
 }
