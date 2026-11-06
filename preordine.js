@@ -259,6 +259,8 @@
         ? 'Pranzo: acqua, caffè e coperto inclusi. <strong>Attendere la conferma del Ristorante entro le 12 per considerare valido l’ordine.</strong>'
         : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Prenotando <strong>tavolo e menù</strong> di cena, entro le 18, il coperto di 1,50 € è omaggio. <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong>';
       document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'cena.html';
+      const wineLink=document.querySelector('[data-add-wines]');
+      if(wineLink)wineLink.hidden=isLunch();
     }
     render();
     reset.addEventListener('click', () => {
@@ -416,6 +418,7 @@
         if (!result || !result.ok) {
           const reasons = {
             inactive: 'La promozione Radio Premi non è ancora attiva.',
+            minimum_50: 'Per utilizzare il premio la cena deve raggiungere 50 € di conto prima dello sconto. Aggiungi piatti o bottiglie Cantine Delite.',
             unavailable: 'Codice errato, già riservato da un altro cliente, già utilizzato o scaduto. Il codice va prenotato dal sito entro le 23:59 del giorno di emissione.',
             rate_limited: 'Troppi tentativi. Riprova più tardi.',
             dinner_only: 'Il codice è valido solo per una cena entro sette giorni di calendario dall’emissione, contando anche il primo giorno. Verifica giorno e orario.',
