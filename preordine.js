@@ -333,6 +333,16 @@
       const promoMatch = suppliedNotes.match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![0-9])/i)
         || suppliedNotes.match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
       const promoCode = promoMatch ? promoMatch[1].toUpperCase() : null;
+      // Un tentativo di codice malformato non deve diventare una normale
+      // prenotazione senza premio: bloccalo prima dell'apertura di WhatsApp.
+      // Le comuni note su allergie o piatti rimangono invariate.
+      const promoAttempt = /^\s*\d+\s*$/.test(suppliedNotes)
+        || /^\s*(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|premio)\s*[:#=-]?\s*\S+/i.test(suppliedNotes)
+        || /^\s*radio\s*[:#=-]?\s*[A-Z0-9-]+\s*$/i.test(suppliedNotes);
+      if (promoAttempt && !promoCode) {
+        window.alert('Codice Radio Premi non valido. Inserisci solo le cinque cifre del codice nelle note. La richiesta non è stata inviata.');
+        return;
+      }
       if (promoCode) {
         if (!dinnerTime) {
           window.alert('Il codice Radio Premi è valido soltanto per prenotazioni di cena. La richiesta non è stata inviata.');
@@ -368,10 +378,10 @@
         if (!result || !result.ok) {
           const reasons = {
             inactive: 'La promozione Radio Premi non è ancora attiva.',
-            unavailable: 'Codice non valido, scaduto o già occupato da un altro cliente.',
+            unavailable: 'Codice errato, già riservato da un altro cliente, già utilizzato o scaduto. Il codice va prenotato dal sito entro le 23:59 del giorno di emissione.',
             rate_limited: 'Troppi tentativi. Riprova più tardi.',
-            dinner_only: 'Il premio si applica esclusivamente a una cena valida.',
-            invalid: 'Il codice non è valido.'
+            dinner_only: 'Il codice è valido solo per una cena entro sette giorni di calendario dall’emissione, contando anche il primo giorno. Verifica giorno e orario.',
+            invalid: 'Il codice non è valido: servono esattamente cinque cifre.'
           };
           window.alert((reasons[result && result.reason] || 'Codice non disponibile.')
             + '\nLa richiesta non è stata inviata: correggi o elimina il codice dalle note.');
