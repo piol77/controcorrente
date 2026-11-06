@@ -292,6 +292,18 @@
         form.elements.namedItem(missing[0][0]).focus();
         return;
       }
+      // Il campo unico deve contenere sia nome sia cognome prima di qualsiasi
+      // chiamata Radio Premi, conteggio o apertura di WhatsApp.
+      const nameField = form.elements.namedItem('nome');
+      const fullName = String(nameField.value || '').trim().replace(/\s+/g, ' ');
+      const nameParts = fullName.split(' ');
+      if (nameParts.length < 2 || nameParts.some(part => !/[\p{L}]/u.test(part) || /\d/.test(part))) {
+        window.alert('Inserisci sia il nome sia il cognome.\n\nLa richiesta non è stata inviata. I piatti e gli altri dati restano compilati.');
+        nameField.focus();
+        nameField.select();
+        return;
+      }
+      nameField.value = fullName;
       if (!form.reportValidity()) return;
       const data = new FormData(form);
       const requestedDay = String(data.get('giorno') || '');
