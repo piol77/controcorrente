@@ -394,9 +394,9 @@
   },
   "lunch": [
     {
-      "name": "Riso alla cantonese con uovo e prosciutto cotto",
+      "name": "Riso alla cantonese con uova, prosciutto cotto e piselli",
       "price": 8,
-      "description": "Riso saltato con uovo e prosciutto cotto, dal gusto delicato e saporito.",
+      "description": "Riso saltato alla cantonese con uova, prosciutto cotto e piselli.",
       "allergens": [
         3
       ],
@@ -405,12 +405,12 @@
       "dishPhoto": "pranzo-assets/riso-cantonese-20261016.webp",
       "translations": {
         "en": {
-          "name": "Cantonese-style fried rice with egg and cooked ham",
-          "description": "Fried rice with egg and cooked ham, delicately seasoned."
+          "name": "Cantonese-style fried rice with eggs, cooked ham and peas",
+          "description": "Fried rice with eggs, cooked ham and green peas."
         },
         "zh": {
-          "name": "鸡蛋熟火腿广式炒饭",
-          "description": "米饭与鸡蛋、熟火腿一同翻炒，口味清爽鲜香。"
+          "name": "鸡蛋熟火腿青豆广式炒饭",
+          "description": "米饭与鸡蛋、熟火腿及青豆一同翻炒。"
         }
       },
       "photoLayout": "side",
@@ -453,7 +453,7 @@
     {
       "name": "Penne alla boscaiola con salsiccia",
       "price": 10,
-      "description": "Funghi, cipolla, pomodoro, olive, salsiccia e panna in una salsa ricca e cremosa.",
+      "description": "Penne con funghi, salsiccia e piselli, avvolte da una salsa alla panna con poco pomodoro.",
       "allergens": [
         1,
         7
@@ -464,11 +464,11 @@
       "translations": {
         "en": {
           "name": "Penne alla boscaiola with sausage",
-          "description": "Mushrooms, onion, tomato, olives, sausage and cream in a rich sauce."
+          "description": "Penne with mushrooms, sausage and peas in a creamy sauce with just a little tomato."
         },
         "zh": {
           "name": "香肠林间风味斜管面",
-          "description": "蘑菇、洋葱、番茄、橄榄、香肠和奶油调制的浓郁酱汁。"
+          "description": "斜管面搭配蘑菇、香肠和青豆，佐少量番茄的奶油酱。"
         }
       },
       "photoSource": {
@@ -480,9 +480,9 @@
       "photoLayout": "side"
     },
     {
-      "name": "Spaghetti ai frutti di mare",
+      "name": "Spaghetti ai frutti di mare*",
       "price": 15,
-      "description": "Con gamberetti*, gamberoni*, vongole e cozze, con poco pomodoro.",
+      "description": "Spaghetti con cozze, vongole, gamberetti e gamberoni, con poco pomodoro.",
       "allergens": [
         1,
         2,
@@ -493,12 +493,12 @@
       "dishPhoto": "pranzo-assets/spaghetti-mare-coerente-20261023.webp",
       "translations": {
         "en": {
-          "name": "Seafood spaghetti",
-          "description": "With shrimp*, king prawns*, clams and mussels, with a little tomato."
+          "name": "Seafood spaghetti*",
+          "description": "Spaghetti with mussels, clams, shrimp and king prawns, lightly dressed with tomato."
         },
         "zh": {
-          "name": "海鲜意面",
-          "description": "配虾仁*、大虾*、蛤蜊和贻贝，加入少量番茄。"
+          "name": "海鲜意大利面*",
+          "description": "意大利面搭配贻贝、蛤蜊、虾仁和大虾，加入少量番茄。"
         }
       },
       "photoLayout": "side",
@@ -592,9 +592,9 @@
       "photoLayout": "side"
     },
     {
-      "name": "Insalata di finocchi, arancia, salmone fresco e avocado",
+      "name": "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",
       "price": 12,
-      "description": "Finocchi, arancia, salmone fresco e avocado, conditi con aceto balsamico.",
+      "description": "Finocchi croccanti, arance e avocado con bocconcini di salmone fresco e aceto balsamico.",
       "allergens": [
         4
       ],
@@ -603,12 +603,12 @@
       "dishPhoto": "pranzo-assets/insalatona-salmone-arance-avocado-uniform-20261105.svg",
       "translations": {
         "en": {
-          "name": "Fennel, orange, fresh salmon and avocado salad",
-          "description": "Fennel, orange, fresh salmon and avocado, dressed with balsamic vinegar."
+          "name": "Large salad with fennel, oranges, avocado and fresh salmon bites",
+          "description": "Crisp fennel, oranges and avocado with fresh salmon bites and balsamic vinegar."
         },
         "zh": {
-          "name": "茴香橙子鲜三文鱼牛油果沙拉",
-          "description": "茴香、橙子、鲜三文鱼与牛油果，佐意大利香醋。"
+          "name": "茴香橙子牛油果鲜三文鱼块大沙拉",
+          "description": "爽脆茴香、橙子和牛油果搭配鲜三文鱼块，佐意大利香醋。"
         }
       },
       "photoLayout": "side",
