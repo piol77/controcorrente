@@ -338,7 +338,8 @@
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
   }
   // CONTROCORRENTE RADIO PREMI VISIVI 2026-11-06
-  // Nessun parlato: la musica non viene mai abbassata o interrotta.
+  // Solo trillo MP3 originale (non parlato). Durante il codice la radio
+  // si attenua per dieci secondi e poi torna al 100%, anche in caso di stop.
   // L'API decide codice, calendario e disponibilita; il browser mostra
   // soltanto dieci secondi per slot a chi ha la radio realmente in ascolto.
   let promoOnAir=null;
@@ -347,6 +348,35 @@
   let promoFlashCode=null;
   let promoFlashUntil=0;
   let promoTimer=null;
+  const trillAudio=document.createElement('audio');
+  trillAudio.src='trillo-radio-premi.mp3?v=20261106-trillo-v1';
+  trillAudio.preload='auto';
+  trillAudio.volume=0.75;
+  trillAudio.setAttribute('playsinline','');
+  let trillTimer=null;
+  function stopTrillAndRestoreVolume() {
+    if(trillTimer!==null)window.clearTimeout(trillTimer);
+    trillTimer=null;
+    try { trillAudio.pause(); trillAudio.loop=false; trillAudio.currentTime=0; } catch (_) {}
+    audio.volume=1;
+  }
+  function announcePromoFlash() {
+    if(!realPlaying())return;
+    // Il volume del solo stream scende, il trillo resta ben distinguibile.
+    audio.volume=0.20;
+    try {
+      trillAudio.pause();
+      trillAudio.currentTime=0;
+      trillAudio.loop=true;
+      const play=trillAudio.play();
+      if(play && typeof play.catch==='function')play.catch(()=>{});
+    } catch (_) { /* Il flash resta visibile anche se il browser blocca il suono. */ }
+    // Il breve trillo suona soltanto all'inizio, non per tutti i 10 secondi.
+    trillTimer=window.setTimeout(()=>{
+      try { trillAudio.pause(); trillAudio.loop=false; trillAudio.currentTime=0; } catch (_) {}
+      trillTimer=null;
+    },1500);
+  }
   const promoSeenPrefix='cc-radio-premio-visto-';
   const promoSeenThisSession=new Set();
   const promoApi='https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
@@ -374,6 +404,7 @@
     promoTimer=null;
     promoFlashCode=null;
     promoFlashUntil=0;
+    stopTrillAndRestoreVolume();
     renderPromoFlash();
   }
   function currentPromoSlot() {
@@ -393,6 +424,7 @@
     promoFlashCode=slot.code;
     promoFlashUntil=Date.now()+10000;
     renderPromoFlash();
+    announcePromoFlash();
     promoTimer=window.setTimeout(clearPromoFlash,10000);
   }
   async function refreshRadioPromo() {
