@@ -343,37 +343,71 @@
   // L'API decide codice, calendario e disponibilita; il browser mostra
   // soltanto dieci secondi per slot a chi ha la radio realmente in ascolto.
   let promoOnAir=null;
-  let promoLastFetched=0;
+  let promoPoll=null;
+  let promoFlashSlot=null;
   let promoAllowedAt=Number.POSITIVE_INFINITY;
   let promoFlashCode=null;
   let promoFlashUntil=0;
   let promoTimer=null;
+  const trillUrl='trillo-radio-premi.mp3?v=20261106-trillo-v1';
   const trillAudio=document.createElement('audio');
-  trillAudio.src='trillo-radio-premi.mp3?v=20261106-trillo-v1';
+  trillAudio.src=trillUrl;
   trillAudio.preload='auto';
-  trillAudio.volume=0.75;
   trillAudio.setAttribute('playsinline','');
+  let audioContext, musicGain, trillBuffer, trillSource;
   let trillTimer=null;
+  function unlockPromoAudio() {
+    // iOS limits HTMLMediaElement.volume and can block a second media
+    // element started by a timer. Unlock and mix on the actual ON gesture.
+    const AudioContextClass=window.AudioContext||window.webkitAudioContext;
+    if(!AudioContextClass)return;
+    try {
+      if(!audioContext) {
+        audioContext=new AudioContextClass();
+        musicGain=audioContext.createGain();
+        musicGain.connect(audioContext.destination);
+        audioContext.createMediaElementSource(audio).connect(musicGain);
+        audio.crossOrigin='anonymous';
+        fetch(trillUrl)
+          .then(response=>{if(!response.ok)throw Error('Trillo non disponibile');return response.arrayBuffer();})
+          .then(bytes=>audioContext.decodeAudioData(bytes))
+          .then(buffer=>{trillBuffer=buffer;})
+          .catch(()=>{});
+      }
+      if(audioContext.state!=='running')audioContext.resume().catch(()=>{});
+    } catch (_) { /* Fall back to native media on browsers without a mixer. */ }
+  }
   function stopTrillAndRestoreVolume() {
     if(trillTimer!==null)window.clearTimeout(trillTimer);
     trillTimer=null;
-    try { trillAudio.pause(); trillAudio.loop=false; trillAudio.currentTime=0; } catch (_) {}
-    audio.volume=1;
+    if(trillSource) {
+      trillSource.stop();
+      trillSource.disconnect();
+      trillSource=null;
+    }
+    trillAudio.pause();
+    trillAudio.loop=false;
+    if(trillAudio.readyState)trillAudio.currentTime=0;
+    if(musicGain)musicGain.gain.value=1;
+    else audio.volume=1;
   }
   function announcePromoFlash() {
-    if(!realPlaying())return;
-    // Il volume del solo stream scende, il trillo resta ben distinguibile.
-    audio.volume=0.20;
-    try {
-      trillAudio.pause();
-      trillAudio.currentTime=0;
-      trillAudio.loop=true;
-      const play=trillAudio.play();
-      if(play && typeof play.catch==='function')play.catch(()=>{});
-    } catch (_) { /* Il flash resta visibile anche se il browser blocca il suono. */ }
-    // Il breve trillo suona soltanto all'inizio, non per tutti i 10 secondi.
+    if(musicGain)musicGain.gain.value=0.20;
+    else audio.volume=0.20;
+    if(trillBuffer && audioContext.state==='running') {
+      trillSource=audioContext.createBufferSource();
+      trillSource.buffer=trillBuffer;
+      trillSource.loop=true;
+      trillSource.connect(audioContext.destination);
+      trillSource.start();
+      trillSource.stop(audioContext.currentTime+1.5);
+      return;
+    }
+    trillAudio.loop=true;
+    trillAudio.play().catch(()=>{});
     trillTimer=window.setTimeout(()=>{
-      try { trillAudio.pause(); trillAudio.loop=false; trillAudio.currentTime=0; } catch (_) {}
+      trillAudio.pause();
+      trillAudio.loop=false;
       trillTimer=null;
     },1500);
   }
@@ -392,7 +426,7 @@
     catch (_) { /* Anche con storage disabilitato il flash dura solo 10 s. */ }
   }
   function renderPromoFlash() {
-    const visible=realPlaying() && promoFlashCode && Date.now()<promoFlashUntil;
+    const visible=realPlaying() && promoFlashCode && performance.now()<promoFlashUntil;
     for(const el of new Set([ownPromoBadge,activePromoBadge])) {
       if(!el)continue;
       el.hidden=!visible;
@@ -403,50 +437,55 @@
     if(promoTimer!==null)window.clearTimeout(promoTimer);
     promoTimer=null;
     promoFlashCode=null;
+    promoFlashSlot=null;
     promoFlashUntil=0;
     stopTrillAndRestoreVolume();
     renderPromoFlash();
   }
-  function currentPromoSlot() {
-    const slot=promoOnAir;
-    if(!slot || !realPlaying() || document.hidden || Date.now()<promoAllowedAt
-      || Date.now()-promoLastFetched>15000 || !slot.available_until
-      || Date.now()>=Date.parse(slot.available_until))return null;
-    const token=slot.code+'-'+(slot.reopened_at||slot.slot);
-    if(alreadySeen(token))return null;
-    return {token,code:slot.code};
-  }
   function maybeShowPromo() {
-    if(promoFlashCode)return;
-    const slot=currentPromoSlot();
-    if(!slot)return;
-    markSeen(slot.token);
+    const slot=promoOnAir;
+    if(promoFlashCode || !slot || !realPlaying() ||
+        performance.now()<promoAllowedAt || performance.now()>=slot.deadline ||
+        alreadySeen(slot.token))return;
     promoFlashCode=slot.code;
-    promoFlashUntil=Date.now()+10000;
+    promoFlashSlot=slot;
+    promoFlashUntil=performance.now()+10000;
     renderPromoFlash();
-    announcePromoFlash();
     promoTimer=window.setTimeout(clearPromoFlash,10000);
+    markSeen(slot.token);
+    announcePromoFlash();
   }
   async function refreshRadioPromo() {
-    if(!realPlaying()){promoOnAir=null;clearPromoFlash();return;}
+    if(!realPlaying() || promoPoll)return;
+    const poll=new AbortController();
+    promoPoll=poll;
+    const requestStarted=performance.now();
+    const timeout=window.setTimeout(()=>poll.abort(),4500);
     try {
-      const response=await fetch(promoApi,{cache:'no-store',credentials:'omit'});
-      if(!response.ok)throw new Error('Premi non disponibili');
+      const response=await fetch(promoApi,{cache:'no-store',credentials:'omit',signal:poll.signal});
+      if(!response.ok)return;
       const result=await response.json();
+      if(poll.signal.aborted || !realPlaying())return;
       const slot=result?.on_air;
-      promoOnAir=result?.active===true && result?.paused_today!==true && slot
-        && /^[0-9]{5}$/.test(slot.code) && Number.isInteger(slot.slot)
-        && slot.slot>=1 && slot.slot<=11
-        ? slot : null;
-      promoLastFetched=Date.now();
-      if(!promoOnAir || result?.records?.some(row=>row.code===promoFlashCode
-          && ['held','confirmed','used','void','expired'].includes(row.status))) {
-        clearPromoFlash();
-      }
+      const serverNow=Date.parse(result?.server_time);
+      const expiry=Date.parse(slot?.available_until);
+      const active=result?.active===true && result?.paused_today!==true;
+      promoOnAir=active && /^[0-9]{5}$/.test(slot?.code) &&
+        Number.isInteger(slot.slot) && slot.slot>=1 && slot.slot<=11 &&
+        Number.isFinite(serverNow) && expiry>serverNow
+        ? {code:slot.code,expiry,deadline:requestStarted+expiry-serverNow,
+          token:slot.code+'-'+(slot.reopened_at||slot.slot)}
+        : null;
+      // A network error or the scheduled end of the server window must
+      // not cut short a flash already started. A withdrawn code must stop.
+      if(promoFlashSlot && (!active || result.records?.some(row=>
+          row.code===promoFlashCode && ['held','confirmed','used','void','expired'].includes(row.status))
+          || (!promoOnAir && serverNow<promoFlashSlot.expiry)))clearPromoFlash();
       maybeShowPromo();
-    } catch (_) {
-      promoOnAir=null;
-      clearPromoFlash();
+    } catch (_) { /* The next poll can still catch the server window. */ }
+    finally {
+      window.clearTimeout(timeout);
+      if(promoPoll===poll)promoPoll=null;
     }
   }
   window.setInterval(()=>{
@@ -454,12 +493,17 @@
   },5000);
   window.addEventListener('focus',()=>{refreshRadioPromo();});
   document.addEventListener('visibilitychange',()=>{
-    if(!document.hidden && realPlaying())refreshRadioPromo();
+    if(!document.hidden && realPlaying()){
+      if(promoFlashCode&&performance.now()>=promoFlashUntil)clearPromoFlash();
+      refreshRadioPromo();
+    }
   });
   // END CONTROCORRENTE RADIO PREMI VISIVI 2026-11-06
 
   function stop() {
     attempt++;
+    promoPoll?.abort();
+    promoPoll=null;
     promoOnAir=null;
     clearPromoFlash();
     audio.pause();
@@ -496,7 +540,7 @@
   });
   audio.addEventListener('pause', () => { audible = false; clearPromoFlash(); render(); updateListenerPresence(true); });
   audio.addEventListener('waiting', () => { audible = false; pending = enabled; clearPromoFlash(); render(); updateListenerPresence(true); });
-  audio.addEventListener('stalled', () => { audible = false; pending = enabled; clearPromoFlash(); render(); updateListenerPresence(true); });
+  audio.addEventListener('stalled', () => { if(audio.readyState>=HTMLMediaElement.HAVE_FUTURE_DATA)return; audible = false; pending = enabled; clearPromoFlash(); render(); updateListenerPresence(true); });
   audio.addEventListener('ended', () => { audible = false; pending = false; clearPromoFlash(); render(); updateListenerPresence(true); });
   audio.addEventListener('error', () => { audible = false; pending = false; failed = true; clearPromoFlash(); render(); updateListenerPresence(true); });
   function toggle() {
@@ -507,12 +551,13 @@
     } else {
       enabled = true;
       try { window.ccRadioClickStats?.record(); } catch (_) {}
-      promoAllowedAt=Date.now()+60000;
+      promoAllowedAt=performance.now()+60000;
       remember();
       failed = false;
       // Release any failed stream before an explicit retry.
       audio.removeAttribute('src');
       audio.load();
+      unlockPromoAudio();
       start();
     }
     render();
