@@ -436,7 +436,7 @@
       const slot=result?.on_air;
       promoOnAir=result?.active===true && result?.paused_today!==true && slot
         && /^[0-9]{5}$/.test(slot.code) && Number.isInteger(slot.slot)
-        && slot.slot>=1 && slot.slot<=10
+        && slot.slot>=1 && slot.slot<=11
         ? slot : null;
       promoLastFetched=Date.now();
       if(!promoOnAir || result?.records?.some(row=>row.code===promoFlashCode
