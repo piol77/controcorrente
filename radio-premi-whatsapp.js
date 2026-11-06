@@ -2,7 +2,7 @@
   // The checkout calls this hook only after its existing validations and reservation.
   if (window.__DEMO_ROUTE || window.__DEMO_OPEN_WHATSAPP) return;
   const api = 'https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
-  const reward = 'Hai vinto! Hai prenotato con il codice corretto. Se vieni a cena, avrai 5 € di sconto su un conto complessivo di almeno 50 € prima dello sconto, indipendentemente dal numero di partecipanti alla tavolata.';
+  const reward = 'Hai vinto! Il codice Radio Premi è stato riservato. In caso di prenotazione confermata e cena effettivamente svolta, avrai 5 € di sconto per ogni 50 € interi di conto complessivo prima dello sconto, indipendentemente dal numero di commensali, secondo le condizioni del Club.';
   const notesLine = /^(\*Allergie \/ note: )([^\n]*)(\*)$/m;
   const readCode = notes => notes.match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![0-9])/i)?.[1]
     || notes.match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/)?.[1];
