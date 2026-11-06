@@ -330,17 +330,22 @@
       const suppliedNotes = String(data.get('note') || '');
       // Solo codice numerico a 5 cifre nelle note, senza UUID nel testo WhatsApp.
       // Accetta il codice isolato oppure preceduto da una parola descrittiva.
-      const promoMatch = suppliedNotes.match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![0-9])/i)
+      const promoMatch = suppliedNotes.match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![A-Za-z0-9])/i)
         || suppliedNotes.match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
       const promoCode = promoMatch ? promoMatch[1].toUpperCase() : null;
       // Un tentativo di codice malformato non deve diventare una normale
       // prenotazione senza premio: bloccalo prima dell'apertura di WhatsApp.
       // Le comuni note su allergie o piatti rimangono invariate.
-      const promoAttempt = /^\s*\d+\s*$/.test(suppliedNotes)
+      const promoAttempt = /^\s*(?=[A-Z0-9-]*\d)[A-Z0-9-]{1,20}\s*$/i.test(suppliedNotes)
         || /^\s*(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|premio)\s*[:#=-]?\s*\S+/i.test(suppliedNotes)
         || /^\s*radio\s*[:#=-]?\s*[A-Z0-9-]+\s*$/i.test(suppliedNotes);
       if (promoAttempt && !promoCode) {
         window.alert('Codice Radio Premi non valido. Inserisci solo le cinque cifre del codice nelle note. La richiesta non è stata inviata.');
+        return;
+      }
+      const promoNumbers = suppliedNotes.match(/(?:^|[^0-9])[0-9]{5}(?![A-Za-z0-9])/g) || [];
+      if (promoCode && promoNumbers.length > 1) {
+        window.alert('Inserisci un solo codice Radio Premi nelle note. La richiesta non è stata inviata.');
         return;
       }
       if (promoCode) {
