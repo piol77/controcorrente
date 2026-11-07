@@ -349,67 +349,99 @@
   let promoFlashCode=null;
   let promoFlashUntil=0;
   let promoTimer=null;
-  const trillUrl='trillo-radio-premi.mp3?v=20261106-trillo-v1';
+  const trillUrl='trillo-radio-premi.mp3?v=20261107-hourly-v1';
   const trillAudio=document.createElement('audio');
   trillAudio.src=trillUrl;
   trillAudio.preload='auto';
   trillAudio.setAttribute('playsinline','');
-  let audioContext, musicGain, trillBuffer, trillSource;
-  let trillTimer=null;
+  let audioContext=null, trillBuffer=null, trillSource=null;
+  let trillAssetFailed=false;
   function unlockPromoAudio() {
-    // iOS limits HTMLMediaElement.volume and can block a second media
-    // element started by a timer. Unlock and mix on the actual ON gesture.
-    const AudioContextClass=window.AudioContext||window.webkitAudioContext;
-    if(!AudioContextClass)return;
+    // Sblocca il suono al clic ON. Non collegare lo stream esterno
+    // a createMediaElementSource: un flusso senza CORS può diventare muto.
+    const Context=window.AudioContext||window.webkitAudioContext;
+    if(!Context)return;
     try {
       if(!audioContext) {
-        audioContext=new AudioContextClass();
-        musicGain=audioContext.createGain();
-        musicGain.connect(audioContext.destination);
-        audioContext.createMediaElementSource(audio).connect(musicGain);
-        audio.crossOrigin='anonymous';
-        fetch(trillUrl)
-          .then(response=>{if(!response.ok)throw Error('Trillo non disponibile');return response.arrayBuffer();})
-          .then(bytes=>audioContext.decodeAudioData(bytes))
+        audioContext=new Context();
+        fetch(trillUrl,{cache:'force-cache'})
+          .then(r=>{if(!r.ok)throw Error('MP3 non disponibile');return r.arrayBuffer();})
+          .then(bytes=>{
+            if(bytes.byteLength<1500)throw Error('MP3 troppo breve');
+            return audioContext.decodeAudioData(bytes);
+          })
           .then(buffer=>{trillBuffer=buffer;})
-          .catch(()=>{});
+          .catch(e=>{
+            trillAssetFailed=true;
+            console.warn('[Radio Premi] Trillo MP3:',e);
+          });
       }
-      if(audioContext.state!=='running')audioContext.resume().catch(()=>{});
-    } catch (_) { /* Fall back to native media on browsers without a mixer. */ }
+      if(audioContext.state==='suspended')
+        audioContext.resume().catch(e=>console.warn('[Radio Premi] Audio sospeso:',e));
+    } catch(e) {
+      console.warn('[Radio Premi] AudioContext non disponibile:',e);
+    }
   }
   function stopTrillAndRestoreVolume() {
-    if(trillTimer!==null)window.clearTimeout(trillTimer);
-    trillTimer=null;
     if(trillSource) {
-      trillSource.stop();
-      trillSource.disconnect();
+      try { trillSource.stop(); } catch (_) {}
+      try { trillSource.disconnect(); } catch (_) {}
       trillSource=null;
     }
     trillAudio.pause();
-    trillAudio.loop=false;
-    if(trillAudio.readyState)trillAudio.currentTime=0;
-    if(musicGain)musicGain.gain.value=1;
-    else audio.volume=1;
+    if(trillAudio.readyState) {
+      try { trillAudio.currentTime=0; } catch (_) {}
+    }
+    audio.volume=1;
+  }
+  function fallbackTrill() {
+    if(!audioContext||audioContext.state!=='running')return;
+    try {
+      const osc=audioContext.createOscillator();
+      const gain=audioContext.createGain();
+      const t=audioContext.currentTime;
+      osc.type='sine';
+      osc.frequency.setValueAtTime(784,t);
+      osc.frequency.setValueAtTime(988,t+0.2);
+      osc.frequency.setValueAtTime(1319,t+0.4);
+      gain.gain.setValueAtTime(0.0001,t);
+      gain.gain.exponentialRampToValueAtTime(0.28,t+0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001,t+1.2);
+      osc.connect(gain).connect(audioContext.destination);
+      trillSource=osc;
+      osc.onended=()=>{if(trillSource===osc)trillSource=null;};
+      osc.start(t); osc.stop(t+1.22);
+    } catch(e){ console.warn('[Radio Premi] Trillo di riserva:',e); }
   }
   function announcePromoFlash() {
-    if(musicGain)musicGain.gain.value=0.20;
-    else audio.volume=0.20;
-    if(trillBuffer && audioContext.state==='running') {
-      trillSource=audioContext.createBufferSource();
-      trillSource.buffer=trillBuffer;
-      trillSource.loop=true;
-      trillSource.connect(audioContext.destination);
-      trillSource.start();
-      trillSource.stop(audioContext.currentTime+1.5);
-      return;
-    }
-    trillAudio.loop=true;
-    trillAudio.play().catch(()=>{});
-    trillTimer=window.setTimeout(()=>{
-      trillAudio.pause();
-      trillAudio.loop=false;
-      trillTimer=null;
-    },1500);
+    // Nessun parlato. La musica cala solo durante i 10 s di esposizione.
+    audio.volume=0.20;
+    const playNative=()=>{
+      if(trillAssetFailed){fallbackTrill();return;}
+      trillAudio.currentTime=0;
+      const play=trillAudio.play();
+      if(play&&typeof play.catch==='function')play.catch(e=>{
+        console.warn('[Radio Premi] MP3 bloccato:',e);
+        fallbackTrill();
+      });
+    };
+    const playDecoded=()=>{
+      if(trillBuffer&&audioContext&&audioContext.state==='running') {
+        try {
+          const source=audioContext.createBufferSource();
+          source.buffer=trillBuffer;
+          source.connect(audioContext.destination);
+          trillSource=source;
+          source.onended=()=>{if(trillSource===source)trillSource=null;};
+          source.start();
+          return;
+        } catch(e){console.warn('[Radio Premi] MP3 non riproducibile:',e);}
+      }
+      playNative();
+    };
+    if(audioContext&&audioContext.state==='suspended') {
+      audioContext.resume().then(playDecoded).catch(playNative);
+    } else playDecoded();
   }
   const promoSeenPrefix='cc-radio-premio-visto-';
   const promoSeenThisSession=new Set();
@@ -471,7 +503,7 @@
       const expiry=Date.parse(slot?.available_until);
       const active=result?.active===true && result?.paused_today!==true;
       promoOnAir=active && /^[0-9]{5}$/.test(slot?.code) &&
-        Number.isInteger(slot.slot) && slot.slot>=1 && slot.slot<=11 &&
+        Number.isInteger(slot.slot) && slot.slot>=1 && slot.slot<=24 &&
         Number.isFinite(serverNow) && expiry>serverNow
         ? {code:slot.code,expiry,deadline:requestStarted+expiry-serverNow,
           token:slot.code+'-'+(slot.reopened_at||slot.slot)}
@@ -490,7 +522,7 @@
   }
   window.setInterval(()=>{
     if(realPlaying())refreshRadioPromo();
-  },5000);
+  },2000);
   window.addEventListener('focus',()=>{refreshRadioPromo();});
   document.addEventListener('visibilitychange',()=>{
     if(!document.hidden && realPlaying()){
