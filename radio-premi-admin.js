@@ -30,13 +30,13 @@
       const time=romeTime(iso);
       const span=document.createElement('span');
       span.className='rp-slot';
-      span.textContent=time+(time<'07:00'?' · prova solo oggi':'');
-      span.title=(index+1)+'° passaggio di oggi, ora di Torino';
+      span.textContent=time;
+      span.title=(index+1)+'° passaggio di oggi, ora di Torino · '+(new Date(iso)<=new Date()?'orario passato':'in programma');
       todaySchedule.append(span);
     });
     const note=document.createElement('p');
     note.className='rp-sr';
-    note.textContent='Orari riservati al titolare. Il codice appare circa 10 secondi soltanto sui dispositivi che stanno ascoltando la radio, se il premio è disponibile.';
+    note.textContent='24 passaggi: uno per ciascuna ora, a minuto casuale (Torino). Il codice compare per 10 secondi solo mentre la radio suona e il premio è disponibile.';
     todaySchedule.append(note);
   }
   const tokenKey = 'cc-radio-premi-admin-session-v1';
@@ -217,6 +217,23 @@
     accessToken='';sessionStorage.removeItem(tokenKey);refresh();
   });
   document.querySelector('[data-premi-refresh]').addEventListener('click',refresh);
+  // Test esclusivamente locale e visivo: non mostra il vero codice e non crea premi.
+  const testChime=document.querySelector('[data-premi-test-chime]');
+  testChime?.addEventListener('click',async()=>{
+    const status=document.querySelector('[data-premi-test-status]');
+    const sound=new Audio('trillo-radio-premi.mp3?v=20261107-hourly-v1');
+    sound.preload='auto';
+    status.textContent='TEST 12345 · codice dimostrativo, non valido';
+    testChime.disabled=true;
+    try {
+      await sound.play();
+      status.textContent='🎟 TEST 12345 · trillo avviato (solo questo dispositivo)';
+    } catch(e) {
+      status.textContent='Audio non avviato: '+(e instanceof Error?e.message:'bloccato dal browser');
+    }
+    window.setTimeout(()=>{testChime.disabled=false;status.textContent='';sound.pause();},10000);
+  });
+  window.setInterval(()=>{if(!document.hidden&&!manager.hidden)refresh();},60000);
   actionForm.addEventListener('submit',async e=>{
     e.preventDefault();
     const fd=new FormData(actionForm);
