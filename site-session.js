@@ -339,9 +339,9 @@
   }
   // CONTROCORRENTE RADIO PREMI VISIVI 2026-11-06
   // Solo trillo MP3 originale (non parlato). Durante il codice la radio
-  // si attenua per dieci secondi e poi torna al 100%, anche in caso di stop.
+  // si attenua al 20% per trenta secondi e poi torna al 100%, anche in caso di stop.
   // L'API decide codice, calendario e disponibilita; il browser mostra
-  // soltanto dieci secondi per slot a chi ha la radio realmente in ascolto.
+  // trenta secondi per slot a chi ha la radio realmente in ascolto.
   let promoOnAir=null;
   let promoPoll=null;
   let promoFlashSlot=null;
@@ -349,13 +349,14 @@
   let promoFlashCode=null;
   let promoFlashUntil=0;
   let promoTimer=null;
-  const trillUrl='trillo-radio-premi.mp3?v=20261107-hourly-v1';
+  const trillUrl='trillo-radio-premi.mp3?v=20261107-live-30-v1';
   const trillAudio=document.createElement('audio');
   trillAudio.src=trillUrl;
   trillAudio.preload='auto';
   trillAudio.setAttribute('playsinline','');
   let audioContext=null, trillBuffer=null, trillSource=null;
   let trillAssetFailed=false;
+  const trillRepeatTimers=[];
   function unlockPromoAudio() {
     // Sblocca il suono al clic ON. Non collegare lo stream esterno
     // a createMediaElementSource: un flusso senza CORS può diventare muto.
@@ -383,6 +384,7 @@
     }
   }
   function stopTrillAndRestoreVolume() {
+    while(trillRepeatTimers.length)window.clearTimeout(trillRepeatTimers.pop());
     if(trillSource) {
       try { trillSource.stop(); } catch (_) {}
       try { trillSource.disconnect(); } catch (_) {}
@@ -405,7 +407,7 @@
       osc.frequency.setValueAtTime(988,t+0.2);
       osc.frequency.setValueAtTime(1319,t+0.4);
       gain.gain.setValueAtTime(0.0001,t);
-      gain.gain.exponentialRampToValueAtTime(0.28,t+0.03);
+      gain.gain.exponentialRampToValueAtTime(0.8,t+0.03);
       gain.gain.exponentialRampToValueAtTime(0.0001,t+1.2);
       osc.connect(gain).connect(audioContext.destination);
       trillSource=osc;
@@ -414,11 +416,13 @@
     } catch(e){ console.warn('[Radio Premi] Trillo di riserva:',e); }
   }
   function announcePromoFlash() {
-    // Nessun parlato. La musica cala solo durante i 10 s di esposizione.
+    // 30 s al 20% per la radio; trillo al 100%, ripetuto tre volte.
     audio.volume=0.20;
+    trillAudio.volume=1;
+    trillAudio.muted=false;
     const playNative=()=>{
       if(trillAssetFailed){fallbackTrill();return;}
-      trillAudio.currentTime=0;
+      try { trillAudio.pause(); trillAudio.currentTime=0; } catch (_) {}
       const play=trillAudio.play();
       if(play&&typeof play.catch==='function')play.catch(e=>{
         console.warn('[Radio Premi] MP3 bloccato:',e);
@@ -439,9 +443,18 @@
       }
       playNative();
     };
-    if(audioContext&&audioContext.state==='suspended') {
-      audioContext.resume().then(playDecoded).catch(playNative);
-    } else playDecoded();
+    const playOnce=()=>{
+      if(!promoFlashCode||!realPlaying())return;
+      if(audioContext&&audioContext.state==='suspended')
+        audioContext.resume().then(playDecoded).catch(playNative);
+      else playDecoded();
+    };
+    playOnce();
+    const repeatEvery=trillBuffer
+      ? Math.max(1800,Math.ceil((trillBuffer.duration+0.25)*1000))
+      : 2500;
+    for(let n=1;n<=2;n++)
+      trillRepeatTimers.push(window.setTimeout(playOnce,repeatEvery*n));
   }
   const promoSeenPrefix='cc-radio-premio-visto-';
   const promoSeenThisSession=new Set();
@@ -455,7 +468,7 @@
   function markSeen(token) {
     promoSeenThisSession.add(token);
     try { localStorage.setItem(promoSeenPrefix+token,'1'); }
-    catch (_) { /* Anche con storage disabilitato il flash dura solo 10 s. */ }
+    catch (_) { /* Anche con storage disabilitato il flash dura solo 30 s. */ }
   }
   function renderPromoFlash() {
     const visible=realPlaying() && promoFlashCode && performance.now()<promoFlashUntil;
@@ -477,13 +490,13 @@
   function maybeShowPromo() {
     const slot=promoOnAir;
     if(promoFlashCode || !slot || !realPlaying() ||
-        performance.now()<promoAllowedAt || performance.now()>=slot.deadline ||
+        (performance.now()<promoAllowedAt && !slot.manual) || performance.now()>=slot.deadline ||
         alreadySeen(slot.token))return;
     promoFlashCode=slot.code;
     promoFlashSlot=slot;
-    promoFlashUntil=performance.now()+10000;
+    promoFlashUntil=performance.now()+30000;
     renderPromoFlash();
-    promoTimer=window.setTimeout(clearPromoFlash,10000);
+    promoTimer=window.setTimeout(clearPromoFlash,30000);
     markSeen(slot.token);
     announcePromoFlash();
   }
@@ -506,7 +519,7 @@
         Number.isInteger(slot.slot) && slot.slot>=1 && slot.slot<=24 &&
         Number.isFinite(serverNow) && expiry>serverNow
         ? {code:slot.code,expiry,deadline:requestStarted+expiry-serverNow,
-          token:slot.code+'-'+(slot.reopened_at||slot.slot)}
+          token:slot.code+'-'+(slot.reopened_at||slot.slot),manual:slot.manual_live===true}
         : null;
       // A network error or the scheduled end of the server window must
       // not cut short a flash already started. A withdrawn code must stop.
