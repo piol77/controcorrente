@@ -108,34 +108,6 @@
           "tool": "image_gen",
           "note": "Restaurant menu illustration with sliced veal, tuna sauce and capers on an ivory plate over a navy table; recipe and visual references inspected online. Not a photograph of restaurant food."
         }
-      },
-      {
-        "name": "Cozze di Sardegna alla marinara con poco pomodoro",
-        "price": 10,
-        "description": "Cozze di Sardegna aperte alla marinara, con aglio, prezzemolo e poco pomodoro.",
-        "allergens": [
-          14
-        ],
-        "icon": "Shell",
-        "translations": {
-          "en": {
-            "name": "Sardinian mussels marinara with a little tomato",
-            "description": "Sardinian mussels cooked marinara-style with garlic, parsley and just a little tomato."
-          },
-          "zh": {
-            "name": "撒丁岛淡菜海员风味（少量番茄）",
-            "description": "撒丁岛淡菜配蒜香、欧芹与少许番茄清煮。"
-          }
-        },
-        "dishPhoto": "cena-assets/cozze-sardegna-marinara-20261106-hd.webp",
-        "photoSource": {
-          "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-06",
-          "tool": "image_gen",
-          "resolution": "1536x1024",
-          "format": "WebP, quality 91",
-          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
-        }
       }
     ],
     "primi": [
@@ -731,35 +703,33 @@
       }
     },
     {
-      "name": "Straccetti di maiale alla birra con riso bianco al vapore",
-      "price": 10,
-      "description": "Straccetti di maiale teneri e profumati alla birra, serviti con riso bianco al vapore.",
-      "allergens": [
-        1
-      ],
-      "icon": "CookingPot",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/straccetti-maiale-birra-riso-20261106-hd.webp",
-      "translations": {
-        "en": {
-          "name": "Beer-braised pork strips with steamed white rice",
-          "description": "Tender pork strips cooked with beer, served with steamed white rice."
+        "name": "Straccetti di pollo con melanzane e riso bianco al vapore in torretta",
+        "price": 10,
+        "description": "Straccetti di pollo saltati con melanzane, accompagnati da riso bianco al vapore servito in torretta.",
+        "allergens": [],
+        "icon": "CookingPot",
+        "orderCourse": "Secondo",
+        "photoLayout": "side",
+        "dishPhoto": "offerta-assets/pollo-melanzane-riso-torretta-20261107.webp",
+        "translations": {
+          "en": {
+            "name": "Chicken strips with eggplant and a tower of steamed white rice",
+            "description": "Sautéed chicken strips with eggplant, served with steamed white rice molded into a tower."
+          },
+          "zh": {
+            "name": "茄子鸡肉条配塔形蒸白米饭",
+            "description": "鸡肉条与茄子翻炒，搭配塔形摆盘的蒸白米饭。"
+          }
         },
-        "zh": {
-          "name": "啤酒烩猪肉条配蒸白米饭",
-          "description": "啤酒烩制的鲜嫩猪肉条，搭配蒸白米饭。"
+        "photoSource": {
+          "type": "AI-generated HD illustrative food image",
+          "date": "2026-11-07",
+          "tool": "image_gen",
+          "resolution": "1536x1024",
+          "format": "WebP, quality 88",
+          "note": "Piatto avorio e sfondo blu marino; pollo e melanzane accanto alla torretta di riso bianco al vapore."
         }
       },
-      "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-06",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
-      }
-    },
     {
       "name": "Casarecce con melanzane e branzino, con poco pomodoro",
       "price": 12,
