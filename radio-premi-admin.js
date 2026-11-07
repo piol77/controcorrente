@@ -36,7 +36,7 @@
     });
     const note=document.createElement('p');
     note.className='rp-sr';
-    note.textContent='24 passaggi: uno per ciascuna ora, a minuto casuale (Torino). Il codice compare per 10 secondi solo mentre la radio suona e il premio è disponibile.';
+    note.textContent='24 passaggi: uno per ciascuna ora, a minuto casuale (Torino). Il codice compare per 30 secondi solo mentre la radio suona e il premio è disponibile.';
     todaySchedule.append(note);
   }
   const tokenKey = 'cc-radio-premi-admin-session-v1';
@@ -217,22 +217,47 @@
     accessToken='';sessionStorage.removeItem(tokenKey);refresh();
   });
   document.querySelector('[data-premi-refresh]').addEventListener('click',refresh);
-  // Test esclusivamente locale e visivo: non mostra il vero codice e non crea premi.
+  // Test live: usa il vero codice disponibile, non un finto voucher locale.
+  // La conferma avverte che tutti gli ascoltatori possono riscattarlo.
   const testChime=document.querySelector('[data-premi-test-chime]');
+  let liveTestTimer=null;
   testChime?.addEventListener('click',async()=>{
-    const status=document.querySelector('[data-premi-test-status]');
-    const sound=new Audio('trillo-radio-premi.mp3?v=20261107-hourly-v1');
-    sound.preload='auto';
-    status.textContent='TEST 12345 · codice dimostrativo, non valido';
-    status.classList.add('rp-test-flash');
+    const flash=document.querySelector('[data-premi-test-status]');
+    if(!window.confirm('Mandare ORA in onda il codice premio reale? Tutti gli utenti con radio accesa lo vedranno per circa 30 secondi e potranno usarlo per uno sconto valido.'))return;
     testChime.disabled=true;
+    flash.classList.remove('rp-test-flash');
+    flash.textContent='Invio del codice ai lettori radio…';
     try {
-      await sound.play();
-      status.textContent='🎟 TEST 12345 · trillo avviato (solo questo dispositivo)';
-    } catch(e) {
-      status.textContent='Audio non avviato: '+(e instanceof Error?e.message:'bloccato dal browser');
+      const data=await request('broadcast_now');
+      if(!/^[0-9]{5}$/.test(String(data.code||'')))throw new Error('Risposta priva di un codice valido');
+      if(liveTestTimer!==null)window.clearTimeout(liveTestTimer);
+      flash.classList.add('rp-test-flash');
+      flash.textContent='🎟 IN ONDA ORA · CODICE CENA: '+data.code+' · visibile agli ascoltatori per 30 secondi';
+      display('Trasmissione reale attivata: il codice '+data.code+' è valido. Gli ascoltatori con la radio accesa lo vedono ora.');
+      const sound=new Audio('trillo-radio-premi.mp3?v=20261107-live-30-v1');
+      sound.volume=1;
+      let repeats=2;
+      sound.addEventListener('ended',()=>{
+        if(repeats--<=0)return;
+        sound.currentTime=0;
+        sound.play().catch(e=>console.warn('[Radio Premi] Ripetizione MP3 non consentita',e));
+      });
+      sound.play().catch(e=>console.warn('[Radio Premi] Audio locale non consentito dal browser',e));
+      liveTestTimer=window.setTimeout(()=>{
+        flash.classList.remove('rp-test-flash');
+        flash.textContent='Trasmissione di prova conclusa.';
+        sound.pause();
+        liveTestTimer=null;
+      },30000);
+    }catch(e){
+      const reason=e instanceof Error?e.message:'errore sconosciuto';
+      const labels={promotion_not_active:'Promozione sospesa: riattivala prima del test.',
+        no_available_code:'Non esiste un codice valido disponibile da trasmettere adesso.'};
+      flash.textContent='Test NON trasmesso: '+(labels[reason]||reason);
+      display(flash.textContent);
+    }finally{
+      testChime.disabled=false;
     }
-    window.setTimeout(()=>{testChime.disabled=false;status.classList.remove('rp-test-flash');status.textContent='';sound.pause();},10000);
   });
   window.setInterval(()=>{if(!document.hidden&&!manager.hidden)refresh();},60000);
   actionForm.addEventListener('submit',async e=>{
