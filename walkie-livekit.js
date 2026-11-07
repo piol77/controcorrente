@@ -103,7 +103,7 @@
     }
     for (const el of new Set([talk, activeTalk])) {
       el.hidden = !active;
-      el.disabled = !connected || connecting || talking || cooling || busy;
+      el.disabled = !connected || connecting || (cooling && !talking) || (busy && !talking);
       el.dataset.talking = String(talking);
       el.setAttribute('aria-label', talking ? 'Rilascia per terminare' : 'Tieni premuto per parlare, massimo 10 secondi');
       el.title = 'Tieni premuto per parlare (massimo 10 secondi)';
