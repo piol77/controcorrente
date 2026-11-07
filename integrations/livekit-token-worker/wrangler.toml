@@ -1,0 +1,13 @@
+name = "controcorrente-livekit-token"
+main = "src/index.js"
+compatibility_date = "2026-11-01"
+workers_dev = true
+
+# Every 60s allow up to 12 token requests per IP at a Cloudflare edge location.
+# Mobile carrier NAT can share IPs; adjust if legitimate visitors hit 429.
+[[ratelimits]]
+name = "TOKEN_RATE_LIMIT"
+namespace_id = "930015"
+[ratelimits.simple]
+limit = 12
+period = 60
