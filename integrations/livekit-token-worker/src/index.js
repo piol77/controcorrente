@@ -27,7 +27,7 @@ function encodedJson(value) {
   return base64url(new TextEncoder().encode(JSON.stringify(value)));
 }
 
-async function signToken(key, secret) {
+async function signToken(key, secret, grant, validSeconds = 600) {
   const now = Math.floor(Date.now() / 1000);
   const header = encodedJson({ alg: 'HS256', typ: 'JWT' });
   const payload = encodedJson({
@@ -35,17 +35,9 @@ async function signToken(key, secret) {
     sub: 'anon-' + crypto.randomUUID(),
     iat: now,
     nbf: now - 5,
-    exp: now + 600,
+    exp: now + validSeconds,
     jti: crypto.randomUUID(),
-    video: {
-      room: ROOM_NAME,
-      roomJoin: true,
-      canSubscribe: true,
-      canPublish: true,
-      canPublishSources: ['microphone'],
-      canPublishData: true, // only a tiny end-of-transmission sound event
-      canUpdateOwnMetadata: false,
-    },
+    video: grant,
   });
   const body = header + '.' + payload;
   const hmac = await crypto.subtle.importKey(
@@ -66,7 +58,7 @@ export default {
     if (url.pathname === '/health' && request.method === 'GET') {
       return reply({ ok: true, provider: 'livekit' });
     }
-    if (url.pathname !== '/getToken') return reply({ error: 'Not found' }, 404);
+    if (url.pathname !== '/getToken' && url.pathname !== '/count') return reply({ error: 'Not found' }, 404);
     if (origin !== SITE_ORIGIN) return reply({ error: 'Origin not allowed' }, 403);
     if (request.method === 'OPTIONS') {
       return new Response(null, {
@@ -79,6 +71,40 @@ export default {
           'Vary': 'Origin',
         },
       });
+    }
+    if (url.pathname === '/count') {
+      if (request.method !== 'GET') return reply({ error: 'Method not allowed' }, 405);
+      if (!env.LIVEKIT_API_KEY || !env.LIVEKIT_API_SECRET ||
+          !/^wss:\/\/[a-z0-9.-]+\.livekit\.cloud$/i.test(env.LIVEKIT_URL || '')) {
+        return reply({ error: 'LiveKit not configured' }, 503);
+      }
+      try {
+        const listGrant = await signToken(env.LIVEKIT_API_KEY, env.LIVEKIT_API_SECRET, {
+          roomList: true
+        }, 60);
+        const result = await fetch(
+          env.LIVEKIT_URL.replace(/^wss:/, 'https:') +
+            '/twirp/livekit.RoomService/ListRooms',
+          {
+            method: 'POST',
+            headers: {
+              'Authorization': 'Bearer ' + listGrant,
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ names: [ROOM_NAME] }),
+            signal: AbortSignal.timeout(6500),
+          }
+        );
+        if (!result.ok) throw Error('RoomService unavailable: ' + result.status);
+        const data = await result.json();
+        const targetRoom = (data.rooms || []).find(item => item.name === ROOM_NAME);
+        const n = Number(targetRoom?.numParticipants ?? targetRoom?.num_participants ?? 0);
+        return reply({ connected: Number.isSafeInteger(n) && n >= 0 ? n : 0 }, 200, {
+          'Cache-Control': 'public, max-age=5',
+        });
+      } catch (_) {
+        return reply({ error: 'Count unavailable' }, 502);
+      }
     }
     if (request.method !== 'POST') return reply({ error: 'Method not allowed' }, 405);
     if (!(request.headers.get('Content-Type') || '').startsWith('application/json')) {
@@ -106,7 +132,15 @@ export default {
       if (!result.success) return reply({ error: 'Too many requests' }, 429, {'Retry-After':'60'});
     }
 
-    const token = await signToken(env.LIVEKIT_API_KEY, env.LIVEKIT_API_SECRET);
+    const token = await signToken(env.LIVEKIT_API_KEY, env.LIVEKIT_API_SECRET, {
+      room: ROOM_NAME,
+      roomJoin: true,
+      canSubscribe: true,
+      canPublish: true,
+      canPublishSources: ['microphone'],
+      canPublishData: true,
+      canUpdateOwnMetadata: false,
+    });
     return reply({ server_url: env.LIVEKIT_URL, participant_token: token }, 201);
   },
 };
