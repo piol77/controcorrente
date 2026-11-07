@@ -129,6 +129,23 @@
     connectedCount = connected && room ? room.remoteParticipants.size + 1 : null;
     render();
   }
+  let countRequest = false;
+  async function refreshCountWhenOff() {
+    // Preserve the badge even when OFF, without consuming LiveKit participant minutes.
+    if (active || closed || !TOKEN_ENDPOINT || countRequest || document.hidden) return;
+    countRequest = true;
+    try {
+      const url = TOKEN_ENDPOINT.replace(/\/getToken$/, '/count');
+      const response = await fetch(url, {
+        cache:'no-store', credentials:'omit', signal:AbortSignal.timeout(7000),
+      });
+      if (!response.ok) throw Error('count unavailable');
+      const data = await response.json();
+      if (!active) connectedCount = Number.isSafeInteger(data.connected) &&
+        data.connected >= 0 ? data.connected : null;
+    } catch (_) { if (!active) connectedCount = null; }
+    finally { countRequest = false; if (!active) render(); }
+  }
   function clearRemoteAudio() {
     for (const node of remoteAudio.values()) { node.pause(); node.remove(); }
     remoteAudio.clear();
@@ -256,6 +273,7 @@
       return;
     }
     active = true;
+    connectedCount = null;
     window.ccJazzPlayer?.turnOff();
     render();
     // Activate the browser audio pipeline from the real user click.
@@ -284,6 +302,7 @@
     statusText = '';
     connectedCount = null;
     render();
+    refreshCountWhenOff();
   }
 
   async function start(event) {
@@ -348,9 +367,16 @@
   }
   bind(toggle, talk);
   window.ccWalkie = {attach, deactivate:disable};
-  document.addEventListener('visibilitychange', () => { if (document.hidden) finish(); });
+  // The old badge showed active users also when the current visitor was OFF.
+  // This uses a signed server-side count, not an extra listening connection.
+  setInterval(refreshCountWhenOff, 12000);
+  refreshCountWhenOff();
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) finish();
+    else refreshCountWhenOff();
+  });
   window.addEventListener('pagehide', () => {
-    disable(); closed = true;
+    closed = true; disable();
   });
   render();
 })();
