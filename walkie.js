@@ -17,6 +17,7 @@
     .cc-walkie-talk[data-talking="true"]{background:#a7392b;color:white;border-color:#fff;box-shadow:0 0 0 3px #a7392b}
     .cc-walkie-talk:disabled{opacity:.55;cursor:default}
     .cc-walkie-talk[hidden]{display:none!important}
+    .cc-walkie-count{display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:28px;padding:1px 7px;border:1px solid var(--gold,#cba76d);border-radius:20px;color:var(--gold,#cba76d);font:600 11px/1.3 system-ui,sans-serif}
     .cc-walkie-status{flex-basis:100%;text-align:right;font:11px/1.3 system-ui,sans-serif;color:var(--gold,#cba76d);min-height:14px}
     .cc-walkie-status[hidden]{display:none!important}
     @keyframes cc-walkie-listen{0%,100%{transform:translateX(0)}25%{transform:translateX(1px)}50%{transform:translateX(-1px)}75%{transform:translateX(1px)}}
@@ -34,27 +35,35 @@
   talk.hidden = true;
   talk.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M6 11a6 6 0 0 0 12 0m-6 6v4m-4 0h8" stroke-linecap="round"/></svg><small>PARLA</small>';
   const status = document.createElement('span');
+  const count = document.createElement('span');
+  count.className = 'cc-walkie-count';
+  count.setAttribute('aria-label', 'Persone connesse al walkie-talkie');
+  count.title = 'Persone in ascolto al walkie-talkie';
+  count.textContent = '–';
   status.className = 'cc-walkie-status';
   status.setAttribute('role', 'status');
   status.setAttribute('aria-live', 'polite');
   status.hidden = true;
-  radio.insertAdjacentElement('afterend', toggle);
+  const radioCount = holder.querySelector('.cc-radio-listeners');
+  (radioCount || radio).insertAdjacentElement('afterend', count);
+  count.insertAdjacentElement('afterend', toggle);
   toggle.insertAdjacentElement('afterend', talk);
   holder.appendChild(status);
 
   // Internal page views attach to the one top-document connection and recorder.
   let owner;
   try { if (window.parent !== window) owner = window.parent.ccWalkie; } catch (_) {}
-  if (owner) { owner.attach(toggle, talk, status); return; }
+  if (owner) { owner.attach(toggle, talk, status, count); return; }
 
   const endpoint = 'wss://lgjijnhhnjioiyvfmkvy.supabase.co/realtime/v1/websocket?vsn=1.0.0&apikey=sb_publishable_aibVnScYEW5GrPWfu5M4Ag_ieHHGgKv';
   const topic = 'realtime:controcorrente-walkie-v1';
   const id = crypto.randomUUID();
-  let active = false, connected = false, socket = null, joinRef = null, seq = 0;
-  let reconnect = null, heartbeat = null, recorder = null, stream = null;
+  let active = false, connected = false, socket = null, joinRef = null, seq = 0, closed = false;
+  let reconnect = null, heartbeat = null, presenceTimer = null, recorder = null, stream = null;
   let pressed = false, recording = false, maxTimer = null, cooldownUntil = 0;
   let remoteSpeaker = null, remoteUntil = 0, remoteTimer = null;
-  let activeToggle = toggle, activeTalk = talk, activeStatus = status;
+  let activeToggle = toggle, activeTalk = talk, activeStatus = status, activeCount = count;
+  let presences = {}, connectedCount = null;
   let statusText = '', output = new Audio(), audioQueue = [], audioPlaying = false;
   let audioContext = null;
   const pieces = new Map(), played = new Set();
@@ -80,10 +89,25 @@
       el.hidden = !active;
       el.textContent = statusText || (recording ? 'Stai parlando…' : remoteSpeaker ? 'Qualcuno sta parlando…' : cooling ? 'Pausa di 3 secondi' : connected ? 'In ascolto · tieni premuto PARLA' : 'Connessione…');
     }
+    for (const el of new Set([count, activeCount])) {
+      el.textContent = connectedCount === null ? '–' : String(connectedCount);
+      el.setAttribute('aria-label','Persone connesse al walkie-talkie: '+(connectedCount ?? 'non disponibile'));
+    }
   }
-  function attach(nextToggle, nextTalk, nextStatus) {
-    activeToggle = nextToggle; activeTalk = nextTalk; activeStatus = nextStatus;
+  function attach(nextToggle, nextTalk, nextStatus, nextCount) {
+    activeToggle = nextToggle; activeTalk = nextTalk; activeStatus = nextStatus; activeCount = nextCount;
     bind(nextToggle, nextTalk); render();
+  }
+  function updateCount() {
+    const now = Date.now();
+    connectedCount = connected ? Object.values(presences).filter(entry =>
+      entry?.metas?.some(meta => Number.isFinite(meta.at) && now-meta.at >= -5000 && now-meta.at < 12000)
+    ).length : null;
+    render();
+  }
+  function trackPresence() {
+    if (connected && active) push('presence',{type:'presence',event:'track',payload:{at:Date.now()}});
+    updateCount();
   }
   function push(event, payload, room = topic) {
     if (!socket || socket.readyState !== WebSocket.OPEN) return false;
@@ -94,12 +118,13 @@
     return connected && push('broadcast', {type:'broadcast', event, payload});
   }
   function disconnect() {
-    clearTimeout(reconnect); clearInterval(heartbeat); clearTimeout(remoteTimer);
+    clearTimeout(reconnect); clearInterval(heartbeat); clearInterval(presenceTimer); clearTimeout(remoteTimer);
     connected = false; remoteSpeaker = null; remoteUntil = 0;
+    presences = {}; connectedCount = null;
     if (socket) { const old = socket; socket = null; old.close(); }
   }
   function connect() {
-    if (!active || socket) return;
+    if (closed || socket) return;
     try { socket = new WebSocket(endpoint); }
     catch (_) { setStatus('Connessione non disponibile'); return; }
     const current = socket;
@@ -107,7 +132,7 @@
     current.onopen = () => {
       if (current !== socket) return;
       joinRef = String(seq+1);
-      push('phx_join', {config:{broadcast:{ack:false,self:false},presence:{enabled:false},private:false}});
+      push('phx_join', {config:{broadcast:{ack:false,self:false},presence:{enabled:true,key:id},private:false}});
     };
     current.onmessage = e => {
       if (current !== socket) return;
@@ -118,6 +143,14 @@
         if (packet.payload?.status !== 'ok') { current.close(); return; }
         connected = true; setStatus('');
         heartbeat = setInterval(() => push('heartbeat', {}, 'phoenix'), 20000);
+        presenceTimer = setInterval(trackPresence, 5000);
+        trackPresence();
+      } else if (packet.event === 'presence_state' && packet.topic === topic) {
+        presences = packet.payload || {}; updateCount();
+      } else if (packet.event === 'presence_diff' && packet.topic === topic) {
+        for (const key of Object.keys(packet.payload?.leaves || {})) delete presences[key];
+        Object.assign(presences,packet.payload?.joins || {});
+        updateCount();
       } else if (packet.event === 'broadcast' && packet.topic === topic) {
         const body = packet.payload;
         if (body?.event === 'floor') receiveFloor(body.payload);
@@ -125,11 +158,11 @@
       } else if (packet.event === 'phx_error' || packet.event === 'phx_close') current.close();
     };
     current.onclose = () => {
-      clearTimeout(timeout); clearInterval(heartbeat);
+      clearTimeout(timeout); clearInterval(heartbeat); clearInterval(presenceTimer);
       if (current !== socket) return;
-      socket = null; connected = false; remoteSpeaker = null;
+      socket = null; connected = false; remoteSpeaker = null; connectedCount = null; presences = {};
       if (recording || pressed) finish();
-      if (active) { setStatus('Riconnessione…'); reconnect = setTimeout(connect, 2000); }
+      if (!closed) { setStatus(active ? 'Riconnessione…' : ''); reconnect = setTimeout(connect, 2000); }
       else render();
     };
     current.onerror = () => { /* onclose handles reconnection. */ };
@@ -214,6 +247,7 @@
       const mic = await permission;
       mic.getTracks().forEach(track => track.stop());
       if (!active) return;
+      trackPresence();
       // Unlock incoming audio on the same user-initiated activation when possible.
       setStatus(connected ? '' : 'Connessione…');
     } catch (_) {
@@ -223,7 +257,9 @@
     }
   }
   function disable() {
-    pressed = false; finish(); active = false; disconnect();
+    pressed = false; finish(); active = false;
+    if (connected) push('presence',{type:'presence',event:'untrack',payload:{}});
+    delete presences[id]; updateCount();
     audioQueue = []; output.pause(); output.removeAttribute('src');
     statusText = ''; render();
   }
@@ -293,7 +329,8 @@
   }
   bind(toggle,talk);
   window.ccWalkie = {attach};
+  connect();
   document.addEventListener('visibilitychange',() => { if (document.hidden) finish(); });
-  window.addEventListener('pagehide',disable);
+  window.addEventListener('pagehide',() => { disable(); closed = true; disconnect(); });
   render();
 })();
