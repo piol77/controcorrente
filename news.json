@@ -1,47 +1,47 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-11-07T18:11:52+00:00",
+  "fetched_at": "2026-11-07T22:06:25+00:00",
   "items": [
+    {
+      "title": "Carburanti, scade lo sconto di 4,9 cent su accise del diesel: rischio rincari",
+      "url": "https://www.rainews.it/articoli/2026/11/carburanti-scade-lo-sconto-di-49-cent-sulle-accise-del-diesel-rischio-rincari-c2f0e782-44ba-426d-9017-19a5504f37b7.html",
+      "image": "https://www.rainews.it/dl/img/2026/9/25/1790347000848_rainewscbfaefcebafa.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-11-07T21:26:00+00:00"
+    },
+    {
+      "title": "Nell’omelia a Paysandú, Papa Leone esorta a “costruire ponti”",
+      "url": "https://www.rainews.it/articoli/2026/11/nellomelia-a-paysand-papa-leone-esorta-a-costruire-ponti-9df59891-f38f-4774-b9a4-8ec5e3caf40f.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/07/1794073468046_DR.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-11-07T20:28:00+00:00"
+    },
+    {
+      "title": "Minacce web e guerra ibrida: Tajani denuncia una taglia contro di lui",
+      "url": "https://www.rainews.it/video/2026/11/callusotg1-minacce-tajani-dbd57a84-43f2-4318-9776-78c6c051961c.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/07/1794079163065_videoframe.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-11-07T19:17:00+00:00"
+    },
+    {
+      "title": "Il Papa in Uruguay: \"Costruire ponti\"",
+      "url": "https://www.rainews.it/video/2026/11/papa-leone-xiv-in-uruguay-costruire-ponti-d92ea0bc-7aa6-412c-8e08-14173d803c66.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/07/1794079585282_videoframe.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-11-07T19:24:00+00:00"
+    },
     {
       "title": "Francia, ancora in piazza \"per i giovani e contro il caro vita\"",
       "url": "https://www.rainews.it/articoli/2026/11/francia-giornata-di-o-in-piazza-per-i-giovani-e-contro-il-caro-vita-9c4f8d87-68d3-47c9-b8e2-090ec2662945.html",
       "image": "https://www.rainews.it/dl/img/2026/11/07/1794071974052_rainewsdcdcfdbeec.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-07T17:57:00+00:00"
-    },
-    {
-      "title": "Trump nomina il \"falco\" Stephen Miller nuovo capo dello staff, i repubblicani: \"Decisione orribile\"",
-      "url": "https://www.rainews.it/maratona/2026/11/dopo-londa-blu-trump-possiamo-collaborare-con-i-dem-c445ff6c-6393-46d9-9dc9-3ffb08b44d4d.html",
-      "image": "https://www.rainews.it/dl/img/2026/08/06/1786049250322_CAB.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-11-07T17:12:00+00:00"
-    },
-    {
-      "title": "DIRETTA - Torino torna in piazza contro il carovita, corteo aperto da un trattore",
-      "url": "https://www.rainews.it/articoli/2026/11/torino-torna-in-piazza-contro-il-carovita-corteo-aperto-da-un-trattore-25025eb6-a479-48f9-80ac-b3995a100612.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/07/1794064882819_RAN_..frame.jpeg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-11-07T17:58:00+00:00"
-    },
-    {
-      "title": "Nell'inferno di Oleshky, la città occupata dai russi",
-      "url": "https://www.rainews.it/video/2026/11/ucraina-nellinferno-di-oleshky-la-citta-occupata-dai-russi-d84e610b-1310-4d81-a70a-9fbb18fe8aa9.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/07/1794061799551_Immagine__.png",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-11-07T14:27:00+00:00"
-    },
-    {
-      "title": "Rompe il cranio alla compagna, tentato femminicidio a Vicenza: un arresto",
-      "url": "https://www.rainews.it/articoli/2026/11/rompe-il-cranio-alla-compagna-tentato-femminicidio-a-vicenza-un-arresto-c6064637-55ae-4d8f-bac7-55993a6e28f7.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/07/1794054792051_Vicenza_il_cortile_dellabitazione_dove__avvenuta_laggressione.jpg",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-11-07T13:40:00+00:00"
+      "published_at": "2026-11-07T18:40:00+00:00"
     }
   ]
 }
