@@ -192,14 +192,14 @@
             "description": "鸡蛋宽面搭配杂菌和香肠，以少量奶油拌制。"
           }
         },
-        "dishPhoto": "cena-assets/tagliatelle-funghi-salsiccia-20261107-wide-hd.webp",
+        "dishPhoto": "cena-assets/tagliatelle-funghi-misti-20261107-hd.png",
         "photoSource": {
           "type": "AI-generated HD illustrative food image",
           "date": "2026-11-07",
           "tool": "image_gen",
-          "resolution": "1942x809",
-          "format": "WebP, quality 92",
-          "note": "Foto illustrativa modificata dalla precedente immagine approvata, non fotografia del piatto servito. Piatto avorio interamente visibile nel riquadro panoramico, sfondo blu marino, luce calda; funghi misti, salsiccia e poca panna."
+          "resolution": "1448x1086",
+          "format": "PNG, HD",
+          "note": "Nuova immagine illustrativa HD di tagliatelle e funghi misti, su piatto avorio e sfondo blu marino. La salsiccia non è visibile nella foto, che non rappresenta il piatto effettivamente servito."
         }
       },
       {
