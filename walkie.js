@@ -65,8 +65,26 @@
   let activeToggle = toggle, activeTalk = talk, activeStatus = status, activeCount = count;
   let presences = {}, connectedCount = null;
   let statusText = '', output = new Audio(), audioQueue = [], audioPlaying = false;
-  let audioContext = null;
+  let audioContext = null, currentSource = null, currentOutputUrl = null, playbackEpoch = 0;
   const pieces = new Map(), played = new Set();
+
+  function endBeep() {
+    if (!audioContext || !active) return;
+    audioContext.resume().then(() => {
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+      const now = audioContext.currentTime;
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(880, now);
+      oscillator.frequency.exponentialRampToValueAtTime(660, now + .09);
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(.15, now + .012);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + .1);
+      oscillator.connect(gain).connect(audioContext.destination);
+      oscillator.start(now); oscillator.stop(now + .11);
+      oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+    }).catch(() => {});
+  }
 
   function setStatus(message) { statusText = message; render(); }
   function render() {
@@ -206,30 +224,40 @@
     if (audioPlaying || !active || !audioQueue.length) return;
     audioPlaying = true;
     const blob = audioQueue.shift();
+    const epoch = playbackEpoch;
     if (navigator.vibrate) navigator.vibrate(80);
     setStatus('Messaggio in ascolto…');
     if (audioContext) {
       blob.arrayBuffer().then(bytes => audioContext.decodeAudioData(bytes)).then(buffer => {
-        if (!active) { audioPlaying = false; return; }
+        if (!active || epoch !== playbackEpoch) return;
         const source = audioContext.createBufferSource();
+        currentSource = source;
         source.buffer = buffer; source.connect(audioContext.destination);
-        source.onended = () => { audioPlaying = false; setStatus(''); playNext(); };
-        return audioContext.resume().then(() => source.start());
-      }).catch(() => playWithElement(blob));
+        source.onended = () => {
+          if (currentSource === source) currentSource = null;
+          if (epoch !== playbackEpoch) return;
+          endBeep(); audioPlaying = false; setStatus(''); playNext();
+        };
+        return audioContext.resume().then(() => { if (active && epoch === playbackEpoch) source.start(); });
+      }).catch(() => playWithElement(blob,epoch));
       return;
     }
-    playWithElement(blob);
+    playWithElement(blob,epoch);
   }
-  function playWithElement(blob) {
-    if (!active) { audioPlaying = false; return; }
+  function playWithElement(blob,epoch) {
+    if (!active || epoch !== playbackEpoch) return;
     const url = URL.createObjectURL(blob);
+    currentOutputUrl = url;
     output.src = url;
-    const done = () => {
+    const done = (finished = false) => {
       output.onended = output.onerror = null;
       output.removeAttribute('src'); output.load(); URL.revokeObjectURL(url);
+      if (currentOutputUrl === url) currentOutputUrl = null;
+      if (epoch !== playbackEpoch) return;
+      if (finished) endBeep();
       audioPlaying = false; setStatus(''); playNext();
     };
-    output.onended = done; output.onerror = done;
+    output.onended = () => done(true); output.onerror = () => done(false);
     output.play().catch(() => { done(); setStatus('Audio bloccato dal browser: riattiva il walkie-talkie'); });
   }
   async function enable() {
@@ -247,6 +275,7 @@
       const mic = await permission;
       mic.getTracks().forEach(track => track.stop());
       if (!active) return;
+      window.ccJazzPlayer?.turnOff();
       trackPresence();
       // Unlock incoming audio on the same user-initiated activation when possible.
       setStatus(connected ? '' : 'Connessione…');
@@ -263,7 +292,11 @@
     pressed = false; finish(); active = false;
     if (connected) push('presence',{type:'presence',event:'untrack',payload:{}});
     delete presences[id]; updateCount();
-    audioQueue = []; output.pause(); output.removeAttribute('src');
+    playbackEpoch++;
+    audioQueue = []; audioPlaying = false;
+    if (currentSource) { try { currentSource.stop(); } catch (_) {} currentSource = null; }
+    output.pause(); output.onended = output.onerror = null; output.removeAttribute('src');
+    if (currentOutputUrl) { URL.revokeObjectURL(currentOutputUrl); currentOutputUrl = null; }
     statusText = ''; render();
   }
   function pickMime() {
@@ -316,6 +349,7 @@
     try { if (recorder?.state === 'recording') recorder.stop(); } catch (_) {}
     if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
     broadcast('floor',{from:id,action:'end',at:Date.now()});
+    endBeep();
     cooldownUntil = Date.now()+3000; setStatus('Pausa di 3 secondi');
     setTimeout(() => { if (active && Date.now() >= cooldownUntil) setStatus(''); },3000);
   }
@@ -331,7 +365,7 @@
     mic.addEventListener('keyup',e => { if (e.key === ' ' || e.key === 'Enter') finish(); });
   }
   bind(toggle,talk);
-  window.ccWalkie = {attach};
+  window.ccWalkie = {attach,deactivate:disable};
   connect();
   document.addEventListener('visibilitychange',() => { if (document.hidden) finish(); });
   window.addEventListener('pagehide',() => { disable(); closed = true; disconnect(); });

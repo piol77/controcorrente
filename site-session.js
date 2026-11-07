@@ -594,6 +594,8 @@
       remember();
       stop();
     } else {
+      // Radio and walkie-talkie are mutually exclusive.
+      window.ccWalkie?.deactivate();
       enabled = true;
       try { window.ccRadioClickStats?.record(); } catch (_) {}
       promoAllowedAt=performance.now()+60000;
@@ -606,6 +608,12 @@
       start();
     }
     render();
+  }
+  function turnOff() {
+    if (!enabled && audio.paused) return;
+    enabled = false;
+    remember();
+    stop();
   }
   button.addEventListener('click', toggle);
   const ownControls=placeRadioControls(button);
@@ -669,7 +677,7 @@
     view.document.addEventListener('keydown', onGesture, { capture: true, passive: true });
   }
   window.ccJazzPlayer = {
-    button, toggle,
+    button, toggle, turnOff,
     attach(nextButton, view, nextListenerBadge, nextPromoBadge) {
       activeButton = nextButton;
       activeListenerBadge = nextListenerBadge || ownListenerBadge;
