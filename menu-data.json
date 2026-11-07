@@ -173,33 +173,33 @@
         }
       },
       {
-        "name": "Tagliatelle con carciofi e salmone fresco",
-        "price": 14,
-        "description": "Tagliatelle all’uovo con carciofi teneri e salmone fresco.",
+        "name": "Tagliatelle ai funghi misti e salsiccia, con poca panna",
+        "price": 12.5,
+        "description": "Tagliatelle all’uovo con funghi misti, salsiccia e un tocco di panna.",
         "allergens": [
           1,
           3,
-          4
+          7
         ],
-        "icon": "Fish",
+        "icon": "Leaf",
         "translations": {
           "en": {
-            "name": "Tagliatelle with artichokes and fresh salmon",
-            "description": "Egg tagliatelle with tender artichokes and fresh salmon."
+            "name": "Tagliatelle with mixed mushrooms and sausage, with a little cream",
+            "description": "Egg tagliatelle with mixed mushrooms, sausage and a touch of cream."
           },
           "zh": {
-            "name": "朝鲜蓟鲜三文鱼鸡蛋宽面",
-            "description": "鸡蛋宽面搭配柔嫩朝鲜蓟与新鲜三文鱼。"
+            "name": "杂菌香肠奶油鸡蛋宽面（少量奶油）",
+            "description": "鸡蛋宽面搭配杂菌和香肠，以少量奶油拌制。"
           }
         },
-        "dishPhoto": "cena-assets/tagliatelle-carciofi-salmone-20261106-hd.webp",
+        "dishPhoto": "cena-assets/tagliatelle-funghi-salsiccia-20261107-hd.webp",
         "photoSource": {
           "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-06",
+          "date": "2026-11-07",
           "tool": "image_gen",
           "resolution": "1536x1024",
           "format": "WebP, quality 91",
-          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
+          "note": "Foto illustrativa modificata dalla precedente immagine approvata, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; funghi misti, salsiccia e poca panna."
         }
       },
       {
