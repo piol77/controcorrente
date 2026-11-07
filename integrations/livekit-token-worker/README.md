@@ -8,10 +8,10 @@
 - Clienti: nessun account, password, registrazione o login.
 - Radio e walkie alternativi; accendere il walkie spegne la radio, e viceversa tramite `ccWalkie.deactivate()`.
 - Nessuna lettura o scrittura del progetto Supabase da parte del walkie LiveKit.
-- Conteggio dei connessi dalla lista effettiva dei partecipanti LiveKit (incluso il dispositivo corrente), non tramite presenza Supabase.
+- Conteggio dei connessi dalla lista effettiva dei partecipanti LiveKit (incluso il dispositivo corrente). Anche con walkie OFF il numerino si aggiorna ogni 12 secondi via `GET /count` sul Worker, **senza collegare il visitatore a LiveKit e senza consumare minuti di ascolto**.
 
 ## Architettura
-`walkie-livekit.js` è il frontend. Usa LiveKit WebRTC per audio durante la pressione del pulsante PARLA (massimo 10 secondi) e un evento dati minuscolo per far suonare il bip di fine trasmissione. Un Worker Cloudflare genera token JWT limitati alla sola stanza `controcorrente-walkie-v1`. Il Worker non archivia audio né messaggi, e il sito non contiene chiavi segrete.
+`walkie-livekit.js` è il frontend. Usa LiveKit WebRTC per audio durante la pressione del pulsante PARLA (massimo 10 secondi) e un evento dati minuscolo per far suonare il bip di fine trasmissione. Un Worker Cloudflare genera token JWT limitati alla sola stanza `controcorrente-walkie-v1`. Il Worker offre anche `GET /count`, interrogando il numero aggregato dei partecipanti alla stanza tramite un token amministrativo **mai restituito al browser**. Il Worker non archivia audio né messaggi, e il sito non contiene chiavi segrete.
 
 ## Attivazione una tantum (a cura dell'amministratore)
 1. Aprire https://cloud.livekit.io/, creare un account e un progetto nel piano gratuito **Build**. Nel pannello del progetto ottenere l'URL `wss://...livekit.cloud`, un'API key e il relativo secret. **Non incollare mai l'API secret in chat, nel repository o nel sito pubblico.**
