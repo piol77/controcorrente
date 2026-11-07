@@ -224,6 +224,7 @@
     const sound=new Audio('trillo-radio-premi.mp3?v=20261107-hourly-v1');
     sound.preload='auto';
     status.textContent='TEST 12345 · codice dimostrativo, non valido';
+    status.classList.add('rp-test-flash');
     testChime.disabled=true;
     try {
       await sound.play();
@@ -231,7 +232,7 @@
     } catch(e) {
       status.textContent='Audio non avviato: '+(e instanceof Error?e.message:'bloccato dal browser');
     }
-    window.setTimeout(()=>{testChime.disabled=false;status.textContent='';sound.pause();},10000);
+    window.setTimeout(()=>{testChime.disabled=false;status.classList.remove('rp-test-flash');status.textContent='';sound.pause();},10000);
   });
   window.setInterval(()=>{if(!document.hidden&&!manager.hidden)refresh();},60000);
   actionForm.addEventListener('submit',async e=>{
