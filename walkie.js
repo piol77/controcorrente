@@ -251,7 +251,10 @@
       // Unlock incoming audio on the same user-initiated activation when possible.
       setStatus(connected ? '' : 'Connessione…');
     } catch (_) {
-      active = false; disconnect();
+      active = false;
+      if (connected) push('presence',{type:'presence',event:'untrack',payload:{}});
+      delete presences[id]; updateCount();
+      if (!socket) connect();
       window.alert('Per parlare devi consentire il microfono nelle impostazioni del browser.');
       render();
     }
