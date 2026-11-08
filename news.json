@@ -1,47 +1,47 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-11-08T16:07:53+00:00",
+  "fetched_at": "2026-11-08T20:38:58+00:00",
   "items": [
     {
-      "title": "Lele Mora ricoverato a Roma per un ictus: \"Sono vivo per miracolo\"",
-      "url": "https://www.rainews.it/articoli/2026/11/lele-mora-ricoverato-a-roma-per-un-ictus-sono-vivo-per-miracolo-6597d131-5f7f-4e00-8728-cb902095632d.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/08/1794148539403_rainewseecbcafcaacabe.jpg",
+      "title": "Tragedia a Palosco, 70enne uccisa in casa: fermato il figlio 47enne per omicidio",
+      "url": "https://www.rainews.it/video/2026/11/tragedia-a-palosco-70enne-uccisa-in-casa-fermato-il-figlio-47enne-per-omicidio-0b8465a4-b304-41f5-8692-d921677a9da8.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/08/1794166315594_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-08T14:24:00+00:00"
+      "published_at": "2026-11-08T19:30:00+00:00"
     },
     {
-      "title": "Egitto: scontro tra treni a Giza, almeno 4 morti e 88 feriti",
+      "title": "Papa Leone: \"Governanti cerchino il bene di tutti\"",
+      "url": "https://www.rainews.it/video/2026/11/papa-leone-governanti-cerchino-il-bene-di-tutti-4b37000c-a720-4390-a86c-99ddc60f01b6.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/08/1794166112311_videoframe.png",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-11-08T19:27:00+00:00"
+    },
+    {
+      "title": "In Cdm dopo i rinvii: tetto al prezzo del gas a 58,9 euro, ma stop risparmio accise",
+      "url": "https://www.rainews.it/video/2026/11/al-cdm-dopo-i-rinvii-tetto-al-prezzo-del-gas-a-589-euro-ma-stop-risparmio-accise-7261b848-6f6d-4f82-88a5-922e0e52ce3d.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/08/1794161993223_videoframe.png",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-11-08T18:37:00+00:00"
+    },
+    {
+      "title": "Egitto: scontro tra treni a Giza, almeno 7 morti e 112 feriti",
       "url": "https://www.rainews.it/articoli/2026/11/egitto-scontro-tra-treni-a-giza-almeno-morti-e-feriti-7b332113-4581-456b-863e-ffe98446794c.html",
       "image": "https://www.rainews.it/dl/img/2026/11/08/1794152516777_Giza.PNG",
       "source": "RaiNews",
       "area": "Mondo",
-      "published_at": "2026-11-08T15:32:00+00:00"
+      "published_at": "2026-11-08T17:40:00+00:00"
     },
     {
-      "title": "Il fisico Cervellati muore dopo essere stato travolto da un monopattino, si cerca l'investitore",
-      "url": "https://www.rainews.it/video/2026/11/il-fisico-roberto-cervellati-muore-dopo-essere-stato-travolto-da-un-monopattino-si-cerca-linvestitore-dca15c03-f32f-4a45-a165-835ba04a0a65.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/08/1794142598106_.png",
+      "title": "Saman, uccisa perché voleva scegliere la propria vita",
+      "url": "https://www.rainews.it/video/2026/11/tg2-dossier-saman-e-le-altre-bcdb9000-f760-45ed-9235-851b8390290b.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/08/1794161379980_.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-08T12:53:00+00:00"
-    },
-    {
-      "title": "Idee ultranazionaliste e allenamenti al poligono di tiro, chi è l'attentatore di Cracovia",
-      "url": "https://www.rainews.it/articoli/2026/11/idee-ultranazionaliste-e-allenamenti-al-poligono-di-tiro-chi-e-lattentatore-di-cracovia-09f7f02e-e9e8-4dd8-bef7-80748005f5c8.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/08/1794133019456_rainewsfeadfafbccba.jpg",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-11-08T14:57:00+00:00"
-    },
-    {
-      "title": "Imprenditore di 50 anni aggredito da un gruppo a Trani: ricoverato in coma farmacologico",
-      "url": "https://www.rainews.it/articoli/2026/11/imprenditore-di-50-anni-aggredito-da-un-gruppo-a-trani-ricoverato-in-coma-farmacologico-f81641fc-6439-44f9-abba-a32ec89e1ca0.html",
-      "image": "https://www.rainews.it/dl/img/2021/05/1600x900_1622088015346.ospedale_Bonomo_Andria.JPG",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-11-08T12:39:00+00:00"
+      "published_at": "2026-11-08T18:08:00+00:00"
     }
   ]
 }
