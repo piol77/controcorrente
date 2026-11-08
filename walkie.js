@@ -59,7 +59,12 @@
   const topic = 'realtime:controcorrente-walkie-v1';
   const id = crypto.randomUUID();
   let active = false, connected = false, socket = null, joinRef = null, seq = 0, closed = false;
-  let reconnect = null, heartbeat = null, presenceTimer = null, recorder = null, stream = null;
+  let reconnect = null, heartbeat = null, presenceTimer = null, presenceRetry = null, recorder = null, stream = null;
+  // Supabase throttles Presence updates per client. Count can refresh every 10 s
+  // while its existing 12 s stale-session cutoff remains unchanged.
+  const PRESENCE_REFRESH_MS = 10000;
+  const PRESENCE_MIN_GAP_MS = 8000;
+  let lastPresenceSent = 0, presenceRegistered = false;
   let pressed = false, recording = false, maxTimer = null, cooldownUntil = 0;
   let remoteSpeaker = null, remoteUntil = 0, remoteTimer = null;
   let activeToggle = toggle, activeTalk = talk, activeStatus = status, activeCount = count;
@@ -124,7 +129,26 @@
     render();
   }
   function trackPresence() {
-    if (connected && active) push('presence',{type:'presence',event:'track',payload:{at:Date.now()}});
+    if (!connected) { updateCount(); return; }
+    // Do not send repeated untrack messages for listeners who are already OFF.
+    if (!active && !presenceRegistered) { updateCount(); return; }
+    const now = Date.now();
+    const remaining = PRESENCE_MIN_GAP_MS - (now - lastPresenceSent);
+    if (remaining > 0) {
+      // Coalesce a quick ON/OFF or a duplicate call during microphone permission.
+      clearTimeout(presenceRetry);
+      presenceRetry = setTimeout(trackPresence, remaining);
+      updateCount();
+      return;
+    }
+    clearTimeout(presenceRetry);
+    presenceRetry = null;
+    const event = active ? 'track' : 'untrack';
+    const payload = active ? {at:now} : {};
+    if (push('presence',{type:'presence',event,payload})) {
+      lastPresenceSent = now;
+      presenceRegistered = active;
+    }
     updateCount();
   }
   function push(event, payload, room = topic) {
@@ -136,7 +160,8 @@
     return connected && push('broadcast', {type:'broadcast', event, payload});
   }
   function disconnect() {
-    clearTimeout(reconnect); clearInterval(heartbeat); clearInterval(presenceTimer); clearTimeout(remoteTimer);
+    clearTimeout(reconnect); clearInterval(heartbeat); clearInterval(presenceTimer); clearTimeout(presenceRetry); clearTimeout(remoteTimer);
+    presenceRetry = null; presenceRegistered = false;
     connected = false; remoteSpeaker = null; remoteUntil = 0;
     presences = {}; connectedCount = null;
     if (socket) { const old = socket; socket = null; old.close(); }
@@ -161,7 +186,7 @@
         if (packet.payload?.status !== 'ok') { current.close(); return; }
         connected = true; setStatus('');
         heartbeat = setInterval(() => push('heartbeat', {}, 'phoenix'), 20000);
-        presenceTimer = setInterval(trackPresence, 5000);
+        presenceTimer = setInterval(trackPresence, PRESENCE_REFRESH_MS);
         trackPresence();
       } else if (packet.event === 'presence_state' && packet.topic === topic) {
         presences = packet.payload || {}; updateCount();
@@ -176,8 +201,9 @@
       } else if (packet.event === 'phx_error' || packet.event === 'phx_close') current.close();
     };
     current.onclose = () => {
-      clearTimeout(timeout); clearInterval(heartbeat); clearInterval(presenceTimer);
+      clearTimeout(timeout); clearInterval(heartbeat); clearInterval(presenceTimer); clearTimeout(presenceRetry);
       if (current !== socket) return;
+      presenceRetry = null; presenceRegistered = false;
       socket = null; connected = false; remoteSpeaker = null; connectedCount = null; presences = {};
       if (recording || pressed) finish();
       if (!closed) { setStatus(active ? 'Riconnessione…' : ''); reconnect = setTimeout(connect, 2000); }
@@ -281,7 +307,7 @@
       setStatus(connected ? '' : 'Connessione…');
     } catch (_) {
       active = false;
-      if (connected) push('presence',{type:'presence',event:'untrack',payload:{}});
+      trackPresence();
       delete presences[id]; updateCount();
       if (!socket) connect();
       window.alert('Per parlare devi consentire il microfono nelle impostazioni del browser.');
@@ -290,7 +316,7 @@
   }
   function disable() {
     pressed = false; finish(); active = false;
-    if (connected) push('presence',{type:'presence',event:'untrack',payload:{}});
+    trackPresence();
     delete presences[id]; updateCount();
     playbackEpoch++;
     audioQueue = []; audioPlaying = false;
