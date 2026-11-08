@@ -357,9 +357,15 @@
         list.focus();
         return;
       }
+      const advanceBookingService = weekday === 6 && lunchTime ? 'sabato a pranzo'
+        : weekday === 0 && lunchTime ? 'domenica a pranzo'
+        : weekday === 0 && dinnerTime ? 'domenica a cena' : '';
       const currentMinutes = currentRomeMinutes();
       if (requestedDay === todayInRome() && ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60))) {
-        window.alert('Stai inviando la richiesta per oggi dopo le ' + (isLunch() ? '12:00' : '18:00') + '. Attendi la conferma specifica del Ristorante.');
+        if (!advanceBookingService) window.alert('Stai inviando la richiesta per oggi dopo le ' + (isLunch() ? '12:00' : '18:00') + '. Attendi la conferma specifica del Ristorante.');
+      }
+      if (advanceBookingService) {
+        window.alert('Per ' + advanceBookingService + ' il ristorante apre solo su prenotazione anticipata.\n\nLa richiesta può essere inviata, ma resta IN SOSPESO: attendi la conferma del ristorante. Se non ricevi la conferma, il ristorante resterà chiuso per quel servizio.');
       }
       // Radio Premi: l'utente inserisce il codice nelle note del preordine.
       // Il backend concede solo una riserva temporanea, non uno sconto confermato.
@@ -491,6 +497,7 @@
     if (page === 'ordine') setupSummary();
   });
 })();
+
 
 
 

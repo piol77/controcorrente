@@ -682,3 +682,9 @@ Questa sezione prevale sulle note discordanti precedenti relative a voce, primo 
 - **Resta un solo codice reale al giorno**: se il codice è stato riservato, confermato, usato, annullato o è scaduto, gli annunci rimanenti cessano; non generare un secondo codice per riempire le ore. Conservare tutte le regole di sconto, importo, validità del giorno, conferma WhatsApp, sicurezza Auth e menu.
 - La correzione è pubblicata sul repository ma la **riproduzione reale su Android e desktop va provata in uno slot autentico**; nessun test statico autorizza a dichiarare già udito il trillo.
 
+
+
+## Prenotazione anticipata — 8 novembre 2026
+- Sabato a pranzo e domenica a pranzo/cena: al submit valido mostrare un pop-up riferito al solo servizio scelto. Spiegare che si apre solo su prenotazione anticipata, che la richiesta prosegue ma resta in sospeso e che occorre attendere la conferma; in assenza di conferma il ristorante resterà chiuso per quel servizio.
+- Il pop-up non blocca l'apertura di WhatsApp dopo la lettura. Conservare il contratto e il formato WhatsApp riconosciuti dal bot, oltre agli altri controlli esistenti.
+- Il risponditore deve sospendere le nuove richieste automatiche relative ai medesimi servizi, sia dal sito sia in chat, con o senza preordine. Questa parte richiede l'installazione dello ZIP Windows dedicato, non il solo aggiornamento del sito.
