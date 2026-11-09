@@ -490,6 +490,18 @@
     stopTrillAndRestoreVolume();
     renderPromoFlash();
   }
+  function restoreSeenPromo() {
+    const slot=promoOnAir;
+    if(promoFlashCode || !slot || !realPlaying() ||
+       performance.now()>=slot.deadline || !alreadySeen(slot.token))return;
+    // Ricaricare la pagina o riaccendere la radio non consuma un nuovo annuncio.
+    // Il server deve confermare che questo codice è ancora in onda e disponibile.
+    promoFlashCode=slot.code;
+    promoFlashSlot=slot;
+    promoFlashUntil=slot.deadline;
+    renderPromoFlash();
+    promoTimer=window.setTimeout(clearPromoFlash,Math.max(0,promoFlashUntil-performance.now()));
+  }
   function maybeShowPromo() {
     const slot=promoOnAir;
     if(promoFlashCode || !slot || !realPlaying() ||
@@ -534,6 +546,7 @@
       if(promoFlashSlot && (!active || result.records?.some(row=>
           row.code===promoFlashCode && ['held','confirmed','used','void','expired'].includes(row.status))
           || (!promoOnAir && serverNow<promoFlashSlot.expiry)))clearPromoFlash();
+      restoreSeenPromo();
       maybeShowPromo();
     } catch (_) { /* The next poll can still catch the server window. */ }
     finally {
