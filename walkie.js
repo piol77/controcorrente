@@ -58,6 +58,7 @@
   const endpoint = 'wss://lgjijnhhnjioiyvfmkvy.supabase.co/realtime/v1/websocket?vsn=1.0.0&apikey=sb_publishable_aibVnScYEW5GrPWfu5M4Ag_ieHHGgKv';
   const topic = 'realtime:controcorrente-walkie-v1';
   const id = crypto.randomUUID();
+  const intentKey='cc-walkie-enabled-session-v1';
   let active = false, connected = false, socket = null, joinRef = null, seq = 0, closed = false;
   const walkieQuietHours = () => {
     const hour=Number(new Intl.DateTimeFormat('en-GB',{
@@ -215,7 +216,7 @@
       presenceRetry = null; presenceRegistered = false;
       socket = null; connected = false; remoteSpeaker = null; connectedCount = null; presences = {};
       if (recording || pressed) finish();
-      if (!closed && active && !walkieQuietHours()) { setStatus('Riconnessione…'); reconnect = setTimeout(connect, 2000); }
+      if (!closed && active && !walkieQuietHours() && !document.hidden) { setStatus('Riconnessione…'); reconnect = setTimeout(connect, 2000); }
       else render();
     };
     current.onerror = () => { /* onclose handles reconnection. */ };
@@ -311,12 +312,14 @@
       const mic = await permission;
       mic.getTracks().forEach(track => track.stop());
       if (!active) return;
+      try { sessionStorage.setItem(intentKey,'on'); } catch (_) {}
       window.ccJazzPlayer?.turnOff();
       trackPresence();
       // Unlock incoming audio on the same user-initiated activation when possible.
       setStatus(connected ? '' : 'Connessione…');
     } catch (_) {
       active = false;
+      try { sessionStorage.removeItem(intentKey); } catch (_) {}
       trackPresence();
       delete presences[id]; updateCount();
       disconnect();
@@ -325,6 +328,7 @@
     }
   }
   function disable() {
+    try { sessionStorage.removeItem(intentKey); } catch (_) {}
     pressed = false; finish(); active = false;
     trackPresence();
     delete presences[id]; updateCount();
@@ -403,9 +407,30 @@
   }
   bind(toggle,talk);
   window.ccWalkie = {attach,deactivate:disable};
+  try { active=sessionStorage.getItem(intentKey)==='on'; } catch (_) {}
+  if(active && walkieQuietHours())disable();
+  else if(active && !document.hidden)connect();
+  function restoreConnection() {
+    if(walkieQuietHours()){if(active || socket)disable();else render();return;}
+    if(!active){render();return;}
+    closed=false;
+    disconnect();
+    setStatus('Riconnessione…');
+    connect();
+  }
   window.setInterval(()=>{if(walkieQuietHours() && (active || socket))disable();else render();},15000);
-  window.addEventListener('focus',()=>{if(walkieQuietHours() && (active || socket))disable();else render();});
-  document.addEventListener('visibilitychange',() => { if (document.hidden) finish(); });
-  window.addEventListener('pagehide',() => { disable(); closed = true; disconnect(); });
+  window.addEventListener('focus',()=>{if(walkieQuietHours())restoreConnection();else if(active && !socket && !document.hidden)restoreConnection();else render();});
+  document.addEventListener('visibilitychange',() => {
+    if(document.hidden)finish();
+    else restoreConnection();
+  });
+  window.addEventListener('pagehide',() => {
+    finish();
+    closed=true;
+    disconnect();
+  });
+  window.addEventListener('pageshow',() => {
+    if(!document.hidden && active && !socket)restoreConnection();
+  });
   render();
 })();
