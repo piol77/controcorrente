@@ -425,7 +425,7 @@
       if (discountedMenus.length) {
         if (!await confirmFixedMenuWithoutDiscount([...new Set(discountedMenus)])) {
           try { sessionStorage.setItem('cc-promo-form-return', JSON.stringify(Object.fromEntries(data.entries()))); } catch (_) {}
-          window.location.href = 'cena.html#menu-fissi-title';
+          window.location.href = 'cena.html#menu-fissi';
           return;
         }
         // Keep the dish order and other notes; no promotional claim is sent.
