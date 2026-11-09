@@ -255,7 +255,8 @@
     if (window.crypto && typeof crypto.randomUUID==='function') listenerSession=crypto.randomUUID();
   }
   function renderListenerCount(){
-    const label=Number.isSafeInteger(listenerCount) && listenerCount>=0
+    const playing=enabled && audible && !audio.paused && !failed && !radioQuietHours();
+    const label=playing && Number.isSafeInteger(listenerCount) && listenerCount>=0
       ? String(listenerCount) : '–';
     const title='Ascoltatori';
     for(const el of [ownListenersRef(),activeListenerBadge]){
@@ -269,7 +270,11 @@
   async function updateListenerPresence(forceOff=false){
     // Le richieste alla radio restano sempre indipendenti dal refresh pagina.
     // Se durante una richiesta l'utente spegne la radio, accoda l'OFF.
-    if(radioQuietHours() && !forceOff)return;
+    if(!forceOff && (!enabled || radioQuietHours())){
+      listenerCount=null;
+      renderListenerCount();
+      return;
+    }
     if(listenerPending){
       if(forceOff)listenerOffRequested=true;
       return;
@@ -304,7 +309,7 @@
       }
     }
   }
-  // Poll continuo anche con radio spenta, per mostrare chi è rimasto in ascolto.
+  // Aggiorna gli ascoltatori solo mentre la radio è accesa; OFF invia il congedo una volta.
   window.setInterval(()=>updateListenerPresence(),5000);
   window.addEventListener('focus',()=>updateListenerPresence());
   window.addEventListener('pageshow',()=>updateListenerPresence());
@@ -343,6 +348,7 @@
       target.title = label;
       target.style.boxShadow = playing ? '0 0 0 2px var(--gold,#cba76d)' : 'none';
     }
+    renderListenerCount();
   }
   function remember() {
     try { sessionStorage.setItem(preferenceKey, enabled ? 'on' : 'off'); } catch (_) {}
@@ -629,6 +635,7 @@
       // Radio and walkie-talkie are mutually exclusive.
       window.ccWalkie?.deactivate();
       enabled = true;
+      listenerCount=null;
       try { window.ccRadioClickStats?.record(); } catch (_) {}
       promoAllowedAt=performance.now()+60000;
       remember();
