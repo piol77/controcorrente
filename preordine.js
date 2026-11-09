@@ -214,6 +214,26 @@
     }
     if (catalog[section].length) bar();
   }
+  function confirmFixedMenuWithoutDiscount(names) {
+    return new Promise(resolve => {
+      const dialog = document.createElement('dialog');
+      dialog.className = 'promo-choice-dialog';
+      dialog.setAttribute('aria-labelledby', 'promo-choice-title');
+      const heading = document.createElement('h2');
+      heading.id = 'promo-choice-title'; heading.textContent = 'Codice Radio Premi e menù promozionali';
+      const message = document.createElement('p');
+      message.textContent = names.join(', ') + ': questi menù hanno già un prezzo promozionale e non sono cumulabili con lo sconto Radio Premi di 5 €. Vuoi prenotare gli stessi piatti senza usare il codice?';
+      const actions = document.createElement('div'); actions.className = 'promo-choice-actions';
+      const yes = document.createElement('button'), no = document.createElement('button');
+      yes.type = no.type = 'button'; yes.className = no.className = 'button';
+      yes.textContent = 'Sì, senza sconto'; no.textContent = 'No, torno al menù';
+      yes.addEventListener('click', () => dialog.close('yes'));
+      no.addEventListener('click', () => dialog.close('no'));
+      dialog.addEventListener('close', () => { const accepted = dialog.returnValue === 'yes'; dialog.remove(); resolve(accepted); }, {once:true});
+      actions.append(yes, no); dialog.append(heading, message, actions);
+      document.body.append(dialog); dialog.showModal(); no.focus();
+    });
+  }
   async function setupSummary() {
     const list = document.querySelector('[data-order-list]'), total = document.querySelector('[data-order-total]');
     if (!list || !total) return;
@@ -223,6 +243,14 @@
     const submit = form.querySelector('[type="submit"]');
     const dayInput = form.querySelector('[name="giorno"]');
     dayInput.min = todayInRome();
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('cc-promo-form-return') || 'null');
+      if (saved && typeof saved === 'object') for (const name of ['nome','giorno','persone','orario','note']) {
+        const field = form.elements.namedItem(name);
+        if (field && typeof saved[name] === 'string') field.value = saved[name];
+      }
+      sessionStorage.removeItem('cc-promo-form-return');
+    } catch (_) { /* The cart remains in localStorage if session storage is blocked. */ }
     const reset = form.querySelector('[data-reset-order]');
     let menuReady = false;
     async function refreshDaily() {
@@ -368,8 +396,9 @@
         window.alert('Per ' + advanceBookingService + ' il ristorante apre solo su prenotazione anticipata.\n\nLa richiesta può essere inviata, ma resta IN SOSPESO: attendi la conferma del ristorante. Se non ricevi la conferma, il ristorante resterà chiuso per quel servizio.');
       }
       // Radio Premi: l'utente inserisce il codice nelle note del preordine.
-      // Il backend concede solo una riserva temporanea, non uno sconto confermato.
+      // Il server blocca il codice, non conferma uno sconto prima del conto.
       const suppliedNotes = String(data.get('note') || '');
+      let bookingNote = suppliedNotes;
       // Solo codice numerico a 5 cifre nelle note, senza UUID nel testo WhatsApp.
       // Accetta il codice isolato oppure preceduto da una parola descrittiva.
       const promoMatch = suppliedNotes.match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![A-Za-z0-9])/i)
@@ -390,7 +419,19 @@
         window.alert('Inserisci un solo codice Radio Premi nelle note. La richiesta non è stata inviata.');
         return;
       }
-      if (promoCode) {
+      const discountedMenus = promoCode ? Object.entries(cart)
+        .filter(([key,item]) => key.startsWith('menu-fissi:') || /^Menù completo:/i.test(item?.name || ''))
+        .map(([,item]) => item.name) : [];
+      if (discountedMenus.length) {
+        if (!await confirmFixedMenuWithoutDiscount([...new Set(discountedMenus)])) {
+          try { sessionStorage.setItem('cc-promo-form-return', JSON.stringify(Object.fromEntries(data.entries()))); } catch (_) {}
+          window.location.href = 'cena.html#menu-fissi-title';
+          return;
+        }
+        // Keep the dish order and other notes; no promotional claim is sent.
+        bookingNote = suppliedNotes.replace(promoMatch[0], '').replace(/[;,\s]+$/, '').trim();
+      }
+      if (promoCode && !discountedMenus.length) {
         const promoSubtotal=Object.values(cart).reduce((sum,item) => sum
           + (item && Number.isFinite(item.price) && Number.isInteger(item.qty)
             ? item.price * item.qty : 0), 0);
@@ -398,10 +439,6 @@
           window.alert('Per utilizzare il codice Radio Premi la cena deve raggiungere almeno 50 € di conto complessivo prima dello sconto. Mancano '
             + euro(Math.round((50-promoSubtotal)*100)/100)
             + '. Aggiungi altri piatti dal Menù cena oppure una o più bottiglie Cantine Delite dalla sezione Bibite & vini. La richiesta non è stata inviata.');
-          return;
-        }
-        if (Object.entries(cart).some(([key,item])=>key.startsWith('menu-fissi:') || /^Menù completo:/i.test(item?.name||''))) {
-          window.alert('Il codice Radio Premi non è cumulabile con i menù fissi. Rimuovi il menù fisso per utilizzare lo sconto.');
           return;
         }
         if (!dinnerTime) {
@@ -437,7 +474,7 @@
           const reasons = {
             inactive: 'La promozione Radio Premi non è ancora attiva.',
             minimum_50: 'Per utilizzare il premio la cena deve raggiungere 50 € di conto prima dello sconto. Aggiungi piatti o bottiglie Cantine Delite.',
-            unavailable: 'Codice errato, già riservato da un altro cliente, già utilizzato o scaduto. Il codice va prenotato dal sito entro le 23:59 del giorno di emissione.',
+             unavailable: 'Codice errato, già riservato da un altro cliente, già utilizzato o scaduto. Il codice va richiesto entro le 23:59 del giorno di emissione.',
             rate_limited: 'Troppi tentativi. Riprova più tardi.',
             dinner_only: 'Il codice è valido solo per una cena entro sette giorni di calendario dall’emissione, contando anche il primo giorno. Verifica giorno e orario.',
             invalid: 'Il codice non è valido: servono esattamente cinque cifre.'
@@ -457,7 +494,7 @@
         ...dishes,
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale preordine: ' + total.textContent, '',
         'Giorno: ' + requestDate(requestedDay),
-        '*Allergie / note: ' + String(data.get('note') || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
+         '*Allergie / note: ' + String(bookingNote || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const encodedMessage = encodeURIComponent(lines.join('\n'));
       const webWhatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodedMessage;
@@ -497,6 +534,7 @@
     if (page === 'ordine') setupSummary();
   });
 })();
+
 
 
 
