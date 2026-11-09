@@ -234,6 +234,11 @@
       document.body.append(dialog); dialog.showModal(); no.focus();
     });
   }
+  const fixedMenusInCart = cart => Object.entries(cart)
+    .filter(([key,item]) => key.startsWith('menu-fissi:') || /^Menù completo:/i.test(item?.name || ''))
+    .map(([,item]) => item.name);
+  const promoFromNotes = notes => String(notes || '').match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![A-Za-z0-9])/i)
+    || String(notes || '').match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
   async function setupSummary() {
     const list = document.querySelector('[data-order-list]'), total = document.querySelector('[data-order-total]');
     if (!list || !total) return;
@@ -243,6 +248,20 @@
     const submit = form.querySelector('[type="submit"]');
     const dayInput = form.querySelector('[name="giorno"]');
     dayInput.min = todayInRome();
+    const noteField = form.elements.namedItem('note');
+    const rememberForm = () => { try { sessionStorage.setItem('cc-promo-form-return', JSON.stringify(Object.fromEntries(new FormData(form).entries()))); } catch (_) {} };
+    let promoTimer;
+    noteField.addEventListener('input', () => {
+      clearTimeout(promoTimer);
+      promoTimer = setTimeout(async () => {
+        const code = promoFromNotes(noteField.value), names = fixedMenusInCart(read());
+        if (!code || !names.length) return;
+        if (!await confirmFixedMenuWithoutDiscount([...new Set(names)])) {
+          rememberForm(); window.location.href = 'cena.html#menu-fissi'; return;
+        }
+        noteField.value = noteField.value.replace(code[0], '').replace(/[;,\s]+$/, '').trim();
+      }, 650);
+    });
     try {
       const saved = JSON.parse(sessionStorage.getItem('cc-promo-form-return') || 'null');
       if (saved && typeof saved === 'object') for (const name of ['nome','giorno','persone','orario','note']) {
@@ -301,6 +320,7 @@
     refreshDaily();
     form.addEventListener('submit', async event => {
       event.preventDefault();
+      clearTimeout(promoTimer);
       if (!menuReady) return;
       dayInput.min = todayInRome();
       const requiredFields = [
@@ -401,8 +421,7 @@
       let bookingNote = suppliedNotes;
       // Solo codice numerico a 5 cifre nelle note, senza UUID nel testo WhatsApp.
       // Accetta il codice isolato oppure preceduto da una parola descrittiva.
-      const promoMatch = suppliedNotes.match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![A-Za-z0-9])/i)
-        || suppliedNotes.match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
+      const promoMatch = promoFromNotes(suppliedNotes);
       const promoCode = promoMatch ? promoMatch[1].toUpperCase() : null;
       // Un tentativo di codice malformato non deve diventare una normale
       // prenotazione senza premio: bloccalo prima dell'apertura di WhatsApp.
@@ -419,12 +438,10 @@
         window.alert('Inserisci un solo codice Radio Premi nelle note. La richiesta non è stata inviata.');
         return;
       }
-      const discountedMenus = promoCode ? Object.entries(cart)
-        .filter(([key,item]) => key.startsWith('menu-fissi:') || /^Menù completo:/i.test(item?.name || ''))
-        .map(([,item]) => item.name) : [];
+      const discountedMenus = promoCode ? fixedMenusInCart(cart) : [];
       if (discountedMenus.length) {
         if (!await confirmFixedMenuWithoutDiscount([...new Set(discountedMenus)])) {
-          try { sessionStorage.setItem('cc-promo-form-return', JSON.stringify(Object.fromEntries(data.entries()))); } catch (_) {}
+          rememberForm();
           window.location.href = 'cena.html#menu-fissi';
           return;
         }
