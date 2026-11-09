@@ -63,7 +63,7 @@
         item.code,
         stamp(item.status==='used' ? item.used_at : item.status==='confirmed' ? item.confirmed_at : item.status==='void' ? item.updated_at : (item.held_at || item.issued_at)),
         ({held:'Riservato, in attesa di conferma',confirmed:'Prenotazione confermata',
-          used:'Sconto utilizzato',void:'Annullato · non più valido'})[item.status]
+          used:'Sconto utilizzato',void:'Bloccato · non più valido'})[item.status]
       ];
       vals.forEach((value,i) => {
         const td = document.createElement('td');
