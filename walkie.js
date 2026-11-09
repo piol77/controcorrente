@@ -59,6 +59,12 @@
   const topic = 'realtime:controcorrente-walkie-v1';
   const id = crypto.randomUUID();
   let active = false, connected = false, socket = null, joinRef = null, seq = 0, closed = false;
+  const walkieQuietHours = () => {
+    const hour=Number(new Intl.DateTimeFormat('en-GB',{
+      timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'
+    }).format(new Date()));
+    return hour>=0 && hour<6;
+  };
   let reconnect = null, heartbeat = null, presenceTimer = null, presenceRetry = null, recorder = null, stream = null;
   // Supabase throttles Presence updates per client. Count can refresh every 10 s
   // while its existing 12 s stale-session cutoff remains unchanged.
@@ -93,12 +99,15 @@
 
   function setStatus(message) { statusText = message; render(); }
   function render() {
+    const quiet=walkieQuietHours();
     for (const el of new Set([toggle, activeToggle])) {
       el.dataset.active = String(active && connected);
-      el.querySelector('small').textContent = active ? 'OFF' : 'ON';
+      el.querySelector('small').textContent = quiet ? '06:00' : active ? 'OFF' : 'ON';
+      el.disabled=quiet;
+      el.style.opacity=quiet ? '0.55' : '1';
       el.setAttribute('aria-pressed', String(active));
-      el.setAttribute('aria-label', active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie');
-      el.title = active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie';
+      el.setAttribute('aria-label', quiet ? 'Walkie-talkie disponibile dalle 06:00' : active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie');
+      el.title = quiet ? 'Walkie-talkie disponibile dalle 06:00' : active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie';
     }
     const cooling = Date.now() < cooldownUntil;
     for (const el of new Set([talk, activeTalk])) {
@@ -167,7 +176,7 @@
     if (socket) { const old = socket; socket = null; old.close(); }
   }
   function connect() {
-    if (closed || socket) return;
+    if (closed || !active || walkieQuietHours() || socket) return;
     try { socket = new WebSocket(endpoint); }
     catch (_) { setStatus('Connessione non disponibile'); return; }
     const current = socket;
@@ -206,7 +215,7 @@
       presenceRetry = null; presenceRegistered = false;
       socket = null; connected = false; remoteSpeaker = null; connectedCount = null; presences = {};
       if (recording || pressed) finish();
-      if (!closed) { setStatus(active ? 'Riconnessione…' : ''); reconnect = setTimeout(connect, 2000); }
+      if (!closed && active && !walkieQuietHours()) { setStatus('Riconnessione…'); reconnect = setTimeout(connect, 2000); }
       else render();
     };
     current.onerror = () => { /* onclose handles reconnection. */ };
@@ -287,6 +296,7 @@
     output.play().catch(() => { done(); setStatus('Audio bloccato dal browser: riattiva il walkie-talkie'); });
   }
   async function enable() {
+    if (walkieQuietHours()) { render(); return; }
     if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder || !window.WebSocket || !window.isSecureContext) {
       window.alert('Walkie-talkie: usa un browser HTTPS che supporti il microfono.'); return;
     }
@@ -309,7 +319,7 @@
       active = false;
       trackPresence();
       delete presences[id]; updateCount();
-      if (!socket) connect();
+      disconnect();
       window.alert('Per parlare devi consentire il microfono nelle impostazioni del browser.');
       render();
     }
@@ -323,6 +333,7 @@
     if (currentSource) { try { currentSource.stop(); } catch (_) {} currentSource = null; }
     output.pause(); output.onended = output.onerror = null; output.removeAttribute('src');
     if (currentOutputUrl) { URL.revokeObjectURL(currentOutputUrl); currentOutputUrl = null; }
+    disconnect();
     statusText = ''; render();
   }
   function pickMime() {
@@ -392,7 +403,8 @@
   }
   bind(toggle,talk);
   window.ccWalkie = {attach,deactivate:disable};
-  connect();
+  window.setInterval(()=>{if(walkieQuietHours() && (active || socket))disable();else render();},15000);
+  window.addEventListener('focus',()=>{if(walkieQuietHours() && (active || socket))disable();else render();});
   document.addEventListener('visibilitychange',() => { if (document.hidden) finish(); });
   window.addEventListener('pagehide',() => { disable(); closed = true; disconnect(); });
   render();

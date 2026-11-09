@@ -213,6 +213,12 @@
     return;
   }
   const preferenceKey = 'cc-jazz-session-enabled-v2';
+  const radioQuietHours = () => {
+    const hour=Number(new Intl.DateTimeFormat('en-GB',{
+      timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'
+    }).format(new Date()));
+    return hour>=0 && hour<6;
+  };
   let enabled = false;
   // Una nuova apertura parte sempre spenta; nelle navigazioni interne il
   // player già acceso resta invece condiviso come prima.
@@ -263,6 +269,7 @@
   async function updateListenerPresence(forceOff=false){
     // Le richieste alla radio restano sempre indipendenti dal refresh pagina.
     // Se durante una richiesta l'utente spegne la radio, accoda l'OFF.
+    if(radioQuietHours() && !forceOff)return;
     if(listenerPending){
       if(forceOff)listenerOffRequested=true;
       return;
@@ -316,8 +323,9 @@
   });
 
   function render() {
+    const quiet=radioQuietHours();
     const playing = enabled && audible && !audio.paused && !failed;
-    const label = playing ? 'OFF · Spegni la musica' : pending
+    const label = quiet ? 'Radio disponibile dalle 06:00' : playing ? 'OFF · Spegni la musica' : pending
       ? 'OFF · Annulla avvio della musica' : failed
       ? 'ON · Radio non disponibile: tocca per riprovare'
       : 'ON · Accendi la musica';
@@ -326,7 +334,9 @@
       + '<ellipse cx="6" cy="18" rx="3" ry="2.5" fill="currentColor"/><ellipse cx="18" cy="16" rx="3" ry="2.5" fill="currentColor"/>'
       + (playing || pending ? '<path d="M3 3l18 18" stroke="var(--navy,#082a43)" stroke-width="5"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' : '') + '</svg>';
     for (const target of new Set([button, activeButton])) {
-      target.innerHTML = icon + '<span aria-hidden="true" style="display:block;font:700 9px/1.1 system-ui;letter-spacing:.04em;pointer-events:none">' + (playing || pending ? 'OFF' : 'ON') + '</span>';
+      target.innerHTML = icon + '<span aria-hidden="true" style="display:block;font:700 9px/1.1 system-ui;letter-spacing:.04em;pointer-events:none">' + (quiet ? '06:00' : playing || pending ? 'OFF' : 'ON') + '</span>';
+      target.disabled=quiet;
+      target.style.opacity=quiet ? '0.55' : '1';
       target.setAttribute('aria-label', label);
       target.setAttribute('aria-pressed', String(playing));
       target.setAttribute('data-music-state', playing ? 'on' : 'off');
@@ -579,7 +589,7 @@
     render();
   }
   function start() {
-    if (!enabled || pending || (!audio.paused && !failed)) return;
+    if (radioQuietHours() || !enabled || pending || (!audio.paused && !failed)) return;
     pending = true;
     const currentAttempt = ++attempt;
     failed = false;
@@ -610,6 +620,7 @@
   audio.addEventListener('ended', () => { audible = false; pending = false; clearPromoFlash(); render(); updateListenerPresence(true); });
   audio.addEventListener('error', () => { audible = false; pending = false; failed = true; clearPromoFlash(); render(); updateListenerPresence(true); });
   function toggle() {
+    if (radioQuietHours()) { turnOff(); render(); return; }
     if (enabled && (pending || (!audio.paused && !failed))) {
       enabled = false;
       remember();
@@ -637,6 +648,9 @@
     stop();
   }
   button.addEventListener('click', toggle);
+  window.setInterval(()=>{if(radioQuietHours())turnOff();render();},15000);
+  window.addEventListener('focus',()=>{if(radioQuietHours())turnOff();render();});
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(radioQuietHours())turnOff();render();}});
   const ownControls=placeRadioControls(button);
   ownListenerBadge=ownControls.listeners;
   activeListenerBadge=ownControls.listeners;
