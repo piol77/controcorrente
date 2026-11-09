@@ -688,3 +688,11 @@ Questa sezione prevale sulle note discordanti precedenti relative a voce, primo 
 - Sabato a pranzo e domenica a pranzo/cena: al submit valido mostrare un pop-up riferito al solo servizio scelto. Spiegare che si apre solo su prenotazione anticipata, che la richiesta prosegue ma resta in sospeso e che occorre attendere la conferma; in assenza di conferma il ristorante resterà chiuso per quel servizio.
 - Il pop-up non blocca l'apertura di WhatsApp dopo la lettura. Conservare il contratto e il formato WhatsApp riconosciuti dal bot, oltre agli altri controlli esistenti.
 - Il risponditore deve sospendere le nuove richieste automatiche relative ai medesimi servizi, sia dal sito sia in chat, con o senza preordine. Questa parte richiede l'installazione dello ZIP Windows dedicato, non il solo aggiornamento del sito.
+
+## Frequenze dei controlli del sito — 10 novembre 2026
+
+- Radio e walkie-talkie disponibili H24. Per stato OFF, continuità e promo seguire la sezione del 10 novembre in `.github/instructions/radio-premi-master.md`. La frequenza del registro pubblico Club è distinta dalla verifica immediata dei codici e dagli annunci durante l’ascolto.
+- Novità rilegge `news.json` e `weather.json` ogni 30 minuti in primo piano. Mostrare prima l’ultima copia valida disponibile e ricontrollare subito in apertura o al ritorno in primo piano con i validatori HTTP di GitHub Pages, evitando letture concorrenti. I pannelli del documento coperto dalla navigazione interna sospendono i controlli. Meteo manuale e GPS restano separati dai dati pubblicati.
+- Statistiche aggregate di accensione radio ogni 5 minuti e contatore iscritti alle notifiche ogni 10 minuti in Novità. Ricontrollare all’apertura e al ritorno in primo piano. Le registrazioni delle accensioni e l’invio delle notifiche push seguono la procedura esistente.
+- Il contatore pubblico delle richieste pranzo mantiene la frequenza di 20 secondi quando visibile e riparte subito tornando in primo piano. Gli incrementi alla richiesta e il cambio della chiave alle 15:00 seguono le regole esistenti.
+- Conservare quattro acquisizioni giornaliere per le notizie e due per il meteo tramite il workflow esistente. Divertentismo resta statico nel browser, con edizione delle 08:00 Europe/Rome, recupero solo se manca l’edizione quotidiana e tre vignette visibili.

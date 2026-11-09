@@ -94,6 +94,9 @@
       ? 'Account non autorizzato per Controcorrente.'
       : data?.reason==='login_required' ? 'Sessione scaduta: accedi nuovamente.'
       : data?.reason||'Operazione non riuscita');
+    if (operation !== 'list') {
+      try { localStorage.setItem('cc-radio-ledger-changed', String(Date.now())); } catch (_) {}
+    }
     return data;
   }
   async function refresh() {

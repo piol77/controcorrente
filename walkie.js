@@ -60,18 +60,11 @@
   const id = crypto.randomUUID();
   const intentKey='cc-walkie-enabled-session-v1';
   let active = false, connected = false, socket = null, joinRef = null, seq = 0, closed = false;
-  const walkieQuietHours = () => {
-    const hour=Number(new Intl.DateTimeFormat('en-GB',{
-      timeZone:'Europe/Rome',hour:'2-digit',hourCycle:'h23'
-    }).format(new Date()));
-    return hour>=0 && hour<6;
-  };
-  let reconnect = null, heartbeat = null, presenceTimer = null, presenceRetry = null, recorder = null, stream = null;
+  let activation = 0, authorized = false;
+  let reconnect = null, heartbeat = null, presenceTimer = null, recorder = null, stream = null;
   // Supabase throttles Presence updates per client. Count can refresh every 10 s
   // while its existing 12 s stale-session cutoff remains unchanged.
   const PRESENCE_REFRESH_MS = 10000;
-  const PRESENCE_MIN_GAP_MS = 8000;
-  let lastPresenceSent = 0, presenceRegistered = false;
   let pressed = false, recording = false, maxTimer = null, cooldownUntil = 0;
   let remoteSpeaker = null, remoteUntil = 0, remoteTimer = null;
   let activeToggle = toggle, activeTalk = talk, activeStatus = status, activeCount = count;
@@ -100,15 +93,12 @@
 
   function setStatus(message) { statusText = message; render(); }
   function render() {
-    const quiet=walkieQuietHours();
     for (const el of new Set([toggle, activeToggle])) {
       el.dataset.active = String(active && connected);
-      el.querySelector('small').textContent = quiet ? '06:00' : active ? 'OFF' : 'ON';
-      el.disabled=quiet;
-      el.style.opacity=quiet ? '0.55' : '1';
+      el.querySelector('small').textContent = active ? 'OFF' : 'ON';
       el.setAttribute('aria-pressed', String(active));
-      el.setAttribute('aria-label', quiet ? 'Walkie-talkie disponibile dalle 06:00' : active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie');
-      el.title = quiet ? 'Walkie-talkie disponibile dalle 06:00' : active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie';
+      el.setAttribute('aria-label', active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie');
+      el.title = active ? 'Spegni walkie-talkie' : 'Accendi walkie-talkie';
     }
     const cooling = Date.now() < cooldownUntil;
     for (const el of new Set([talk, activeTalk])) {
@@ -139,26 +129,8 @@
     render();
   }
   function trackPresence() {
-    if (!connected) { updateCount(); return; }
-    // Do not send repeated untrack messages for listeners who are already OFF.
-    if (!active && !presenceRegistered) { updateCount(); return; }
-    const now = Date.now();
-    const remaining = PRESENCE_MIN_GAP_MS - (now - lastPresenceSent);
-    if (remaining > 0) {
-      // Coalesce a quick ON/OFF or a duplicate call during microphone permission.
-      clearTimeout(presenceRetry);
-      presenceRetry = setTimeout(trackPresence, remaining);
-      updateCount();
-      return;
-    }
-    clearTimeout(presenceRetry);
-    presenceRetry = null;
-    const event = active ? 'track' : 'untrack';
-    const payload = active ? {at:now} : {};
-    if (push('presence',{type:'presence',event,payload})) {
-      lastPresenceSent = now;
-      presenceRegistered = active;
-    }
+    if (!active || !connected) return;
+    push('presence',{type:'presence',event:'track',payload:{at:Date.now()}});
     updateCount();
   }
   function push(event, payload, room = topic) {
@@ -170,14 +142,13 @@
     return connected && push('broadcast', {type:'broadcast', event, payload});
   }
   function disconnect() {
-    clearTimeout(reconnect); clearInterval(heartbeat); clearInterval(presenceTimer); clearTimeout(presenceRetry); clearTimeout(remoteTimer);
-    presenceRetry = null; presenceRegistered = false;
+    clearTimeout(reconnect); clearInterval(heartbeat); clearInterval(presenceTimer); clearTimeout(remoteTimer);
     connected = false; remoteSpeaker = null; remoteUntil = 0;
     presences = {}; connectedCount = null;
     if (socket) { const old = socket; socket = null; old.close(); }
   }
   function connect() {
-    if (closed || !active || walkieQuietHours() || socket) return;
+    if (closed || !active || !authorized || socket) return;
     try { socket = new WebSocket(endpoint); }
     catch (_) { setStatus('Connessione non disponibile'); return; }
     const current = socket;
@@ -211,12 +182,12 @@
       } else if (packet.event === 'phx_error' || packet.event === 'phx_close') current.close();
     };
     current.onclose = () => {
-      clearTimeout(timeout); clearInterval(heartbeat); clearInterval(presenceTimer); clearTimeout(presenceRetry);
+      clearTimeout(timeout);
       if (current !== socket) return;
-      presenceRetry = null; presenceRegistered = false;
+      clearInterval(heartbeat); clearInterval(presenceTimer);
       socket = null; connected = false; remoteSpeaker = null; connectedCount = null; presences = {};
       if (recording || pressed) finish();
-      if (!closed && active && !walkieQuietHours() && !document.hidden) { setStatus('Riconnessione…'); reconnect = setTimeout(connect, 2000); }
+      if (!closed && active && !document.hidden) { setStatus('Riconnessione…'); reconnect = setTimeout(connect, 2000); }
       else render();
     };
     current.onerror = () => { /* onclose handles reconnection. */ };
@@ -297,7 +268,6 @@
     output.play().catch(() => { done(); setStatus('Audio bloccato dal browser: riattiva il walkie-talkie'); });
   }
   async function enable() {
-    if (walkieQuietHours()) { render(); return; }
     if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder || !window.WebSocket || !window.isSecureContext) {
       window.alert('Walkie-talkie: usa un browser HTTPS che supporti il microfono.'); return;
     }
@@ -307,31 +277,30 @@
       audioContext ||= new (window.AudioContext || window.webkitAudioContext)();
       audioContext.resume().catch(() => {});
     } catch (_) { audioContext = null; }
-    active = true; render(); connect();
+    const currentActivation = ++activation;
+    active = true; render();
     try {
       const mic = await permission;
       mic.getTracks().forEach(track => track.stop());
-      if (!active) return;
+      if (!active || currentActivation !== activation) return;
+      authorized = true;
       try { sessionStorage.setItem(intentKey,'on'); } catch (_) {}
       window.ccJazzPlayer?.turnOff();
-      trackPresence();
+      connect();
       // Unlock incoming audio on the same user-initiated activation when possible.
       setStatus(connected ? '' : 'Connessione…');
     } catch (_) {
-      active = false;
-      try { sessionStorage.removeItem(intentKey); } catch (_) {}
-      trackPresence();
-      delete presences[id]; updateCount();
-      disconnect();
+      if (currentActivation !== activation) return;
+      disable();
       window.alert('Per parlare devi consentire il microfono nelle impostazioni del browser.');
       render();
     }
   }
   function disable() {
+    activation++;
+    authorized = false;
     try { sessionStorage.removeItem(intentKey); } catch (_) {}
     pressed = false; finish(); active = false;
-    trackPresence();
-    delete presences[id]; updateCount();
     playbackEpoch++;
     audioQueue = []; audioPlaying = false;
     if (currentSource) { try { currentSource.stop(); } catch (_) {} currentSource = null; }
@@ -346,11 +315,12 @@
   }
   async function start(event) {
     if (!active || !connected || recording || remoteSpeaker || Date.now() < cooldownUntil) return;
+    const currentActivation = activation;
     event.preventDefault(); pressed = true;
     if (event.pointerId != null) try { event.currentTarget.setPointerCapture(event.pointerId); } catch (_) {}
     try {
       const mic = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true},video:false});
-      if (!pressed || !active || !connected || remoteSpeaker) { mic.getTracks().forEach(t => t.stop()); return; }
+      if (currentActivation !== activation || !pressed || !active || !connected || remoteSpeaker) { mic.getTracks().forEach(t => t.stop()); return; }
       const mimeType = pickMime();
       stream = mic;
       recorder = new MediaRecorder(mic,mimeType ? {mimeType,audioBitsPerSecond:24000} : {audioBitsPerSecond:24000});
@@ -360,7 +330,7 @@
         if (stream === mic) stream = null;
         mic.getTracks().forEach(t => t.stop());
         if (recorder === thisRecorder) recorder = null;
-        if (!active || !connected || !chunks.length) return;
+        if (currentActivation !== activation || !active || !connected || !chunks.length) return;
         const blob = new Blob(chunks,{type:thisRecorder.mimeType || mimeType || chunks[0].type});
         if (blob.size > 180000) { setStatus('Messaggio troppo grande: riprova più breve'); return; }
         try {
@@ -368,7 +338,7 @@
           const total = Math.ceil(bytes.length/24000), message = crypto.randomUUID(), at = Date.now();
           if (total > 20) throw Error('clip too large');
           for (let index = 0; index < total; index++) {
-            if (!active || !connected) break;
+            if (currentActivation !== activation || !active || !connected) break;
             const part = bytes.subarray(index*24000,(index+1)*24000);
             broadcast('voice',{from:id,message,index,total,at,mime:blob.type,bytes:btoa(String.fromCharCode(...part))});
             await new Promise(resolve => setTimeout(resolve,90));
@@ -378,6 +348,7 @@
       thisRecorder.start(); recording = true; broadcast('floor',{from:id,action:'start',at:Date.now()});
       maxTimer = setTimeout(finish,10000); setStatus('Stai parlando… massimo 10 secondi');
     } catch (_) {
+      if (currentActivation !== activation) return;
       pressed = false; if (stream) stream.getTracks().forEach(t => t.stop()); stream = null;
       setStatus('Microfono non disponibile o permesso negato');
     }
@@ -407,19 +378,16 @@
   }
   bind(toggle,talk);
   window.ccWalkie = {attach,deactivate:disable};
-  try { active=sessionStorage.getItem(intentKey)==='on'; } catch (_) {}
-  if(active && walkieQuietHours())disable();
-  else if(active && !document.hidden)connect();
+  try { authorized=active=sessionStorage.getItem(intentKey)==='on'; } catch (_) {}
+  if(active && !document.hidden)connect();
   function restoreConnection() {
-    if(walkieQuietHours()){if(active || socket)disable();else render();return;}
-    if(!active){render();return;}
+    if(!active || !authorized)return;
     closed=false;
     disconnect();
     setStatus('Riconnessione…');
     connect();
   }
-  window.setInterval(()=>{if(walkieQuietHours() && (active || socket))disable();else render();},15000);
-  window.addEventListener('focus',()=>{if(walkieQuietHours())restoreConnection();else if(active && !socket && !document.hidden)restoreConnection();else render();});
+  window.addEventListener('focus',()=>{if(active && !socket && !document.hidden)restoreConnection();});
   document.addEventListener('visibilitychange',() => {
     if(document.hidden)finish();
     else restoreConnection();

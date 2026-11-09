@@ -500,6 +500,7 @@
             + '\nLa richiesta non è stata inviata: correggi o elimina il codice dalle note.');
           return;
         }
+        try { localStorage.setItem('cc-radio-ledger-changed', String(Date.now())); } catch (_) {}
         // Riserva interna registrata in Supabase: la sola nota numerica sarà
         // visibile nel WhatsApp, mentre l'UUID resta privato nella banca dati.
         // Un codice di prova non dà alcuno sconto reale.

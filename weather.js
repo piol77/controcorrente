@@ -3,13 +3,12 @@
   var card = document.querySelector('[data-weather-card]');
   if (!card) return;
   var forecast = null;
-  var pending = false;
-  var lastAttempt = 0;
   var mode = 'restaurant';
   var dayOffset = 0;
   var calendarDay = null;
   var requestId = 0;
   var providerCache = {};
+  var providerPending = new Map();
   var liveRaw = null;
   var liveFetchedAt = null;
   var livePosition = null;
@@ -109,22 +108,24 @@
       timeZone: timezone(), day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit'
     }).format(new Date(forecast.fetched_at));
   }
-  function load() {
-    if (pending || mode !== 'restaurant') return;
-    pending = true;
-    lastAttempt = Date.now();
-    fetch('weather.json', { cache: 'no-store' }).then(function (response) {
-      if (!response.ok) throw new Error('Weather unavailable');
-      return response.json();
-    }).then(function (data) {
-      if (!Array.isArray(data.days) || !Number.isFinite(Date.parse(data.fetched_at))) throw new Error('Invalid weather');
+  var source = window.ccReadPublishedJson('weather.json', function (data) {
+    return data && Array.isArray(data.days) && Number.isFinite(Date.parse(data.fetched_at));
+  });
+  async function load() {
+    if (mode !== 'restaurant') return;
+    try {
+      var data = await source.load();
       restaurantForecast = data;
-      if (mode === 'restaurant' && !liveRaw) { forecast = data; render(); }
-    }).catch(function () {
+      if (mode === 'restaurant' && (!liveRaw || Date.parse(data.fetched_at) > Date.parse(liveFetchedAt))) {
+        liveRaw = null;
+        forecast = data;
+        render();
+      }
+    } catch (_) {
       if (mode !== 'restaurant') return;
       if (forecast) render();
       else unavailable('Meteo temporaneamente non disponibile');
-    }).finally(function () { pending = false; });
+    }
   }
   function condition(symbol) {
     var code = symbol.split('_')[0];
@@ -204,20 +205,20 @@
     lastLiveAttempt = Date.now();
     var key = lat + ',' + lon;
     var cached = providerCache[key];
-    var result = cached && Date.now() < cached.expires
-      ? Promise.resolve(cached)
-      : fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=' + lat + '&lon=' + lon, {
-          credentials: 'omit', signal: AbortSignal.timeout(15000)
-        }).then(function (response) {
-          if (!response.ok) throw new Error('Weather unavailable');
-          var expires = Date.parse(response.headers.get('Expires'));
-          return response.json().then(function (raw) {
-            var entry = { raw: raw, fetchedAt: new Date().toISOString(),
-              expires: Math.max(Date.now() + 3600000, expires || 0) };
-            providerCache[key] = entry;
-            return entry;
-          });
-        });
+    var result = cached && Date.now() < cached.expires ? Promise.resolve(cached) : providerPending.get(key);
+    if (!result) {
+      result = fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=' + lat + '&lon=' + lon, {
+        credentials: 'omit', signal: AbortSignal.timeout(15000)
+      }).then(async function (response) {
+        if (!response.ok) throw new Error('Weather unavailable');
+        var expires = Date.parse(response.headers.get('Expires'));
+        var entry = { raw: await response.json(), fetchedAt: new Date().toISOString(),
+          expires: Math.max(Date.now() + 3600000, expires || 0) };
+        providerCache[key] = entry;
+        return entry;
+      }).finally(function () { providerPending.delete(key); });
+      providerPending.set(key, result);
+    }
     message('Aggiornamento del meteo…');
     return result.then(function (entry) {
       if (id !== requestId) return;
@@ -281,18 +282,17 @@
     render();
     refreshPosition('45.0641', '7.6525', 'restaurant', id);
   });
-  function check() {
-    if (document.hidden) return;
-    render();
-    // Refresh an explicitly selected position without asking for GPS again.
+  function checkPosition() {
+    if (document.hidden || document.documentElement.hasAttribute('data-cc-panel-covered')) return;
+    if (liveRaw || calendarDay !== localDate(new Date())) render();
+    // Continue refreshing a position explicitly selected by the visitor.
     if (livePosition && livePosition.mode === mode && Date.now() - lastLiveAttempt >= 3 * 3600000) {
       refreshPosition(livePosition.lat, livePosition.lon, mode, ++requestId);
     }
-    // The fixed restaurant forecast keeps its existing local JSON updates.
-    if (mode === 'restaurant' && Date.now() - lastAttempt >= 300000) load();
   }
+  forecast = restaurantForecast = source.cached();
   render();
-  load();
-  document.addEventListener('visibilitychange', check);
-  window.setInterval(check, 60000);
+  window.ccWatchPanel(load, 30 * 60000);
+  document.addEventListener('visibilitychange', checkPosition);
+  window.setInterval(checkPosition, 60000);
 })();

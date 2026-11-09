@@ -21,14 +21,13 @@
   const onlyPublic = item => item && typeof item === 'object' &&
     /^(?:[0-9]{5}|[A-HJ-NP-Z2-9]{5})$/.test(item.code) &&
     ['held','confirmed','used','void'].includes(item.status);
+  let read = window.ccReadRadioPremi;
+  try { read = window.parent.ccReadRadioPremi || read; } catch (_) {}
+  let lastRows;
   async function refresh() {
     let data;
     try {
-      const response = await fetch('https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi', {
-        cache:'no-store', credentials:'omit'
-      });
-      if (!response.ok) throw new Error('No public ledger');
-      data = await response.json();
+      data = await read();
       if (!data || typeof data.active !== 'boolean' || !Array.isArray(data.records)) throw new Error('Invalid ledger');
     } catch (_) {
       status.textContent = 'Stato temporaneamente non disponibile. Non si possono verificare premi.';
@@ -44,10 +43,13 @@
           : 'Promozione attiva: accendi la radio per vedere il codice quando appare.')
         : 'Promozione sospesa: nuovi codici non disponibili.';
     updated.textContent = 'Registro aggiornato: ' + stamp(data.server_time);
-    body.replaceChildren();
     const valid = data.records.filter(onlyPublic).slice()
       .sort((a,b) => String(b.issued_at || '').localeCompare(String(a.issued_at || '')))
       .slice(0,60);
+    const rows = JSON.stringify(valid);
+    if (rows === lastRows) return;
+    lastRows = rows;
+    body.replaceChildren();
     if (!valid.length) {
       const tr = document.createElement('tr');
       const td = document.createElement('td');
@@ -75,7 +77,8 @@
       body.appendChild(tr);
     }
   }
-  refresh();
-  window.setInterval(() => { if (!document.hidden) refresh(); }, 5000);
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  const poll = window.ccWatchPanel(refresh, 60000);
+  window.addEventListener('storage', event => {
+    if (event.key === 'cc-radio-ledger-changed') poll.refresh();
+  });
 })();

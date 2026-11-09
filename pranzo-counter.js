@@ -52,10 +52,8 @@
   if (!value) return;
 
   let displayedDay = null;
-  let refreshId = 0;
   async function refresh() {
     const day = activeDay();
-    const id = ++refreshId;
     if (displayedDay !== day) {
       displayedDay = day;
       value.textContent = '0';
@@ -63,9 +61,12 @@
     try {
       const response = await fetch(
         API + '/get/' + counterKey(day) + '?t=' + Date.now(),
-        {method: 'GET', cache: 'no-store', credentials: 'omit'}
+        {
+          method:'GET', cache:'no-store', credentials:'omit',
+          signal: typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(10000) : undefined
+        }
       );
-      if (id !== refreshId || day !== activeDay()) return;
+      if (day !== activeDay()) return;
       if (response.status === 404) {
         value.textContent = '0';
         return;
@@ -76,12 +77,9 @@
       if (!Number.isSafeInteger(people) || people < 0) throw new Error('invalid counter');
       value.textContent = people.toLocaleString('it-IT');
     } catch (_) {
-      if (id === refreshId && day === activeDay()) value.textContent = '—';
+      if (day === activeDay()) value.textContent = '—';
     }
   }
 
-  refresh();
-  setInterval(refresh, 20000);
-  document.addEventListener('visibilitychange', () => {if (!document.hidden) refresh();});
-  window.addEventListener('pageshow', refresh);
+  window.ccWatchPanel(refresh, 20000);
 })();

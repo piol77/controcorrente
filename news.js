@@ -5,7 +5,7 @@
   var viewport = root.querySelector('[data-headline-window]');
   var updated = root.querySelector('[data-headline-updated]');
   var pause = root.querySelector('[data-headline-pause]');
-  var slides = [], current = 0, data = null, busy = false, lastFetch = 0;
+  var slides = [], current = 0, data = null, delayed = false;
   var paused = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function controls() {
     pause.textContent = paused ? '▶' : 'Ⅱ';
@@ -44,27 +44,37 @@
     updateLabel(false);
   }
   function advance() {
-    if (paused || document.hidden || root.matches(':hover') || viewport.contains(document.activeElement) || slides.length < 2) return;
+    if (paused || document.hidden || document.documentElement.hasAttribute('data-cc-panel-covered') || root.matches(':hover') || viewport.contains(document.activeElement) || slides.length < 2) return;
     slides.forEach(function (a) { a.classList.remove('is-leaving'); });
     var old = slides[current]; old.classList.remove('is-current'); old.classList.add('is-leaving');
     old.tabIndex = -1; old.setAttribute('aria-hidden','true');
     current = (current + 1) % slides.length;
     slides[current].classList.add('is-current'); slides[current].tabIndex = 0; slides[current].setAttribute('aria-hidden','false');
   }
-  function load() {
-    if (busy || document.hidden) return;
-    busy = true; lastFetch = Date.now();
-    fetch('news.json', {cache:'no-store'}).then(function (r) { if (!r.ok) throw Error(); return r.json(); }).then(function (value) {
-      if (!Number.isFinite(Date.parse(value.fetched_at)) || !Array.isArray(value.items) || value.items.length !== 5 ||
-          !value.items.every(function (item) { return typeof item.title === 'string' && safeUrl(item.url); })) throw Error();
+  var source = window.ccReadPublishedJson('news.json', function (value) {
+    return value && Number.isFinite(Date.parse(value.fetched_at)) &&
+      Array.isArray(value.items) && value.items.length === 5 &&
+      value.items.every(function (item) { return item && typeof item.title === 'string' && safeUrl(item.url); });
+  });
+  async function load() {
+    try {
+      var value = await source.load();
+      delayed = false;
       if (!data || data.fetched_at !== value.fetched_at) { data = value; render(); }
       else updateLabel(false);
-    }).catch(function () { if (!data) unavailable(); else updateLabel(true); })
-    .finally(function () { busy = false; });
+    } catch (_) {
+      delayed = true;
+      if (data) updateLabel(true);
+      else unavailable();
+    }
   }
   pause.addEventListener('click', function () { paused = !paused; controls(); });
-  controls(); load();
+  controls();
+  data = source.cached();
+  if (data) render();
+  window.ccWatchPanel(load, 30 * 60000);
   window.setInterval(advance, 8500);
-  window.setInterval(function () { if (Date.now() - lastFetch >= 300000) load(); if(data) updateLabel(false); }, 60000);
-  document.addEventListener('visibilitychange', function () { if (!document.hidden && Date.now()-lastFetch>=300000) load(); });
+  window.setInterval(function () {
+    if (!document.hidden && !document.documentElement.hasAttribute('data-cc-panel-covered')) updateLabel(delayed);
+  }, 60000);
 })();
