@@ -344,6 +344,7 @@
   // trenta secondi per slot a chi ha la radio realmente in ascolto.
   let promoOnAir=null;
   let promoPoll=null;
+  let promoVolumeTimer=null;
   let promoFlashSlot=null;
   let promoAllowedAt=Number.POSITIVE_INFINITY;
   let promoFlashCode=null;
@@ -468,7 +469,7 @@
   function markSeen(token) {
     promoSeenThisSession.add(token);
     try { localStorage.setItem(promoSeenPrefix+token,'1'); }
-    catch (_) { /* Anche con storage disabilitato il flash dura solo 30 s. */ }
+    catch (_) { /* Anche con storage disabilitato il codice compare una sola volta per passaggio. */ }
   }
   function renderPromoFlash() {
     const visible=realPlaying() && promoFlashCode && performance.now()<promoFlashUntil;
@@ -484,6 +485,8 @@
     promoFlashCode=null;
     promoFlashSlot=null;
     promoFlashUntil=0;
+    if(promoVolumeTimer!==null)window.clearTimeout(promoVolumeTimer);
+    promoVolumeTimer=null;
     stopTrillAndRestoreVolume();
     renderPromoFlash();
   }
@@ -494,11 +497,16 @@
         alreadySeen(slot.token))return;
     promoFlashCode=slot.code;
     promoFlashSlot=slot;
-    promoFlashUntil=performance.now()+30000;
+    promoFlashUntil=Math.min(slot.deadline,performance.now()+15*60*1000);
     renderPromoFlash();
-    promoTimer=window.setTimeout(clearPromoFlash,30000);
+    promoTimer=window.setTimeout(clearPromoFlash,Math.max(0,promoFlashUntil-performance.now()));
     markSeen(slot.token);
     announcePromoFlash();
+    // Il trillo e l'attenuazione restano brevi; il codice rimane visibile.
+    promoVolumeTimer=window.setTimeout(()=>{
+      promoVolumeTimer=null;
+      stopTrillAndRestoreVolume();
+    },30000);
   }
   async function refreshRadioPromo() {
     if(!realPlaying() || promoPoll)return;
@@ -535,7 +543,7 @@
   }
   window.setInterval(()=>{
     if(realPlaying())refreshRadioPromo();
-  },2000);
+  },60000);
   window.addEventListener('focus',()=>{refreshRadioPromo();});
   document.addEventListener('visibilitychange',()=>{
     if(!document.hidden && realPlaying()){

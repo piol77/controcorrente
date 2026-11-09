@@ -129,3 +129,7 @@ Queste regole sostituiscono le precedenti dove non coincidono.
 - **Resta un solo codice reale al giorno**: se il codice è stato riservato, confermato, usato, annullato o è scaduto, gli annunci rimanenti cessano; non generare un secondo codice per riempire le ore. Conservare tutte le regole di sconto, importo, validità del giorno, conferma WhatsApp, sicurezza Auth e menu.
 - La correzione è pubblicata sul repository ma la **riproduzione reale su Android e desktop va provata in uno slot autentico**; nessun test statico autorizza a dichiarare già udito il trillo.
 
+## Radio Premi — gestione manuale, 9 novembre 2026 (PREVALENTE)
+- Il backend continua a emettere automaticamente un solo codice numerico nuovo ogni giorno. Non programma né trasmette più gli annunci orari; il titolare decide quando mandare in onda il codice con «Manda in onda ora» nel pannello autenticato.
+- La trasmissione manuale dura 15 minuti: solo chi ha la radio del sito effettivamente in riproduzione vede il codice accanto al player, dopo il breve trillo. Il browser verifica la presenza di un codice ogni 60 secondi durante l'ascolto. Il trillo e l'attenuazione della musica restano brevi (30 secondi), poi volume al 100% mentre il codice resta visibile fino alla scadenza della finestra.
+- Restano invariati codice giornaliero, riserva atomica, importi e condizioni, scadenza, WhatsApp e conferma del titolare. I vecchi slot nel database non vengono più esposti come annunci.

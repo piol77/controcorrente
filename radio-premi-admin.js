@@ -16,28 +16,12 @@
     hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Rome'
   }).format(new Date(iso));
   function renderTodaySchedule(records) {
-    const day=romeDay();
-    todayScheduleLabel.textContent='Solo oggi · '+new Intl.DateTimeFormat('it-IT',{
-      day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Rome'
-    }).format(new Date());
+    todayScheduleLabel.textContent='oggi';
     todaySchedule.replaceChildren();
-    const item=records.find(rec=>rec.issue_day===day && rec.is_test!==true);
-    if(!item || !Array.isArray(item.announcements) || !item.announcements.length) {
-      todaySchedule.textContent='Orari non ancora generati per oggi.';
-      return;
-    }
-    item.announcements.forEach((iso,index)=>{
-      const time=romeTime(iso);
-      const span=document.createElement('span');
-      span.className='rp-slot';
-      span.textContent=time;
-      span.title=(index+1)+'° passaggio di oggi, ora di Torino · '+(new Date(iso)<=new Date()?'orario passato':'in programma');
-      todaySchedule.append(span);
-    });
-    const note=document.createElement('p');
-    note.className='rp-sr';
-    note.textContent='24 passaggi: uno per ciascuna ora, a minuto casuale (Torino). Il codice compare per 30 secondi solo mentre la radio suona e il premio è disponibile.';
-    todaySchedule.append(note);
+    const item=records.find(rec=>rec.issue_day===romeDay() && rec.is_test!==true);
+    todaySchedule.textContent=item
+      ? 'Codice odierno: '+item.code+'. Premi «Manda in onda ora» quando desideri annunciarlo.'
+      : 'Il codice giornaliero non è ancora disponibile.';
   }
   const tokenKey = 'cc-radio-premi-admin-session-v1';
   let accessToken = sessionStorage.getItem(tokenKey) || '';
@@ -59,7 +43,7 @@
     release:'Annullamento definitivo di un codice: non sarà mai più utilizzabile.',
     free_hold:'Libera una prenotazione PROVVISORIA non seguita dal WhatsApp. Il codice torna disponibile.',
     activate:'Attiva i nuovi codici giornalieri. Non servono altri dati: confermerai prima di procedere.',
-    deactivate:'Ferma gli annunci radio SOLO per oggi. Domani il nuovo codice ripartirà automaticamente. Le prenotazioni già accettate restano valide.'
+    deactivate:'Ferma gli annunci radio SOLO per oggi. Domani potrai trasmettere manualmente il nuovo codice. Le prenotazioni già accettate restano valide.'
   };
   const stateLabels = {
     available:'DISPONIBILE', held:'RISERVATO (24 ore)',
@@ -119,7 +103,7 @@
       login.hidden=true;manager.hidden=false;
       status.textContent=!data.active?'PROMOZIONE DISATTIVATA'
         :data.paused_today?'ANNUNCI RADIO SOSPESI FINO A DOMANI'
-        :'PROMOZIONE ATTIVA · ANNUNCI ABILITATI';
+        :'PROMOZIONE ATTIVA · TRASMISSIONE MANUALE ABILITATA';
       renderTodaySchedule(data.records || []);
       rows.replaceChildren();
       if(!data.records.length) {
@@ -223,7 +207,7 @@
   let liveTestTimer=null;
   testChime?.addEventListener('click',async()=>{
     const flash=document.querySelector('[data-premi-test-status]');
-    if(!window.confirm('Mandare ORA in onda il codice premio reale? Tutti gli utenti con radio accesa lo vedranno per circa 30 secondi e potranno usarlo per uno sconto valido.'))return;
+    if(!window.confirm('Mandare ORA in onda il codice premio reale? Tutti gli utenti con radio accesa lo vedranno per circa 15 minuti e potranno usarlo per uno sconto valido.'))return;
     testChime.disabled=true;
     flash.classList.remove('rp-test-flash');
     flash.textContent='Invio del codice ai lettori radio…';
@@ -232,7 +216,7 @@
       if(!/^[0-9]{5}$/.test(String(data.code||'')))throw new Error('Risposta priva di un codice valido');
       if(liveTestTimer!==null)window.clearTimeout(liveTestTimer);
       flash.classList.add('rp-test-flash');
-      flash.textContent='🎟 IN ONDA ORA · CODICE CENA: '+data.code+' · visibile agli ascoltatori per 30 secondi';
+      flash.textContent='🎟 IN ONDA ORA · CODICE CENA: '+data.code+' · visibile agli ascoltatori per 15 minuti';
       display('Trasmissione reale attivata: il codice '+data.code+' è valido. Gli ascoltatori con la radio accesa lo vedono ora.');
       const sound=new Audio('trillo-radio-premi.mp3?v=20261107-live-30-v1');
       sound.volume=1;
@@ -248,7 +232,7 @@
         flash.textContent='Trasmissione di prova conclusa.';
         sound.pause();
         liveTestTimer=null;
-      },30000);
+      },15*60*1000);
     }catch(e){
       const reason=e instanceof Error?e.message:'errore sconosciuto';
       const labels={promotion_not_active:'Promozione sospesa: riattivala prima del test.',
@@ -279,7 +263,7 @@
     }
     const confirmations={
       activate:'Attivare la promozione Radio Premi? I codici validi potranno essere riscattati.',
-      deactivate:'Sospendere gli ANNUNCI RADIO solo per oggi? Domani riprendono con un nuovo codice. Le prenotazioni già riservate restano valide.',
+      deactivate:'Sospendere gli ANNUNCI RADIO solo per oggi? Domani potrai trasmettere il nuovo codice. Le prenotazioni già riservate restano valide.',
       use:'Segnare questo codice come GIÀ UTILIZZATO? Confermi che il conto finale è di almeno 50 €?',
       release:'Annullare DEFINITIVAMENTE il codice '+code+'? Non potrà più essere utilizzato.',
       free_hold:'Il cliente NON ha inviato la prenotazione su WhatsApp? Liberare la riserva temporanea '+code+'?'
