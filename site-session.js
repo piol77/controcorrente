@@ -380,6 +380,7 @@ window.ccReadPublishedJson = (url, validate) => {
   let listenerMayBeRegistered=false;
   let listenerTimer=null;
   let promoInterval=null;
+  let lastPromoStartSignal=null;
   const listenerApi='https://lgjijnhhnjioiyvfmkvy.supabase.co/functions/v1/radio-premi';
   const listenerKey='cc-radio-listener-session-v1';
   let listenerSession=null;
@@ -429,6 +430,15 @@ window.ccReadPublishedJson = (url, validate) => {
         listenerCount=data.listeners;
         renderListenerCount();
       }
+      // Il controllo di presenza, gia' attivo ogni 5 s, segnala nuove emissioni.
+      // Solo allora si interroga il server per il codice, senza nuovo polling.
+      if(playing && realPlaying()) {
+        const signal=typeof data.promo_started_at==='string'?data.promo_started_at:null;
+        if(signal && signal!==lastPromoStartSignal) {
+          lastPromoStartSignal=signal;
+          refreshRadioPromo();
+        } else if(!signal) lastPromoStartSignal=null;
+      }
     }catch(_){
       listenerCount=null;
       renderListenerCount();
@@ -445,6 +455,8 @@ window.ccReadPublishedJson = (url, validate) => {
     window.clearInterval(listenerTimer);
     window.clearInterval(promoInterval);
     listenerTimer=promoInterval=null;
+    lastPromoStartSignal=null;
+    promoRefreshRequested=false;
     listenerCount=null;
     updateListenerPresence();
   }
@@ -479,6 +491,7 @@ window.ccReadPublishedJson = (url, validate) => {
   // trenta secondi per slot a chi ha la radio realmente in ascolto.
   let promoOnAir=null;
   let promoPoll=null;
+  let promoRefreshRequested=false;
   let promoVolumeTimer=null;
   let promoFlashSlot=null;
   let promoAllowedAt=Number.POSITIVE_INFINITY;
@@ -658,7 +671,8 @@ window.ccReadPublishedJson = (url, validate) => {
     },30000);
   }
   async function refreshRadioPromo() {
-    if(!realPlaying() || promoPoll)return;
+    if(!realPlaying())return;
+    if(promoPoll){promoRefreshRequested=true;return;}
     const poll=new AbortController();
     promoPoll=poll;
     const requestStarted=performance.now();
@@ -685,6 +699,10 @@ window.ccReadPublishedJson = (url, validate) => {
     } catch (_) { /* The next poll can still catch the server window. */ }
     finally {
       if(promoPoll===poll)promoPoll=null;
+      if(promoRefreshRequested && realPlaying()) {
+        promoRefreshRequested=false;
+        refreshRadioPromo();
+      } else if(!realPlaying()) promoRefreshRequested=false;
     }
   }
   window.addEventListener('focus',()=>{refreshRadioPromo();});
