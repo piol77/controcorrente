@@ -31,7 +31,7 @@ if(new URLSearchParams(window.location.search).get('menu')==='1'){
 document.querySelectorAll('nav#site-nav a[href="pranzo.html"]').forEach(function(a){
   a.textContent='Offerta per pranzo';
 });
-document.querySelectorAll('nav#site-nav a[href="cena.html"]').forEach(function(a){
+document.querySelectorAll('nav#site-nav a[href^="cena.html"]').forEach(function(a){
   a.textContent='Offerta per cena';
 });
 if(/\/(?:pranzo|cena|antipasti|primi|secondi)\.html$/.test(window.location.pathname)){
