@@ -310,6 +310,62 @@ window.ccReadPublishedJson = (url, validate) => {
   audio.preload = 'none';
   audio.volume = 1;
   audio.setAttribute('playsinline', '');
+  // A live stream may stall while the browser still considers play() active.
+  // Retry the same station only after an explicit ON; never count a retry as ON.
+  let reconnectTimer=null;
+  let reconnectMonitor=null;
+  let reconnectBlocked=false;
+  let reconnectAttempts=0;
+  let streamPosition=null;
+  let streamProgressAt=performance.now();
+  function clearReconnectTimer() {
+    if(reconnectTimer!==null)window.clearTimeout(reconnectTimer);
+    reconnectTimer=null;
+  }
+  function scheduleReconnect(delay=15000) {
+    clearReconnectTimer();
+    if(!enabled || reconnectBlocked)return;
+    reconnectTimer=window.setTimeout(()=>{
+      reconnectTimer=null;
+      if(!enabled || document.hidden || reconnectBlocked)return;
+      attempt++; // Ignore a play() result from the abandoned connection.
+      audible=false; pending=false; failed=false;
+      stopLiveChecks();
+      clearPromoFlash();
+      audio.pause();
+      audio.removeAttribute('src');
+      audio.load();
+      streamPosition=null;
+      streamProgressAt=performance.now();
+      reconnectAttempts=Math.min(4,reconnectAttempts+1);
+      start();
+    },delay);
+  }
+  function ensureReconnectMonitor() {
+    if(reconnectMonitor!==null)return;
+    reconnectMonitor=window.setInterval(()=>{
+      if(!enabled || document.hidden || reconnectBlocked)return;
+      if(pending) {
+        if(performance.now()-streamProgressAt>20000 && reconnectTimer===null)
+          scheduleReconnect(1000);
+        return;
+      }
+      if(failed || audio.ended || audio.paused) {
+        if(reconnectTimer===null)
+          scheduleReconnect(Math.min(30000,3000*Math.pow(2,reconnectAttempts)));
+        return;
+      }
+      if(!audible)return;
+      const position=audio.currentTime;
+      if(!Number.isFinite(position))return; // Some live streams expose no position.
+      if(streamPosition===null || position<streamPosition || position>streamPosition+0.15){
+        streamPosition=position;
+        streamProgressAt=performance.now();
+      } else if(performance.now()-streamProgressAt>20000 && reconnectTimer===null) {
+        scheduleReconnect(1000);
+      }
+    },5000);
+  }
   const button = document.createElement('button');
   button.id = 'cc-jazz-toggle';
   button.type = 'button';
@@ -642,6 +698,11 @@ window.ccReadPublishedJson = (url, validate) => {
 
   function stop() {
     attempt++;
+    clearReconnectTimer();
+    if(reconnectMonitor!==null)window.clearInterval(reconnectMonitor);
+    reconnectMonitor=null;
+    reconnectBlocked=false;
+    reconnectAttempts=0;
     audible=false;
     stopLiveChecks();
     promoPoll?.abort();
@@ -659,6 +720,9 @@ window.ccReadPublishedJson = (url, validate) => {
     pending = true;
     const currentAttempt = ++attempt;
     failed = false;
+    streamProgressAt=performance.now();
+    ensureReconnectMonitor();
+    scheduleReconnect(20000);
     render();
     if (!audio.getAttribute('src')) {
       audio.src = 'https://cdn1.zetcast.net/stream';
@@ -669,25 +733,59 @@ window.ccReadPublishedJson = (url, validate) => {
         result.then(() => { if (currentAttempt !== attempt) return; pending = false; render(); }).catch(error => {
           if (currentAttempt !== attempt) return;
           pending = false;
-          failed = error.name !== 'NotAllowedError' && error.name !== 'AbortError';
+          reconnectBlocked=error?.name==='NotAllowedError';
+          failed=reconnectBlocked || error?.name!=='AbortError';
+          if(reconnectBlocked)clearReconnectTimer();
+          else scheduleReconnect(Math.min(30000,3000*Math.pow(2,reconnectAttempts)));
           render();
         });
       } else { pending = false; }
-    } catch (_) { pending = false; failed = true; render(); }
+    } catch (error) {
+      pending=false;
+      reconnectBlocked=error?.name==='NotAllowedError';
+      failed=true;
+      if(reconnectBlocked)clearReconnectTimer();
+      else scheduleReconnect(Math.min(30000,3000*Math.pow(2,reconnectAttempts)));
+      render();
+    }
   }
   audio.addEventListener('playing', () => {
     if (!enabled || audio.paused) return;
-    audible = true; pending = false; failed = false; render();
+    audible = true; pending = false; failed = false;
+    clearReconnectTimer();
+    reconnectAttempts=0;
+    streamPosition=null;
+    streamProgressAt=performance.now();
+    ensureReconnectMonitor();
+    render();
     if (promoInterval === null) promoInterval=window.setInterval(refreshRadioPromo,60000);
     if (listenerTimer === null) listenerTimer=window.setInterval(updateListenerPresence,5000);
     refreshRadioPromo();
     updateListenerPresence();
   });
-  audio.addEventListener('pause', () => { audible = false; clearPromoFlash(); stopLiveChecks(); render(); });
-  audio.addEventListener('waiting', () => { audible = false; pending = enabled; clearPromoFlash(); stopLiveChecks(); render(); });
-  audio.addEventListener('stalled', () => { if(audio.readyState>=HTMLMediaElement.HAVE_FUTURE_DATA)return; audible = false; pending = enabled; clearPromoFlash(); stopLiveChecks(); render(); });
-  audio.addEventListener('ended', () => { audible = false; pending = false; clearPromoFlash(); stopLiveChecks(); render(); });
-  audio.addEventListener('error', () => { audible = false; pending = false; failed = true; clearPromoFlash(); stopLiveChecks(); render(); });
+  audio.addEventListener('pause', () => {
+    audible=false; clearPromoFlash(); stopLiveChecks(); render();
+    if(enabled && !reconnectBlocked && reconnectTimer===null)scheduleReconnect(12000);
+  });
+  audio.addEventListener('waiting', () => {
+    audible=false; pending=enabled; streamProgressAt=performance.now();
+    clearPromoFlash(); stopLiveChecks(); render();
+    if(enabled)scheduleReconnect(20000);
+  });
+  audio.addEventListener('stalled', () => {
+    if(audio.readyState>=HTMLMediaElement.HAVE_FUTURE_DATA)return;
+    audible=false; pending=enabled; streamProgressAt=performance.now();
+    clearPromoFlash(); stopLiveChecks(); render();
+    if(enabled)scheduleReconnect(20000);
+  });
+  audio.addEventListener('ended', () => {
+    audible=false; pending=false; clearPromoFlash(); stopLiveChecks(); render();
+    if(enabled)scheduleReconnect(3500);
+  });
+  audio.addEventListener('error', () => {
+    audible=false; pending=false; failed=true; clearPromoFlash(); stopLiveChecks(); render();
+    if(enabled)scheduleReconnect(8000);
+  });
   function toggle() {
     if (enabled && (pending || (!audio.paused && !failed))) {
       enabled = false;
@@ -702,6 +800,9 @@ window.ccReadPublishedJson = (url, validate) => {
       promoAllowedAt=performance.now()+60000;
       remember();
       failed = false;
+      reconnectBlocked=false;
+      reconnectAttempts=0;
+      clearReconnectTimer();
       // Release any failed stream before an explicit retry.
       audio.removeAttribute('src');
       audio.load();
@@ -718,12 +819,15 @@ window.ccReadPublishedJson = (url, validate) => {
   }
   button.addEventListener('click', toggle);
   function resumeRadio() {
-    if (document.hidden || !enabled) return;
-    if (realPlaying()) updateListenerPresence();
-    else if (!failed) start();
+    if(document.hidden || !enabled || reconnectBlocked)return;
+    ensureReconnectMonitor();
+    if(realPlaying())updateListenerPresence();
+    else if(!pending && !failed && audio.paused)start();
+    else if(reconnectTimer===null)scheduleReconnect(5000);
   }
   document.addEventListener('visibilitychange',resumeRadio);
   window.addEventListener('pageshow',resumeRadio);
+  window.addEventListener('focus',resumeRadio);
   const ownControls=placeRadioControls(button);
   ownListenerBadge=ownControls.listeners;
   activeListenerBadge=ownControls.listeners;
