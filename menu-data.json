@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-11-06",
-  "lunchDateLabel": "Venerdì 6 novembre 2026",
+  "lunchUpdatedAt": "2026-11-10",
+  "lunchDateLabel": "Martedì 10 novembre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -446,229 +446,209 @@
   },
   "lunch": [
     {
-      "name": "Riso alla cantonese con uova, prosciutto cotto e piselli",
-      "price": 8,
-      "description": "Riso saltato alla cantonese con uova, prosciutto cotto e piselli.",
-      "allergens": [
-        3
-      ],
-      "icon": "Egg",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/riso-cantonese-20261016.webp",
-      "translations": {
-        "en": {
-          "name": "Cantonese-style fried rice with eggs, cooked ham and peas",
-          "description": "Fried rice with eggs, cooked ham and green peas."
-        },
-        "zh": {
-          "name": "鸡蛋熟火腿青豆广式炒饭",
-          "description": "米饭与鸡蛋、熟火腿及青豆一同翻炒。"
-        }
-      },
-      "photoLayout": "side",
-      "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Riferimento coerente con gli ingredienti principali indicati."
-      }
-    },
-    {
-      "name": "Fusilli con zucchine, orata e pomodorini",
-      "price": 12,
-      "description": "Fusilli con zucchine, filetti di orata e pomodorini, in un condimento leggero.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodori-coerente-20261022.webp",
-      "translations": {
-        "en": {
-          "name": "Fusilli with courgettes, sea bream and cherry tomatoes",
-          "description": "Fusilli with courgettes, sea bream fillets and cherry tomatoes in a light sauce."
-        },
-        "zh": {
-          "name": "西葫芦海鲷小番茄螺旋面",
-          "description": "螺旋面搭配西葫芦、海鲷鱼肉和小番茄，清爽鲜美。"
-        }
-      },
-      "photoLayout": "side",
-      "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Riferimento coerente con gli ingredienti principali indicati."
-      }
-    },
-    {
-      "name": "Penne alla boscaiola con salsiccia",
+      "name": "Gnocchi di patate con crema di barbabietola e noci",
       "price": 10,
-      "description": "Penne con funghi, salsiccia e piselli, avvolte da una salsa alla panna con poco pomodoro.",
+      "description": "Gnocchi di patate avvolti da una crema vellutata di barbabietola, completati con noci tritate.",
       "allergens": [
         1,
-        7
+        8
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/penne-coerente-20261027.webp",
+      "dishPhoto": "pranzo-assets/gnocchi-barbabietola-noci-20261110.webp",
       "translations": {
         "en": {
-          "name": "Penne alla boscaiola with sausage",
-          "description": "Penne with mushrooms, sausage and peas in a creamy sauce with just a little tomato."
+          "name": "Potato gnocchi with beetroot cream and walnuts",
+          "description": "Potato gnocchi coated in smooth beetroot cream and finished with chopped walnuts."
         },
         "zh": {
-          "name": "香肠林间风味斜管面",
-          "description": "斜管面搭配蘑菇、香肠和青豆，佐少量番茄的奶油酱。"
+          "name": "土豆团子配甜菜根奶油酱和核桃",
+          "description": "土豆团子裹上细腻的甜菜根奶油酱，撒上切碎的核桃。"
         }
       },
+      "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Foto simile ma non perfettamente corrispondente alla ricetta attuale; sostituire con la nuova illustrazione HD specifica."
-      },
-      "photoLayout": "side"
+        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
+        "date": "2026-11-10",
+        "tool": "image_gen",
+        "resolution": "799 × 533 px",
+        "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+      }
     },
     {
-      "name": "Spaghetti ai frutti di mare*",
-      "price": 15,
-      "description": "Spaghetti con cozze, vongole, gamberetti e gamberoni, con poco pomodoro.",
+      "name": "Riso saltato all’ananas con gamberetti*, curry, uova, piselli, carote e mais",
+      "price": 10,
+      "description": "Riso saltato con ananas, gamberetti*, curry, uova, piselli, carote e mais.",
+      "allergens": [
+        2,
+        3
+      ],
+      "icon": "Shrimp",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/riso-ananas-gamberetti-curry-20261110.webp",
+      "translations": {
+        "en": {
+          "name": "Pineapple fried rice with shrimp*, curry, egg, peas, carrots and sweetcorn",
+          "description": "Fried rice with pineapple, shrimp*, curry, egg, peas, carrots and sweetcorn."
+        },
+        "zh": {
+          "name": "菠萝炒饭配虾仁*、咖喱、鸡蛋、豌豆、胡萝卜和玉米",
+          "description": "米饭与菠萝、虾仁*、咖喱、鸡蛋、豌豆、胡萝卜和玉米一同翻炒。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
+        "date": "2026-11-10",
+        "tool": "image_gen",
+        "resolution": "799 × 533 px",
+        "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+      }
+    },
+    {
+      "name": "Spaghetti aglio, olio e peperoncino con orata",
+      "price": 12,
+      "description": "Spaghetti con aglio, olio extravergine d’oliva, peperoncino e orata, con poco pomodoro.",
       "allergens": [
         1,
-        2,
-        14
+        4
       ],
-      "icon": "Shell",
+      "icon": "Fish",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/spaghetti-mare-coerente-20261023.webp",
+      "dishPhoto": "pranzo-assets/spaghetti-aglio-olio-orata-20261110.webp",
       "translations": {
         "en": {
-          "name": "Seafood spaghetti*",
-          "description": "Spaghetti with mussels, clams, shrimp and king prawns, lightly dressed with tomato."
+          "name": "Garlic, olive oil and chilli spaghetti with sea bream",
+          "description": "Spaghetti with garlic, extra-virgin olive oil, chilli and sea bream, with just a little tomato."
         },
         "zh": {
-          "name": "海鲜意大利面*",
-          "description": "意大利面搭配贻贝、蛤蜊、虾仁和大虾，加入少量番茄。"
+          "name": "蒜香橄榄油辣椒海鲷意面",
+          "description": "意面搭配大蒜、特级初榨橄榄油、辣椒和海鲷，仅加入少量番茄。"
         }
       },
-      "photoLayout": "side",
+      "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Riferimento coerente con gli ingredienti principali indicati."
+        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
+        "date": "2026-11-10",
+        "tool": "image_gen",
+        "resolution": "799 × 533 px",
+        "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
       }
     },
     {
-      "name": "Orata alla griglia con verza e carote saltate",
-      "price": 12,
-      "description": "Orata grigliata, accompagnata da verza e carote saltate.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/orata-verza-coerente-20261023.webp",
-      "translations": {
-        "en": {
-          "name": "Grilled sea bream with sautéed Savoy cabbage and carrots",
-          "description": "Grilled sea bream served with sautéed Savoy cabbage and carrots."
-        },
-        "zh": {
-          "name": "烤海鲷配清炒皱叶甘蓝和胡萝卜",
-          "description": "烤海鲷搭配清炒皱叶甘蓝和胡萝卜。"
-        }
-      },
-      "photoLayout": "side",
-      "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Riferimento coerente con gli ingredienti principali indicati."
-      }
-    },
-    {
-      "name": "Salmone alla griglia con verza e carote saltate",
-      "price": 12,
-      "description": "Trancio di salmone grigliato con verza e carote saltate.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/salmone-verza-coerente-20261023.webp",
-      "translations": {
-        "en": {
-          "name": "Grilled salmon with sautéed Savoy cabbage and carrots",
-          "description": "Grilled salmon fillet with sautéed Savoy cabbage and carrots."
-        },
-        "zh": {
-          "name": "烤三文鱼配清炒皱叶甘蓝和胡萝卜",
-          "description": "烤三文鱼搭配清炒皱叶甘蓝和胡萝卜。"
-        }
-      },
-      "photoLayout": "side",
-      "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Riferimento coerente con gli ingredienti principali indicati."
-      }
-    },
-    {
-      "name": "Straccetti di pollo con melanzane e riso bianco al vapore",
+      "name": "Straccetti di maiale alle melanzane con riso bianco al vapore",
       "price": 10,
-      "description": "Straccetti di pollo con melanzane, serviti con riso bianco al vapore.",
+      "description": "Straccetti di maiale saltati con melanzane, accompagnati da riso bianco al vapore.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/pollo-soia-20261015.webp",
+      "dishPhoto": "pranzo-assets/straccetti-maiale-melanzane-riso-20261110.webp",
       "translations": {
         "en": {
-          "name": "Chicken strips with aubergines and steamed white rice",
-          "description": "Chicken strips with aubergines, served with steamed white rice."
+          "name": "Pork strips with aubergines and steamed white rice",
+          "description": "Sautéed pork strips with aubergines, served with steamed white rice."
         },
         "zh": {
-          "name": "茄子鸡肉条配清蒸白米饭",
-          "description": "鸡肉条搭配茄子，佐以清蒸白米饭。"
+          "name": "茄子炒猪肉条配清蒸白米饭",
+          "description": "猪肉条与茄子一同翻炒，佐以清蒸白米饭。"
         }
       },
+      "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Foto simile ma non perfettamente corrispondente alla ricetta attuale; sostituire con la nuova illustrazione HD specifica."
-      },
-      "photoLayout": "side"
+        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
+        "date": "2026-11-10",
+        "tool": "image_gen",
+        "resolution": "799 × 533 px",
+        "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+      }
     },
     {
-      "name": "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",
-      "price": 12,
-      "description": "Finocchi croccanti, arance e avocado con bocconcini di salmone fresco e aceto balsamico.",
+      "name": "Milanese di pollo con finocchi saltati",
+      "price": 10,
+      "description": "Cotoletta di pollo impanata e dorata, servita con finocchi saltati.",
       "allergens": [
+        1,
+        3
+      ],
+      "icon": "Wheat",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/milanese-pollo-finocchi-20261110.webp",
+      "translations": {
+        "en": {
+          "name": "Chicken Milanese with sautéed fennel",
+          "description": "Golden breaded chicken cutlet served with sautéed fennel."
+        },
+        "zh": {
+          "name": "米兰式炸鸡排配清炒茴香",
+          "description": "金黄酥脆的裹粉鸡排，搭配清炒茴香。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
+        "date": "2026-11-10",
+        "tool": "image_gen",
+        "resolution": "799 × 533 px",
+        "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+      }
+    },
+    {
+      "name": "Filetti di orata gratinati al forno con erbette aromatiche e patate lesse prezzemolate",
+      "price": 12,
+      "description": "Filetti di orata gratinati al forno con erbette aromatiche, serviti con patate lesse al prezzemolo.",
+      "allergens": [
+        1,
         4
       ],
       "icon": "Fish",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/insalatona-salmone-arance-avocado-uniform-20261105.svg",
+      "dishPhoto": "pranzo-assets/orata-gratinata-erbette-patate-20261110.webp",
       "translations": {
         "en": {
-          "name": "Large salad with fennel, oranges, avocado and fresh salmon bites",
-          "description": "Crisp fennel, oranges and avocado with fresh salmon bites and balsamic vinegar."
+          "name": "Oven-gratinated sea bream fillets with aromatic herbs and parsley potatoes",
+          "description": "Oven-gratinated sea bream fillets with aromatic herbs, served with boiled potatoes and parsley."
         },
         "zh": {
-          "name": "茴香橙子牛油果鲜三文鱼块大沙拉",
-          "description": "爽脆茴香、橙子和牛油果搭配鲜三文鱼块，佐意大利香醋。"
+          "name": "香草烤焗海鲷鱼柳配欧芹水煮土豆",
+          "description": "海鲷鱼柳配香草烤焗，佐以欧芹水煮土豆。"
         }
       },
-      "photoLayout": "side",
+      "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa già presente nel repository",
-        "date": "2026-11-06",
-        "tool": "Riutilizzo asset esistente",
-        "note": "Fotografia illustrativa preesistente del sito, non fotografia del piatto realmente servito. Riferimento coerente con gli ingredienti principali indicati."
+        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
+        "date": "2026-11-10",
+        "tool": "image_gen",
+        "resolution": "799 × 533 px",
+        "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+      }
+    },
+    {
+      "name": "Insalatona Cesarona con pollo, pancetta e scaglie di Grana",
+      "price": 9,
+      "description": "Insalatona con pollo, pancetta croccante e scaglie di Grana.",
+      "allergens": [
+        7
+      ],
+      "icon": "Leaf",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/insalatona-cesarona-20261110.webp",
+      "translations": {
+        "en": {
+          "name": "Cesarona salad with chicken, pancetta and Grana shavings",
+          "description": "A generous salad with chicken, crisp pancetta and shavings of Grana cheese."
+        },
+        "zh": {
+          "name": "凯撒风味大沙拉配鸡肉、意式培根和格拉纳奶酪片",
+          "description": "丰盛沙拉搭配鸡肉、香脆意式培根和格拉纳奶酪片。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
+        "date": "2026-11-10",
+        "tool": "image_gen",
+        "resolution": "799 × 533 px",
+        "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
       }
     }
   ],
@@ -703,33 +683,33 @@
       }
     },
     {
-        "name": "Straccetti di pollo con melanzane e riso bianco al vapore in torretta",
-        "price": 10,
-        "description": "Straccetti di pollo saltati con melanzane, accompagnati da riso bianco al vapore servito in torretta.",
-        "allergens": [],
-        "icon": "CookingPot",
-        "orderCourse": "Secondo",
-        "photoLayout": "side",
-        "dishPhoto": "offerta-assets/pollo-melanzane-riso-torretta-20261107.webp",
-        "translations": {
-          "en": {
-            "name": "Chicken strips with eggplant and a tower of steamed white rice",
-            "description": "Sautéed chicken strips with eggplant, served with steamed white rice molded into a tower."
-          },
-          "zh": {
-            "name": "茄子鸡肉条配塔形蒸白米饭",
-            "description": "鸡肉条与茄子翻炒，搭配塔形摆盘的蒸白米饭。"
-          }
+      "name": "Straccetti di pollo con melanzane e riso bianco al vapore in torretta",
+      "price": 10,
+      "description": "Straccetti di pollo saltati con melanzane, accompagnati da riso bianco al vapore servito in torretta.",
+      "allergens": [],
+      "icon": "CookingPot",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "offerta-assets/pollo-melanzane-riso-torretta-20261107.webp",
+      "translations": {
+        "en": {
+          "name": "Chicken strips with eggplant and a tower of steamed white rice",
+          "description": "Sautéed chicken strips with eggplant, served with steamed white rice molded into a tower."
         },
-        "photoSource": {
-          "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-07",
-          "tool": "image_gen",
-          "resolution": "1536x1024",
-          "format": "WebP, quality 88",
-          "note": "Piatto avorio e sfondo blu marino; pollo e melanzane accanto alla torretta di riso bianco al vapore."
+        "zh": {
+          "name": "茄子鸡肉条配塔形蒸白米饭",
+          "description": "鸡肉条与茄子翻炒，搭配塔形摆盘的蒸白米饭。"
         }
       },
+      "photoSource": {
+        "type": "AI-generated HD illustrative food image",
+        "date": "2026-11-07",
+        "tool": "image_gen",
+        "resolution": "1536x1024",
+        "format": "WebP, quality 88",
+        "note": "Piatto avorio e sfondo blu marino; pollo e melanzane accanto alla torretta di riso bianco al vapore."
+      }
+    },
     {
       "name": "Casarecce con melanzane e branzino, con poco pomodoro",
       "price": 12,

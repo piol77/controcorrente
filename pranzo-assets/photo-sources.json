@@ -52,6 +52,48 @@
       "dish": "Insalatona Cesarona",
       "file": "pranzo-assets/insalatina-cesarona.webp",
       "origin": "Immagine già presente nel repository, riutilizzata per lo stesso piatto."
+    },
+    {
+      "dish": "Gnocchi di patate con crema di barbabietola e noci",
+      "file": "pranzo-assets/gnocchi-barbabietola-noci-20261110.webp",
+      "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
+      "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Riso saltato all’ananas con gamberetti*, curry, uova, piselli, carote e mais",
+      "file": "pranzo-assets/riso-ananas-gamberetti-curry-20261110.webp",
+      "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
+      "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Spaghetti aglio, olio e peperoncino con orata",
+      "file": "pranzo-assets/spaghetti-aglio-olio-orata-20261110.webp",
+      "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
+      "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Straccetti di maiale alle melanzane con riso bianco al vapore",
+      "file": "pranzo-assets/straccetti-maiale-melanzane-riso-20261110.webp",
+      "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
+      "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Milanese di pollo con finocchi saltati",
+      "file": "pranzo-assets/milanese-pollo-finocchi-20261110.webp",
+      "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
+      "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Filetti di orata gratinati al forno con erbette aromatiche e patate lesse prezzemolate",
+      "file": "pranzo-assets/orata-gratinata-erbette-patate-20261110.webp",
+      "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
+      "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Insalatona Cesarona con pollo, pancetta e scaglie di Grana",
+      "file": "pranzo-assets/insalatona-cesarona-20261110.webp",
+      "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
+      "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
     }
   ]
 }
