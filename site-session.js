@@ -438,7 +438,15 @@ window.ccReadPublishedJson = (url, validate) => {
         if(signal && signal!==lastPromoStartSignal) {
           lastPromoStartSignal=signal;
           refreshRadioPromo();
-        } else if(!signal) lastPromoStartSignal=null;
+        } else if(!signal && lastPromoStartSignal) {
+          // A claim or withdrawal ends the broadcast before its two-hour timer.
+          // Hide the code immediately, then confirm the new state with the API.
+          lastPromoStartSignal=null;
+          promoOnAir=null;
+          clearPromoFlash();
+          promoPoll?.abort();
+          refreshRadioPromo();
+        }
       }
     }catch(_){
       listenerCount=null;
