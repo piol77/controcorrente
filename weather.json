@@ -4,8 +4,8 @@
   "location": "Torino · zona San Paolo",
   "latitude": 45.0641,
   "longitude": 7.6525,
-  "fetched_at": "2026-11-10T10:08:47+00:00",
-  "provider_updated_at": "2026-11-10T09:20:10+00:00",
+  "fetched_at": "2026-11-10T18:01:12+00:00",
+  "provider_updated_at": "2026-11-10T17:19:37+00:00",
   "days": [
     {
       "date": "2026-11-10",
@@ -14,12 +14,13 @@
         "icon": "⛅",
         "min_c": 11,
         "max_c": 12,
-        "precipitation_mm": 0.0
+        "precipitation_mm": 0.0,
+        "forecast_at": "2026-11-10T10:08:47+00:00"
       },
       "dinner": {
         "condition": "Parzialmente nuvoloso",
         "icon": "⛅",
-        "min_c": 6,
+        "min_c": 7,
         "max_c": 8,
         "precipitation_mm": 0.0
       }
@@ -27,17 +28,17 @@
     {
       "date": "2026-11-11",
       "lunch": {
-        "condition": "Coperto",
-        "icon": "☁",
-        "min_c": 11,
-        "max_c": 12,
+        "condition": "Parzialmente nuvoloso",
+        "icon": "⛅",
+        "min_c": 12,
+        "max_c": 13,
         "precipitation_mm": 0.0
       },
       "dinner": {
         "condition": "Nebbia",
         "icon": "🌫",
         "min_c": 7,
-        "max_c": 8,
+        "max_c": 9,
         "precipitation_mm": 0.0
       }
     },
@@ -47,15 +48,15 @@
         "condition": "Pioggia intensa",
         "icon": "🌧",
         "min_c": 8,
-        "max_c": 10,
-        "precipitation_mm": 2.9
+        "max_c": 9,
+        "precipitation_mm": 3.0
       },
       "dinner": {
-        "condition": "Pioggia",
+        "condition": "Pioggia intensa",
         "icon": "🌧",
         "min_c": 9,
         "max_c": 9,
-        "precipitation_mm": 1.6
+        "precipitation_mm": 1.7
       }
     }
   ]
