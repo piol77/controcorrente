@@ -340,33 +340,6 @@
         "dishPhoto": "cena-salmone.webp"
       },
       {
-        "name": "Orata alla griglia con verza e carote saltate",
-        "price": 14,
-        "description": "L’orata alla griglia si accompagna alla dolcezza delle carote e alla verza saltata, in un abbinamento semplice e delicato.",
-        "allergens": [
-          4
-        ],
-        "icon": "Fish",
-        "dishPhoto": "pranzo-assets/orata-verza-coerente-20261023.webp",
-        "orderCourse": "Secondo",
-        "translations": {
-          "en": {
-            "name": "Grilled gilthead bream with sautéed savoy cabbage and carrots",
-            "description": "Grilled gilthead bream pairs gently with sweet carrots and sautéed savoy cabbage."
-          },
-          "zh": {
-            "name": "香烤金头鲷配炒皱叶甘蓝和胡萝卜",
-            "description": "香烤金头鲷搭配清甜胡萝卜与清炒皱叶甘蓝，鲜美而清爽。"
-          }
-        },
-        "photoSource": {
-          "type": "Previously approved AI-generated illustrative image",
-          "date": "2026-10-23",
-          "tool": "image_gen",
-          "note": "Existing approved photo with orata and savoy cabbage setting; preserves previous side dish instead of generated potato image."
-        }
-      },
-      {
         "name": "Orata grande alla griglia (600 g) con patate al forno",
         "price": 16,
         "description": "Orata grande alla griglia (600 g), servita con patate dorate al forno.",
