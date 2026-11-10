@@ -210,7 +210,7 @@
   let liveTestTimer=null;
   testChime?.addEventListener('click',async()=>{
     const flash=document.querySelector('[data-premi-test-status]');
-    if(!window.confirm('Mandare ORA in onda il codice premio reale? Tutti gli utenti con radio accesa lo vedranno per circa 15 minuti e potranno usarlo per uno sconto valido.'))return;
+    if(!window.confirm('Mandare ORA in onda il codice premio reale? Gli utenti con radio accesa lo vedranno per due ore e potranno usarlo per uno sconto valido.'))return;
     testChime.disabled=true;
     flash.classList.remove('rp-test-flash');
     flash.textContent='Invio del codice ai lettori radio…';
@@ -219,23 +219,19 @@
       if(!/^[0-9]{5}$/.test(String(data.code||'')))throw new Error('Risposta priva di un codice valido');
       if(liveTestTimer!==null)window.clearTimeout(liveTestTimer);
       flash.classList.add('rp-test-flash');
-      flash.textContent='🎟 IN ONDA ORA · CODICE CENA: '+data.code+' · visibile agli ascoltatori per 15 minuti';
+      const until=Date.parse(data.until);
+      if(!Number.isFinite(until))throw new Error('Scadenza della trasmissione non valida');
+      flash.textContent='🎟 IN ONDA ORA · CODICE CENA: '+data.code+' · fino alle '+romeTime(data.until);
       display('Trasmissione reale attivata: il codice '+data.code+' è valido. Gli ascoltatori con la radio accesa lo vedono ora.');
       const sound=new Audio('trillo-radio-premi.mp3?v=20261107-live-30-v1');
       sound.volume=1;
-      let repeats=2;
-      sound.addEventListener('ended',()=>{
-        if(repeats--<=0)return;
-        sound.currentTime=0;
-        sound.play().catch(e=>console.warn('[Radio Premi] Ripetizione MP3 non consentita',e));
-      });
       sound.play().catch(e=>console.warn('[Radio Premi] Audio locale non consentito dal browser',e));
       liveTestTimer=window.setTimeout(()=>{
         flash.classList.remove('rp-test-flash');
         flash.textContent='Trasmissione di prova conclusa.';
         sound.pause();
         liveTestTimer=null;
-      },15*60*1000);
+      },Math.max(0,until-Date.now()));
     }catch(e){
       const reason=e instanceof Error?e.message:'errore sconosciuto';
       const labels={promotion_not_active:'Promozione sospesa: riattivala prima del test.',

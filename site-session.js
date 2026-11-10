@@ -358,6 +358,7 @@ window.ccReadPublishedJson = (url, validate) => {
       if(!audible)return;
       const position=audio.currentTime;
       if(!Number.isFinite(position))return; // Some live streams expose no position.
+      if(position===0 && streamPosition===0 && audio.seekable.length===0)return;
       if(streamPosition===null || position<streamPosition || position>streamPosition+0.15){
         streamPosition=position;
         streamProgressAt=performance.now();
@@ -486,13 +487,14 @@ window.ccReadPublishedJson = (url, validate) => {
   }
   // CONTROCORRENTE RADIO PREMI VISIVI 2026-11-06
   // Solo trillo MP3 originale (non parlato). Durante il codice la radio
-  // si attenua al 20% per trenta secondi e poi torna al 100%, anche in caso di stop.
+  // si attenua al 20% per dieci secondi e poi torna al 100%, anche in caso di stop.
   // L'API decide codice, calendario e disponibilita; il browser mostra
-  // trenta secondi per slot a chi ha la radio realmente in ascolto.
+  // per la finestra autorizzata dal server a chi ascolta realmente.
   let promoOnAir=null;
   let promoPoll=null;
   let promoRefreshRequested=false;
   let promoVolumeTimer=null;
+  let promoVolumeUntil=0;
   let promoFlashSlot=null;
   let promoAllowedAt=Number.POSITIVE_INFINITY;
   let promoFlashCode=null;
@@ -504,7 +506,6 @@ window.ccReadPublishedJson = (url, validate) => {
   trillAudio.setAttribute('playsinline','');
   let audioContext=null, trillBuffer=null, trillSource=null;
   let trillAssetFailed=false;
-  const trillRepeatTimers=[];
   function unlockPromoAudio() {
     if (!trillAudio.getAttribute('src')) {
       trillAudio.preload='auto';
@@ -536,7 +537,6 @@ window.ccReadPublishedJson = (url, validate) => {
     }
   }
   function stopTrillAndRestoreVolume() {
-    while(trillRepeatTimers.length)window.clearTimeout(trillRepeatTimers.pop());
     if(trillSource) {
       try { trillSource.stop(); } catch (_) {}
       try { trillSource.disconnect(); } catch (_) {}
@@ -568,11 +568,12 @@ window.ccReadPublishedJson = (url, validate) => {
     } catch(e){ console.warn('[Radio Premi] Trillo di riserva:',e); }
   }
   function announcePromoFlash() {
-    // 30 s al 20% per la radio; trillo al 100%, ripetuto tre volte.
+    // Dieci secondi al 20% per la radio; il codice resta visibile a lungo.
     audio.volume=0.20;
     trillAudio.volume=1;
     trillAudio.muted=false;
     const playNative=()=>{
+      if(!promoVolumeUntil || performance.now()>=promoVolumeUntil || !realPlaying())return;
       if(trillAssetFailed){fallbackTrill();return;}
       try { trillAudio.pause(); trillAudio.currentTime=0; } catch (_) {}
       const play=trillAudio.play();
@@ -582,6 +583,7 @@ window.ccReadPublishedJson = (url, validate) => {
       });
     };
     const playDecoded=()=>{
+      if(!promoVolumeUntil || performance.now()>=promoVolumeUntil || !realPlaying())return;
       if(trillBuffer&&audioContext&&audioContext.state==='running') {
         try {
           const source=audioContext.createBufferSource();
@@ -596,17 +598,12 @@ window.ccReadPublishedJson = (url, validate) => {
       playNative();
     };
     const playOnce=()=>{
-      if(!promoFlashCode||!realPlaying())return;
+      if(!promoFlashCode||!promoVolumeUntil||performance.now()>=promoVolumeUntil||!realPlaying())return;
       if(audioContext&&audioContext.state==='suspended')
         audioContext.resume().then(playDecoded).catch(playNative);
       else playDecoded();
     };
     playOnce();
-    const repeatEvery=trillBuffer
-      ? Math.max(1800,Math.ceil((trillBuffer.duration+0.25)*1000))
-      : 2500;
-    for(let n=1;n<=2;n++)
-      trillRepeatTimers.push(window.setTimeout(playOnce,repeatEvery*n));
   }
   const promoSeenPrefix='cc-radio-premio-visto-';
   const promoSeenThisSession=new Set();
@@ -637,8 +634,15 @@ window.ccReadPublishedJson = (url, validate) => {
     promoFlashUntil=0;
     if(promoVolumeTimer!==null)window.clearTimeout(promoVolumeTimer);
     promoVolumeTimer=null;
+    promoVolumeUntil=0;
     stopTrillAndRestoreVolume();
     renderPromoFlash();
+  }
+  function finishPromoAudio() {
+    if(promoVolumeTimer!==null)window.clearTimeout(promoVolumeTimer);
+    promoVolumeTimer=null;
+    promoVolumeUntil=0;
+    stopTrillAndRestoreVolume();
   }
   function restoreSeenPromo() {
     const slot=promoOnAir;
@@ -659,16 +663,14 @@ window.ccReadPublishedJson = (url, validate) => {
         alreadySeen(slot.token))return;
     promoFlashCode=slot.code;
     promoFlashSlot=slot;
-    promoFlashUntil=Math.min(slot.deadline,performance.now()+15*60*1000);
+    promoFlashUntil=slot.deadline;
     renderPromoFlash();
     promoTimer=window.setTimeout(clearPromoFlash,Math.max(0,promoFlashUntil-performance.now()));
     markSeen(slot.token);
+    promoVolumeUntil=performance.now()+10000;
     announcePromoFlash();
     // Il trillo e l'attenuazione restano brevi; il codice rimane visibile.
-    promoVolumeTimer=window.setTimeout(()=>{
-      promoVolumeTimer=null;
-      stopTrillAndRestoreVolume();
-    },30000);
+    promoVolumeTimer=window.setTimeout(finishPromoAudio,10000);
   }
   async function refreshRadioPromo() {
     if(!realPlaying())return;
@@ -689,6 +691,9 @@ window.ccReadPublishedJson = (url, validate) => {
         ? {code:slot.code,expiry,deadline:requestStarted+expiry-serverNow,
           token:slot.code+'-'+(slot.reopened_at||slot.slot),manual:slot.manual_live===true}
         : null;
+      // A second manual launch of the same code is a separate announcement.
+      if(promoFlashSlot && promoOnAir && promoFlashSlot.token!==promoOnAir.token)
+        clearPromoFlash();
       // A network error or the scheduled end of the server window must
       // not cut short a flash already started. A withdrawn code must stop.
       if(promoFlashSlot && (!active || result.records?.some(row=>
@@ -707,6 +712,7 @@ window.ccReadPublishedJson = (url, validate) => {
   }
   window.addEventListener('focus',()=>{refreshRadioPromo();});
   document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)finishPromoAudio();
     if(!document.hidden && realPlaying()){
       if(promoFlashCode&&performance.now()>=promoFlashUntil)clearPromoFlash();
       refreshRadioPromo();
@@ -774,6 +780,7 @@ window.ccReadPublishedJson = (url, validate) => {
     reconnectAttempts=0;
     streamPosition=null;
     streamProgressAt=performance.now();
+    if(promoVolumeUntil && performance.now()>=promoVolumeUntil)finishPromoAudio();
     ensureReconnectMonitor();
     render();
     if (promoInterval === null) promoInterval=window.setInterval(refreshRadioPromo,60000);
@@ -855,6 +862,7 @@ window.ccReadPublishedJson = (url, validate) => {
   const siteRoot = new URL('.', location.href);
   let frame = null;
   function navigate(url, push = true) {
+    if(promoVolumeUntil)finishPromoAudio();
     if (!frame) {
       frame = document.createElement('iframe');
       frame.title = 'Controcorrente';
