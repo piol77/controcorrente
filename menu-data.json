@@ -150,29 +150,6 @@
         }
       },
       {
-        "name": "Linguine con burrata, pistacchi e gamberetti*",
-        "price": 13,
-        "description": "Burrata cremosa, pistacchi croccanti e gamberetti* accompagnano le linguine.",
-        "allergens": [
-          1,
-          2,
-          7,
-          8
-        ],
-        "icon": "Shrimp",
-        "dishPhoto": "cena-assets/linguine-stracciatella-pistacchi-gamberetti-20261030.png",
-        "translations": {
-          "en": {
-            "name": "Linguine with burrata, pistachios and shrimp*",
-            "description": "Creamy burrata, crunchy pistachios and sweet shrimp* enrich the linguine."
-          },
-          "zh": {
-            "name": "布拉塔奶酪开心果虾仁*扁意面",
-            "description": "奶香浓郁的布拉塔奶酪搭配香脆开心果与鲜甜虾仁*。"
-          }
-        }
-      },
-      {
         "name": "Tagliatelle ai funghi misti e salsiccia, con poca panna",
         "price": 12.5,
         "description": "Tagliatelle all’uovo con funghi misti, salsiccia e un tocco di panna.",
