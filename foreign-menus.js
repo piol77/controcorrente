@@ -6,71 +6,71 @@
 
   const LUNCH={
   "en": {
-    "Orecchiette con broccoli, cavolfiori e scaglie di Parmigiano": [
-      "Orecchiette with broccoli, cauliflower and Parmesan shavings",
-      "Sweet cauliflower meets broccoli and anchovies, finished with Parmesan shavings and a gentle touch of chilli."
+    "Risotto con broccoli, gamberetti* e limone": [
+      "Shrimp*, broccoli and lemon risotto",
+      "Creamy risotto with broccoli and shrimp*, scented with lemon."
     ],
-    "Riso saltato speziato con verdure, pollo e gamberetti*": [
-      "Spiced fried rice with vegetables, chicken and shrimp*",
-      "A colourful stir-fry with carrots, courgettes, peas and egg alongside chicken and shrimp*."
+    "Noodles in brodo di carne con verdure e uovo": [
+      "Noodles in meat broth with vegetables and egg",
+      "Noodles served in meat broth with vegetables and egg."
     ],
-    "Penne al salmone fresco con un tocco di panna": [
-      "Penne with fresh salmon and a touch of cream",
-      "Delicate fresh salmon coats the penne, with just a little cream for a light, silky finish."
+    "Fusilli con crema di verdure e orata": [
+      "Fusilli with sea bream and vegetable purée",
+      "Fusilli with sea bream and a purée of carrots, potatoes, peas, fennel, courgettes and onion."
     ],
-    "Straccetti di pollo al sedano con riso bianco al vapore": [
-      "Chicken strips with celery and steamed white rice",
-      "Fresh celery complements the chicken, served with simple steamed white rice."
+    "Spaghetti alla carbonara con pancetta affumicata e pecorino": [
+      "Spaghetti carbonara with smoked pancetta and pecorino",
+      "Spaghetti coated in a silky egg and pecorino sauce with smoked pancetta."
     ],
-    "Straccetti di maiale in agrodolce con peperoni, ananas e riso bianco al vapore": [
-      "Sweet-and-sour pork strips with peppers, pineapple and steamed white rice",
-      "Lively sweet-and-sour flavours meet sweet pineapple and peppers, balanced by steamed white rice."
+    "Straccetti di pollo con fagiolini e riso bianco al vapore": [
+      "Chicken strips with green beans and steamed white rice",
+      "Chicken strips and green beans served with steamed white rice."
     ],
-    "Gamberetti* saltati con verdure al curry e riso bianco al vapore": [
-      "Stir-fried shrimp* with curry vegetables and steamed white rice",
-      "Aromatic curry brings out the shrimp* and vegetables, served with fluffy steamed white rice."
+    "Filetti di orata al limone con fagiolini saltati": [
+      "Lemon sea bream fillets with sautéed green beans",
+      "Sea bream fillets scented with lemon, served with sautéed green beans."
     ],
-    "Bistecca di vitello alla griglia con patate al forno": [
-      "Grilled veal steak with oven-roasted potatoes",
-      "Grilled veal and golden oven-roasted potatoes for a satisfying plate. 5 portions available."
+    "Insalata di finocchi, arancia, salmone e avocado al balsamico": [
+      "Fennel, orange, salmon and avocado salad with balsamic vinegar",
+      "Fennel, orange, salmon and avocado dressed with balsamic vinegar."
     ],
-    "Polpettine di carne mista al sugo con patate lesse prezzemolate": [
-      "Mixed-meat meatballs in tomato sauce with parsley-seasoned boiled potatoes",
-      "Tender meatballs in tomato sauce, served with boiled potatoes seasoned with parsley."
+    "Maiale alla pizzaiola con patate al forno": [
+      "Pizzaiola-style pork with roast potatoes",
+      "Pork in tomato sauce served with oven-roasted potatoes."
     ]
   },
   "zh": {
-    "Orecchiette con broccoli, cavolfiori e scaglie di Parmigiano": [
-      "西兰花花椰菜猫耳朵面配帕尔马干酪片",
-      "花椰菜的清甜搭配西兰花与鳀鱼，佐以帕尔马干酪薄片，略带微辣。"
+    "Risotto con broccoli, gamberetti* e limone": [
+      "西兰花虾仁*柠檬意式烩饭",
+      "意式烩饭搭配西兰花和虾仁*，带有清新的柠檬香。"
     ],
-    "Riso saltato speziato con verdure, pollo e gamberetti*": [
-      "香料炒饭配蔬菜、鸡肉和虾仁*",
-      "胡萝卜、西葫芦、豌豆与鸡蛋，为鸡肉虾仁*炒饭增添丰富色彩与风味。"
+    "Noodles in brodo di carne con verdure e uovo": [
+      "蔬菜鸡蛋肉汤面",
+      "面条佐以肉汤、蔬菜和鸡蛋。"
     ],
-    "Penne al salmone fresco con un tocco di panna": [
-      "鲜三文鱼通心粉配少量奶油",
-      "鲜三文鱼的细腻滋味包裹通心粉，少量奶油带来轻盈柔滑的口感。"
+    "Fusilli con crema di verdure e orata": [
+      "海鲷蔬菜酱螺旋意面",
+      "螺旋意面搭配海鲷，佐以胡萝卜、土豆、豌豆、茴香球、西葫芦和洋葱制成的蔬菜酱。"
     ],
-    "Straccetti di pollo al sedano con riso bianco al vapore": [
-      "芹菜鸡肉条配清蒸白米饭",
-      "芹菜的清香衬托鸡肉，搭配朴素清爽的清蒸白米饭。"
+    "Spaghetti alla carbonara con pancetta affumicata e pecorino": [
+      "烟熏培根佩科里诺奶酪卡邦尼意面",
+      "意大利面拌入鸡蛋和佩科里诺羊奶酪酱，搭配烟熏意式培根。"
     ],
-    "Straccetti di maiale in agrodolce con peperoni, ananas e riso bianco al vapore": [
-      "菠萝彩椒糖醋猪肉条配清蒸白米饭",
-      "鲜明酸甜与菠萝的香甜、彩椒的风味交融，搭配清蒸白米饭，滋味平衡。"
+    "Straccetti di pollo con fagiolini e riso bianco al vapore": [
+      "四季豆鸡肉条配蒸白米饭",
+      "鸡肉条和四季豆搭配蒸白米饭。"
     ],
-    "Gamberetti* saltati con verdure al curry e riso bianco al vapore": [
-      "咖喱蔬菜炒虾仁*配清蒸白米饭",
-      "咖喱的香料气息衬托虾仁*和蔬菜，搭配松软的清蒸白米饭。"
+    "Filetti di orata al limone con fagiolini saltati": [
+      "柠檬海鲷鱼柳配炒四季豆",
+      "柠檬风味海鲷鱼柳搭配清炒四季豆。"
     ],
-    "Bistecca di vitello alla griglia con patate al forno": [
-      "烤小牛排配烤土豆",
-      "炙烤小牛肉搭配金黄烤土豆，滋味饱满。供应5份。"
+    "Insalata di finocchi, arancia, salmone e avocado al balsamico": [
+      "意式香醋茴香橙子三文鱼牛油果沙拉",
+      "茴香球、橙子、三文鱼和牛油果，佐以意式香醋。"
     ],
-    "Polpettine di carne mista al sugo con patate lesse prezzemolate": [
-      "番茄酱混合肉小肉丸配欧芹水煮土豆",
-      "鲜嫩的混合肉小肉丸佐番茄酱，搭配撒有欧芹的水煮土豆。"
+    "Maiale alla pizzaiola con patate al forno": [
+      "意式番茄酱猪肉配烤土豆",
+      "猪肉佐以番茄酱，搭配烤土豆。"
     ]
   }
 };
