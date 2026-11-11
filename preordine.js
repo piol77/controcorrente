@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti":[["Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)",10],["Carciofi fritti",13],["Funghi champignon fritti",10],["Vitello tonnato",12]],"primi":[["Spaghetti ai frutti di mare",15],["Risotto con gorgonzola e pere",12.5],["Tagliatelle ai funghi misti e salsiccia, con poca panna",12.5],["Linguine al nero di seppia",13],["Spaghetti di soia con verdure, gamberetti* e pollo",10]],"secondi":[["Frittura mista di alici, calamari e gamberetti*",20],["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",12],["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico",14],["Trancio di salmone all’arancia e pepe rosa",14],["Orata grande alla griglia (600 g) con patate al forno",16],["Bistecca di vitello con l’osso alla griglia (500 g circa), servita con patate e prezzemolo",20],["Galletto ripieno di frutta, salsiccia e castagne con patate al forno",14]]};
+  const catalog = {"antipasti": [["Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)", 10], ["Carciofi fritti", 13], ["Funghi champignon fritti", 10], ["Vitello tonnato", 12]], "primi": [["Spaghetti ai frutti di mare", 15], ["Risotto con broccoli, gamberetti* e limone", 12.5], ["Fusilli con crema di verdure e orata", 12.5], ["Tagliatelle ai funghi misti e salsiccia, con poca panna", 12.5], ["Linguine al nero di seppia", 13], ["Spaghetti di soia con verdure, gamberetti* e pollo", 10]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco", 12], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Trancio di salmone all’arancia e pepe rosa", 14], ["Orata grande alla griglia (600 g) con patate al forno", 16], ["Involtini di pollo con bacon e gorgonzola su crema di patate", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
   // Solo bottiglie Cantine Delite, ai prezzi esposti nella relativa carta.
@@ -14,7 +14,7 @@
     ['Seicentododici · Cantine Delite (bottiglia)',20]
   ];
   const minimumQuantity = (section, index) =>
-    /^Risotto con gorgonzola e pere$/i.test(catalog[section]?.[Number(index)]?.[0] || '') ? 2 : 1;
+    /^Risotto con broccoli, gamberetti\*? e limone$/i.test(catalog[section]?.[Number(index)]?.[0] || '') ? 2 : 1;
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
     return Object.fromEntries(Object.entries(cart).filter(([key, item]) =>
@@ -552,6 +552,7 @@
     if (page === 'ordine') setupSummary();
   });
 })();
+
 
 
 
