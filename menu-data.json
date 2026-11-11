@@ -161,7 +161,7 @@
         ],
         "icon": "Fish",
         "orderCourse": "Primo",
-        "dishPhoto": "pranzo-assets/fusilli-crema-verdure-orata-20261111.webp",
+        "dishPhoto": "pranzo-assets/fusilli-crema-verdure-orata-verde-20261111.webp",
         "translations": {
           "en": {
             "name": "Fusilli with sea bream and vegetable purée",
@@ -477,7 +477,7 @@
       ],
       "icon": "Fish",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/fusilli-crema-verdure-orata-20261111.webp",
+      "dishPhoto": "pranzo-assets/fusilli-crema-verdure-orata-verde-20261111.webp",
       "translations": {
         "en": {
           "name": "Fusilli with sea bream and vegetable purée",
