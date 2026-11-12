@@ -591,19 +591,19 @@
     {
       "name": "Grigliata mista di carne con patate al forno",
       "price": 12,
-      "description": "Costine di maiale, salsiccia, pollo e braciole alla griglia, con patate al forno.",
+      "description": "Costine di maiale, salsiccia, pollo e due piccole braciole alla griglia, con patate al forno.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/grigliata-mista-carne-patate-20261112-moderata.webp",
+      "dishPhoto": "pranzo-assets/grigliata-mista-carne-patate-20261112-due-braciole.webp",
       "translations": {
         "en": {
           "name": "Mixed grilled meat with roast potatoes",
-          "description": "Grilled pork ribs, sausage, chicken and pork chops, served with roast potatoes."
+          "description": "Grilled pork ribs, sausage, chicken and two small pork chops, served with roast potatoes."
         },
         "zh": {
           "name": "混合烤肉配烤土豆",
-          "description": "烤猪肋排、香肠、鸡肉和猪排，搭配烤土豆。"
+          "description": "烤猪肋排、香肠、鸡肉和两块小猪排，搭配烤土豆。"
         }
       },
       "photoLayout": "thumbnail",
@@ -613,7 +613,7 @@
         "tool": "image_gen",
         "resolution": "480 × 480 px WebP",
         "format": "WebP",
-        "note": "Grigliata mista in porzione moderata, piatto avorio e sfondo blu marino coordinati. Immagine illustrativa."
+        "note": "Grigliata mista moderata con due braciole piccole e sottili, piatto avorio e sfondo blu marino coordinati. Immagine illustrativa."
       }
     },
     {
