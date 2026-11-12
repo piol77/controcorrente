@@ -269,6 +269,33 @@
           "format": "WebP, quality 91",
           "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
         }
+      },
+      {
+        "name": "Tagliatelle al sugo di costine di maiale",
+        "price": 12.5,
+        "description": "Tagliatelle condite con un ricco sugo di costine di maiale.",
+        "allergens": [
+          1
+        ],
+        "icon": "Wheat",
+        "orderCourse": "Primo",
+        "dishPhoto": "pranzo-assets/tagliatelle-sugo-costine-maiale-20261112.webp",
+        "translations": {
+          "en": {
+            "name": "Tagliatelle with pork rib ragù",
+            "description": "Tagliatelle served with a rich pork rib ragù."
+          },
+          "zh": {
+            "name": "猪肋排酱汁宽面",
+            "description": "宽面搭配浓郁的猪肋排肉酱。"
+          }
+        },
+        "photoSource": {
+          "type": "Existing approved illustrative photo reused from lunch",
+          "date": "2026-11-12",
+          "tool": "reused existing asset",
+          "note": "Stesso piatto e stessa foto illustrativa del pranzo; piatto avorio e sfondo blu marino coordinati con la cena."
+        }
       }
     ],
     "secondi": [
@@ -404,6 +431,31 @@
           "resolution": "1536x1024",
           "format": "WebP, quality 91",
           "note": "Tre involtini di pollo avvolti nel bacon, con ripieno di gorgonzola visibile, su crema di patate; piatto avorio e sfondo blu marino. Immagine illustrativa."
+        }
+      },
+      {
+        "name": "Bistecca di vitello con patate al forno",
+        "price": 20,
+        "description": "Bistecca di vitello alla griglia, servita con patate al forno.",
+        "allergens": [],
+        "icon": "Utensils",
+        "orderCourse": "Secondo",
+        "dishPhoto": "cena-assets/bistecca-vitello-osso-patate-20261028.avif",
+        "translations": {
+          "en": {
+            "name": "Grilled veal steak with roast potatoes",
+            "description": "Grilled veal steak served with roast potatoes."
+          },
+          "zh": {
+            "name": "烤小牛排配烤土豆",
+            "description": "烤小牛排搭配烤土豆。"
+          }
+        },
+        "photoSource": {
+          "type": "Previously approved illustrative dinner photo",
+          "date": "2026-10-28",
+          "tool": "reused existing asset",
+          "note": "Recuperata la foto già approvata della bistecca di vitello con patate al forno."
         }
       }
     ]
@@ -704,6 +756,61 @@
         "resolution": "1536x1024",
         "format": "WebP, quality 91",
         "note": "Maiale alla pizzaiola con insalata di patate lesse prezzemolate; piatto avorio, sfondo blu marino e inquadratura coordinata. Immagine illustrativa."
+      }
+    },
+    {
+      "name": "Braciole alla griglia con insalata di patate prezzemolate",
+      "price": 10,
+      "description": "Braciole alla griglia, accompagnate da un’insalata di patate al prezzemolo.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/braciole-maiale-patate-prezzemolo-20261112-due.webp",
+      "translations": {
+        "en": {
+          "name": "Grilled pork chops with parsley potato salad",
+          "description": "Grilled pork chops served with parsley potato salad."
+        },
+        "zh": {
+          "name": "烤猪排配欧芹土豆沙拉",
+          "description": "烤猪排搭配欧芹土豆沙拉。"
+        }
+      },
+      "photoSource": {
+        "type": "Existing approved illustrative photo reused from lunch",
+        "date": "2026-11-12",
+        "tool": "reused existing asset",
+        "note": "Due braciole grigliate con patate al prezzemolo; piatto avorio e sfondo blu marino coordinati. Immagine illustrativa."
+      }
+    },
+    {
+      "name": "Fusilli con branzino, zucchine e pomodorini",
+      "price": 12.5,
+      "description": "Fusilli con branzino, zucchine e pomodorini.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Primo",
+      "photoLayout": "side",
+      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodorini-20261112.webp",
+      "translations": {
+        "en": {
+          "name": "Fusilli with sea bass, courgettes and cherry tomatoes",
+          "description": "Fusilli with sea bass, courgettes and cherry tomatoes."
+        },
+        "zh": {
+          "name": "海鲈鱼西葫芦樱桃番茄螺旋面",
+          "description": "螺旋面搭配海鲈鱼、西葫芦和樱桃番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "Existing approved illustrative photo reused from lunch",
+        "date": "2026-11-12",
+        "tool": "reused existing asset",
+        "note": "Foto coordinata del pranzo per lo stesso piatto: piatto avorio, sfondo blu marino e luce calda. Immagine illustrativa."
       }
     }
   ],

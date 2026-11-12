@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti": [["Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)", 10], ["Carciofi fritti", 13], ["Funghi champignon fritti", 10], ["Vitello tonnato", 12]], "primi": [["Spaghetti ai frutti di mare", 15], ["Risotto con broccoli, gamberetti* e limone", 12.5], ["Fusilli con crema di verdure e orata", 12.5], ["Tagliatelle ai funghi misti e salsiccia, con poca panna", 12.5], ["Linguine al nero di seppia", 13], ["Spaghetti di soia con verdure, gamberetti* e pollo", 10]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco", 12], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Trancio di salmone all’arancia e pepe rosa", 14], ["Orata grande alla griglia (600 g) con patate al forno", 16], ["Involtini di pollo con bacon e gorgonzola su crema di patate", 14]]};
+  const catalog = {"antipasti": [["Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)", 10], ["Carciofi fritti", 13], ["Funghi champignon fritti", 10], ["Vitello tonnato", 12]], "primi": [["Spaghetti ai frutti di mare", 15], ["Risotto con broccoli, gamberetti* e limone", 12.5], ["Fusilli con crema di verdure e orata", 12.5], ["Tagliatelle ai funghi misti e salsiccia, con poca panna", 12.5], ["Linguine al nero di seppia", 13], ["Spaghetti di soia con verdure, gamberetti* e pollo", 10], ["Tagliatelle al sugo di costine di maiale", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco", 12], ["Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico", 14], ["Trancio di salmone all’arancia e pepe rosa", 14], ["Orata grande alla griglia (600 g) con patate al forno", 16], ["Involtini di pollo con bacon e gorgonzola su crema di patate", 14], ["Bistecca di vitello con patate al forno", 20]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
   // Solo bottiglie Cantine Delite, ai prezzi esposti nella relativa carta.
@@ -552,6 +552,7 @@
     if (page === 'ordine') setupSummary();
   });
 })();
+
 
 
 
