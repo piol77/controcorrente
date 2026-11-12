@@ -410,234 +410,240 @@
   },
   "lunch": [
     {
-      "name": "Risotto con broccoli, gamberetti* e limone",
-      "price": 12,
-      "description": "Risotto cremoso con broccoli e gamberetti*, profumato al limone.",
+      "name": "Spaghetti di soia con verdure, gamberetti* e pollo",
+      "price": 10,
+      "description": "Spaghetti di soia saltati con carote, zucchine, verza, gamberetti* e pollo.",
       "allergens": [
-        2
+        2,
+        6
       ],
       "icon": "Shrimp",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/risotto-broccoli-gamberetti-limone-20261111.webp",
+      "dishPhoto": "pranzo-assets/spaghetti-soia-verdure-gamberetti-pollo-20261112.webp",
       "translations": {
         "en": {
-          "name": "Shrimp*, broccoli and lemon risotto",
-          "description": "Creamy risotto with broccoli and shrimp*, scented with lemon."
+          "name": "Soy noodles with vegetables, shrimp* and chicken",
+          "description": "Soy noodles tossed with carrots, courgettes, cabbage, shrimp* and chicken."
         },
         "zh": {
-          "name": "西兰花虾仁*柠檬意式烩饭",
-          "description": "意式烩饭搭配西兰花和虾仁*，带有清新的柠檬香。"
+          "name": "蔬菜虾仁*鸡肉炒粉丝",
+          "description": "炒粉丝搭配胡萝卜、西葫芦、卷心菜、虾仁*和鸡肉。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
         "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
       }
     },
     {
-      "name": "Noodles in brodo di carne con verdure e uovo",
-      "price": 9,
-      "description": "Noodles serviti in brodo di carne con verdure e uovo.",
-      "allergens": [
-        3
-      ],
-      "icon": "Egg",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/noodles-brodo-carne-20261111.webp",
-      "translations": {
-        "en": {
-          "name": "Noodles in meat broth with vegetables and egg",
-          "description": "Noodles served in meat broth with vegetables and egg."
-        },
-        "zh": {
-          "name": "蔬菜鸡蛋肉汤面",
-          "description": "面条佐以肉汤、蔬菜和鸡蛋。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
-        "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
-      }
-    },
-    {
-      "name": "Fusilli con crema di verdure e orata",
+      "name": "Tagliatelle al sugo di costine di maiale",
       "price": 12,
-      "description": "Fusilli con orata e una crema di carote, patate, piselli, finocchi, zucchine e cipolla.",
+      "description": "Tagliatelle condite con un ricco sugo di costine di maiale.",
       "allergens": [
-        1,
-        4
+        1
       ],
-      "icon": "Fish",
+      "icon": "Wheat",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/fusilli-crema-verdure-orata-verde-20261111.webp",
+      "dishPhoto": "pranzo-assets/tagliatelle-sugo-costine-maiale-20261112.webp",
       "translations": {
         "en": {
-          "name": "Fusilli with sea bream and vegetable purée",
-          "description": "Fusilli with sea bream and a purée of carrots, potatoes, peas, fennel, courgettes and onion."
+          "name": "Tagliatelle with pork rib ragù",
+          "description": "Tagliatelle served with a rich pork rib ragù."
         },
         "zh": {
-          "name": "海鲷蔬菜酱螺旋意面",
-          "description": "螺旋意面搭配海鲷，佐以胡萝卜、土豆、豌豆、茴香球、西葫芦和洋葱制成的蔬菜酱。"
+          "name": "猪肋排酱汁宽面",
+          "description": "宽面搭配浓郁的猪肋排肉酱。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
         "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
       }
     },
     {
-      "name": "Spaghetti alla carbonara con pancetta affumicata e pecorino",
+      "name": "Trofie al pesto di melanzane e scaglie di Parmigiano",
       "price": 10,
-      "description": "Spaghetti con una crema di uova e pecorino e pancetta affumicata.",
+      "description": "Trofie con pesto di melanzane e scaglie di Parmigiano.",
       "allergens": [
         1,
-        3,
         7
       ],
       "icon": "Wheat",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/spaghetti-carbonara-20261111.webp",
+      "dishPhoto": "pranzo-assets/trofie-pesto-melanzane-parmigiano-20261112.webp",
       "translations": {
         "en": {
-          "name": "Spaghetti carbonara with smoked pancetta and pecorino",
-          "description": "Spaghetti coated in a silky egg and pecorino sauce with smoked pancetta."
+          "name": "Trofie with eggplant pesto and Parmesan shavings",
+          "description": "Trofie served with eggplant pesto and shavings of Parmesan."
         },
         "zh": {
-          "name": "烟熏培根佩科里诺奶酪卡邦尼意面",
-          "description": "意大利面拌入鸡蛋和佩科里诺羊奶酪酱，搭配烟熏意式培根。"
+          "name": "茄子青酱螺旋面配帕尔马干酪片",
+          "description": "螺旋面搭配茄子青酱和帕尔马干酪片。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
         "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
       }
     },
     {
-      "name": "Straccetti di pollo con fagiolini e riso bianco al vapore",
+      "name": "Fusilli con branzino, zucchine e pomodorini",
+      "price": 12,
+      "description": "Fusilli con branzino, zucchine e pomodorini.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodorini-20261112.webp",
+      "translations": {
+        "en": {
+          "name": "Fusilli with sea bass, courgettes and cherry tomatoes",
+          "description": "Fusilli with sea bass, courgettes and cherry tomatoes."
+        },
+        "zh": {
+          "name": "海鲈鱼西葫芦樱桃番茄螺旋面",
+          "description": "螺旋面搭配海鲈鱼、西葫芦和樱桃番茄。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
+        "tool": "image_gen",
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
+      }
+    },
+    {
+      "name": "Braciola di maiale alla griglia con patate al prezzemolo",
       "price": 10,
-      "description": "Straccetti di pollo con fagiolini, accompagnati da riso bianco al vapore.",
+      "description": "Braciola di maiale alla griglia, servita con patate al prezzemolo.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/straccetti-pollo-fagiolini-riso-20261111.webp",
+      "dishPhoto": "pranzo-assets/braciola-maiale-patate-prezzemolo-20261112.webp",
       "translations": {
         "en": {
-          "name": "Chicken strips with green beans and steamed white rice",
-          "description": "Chicken strips and green beans served with steamed white rice."
+          "name": "Grilled pork chop with parsley potatoes",
+          "description": "Grilled pork chop served with parsley potatoes."
         },
         "zh": {
-          "name": "四季豆鸡肉条配蒸白米饭",
-          "description": "鸡肉条和四季豆搭配蒸白米饭。"
+          "name": "烤猪排配欧芹土豆",
+          "description": "烤猪排搭配欧芹土豆。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
         "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
       }
     },
     {
-      "name": "Filetti di orata al limone con fagiolini saltati",
+      "name": "Straccetti di pollo con melanzane e riso bianco al vapore",
+      "price": 10,
+      "description": "Straccetti di pollo con melanzane, accompagnati da riso bianco al vapore.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/straccetti-pollo-melanzane-riso-20261112.webp",
+      "translations": {
+        "en": {
+          "name": "Chicken strips with eggplant and steamed white rice",
+          "description": "Chicken strips with eggplant, served with steamed white rice."
+        },
+        "zh": {
+          "name": "鸡肉条配茄子和蒸白米饭",
+          "description": "鸡肉条搭配茄子和蒸白米饭。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
+        "tool": "image_gen",
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
+      }
+    },
+    {
+      "name": "Grigliata mista di carne con patate al forno",
       "price": 12,
-      "description": "Filetti di orata profumati al limone, serviti con fagiolini saltati.",
+      "description": "Costine di maiale, salsiccia, pollo e braciole alla griglia, con patate al forno.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/grigliata-mista-carne-patate-20261112.webp",
+      "translations": {
+        "en": {
+          "name": "Mixed grilled meat with roast potatoes",
+          "description": "Grilled pork ribs, sausage, chicken and pork chops, served with roast potatoes."
+        },
+        "zh": {
+          "name": "混合烤肉配烤土豆",
+          "description": "烤猪肋排、香肠、鸡肉和猪排，搭配烤土豆。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
+        "tool": "image_gen",
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
+      }
+    },
+    {
+      "name": "Filetti di branzino all’arancia e pepe rosa con broccoli saltati",
+      "price": 12,
+      "description": "Filetti di branzino all’arancia e pepe rosa, serviti con broccoli saltati.",
       "allergens": [
         4
       ],
       "icon": "Fish",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/orata-limone-fagiolini-20261111.webp",
+      "dishPhoto": "pranzo-assets/filetti-branzino-arancia-broccoli-20261112.webp",
       "translations": {
         "en": {
-          "name": "Lemon sea bream fillets with sautéed green beans",
-          "description": "Sea bream fillets scented with lemon, served with sautéed green beans."
+          "name": "Sea bass fillets with orange and pink pepper, served with sautéed broccoli",
+          "description": "Sea bass fillets with orange and pink pepper, served with sautéed broccoli."
         },
         "zh": {
-          "name": "柠檬海鲷鱼柳配炒四季豆",
-          "description": "柠檬风味海鲷鱼柳搭配清炒四季豆。"
+          "name": "橙香粉红胡椒海鲈鱼柳配炒西兰花",
+          "description": "海鲈鱼柳搭配橙子和粉红胡椒，并佐以炒西兰花。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
+        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "date": "2026-11-12",
         "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
-      }
-    },
-    {
-      "name": "Insalata di finocchi, arancia, salmone e avocado al balsamico",
-      "price": 12,
-      "description": "Finocchi, arancia, salmone e avocado conditi con aceto balsamico.",
-      "allergens": [
-        4
-      ],
-      "icon": "Leaf",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado-20261111.webp",
-      "translations": {
-        "en": {
-          "name": "Fennel, orange, salmon and avocado salad with balsamic vinegar",
-          "description": "Fennel, orange, salmon and avocado dressed with balsamic vinegar."
-        },
-        "zh": {
-          "name": "意式香醋茴香橙子三文鱼牛油果沙拉",
-          "description": "茴香球、橙子、三文鱼和牛油果，佐以意式香醋。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
-        "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
-      }
-    },
-    {
-      "name": "Maiale alla pizzaiola con patate al forno",
-      "price": 10,
-      "description": "Maiale al sugo di pomodoro, accompagnato da patate al forno.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/maiale-pizzaiola-patate-20261111.webp",
-      "translations": {
-        "en": {
-          "name": "Pizzaiola-style pork with roast potatoes",
-          "description": "Pork in tomato sauce served with oven-roasted potatoes."
-        },
-        "zh": {
-          "name": "意式番茄酱猪肉配烤土豆",
-          "description": "猪肉佐以番茄酱，搭配烤土豆。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-        "date": "2026-11-11",
-        "tool": "image_gen",
-        "resolution": "1200 × 900 px",
-        "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa."
+        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "format": "WebP",
+        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
       }
     }
   ],
@@ -848,4 +854,3 @@
     }
   ]
 }
-
