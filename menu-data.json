@@ -533,31 +533,31 @@
       }
     },
     {
-      "name": "Braciola di maiale alla griglia con patate al prezzemolo",
+      "name": "Braciole di maiale alla griglia con patate al prezzemolo",
       "price": 10,
-      "description": "Braciola di maiale alla griglia, servita con patate al prezzemolo.",
+      "description": "Due braciole di maiale alla griglia, servite con patate al prezzemolo.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/braciola-maiale-patate-prezzemolo-20261112.webp",
+      "dishPhoto": "pranzo-assets/braciole-maiale-patate-prezzemolo-20261112-due.webp",
       "translations": {
         "en": {
-          "name": "Grilled pork chop with parsley potatoes",
-          "description": "Grilled pork chop served with parsley potatoes."
+          "name": "Grilled pork chops with parsley potatoes",
+          "description": "Two grilled pork chops served with parsley potatoes."
         },
         "zh": {
           "name": "烤猪排配欧芹土豆",
-          "description": "烤猪排搭配欧芹土豆。"
+          "description": "两块烤猪排搭配欧芹土豆。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "type": "AI-generated illustrative food image",
         "date": "2026-11-12",
         "tool": "image_gen",
-        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "resolution": "480 × 480 px WebP",
         "format": "WebP",
-        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
+        "note": "Due braciole di maiale alla griglia con patate al prezzemolo, piatto avorio e sfondo blu marino coordinati. Immagine illustrativa."
       }
     },
     {
@@ -591,7 +591,7 @@
     {
       "name": "Grigliata mista di carne con patate al forno",
       "price": 12,
-      "description": "Costine di maiale, salsiccia, pollo e due piccole braciole alla griglia, con patate al forno.",
+      "description": "Costine di maiale, salsiccia, pollo e braciole alla griglia, con patate al forno.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
@@ -599,11 +599,11 @@
       "translations": {
         "en": {
           "name": "Mixed grilled meat with roast potatoes",
-          "description": "Grilled pork ribs, sausage, chicken and two small pork chops, served with roast potatoes."
+          "description": "Grilled pork ribs, sausage, chicken and pork chops, served with roast potatoes."
         },
         "zh": {
           "name": "混合烤肉配烤土豆",
-          "description": "烤猪肋排、香肠、鸡肉和两块小猪排，搭配烤土豆。"
+          "description": "烤猪肋排、香肠、鸡肉和烤猪排，搭配烤土豆。"
         }
       },
       "photoLayout": "thumbnail",
@@ -613,7 +613,7 @@
         "tool": "image_gen",
         "resolution": "480 × 480 px WebP",
         "format": "WebP",
-        "note": "Grigliata mista moderata con due braciole piccole e sottili, piatto avorio e sfondo blu marino coordinati. Immagine illustrativa."
+        "note": "Grigliata mista di carne con costine di maiale, salsiccia, pollo, braciole e patate arrosto. Immagine illustrativa."
       }
     },
     {
