@@ -595,7 +595,7 @@
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/grigliata-mista-carne-patate-20261112.webp",
+      "dishPhoto": "pranzo-assets/grigliata-mista-carne-patate-20261112-moderata.webp",
       "translations": {
         "en": {
           "name": "Mixed grilled meat with roast potatoes",
@@ -608,12 +608,12 @@
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
+        "type": "AI-generated illustrative food image",
         "date": "2026-11-12",
         "tool": "image_gen",
-        "resolution": "240 × 240 px source crop; rendered compactly on menu",
+        "resolution": "480 × 480 px WebP",
         "format": "WebP",
-        "note": "Piatto avorio su fondo blu marino, luce calda e inquadratura coordinata. Immagine illustrativa."
+        "note": "Grigliata mista in porzione moderata, piatto avorio e sfondo blu marino coordinati. Immagine illustrativa."
       }
     },
     {
