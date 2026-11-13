@@ -150,7 +150,7 @@
     state=result;
     const inSeason=state.day>='2026-12-01' && state.day<='2026-12-25';
     show.hidden=!state.active || !inSeason;
-    status.textContent=state.jolly?'':
+    status.textContent=state.jolly?''
       : state.day<'2026-12-01'?'I cassettini si aprono dal 1° dicembre.'
       : state.day>'2026-12-25'?'Il calendario si è concluso il 25 dicembre.'
       : state.active?'Apri il cassettino di oggi.':'Il calendario è in pausa. Riprova più tardi.';
