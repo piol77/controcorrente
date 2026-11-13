@@ -9,6 +9,58 @@
   const date=value=>value?.split('-').reverse().join('/')||'—';
   const states={available:'Disponibile',reserved:'Riservato',used:'Utilizzato',void:'Annullato',expired:'Scaduto'};
   const token=()=>sessionStorage.getItem('cc-radio-premi-admin-session-v1')||'';
+  const access=document.getElementById('avvento-access');
+  const credentials=access?.querySelector('[data-av-login]');
+  const authStatus=access?.querySelector('[data-av-auth-status]');
+  const privatePanel=access?.querySelector('[data-av-private]');
+  const sessionKey='cc-radio-premi-admin-session-v1';
+
+  async function authorize(value) {
+    const result=await api.request('list',{},value);
+    if (!result.ok) {
+      privatePanel.hidden=true;
+      credentials.hidden=false;
+      authStatus.textContent=api.message(result.reason);
+      return false;
+    }
+    privatePanel.hidden=false;
+    credentials.hidden=true;
+    authStatus.textContent='Accesso titolare verificato.';
+    return true;
+  }
+  if (access) {
+    credentials.querySelector('button').disabled=false;
+    access.addEventListener('toggle',()=>{if(access.open && token())void authorize(token());});
+    credentials.addEventListener('submit',async event=>{
+      event.preventDefault();
+      const button=credentials.querySelector('button');
+      button.disabled=true;
+      try {
+        const formData=new FormData(credentials);
+        const response=await fetch('https://lgjijnhhnjioiyvfmkvy.supabase.co/auth/v1/token?grant_type=password',{
+          method:'POST',headers:{apikey:'sb_publishable_aibVnScYEW5GrPWfu5M4Ag_ieHHGgKv','Content-Type':'application/json'},
+          body:JSON.stringify({email:formData.get('email'),password:formData.get('password')})
+        });
+        const session=await response.json();
+        if (!response.ok || !session.access_token) {authStatus.textContent='Accesso non riuscito. Controlla le credenziali.';return;}
+        if(await authorize(session.access_token)) {
+          sessionStorage.setItem(sessionKey,session.access_token);
+          credentials.reset();
+          panel.open=true;
+          void refresh();
+        }
+      } catch { authStatus.textContent='Accesso temporaneamente non disponibile.'; }
+      finally { button.disabled=false;credentials.elements.password.value=''; }
+    });
+    access.querySelector('[data-av-logout]').onclick=()=>{
+      sessionStorage.removeItem(sessionKey);
+      body.replaceChildren();
+      panel.open=false;
+      privatePanel.hidden=true;
+      credentials.hidden=false;
+      authStatus.textContent='Sessione chiusa.';
+    };
+  }
 
   async function execute(action,fields) {
     if (!token()) { status.textContent='Accedi alla console.'; return null; }
@@ -30,7 +82,12 @@
         total=Math.round(Number(euros.replace(',','.'))*100);
       } else if (action==='void' && !window.confirm('Annullare definitivamente il codice '+code+'?')) return;
       button.disabled=true;
-      try { if (await execute(action,{code,total})) await refresh(); }
+      try {
+        if (await execute(action,{code,total})) {
+          document.dispatchEvent(new Event('avvento:updated'));
+          await refresh();
+        }
+      }
       finally { button.disabled=false; }
     };
     container.append(button);
@@ -50,7 +107,7 @@
     for (const record of result.records) {
       const row=body.insertRow();
       cell(row,record.code);
-      cell(row,api.prizes[record.prize-1]);
+      cell(row,api.prizeName?.(record.prize)??(record.prize===0?'Jolly di prova · nessuno sconto':api.prizes[record.prize-1]));
       cell(row,moment.format(new Date(record.issued)));
       cell(row,moment.format(new Date(record.deadline)));
       cell(row,date(record.last_dinner));

@@ -13,6 +13,8 @@
   let records=[];
   let challenge=api.token();
   let awaiting=false;
+  let jollyBusy=false;
+  let jollyTimer;
   const jokes=[
     'Il cameriere filosofo dice: «Il dubbio passa. Il dolce, se arriva, resta poco.»',
     'La cuoca dice: «Due caffè. Uno per svegliarti, l’altro per ricordarti il primo.»',
@@ -23,8 +25,10 @@
   ];
 
   function showPrize(row) {
-    dialog.querySelector('h2').textContent=api.prizes[row.prize-1];
-    dialog.querySelector('[data-joke]').textContent=jokes[row.prize-1];
+    dialog.querySelector('h2').textContent=api.prizeName(row.prize);
+    dialog.querySelector('[data-joke]').textContent=row.prize===0
+      ? 'La cuoca dice: «Lo sconto è finto. Il collaudo lo facciamo sul serio.»'
+      : jokes[row.prize-1];
     dialog.querySelector('code').textContent=row.code;
     dialog.querySelector('[data-deadline]').textContent='Prenota entro il '+deadline.format(new Date(row.deadline))+
       '. Ultima data utile per la cena: '+date.format(new Date(row.last_dinner+'T12:00:00Z'))+'.';
@@ -39,7 +43,44 @@
       catch { copy.textContent='Seleziona il codice e copialo'; }
     };
     copy.textContent='Copia codice';
+    const confetti=dialog.querySelector('.av-confetti');
+    confetti.replaceChildren();
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for(let i=0;i<18;i++) {
+        const spark=document.createElement('i');
+        const angle=i*Math.PI*2/18;
+        spark.style.setProperty('--x',Math.round(Math.cos(angle)*(75+i%4*12))+'px');
+        spark.style.setProperty('--y',Math.round(Math.sin(angle)*(65+i%5*11))+'px');
+        spark.style.setProperty('--color',['#ffdc81','#78dbe5','#fa8c88'][i%3]);
+        confetti.append(spark);
+      }
+    }
     dialog.showModal();
+  }
+
+  function openDoor(button) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return Promise.resolve();
+    button.classList.remove('is-opening');
+    void button.offsetWidth;
+    button.classList.add('is-opening');
+    return new Promise(resolve=>setTimeout(()=>{button.classList.remove('is-opening');resolve();},580));
+  }
+
+  async function playJolly(button) {
+    if(jollyBusy) return;
+    jollyBusy=true;
+    button.disabled=true;
+    try {
+      const [result]=await Promise.all([api.request('jolly'),openDoor(button)]);
+      if(!result.ok) {
+        status.textContent=api.message(result.reason);
+        if(result.reason==='jolly_closed') void refreshStatus();
+        return;
+      }
+      api.jollyToken(result.record.code,result.token);
+      showPrize(result.record);
+      status.textContent='Codice Jolly emesso. È una prova senza sconto.';
+    } finally {jollyBusy=false;button.disabled=false;}
   }
 
   function draw() {
@@ -53,8 +94,16 @@
       button.disabled=!row && !(state.active && state.day===iso);
       button.setAttribute('aria-label',day+' dicembre'+(row?', premio disponibile da consultare':button.disabled?', chiuso':', apri il cassettino'));
       button.classList.toggle('opened',Boolean(row));
-      if (row) button.addEventListener('click',()=>showPrize(row));
-      else button.addEventListener('click',()=>void start());
+      if (row) button.addEventListener('click',async()=>{await openDoor(button);if(!dialog.open)showPrize(row);});
+      else button.addEventListener('click',async()=>{await openDoor(button);await start();});
+      calendar.append(button);
+    }
+    if(state.jolly) {
+      const button=document.createElement('button');
+      button.type='button';
+      button.className='av-jolly';
+      button.textContent='★ Apri il cassetto Jolly di prova';
+      button.addEventListener('click',()=>void playJolly(button));
       calendar.append(button);
     }
   }
@@ -95,15 +144,24 @@
   dialog.querySelector('[data-close]').addEventListener('click',()=>dialog.close());
   show.addEventListener('click',()=>void start());
   draw();
-  api.request('status').then(result=>{
+  async function refreshStatus() {
+    const result=await api.request('status');
     if (!result.ok) { status.textContent=api.message(result.reason); return; }
     state=result;
     const inSeason=state.day>='2026-12-01' && state.day<='2026-12-25';
     show.hidden=!state.active || !inSeason;
-    status.textContent=state.day<'2026-12-01'?'I cassettini si aprono dal 1° dicembre.'
+    status.textContent=state.jolly?'Prova il cassetto Jolly. Prenota entro 24 ore per una cena entro 7 giorni. Nessuno sconto.'
+      : state.day<'2026-12-01'?'I cassettini si aprono dal 1° dicembre.'
       : state.day>'2026-12-25'?'Il calendario si è concluso il 25 dicembre.'
       : state.active?'Apri il cassettino di oggi.':'Il calendario è in pausa. Riprova più tardi.';
     draw();
     void refreshPrize();
-  });
+    clearTimeout(jollyTimer);
+    if(state.jolly) {
+      const until=Date.parse('2026-12-01T00:00:00+01:00')-Date.now();
+      jollyTimer=setTimeout(()=>void refreshStatus(),Math.max(1000,Math.min(until+300,3600000)));
+    }
+  }
+  void refreshStatus();
+  document.addEventListener('visibilitychange',()=>{if(!document.hidden)void refreshStatus();});
 })();

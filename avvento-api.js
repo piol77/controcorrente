@@ -3,6 +3,7 @@
   const prizes = ['Un dolce in omaggio','Due caffè offerti','Un calice di vino in omaggio (solo maggiorenni)',
     '3 € di sconto','5% di sconto, fino a 5 €','5 € di sconto'];
   const messages = {
+    jolly_closed:'Il cassetto Jolly è terminato. Dal 1° dicembre si apre il calendario ufficiale.',
     inactive:'La promozione Avvento al momento non è disponibile.',
     rate_limited:'Troppe richieste. Riprova più tardi.',
     not_found:'Codice Avvento non trovato. Usa il collegamento «Prenota» dal calendario dopo la verifica WhatsApp.',
@@ -37,5 +38,13 @@
       return sessionStorage.getItem(tokenKey)||'';
     } catch { return ''; }
   }
-  window.CCAvvento = Object.freeze({request,token,prizes,message: reason => messages[reason] || messages.offline});
+  function jollyToken(code, value) {
+    try {
+      const key='cc-avvento-2026-jolly:'+code;
+      if(value) sessionStorage.setItem(key,value);
+      return sessionStorage.getItem(key)||'';
+    } catch { return ''; }
+  }
+  const prizeName=number=>number===0?'Jolly di prova · nessuno sconto':prizes[number-1];
+  window.CCAvvento = Object.freeze({request,token,jollyToken,prizes,prizeName,message: reason => messages[reason] || messages.offline});
 })();

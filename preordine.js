@@ -441,9 +441,10 @@
         else if (!dinnerTime || isLunch() || holiday) reason='I premi Avvento valgono soltanto a cena nei giorni ammessi.';
         else if (incompatible) reason=api?.message('incompatible') || 'Questo premio non è cumulabile con il tuo ordine.';
         else if (avventoSubtotal<5000) reason=api?.message('subtotal') || 'Per usare il premio il conto minimo è di 50 €.';
-        else if (!api?.token()) reason='Apri la prenotazione dal tuo premio nel calendario Avvento.';
+        else if (!(api?.jollyToken?.(avventoCodes[0].toUpperCase()) || api?.token())) reason='Apri la prenotazione dal tuo premio nel calendario Avvento.';
         else {
-          const check=await api.request('check',{token:api.token(),code:avventoCodes[0].toUpperCase(),day:requestedDay,
+          const code=avventoCodes[0].toUpperCase();
+          const check=await api.request('check',{token:api.jollyToken?.(code)||api.token(),code,day:requestedDay,
             time:requestedTime,total:avventoSubtotal,incompatible:false});
           if (!check.ok) reason=api.message(check.reason);
         }
