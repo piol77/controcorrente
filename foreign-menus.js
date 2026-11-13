@@ -6,71 +6,71 @@
 
   const LUNCH={
   "en": {
-    "Risotto con broccoli, gamberetti* e limone": [
-      "Shrimp*, broccoli and lemon risotto",
-      "Creamy risotto with broccoli and shrimp*, scented with lemon."
+    "Penne con zucchine, salsiccia e panna": [
+      "Penne with courgettes, sausage and cream",
+      "Penne with courgettes and sausage, finished with cream."
     ],
-    "Noodles in brodo di carne con verdure e uovo": [
-      "Noodles in meat broth with vegetables and egg",
-      "Noodles served in meat broth with vegetables and egg."
+    "Tagliatelle con broccoli, salmone fresco e panna": [
+      "Tagliatelle with broccoli, fresh salmon and cream",
+      "Tagliatelle with broccoli and fresh salmon in a delicate cream sauce."
     ],
-    "Fusilli con crema di verdure e orata": [
-      "Fusilli with sea bream and vegetable purée",
-      "Fusilli with sea bream and a purée of carrots, potatoes, peas, fennel, courgettes and onion."
+    "Conchigliette con orata, patate e zafferano": [
+      "Small shell pasta with sea bream, potatoes and saffron",
+      "Small shell pasta with sea bream and potatoes, scented with saffron."
     ],
-    "Spaghetti alla carbonara con pancetta affumicata e pecorino": [
-      "Spaghetti carbonara with smoked pancetta and pecorino",
-      "Spaghetti coated in a silky egg and pecorino sauce with smoked pancetta."
+    "Paccheri ai frutti di mare con gamberetti*, gamberoni*, cozze e vongole": [
+      "Paccheri with seafood, shrimp*, large prawns*, mussels and clams",
+      "Paccheri with shrimp*, large prawns*, mussels and clams."
     ],
-    "Straccetti di pollo con fagiolini e riso bianco al vapore": [
-      "Chicken strips with green beans and steamed white rice",
-      "Chicken strips and green beans served with steamed white rice."
+    "Orata alla griglia con fagioli saltati": [
+      "Grilled sea bream with sautéed beans",
+      "Grilled sea bream served with sautéed beans."
     ],
-    "Filetti di orata al limone con fagiolini saltati": [
-      "Lemon sea bream fillets with sautéed green beans",
-      "Sea bream fillets scented with lemon, served with sautéed green beans."
+    "Branzino alla griglia con fagioli saltati": [
+      "Grilled sea bass with sautéed beans",
+      "Grilled sea bass served with sautéed beans."
     ],
-    "Insalata di finocchi, arancia, salmone e avocado al balsamico": [
-      "Fennel, orange, salmon and avocado salad with balsamic vinegar",
-      "Fennel, orange, salmon and avocado dressed with balsamic vinegar."
+    "Salmone alla griglia con fagioli saltati": [
+      "Grilled salmon with sautéed beans",
+      "Grilled salmon served with sautéed beans."
     ],
-    "Maiale alla pizzaiola con patate al forno": [
-      "Pizzaiola-style pork with roast potatoes",
-      "Pork in tomato sauce served with oven-roasted potatoes."
+    "Braciole di maiale al latte con patate al prezzemolo": [
+      "Pork chops cooked in milk with parsley potatoes",
+      "Pork chops cooked in milk, served with parsley potatoes."
     ]
   },
   "zh": {
-    "Risotto con broccoli, gamberetti* e limone": [
-      "西兰花虾仁*柠檬意式烩饭",
-      "意式烩饭搭配西兰花和虾仁*，带有清新的柠檬香。"
+    "Penne con zucchine, salsiccia e panna": [
+      "西葫芦香肠奶油通心粉",
+      "通心粉搭配西葫芦和香肠，并以奶油调味。"
     ],
-    "Noodles in brodo di carne con verdure e uovo": [
-      "蔬菜鸡蛋肉汤面",
-      "面条佐以肉汤、蔬菜和鸡蛋。"
+    "Tagliatelle con broccoli, salmone fresco e panna": [
+      "西兰花鲜三文鱼奶油宽面",
+      "宽面搭配西兰花和鲜三文鱼，佐以细腻奶油酱。"
     ],
-    "Fusilli con crema di verdure e orata": [
-      "海鲷蔬菜酱螺旋意面",
-      "螺旋意面搭配海鲷，佐以胡萝卜、土豆、豌豆、茴香球、西葫芦和洋葱制成的蔬菜酱。"
+    "Conchigliette con orata, patate e zafferano": [
+      "鲷鱼土豆藏红花贝壳面",
+      "贝壳面搭配鲷鱼和土豆，带有藏红花香气。"
     ],
-    "Spaghetti alla carbonara con pancetta affumicata e pecorino": [
-      "烟熏培根佩科里诺奶酪卡邦尼意面",
-      "意大利面拌入鸡蛋和佩科里诺羊奶酪酱，搭配烟熏意式培根。"
+    "Paccheri ai frutti di mare con gamberetti*, gamberoni*, cozze e vongole": [
+      "海鲜大通心粉，配虾仁*、大虾*、贻贝和蛤蜊",
+      "大通心粉搭配虾仁*、大虾*、贻贝和蛤蜊。"
     ],
-    "Straccetti di pollo con fagiolini e riso bianco al vapore": [
-      "四季豆鸡肉条配蒸白米饭",
-      "鸡肉条和四季豆搭配蒸白米饭。"
+    "Orata alla griglia con fagioli saltati": [
+      "烤鲷鱼配炒豆",
+      "烤鲷鱼搭配炒豆。"
     ],
-    "Filetti di orata al limone con fagiolini saltati": [
-      "柠檬海鲷鱼柳配炒四季豆",
-      "柠檬风味海鲷鱼柳搭配清炒四季豆。"
+    "Branzino alla griglia con fagioli saltati": [
+      "烤海鲈鱼配炒豆",
+      "烤海鲈鱼搭配炒豆。"
     ],
-    "Insalata di finocchi, arancia, salmone e avocado al balsamico": [
-      "意式香醋茴香橙子三文鱼牛油果沙拉",
-      "茴香球、橙子、三文鱼和牛油果，佐以意式香醋。"
+    "Salmone alla griglia con fagioli saltati": [
+      "烤三文鱼配炒豆",
+      "烤三文鱼搭配炒豆。"
     ],
-    "Maiale alla pizzaiola con patate al forno": [
-      "意式番茄酱猪肉配烤土豆",
-      "猪肉佐以番茄酱，搭配烤土豆。"
+    "Braciole di maiale al latte con patate al prezzemolo": [
+      "牛奶焖猪排配欧芹土豆",
+      "牛奶焖猪排搭配欧芹土豆。"
     ]
   }
 };
