@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#082a43">
+  <title>Radio Premi | Controcorrente Torino</title>
+  <link rel="icon" href="icons/Anchor.svg">
+  <link rel="stylesheet" href="styles.css?v=20261018-logo-menu">
+  <link rel="stylesheet" href="promozioni.css?v=20261113">
+</head>
+<body>
+  <header class="top"><div class="brand-row"><a class="logo" href="index.html"><img class="brand-logo" src="logo-controcorrente.webp?v=202610031345" alt="Controcorrente" width="2172" height="724"></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><img class="icon " src="icons/Menu.svg" alt="" aria-hidden="true"><span>Menù</span></button></div><nav id="site-nav"><a href="index.html">Novità</a><a href="il-locale.html">Il Locale</a><a href="pranzo.html">Menù pranzo</a><a href="cena.html?v=20261110-cena-senza-linguine-v2">Menù cena</a><a href="offerta.html">Offerta del giorno</a><a href="bibite-vini.html">Bibite & vini</a><a href="club.html">Club</a><a href="tessera-punti-pranzo.html">Tessera Punti Pranzo</a><a href="allergeni.html">Allergeni</a><a href="contatti.html">Contatti</a><a href="divertentismo.html">Divertentismo <span aria-hidden="true" style="font-size:.75em;color:var(--gold);margin-left:.35em">☺</span></a><a href="avvento.html">🎄 Calendario dell’Avvento</a><a href="radio-premi.html" aria-current="page"><span aria-hidden="true">🎟️</span> Radio Premi</a><span class="languages"><a href="english.html" lang="en">EN</a><a href="cinese.html" lang="zh">中文</a></span></nav></header>
+  <main class="promo-page" data-radio-premi>
+    <header class="promo-hero">
+      <h1>Radio Premi</h1>
+      <p>5 € di sconto ogni 50 € di conto cena</p>
+      <p class="promo-note" data-radio-premi-status role="status">Verifica della promozione in corso…</p>
+    </header>
+    <section class="promo-panel" id="radio-premi-title">
+      <h2>Come funziona</h2>
+      <p>Accendi la radio con il pulsante ♪ del sito. Quando il Controcorrente manda in onda il premio, un trillo annuncia il codice di cinque cifre accanto al lettore. La trasmissione dura fino a due ore e termina alla prima riserva valida.</p>
+      <ul>
+        <li>Prenota entro le <strong>23:59 del giorno di emissione</strong>. Dal <a href="cena.html">menù cena</a>, inserisci solo le cinque cifre nelle note e invia la richiesta su WhatsApp. Puoi anche comunicare il codice nella chat WhatsApp se prenoti solo il tavolo.</li>
+        <li>Scegli una cena nei <strong>sette giorni di calendario</strong>, contando il giorno di emissione come primo. La riserva resta in attesa di conferma per 24 ore. La prenotazione è soggetta a disponibilità.</li>
+        <li>Il premio va alla prima prenotazione valida e si usa una sola volta. Lo sconto vale <strong>5 € per ogni 50 € interi</strong> sul conto del tavolo prima dello sconto. Per un conto di 100 €, lo sconto è di 10 €.</li>
+        <li>Sono esclusi festivi e menù fissi, comprese le proposte di coppia. Il premio non si somma a sconti o altre promozioni.</li>
+      </ul>
+    </section>
+    <section class="promo-panel" aria-labelledby="radio-premi-ledger-title">
+      <h2 id="radio-premi-ledger-title">Codici pubblicati</h2>
+      <p class="promo-note">Registro delle riserve, delle conferme e degli esiti dei codici Radio Premi.</p>
+      <div class="promo-table"><table aria-label="Registro pubblico dei codici Radio Premi">
+        <thead><tr><th scope="col">Codice</th><th scope="col">Data e ora</th><th scope="col">Stato</th></tr></thead>
+        <tbody data-radio-premi-rows><tr><td colspan="3">Caricamento del registro…</td></tr></tbody>
+      </table></div>
+      <p class="promo-note promo-update" data-radio-premi-updated role="status"></p>
+    </section>
+    <details class="promo-panel promo-console" id="radio-premi-access" data-premi-access>
+      <summary>Console riservata al titolare</summary>
+      <form data-premi-login method="post">
+        <label>Email titolare<input type="email" name="email" autocomplete="username" required></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" minlength="8" required></label>
+        <button type="submit" disabled>Accedi</button>
+      </form>
+      <p class="promo-note promo-update" data-premi-message role="status"></p>
+      <section class="promo-console__private" data-premi-manager hidden aria-label="Gestione Radio Premi">
+        <button type="button" data-premi-logout>Esci dalla console</button>
+        <div class="promo-console__section">
+          <h3>Stato programma</h3>
+          <p data-premi-admin-active>—</p>
+          <button type="button" data-premi-refresh>Aggiorna registro</button>
+          <button type="button" data-premi-test-chime>Manda in onda ora (2 ore)</button>
+          <p data-premi-test-status class="promo-note promo-update" role="status"></p>
+        </div>
+        <div class="promo-console__section">
+          <h3>Trasmissione manuale · <span data-premi-today-label>oggi</span></h3>
+          <p data-premi-today-schedule aria-live="polite">Caricamento del codice giornaliero…</p>
+        </div>
+        <div class="promo-console__section">
+          <h3>Codici e prenotazioni</h3>
+          <p class="promo-note">Codici degli ultimi 10 giorni.</p>
+          <div class="promo-table promo-table--admin"><table aria-label="Gestione codici Radio Premi">
+            <thead><tr><th scope="col">Codice</th><th scope="col">Emissione</th><th scope="col">Cena</th><th scope="col">Stato</th><th scope="col">Conto</th><th scope="col">Azioni</th></tr></thead>
+            <tbody data-premi-admin-rows></tbody>
+          </table></div>
+        </div>
+        <div class="promo-console__section">
+          <h3>Operazioni titolare</h3>
+          <p class="promo-note">Conferma dopo aver ricevuto il messaggio su WhatsApp. Segna il codice come utilizzato solo dopo il pagamento di un conto cena di almeno 50 €. La riserva dura 24 ore in attesa di conferma.</p>
+          <form data-premi-actions>
+            <label>Operazione
+              <select name="operation" data-premi-operation required>
+                <option value="">Seleziona un’operazione…</option>
+                <option value="confirm">Conferma prenotazione con codice</option>
+                <option value="use">Segna sconto utilizzato (conto pagato)</option>
+                <option value="release">Annulla definitivamente un codice</option>
+                <option value="free_hold">Libera riserva non confermata</option>
+                <option value="activate">Attiva promozione</option>
+                <option value="deactivate">Sospendi annunci radio fino a domani</option>
+              </select>
+            </label>
+            <p class="promo-note" data-premi-action-help aria-live="polite">Scegli un’operazione per vedere i campi richiesti.</p>
+            <div data-premi-field="code" hidden>
+              <label>Codice premio di 5 cifre<input name="code" maxlength="5" minlength="5" pattern="[0-9]{5}" inputmode="numeric" placeholder="Es. 12345"></label>
+            </div>
+            <div data-premi-field="amount" hidden>
+              <label>Conto finale prima dello sconto (€)<input type="number" min="50" step="0.01" name="amount" placeholder="Es. 62.00"></label>
+            </div>
+            <button type="submit">Esegui operazione</button>
+          </form>
+        </div>
+      </section>
+    </details>
+  </main>
+  <footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
+  <script src="ui.js?v=20261106-desktop-actions-v2"></script>
+  <script src="site-session.js?v=20261110-promo-reserve-v4"></script>
+  <script src="walkie.js?v=20261110-risorse-v1"></script>
+  <script src="radio-premi.js?v=20261113-promozioni" defer></script>
+  <script src="radio-premi-admin.js?v=20261113-promozioni" defer></script>
+</body>
+</html>

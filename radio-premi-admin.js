@@ -4,7 +4,10 @@
   const KEY = 'sb_publishable_aibVnScYEW5GrPWfu5M4Ag_ieHHGgKv';
   const API = BASE + '/functions/v1/radio-premi';
   const authBase = BASE + '/auth/v1/';
+  const access = document.querySelector('[data-premi-access]');
+  if (!access) return;
   const login = document.querySelector('[data-premi-login]');
+  const signIn = login.querySelector('button[type="submit"]');
   const manager = document.querySelector('[data-premi-manager]');
   const message = document.querySelector('[data-premi-message]');
   const rows = document.querySelector('[data-premi-admin-rows]');
@@ -100,9 +103,11 @@
     return data;
   }
   async function refresh() {
-    if(!accessToken){login.hidden=false;manager.hidden=true;return;}
+    const session = accessToken;
+    if (!access.open || !session) return;
     try {
       const data=await request('list');
+      if (!access.open || session !== accessToken) return;
       login.hidden=true;manager.hidden=false;
       status.textContent=!data.active?'PROMOZIONE DISATTIVATA'
         :data.paused_today?'ANNUNCI RADIO SOSPESI FINO A DOMANI'
@@ -178,6 +183,7 @@
       });
       display('Registro aggiornato. Gli orari sono quelli di Torino.');
     } catch(e) {
+      if (session !== accessToken) return;
       login.hidden=false;manager.hidden=true;
       display('Accesso: '+(e instanceof Error?e.message:'non disponibile'));
       if(/sessione|login_required|JWT/i.test(String(e))) {
@@ -185,12 +191,14 @@
       }
     }
   }
-  document.querySelector('[data-premi-signin]').addEventListener('submit',async e=>{
+  signIn.disabled = false;
+  login.addEventListener('submit',async e=>{
     e.preventDefault();
     // Conserva il riferimento prima dell'await: dopo la callback
     // event.currentTarget torna null, anche se il login è riuscito.
     const formElement = e.currentTarget;
     const form=new FormData(formElement);
+    signIn.disabled = true;
     try{
       const data=await authRequest('token?grant_type=password',{
         email:String(form.get('email')),password:String(form.get('password'))
@@ -199,9 +207,7 @@
       accessToken=data.access_token;sessionStorage.setItem(tokenKey,accessToken);
       formElement.reset(); await refresh();
     }catch(err){display(err instanceof Error?err.message:'Accesso fallito');}
-  });
-  document.querySelector('[data-premi-logout]').addEventListener('click',()=>{
-    accessToken='';sessionStorage.removeItem(tokenKey);refresh();
+    finally { signIn.disabled = false; formElement.elements.password.value = ''; }
   });
   document.querySelector('[data-premi-refresh]').addEventListener('click',refresh);
   // Test live: usa il vero codice disponibile, non un finto voucher locale.
@@ -242,7 +248,23 @@
       testChime.disabled=false;
     }
   });
-  window.setInterval(()=>{if(!document.hidden&&!manager.hidden)refresh();},60000);
+  document.querySelector('[data-premi-logout]').addEventListener('click',()=>{
+    accessToken='';
+    sessionStorage.removeItem(tokenKey);
+    rows.replaceChildren();
+    todaySchedule.replaceChildren();
+    status.textContent = '—';
+    const flash = document.querySelector('[data-premi-test-status]');
+    flash.classList.remove('rp-test-flash');
+    flash.textContent = '';
+    if (liveTestTimer !== null) window.clearTimeout(liveTestTimer);
+    liveTestTimer = null;
+    actionForm.reset();
+    updateActionForm();
+    manager.hidden=true;
+    login.hidden=false;
+    display('Sessione chiusa.');
+  });
   actionForm.addEventListener('submit',async e=>{
     e.preventDefault();
     const fd=new FormData(actionForm);
@@ -292,5 +314,11 @@
       if(submitButton)submitButton.disabled=false;
     }
   });
-  refresh();
+  const poll = window.ccWatchPanel(refresh, 60000);
+  access.addEventListener('toggle', () => { if (access.open) poll.refresh(); });
+  function openLinkedConsole() {
+    if (location.hash === '#radio-premi-access') access.open = true;
+  }
+  openLinkedConsole();
+  window.addEventListener('hashchange', openLinkedConsole);
 })();

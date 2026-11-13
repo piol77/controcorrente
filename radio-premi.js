@@ -10,7 +10,6 @@
   const status = root.querySelector('[data-radio-premi-status]');
   const body = root.querySelector('[data-radio-premi-rows]');
   const updated = root.querySelector('[data-radio-premi-updated]');
-  const inactiveNote = root.querySelector('[data-radio-premi-inactive]');
   const stamp = value => {
     const d = new Date(value);
     return Number.isFinite(d.getTime()) ? new Intl.DateTimeFormat('it-IT',{
@@ -32,9 +31,9 @@
     } catch (_) {
       status.textContent = 'Stato temporaneamente non disponibile. Non si possono verificare premi.';
       updated.textContent = 'Ultimo controllo non disponibile';
+      if (lastRows === undefined) body.replaceChildren();
       return;
     }
-    if (inactiveNote) inactiveNote.hidden = data.active;
     status.textContent = data.paused_today
       ? 'Annunci radio terminati per oggi. Le prenotazioni già confermate restano valide.'
       : data.active

@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#082a43">
   <title>Calendario dell’Avvento | Controcorrente Torino</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icons/Anchor.svg">
+  <link rel="stylesheet" href="styles.css?v=20261018-logo-menu">
+  <link rel="stylesheet" href="promozioni.css?v=20261113">
   <style>
-    .av-page{max-width:850px;margin:auto;padding:20px;color:#fff7e5}
-    .av-page a,.av-page a:visited{color:#ffe1a0}
-    .av-hero,.av-status{text-align:center}
-    .av-hero h1{margin:.3em 0}
     .av-house{max-width:650px;margin:22px auto}
     .av-roof{height:clamp(86px,17vw,145px);display:grid;place-items:end center;padding-bottom:20px;
       background:linear-gradient(135deg,#ac4340,#69292a);clip-path:polygon(50% 0,100% 86%,96% 100%,4% 100%,0 86%);
@@ -26,24 +24,17 @@
     .av-grid button.opened{background:#d5aa58;color:#082a43}
     .av-grid .av-jolly{grid-column:1/-1;background:#d5aa58;color:#082a43}
     .av-grid button.is-opening{animation:av-door .58s ease-in-out}
-    .av-box,.av-page dialog{border:1px solid #cba76d;border-radius:14px;background:#082a43;
+    .av-page dialog{border:1px solid #cba76d;border-radius:14px;background:#082a43;
       color:#fff7e5;padding:clamp(15px,3vw,25px);line-height:1.55}
-    .av-box{margin:20px 0}
-    .av-status{min-height:2em}
+    .av-status{min-height:2em;text-align:center}
+    .av-actions button{padding:8px 12px;border-radius:5px}
     .av-page dialog{max-width:min(90vw,480px);text-align:center}
     .av-page dialog::backdrop{background:#001528bb}
     .av-page dialog[open] .av-stars{animation:av-open .6s ease-out}
-    .av-page button:not(.av-grid button){padding:8px 12px;border-radius:5px;cursor:pointer}
     .av-page code{display:block;margin:12px 0;color:#ffe1a0;font-size:1.18rem;overflow-wrap:anywhere;user-select:all}
     .av-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
     .av-actions [hidden]{display:none}
     .av-page :focus-visible{outline:3px solid #ffe1a0;outline-offset:3px}
-    .av-page summary{cursor:pointer;font-weight:bold}
-    .av-page [hidden]{display:none!important}
-    .av-table{overflow:auto;margin:14px 0}
-    .av-table table{width:100%;border-collapse:collapse}
-    .av-table :is(th,td){padding:8px;text-align:left;border-bottom:1px solid #cba76d66}
-    .av-page label{display:block;margin:8px 0}
     .av-confetti{position:absolute;inset:0;overflow:hidden;pointer-events:none}
     .av-confetti i{position:absolute;left:50%;top:32%;width:8px;height:13px;background:var(--color);animation:av-spark .8s ease-out both}
     @keyframes av-spark{to{transform:translate(var(--x),var(--y)) rotate(230deg);opacity:0}}
@@ -53,10 +44,9 @@
   </style>
 </head>
 <body>
-  <header class="top"><div class="brand-row"><a class="logo" href="index.html"><img class="brand-logo" src="logo-controcorrente.webp?v=202610031345" alt="Controcorrente" width="2172" height="724"></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><img class="icon " src="icons/Menu.svg" alt="" aria-hidden="true"><span>Menù</span></button></div><nav id="site-nav"><a href="index.html">Novità</a><a href="il-locale.html">Il Locale</a><a href="pranzo.html">Menù pranzo</a><a href="cena.html?v=20261110-cena-senza-linguine-v2">Menù cena</a><a href="offerta.html">Offerta del giorno</a><a href="bibite-vini.html">Bibite & vini</a><a href="club.html">Club</a><a href="tessera-punti-pranzo.html">Tessera Punti Pranzo</a><a href="allergeni.html">Allergeni</a><a href="contatti.html">Contatti</a><a href="divertentismo.html">Divertentismo <span aria-hidden="true" style="font-size:.75em;color:var(--gold);margin-left:.35em">☺</span></a><a href="avvento.html" aria-current="page">🎄 Calendario dell’Avvento</a><span class="languages"><a href="english.html" lang="en">EN</a><a href="cinese.html" lang="zh">中文</a></span></nav></header>
-  <main class="av-page">
-    <header class="av-hero">
-      <p>⚓ Controcorrente · Torino</p>
+  <header class="top"><div class="brand-row"><a class="logo" href="index.html"><img class="brand-logo" src="logo-controcorrente.webp?v=202610031345" alt="Controcorrente" width="2172" height="724"></a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><img class="icon " src="icons/Menu.svg" alt="" aria-hidden="true"><span>Menù</span></button></div><nav id="site-nav"><a href="index.html">Novità</a><a href="il-locale.html">Il Locale</a><a href="pranzo.html">Menù pranzo</a><a href="cena.html?v=20261110-cena-senza-linguine-v2">Menù cena</a><a href="offerta.html">Offerta del giorno</a><a href="bibite-vini.html">Bibite & vini</a><a href="club.html">Club</a><a href="tessera-punti-pranzo.html">Tessera Punti Pranzo</a><a href="allergeni.html">Allergeni</a><a href="contatti.html">Contatti</a><a href="divertentismo.html">Divertentismo <span aria-hidden="true" style="font-size:.75em;color:var(--gold);margin-left:.35em">☺</span></a><a href="avvento.html" aria-current="page">🎄 Calendario dell’Avvento</a><a href="radio-premi.html"><span aria-hidden="true">🎟️</span> Radio Premi</a><span class="languages"><a href="english.html" lang="en">EN</a><a href="cinese.html" lang="zh">中文</a></span></nav></header>
+  <main class="promo-page av-page">
+    <header class="promo-hero">
       <h1>Il Calendario dell’Avvento</h1>
       <p>Dal 1° al 25 dicembre 2026</p>
     </header>
@@ -66,7 +56,7 @@
     </div>
     <p class="av-status" id="avvento-status" role="status">Controllo la data di apertura…</p>
     <div class="av-actions"><button id="avvento-prizes" hidden>Verifica WhatsApp e consulta i tuoi premi</button></div>
-    <section class="av-box" id="avvento-whatsapp" hidden>
+    <section class="promo-panel" id="avvento-whatsapp" hidden>
       <h2>Apri il cassettino con WhatsApp</h2>
       <p>Invia il messaggio già compilato al Controcorrente e torna qui per vedere il tuo premio.</p>
       <div class="av-actions">
@@ -75,8 +65,8 @@
         <button type="button" data-restart>Richiedi un nuovo messaggio</button>
       </div>
     </section>
-    <section class="av-box">
-      <h2>🎁 Come funziona</h2>
+    <section class="promo-panel">
+      <h2>Come funziona</h2>
       <p>Apri il cassettino del giorno e verifica il tuo WhatsApp. Hai diritto a un premio al giorno.</p>
       <ul>
         <li>Invia la richiesta di prenotazione con il codice nelle note entro 24 ore dall’emissione.</li>
@@ -86,46 +76,49 @@
         <li>Il tavolo resta soggetto a disponibilità e conferma. Il codice è utilizzabile una sola volta.</li>
       </ul>
     </section>
-    <section class="av-box" id="avvento-confermati">
-      <h2>Codici Avvento confermati</h2>
-      <p role="status">Caricamento del registro…</p>
-      <ul></ul>
+    <section class="promo-panel" id="avvento-confermati">
+      <h2>Codici pubblicati</h2>
+      <p class="promo-note">Registro dei premi confermati o utilizzati.</p>
+      <div class="promo-table"><table aria-label="Registro pubblico dei codici Avvento">
+        <thead><tr><th scope="col">Codice</th><th scope="col">Premio</th><th scope="col">Stato</th></tr></thead>
+        <tbody><tr><td colspan="3">Caricamento del registro…</td></tr></tbody>
+      </table></div>
+      <p class="promo-note promo-update" role="status"></p>
     </section>
-    <details class="av-box" id="avvento-access">
+    <details class="promo-panel promo-console" id="avvento-access">
       <summary>Console riservata al titolare</summary>
       <form data-av-login method="post">
-        <label>Email <input name="email" type="email" autocomplete="username" required></label>
-        <label>Password <input name="password" type="password" autocomplete="current-password" required></label>
+        <label>Email titolare<input name="email" type="email" autocomplete="username" required></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required></label>
         <button type="submit" disabled>Accedi</button>
       </form>
-      <p role="status" data-av-auth-status></p>
-      <div data-av-private hidden>
+      <p class="promo-note promo-update" role="status" data-av-auth-status></p>
+      <div class="promo-console__private" data-av-private hidden>
         <button type="button" data-av-logout>Esci dalla console</button>
-        <details class="rp-panel" id="avvento-admin">
-  <summary>🎄 Calendario Avvento</summary>
-  <p role="status" aria-live="polite">Apri la scheda per aggiornare il registro.</p>
-  <button type="button" data-refresh>Aggiorna Avvento</button>
-  <div class="av-table"><table>
-    <thead><tr><th>Codice</th><th>Premio</th><th>Emissione</th><th>Entro 24 ore</th><th>Ultima cena</th><th>Stato</th><th>Prenotazione</th><th>Azioni</th></tr></thead>
-    <tbody></tbody>
-  </table></div>
-  <form>
-    <fieldset>
-      <legend>Impostazioni Avvento</legend>
-      <label><input name="active" type="checkbox" style="display:inline;width:auto"> Iniziativa abilitata</label>
-      <p>Indica il peso di ciascun premio. Un peso pari a zero esclude il premio dalle estrazioni.</p>
-      <label>Dolce <input name="weight" type="number" min="0" max="1000" required></label>
-      <label>Due caffè <input name="weight" type="number" min="0" max="1000" required></label>
-      <label>Calice di vino <input name="weight" type="number" min="0" max="1000" required></label>
-      <label>Sconto 3 € <input name="weight" type="number" min="0" max="1000" required></label>
-      <label>Sconto 5% <input name="weight" type="number" min="0" max="1000" required></label>
-      <label>Sconto 5 € <input name="weight" type="number" min="0" max="1000" required></label>
-      <label>Chiusure aggiuntive (AAAA-MM-GG) <input name="closed" type="text"></label>
-      <button type="submit">Salva Avvento</button>
-    </fieldset>
-  </form>
-</details>
-
+        <details class="promo-console__section" id="avvento-admin">
+          <summary>Codici e impostazioni Avvento</summary>
+          <p role="status" aria-live="polite">Apri la scheda per aggiornare il registro.</p>
+          <button type="button" data-refresh>Aggiorna registro</button>
+          <div class="promo-table promo-table--admin"><table aria-label="Gestione codici Avvento">
+            <thead><tr><th scope="col">Codice</th><th scope="col">Premio</th><th scope="col">Emissione</th><th scope="col">Entro 24 ore</th><th scope="col">Ultima cena</th><th scope="col">Stato</th><th scope="col">Prenotazione</th><th scope="col">Azioni</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+          <form>
+            <fieldset>
+              <legend>Impostazioni Avvento</legend>
+              <label><input name="active" type="checkbox"> Iniziativa abilitata</label>
+              <p>Indica il peso di ciascun premio. Un peso pari a zero esclude il premio dalle estrazioni.</p>
+              <label>Dolce <input name="weight" type="number" min="0" max="1000" required></label>
+              <label>Due caffè <input name="weight" type="number" min="0" max="1000" required></label>
+              <label>Calice di vino <input name="weight" type="number" min="0" max="1000" required></label>
+              <label>Sconto 3 € <input name="weight" type="number" min="0" max="1000" required></label>
+              <label>Sconto 5% <input name="weight" type="number" min="0" max="1000" required></label>
+              <label>Sconto 5 € <input name="weight" type="number" min="0" max="1000" required></label>
+              <label>Chiusure aggiuntive (AAAA-MM-GG) <input name="closed" type="text"></label>
+              <button type="submit">Salva Avvento</button>
+            </fieldset>
+          </form>
+        </details>
       </div>
     </details>
     <dialog id="avvento-prize">
@@ -140,10 +133,12 @@
     </dialog>
   </main>
   <footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"></footer>
-  <script src="ui.js?v=20261110-cena-senza-linguine-v2"></script>
+  <script src="ui.js?v=20261106-desktop-actions-v2"></script>
+  <script src="site-session.js?v=20261110-promo-reserve-v4"></script>
+  <script src="walkie.js?v=20261110-risorse-v1"></script>
   <script src="avvento-api.js?v=20261113-jolly" defer></script>
   <script src="avvento.js?v=20261113-jolly" defer></script>
-  <script src="avvento-ledger.js?v=20261113-jolly" defer></script>
+  <script src="avvento-ledger.js?v=20261113-promozioni" defer></script>
   <script src="avvento-admin.js?v=20261113-jolly" defer></script>
 </body>
 </html>
