@@ -60,21 +60,26 @@ if(/\/(?:pranzo|cena|antipasti|primi|secondi)\.html$/.test(window.location.pathn
 document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(function(section){if(section.querySelector(':scope > .nautical-head-spacer'))return;const spacer=document.createElement('div');spacer.className='nautical-head-spacer';spacer.setAttribute('aria-hidden','true');spacer.style.height='1.8em';spacer.style.pointerEvents='none';section.appendChild(spacer);});
 
 
-// Navigazione condivisa: Chat commensali (sostituisce il mercatino).
+// Navigazione condivisa: Chat e ultime cinque voci del menu.
 (function(){
   var nav=document.querySelector('#site-nav');
   if(!nav)return;
   nav.querySelectorAll('a[href="bacheca.html"],a[href="bacheca-chat.html"]').forEach(function(a){a.remove()});
-  var link=nav.querySelector('a[href="chat-incontri.html"]');
-  if(!link){
-    link=document.createElement('a');
-    link.href='chat-incontri.html';
-    var langs=nav.querySelector('.languages');
-    if(langs)nav.insertBefore(link,langs);
-    else nav.appendChild(link);
+  var chat=nav.querySelector('a[href="chat-incontri.html"]');
+  if(!chat){
+    chat=document.createElement('a');
+    chat.href='chat-incontri.html';
   }
-  link.textContent='Chat commensali';
-  if(/\/(?:chat-incontri|chat-regole)\.html$/.test(window.location.pathname))link.setAttribute('aria-current','page');
+  chat.textContent='Chat commensali';
+  if(/\/(?:chat-incontri|chat-regole)\.html$/.test(window.location.pathname))chat.setAttribute('aria-current','page');
+  var langs=nav.querySelector('.languages');
+  [
+    chat,
+    nav.querySelector('a[href="club.html"]'),
+    nav.querySelector('a[href="tessera-punti-pranzo.html"]'),
+    nav.querySelector('a[href="radio-premi.html"]'),
+    nav.querySelector('a[href="avvento.html"]')
+  ].forEach(function(link){if(link)nav.insertBefore(link,langs)});
 })();
 
 // Opt-in notifiche condiviso da tutte le sezioni, anche nel frame della radio.
