@@ -108,6 +108,32 @@
           "tool": "image_gen",
           "note": "Restaurant menu illustration with sliced veal, tuna sauce and capers on an ivory plate over a navy table; recipe and visual references inspected online. Not a photograph of restaurant food."
         }
+      },
+      {
+        "name": "Cozze di Sardegna alla marinara con poco pomodoro",
+        "price": 10,
+        "description": "Cozze di Sardegna alla marinara, con aglio, prezzemolo e un leggero tocco di pomodoro.",
+        "allergens": [
+          14
+        ],
+        "icon": "Shell",
+        "dishPhoto": "cena-assets/cozze-sardegna-marinara-20261106-hd.webp",
+        "translations": {
+          "en": {
+            "name": "Sardinian mussels marinara with a little tomato",
+            "description": "Sardinian mussels marinara with garlic, parsley and a light touch of tomato."
+          },
+          "zh": {
+            "name": "撒丁岛淡菜番茄香草清煮（少量番茄）",
+            "description": "撒丁岛淡菜以蒜、欧芹和少量番茄烹煮。"
+          }
+        },
+        "photoSource": {
+          "type": "Existing coordinated illustrative image",
+          "date": "2026-11-06",
+          "tool": "reused existing asset",
+          "note": "Piatto avorio su sfondo blu marino, cozze alla marinara con poco pomodoro; immagine illustrativa."
+        }
       }
     ],
     "primi": [
@@ -152,63 +178,63 @@
         }
       },
       {
-        "name": "Fusilli con crema di verdure e orata",
-        "price": 12.5,
-        "description": "Fusilli con orata e una crema di carote, patate, piselli, finocchi, zucchine e cipolla.",
+        "name": "Tagliatelle con carciofi e orata",
+        "price": 15,
+        "description": "Tagliatelle all’uovo con carciofi e filetti di orata.",
         "allergens": [
           1,
+          3,
           4
         ],
         "icon": "Fish",
         "orderCourse": "Primo",
-        "dishPhoto": "pranzo-assets/fusilli-crema-verdure-orata-verde-20261111.webp",
+        "dishPhoto": "cena-assets/tagliatelle-carciofi-orata-20261113.webp",
         "translations": {
           "en": {
-            "name": "Fusilli with sea bream and vegetable purée",
-            "description": "Fusilli with sea bream and a purée of carrots, potatoes, peas, fennel, courgettes and onion."
+            "name": "Tagliatelle with artichokes and sea bream",
+            "description": "Egg tagliatelle with artichokes and gilthead sea bream fillets."
           },
           "zh": {
-            "name": "海鲷蔬菜酱螺旋意面",
-            "description": "螺旋意面搭配海鲷，佐以胡萝卜、土豆、豌豆、茴香球、西葫芦和洋葱制成的蔬菜酱。"
+            "name": "朝鲜蓟海鲷鸡蛋宽面",
+            "description": "鸡蛋宽面搭配朝鲜蓟和海鲷鱼片。"
           }
         },
-        "photoLayout": "thumbnail",
         "photoSource": {
-          "type": "Immagine illustrativa generata con IA, serie coordinata di miniature WebP",
-          "date": "2026-11-11",
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-13",
           "tool": "image_gen",
-          "resolution": "1200 × 900 px",
-          "note": "Foto coordinata riutilizzata dal menù pranzo: piatto avorio, sfondo blu marino e inquadratura uniforme. Immagine illustrativa."
+          "resolution": "1536 × 1024 px",
+          "format": "WebP",
+          "note": "Tagliatelle, carciofi e orata su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
         }
       },
       {
-        "name": "Tagliatelle ai funghi misti e salsiccia, con poca panna",
+        "name": "Penne ai funghi misti e salsiccia con poca panna",
         "price": 12.5,
-        "description": "Tagliatelle all’uovo con funghi misti, salsiccia e un tocco di panna.",
+        "description": "Penne con funghi misti, salsiccia e un tocco di panna.",
         "allergens": [
           1,
-          3,
           7
         ],
         "icon": "Leaf",
         "translations": {
           "en": {
-            "name": "Tagliatelle with mixed mushrooms and sausage, with a little cream",
-            "description": "Egg tagliatelle with mixed mushrooms, sausage and a touch of cream."
+            "name": "Penne with mixed mushrooms, sausage and a little cream",
+            "description": "Penne with mixed mushrooms, sausage and a touch of cream."
           },
           "zh": {
-            "name": "杂菌香肠奶油鸡蛋宽面（少量奶油）",
-            "description": "鸡蛋宽面搭配杂菌和香肠，以少量奶油拌制。"
+            "name": "杂菌香肠奶油斜管面（少量奶油）",
+            "description": "斜管面搭配杂菌、香肠和少量奶油。"
           }
         },
-        "dishPhoto": "cena-assets/tagliatelle-funghi-salsiccia-20261107-hd.webp",
+        "dishPhoto": "cena-assets/penne-funghi-salsiccia-poca-panna-20261113.webp",
         "photoSource": {
-          "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-07",
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-13",
           "tool": "image_gen",
-          "resolution": "1536x1024",
-          "format": "WEBP, HD",
-          "note": "Immagine illustrativa HD ravvicinata con tagliatelle, funghi misti e salsiccia visibile, piatto avorio e sfondo blu marino. Non rappresenta il piatto effettivamente servito."
+          "resolution": "1536 × 1024 px",
+          "format": "WebP",
+          "note": "Penne, funghi misti, salsiccia e poca panna su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
         }
       },
       {
@@ -710,9 +736,9 @@
   ],
   "offers": [
     {
-      "name": "Gnocchi di patate con crema di barbabietola, ricotta e noci",
+      "name": "Gnocchi di patate con crema di barbabietola, gorgonzola e noci",
       "price": 10,
-      "description": "Gnocchi di patate avvolti da una crema vellutata di barbabietola, completati con ricotta e noci croccanti.",
+      "description": "Gnocchi di patate avvolti da una crema vellutata di barbabietola, con gorgonzola e noci croccanti.",
       "allergens": [
         1,
         7,
@@ -721,22 +747,24 @@
       "icon": "Wheat",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/gnocchi-barbabietola-noci-20261110.webp",
+      "dishPhoto": "offerta-assets/gnocchi-barbabietola-gorgonzola-noci-20261113.webp",
       "translations": {
         "en": {
-          "name": "Potato gnocchi with beetroot cream, ricotta and walnuts",
-          "description": "Potato gnocchi coated in a smooth beetroot cream, finished with ricotta and crunchy walnuts."
+          "name": "Potato gnocchi with beetroot cream, gorgonzola and walnuts",
+          "description": "Potato gnocchi coated in a smooth beetroot cream, finished with gorgonzola and crunchy walnuts."
         },
         "zh": {
-          "name": "甜菜根奶油意式土豆团配里科塔奶酪和核桃",
-          "description": "意式土豆团裹上细腻甜菜根奶油，搭配里科塔奶酪与香脆核桃。"
+          "name": "甜菜根奶油意式土豆团配戈贡佐拉奶酪和核桃",
+          "description": "意式土豆团裹上细腻甜菜根奶油，搭配戈贡佐拉奶酪与香脆核桃。"
         }
       },
       "photoSource": {
-        "type": "Existing coordinated illustrative image reused from lunch",
-        "date": "2026-11-10",
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-13",
         "tool": "image_gen",
-        "note": "Piatto avorio su fondo blu marino, immagine illustrativa coordinata con la serie del sito."
+        "resolution": "1536 × 1024 px",
+        "format": "WebP",
+        "note": "Crema di barbabietola, gorgonzola e noci su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
@@ -768,29 +796,33 @@
       }
     },
     {
-      "name": "Braciole alla griglia con insalata di patate prezzemolate",
+      "name": "Braciole al latte con insalata di patate prezzemolate",
       "price": 10,
-      "description": "Braciole alla griglia, accompagnate da un’insalata di patate al prezzemolo.",
-      "allergens": [],
+      "description": "Due braciole di maiale al latte, accompagnate da insalata di patate prezzemolate.",
+      "allergens": [
+        7
+      ],
       "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/braciole-maiale-patate-prezzemolo-20261112-due.webp",
+      "dishPhoto": "offerta-assets/braciole-latte-insalata-patate-20261113.webp",
       "translations": {
         "en": {
-          "name": "Grilled pork chops with parsley potato salad",
-          "description": "Grilled pork chops served with parsley potato salad."
+          "name": "Pork chops in milk sauce with parsley potato salad",
+          "description": "Two pork chops cooked in milk sauce, served with parsley potato salad."
         },
         "zh": {
-          "name": "烤猪排配欧芹土豆沙拉",
-          "description": "烤猪排搭配欧芹土豆沙拉。"
+          "name": "奶汁猪排配欧芹土豆沙拉",
+          "description": "两块奶汁猪排搭配欧芹土豆沙拉。"
         }
       },
       "photoSource": {
-        "type": "Existing approved illustrative photo reused from lunch",
-        "date": "2026-11-12",
-        "tool": "reused existing asset",
-        "note": "Due braciole grigliate con patate al prezzemolo; piatto avorio e sfondo blu marino coordinati. Immagine illustrativa."
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-13",
+        "tool": "image_gen",
+        "resolution": "1536 × 1024 px",
+        "format": "WebP",
+        "note": "Due braciole al latte con insalata di patate prezzemolate su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
