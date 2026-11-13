@@ -249,6 +249,13 @@
     const dayInput = form.querySelector('[name="giorno"]');
     dayInput.min = todayInRome();
     const noteField = form.elements.namedItem('note');
+    try {
+      const avventoSelected = sessionStorage.getItem('cc-avvento-2026-code');
+      if (avventoSelected && /^AVV-[0-9A-F]{16}$/.test(avventoSelected) && !noteField.value) {
+        noteField.value = avventoSelected;
+        sessionStorage.removeItem('cc-avvento-2026-code');
+      }
+    } catch (_) { /* Il codice si può sempre incollare nelle note. */ }
     const rememberForm = () => { try { sessionStorage.setItem('cc-promo-form-return', JSON.stringify(Object.fromEntries(new FormData(form).entries()))); } catch (_) {} };
     let promoTimer;
     noteField.addEventListener('input', () => {
@@ -419,9 +426,35 @@
       // Il server blocca il codice, non conferma uno sconto prima del conto.
       const suppliedNotes = String(data.get('note') || '');
       let bookingNote = suppliedNotes;
+      const avventoCodes = suppliedNotes.match(/\bAVV-[0-9A-F]{16}\b/gi) || [];
+      const avventoMention = /\bAVV-/i.test(suppliedNotes);
+      const avventoNotes = suppliedNotes.replace(/\bAVV-[A-Z0-9-]*/gi,'').replace(/\b(?:codice|premio)\s*[:#-]?\s*$/i,'').trim();
+      if (avventoMention) {
+        const api=window.CCAvvento;
+        const incompatible=!!promoFromNotes(avventoNotes)
+          || /\b(?:club|radio|scont[oi]|promo\w*)\b/i.test(avventoNotes)
+          || fixedMenusInCart(cart).length>0
+          || Object.keys(cart).some(key=>/^(?:offerta|pranzo):/.test(key));
+        const avventoSubtotal=Object.values(cart).reduce((c,item)=>c+(Number.isFinite(item?.price)&&Number.isInteger(item.qty)?Math.round(item.price*100)*item.qty:0),0);
+        let reason='';
+        if (avventoCodes.length!==1) reason='Inserisci un solo codice Avvento valido nelle note.';
+        else if (!dinnerTime || isLunch() || holiday) reason='I premi Avvento valgono soltanto a cena nei giorni ammessi.';
+        else if (incompatible) reason=api?.message('incompatible') || 'Questo premio non è cumulabile con il tuo ordine.';
+        else if (avventoSubtotal<5000) reason=api?.message('subtotal') || 'Per usare il premio il conto minimo è di 50 €.';
+        else if (!api?.token()) reason='Apri la prenotazione dal tuo premio nel calendario Avvento.';
+        else {
+          const check=await api.request('check',{token:api.token(),code:avventoCodes[0].toUpperCase(),day:requestedDay,
+            time:requestedTime,total:avventoSubtotal,incompatible:false});
+          if (!check.ok) reason=api.message(check.reason);
+        }
+        if (reason) {
+          if (!window.confirm(reason+'\n\nVuoi continuare senza il premio Avvento?')) return;
+          bookingNote=avventoNotes;
+        }
+      }
       // Solo codice numerico a 5 cifre nelle note, senza UUID nel testo WhatsApp.
       // Accetta il codice isolato oppure preceduto da una parola descrittiva.
-      const promoMatch = promoFromNotes(suppliedNotes);
+      const promoMatch = promoFromNotes(avventoMention ? bookingNote : suppliedNotes);
       const promoCode = promoMatch ? promoMatch[1].toUpperCase() : null;
       // Un tentativo di codice malformato non deve diventare una normale
       // prenotazione senza premio: bloccalo prima dell'apertura di WhatsApp.
@@ -429,7 +462,7 @@
       const promoAttempt = /^\s*(?=[A-Z0-9-]*\d)[A-Z0-9-]{1,20}\s*$/i.test(suppliedNotes)
         || /^\s*(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|premio)\s*[:#=-]?\s*\S+/i.test(suppliedNotes)
         || /^\s*radio\s*[:#=-]?\s*[A-Z0-9-]+\s*$/i.test(suppliedNotes);
-      if (promoAttempt && !promoCode) {
+      if (promoAttempt && !promoCode && !avventoMention) {
         window.alert('Codice Radio Premi non valido. Inserisci solo le cinque cifre del codice nelle note. La richiesta non è stata inviata.');
         return;
       }
@@ -446,7 +479,7 @@
           return;
         }
         // Keep the dish order and other notes; no promotional claim is sent.
-        bookingNote = suppliedNotes.replace(promoMatch[0], '').replace(/[;,\s]+$/, '').trim();
+        bookingNote = bookingNote.replace(promoMatch[0], '').replace(/[;,\s]+$/, '').trim();
       }
       if (promoCode && !discountedMenus.length) {
         const promoSubtotal=Object.values(cart).reduce((sum,item) => sum

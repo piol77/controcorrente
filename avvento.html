@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#082a43">
+  <title>Calendario dell’Avvento | Controcorrente Torino</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .av-page{max-width:850px;margin:auto;padding:20px;color:#fff7e5}
+    .av-page a,.av-page a:visited{color:#ffe1a0}
+    .av-nav{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:20px}
+    .av-hero,.av-status{text-align:center}
+    .av-hero h1{margin:.3em 0}
+    .av-house{max-width:650px;margin:22px auto}
+    .av-roof{height:clamp(86px,17vw,145px);display:grid;place-items:end center;padding-bottom:20px;
+      background:linear-gradient(135deg,#ac4340,#69292a);clip-path:polygon(50% 0,100% 86%,96% 100%,4% 100%,0 86%);
+      color:#ffe8a8;font-size:1.2rem;letter-spacing:.13em;text-align:center}
+    .av-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;
+      background:repeating-linear-gradient(0deg,transparent 0 63px,#fff1 64px 66px),linear-gradient(145deg,#155775,#082a43);
+      border:5px solid #cba76d;border-radius:0 0 13px 13px;padding:clamp(9px,3vw,22px);box-shadow:0 14px 35px #0005}
+    .av-grid button{min-height:clamp(45px,9vw,68px);border:3px double #f4d69b;border-radius:5px;
+      background:linear-gradient(120deg,#ac4741,#743337);color:#fff6dd;font:700 1.2rem Georgia,serif;cursor:pointer;
+      transition:transform .24s ease;transform-origin:left center}
+    .av-grid button:not(:disabled):hover{transform:perspective(180px) rotateY(-15deg)}
+    .av-grid button:disabled{background:#23475d;color:#b9cad4;border-color:#718a97;cursor:default}
+    .av-grid button.opened{background:#d5aa58;color:#082a43}
+    .av-box,.av-page dialog{border:1px solid #cba76d;border-radius:14px;background:#082a43;
+      color:#fff7e5;padding:clamp(15px,3vw,25px);line-height:1.55}
+    .av-box{margin:20px 0}
+    .av-status{min-height:2em}
+    .av-page dialog{max-width:min(90vw,480px);text-align:center}
+    .av-page dialog::backdrop{background:#001528bb}
+    .av-page dialog[open] .av-stars{animation:av-open .6s ease-out}
+    .av-page button:not(.av-grid button){padding:8px 12px;border-radius:5px;cursor:pointer}
+    .av-page code{display:block;margin:12px 0;color:#ffe1a0;font-size:1.18rem;overflow-wrap:anywhere;user-select:all}
+    .av-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:center}
+    .av-actions [hidden]{display:none}
+    .av-page :focus-visible{outline:3px solid #ffe1a0;outline-offset:3px}
+    @keyframes av-open{from{transform:scale(.4) rotate(-20deg);opacity:.2}to{transform:scale(1);opacity:1}}
+    @media(prefers-reduced-motion:reduce){.av-page *{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="av-page">
+    <nav class="av-nav" aria-label="Controcorrente"><a href="index.html">Controcorrente</a><a href="cena.html">Menù cena</a><a href="club.html">Club</a></nav>
+    <header class="av-hero">
+      <p>⚓ Controcorrente · Torino</p>
+      <h1>Il Calendario dell’Avvento</h1>
+      <p>Dal 1° al 25 dicembre 2026</p>
+    </header>
+    <div class="av-house">
+      <div class="av-roof" aria-hidden="true">✦ ❄ 25 sorprese ❄ ✦</div>
+      <div class="av-grid" id="avvento-days" aria-label="Cassettini dell’Avvento"></div>
+    </div>
+    <p class="av-status" id="avvento-status" role="status">Controllo la data di apertura…</p>
+    <div class="av-actions"><button id="avvento-prizes" hidden>Verifica WhatsApp e consulta i tuoi premi</button></div>
+    <section class="av-box" id="avvento-whatsapp" hidden>
+      <h2>Apri il cassettino con WhatsApp</h2>
+      <p>Invia il messaggio già compilato al Controcorrente e torna qui per vedere il tuo premio.</p>
+      <div class="av-actions">
+        <a href="#" target="_blank" rel="noopener noreferrer">Apri WhatsApp</a>
+        <button type="button" id="avvento-verify">Mostrami il premio</button>
+        <button type="button" data-restart>Richiedi un nuovo messaggio</button>
+      </div>
+    </section>
+    <section class="av-box">
+      <h2>🎁 Come funziona</h2>
+      <p>Apri il cassettino del giorno e verifica il tuo WhatsApp. Hai diritto a un premio al giorno.</p>
+      <ul>
+        <li>Invia la richiesta di prenotazione con il codice nelle note entro 24 ore dall’emissione.</li>
+        <li>Scegli una cena dal giorno di emissione al settimo giorno successivo compreso, nei servizi disponibili.</li>
+        <li>Conto minimo di 50 € prima del premio. Un solo premio per conto e prenotazione.</li>
+        <li>Esclusi festivi e chiusure. Il premio non si somma a Radio Premi, altre promozioni, menù promozionali e vantaggi Club.</li>
+        <li>Il tavolo resta soggetto a disponibilità e conferma. Il codice è utilizzabile una sola volta.</li>
+      </ul>
+      <p><a href="club.html#avvento-riscattati">Consulta i codici già riscattati</a></p>
+    </section>
+    <dialog id="avvento-prize">
+      <p class="av-stars" aria-hidden="true">✨ 🎁 ✨</p>
+      <h2></h2>
+      <p data-joke></p>
+      <code></code>
+      <p data-deadline></p>
+      <div class="av-actions"><button type="button" data-copy>Copia codice</button>
+        <a href="cena.html" data-book>Prenota</a><button type="button" data-close>Chiudi</button></div>
+    </dialog>
+    <footer><p>Controcorrente · Via San Paolo 16, Torino · 327 229 2006</p></footer>
+  </main>
+  <script src="avvento-api.js?v=1" defer></script>
+  <script src="avvento.js?v=1" defer></script>
+</body>
+</html>
