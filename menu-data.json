@@ -588,9 +588,9 @@
       }
     },
     {
-      "name": "Orata alla griglia con fagioli saltati",
+      "name": "Orata alla griglia con fagiolini saltati",
       "price": 12,
-      "description": "Orata alla griglia accompagnata da fagioli saltati.",
+      "description": "Orata alla griglia accompagnata da fagiolini saltati.",
       "allergens": [
         4
       ],
@@ -599,12 +599,12 @@
       "dishPhoto": "pranzo-assets/orata-griglia-fagioli.webp",
       "translations": {
         "en": {
-          "name": "Grilled sea bream with sautéed beans",
-          "description": "Grilled sea bream served with sautéed beans."
+          "name": "Grilled sea bream with sautéed green beans",
+          "description": "Grilled sea bream served with sautéed green beans."
         },
         "zh": {
-          "name": "烤鲷鱼配炒豆",
-          "description": "烤鲷鱼搭配炒豆。"
+          "name": "烤鲷鱼配炒四季豆",
+          "description": "烤鲷鱼搭配炒四季豆。"
         }
       },
       "photoLayout": "thumbnail",
@@ -618,9 +618,9 @@
       }
     },
     {
-      "name": "Branzino alla griglia con fagioli saltati",
+      "name": "Branzino alla griglia con fagiolini saltati",
       "price": 12,
-      "description": "Branzino alla griglia accompagnato da fagioli saltati.",
+      "description": "Branzino alla griglia accompagnato da fagiolini saltati.",
       "allergens": [
         4
       ],
@@ -629,12 +629,12 @@
       "dishPhoto": "pranzo-assets/branzino-griglia-fagioli.webp",
       "translations": {
         "en": {
-          "name": "Grilled sea bass with sautéed beans",
-          "description": "Grilled sea bass served with sautéed beans."
+          "name": "Grilled sea bass with sautéed green beans",
+          "description": "Grilled sea bass served with sautéed green beans."
         },
         "zh": {
-          "name": "烤海鲈鱼配炒豆",
-          "description": "烤海鲈鱼搭配炒豆。"
+          "name": "烤海鲈鱼配炒四季豆",
+          "description": "烤海鲈鱼搭配炒四季豆。"
         }
       },
       "photoLayout": "thumbnail",
@@ -648,9 +648,9 @@
       }
     },
     {
-      "name": "Salmone alla griglia con fagioli saltati",
+      "name": "Salmone alla griglia con fagiolini saltati",
       "price": 12,
-      "description": "Salmone alla griglia accompagnato da fagioli saltati.",
+      "description": "Salmone alla griglia accompagnato da fagiolini saltati.",
       "allergens": [
         4
       ],
@@ -659,12 +659,12 @@
       "dishPhoto": "pranzo-assets/salmone-griglia-fagioli.webp",
       "translations": {
         "en": {
-          "name": "Grilled salmon with sautéed beans",
-          "description": "Grilled salmon served with sautéed beans."
+          "name": "Grilled salmon with sautéed green beans",
+          "description": "Grilled salmon served with sautéed green beans."
         },
         "zh": {
-          "name": "烤三文鱼配炒豆",
-          "description": "烤三文鱼搭配炒豆。"
+          "name": "烤三文鱼配炒四季豆",
+          "description": "烤三文鱼搭配炒四季豆。"
         }
       },
       "photoLayout": "thumbnail",
