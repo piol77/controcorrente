@@ -267,33 +267,33 @@
         }
       },
       {
-        "name": "Spaghetti di soia con verdure, gamberetti* e pollo",
-        "price": 10,
-        "description": "Verdure croccanti, pollo e gamberetti* si intrecciano agli spaghetti di soia, con carote, zucchine e verza.",
+        "name": "Spaghetti con crema di zucchine e cozze",
+        "price": 12.5,
+        "description": "Spaghetti avvolti da una crema vellutata di zucchine, con cozze.",
         "allergens": [
-          2,
-          6
+          1,
+          14
         ],
-        "icon": "Bean",
+        "icon": "Shell",
         "orderCourse": "Primo",
-        "dishPhoto": "pranzo-assets/soia-20261103-hd.webp",
         "translations": {
           "en": {
-            "name": "Soya noodles with vegetables, shrimp* and chicken",
-            "description": "Crisp carrots, courgettes and savoy cabbage mingle with chicken and shrimp* in delicate soya noodles."
+            "name": "Spaghetti with courgette cream and mussels",
+            "description": "Spaghetti coated in a smooth courgette cream, with mussels."
           },
           "zh": {
-            "name": "什锦蔬菜鸡肉虾仁*炒粉丝",
-            "description": "爽脆的胡萝卜、西葫芦和卷心菜搭配鸡肉、虾仁*与细粉丝，口感丰富。"
+            "name": "西葫芦泥酱贻贝意大利面",
+            "description": "意大利面裹上细腻的西葫芦泥酱，搭配贻贝。"
           }
         },
+        "dishPhoto": "cena-assets/spaghetti-crema-zucchine-cozze-20261114.webp",
         "photoSource": {
-          "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-03",
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-14",
           "tool": "image_gen",
-          "resolution": "1536x1024",
-          "format": "WebP, quality 91",
-          "note": "Corrispondente al piatto; serie fotografica ricostruita con piatto avorio, sfondo blu marino e illuminazione uniforme. Immagine illustrativa, non fotografia del piatto servito."
+          "resolution": "1536 × 1024 px",
+          "format": "WebP",
+          "note": "Piatto avorio su fondo blu marino, coordinato con il menù di cena. Immagine illustrativa. Riferimento web consultato: https://masterchef.sky.it/ricette/2019/pasta-risottata-alle-cozze Il riferimento usa anche pomodoro e altri ingredienti."
         }
       },
       {
@@ -402,9 +402,9 @@
         "dishPhoto": "cena-salmone.webp"
       },
       {
-        "name": "Orata grande alla griglia (600 g) con patate al forno",
-        "price": 16,
-        "description": "Orata grande alla griglia (600 g), servita con patate dorate al forno.",
+        "name": "Branzino alla griglia con patate al forno",
+        "price": 14,
+        "description": "Branzino alla griglia, servito con patate dorate al forno.",
         "allergens": [
           4
         ],
@@ -412,22 +412,22 @@
         "orderCourse": "Secondo",
         "translations": {
           "en": {
-            "name": "Large grilled gilthead bream (600 g) with roast potatoes",
-            "description": "Large 600 g grilled gilthead bream served with golden roast potatoes."
+            "name": "Grilled sea bass with roast potatoes",
+            "description": "Grilled sea bass served with golden roast potatoes."
           },
           "zh": {
-            "name": "大份香烤金头鲷（600克）配烤土豆",
-            "description": "600克整条香烤金头鲷，搭配金黄烤土豆。"
+            "name": "烤海鲈鱼配烤土豆",
+            "description": "香烤海鲈鱼搭配金黄烤土豆。"
           }
         },
-        "dishPhoto": "cena-assets/orata-grande-patate-forno-20261106-hd.webp",
+        "dishPhoto": "cena-assets/branzino-griglia-patate-forno-20261114.webp",
         "photoSource": {
-          "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-06",
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-14",
           "tool": "image_gen",
-          "resolution": "1536x1024",
-          "format": "WebP, quality 91",
-          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
+          "resolution": "1536 × 1024 px",
+          "format": "WebP",
+          "note": "Piatto avorio su fondo blu marino, coordinato con il menù di cena. Immagine illustrativa. Riferimento web consultato: https://mediterraneantaste.com/grilled-sea-bream-orata/ Il riferimento ha uno sfondo diverso e include limone ed erbe."
         }
       },
       {
