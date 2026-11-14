@@ -1,15 +1,31 @@
 {
   "source": "RaiNews",
   "source_url": "https://www.rainews.it/rss/tutti",
-  "fetched_at": "2026-11-14T14:22:13+00:00",
+  "fetched_at": "2026-11-14T19:24:00+00:00",
   "items": [
     {
-      "title": "Scontro tra due auto in galleria a San Fili: quattro morti e un ferito grave",
-      "url": "https://www.rainews.it/articoli/2026/11/cosenza-scontro-tra-due-auto-in-galleria-a-san-fili-quattro-vittime-e-un-ferito-grave-96316251-7ed8-4512-b53e-c1194aa06afe.html",
-      "image": "https://www.rainews.it/dl/img/2024/06/23/1719141424299_ambulanza_giorno.jpg",
+      "title": "Monica Busetto libera dopo 13 anni in carcere da innocente",
+      "url": "https://www.rainews.it/video/2026/11/monica-busetto-libera-dopo-tredici-anni-assolta-da-innocente-e6d84e07-8b6b-4cae-868a-88c73d5981ef.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/14/1794669904374_rainewscdefadfccf.jpg",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-14T13:21:00+00:00"
+      "published_at": "2026-11-14T18:40:00+00:00"
+    },
+    {
+      "title": "Ordigno disinnescato in Illinois, in un impianto di etanolo a Peoria: evacuate oltre 5000 persone",
+      "url": "https://www.rainews.it/articoli/2026/11/-allarme-bomba-in-illinois-ordigno-disinnescato-in-un-impianto-di-etanolo-a-peoria-evacuate-oltre-5000-persone-a8daf080-b8ec-4b7a-aa12-fe5b44630ab1.html",
+      "image": "https://www.rainews.it/dl/img/2026/05/17/1779019566626_oakland_pd.jpg",
+      "source": "RaiNews",
+      "area": "Mondo",
+      "published_at": "2026-11-14T15:25:00+00:00"
+    },
+    {
+      "title": "A Torino il corteo contro carovita e aumento delle bollette",
+      "url": "https://www.rainews.it/maratona/2026/11/a-torino-il-corteo-contro-carovita-e-aumento-delle-bollette-aaa01c34-47c8-4daa-8cde-17d1404e06e2.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/14/1794673660821_rainewsaabcfbfeacde.jpg",
+      "source": "RaiNews",
+      "area": "Italia",
+      "published_at": "2026-11-14T17:18:00+00:00"
     },
     {
       "title": "I negoziati di Abu Dhabi non fermano i raid, Zelensky rivela le ipotesi per la fine della guerra",
@@ -20,28 +36,12 @@
       "published_at": "2026-11-14T13:12:00+00:00"
     },
     {
-      "title": "Milano, anziano ucciso durante la truffa del falso carabiniere: due fermi",
-      "url": "https://www.rainews.it/video/2026/11/milano-anziano-ucciso-durante-la-truffa-del-falso-carabiniere-due-fermi-789d9d25-af5f-4c6a-a350-e5cbeadec384.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/14/1794660759189_.png",
+      "title": "Marco Masini ferma il concerto per una proposta di matrimonio: il sì davanti a migliaia di fan",
+      "url": "https://www.rainews.it/video/2026/11/marco-masini-ferma-il-concerto-per-una-proposta-di-matrimonio-il-si-davanti-a-migliaia-di-fan-121fbdd7-56f2-4976-8faf-bfb00b368716.html",
+      "image": "https://www.rainews.it/dl/img/2026/11/14/1794675075613_videoframe.png",
       "source": "RaiNews",
       "area": "Italia",
-      "published_at": "2026-11-14T12:54:00+00:00"
-    },
-    {
-      "title": "Quattro ore di stop ai voli in tutta l'America, cinquemila fermi: il venerdì nero del traffico aereo",
-      "url": "https://www.rainews.it/video/2026/11/quattro-ore-di-stop-ai-voli-in-tutta-lamerica-cinquemila-fermi-il-venerdi-nero-del-traffico-aereo-34ec7734-21f5-4df1-a226-546b02da23f4.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/14/1794659706940_.png",
-      "source": "RaiNews",
-      "area": "Mondo",
-      "published_at": "2026-11-14T12:48:00+00:00"
-    },
-    {
-      "title": "Il mondo senza Microsoft: blackout per 18 ore di, 74 paesi coinvolti, danni incalcolabili",
-      "url": "https://www.rainews.it/video/2026/11/il-mondo-senza-microsoft-blackout-per-18-ore-di-74-paesi-coinvolti-danni-incalcolabili-4fb7c857-365f-4899-ad91-2bcbd4fd98b9.html",
-      "image": "https://www.rainews.it/dl/img/2026/11/14/1794660291227_videoframe.png",
-      "source": "RaiNews",
-      "area": "Italia",
-      "published_at": "2026-11-14T12:43:00+00:00"
+      "published_at": "2026-11-14T16:48:00+00:00"
     }
   ]
 }
