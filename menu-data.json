@@ -108,32 +108,6 @@
           "tool": "image_gen",
           "note": "Restaurant menu illustration with sliced veal, tuna sauce and capers on an ivory plate over a navy table; recipe and visual references inspected online. Not a photograph of restaurant food."
         }
-      },
-      {
-        "name": "Cozze di Sardegna alla marinara con poco pomodoro",
-        "price": 10,
-        "description": "Cozze di Sardegna alla marinara, con aglio, prezzemolo e un leggero tocco di pomodoro.",
-        "allergens": [
-          14
-        ],
-        "icon": "Shell",
-        "dishPhoto": "cena-assets/cozze-sardegna-marinara-20261106-hd.webp",
-        "translations": {
-          "en": {
-            "name": "Sardinian mussels marinara with a little tomato",
-            "description": "Sardinian mussels marinara with garlic, parsley and a light touch of tomato."
-          },
-          "zh": {
-            "name": "撒丁岛淡菜番茄香草清煮（少量番茄）",
-            "description": "撒丁岛淡菜以蒜、欧芹和少量番茄烹煮。"
-          }
-        },
-        "photoSource": {
-          "type": "Existing coordinated illustrative image",
-          "date": "2026-11-06",
-          "tool": "reused existing asset",
-          "note": "Piatto avorio su sfondo blu marino, cozze alla marinara con poco pomodoro; immagine illustrativa."
-        }
       }
     ],
     "primi": [
@@ -402,35 +376,6 @@
         "dishPhoto": "cena-salmone.webp"
       },
       {
-        "name": "Branzino alla griglia con patate al forno",
-        "price": 14,
-        "description": "Branzino alla griglia, servito con patate dorate al forno.",
-        "allergens": [
-          4
-        ],
-        "icon": "Fish",
-        "orderCourse": "Secondo",
-        "translations": {
-          "en": {
-            "name": "Grilled sea bass with roast potatoes",
-            "description": "Grilled sea bass served with golden roast potatoes."
-          },
-          "zh": {
-            "name": "烤海鲈鱼配烤土豆",
-            "description": "香烤海鲈鱼搭配金黄烤土豆。"
-          }
-        },
-        "dishPhoto": "cena-assets/branzino-griglia-patate-forno-20261114.webp",
-        "photoSource": {
-          "type": "AI-generated illustrative food image",
-          "date": "2026-11-14",
-          "tool": "image_gen",
-          "resolution": "1536 × 1024 px",
-          "format": "WebP",
-          "note": "Piatto avorio su fondo blu marino, coordinato con il menù di cena. Immagine illustrativa. Riferimento web consultato: https://mediterraneantaste.com/grilled-sea-bream-orata/ Il riferimento ha uno sfondo diverso e include limone ed erbe."
-        }
-      },
-      {
         "name": "Involtini di pollo con bacon e gorgonzola su crema di patate",
         "price": 14,
         "description": "Involtini di pollo avvolti nel bacon, con un cuore di gorgonzola, serviti su una vellutata crema di patate.",
@@ -457,31 +402,6 @@
           "resolution": "1536x1024",
           "format": "WebP, quality 91",
           "note": "Tre involtini di pollo avvolti nel bacon, con ripieno di gorgonzola visibile, su crema di patate; piatto avorio e sfondo blu marino. Immagine illustrativa."
-        }
-      },
-      {
-        "name": "Bistecca di vitello con patate al forno",
-        "price": 20,
-        "description": "Bistecca di vitello alla griglia, servita con patate al forno.",
-        "allergens": [],
-        "icon": "Utensils",
-        "orderCourse": "Secondo",
-        "dishPhoto": "cena-assets/bistecca-vitello-osso-patate-20261028.avif",
-        "translations": {
-          "en": {
-            "name": "Grilled veal steak with roast potatoes",
-            "description": "Grilled veal steak served with roast potatoes."
-          },
-          "zh": {
-            "name": "烤小牛排配烤土豆",
-            "description": "烤小牛排搭配烤土豆。"
-          }
-        },
-        "photoSource": {
-          "type": "Previously approved illustrative dinner photo",
-          "date": "2026-10-28",
-          "tool": "reused existing asset",
-          "note": "Recuperata la foto già approvata della bistecca di vitello con patate al forno."
         }
       }
     ]
@@ -770,31 +690,30 @@
       }
     },
     {
-      "name": "Maiale alla pizzaiola con insalata di patate prezzemolate",
+      "name": "Straccetti di maiale con broccoli e riso al vapore",
       "price": 10,
-      "description": "Fettine di maiale al pomodoro e origano, accompagnate da insalata di patate lesse al prezzemolo.",
+      "description": "Straccetti di maiale saltati con broccoli, accompagnati da riso bianco al vapore.",
       "allergens": [],
-      "icon": "CookingPot",
+      "icon": "Utensils",
       "orderCourse": "Secondo",
       "photoLayout": "side",
-      "dishPhoto": "cena-assets/maiale-pizzaiola-insalata-patate-20261111.webp",
+      "dishPhoto": "pranzo-assets/20261117-straccetti-maiale-broccoli-riso.webp",
       "translations": {
         "en": {
-          "name": "Pizzaiola-style pork with parsley potato salad",
-          "description": "Slices of pork with tomato and oregano, served with boiled potato salad dressed with parsley."
+          "name": "Pork strips with broccoli and steamed rice",
+          "description": "Pork strips sautéed with broccoli, served with steamed white rice."
         },
         "zh": {
-          "name": "意式番茄猪肉配欧芹土豆沙拉",
-          "description": "猪肉片佐番茄和牛至，搭配欧芹拌水煮土豆沙拉。"
+          "name": "西兰花猪肉条配蒸米饭",
+          "description": "猪肉条与西兰花一同炒制，搭配蒸白米饭。"
         }
       },
       "photoSource": {
-        "type": "AI-generated HD illustrative food image",
-        "date": "2026-11-11",
-        "tool": "image_gen",
-        "resolution": "1536x1024",
-        "format": "WebP, quality 91",
-        "note": "Maiale alla pizzaiola con insalata di patate lesse prezzemolate; piatto avorio, sfondo blu marino e inquadratura coordinata. Immagine illustrativa."
+        "type": "Existing coordinated HD illustrative food image reused from today's lunch",
+        "date": "2026-11-17",
+        "tool": "reused existing asset",
+        "resolution": "1440 × 1080 px WebP",
+        "note": "Piatto avorio, sfondo blu marino, luce e impiattamento coerenti con le fotografie della cena; immagine illustrativa."
       }
     },
     {
