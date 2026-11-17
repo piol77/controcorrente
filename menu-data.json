@@ -551,7 +551,7 @@
       }
     },
     {
-      "name": "Gnocchetti di riso alla tarantese con lonza e gamberetti*",
+      "name": "Gnocchetti di riso alla thailandese con lonza e gamberetti*",
       "price": 10,
       "description": "Gnocchetti di riso a forma di fogliolina, saltati con lonza, gamberetti*, uova, zucchine, carote e salsa di soia.",
       "allergens": [
@@ -564,11 +564,11 @@
       "dishPhoto": "pranzo-assets/20261117-gnocchetti-riso-tarantese.webp",
       "translations": {
         "en": {
-          "name": "Taranto-style rice cakes with pork loin and prawns*",
+          "name": "Thai-style rice cakes with pork loin and prawns*",
           "description": "Flat, leaf-shaped rice cakes stir-fried with pork loin, prawns*, eggs, courgettes, carrots and soy sauce."
         },
         "zh": {
-          "name": "塔兰托风味猪里脊虾仁*米年糕片",
+          "name": "泰式猪里脊虾仁*米年糕片",
           "description": "叶形薄米年糕片与猪里脊、虾仁*、鸡蛋、西葫芦、胡萝卜和酱油同炒。"
         }
       },

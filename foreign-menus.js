@@ -14,8 +14,8 @@
       "Fresh orecchiette with broccoli rabe and sausage",
       "Fresh orecchiette with broccoli rabe and crumbled sausage."
     ],
-    "Gnocchetti di riso alla tarantese con lonza e gamberetti*": [
-      "Taranto-style rice cakes with pork loin and prawns*",
+    "Gnocchetti di riso alla thailandese con lonza e gamberetti*": [
+      "Thai-style rice cakes with pork loin and prawns*",
       "Flat, leaf-shaped rice cakes stir-fried with pork loin, prawns*, eggs, courgettes, carrots and soy sauce."
     ],
     "Gnocchi di patate con barbabietola e gorgonzola": [
@@ -44,8 +44,8 @@
       "芜菁嫩叶香肠猫耳面",
       "新鲜猫耳面搭配芜菁嫩叶和碎香肠。"
     ],
-    "Gnocchetti di riso alla tarantese con lonza e gamberetti*": [
-      "塔兰托风味猪里脊虾仁*米年糕片",
+    "Gnocchetti di riso alla thailandese con lonza e gamberetti*": [
+      "泰式猪里脊虾仁*米年糕片",
       "叶形薄米年糕片与猪里脊、虾仁*、鸡蛋、西葫芦、胡萝卜和酱油同炒。"
     ],
     "Gnocchi di patate con barbabietola e gorgonzola": [
