@@ -6,71 +6,63 @@
 
   const LUNCH={
   "en": {
-    "Penne con zucchine, salsiccia e panna": [
-      "Penne with courgettes, sausage and cream",
-      "Penne with courgettes and sausage, finished with cream."
+    "Spaghetti con salmone e finocchi al profumo d’arancia": [
+      "Spaghetti with salmon, fennel and orange zest",
+      "Spaghetti with salmon, thinly sliced fennel and orange zest."
     ],
-    "Tagliatelle con broccoli, salmone fresco e panna": [
-      "Tagliatelle with broccoli, fresh salmon and cream",
-      "Tagliatelle with broccoli and fresh salmon in a delicate cream sauce."
+    "Orecchiette fresche con cime di rapa e salsiccia": [
+      "Fresh orecchiette with broccoli rabe and sausage",
+      "Fresh orecchiette with broccoli rabe and crumbled sausage."
     ],
-    "Conchigliette con orata, patate e zafferano": [
-      "Small shell pasta with sea bream, potatoes and saffron",
-      "Small shell pasta with sea bream and potatoes, scented with saffron."
+    "Gnocchi alla thailandese con lonza e gamberetti*": [
+      "Thai-style gnocchi with pork loin and prawns*",
+      "Stir-fried gnocchi with pork loin, prawns*, eggs, courgettes and carrots, seasoned with soy sauce."
     ],
-    "Paccheri ai frutti di mare con gamberetti*, gamberoni*, cozze e vongole": [
-      "Paccheri with seafood, shrimp*, large prawns*, mussels and clams",
-      "Paccheri with shrimp*, large prawns*, mussels and clams."
+    "Gnocchi di patate con barbabietola e gorgonzola": [
+      "Potato gnocchi with beetroot and Gorgonzola",
+      "Potato gnocchi with beetroot and Gorgonzola, gently sweet and savoury."
     ],
-    "Orata alla griglia con fagioli saltati": [
-      "Grilled sea bream with sautéed beans",
-      "Grilled sea bream served with sautéed beans."
+    "Straccetti di maiale con broccoli, peperoncino e riso al vapore": [
+      "Pork strips with broccoli, chilli and steamed rice",
+      "Pork strips with sautéed broccoli and chilli, served with steamed white rice."
     ],
-    "Branzino alla griglia con fagioli saltati": [
-      "Grilled sea bass with sautéed beans",
-      "Grilled sea bass served with sautéed beans."
+    "Milanese di lonza con verza viola all’aceto balsamico": [
+      "Breaded pork loin with purple Savoy cabbage and balsamic vinegar",
+      "Breaded pork loin served with raw purple Savoy cabbage dressed with balsamic vinegar."
     ],
-    "Salmone alla griglia con fagioli saltati": [
-      "Grilled salmon with sautéed beans",
-      "Grilled salmon served with sautéed beans."
-    ],
-    "Braciole di maiale al latte con patate al prezzemolo": [
-      "Pork chops cooked in milk with parsley potatoes",
-      "Pork chops cooked in milk, served with parsley potatoes."
+    "Salmone in padella al limone con insalata di patate al prezzemolo": [
+      "Pan-seared lemon salmon with parsley potato salad",
+      "Lemon salmon cooked in a pan, served with a parsley potato salad."
     ]
   },
   "zh": {
-    "Penne con zucchine, salsiccia e panna": [
-      "西葫芦香肠奶油通心粉",
-      "通心粉搭配西葫芦和香肠，并以奶油调味。"
+    "Spaghetti con salmone e finocchi al profumo d’arancia": [
+      "三文鱼茴香橙香意大利面",
+      "意大利细面搭配三文鱼、薄切茴香球茎和橙皮屑。"
     ],
-    "Tagliatelle con broccoli, salmone fresco e panna": [
-      "西兰花鲜三文鱼奶油宽面",
-      "宽面搭配西兰花和鲜三文鱼，佐以细腻奶油酱。"
+    "Orecchiette fresche con cime di rapa e salsiccia": [
+      "芜菁嫩叶香肠猫耳面",
+      "新鲜猫耳面搭配芜菁嫩叶和碎香肠。"
     ],
-    "Conchigliette con orata, patate e zafferano": [
-      "鲷鱼土豆藏红花贝壳面",
-      "贝壳面搭配鲷鱼和土豆，带有藏红花香气。"
+    "Gnocchi alla thailandese con lonza e gamberetti*": [
+      "泰式猪里脊虾仁*面疙瘩",
+      "面疙瘩与猪里脊、虾仁*、鸡蛋、西葫芦和胡萝卜同炒，以酱油调味。"
     ],
-    "Paccheri ai frutti di mare con gamberetti*, gamberoni*, cozze e vongole": [
-      "海鲜大通心粉，配虾仁*、大虾*、贻贝和蛤蜊",
-      "大通心粉搭配虾仁*、大虾*、贻贝和蛤蜊。"
+    "Gnocchi di patate con barbabietola e gorgonzola": [
+      "甜菜根戈贡佐拉奶酪土豆团子",
+      "土豆团子搭配甜菜根和戈贡佐拉奶酪，微甜带咸香。"
     ],
-    "Orata alla griglia con fagioli saltati": [
-      "烤鲷鱼配炒豆",
-      "烤鲷鱼搭配炒豆。"
+    "Straccetti di maiale con broccoli, peperoncino e riso al vapore": [
+      "西兰花辣椒猪肉条配蒸米饭",
+      "猪肉条搭配炒西兰花和辣椒，配蒸白米饭。"
     ],
-    "Branzino alla griglia con fagioli saltati": [
-      "烤海鲈鱼配炒豆",
-      "烤海鲈鱼搭配炒豆。"
+    "Milanese di lonza con verza viola all’aceto balsamico": [
+      "米兰式炸猪里脊配香醋紫甘蓝",
+      "裹面包糠的猪里脊搭配以意大利香醋调味的生紫甘蓝。"
     ],
-    "Salmone alla griglia con fagioli saltati": [
-      "烤三文鱼配炒豆",
-      "烤三文鱼搭配炒豆。"
-    ],
-    "Braciole di maiale al latte con patate al prezzemolo": [
-      "牛奶焖猪排配欧芹土豆",
-      "牛奶焖猪排搭配欧芹土豆。"
+    "Salmone in padella al limone con insalata di patate al prezzemolo": [
+      "柠檬煎三文鱼配欧芹土豆沙拉",
+      "柠檬风味香煎三文鱼，搭配欧芹土豆沙拉。"
     ]
   }
 };

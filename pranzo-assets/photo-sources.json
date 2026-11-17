@@ -94,6 +94,55 @@
       "file": "pranzo-assets/insalatona-cesarona-20261110.webp",
       "origin": "illustrazione generata con IA per il menu, serie uniforme del 10 novembre 2026",
       "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Spaghetti con salmone e finocchi al profumo d’arancia",
+      "file": "pranzo-assets/20261117-spaghetti-salmone-finocchi-arancia.webp",
+      "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Orecchiette fresche con cime di rapa e salsiccia",
+      "file": "pranzo-assets/20261117-orecchiette-cime-rapa-salsiccia.webp",
+      "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Gnocchi alla thailandese con lonza e gamberetti*",
+      "file": "pranzo-assets/20261117-gnocchi-thailandese-lonza-gamberetti.webp",
+      "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Gnocchi di patate con barbabietola e gorgonzola",
+      "file": "pranzo-assets/20261117-gnocchi-barbabietola-gorgonzola.webp",
+      "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Straccetti di maiale con broccoli, peperoncino e riso al vapore",
+      "file": "pranzo-assets/20261117-straccetti-maiale-broccoli-riso.webp",
+      "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Milanese di lonza con verza viola all’aceto balsamico",
+      "file": "pranzo-assets/20261117-milanese-lonza-verza-viola.webp",
+      "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Salmone in padella al limone con insalata di patate al prezzemolo",
+      "file": "pranzo-assets/20261117-salmone-limone-patate-prezzemolo.webp",
+      "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
     }
   ]
 }
