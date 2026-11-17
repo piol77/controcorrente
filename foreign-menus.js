@@ -33,6 +33,10 @@
     "Salmone in padella al limone con insalata di patate al prezzemolo": [
       "Pan-seared lemon salmon with parsley potato salad",
       "Lemon salmon cooked in a pan, served with a parsley potato salad."
+    ],
+    "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco": [
+      "Salad with fennel, oranges, avocado and fresh salmon bites",
+      "Crisp fennel, oranges and avocado with bite-sized pieces of fresh salmon."
     ]
   },
   "zh": {
@@ -63,6 +67,10 @@
     "Salmone in padella al limone con insalata di patate al prezzemolo": [
       "柠檬煎三文鱼配欧芹土豆沙拉",
       "柠檬风味香煎三文鱼，搭配欧芹土豆沙拉。"
+    ],
+    "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco": [
+      "茴香橙子牛油果鲜三文鱼沙拉",
+      "爽脆茴香、橙子和牛油果，搭配鲜三文鱼块。"
     ]
   }
 };

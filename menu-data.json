@@ -705,6 +705,35 @@
         "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
         "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
       }
+    },
+    {
+      "name": "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",
+      "price": 12,
+      "description": "Finocchi croccanti, arance e avocado, con bocconcini di salmone fresco.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "dishPhoto": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado-20261111.webp",
+      "translations": {
+        "en": {
+          "name": "Salad with fennel, oranges, avocado and fresh salmon bites",
+          "description": "Crisp fennel, oranges and avocado with bite-sized pieces of fresh salmon."
+        },
+        "zh": {
+          "name": "茴香橙子牛油果鲜三文鱼沙拉",
+          "description": "爽脆茴香、橙子和牛油果，搭配鲜三文鱼块。"
+        }
+      },
+      "photoSource": {
+        "type": "Existing approved lunch illustration",
+        "date": "2026-11-11",
+        "format": "WebP",
+        "reference": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado-20261111.webp",
+        "note": "Immagine illustrativa del piatto già usata nel menù pranzo."
+      },
+      "photoLayout": "thumbnail",
+      "orderCourse": "Secondo"
     }
   ],
   "offers": [
