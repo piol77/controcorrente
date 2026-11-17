@@ -488,9 +488,9 @@
   },
   "lunch": [
     {
-      "name": "Spaghetti con salmone e finocchi al profumo d’arancia",
+      "name": "Spaghetti al salmone fresco e finocchi al profumo di arance",
       "price": 12,
-      "description": "Spaghetti con salmone, finocchi tagliati sottili e scorza d’arancia.",
+      "description": "Spaghetti con salmone fresco, finocchi tagliati sottili e scorza d’arancia.",
       "allergens": [
         1,
         4
@@ -500,12 +500,12 @@
       "dishPhoto": "pranzo-assets/20261117-spaghetti-salmone-finocchi-arancia.webp",
       "translations": {
         "en": {
-          "name": "Spaghetti with salmon, fennel and orange zest",
-          "description": "Spaghetti with salmon, thinly sliced fennel and orange zest."
+          "name": "Spaghetti with fresh salmon, fennel and orange zest",
+          "description": "Spaghetti with fresh salmon, thinly sliced fennel and orange zest."
         },
         "zh": {
-          "name": "三文鱼茴香橙香意大利面",
-          "description": "意大利细面搭配三文鱼、薄切茴香球茎和橙皮屑。"
+          "name": "鲜三文鱼茴香橙香意大利面",
+          "description": "意大利细面搭配鲜三文鱼、薄切茴香球茎和橙皮屑。"
         }
       },
       "photoLayout": "thumbnail",
@@ -551,9 +551,9 @@
       }
     },
     {
-      "name": "Gnocchi alla thailandese con lonza e gamberetti*",
+      "name": "Gnocchetti di riso alla tarantese con lonza e gamberetti*",
       "price": 10,
-      "description": "Gnocchi saltati con lonza, gamberetti*, uova, zucchine e carote, conditi con salsa di soia.",
+      "description": "Gnocchetti di riso a forma di fogliolina, saltati con lonza, gamberetti*, uova, zucchine, carote e salsa di soia.",
       "allergens": [
         2,
         3,
@@ -561,15 +561,15 @@
       ],
       "icon": "Shrimp",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261117-gnocchi-thailandese-lonza-gamberetti.webp",
+      "dishPhoto": "pranzo-assets/20261117-gnocchetti-riso-tarantese.webp",
       "translations": {
         "en": {
-          "name": "Thai-style gnocchi with pork loin and prawns*",
-          "description": "Stir-fried gnocchi with pork loin, prawns*, eggs, courgettes and carrots, seasoned with soy sauce."
+          "name": "Taranto-style rice cakes with pork loin and prawns*",
+          "description": "Flat, leaf-shaped rice cakes stir-fried with pork loin, prawns*, eggs, courgettes, carrots and soy sauce."
         },
         "zh": {
-          "name": "泰式猪里脊虾仁*面疙瘩",
-          "description": "面疙瘩与猪里脊、虾仁*、鸡蛋、西葫芦和胡萝卜同炒，以酱油调味。"
+          "name": "塔兰托风味猪里脊虾仁*米年糕片",
+          "description": "叶形薄米年糕片与猪里脊、虾仁*、鸡蛋、西葫芦、胡萝卜和酱油同炒。"
         }
       },
       "photoLayout": "thumbnail",
@@ -579,8 +579,8 @@
         "tool": "image_gen",
         "format": "WebP",
         "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
+        "resolution": "1440 × 1080 px WebP; miniatura 4:3",
+        "reference": "pranzo-assets/20261117-gnocchi-thailandese-lonza-gamberetti.webp (stoviglia, inquadratura, luce e sfondo)"
       }
     },
     {

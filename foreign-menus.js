@@ -6,17 +6,17 @@
 
   const LUNCH={
   "en": {
-    "Spaghetti con salmone e finocchi al profumo d’arancia": [
-      "Spaghetti with salmon, fennel and orange zest",
-      "Spaghetti with salmon, thinly sliced fennel and orange zest."
+    "Spaghetti al salmone fresco e finocchi al profumo di arance": [
+      "Spaghetti with fresh salmon, fennel and orange zest",
+      "Spaghetti with fresh salmon, thinly sliced fennel and orange zest."
     ],
     "Orecchiette fresche con cime di rapa e salsiccia": [
       "Fresh orecchiette with broccoli rabe and sausage",
       "Fresh orecchiette with broccoli rabe and crumbled sausage."
     ],
-    "Gnocchi alla thailandese con lonza e gamberetti*": [
-      "Thai-style gnocchi with pork loin and prawns*",
-      "Stir-fried gnocchi with pork loin, prawns*, eggs, courgettes and carrots, seasoned with soy sauce."
+    "Gnocchetti di riso alla tarantese con lonza e gamberetti*": [
+      "Taranto-style rice cakes with pork loin and prawns*",
+      "Flat, leaf-shaped rice cakes stir-fried with pork loin, prawns*, eggs, courgettes, carrots and soy sauce."
     ],
     "Gnocchi di patate con barbabietola e gorgonzola": [
       "Potato gnocchi with beetroot and Gorgonzola",
@@ -36,17 +36,17 @@
     ]
   },
   "zh": {
-    "Spaghetti con salmone e finocchi al profumo d’arancia": [
-      "三文鱼茴香橙香意大利面",
-      "意大利细面搭配三文鱼、薄切茴香球茎和橙皮屑。"
+    "Spaghetti al salmone fresco e finocchi al profumo di arance": [
+      "鲜三文鱼茴香橙香意大利面",
+      "意大利细面搭配鲜三文鱼、薄切茴香球茎和橙皮屑。"
     ],
     "Orecchiette fresche con cime di rapa e salsiccia": [
       "芜菁嫩叶香肠猫耳面",
       "新鲜猫耳面搭配芜菁嫩叶和碎香肠。"
     ],
-    "Gnocchi alla thailandese con lonza e gamberetti*": [
-      "泰式猪里脊虾仁*面疙瘩",
-      "面疙瘩与猪里脊、虾仁*、鸡蛋、西葫芦和胡萝卜同炒，以酱油调味。"
+    "Gnocchetti di riso alla tarantese con lonza e gamberetti*": [
+      "塔兰托风味猪里脊虾仁*米年糕片",
+      "叶形薄米年糕片与猪里脊、虾仁*、鸡蛋、西葫芦、胡萝卜和酱油同炒。"
     ],
     "Gnocchi di patate con barbabietola e gorgonzola": [
       "甜菜根戈贡佐拉奶酪土豆团子",

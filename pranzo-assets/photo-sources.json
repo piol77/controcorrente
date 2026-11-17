@@ -96,7 +96,7 @@
       "note": "Piatto avorio su fondo blu marino, luce e inquadratura uniformi per l’intera serie. Immagine illustrativa, non fotografia del piatto effettivamente servito."
     },
     {
-      "dish": "Spaghetti con salmone e finocchi al profumo d’arancia",
+      "dish": "Spaghetti al salmone fresco e finocchi al profumo di arance",
       "file": "pranzo-assets/20261117-spaghetti-salmone-finocchi-arancia.webp",
       "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
       "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
@@ -142,6 +142,13 @@
       "file": "pranzo-assets/20261117-salmone-limone-patate-prezzemolo.webp",
       "origin": "Illustrazione generata con IA per il menù del 17 novembre 2026",
       "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)",
+      "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Gnocchetti di riso alla tarantese con lonza e gamberetti*",
+      "file": "pranzo-assets/20261117-gnocchetti-riso-tarantese.webp",
+      "origin": "Illustrazione corretta con IA per rappresentare gli gnocchetti di riso piatti a forma di fogliolina.",
+      "reference": "pranzo-assets/20261117-gnocchi-thailandese-lonza-gamberetti.webp (stoviglia, inquadratura, luce e sfondo)",
       "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
     }
   ]
