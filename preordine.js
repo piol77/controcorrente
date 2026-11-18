@@ -239,6 +239,74 @@
     .map(([,item]) => item.name);
   const promoFromNotes = notes => String(notes || '').match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![A-Za-z0-9])/i)
     || String(notes || '').match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
+  function setupLunchAvailability(form) {
+    const status = form.querySelector('[data-lunch-availability]');
+    if (!status) return;
+    const date = form.elements.namedItem('giorno');
+    const time = form.elements.namedItem('orario');
+    const people = form.elements.namedItem('persone');
+    const endpoint = 'https://nchtaewykddmnjolcebs.supabase.co/functions/v1/controcorrente-sala';
+    let last = '', result = null, active = null;
+    function render() {
+      if (!result) {
+        status.textContent = 'Disponibilità da verificare. Puoi inviare la richiesta e attendere la conferma.';
+        return;
+      }
+      if (result.available === 0) {
+        status.textContent = 'Nessun posto disponibile nella fascia scelta. Puoi scegliere un altro orario o chiedere una verifica.';
+      } else if (Number(people.value) > result.largest) {
+        status.textContent = 'Posti disponibili nella fascia: ' + result.available +
+          '. Nessun tavolo adatto a questo gruppo. Puoi scegliere un altro orario o chiedere una verifica.';
+      } else {
+        status.textContent = 'Posti disponibili nella fascia: ' + result.available +
+          ' · gruppo singolo fino a ' + result.largest + ' persone. Attendi la conferma del ristorante.';
+      }
+    }
+    async function refresh() {
+      const [hours, minutes] = time.value.split(':').map(Number);
+      const minute = hours * 60 + minutes;
+      const key = date.value && date.value >= todayInRome() && minute >= 720 && minute <= 870
+        ? date.value + '|' + minute : '';
+      if (!key || key !== last) {
+        active?.abort();
+        active = null;
+        result = null;
+        status.textContent = '';
+        last = key;
+      }
+      status.hidden = !key;
+      if (!key || active || document.hidden) return;
+      if (!result && !status.textContent) status.textContent = 'Controllo disponibilità del pranzo…';
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 5000);
+      active = controller;
+      try {
+        const url = new URL(endpoint);
+        url.search = new URLSearchParams({date:date.value,minute:String(minute)}).toString();
+        const response = await fetch(url,{cache:'no-store',signal:controller.signal});
+        const data = response.ok ? await response.json() : null;
+        if (active !== controller) return;
+        result = data && Number.isInteger(data.available) && Number.isInteger(data.largest) &&
+          data.available >= 0 && data.largest >= 0 && data.largest <= data.available ? data : null;
+      } catch (_) {
+        if (active !== controller) return;
+        result = null;
+      } finally {
+        clearTimeout(timeout);
+        if (active === controller) {
+          active = null;
+          render();
+        }
+      }
+    }
+    for (const field of [date,time]) field.addEventListener('change',refresh);
+    people.addEventListener('input',() => { if (!status.hidden && result) render(); });
+    form.addEventListener('reset',() => setTimeout(refresh));
+    document.addEventListener('visibilitychange',refresh);
+    window.addEventListener('pageshow',refresh);
+    setInterval(refresh,10000);
+    refresh();
+  }
   async function setupSummary() {
     const list = document.querySelector('[data-order-list]'), total = document.querySelector('[data-order-total]');
     if (!list || !total) return;
@@ -277,6 +345,7 @@
       }
       sessionStorage.removeItem('cc-promo-form-return');
     } catch (_) { /* The cart remains in localStorage if session storage is blocked. */ }
+    setupLunchAvailability(form);
     const reset = form.querySelector('[data-reset-order]');
     let menuReady = false;
     async function refreshDaily() {
