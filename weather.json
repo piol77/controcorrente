@@ -4,8 +4,8 @@
   "location": "Torino · zona San Paolo",
   "latitude": 45.0641,
   "longitude": 7.6525,
-  "fetched_at": "2026-11-18T11:59:14+00:00",
-  "provider_updated_at": "2026-11-18T11:21:32+00:00",
+  "fetched_at": "2026-11-18T20:45:38+00:00",
+  "provider_updated_at": "2026-11-18T19:17:03+00:00",
   "days": [
     {
       "date": "2026-11-18",
@@ -14,14 +14,16 @@
         "icon": "⛅",
         "min_c": 10,
         "max_c": 12,
-        "precipitation_mm": 0.0
+        "precipitation_mm": 0.0,
+        "forecast_at": "2026-11-18T11:59:14+00:00"
       },
       "dinner": {
         "condition": "Coperto",
         "icon": "☁",
         "min_c": 8,
         "max_c": 15,
-        "precipitation_mm": 0.0
+        "precipitation_mm": 0.0,
+        "forecast_at": "2026-11-18T11:59:14+00:00"
       }
     },
     {
@@ -30,14 +32,14 @@
         "condition": "Parzialmente nuvoloso",
         "icon": "⛅",
         "min_c": 12,
-        "max_c": 12,
+        "max_c": 13,
         "precipitation_mm": 0.0
       },
       "dinner": {
         "condition": "Parzialmente nuvoloso",
         "icon": "⛅",
         "min_c": 6,
-        "max_c": 9,
+        "max_c": 8,
         "precipitation_mm": 0.0
       }
     },
@@ -46,14 +48,14 @@
       "lunch": {
         "condition": "Parzialmente nuvoloso",
         "icon": "⛅",
-        "min_c": 16,
+        "min_c": 15,
         "max_c": 17,
         "precipitation_mm": 0.0
       },
       "dinner": {
         "condition": "Parzialmente nuvoloso",
         "icon": "⛅",
-        "min_c": 7,
+        "min_c": 9,
         "max_c": 10,
         "precipitation_mm": 0.0
       }
