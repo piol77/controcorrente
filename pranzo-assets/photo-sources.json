@@ -150,6 +150,54 @@
       "origin": "Illustrazione corretta con IA per rappresentare gli gnocchetti di riso piatti a forma di fogliolina.",
       "reference": "pranzo-assets/20261117-gnocchi-thailandese-lonza-gamberetti.webp (stoviglia, inquadratura, luce e sfondo)",
       "note": "Immagine illustrativa, non fotografia del piatto effettivamente servito."
+    },
+    {
+      "dish": "Spaghetti di riso con verdure e lonza di maiale",
+      "file": "pranzo-assets/20261118-spaghetti-riso-lonza.webp",
+      "origin": "Immagine illustrativa generata con IA",
+      "type": "AI-generated illustrative food image",
+      "date": "2026-11-18",
+      "format": "WebP",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
+      "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+      "tool": "image_gen",
+      "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+    },
+    {
+      "dish": "Scaloppine di maiale al vino bianco e rosmarino, con patate",
+      "file": "pranzo-assets/20261118-scaloppine-maiale.webp",
+      "origin": "Immagine illustrativa generata con IA",
+      "type": "AI-generated illustrative food image",
+      "date": "2026-11-18",
+      "format": "WebP",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
+      "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+      "tool": "image_gen",
+      "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+    },
+    {
+      "dish": "Straccetti di pollo con verdure, salsa di soia e riso al vapore",
+      "file": "pranzo-assets/20261118-pollo-verdure-soia-riso.webp",
+      "origin": "Immagine illustrativa generata con IA",
+      "type": "AI-generated illustrative food image",
+      "date": "2026-11-18",
+      "format": "WebP",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
+      "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+      "tool": "image_gen",
+      "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+    },
+    {
+      "dish": "Filetti di branzino in crosta di verdure con cime di rapa",
+      "file": "pranzo-assets/20261118-branzino-crosta-verdure.webp",
+      "origin": "Immagine illustrativa generata con IA",
+      "type": "AI-generated illustrative food image",
+      "date": "2026-11-18",
+      "format": "WebP",
+      "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
+      "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+      "tool": "image_gen",
+      "resolution": "1440 × 1080 px WebP; miniatura 4:3"
     }
   ]
 }

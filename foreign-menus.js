@@ -6,71 +6,55 @@
 
   const LUNCH={
   "en": {
-    "Spaghetti al salmone fresco e finocchi al profumo di arance": [
-      "Spaghetti with fresh salmon, fennel and orange zest",
-      "Spaghetti with fresh salmon, thinly sliced fennel and orange zest."
+    "Spaghetti di riso con verdure e lonza di maiale": [
+      "Rice noodles with vegetables and pork loin",
+      "Rice noodles stir-fried with pork loin, eggs, courgettes, soy, carrots and Savoy cabbage."
     ],
-    "Orecchiette fresche con cime di rapa e salsiccia": [
-      "Fresh orecchiette with broccoli rabe and sausage",
-      "Fresh orecchiette with broccoli rabe and crumbled sausage."
+    "Spaghetti alla carbonara": [
+      "Spaghetti carbonara",
+      "Spaghetti with eggs, smoked pancetta and pecorino."
     ],
-    "Gnocchetti di riso alla thailandese con lonza e gamberetti*": [
-      "Thai-style rice cakes with pork loin and prawns*",
-      "Flat, leaf-shaped rice cakes stir-fried with pork loin, prawns*, eggs, courgettes, carrots and soy sauce."
+    "Casarecce con melanzane e branzino": [
+      "Casarecce with aubergine and sea bass",
+      "Twisted casarecce pasta with aubergine, sea bass and a touch of tomato."
     ],
-    "Gnocchi di patate con barbabietola e gorgonzola": [
-      "Potato gnocchi with beetroot and Gorgonzola",
-      "Potato gnocchi with beetroot and Gorgonzola, gently sweet and savoury."
+    "Scaloppine di maiale al vino bianco e rosmarino, con patate": [
+      "Pork escalopes with white wine, rosemary and potatoes",
+      "Thin pork escalopes cooked with white wine and rosemary, served with potatoes."
     ],
-    "Straccetti di maiale con broccoli, peperoncino e riso al vapore": [
-      "Pork strips with broccoli, chilli and steamed rice",
-      "Pork strips with sautéed broccoli and chilli, served with steamed white rice."
+    "Straccetti di pollo con verdure, salsa di soia e riso al vapore": [
+      "Chicken strips with vegetables, soy sauce and steamed rice",
+      "Stir-fried chicken strips with vegetables and soy sauce, served with steamed white rice."
     ],
-    "Milanese di lonza con verza viola all’aceto balsamico": [
-      "Breaded pork loin with purple Savoy cabbage and balsamic vinegar",
-      "Breaded pork loin served with raw purple Savoy cabbage dressed with balsamic vinegar."
-    ],
-    "Salmone in padella al limone con insalata di patate al prezzemolo": [
-      "Pan-seared lemon salmon with parsley potato salad",
-      "Lemon salmon cooked in a pan, served with a parsley potato salad."
-    ],
-    "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco": [
-      "Salad with fennel, oranges, avocado and fresh salmon bites",
-      "Crisp fennel, oranges and avocado with bite-sized pieces of fresh salmon."
+    "Filetti di branzino in crosta di verdure con cime di rapa": [
+      "Sea bass fillets with a vegetable crust and broccoli rabe",
+      "Sea bass fillets with a courgette, carrot and aubergine crust, served with broccoli rabe."
     ]
   },
   "zh": {
-    "Spaghetti al salmone fresco e finocchi al profumo di arance": [
-      "鲜三文鱼茴香橙香意大利面",
-      "意大利细面搭配鲜三文鱼、薄切茴香球茎和橙皮屑。"
+    "Spaghetti di riso con verdure e lonza di maiale": [
+      "时蔬猪里脊炒米粉",
+      "米粉与猪里脊、鸡蛋、西葫芦、大豆、胡萝卜和皱叶甘蓝同炒。"
     ],
-    "Orecchiette fresche con cime di rapa e salsiccia": [
-      "芜菁嫩叶香肠猫耳面",
-      "新鲜猫耳面搭配芜菁嫩叶和碎香肠。"
+    "Spaghetti alla carbonara": [
+      "培根蛋酱意大利面",
+      "意大利细面搭配鸡蛋、烟熏意式培根和佩科里诺羊奶酪。"
     ],
-    "Gnocchetti di riso alla thailandese con lonza e gamberetti*": [
-      "泰式猪里脊虾仁*米年糕片",
-      "叶形薄米年糕片与猪里脊、虾仁*、鸡蛋、西葫芦、胡萝卜和酱油同炒。"
+    "Casarecce con melanzane e branzino": [
+      "茄子海鲈鱼卷形意面",
+      "卷形短意面搭配茄子、海鲈鱼和少许番茄。"
     ],
-    "Gnocchi di patate con barbabietola e gorgonzola": [
-      "甜菜根戈贡佐拉奶酪土豆团子",
-      "土豆团子搭配甜菜根和戈贡佐拉奶酪，微甜带咸香。"
+    "Scaloppine di maiale al vino bianco e rosmarino, con patate": [
+      "白葡萄酒迷迭香猪肉薄片配土豆",
+      "猪肉薄片以白葡萄酒和迷迭香烹制，搭配土豆。"
     ],
-    "Straccetti di maiale con broccoli, peperoncino e riso al vapore": [
-      "西兰花辣椒猪肉条配蒸米饭",
-      "猪肉条搭配炒西兰花和辣椒，配蒸白米饭。"
+    "Straccetti di pollo con verdure, salsa di soia e riso al vapore": [
+      "时蔬酱油鸡肉条配蒸米饭",
+      "鸡肉条与时蔬和酱油同炒，搭配蒸白米饭。"
     ],
-    "Milanese di lonza con verza viola all’aceto balsamico": [
-      "米兰式炸猪里脊配香醋紫甘蓝",
-      "裹面包糠的猪里脊搭配以意大利香醋调味的生紫甘蓝。"
-    ],
-    "Salmone in padella al limone con insalata di patate al prezzemolo": [
-      "柠檬煎三文鱼配欧芹土豆沙拉",
-      "柠檬风味香煎三文鱼，搭配欧芹土豆沙拉。"
-    ],
-    "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco": [
-      "茴香橙子牛油果鲜三文鱼沙拉",
-      "爽脆茴香、橙子和牛油果，搭配鲜三文鱼块。"
+    "Filetti di branzino in crosta di verdure con cime di rapa": [
+      "蔬菜脆皮海鲈鱼柳配芜菁嫩叶",
+      "海鲈鱼柳覆以西葫芦、胡萝卜和茄子制成的外层，搭配芜菁嫩叶。"
     ]
   }
 };

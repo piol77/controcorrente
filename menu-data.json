@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-11-17",
-  "lunchDateLabel": "Martedì 17 novembre 2026",
+  "lunchUpdatedAt": "2026-11-18",
+  "lunchDateLabel": "Mercoledì 18 novembre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -408,252 +408,188 @@
   },
   "lunch": [
     {
-      "name": "Spaghetti al salmone fresco e finocchi al profumo di arance",
-      "price": 12,
-      "description": "Spaghetti con salmone fresco, finocchi tagliati sottili e scorza d’arancia.",
+      "name": "Spaghetti di riso con verdure e lonza di maiale",
+      "price": 9,
+      "description": "Spaghetti di riso saltati con lonza di maiale, uova, zucchine, soia, carote e verza.",
       "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261117-spaghetti-salmone-finocchi-arancia.webp",
-      "translations": {
-        "en": {
-          "name": "Spaghetti with fresh salmon, fennel and orange zest",
-          "description": "Spaghetti with fresh salmon, thinly sliced fennel and orange zest."
-        },
-        "zh": {
-          "name": "鲜三文鱼茴香橙香意大利面",
-          "description": "意大利细面搭配鲜三文鱼、薄切茴香球茎和橙皮屑。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
-        "date": "2026-11-17",
-        "tool": "image_gen",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
-      }
-    },
-    {
-      "name": "Orecchiette fresche con cime di rapa e salsiccia",
-      "price": 10,
-      "description": "Orecchiette fresche con cime di rapa e salsiccia sbriciolata.",
-      "allergens": [
-        1
-      ],
-      "icon": "Wheat",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261117-orecchiette-cime-rapa-salsiccia.webp",
-      "translations": {
-        "en": {
-          "name": "Fresh orecchiette with broccoli rabe and sausage",
-          "description": "Fresh orecchiette with broccoli rabe and crumbled sausage."
-        },
-        "zh": {
-          "name": "芜菁嫩叶香肠猫耳面",
-          "description": "新鲜猫耳面搭配芜菁嫩叶和碎香肠。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
-        "date": "2026-11-17",
-        "tool": "image_gen",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
-      }
-    },
-    {
-      "name": "Gnocchetti di riso alla thailandese con lonza e gamberetti*",
-      "price": 10,
-      "description": "Gnocchetti di riso a forma di fogliolina, saltati con lonza, gamberetti*, uova, zucchine, carote e salsa di soia.",
-      "allergens": [
-        2,
         3,
         6
       ],
-      "icon": "Shrimp",
+      "icon": "Soy",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261117-gnocchetti-riso-tarantese.webp",
+      "dishPhoto": "pranzo-assets/20261118-spaghetti-riso-lonza.webp",
       "translations": {
         "en": {
-          "name": "Thai-style rice cakes with pork loin and prawns*",
-          "description": "Flat, leaf-shaped rice cakes stir-fried with pork loin, prawns*, eggs, courgettes, carrots and soy sauce."
+          "name": "Rice noodles with vegetables and pork loin",
+          "description": "Rice noodles stir-fried with pork loin, eggs, courgettes, soy, carrots and Savoy cabbage."
         },
         "zh": {
-          "name": "泰式猪里脊虾仁*米年糕片",
-          "description": "叶形薄米年糕片与猪里脊、虾仁*、鸡蛋、西葫芦、胡萝卜和酱油同炒。"
+          "name": "时蔬猪里脊炒米粉",
+          "description": "米粉与猪里脊、鸡蛋、西葫芦、大豆、胡萝卜和皱叶甘蓝同炒。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
-        "date": "2026-11-17",
-        "tool": "image_gen",
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-18",
         "format": "WebP",
+        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
         "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP; miniatura 4:3",
-        "reference": "pranzo-assets/20261117-gnocchi-thailandese-lonza-gamberetti.webp (stoviglia, inquadratura, luce e sfondo)"
+        "tool": "image_gen",
+        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
       }
     },
     {
-      "name": "Gnocchi di patate con barbabietola e gorgonzola",
+      "name": "Spaghetti alla carbonara",
       "price": 10,
-      "description": "Gnocchi di patate con barbabietola e gorgonzola, dal gusto delicatamente dolce e sapido.",
+      "description": "Spaghetti con uova, pancetta affumicata e pecorino.",
       "allergens": [
         1,
+        3,
         7
       ],
-      "icon": "Wheat",
+      "icon": "Egg",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261117-gnocchi-barbabietola-gorgonzola.webp",
+      "dishPhoto": "pranzo-assets/spaghetti-carbonara-20261111.webp",
       "translations": {
         "en": {
-          "name": "Potato gnocchi with beetroot and Gorgonzola",
-          "description": "Potato gnocchi with beetroot and Gorgonzola, gently sweet and savoury."
+          "name": "Spaghetti carbonara",
+          "description": "Spaghetti with eggs, smoked pancetta and pecorino."
         },
         "zh": {
-          "name": "甜菜根戈贡佐拉奶酪土豆团子",
-          "description": "土豆团子搭配甜菜根和戈贡佐拉奶酪，微甜带咸香。"
+          "name": "培根蛋酱意大利面",
+          "description": "意大利细面搭配鸡蛋、烟熏意式培根和佩科里诺羊奶酪。"
         }
       },
       "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
-        "date": "2026-11-17",
-        "tool": "image_gen",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
-      }
-    },
-    {
-      "name": "Straccetti di maiale con broccoli, peperoncino e riso al vapore",
-      "price": 10,
-      "description": "Straccetti di maiale con broccoli saltati e peperoncino, serviti con riso bianco al vapore.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261117-straccetti-maiale-broccoli-riso.webp",
-      "translations": {
-        "en": {
-          "name": "Pork strips with broccoli, chilli and steamed rice",
-          "description": "Pork strips with sautéed broccoli and chilli, served with steamed white rice."
-        },
-        "zh": {
-          "name": "西兰花辣椒猪肉条配蒸米饭",
-          "description": "猪肉条搭配炒西兰花和辣椒，配蒸白米饭。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
-        "date": "2026-11-17",
-        "tool": "image_gen",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
-      }
-    },
-    {
-      "name": "Milanese di lonza con verza viola all’aceto balsamico",
-      "price": 10,
-      "description": "Lonza impanata con verza viola cruda, condita con aceto balsamico.",
-      "allergens": [
-        1
-      ],
-      "icon": "Wheat",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261117-milanese-lonza-verza-viola.webp",
-      "translations": {
-        "en": {
-          "name": "Breaded pork loin with purple Savoy cabbage and balsamic vinegar",
-          "description": "Breaded pork loin served with raw purple Savoy cabbage dressed with balsamic vinegar."
-        },
-        "zh": {
-          "name": "米兰式炸猪里脊配香醋紫甘蓝",
-          "description": "裹面包糠的猪里脊搭配以意大利香醋调味的生紫甘蓝。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
-        "date": "2026-11-17",
-        "tool": "image_gen",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
-      }
-    },
-    {
-      "name": "Salmone in padella al limone con insalata di patate al prezzemolo",
-      "price": 12,
-      "description": "Salmone cotto in padella al limone, servito con un’insalata di patate al prezzemolo.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261117-salmone-limone-patate-prezzemolo.webp",
-      "translations": {
-        "en": {
-          "name": "Pan-seared lemon salmon with parsley potato salad",
-          "description": "Lemon salmon cooked in a pan, served with a parsley potato salad."
-        },
-        "zh": {
-          "name": "柠檬煎三文鱼配欧芹土豆沙拉",
-          "description": "柠檬风味香煎三文鱼，搭配欧芹土豆沙拉。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image, coordinated lunch-thumbnail series",
-        "date": "2026-11-17",
-        "tool": "image_gen",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "resolution": "1440 × 1080 px WebP optimized from a 1254 × 1254 px generation; displayed in a 4:3 thumbnail",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp (stoviglia, inquadratura, luce e sfondo)"
-      }
-    },
-    {
-      "name": "Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco",
-      "price": 12,
-      "description": "Finocchi croccanti, arance e avocado, con bocconcini di salmone fresco.",
-      "allergens": [
-        4
-      ],
-      "icon": "Fish",
-      "dishPhoto": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado-20261111.webp",
-      "translations": {
-        "en": {
-          "name": "Salad with fennel, oranges, avocado and fresh salmon bites",
-          "description": "Crisp fennel, oranges and avocado with bite-sized pieces of fresh salmon."
-        },
-        "zh": {
-          "name": "茴香橙子牛油果鲜三文鱼沙拉",
-          "description": "爽脆茴香、橙子和牛油果，搭配鲜三文鱼块。"
-        }
-      },
       "photoSource": {
         "type": "Existing approved lunch illustration",
         "date": "2026-11-11",
         "format": "WebP",
-        "reference": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado-20261111.webp",
-        "note": "Immagine illustrativa del piatto già usata nel menù pranzo."
+        "reference": "pranzo-assets/spaghetti-carbonara-20261111.webp",
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito."
+      }
+    },
+    {
+      "name": "Casarecce con melanzane e branzino",
+      "price": 12,
+      "description": "Casarecce con melanzane e branzino, con un tocco di pomodoro.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/casarecce-branzino-coerente-20261023.webp",
+      "translations": {
+        "en": {
+          "name": "Casarecce with aubergine and sea bass",
+          "description": "Twisted casarecce pasta with aubergine, sea bass and a touch of tomato."
+        },
+        "zh": {
+          "name": "茄子海鲈鱼卷形意面",
+          "description": "卷形短意面搭配茄子、海鲈鱼和少许番茄。"
+        }
       },
       "photoLayout": "thumbnail",
-      "orderCourse": "Secondo"
+      "photoSource": {
+        "type": "Existing approved lunch illustration",
+        "date": "2026-10-23",
+        "format": "WebP",
+        "reference": "pranzo-assets/casarecce-branzino-coerente-20261023.webp",
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito."
+      }
+    },
+    {
+      "name": "Scaloppine di maiale al vino bianco e rosmarino, con patate",
+      "price": 10,
+      "description": "Fettine di maiale sfumate al vino bianco e profumate al rosmarino, servite con patate.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261118-scaloppine-maiale.webp",
+      "translations": {
+        "en": {
+          "name": "Pork escalopes with white wine, rosemary and potatoes",
+          "description": "Thin pork escalopes cooked with white wine and rosemary, served with potatoes."
+        },
+        "zh": {
+          "name": "白葡萄酒迷迭香猪肉薄片配土豆",
+          "description": "猪肉薄片以白葡萄酒和迷迭香烹制，搭配土豆。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-18",
+        "format": "WebP",
+        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "tool": "image_gen",
+        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+      }
+    },
+    {
+      "name": "Straccetti di pollo con verdure, salsa di soia e riso al vapore",
+      "price": 10,
+      "description": "Straccetti di pollo saltati con verdure e salsa di soia, accompagnati da riso bianco al vapore.",
+      "allergens": [
+        6
+      ],
+      "icon": "Soy",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261118-pollo-verdure-soia-riso.webp",
+      "translations": {
+        "en": {
+          "name": "Chicken strips with vegetables, soy sauce and steamed rice",
+          "description": "Stir-fried chicken strips with vegetables and soy sauce, served with steamed white rice."
+        },
+        "zh": {
+          "name": "时蔬酱油鸡肉条配蒸米饭",
+          "description": "鸡肉条与时蔬和酱油同炒，搭配蒸白米饭。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-18",
+        "format": "WebP",
+        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "tool": "image_gen",
+        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+      }
+    },
+    {
+      "name": "Filetti di branzino in crosta di verdure con cime di rapa",
+      "price": 12,
+      "description": "Filetti di branzino in crosta di zucchine, carote e melanzane, serviti con cime di rapa.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261118-branzino-crosta-verdure.webp",
+      "translations": {
+        "en": {
+          "name": "Sea bass fillets with a vegetable crust and broccoli rabe",
+          "description": "Sea bass fillets with a courgette, carrot and aubergine crust, served with broccoli rabe."
+        },
+        "zh": {
+          "name": "蔬菜脆皮海鲈鱼柳配芜菁嫩叶",
+          "description": "海鲈鱼柳覆以西葫芦、胡萝卜和茄子制成的外层，搭配芜菁嫩叶。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-18",
+        "format": "WebP",
+        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "tool": "image_gen",
+        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+      }
     }
   ],
   "offers": [
