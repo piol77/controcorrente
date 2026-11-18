@@ -708,6 +708,6 @@ Questa sezione prevale sulle note discordanti precedenti relative a voce, primo 
 - Nelle Novità mostra due riquadri brevi e di pari dimensioni, subito sotto notizie e meteo. Le pagine delle promozioni usano `promozioni.css` per le istruzioni, il registro pubblico e la console titolare. Conserva per ciascun registro gli stati previsti dalla rispettiva promozione.
 - La console Radio Premi si apre dalla relativa pagina. Mantieni il collegamento storico `radio-premi-gestione.html` come reindirizzamento alla console. Entrambe le console mantengono le verifiche titolare esistenti.
 
-## Disponibilità dinamica dei tavoli a pranzo — 18 novembre 2026
-- Il modulo `ordine.html` legge solo disponibilità anonime per orari tra le 12:00 e le 14:30. Il registro Windows decide le assegnazioni in ordine di arrivo della richiesta. Seguire `.github/instructions/sala-pranzo.md`.
+## Disponibilità dinamica dei tavoli a pranzo e a cena — 18 novembre 2026
+- Il modulo `ordine.html` legge solo disponibilità anonime per gli arrivi tra le 12:00 e le 14:30 e tra le 19:00 e le 22:30. Il registro Windows decide le assegnazioni in ordine di arrivo della richiesta. Seguire `.github/instructions/sala-pranzo.md`.
 - Mantenere il passaggio via WhatsApp e il controllo della conferma effettiva. Quando manca un dato recente, mostrare «Disponibilità da verificare».

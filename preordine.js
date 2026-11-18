@@ -239,8 +239,8 @@
     .map(([,item]) => item.name);
   const promoFromNotes = notes => String(notes || '').match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![A-Za-z0-9])/i)
     || String(notes || '').match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
-  function setupLunchAvailability(form) {
-    const status = form.querySelector('[data-lunch-availability]');
+  function setupRoomAvailability(form) {
+    const status = form.querySelector('[data-room-availability]');
     if (!status) return;
     const date = form.elements.namedItem('giorno');
     const time = form.elements.namedItem('orario');
@@ -265,7 +265,8 @@
     async function refresh() {
       const [hours, minutes] = time.value.split(':').map(Number);
       const minute = hours * 60 + minutes;
-      const key = date.value && date.value >= todayInRome() && minute >= 720 && minute <= 870
+      const inService = (minute >= 720 && minute <= 870) || (minute >= 1140 && minute <= 1350);
+      const key = date.value && date.value >= todayInRome() && inService
         ? date.value + '|' + minute : '';
       if (!key || key !== last) {
         active?.abort();
@@ -276,7 +277,7 @@
       }
       status.hidden = !key;
       if (!key || active || document.hidden) return;
-      if (!result && !status.textContent) status.textContent = 'Controllo disponibilità del pranzo…';
+      if (!result && !status.textContent) status.textContent = 'Controllo disponibilità…';
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 5000);
       active = controller;
@@ -345,7 +346,7 @@
       }
       sessionStorage.removeItem('cc-promo-form-return');
     } catch (_) { /* The cart remains in localStorage if session storage is blocked. */ }
-    setupLunchAvailability(form);
+    setupRoomAvailability(form);
     const reset = form.querySelector('[data-reset-order]');
     let menuReady = false;
     async function refreshDaily() {
