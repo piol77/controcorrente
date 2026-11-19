@@ -349,35 +349,6 @@
         "dishPhoto": "cena-salmone.webp"
       },
       {
-        "name": "Involtini di pollo con bacon e gorgonzola su crema di patate",
-        "price": 14,
-        "description": "Involtini di pollo avvolti nel bacon, con un cuore di gorgonzola, serviti su una vellutata crema di patate.",
-        "allergens": [
-          7
-        ],
-        "icon": "CookingPot",
-        "dishPhoto": "cena-assets/involtini-pollo-bacon-gorgonzola-crema-patate-20261111.webp",
-        "orderCourse": "Secondo",
-        "translations": {
-          "en": {
-            "name": "Chicken roulades with bacon and gorgonzola on potato cream",
-            "description": "Bacon-wrapped chicken roulades with a gorgonzola centre, served on smooth potato cream."
-          },
-          "zh": {
-            "name": "培根戈贡佐拉奶酪鸡肉卷配土豆泥",
-            "description": "培根包裹鸡肉卷，内夹戈贡佐拉奶酪，配细腻土豆泥。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-11",
-          "tool": "image_gen",
-          "resolution": "1536x1024",
-          "format": "WebP, quality 91",
-          "note": "Tre involtini di pollo avvolti nel bacon, con ripieno di gorgonzola visibile, su crema di patate; piatto avorio e sfondo blu marino. Immagine illustrativa."
-        }
-      },
-      {
         "name": "Orata alla griglia con patate al forno",
         "price": 14,
         "description": "Orata alla griglia, accompagnata da patate dorate al forno.",
