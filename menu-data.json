@@ -56,30 +56,32 @@
         }
       },
       {
-        "name": "Funghi champignon fritti",
-        "price": 10,
-        "description": "Champignon dorati e croccanti, dal cuore morbido, serviti con una fresca nota di limone.",
+        "name": "Piatto misto orientale",
+        "price": 12.5,
+        "description": "Due ravioli orientali di gamberetti*, due ravioli orientali di carne, crêpe alle verdure, riso alla cantonese ed edamame bolliti.",
         "allergens": [
           1,
-          3
+          2,
+          3,
+          6
         ],
-        "icon": "Leaf",
-        "dishPhoto": "cena-funghi.webp",
+        "icon": "Shrimp",
+        "dishPhoto": "pranzo-assets/20261119-piatto-misto.webp",
         "translations": {
           "en": {
-            "name": "Fried champignon mushrooms",
-            "description": "Golden, crunchy champignon mushrooms, tender inside, with a fresh hint of lemon."
+            "name": "Mixed oriental platter",
+            "description": "Two shrimp* dumplings, two meat dumplings, a vegetable crêpe, Cantonese fried rice and boiled edamame."
           },
           "zh": {
-            "name": "香酥炸口蘑",
-            "description": "金黄酥脆的炸口蘑，内里柔嫩，配上一抹清新的柠檬香气。"
+            "name": "东方风味什锦拼盘",
+            "description": "两只虾仁*饺、两只肉饺、蔬菜薄饼、广式炒饭及水煮毛豆。"
           }
         },
         "photoSource": {
-          "type": "Existing website illustrative image",
-          "date": "2026-11-01",
+          "type": "Existing coordinated illustrative food image",
+          "date": "2026-11-19",
           "tool": "reused existing asset",
-          "note": "Reused existing cena-funghi.webp: breaded and fried champignon mushrooms with lemon on an ivory plate over a dark navy tabletop. Illustrative site image; provenance unverified."
+          "note": "Stessa fotografia illustrativa coordinata del piatto misto del pranzo."
         }
       },
       {
@@ -122,34 +124,6 @@
         ],
         "icon": "Shell",
         "dishPhoto": "cena-spaghetti.webp"
-      },
-      {
-        "name": "Risotto con broccoli, gamberetti* e limone",
-        "price": 12.5,
-        "description": "Risotto cremoso con broccoli e gamberetti*, profumato al limone. Ordinabile per minimo 2 porzioni.",
-        "allergens": [
-          2
-        ],
-        "icon": "Shrimp",
-        "dishPhoto": "pranzo-assets/risotto-broccoli-gamberetti-limone-20261111.webp",
-        "translations": {
-          "en": {
-            "name": "Risotto with broccoli, shrimp* and lemon",
-            "description": "Creamy risotto with broccoli and shrimp*, scented with lemon. Minimum order: 2 portions."
-          },
-          "zh": {
-            "name": "西兰花虾仁*柠檬意式烩饭",
-            "description": "意式烩饭搭配西兰花和虾仁*，带有清新的柠檬香。至少订购2份。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated HD illustrative food image reused from the coordinated lunch series",
-          "date": "2026-11-11",
-          "tool": "image_gen",
-          "resolution": "1200x900",
-          "format": "WebP",
-          "note": "Piatto avorio su fondo blu marino, luce e inquadratura coordinate. Immagine illustrativa, non fotografia del piatto servito."
-        }
       },
       {
         "name": "Tagliatelle con carciofi e orata",
@@ -212,62 +186,61 @@
         }
       },
       {
-        "name": "Linguine al nero di seppia",
-        "price": 13,
-        "description": "Linguine condite con nero di seppia, dal sapore intenso di mare.",
-        "allergens": [
-          1,
-          14
-        ],
-        "icon": "Shell",
-        "translations": {
-          "en": {
-            "name": "Squid ink linguine",
-            "description": "Linguine dressed in deep, savoury squid ink sauce."
-          },
-          "zh": {
-            "name": "墨鱼汁扁意面",
-            "description": "香浓墨鱼汁包裹扁意面，满载海洋鲜味。"
-          }
-        },
-        "dishPhoto": "cena-assets/linguine-nero-seppia-20261106-hd.webp",
-        "photoSource": {
-          "type": "AI-generated HD illustrative food image",
-          "date": "2026-11-06",
-          "tool": "image_gen",
-          "resolution": "1536x1024",
-          "format": "WebP, quality 91",
-          "note": "Foto illustrativa, non fotografia del piatto servito. Piatto avorio, sfondo blu marino, luce calda; ingredienti coerenti con la descrizione."
-        }
-      },
-      {
-        "name": "Spaghetti con crema di zucchine e cozze",
+        "name": "Linguine con crema di broccoli e cozze",
         "price": 12.5,
-        "description": "Spaghetti avvolti da una crema vellutata di zucchine, con cozze.",
+        "description": "Linguine avvolte in una crema vellutata di broccoli, con cozze.",
         "allergens": [
           1,
           14
         ],
         "icon": "Shell",
         "orderCourse": "Primo",
+        "dishPhoto": "cena-assets/spaghetti-crema-zucchine-cozze-20261114.webp",
         "translations": {
           "en": {
-            "name": "Spaghetti with courgette cream and mussels",
-            "description": "Spaghetti coated in a smooth courgette cream, with mussels."
+            "name": "Linguine with broccoli cream and mussels",
+            "description": "Linguine coated in a velvety broccoli cream, with mussels."
           },
           "zh": {
-            "name": "西葫芦泥酱贻贝意大利面",
-            "description": "意大利面裹上细腻的西葫芦泥酱，搭配贻贝。"
+            "name": "西兰花奶油酱贻贝扁意面",
+            "description": "扁意面裹上细腻的西兰花酱，搭配贻贝。"
           }
         },
-        "dishPhoto": "cena-assets/spaghetti-crema-zucchine-cozze-20261114.webp",
         "photoSource": {
-          "type": "AI-generated illustrative food image",
-          "date": "2026-11-14",
-          "tool": "image_gen",
-          "resolution": "1536 × 1024 px",
-          "format": "WebP",
-          "note": "Piatto avorio su fondo blu marino, coordinato con il menù di cena. Immagine illustrativa. Riferimento web consultato: https://masterchef.sky.it/ricette/2019/pasta-risottata-alle-cozze Il riferimento usa anche pomodoro e altri ingredienti."
+          "type": "Existing coordinated illustrative food image",
+          "date": "2026-11-19",
+          "tool": "reused existing asset",
+          "note": "Anteprima esistente di pasta, crema verde e cozze, provvisoria: broccoli non verificabili dalla foto."
+        }
+      },
+      {
+        "name": "Linguine con gamberetti*, stracciatella e granella di pistacchi",
+        "price": 12.5,
+        "description": "Linguine con gamberetti*, stracciatella cremosa e granella di pistacchi.",
+        "allergens": [
+          1,
+          2,
+          7,
+          8
+        ],
+        "icon": "Shrimp",
+        "orderCourse": "Primo",
+        "dishPhoto": "cena-assets/linguine-stracciatella-pistacchi-gamberetti-20261030.png",
+        "translations": {
+          "en": {
+            "name": "Linguine with shrimp*, stracciatella and chopped pistachios",
+            "description": "Linguine with shrimp*, creamy stracciatella cheese and chopped pistachios."
+          },
+          "zh": {
+            "name": "虾仁*斯特拉恰泰拉奶酪开心果碎扁意面",
+            "description": "扁意面搭配虾仁*、柔滑斯特拉恰泰拉奶酪和开心果碎。"
+          }
+        },
+        "photoSource": {
+          "type": "Existing coordinated illustrative food image",
+          "date": "2026-11-19",
+          "tool": "reused existing asset",
+          "note": "Fotografia illustrativa coordinata di linguine, gamberetti, stracciatella e pistacchi."
         }
       },
       {
@@ -402,6 +375,33 @@
           "resolution": "1536x1024",
           "format": "WebP, quality 91",
           "note": "Tre involtini di pollo avvolti nel bacon, con ripieno di gorgonzola visibile, su crema di patate; piatto avorio e sfondo blu marino. Immagine illustrativa."
+        }
+      },
+      {
+        "name": "Orata alla griglia con patate al forno",
+        "price": 14,
+        "description": "Orata alla griglia, accompagnata da patate dorate al forno.",
+        "allergens": [
+          4
+        ],
+        "icon": "Fish",
+        "orderCourse": "Secondo",
+        "dishPhoto": "cena-assets/orata-griglia-patate-20261016.webp",
+        "translations": {
+          "en": {
+            "name": "Grilled sea bream with roasted potatoes",
+            "description": "Grilled sea bream served with golden oven-roasted potatoes."
+          },
+          "zh": {
+            "name": "烤海鲷配烤土豆",
+            "description": "烤海鲷搭配金黄香酥的烤土豆。"
+          }
+        },
+        "photoSource": {
+          "type": "Existing coordinated illustrative food image",
+          "date": "2026-11-19",
+          "tool": "reused existing asset",
+          "note": "Fotografia illustrativa di orata alla griglia con patate al forno."
         }
       }
     ]
@@ -624,35 +624,34 @@
   ],
   "offers": [
     {
-      "name": "Gnocchi di patate con crema di barbabietola, gorgonzola e noci",
+      "name": "Orecchiette con acciughe e capperi",
       "price": 10,
-      "description": "Gnocchi di patate avvolti da una crema vellutata di barbabietola, con gorgonzola e noci croccanti.",
+      "description": "Orecchiette con acciughe e capperi, dal sapore mediterraneo.",
       "allergens": [
         1,
-        7,
-        8
+        4
       ],
-      "icon": "Wheat",
+      "icon": "Fish",
       "orderCourse": "Primo",
       "photoLayout": "side",
-      "dishPhoto": "offerta-assets/gnocchi-barbabietola-gorgonzola-noci-20261113.webp",
+      "dishPhoto": "offerta-assets/orecchiette-acciughe-capperi-20261119.webp",
       "translations": {
         "en": {
-          "name": "Potato gnocchi with beetroot cream, gorgonzola and walnuts",
-          "description": "Potato gnocchi coated in a smooth beetroot cream, finished with gorgonzola and crunchy walnuts."
+          "name": "Orecchiette with anchovies and capers",
+          "description": "Orecchiette pasta with anchovies and capers, full of Mediterranean flavour."
         },
         "zh": {
-          "name": "甜菜根奶油意式土豆团配戈贡佐拉奶酪和核桃",
-          "description": "意式土豆团裹上细腻甜菜根奶油，搭配戈贡佐拉奶酪与香脆核桃。"
+          "name": "凤尾鱼刺山柑猫耳朵意面",
+          "description": "猫耳朵意面搭配凤尾鱼和刺山柑，呈现地中海风味。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-13",
+        "date": "2026-11-19",
         "tool": "image_gen",
-        "resolution": "1536 × 1024 px",
+        "resolution": "1200 × 800 px",
         "format": "WebP",
-        "note": "Crema di barbabietola, gorgonzola e noci su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
+        "note": "Orecchiette, acciughe e capperi su piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
@@ -710,35 +709,6 @@
         "resolution": "1536 × 1024 px",
         "format": "WebP",
         "note": "Due braciole al latte con insalata di patate prezzemolate su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Fusilli con branzino, zucchine e pomodorini",
-      "price": 12.5,
-      "description": "Fusilli con branzino, zucchine e pomodorini.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Primo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodorini-20261112.webp",
-      "translations": {
-        "en": {
-          "name": "Fusilli with sea bass, courgettes and cherry tomatoes",
-          "description": "Fusilli with sea bass, courgettes and cherry tomatoes."
-        },
-        "zh": {
-          "name": "海鲈鱼西葫芦樱桃番茄螺旋面",
-          "description": "螺旋面搭配海鲈鱼、西葫芦和樱桃番茄。"
-        }
-      },
-      "photoSource": {
-        "type": "Existing approved illustrative photo reused from lunch",
-        "date": "2026-11-12",
-        "tool": "reused existing asset",
-        "note": "Foto coordinata del pranzo per lo stesso piatto: piatto avorio, sfondo blu marino e luce calda. Immagine illustrativa."
       }
     }
   ],
