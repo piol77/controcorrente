@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-11-18",
-  "lunchDateLabel": "Mercoledì 18 novembre 2026",
+  "lunchUpdatedAt": "2026-11-19",
+  "lunchDateLabel": "Giovedì 19 novembre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -408,187 +408,217 @@
   },
   "lunch": [
     {
-      "name": "Spaghetti di riso con verdure e lonza di maiale",
-      "price": 9,
-      "description": "Spaghetti di riso saltati con lonza di maiale, uova, zucchine, soia, carote e verza.",
+      "name": "Conchigliette con calamari, gamberetti* e patate",
+      "price": 12,
+      "description": "Conchigliette con calamari, gamberetti* e patate.",
       "allergens": [
-        3,
-        6
+        1,
+        2,
+        14
       ],
-      "icon": "Soy",
+      "icon": "Shrimp",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261118-spaghetti-riso-lonza.webp",
+      "dishPhoto": "pranzo-assets/20261119-conchigliette-calamari-gamberetti-patate.webp",
       "translations": {
         "en": {
-          "name": "Rice noodles with vegetables and pork loin",
-          "description": "Rice noodles stir-fried with pork loin, eggs, courgettes, soy, carrots and Savoy cabbage."
+          "name": "Shell pasta with squid, shrimp and potatoes",
+          "description": "Shell pasta with squid, shrimp and potatoes."
         },
         "zh": {
-          "name": "时蔬猪里脊炒米粉",
-          "description": "米粉与猪里脊、鸡蛋、西葫芦、大豆、胡萝卜和皱叶甘蓝同炒。"
+          "name": "鱿鱼虾仁土豆贝壳面",
+          "description": "贝壳面搭配鱿鱼、虾仁和土豆。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-18",
+        "date": "2026-11-19",
         "format": "WebP",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
         "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
         "tool": "image_gen",
-        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+        "resolution": "1024 × 768 px WebP; miniatura 4:3"
       }
     },
     {
-      "name": "Spaghetti alla carbonara",
+      "name": "Spaghetti con crema di cime di rapa e stracciatella",
       "price": 10,
-      "description": "Spaghetti con uova, pancetta affumicata e pecorino.",
+      "description": "Spaghetti avvolti in una crema di cime di rapa, con stracciatella.",
       "allergens": [
         1,
-        3,
         7
       ],
-      "icon": "Egg",
+      "icon": "Utensils",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/spaghetti-carbonara-20261111.webp",
+      "dishPhoto": "pranzo-assets/20261119-spaghetti-cime-rapa-stracciatella.webp",
       "translations": {
         "en": {
-          "name": "Spaghetti carbonara",
-          "description": "Spaghetti with eggs, smoked pancetta and pecorino."
+          "name": "Spaghetti with broccoli rabe cream and stracciatella",
+          "description": "Spaghetti in a broccoli rabe cream, topped with stracciatella cheese."
         },
         "zh": {
-          "name": "培根蛋酱意大利面",
-          "description": "意大利细面搭配鸡蛋、烟熏意式培根和佩科里诺羊奶酪。"
+          "name": "芜菁叶奶油酱与斯特拉恰泰拉奶酪意面",
+          "description": "意大利细面裹上芜菁叶酱，搭配斯特拉恰泰拉奶酪。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Existing approved lunch illustration",
-        "date": "2026-11-11",
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-19",
         "format": "WebP",
-        "reference": "pranzo-assets/spaghetti-carbonara-20261111.webp",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito."
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "tool": "image_gen",
+        "resolution": "1024 × 768 px WebP; miniatura 4:3"
       }
     },
     {
-      "name": "Casarecce con melanzane e branzino",
-      "price": 12,
-      "description": "Casarecce con melanzane e branzino, con un tocco di pomodoro.",
+      "name": "Tagliatelle con carciofi e orata",
+      "price": 15,
+      "description": "Tagliatelle con carciofi e filetti di orata.",
       "allergens": [
         1,
+        3,
         4
       ],
       "icon": "Fish",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/casarecce-branzino-coerente-20261023.webp",
+      "dishPhoto": "pranzo-assets/20261119-tagliatelle-carciofi-orata.webp",
       "translations": {
         "en": {
-          "name": "Casarecce with aubergine and sea bass",
-          "description": "Twisted casarecce pasta with aubergine, sea bass and a touch of tomato."
+          "name": "Tagliatelle with artichokes and sea bream",
+          "description": "Tagliatelle with artichokes and sea bream fillets."
         },
         "zh": {
-          "name": "茄子海鲈鱼卷形意面",
-          "description": "卷形短意面搭配茄子、海鲈鱼和少许番茄。"
+          "name": "朝鲜蓟鲷鱼宽面",
+          "description": "宽面搭配朝鲜蓟和鲷鱼柳。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "Existing approved lunch illustration",
-        "date": "2026-10-23",
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-19",
         "format": "WebP",
-        "reference": "pranzo-assets/casarecce-branzino-coerente-20261023.webp",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito."
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "tool": "image_gen",
+        "resolution": "1024 × 768 px WebP; miniatura 4:3"
       }
     },
     {
-      "name": "Scaloppine di maiale al vino bianco e rosmarino, con patate",
+      "name": "Piatto misto",
+      "price": 12,
+      "description": "Edamame bolliti, 2 ravioli di gamberetti*, 2 ravioli di carne, riso alla cantonese e crêpe di verdure.",
+      "allergens": [
+        1,
+        2,
+        3,
+        6
+      ],
+      "icon": "Shrimp",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/20261119-piatto-misto.webp",
+      "translations": {
+        "en": {
+          "name": "Mixed plate",
+          "description": "Boiled edamame, 2 shrimp dumplings, 2 meat dumplings, Cantonese fried rice and a vegetable crêpe."
+        },
+        "zh": {
+          "name": "什锦拼盘",
+          "description": "水煮毛豆、2个虾饺、2个肉饺、广式炒饭和蔬菜薄饼。"
+        }
+      },
+      "photoLayout": "thumbnail",
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-19",
+        "format": "WebP",
+        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "tool": "image_gen",
+        "resolution": "1024 × 768 px WebP; miniatura 4:3"
+      }
+    },
+    {
+      "name": "Straccetti di pollo con melanzane e riso bianco",
       "price": 10,
-      "description": "Fettine di maiale sfumate al vino bianco e profumate al rosmarino, servite con patate.",
+      "description": "Straccetti di pollo saltati con melanzane, accompagnati da riso bianco.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261118-scaloppine-maiale.webp",
+      "dishPhoto": "pranzo-assets/20261119-pollo-melanzane-riso.webp",
       "translations": {
         "en": {
-          "name": "Pork escalopes with white wine, rosemary and potatoes",
-          "description": "Thin pork escalopes cooked with white wine and rosemary, served with potatoes."
+          "name": "Chicken strips with aubergine and white rice",
+          "description": "Chicken strips sautéed with aubergine, served with white rice."
         },
         "zh": {
-          "name": "白葡萄酒迷迭香猪肉薄片配土豆",
-          "description": "猪肉薄片以白葡萄酒和迷迭香烹制，搭配土豆。"
+          "name": "茄子鸡肉条配白米饭",
+          "description": "鸡肉条与茄子同炒，搭配白米饭。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-18",
+        "date": "2026-11-19",
         "format": "WebP",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
         "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
         "tool": "image_gen",
-        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+        "resolution": "1024 × 768 px WebP; miniatura 4:3"
       }
     },
     {
-      "name": "Straccetti di pollo con verdure, salsa di soia e riso al vapore",
+      "name": "Maiale alla pizzaiola con patate",
       "price": 10,
-      "description": "Straccetti di pollo saltati con verdure e salsa di soia, accompagnati da riso bianco al vapore.",
-      "allergens": [
-        6
-      ],
-      "icon": "Soy",
+      "description": "Fettine di maiale alla pizzaiola, servite con patate.",
+      "allergens": [],
+      "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261118-pollo-verdure-soia-riso.webp",
+      "dishPhoto": "pranzo-assets/20261119-maiale-pizzaiola-patate.webp",
       "translations": {
         "en": {
-          "name": "Chicken strips with vegetables, soy sauce and steamed rice",
-          "description": "Stir-fried chicken strips with vegetables and soy sauce, served with steamed white rice."
+          "name": "Pork pizzaiola with potatoes",
+          "description": "Pork in tomato pizzaiola sauce, served with potatoes."
         },
         "zh": {
-          "name": "时蔬酱油鸡肉条配蒸米饭",
-          "description": "鸡肉条与时蔬和酱油同炒，搭配蒸白米饭。"
+          "name": "番茄酱猪肉配土豆",
+          "description": "猪肉片以番茄酱烹制，搭配土豆。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-18",
+        "date": "2026-11-19",
         "format": "WebP",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
         "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
         "tool": "image_gen",
-        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+        "resolution": "1024 × 768 px WebP; miniatura 4:3"
       }
     },
     {
-      "name": "Filetti di branzino in crosta di verdure con cime di rapa",
+      "name": "Gamberetti* saltati con verdure al curry e riso bianco",
       "price": 12,
-      "description": "Filetti di branzino in crosta di zucchine, carote e melanzane, serviti con cime di rapa.",
+      "description": "Gamberetti* saltati con verdure al curry, accompagnati da riso bianco.",
       "allergens": [
-        4
+        2
       ],
-      "icon": "Fish",
+      "icon": "Shrimp",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261118-branzino-crosta-verdure.webp",
+      "dishPhoto": "pranzo-assets/20261119-gamberetti-curry-verdure-riso.webp",
       "translations": {
         "en": {
-          "name": "Sea bass fillets with a vegetable crust and broccoli rabe",
-          "description": "Sea bass fillets with a courgette, carrot and aubergine crust, served with broccoli rabe."
+          "name": "Stir-fried shrimp with curry vegetables and white rice",
+          "description": "Stir-fried shrimp with curry vegetables, served with white rice."
         },
         "zh": {
-          "name": "蔬菜脆皮海鲈鱼柳配芜菁嫩叶",
-          "description": "海鲈鱼柳覆以西葫芦、胡萝卜和茄子制成的外层，搭配芜菁嫩叶。"
+          "name": "咖喱时蔬炒虾仁配白米饭",
+          "description": "虾仁与咖喱蔬菜同炒，搭配白米饭。"
         }
       },
       "photoLayout": "thumbnail",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-18",
+        "date": "2026-11-19",
         "format": "WebP",
-        "reference": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
         "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
         "tool": "image_gen",
-        "resolution": "1440 × 1080 px WebP; miniatura 4:3"
+        "resolution": "1024 × 768 px WebP; miniatura 4:3"
       }
     }
   ],
