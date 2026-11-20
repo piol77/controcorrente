@@ -56,32 +56,80 @@
         }
       },
       {
-        "name": "Piatto misto orientale",
-        "price": 12.5,
-        "description": "Due ravioli orientali di gamberetti*, due ravioli orientali di carne, crêpe alle verdure, riso alla cantonese ed edamame bolliti.",
-        "allergens": [
-          1,
-          2,
-          3,
-          6
-        ],
-        "icon": "Shrimp",
-        "dishPhoto": "pranzo-assets/20261119-piatto-misto.webp",
+        "name": "Peperoni alla monferrina",
+        "price": 8,
+        "description": "Peperoni arrostiti, con aglio.",
+        "allergens": [],
+        "icon": "Leaf",
+        "dishPhoto": "cena-assets/peperoni-alla-monferrina-20261120.webp",
         "translations": {
           "en": {
-            "name": "Mixed oriental platter",
-            "description": "Two shrimp* dumplings, two meat dumplings, a vegetable crêpe, Cantonese fried rice and boiled edamame."
+            "name": "Monferrato-style peppers",
+            "description": "Roasted peppers with garlic."
           },
           "zh": {
-            "name": "东方风味什锦拼盘",
-            "description": "两只虾仁*饺、两只肉饺、蔬菜薄饼、广式炒饭及水煮毛豆。"
+            "name": "蒙费拉托风味甜椒",
+            "description": "烤甜椒配蒜。"
           }
         },
         "photoSource": {
-          "type": "Existing coordinated illustrative food image",
-          "date": "2026-11-19",
-          "tool": "reused existing asset",
-          "note": "Stessa fotografia illustrativa coordinata del piatto misto del pranzo."
+          "type": "AI-generated illustrative image",
+          "date": "2026-11-20",
+          "tool": "image_gen",
+          "note": "Original illustration; roasted-pepper presentation compared with La Cucina Italiana reference. Ivory plate and dark navy tabletop."
+        }
+      },
+      {
+        "name": "Funghi champignon fritti",
+        "price": 10,
+        "description": "Champignon fritti, dorati e croccanti.",
+        "allergens": [
+          1,
+          3
+        ],
+        "icon": "Leaf",
+        "dishPhoto": "cena-assets/champignon-fritti-20261120.webp",
+        "translations": {
+          "en": {
+            "name": "Fried button mushrooms",
+            "description": "Golden, crisp fried button mushrooms."
+          },
+          "zh": {
+            "name": "香炸白蘑菇",
+            "description": "炸至金黄酥脆的白蘑菇。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustrative image",
+          "date": "2026-11-20",
+          "tool": "image_gen",
+          "note": "Original illustration; fried mushroom presentation compared with Cucchiaio d’Argento reference. Ivory plate and dark navy tabletop."
+        }
+      },
+      {
+        "name": "Cozze di Sardegna alla marinara",
+        "price": 10,
+        "description": "Cozze sarde alla marinara con poco pomodoro.",
+        "allergens": [
+          14
+        ],
+        "icon": "Shell",
+        "dishPhoto": "cena-assets/cozze-sardegna-marinara-20261120.webp",
+        "translations": {
+          "en": {
+            "name": "Sardinian mussels alla marinara",
+            "description": "Sardinian mussels cooked marinara-style with a little tomato."
+          },
+          "zh": {
+            "name": "撒丁岛海员风味贻贝",
+            "description": "撒丁岛贻贝，以少量番茄煮制。"
+          }
+        },
+        "photoSource": {
+          "type": "AI-generated illustrative image",
+          "date": "2026-11-20",
+          "tool": "image_gen",
+          "note": "Original illustrative photograph with a little tomato, on an ivory plate and dark navy tabletop."
         }
       },
       {
@@ -186,34 +234,6 @@
         }
       },
       {
-        "name": "Linguine con crema di broccoli e cozze",
-        "price": 12.5,
-        "description": "Linguine avvolte in una crema vellutata di broccoli, con cozze.",
-        "allergens": [
-          1,
-          14
-        ],
-        "icon": "Shell",
-        "orderCourse": "Primo",
-        "dishPhoto": "cena-assets/spaghetti-crema-zucchine-cozze-20261114.webp",
-        "translations": {
-          "en": {
-            "name": "Linguine with broccoli cream and mussels",
-            "description": "Linguine coated in a velvety broccoli cream, with mussels."
-          },
-          "zh": {
-            "name": "西兰花奶油酱贻贝扁意面",
-            "description": "扁意面裹上细腻的西兰花酱，搭配贻贝。"
-          }
-        },
-        "photoSource": {
-          "type": "Existing coordinated illustrative food image",
-          "date": "2026-11-19",
-          "tool": "reused existing asset",
-          "note": "Anteprima esistente di pasta, crema verde e cozze, provvisoria: broccoli non verificabili dalla foto."
-        }
-      },
-      {
         "name": "Linguine con gamberetti*, stracciatella e granella di pistacchi",
         "price": 12.5,
         "description": "Linguine con gamberetti*, stracciatella cremosa e granella di pistacchi.",
@@ -241,33 +261,6 @@
           "date": "2026-11-19",
           "tool": "reused existing asset",
           "note": "Fotografia illustrativa coordinata di linguine, gamberetti, stracciatella e pistacchi."
-        }
-      },
-      {
-        "name": "Tagliatelle al sugo di costine di maiale",
-        "price": 12.5,
-        "description": "Tagliatelle condite con un ricco sugo di costine di maiale.",
-        "allergens": [
-          1
-        ],
-        "icon": "Wheat",
-        "orderCourse": "Primo",
-        "dishPhoto": "pranzo-assets/tagliatelle-sugo-costine-maiale-20261112.webp",
-        "translations": {
-          "en": {
-            "name": "Tagliatelle with pork rib ragù",
-            "description": "Tagliatelle served with a rich pork rib ragù."
-          },
-          "zh": {
-            "name": "猪肋排酱汁宽面",
-            "description": "宽面搭配浓郁的猪肋排肉酱。"
-          }
-        },
-        "photoSource": {
-          "type": "Existing approved illustrative photo reused from lunch",
-          "date": "2026-11-12",
-          "tool": "reused existing asset",
-          "note": "Stesso piatto e stessa foto illustrativa del pranzo; piatto avorio e sfondo blu marino coordinati con la cena."
         }
       }
     ],
@@ -312,30 +305,30 @@
         }
       },
       {
-        "name": "Filetti di branzino in crosta di mandorle con verza viola cruda all’aceto balsamico",
+        "name": "Filetti di branzino in crosta di mandorle con broccoli saltati",
         "price": 14,
-        "description": "Mandorle croccanti e verza viola all’aceto balsamico: delicatezza e carattere nello stesso piatto.",
+        "description": "Filetti di branzino in crosta croccante di mandorle, serviti con broccoli saltati.",
         "allergens": [
           4,
           8
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/branzino-mandorle-verza-viola-20261009.webp",
+        "dishPhoto": "cena-assets/branzino-mandorle-broccoli-20261120.webp",
         "translations": {
           "en": {
-            "name": "Almond-crusted sea bass fillets with raw purple cabbage and balsamic vinegar",
-            "description": "Crunchy almonds and purple cabbage with balsamic vinegar: delicacy and character together."
+            "name": "Almond-crusted sea bass fillets with sautéed broccoli",
+            "description": "Sea bass fillets with a crisp almond crust, served with sautéed broccoli."
           },
           "zh": {
-            "name": "杏仁脆皮海鲈鱼柳配香醋紫甘蓝",
-            "description": "香脆杏仁与香醋紫甘蓝相映，细腻口感与鲜明风味兼得。"
+            "name": "杏仁脆皮海鲈鱼柳配炒西兰花",
+            "description": "香脆杏仁裹烤海鲈鱼柳，配炒西兰花。"
           }
         },
         "photoSource": {
-          "type": "Previously approved AI-generated illustration",
-          "date": "2026-10-09",
+          "type": "AI-generated illustrative image",
+          "date": "2026-11-20",
           "tool": "image_gen",
-          "note": "Existing approved sea bass with almond crust and raw purple cabbage, ivory plate/navy backdrop, illustrative image; reuse of existing site asset."
+          "note": "Approved sea bass illustration edited to replace purple cabbage with sautéed broccoli."
         }
       },
       {
