@@ -58,52 +58,54 @@
       {
         "name": "Peperoni alla monferrina",
         "price": 8,
-        "description": "Peperoni arrostiti, con aglio.",
-        "allergens": [],
+        "description": "Peperoni arrostiti, dolci e morbidi, con aglio e acciuga. La scarpetta è quasi d’obbligo.",
+        "allergens": [
+          4
+        ],
         "icon": "Leaf",
-        "dishPhoto": "cena-assets/peperoni-alla-monferrina-20261120.webp",
+        "dishPhoto": "cena-assets/peperoni-alla-monferrina-acciuga-20261120.webp",
         "translations": {
           "en": {
             "name": "Monferrato-style peppers",
-            "description": "Roasted peppers with garlic."
+            "description": "Sweet, tender roasted peppers with garlic and anchovy. You’ll want to mop up every last drop."
           },
           "zh": {
             "name": "蒙费拉托风味甜椒",
-            "description": "烤甜椒配蒜。"
+            "description": "香甜软嫩的烤甜椒，配蒜和凤尾鱼。好吃到想把盘里的汁都蘸干净。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustrative image",
+          "type": "AI-edited illustrative image",
           "date": "2026-11-20",
           "tool": "image_gen",
-          "note": "Original illustration; roasted-pepper presentation compared with La Cucina Italiana reference. Ivory plate and dark navy tabletop."
+          "note": "Existing illustrative photograph edited to show anchovy alongside the garlic and roasted peppers."
         }
       },
       {
         "name": "Funghi champignon fritti",
         "price": 10,
-        "description": "Champignon fritti, dorati e croccanti.",
+        "description": "Champignon dorati e croccanti, serviti con una fettina di limone.",
         "allergens": [
           1,
           3
         ],
         "icon": "Leaf",
-        "dishPhoto": "cena-assets/champignon-fritti-20261120.webp",
+        "dishPhoto": "cena-assets/champignon-fritti-limone-20261120.webp",
         "translations": {
           "en": {
             "name": "Fried button mushrooms",
-            "description": "Golden, crisp fried button mushrooms."
+            "description": "Golden, crisp fried button mushrooms served with a slice of lemon."
           },
           "zh": {
             "name": "香炸白蘑菇",
-            "description": "炸至金黄酥脆的白蘑菇。"
+            "description": "金黄酥脆的炸白蘑菇，配一片柠檬。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustrative image",
+          "type": "AI-edited illustrative image",
           "date": "2026-11-20",
           "tool": "image_gen",
-          "note": "Original illustration; fried mushroom presentation compared with Cucchiaio d’Argento reference. Ivory plate and dark navy tabletop."
+          "note": "Existing illustrative photograph edited to show a more generous portion on absorbent paper with a lemon slice."
         }
       },
       {
