@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-11-19",
-  "lunchDateLabel": "Giovedì 19 novembre 2026",
+  "lunchUpdatedAt": "2026-11-20",
+  "lunchDateLabel": "Venerdì 20 novembre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -379,217 +379,257 @@
   },
   "lunch": [
     {
-      "name": "Conchigliette con calamari, gamberetti* e patate",
+      "name": "Udon con gamberetti*, lonza di maiale e verdure",
+      "price": 10,
+      "description": "Udon saltati con gamberetti*, lonza di maiale, carote, zucchine e verza.",
+      "allergens": [
+        1,
+        2
+      ],
+      "icon": "Utensils",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/20261120-udon.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Udon with shrimp*, pork loin and vegetables",
+          "description": "Udon stir-fried with shrimp*, pork loin, carrots, courgettes and Savoy cabbage."
+        },
+        "zh": {
+          "name": "虾仁*猪里脊时蔬乌冬面",
+          "description": "乌冬面与虾仁*、猪里脊、胡萝卜、西葫芦和皱叶甘蓝同炒。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-20",
+        "tool": "image_gen",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
+      }
+    },
+    {
+      "name": "Fusilli con zucchine, orata e pomodorini",
       "price": 12,
-      "description": "Conchigliette con calamari, gamberetti* e patate.",
+      "description": "Fusilli con zucchine, bocconcini di orata e pomodorini.",
+      "allergens": [
+        1,
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/20261120-fusilli.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Fusilli with courgettes, sea bream and cherry tomatoes",
+          "description": "Fusilli with courgettes, sea bream pieces and cherry tomatoes."
+        },
+        "zh": {
+          "name": "西葫芦海鲷小番茄螺旋面",
+          "description": "螺旋面搭配西葫芦、海鲷鱼块和小番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-20",
+        "tool": "image_gen",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
+      }
+    },
+    {
+      "name": "Orecchiette con broccoli e salsiccia",
+      "price": 10,
+      "description": "Orecchiette con broccoli e salsiccia, dal gusto rustico e avvolgente.",
+      "allergens": [
+        1
+      ],
+      "icon": "Utensils",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/20261120-orecchiette.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Orecchiette with broccoli and sausage",
+          "description": "Orecchiette pasta with broccoli and Italian sausage."
+        },
+        "zh": {
+          "name": "西兰花香肠猫耳朵意面",
+          "description": "猫耳朵意面搭配西兰花和意式香肠。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-20",
+        "tool": "image_gen",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
+      }
+    },
+    {
+      "name": "Spaghetti ai frutti di mare",
+      "price": 15,
+      "description": "Spaghetti con gamberetti*, gamberoni*, vongole e cozze, con un tocco di pomodoro.",
       "allergens": [
         1,
         2,
         14
       ],
-      "icon": "Shrimp",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261119-conchigliette-calamari-gamberetti-patate.webp",
-      "translations": {
-        "en": {
-          "name": "Shell pasta with squid, shrimp and potatoes",
-          "description": "Shell pasta with squid, shrimp and potatoes."
-        },
-        "zh": {
-          "name": "鱿鱼虾仁土豆贝壳面",
-          "description": "贝壳面搭配鱿鱼、虾仁和土豆。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "tool": "image_gen",
-        "resolution": "1024 × 768 px WebP; miniatura 4:3"
-      }
-    },
-    {
-      "name": "Spaghetti con crema di cime di rapa e stracciatella",
-      "price": 10,
-      "description": "Spaghetti avvolti in una crema di cime di rapa, con stracciatella.",
-      "allergens": [
-        1,
-        7
-      ],
       "icon": "Utensils",
       "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261119-spaghetti-cime-rapa-stracciatella.webp",
+      "dishPhoto": "pranzo-assets/spaghetti-mare-coerente-20261023.webp",
+      "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Spaghetti with broccoli rabe cream and stracciatella",
-          "description": "Spaghetti in a broccoli rabe cream, topped with stracciatella cheese."
+          "name": "Seafood spaghetti",
+          "description": "Spaghetti with shrimp*, king prawns*, clams and mussels, with a touch of tomato."
         },
         "zh": {
-          "name": "芜菁叶奶油酱与斯特拉恰泰拉奶酪意面",
-          "description": "意大利细面裹上芜菁叶酱，搭配斯特拉恰泰拉奶酪。"
+          "name": "海鲜意大利细面",
+          "description": "意大利细面搭配虾仁*、大虾*、蛤蜊和贻贝，佐少量番茄。"
         }
       },
-      "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "tool": "image_gen",
-        "resolution": "1024 × 768 px WebP; miniatura 4:3"
+        "type": "Existing coordinated illustrative image",
+        "date": "2026-11-20",
+        "tool": "reused existing asset",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
       }
     },
     {
-      "name": "Tagliatelle con carciofi e orata",
-      "price": 15,
-      "description": "Tagliatelle con carciofi e filetti di orata.",
+      "name": "Orata alla griglia con verza e carote saltate",
+      "price": 12,
+      "description": "Orata alla griglia, accompagnata da verza e carote saltate.",
       "allergens": [
-        1,
-        3,
         4
       ],
       "icon": "Fish",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261119-tagliatelle-carciofi-orata.webp",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261120-orata.webp",
+      "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Tagliatelle with artichokes and sea bream",
-          "description": "Tagliatelle with artichokes and sea bream fillets."
+          "name": "Grilled sea bream with sautéed Savoy cabbage and carrots",
+          "description": "Grilled sea bream served with sautéed Savoy cabbage and carrots."
         },
         "zh": {
-          "name": "朝鲜蓟鲷鱼宽面",
-          "description": "宽面搭配朝鲜蓟和鲷鱼柳。"
+          "name": "烤海鲷配炒皱叶甘蓝和胡萝卜",
+          "description": "烤海鲷搭配清炒皱叶甘蓝和胡萝卜。"
         }
       },
-      "photoLayout": "thumbnail",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "date": "2026-11-20",
         "tool": "image_gen",
-        "resolution": "1024 × 768 px WebP; miniatura 4:3"
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
       }
     },
     {
-      "name": "Piatto misto",
+      "name": "Salmone alla griglia con verza e carote saltate",
       "price": 12,
-      "description": "Edamame bolliti, 2 ravioli di gamberetti*, 2 ravioli di carne, riso alla cantonese e crêpe di verdure.",
+      "description": "Salmone alla griglia, accompagnato da verza e carote saltate.",
       "allergens": [
-        1,
-        2,
-        3,
-        6
+        4
       ],
-      "icon": "Shrimp",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261119-piatto-misto.webp",
+      "icon": "Fish",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261120-salmone.webp",
+      "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Mixed plate",
-          "description": "Boiled edamame, 2 shrimp dumplings, 2 meat dumplings, Cantonese fried rice and a vegetable crêpe."
+          "name": "Grilled salmon with sautéed Savoy cabbage and carrots",
+          "description": "Grilled salmon served with sautéed Savoy cabbage and carrots."
         },
         "zh": {
-          "name": "什锦拼盘",
-          "description": "水煮毛豆、2个虾饺、2个肉饺、广式炒饭和蔬菜薄饼。"
+          "name": "烤三文鱼配炒皱叶甘蓝和胡萝卜",
+          "description": "烤三文鱼搭配清炒皱叶甘蓝和胡萝卜。"
         }
       },
-      "photoLayout": "thumbnail",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "date": "2026-11-20",
         "tool": "image_gen",
-        "resolution": "1024 × 768 px WebP; miniatura 4:3"
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
       }
     },
     {
-      "name": "Straccetti di pollo con melanzane e riso bianco",
+      "name": "Branzino alla griglia con verza e carote saltate",
+      "price": 12,
+      "description": "Branzino alla griglia, accompagnato da verza e carote saltate.",
+      "allergens": [
+        4
+      ],
+      "icon": "Fish",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261120-branzino.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Grilled sea bass with sautéed Savoy cabbage and carrots",
+          "description": "Grilled sea bass served with sautéed Savoy cabbage and carrots."
+        },
+        "zh": {
+          "name": "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
+          "description": "烤海鲈鱼搭配清炒皱叶甘蓝和胡萝卜。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-20",
+        "tool": "image_gen",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
+      }
+    },
+    {
+      "name": "Straccetti di maiale con peperoni e riso bianco",
       "price": 10,
-      "description": "Straccetti di pollo saltati con melanzane, accompagnati da riso bianco.",
+      "description": "Straccetti di maiale saltati con peperoni, accompagnati da riso bianco.",
       "allergens": [],
       "icon": "Utensils",
       "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261119-pollo-melanzane-riso.webp",
+      "dishPhoto": "pranzo-assets/20261120-maiale.webp",
+      "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Chicken strips with aubergine and white rice",
-          "description": "Chicken strips sautéed with aubergine, served with white rice."
+          "name": "Pork strips with peppers and white rice",
+          "description": "Pork strips sautéed with peppers, served with white rice."
         },
         "zh": {
-          "name": "茄子鸡肉条配白米饭",
-          "description": "鸡肉条与茄子同炒，搭配白米饭。"
+          "name": "彩椒猪肉条配白米饭",
+          "description": "猪肉条与彩椒同炒，搭配白米饭。"
         }
       },
-      "photoLayout": "thumbnail",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
+        "date": "2026-11-20",
         "tool": "image_gen",
-        "resolution": "1024 × 768 px WebP; miniatura 4:3"
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
       }
     },
     {
-      "name": "Maiale alla pizzaiola con patate",
-      "price": 10,
-      "description": "Fettine di maiale alla pizzaiola, servite con patate.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261119-maiale-pizzaiola-patate.webp",
-      "translations": {
-        "en": {
-          "name": "Pork pizzaiola with potatoes",
-          "description": "Pork in tomato pizzaiola sauce, served with potatoes."
-        },
-        "zh": {
-          "name": "番茄酱猪肉配土豆",
-          "description": "猪肉片以番茄酱烹制，搭配土豆。"
-        }
-      },
-      "photoLayout": "thumbnail",
-      "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "tool": "image_gen",
-        "resolution": "1024 × 768 px WebP; miniatura 4:3"
-      }
-    },
-    {
-      "name": "Gamberetti* saltati con verdure al curry e riso bianco",
+      "name": "Insalata di finocchi, arancia, salmone fresco e avocado",
       "price": 12,
-      "description": "Gamberetti* saltati con verdure al curry, accompagnati da riso bianco.",
+      "description": "Finocchi, arancia, salmone fresco e avocado, con aceto balsamico.",
       "allergens": [
-        2
+        4
       ],
-      "icon": "Shrimp",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261119-gamberetti-curry-verdure-riso.webp",
+      "icon": "Fish",
+      "orderCourse": "Insalata",
+      "dishPhoto": "pranzo-assets/insalata-finocchi-arancia-salmone-avocado-20261111.webp",
+      "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Stir-fried shrimp with curry vegetables and white rice",
-          "description": "Stir-fried shrimp with curry vegetables, served with white rice."
+          "name": "Fennel, orange, fresh salmon and avocado salad",
+          "description": "Fennel, orange, fresh salmon and avocado with balsamic vinegar."
         },
         "zh": {
-          "name": "咖喱时蔬炒虾仁配白米饭",
-          "description": "虾仁与咖喱蔬菜同炒，搭配白米饭。"
+          "name": "茴香橙子鲜三文鱼牛油果沙拉",
+          "description": "茴香、橙子、鲜三文鱼和牛油果，佐意大利香醋。"
         }
       },
-      "photoLayout": "thumbnail",
       "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "format": "WebP",
-        "note": "Immagine illustrativa coordinata; non è una fotografia del piatto servito.",
-        "tool": "image_gen",
-        "resolution": "1024 × 768 px WebP; miniatura 4:3"
+        "type": "Existing coordinated illustrative image",
+        "date": "2026-11-20",
+        "tool": "reused existing asset",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa. Riferimenti web consultati: presentazioni e ingredienti aggiuntivi non coerenti; ricetta di Paolo preservata."
       }
     }
   ],

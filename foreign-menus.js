@@ -6,55 +6,79 @@
 
   const LUNCH={
   "en": {
-    "Spaghetti di riso con verdure e lonza di maiale": [
-      "Rice noodles with vegetables and pork loin",
-      "Rice noodles stir-fried with pork loin, eggs, courgettes, soy, carrots and Savoy cabbage."
+    "Udon con gamberetti*, lonza di maiale e verdure": [
+      "Udon with shrimp*, pork loin and vegetables",
+      "Udon stir-fried with shrimp*, pork loin, carrots, courgettes and Savoy cabbage."
     ],
-    "Spaghetti alla carbonara": [
-      "Spaghetti carbonara",
-      "Spaghetti with eggs, smoked pancetta and pecorino."
+    "Fusilli con zucchine, orata e pomodorini": [
+      "Fusilli with courgettes, sea bream and cherry tomatoes",
+      "Fusilli with courgettes, sea bream pieces and cherry tomatoes."
     ],
-    "Casarecce con melanzane e branzino": [
-      "Casarecce with aubergine and sea bass",
-      "Twisted casarecce pasta with aubergine, sea bass and a touch of tomato."
+    "Orecchiette con broccoli e salsiccia": [
+      "Orecchiette with broccoli and sausage",
+      "Orecchiette pasta with broccoli and Italian sausage."
     ],
-    "Scaloppine di maiale al vino bianco e rosmarino, con patate": [
-      "Pork escalopes with white wine, rosemary and potatoes",
-      "Thin pork escalopes cooked with white wine and rosemary, served with potatoes."
+    "Spaghetti ai frutti di mare": [
+      "Seafood spaghetti",
+      "Spaghetti with shrimp*, king prawns*, clams and mussels, with a touch of tomato."
     ],
-    "Straccetti di pollo con verdure, salsa di soia e riso al vapore": [
-      "Chicken strips with vegetables, soy sauce and steamed rice",
-      "Stir-fried chicken strips with vegetables and soy sauce, served with steamed white rice."
+    "Orata alla griglia con verza e carote saltate": [
+      "Grilled sea bream with sautéed Savoy cabbage and carrots",
+      "Grilled sea bream served with sautéed Savoy cabbage and carrots."
     ],
-    "Filetti di branzino in crosta di verdure con cime di rapa": [
-      "Sea bass fillets with a vegetable crust and broccoli rabe",
-      "Sea bass fillets with a courgette, carrot and aubergine crust, served with broccoli rabe."
+    "Salmone alla griglia con verza e carote saltate": [
+      "Grilled salmon with sautéed Savoy cabbage and carrots",
+      "Grilled salmon served with sautéed Savoy cabbage and carrots."
+    ],
+    "Branzino alla griglia con verza e carote saltate": [
+      "Grilled sea bass with sautéed Savoy cabbage and carrots",
+      "Grilled sea bass served with sautéed Savoy cabbage and carrots."
+    ],
+    "Straccetti di maiale con peperoni e riso bianco": [
+      "Pork strips with peppers and white rice",
+      "Pork strips sautéed with peppers, served with white rice."
+    ],
+    "Insalata di finocchi, arancia, salmone fresco e avocado": [
+      "Fennel, orange, fresh salmon and avocado salad",
+      "Fennel, orange, fresh salmon and avocado with balsamic vinegar."
     ]
   },
   "zh": {
-    "Spaghetti di riso con verdure e lonza di maiale": [
-      "时蔬猪里脊炒米粉",
-      "米粉与猪里脊、鸡蛋、西葫芦、大豆、胡萝卜和皱叶甘蓝同炒。"
+    "Udon con gamberetti*, lonza di maiale e verdure": [
+      "虾仁*猪里脊时蔬乌冬面",
+      "乌冬面与虾仁*、猪里脊、胡萝卜、西葫芦和皱叶甘蓝同炒。"
     ],
-    "Spaghetti alla carbonara": [
-      "培根蛋酱意大利面",
-      "意大利细面搭配鸡蛋、烟熏意式培根和佩科里诺羊奶酪。"
+    "Fusilli con zucchine, orata e pomodorini": [
+      "西葫芦海鲷小番茄螺旋面",
+      "螺旋面搭配西葫芦、海鲷鱼块和小番茄。"
     ],
-    "Casarecce con melanzane e branzino": [
-      "茄子海鲈鱼卷形意面",
-      "卷形短意面搭配茄子、海鲈鱼和少许番茄。"
+    "Orecchiette con broccoli e salsiccia": [
+      "西兰花香肠猫耳朵意面",
+      "猫耳朵意面搭配西兰花和意式香肠。"
     ],
-    "Scaloppine di maiale al vino bianco e rosmarino, con patate": [
-      "白葡萄酒迷迭香猪肉薄片配土豆",
-      "猪肉薄片以白葡萄酒和迷迭香烹制，搭配土豆。"
+    "Spaghetti ai frutti di mare": [
+      "海鲜意大利细面",
+      "意大利细面搭配虾仁*、大虾*、蛤蜊和贻贝，佐少量番茄。"
     ],
-    "Straccetti di pollo con verdure, salsa di soia e riso al vapore": [
-      "时蔬酱油鸡肉条配蒸米饭",
-      "鸡肉条与时蔬和酱油同炒，搭配蒸白米饭。"
+    "Orata alla griglia con verza e carote saltate": [
+      "烤海鲷配炒皱叶甘蓝和胡萝卜",
+      "烤海鲷搭配清炒皱叶甘蓝和胡萝卜。"
     ],
-    "Filetti di branzino in crosta di verdure con cime di rapa": [
-      "蔬菜脆皮海鲈鱼柳配芜菁嫩叶",
-      "海鲈鱼柳覆以西葫芦、胡萝卜和茄子制成的外层，搭配芜菁嫩叶。"
+    "Salmone alla griglia con verza e carote saltate": [
+      "烤三文鱼配炒皱叶甘蓝和胡萝卜",
+      "烤三文鱼搭配清炒皱叶甘蓝和胡萝卜。"
+    ],
+    "Branzino alla griglia con verza e carote saltate": [
+      "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
+      "烤海鲈鱼搭配清炒皱叶甘蓝和胡萝卜。"
+    ],
+    "Straccetti di maiale con peperoni e riso bianco": [
+      "彩椒猪肉条配白米饭",
+      "猪肉条与彩椒同炒，搭配白米饭。"
+    ],
+    "Insalata di finocchi, arancia, salmone fresco e avocado": [
+      "茴香橙子鲜三文鱼牛油果沙拉",
+      "茴香、橙子、鲜三文鱼和牛油果，佐意大利香醋。"
     ]
   }
 };
