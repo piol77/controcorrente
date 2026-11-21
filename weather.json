@@ -4,33 +4,14 @@
   "location": "Torino · zona San Paolo",
   "latitude": 45.0641,
   "longitude": 7.6525,
-  "fetched_at": "2026-11-20T20:35:49+00:00",
-  "provider_updated_at": "2026-11-20T19:17:58+00:00",
+  "fetched_at": "2026-11-21T11:29:34+00:00",
+  "provider_updated_at": "2026-11-21T11:22:22+00:00",
   "days": [
-    {
-      "date": "2026-11-20",
-      "lunch": {
-        "condition": "Parzialmente nuvoloso",
-        "icon": "⛅",
-        "min_c": 12,
-        "max_c": 14,
-        "precipitation_mm": 0.0,
-        "forecast_at": "2026-11-20T11:57:33+00:00"
-      },
-      "dinner": {
-        "condition": "Parzialmente nuvoloso",
-        "icon": "⛅",
-        "min_c": 8,
-        "max_c": 11,
-        "precipitation_mm": 0.0,
-        "forecast_at": "2026-11-20T11:57:33+00:00"
-      }
-    },
     {
       "date": "2026-11-21",
       "lunch": {
-        "condition": "Parzialmente nuvoloso",
-        "icon": "⛅",
+        "condition": "Sereno",
+        "icon": "☀",
         "min_c": 13,
         "max_c": 15,
         "precipitation_mm": 0.0
@@ -38,7 +19,7 @@
       "dinner": {
         "condition": "Parzialmente nuvoloso",
         "icon": "⛅",
-        "min_c": 6,
+        "min_c": 5,
         "max_c": 8,
         "precipitation_mm": 0.0
       }
@@ -46,16 +27,33 @@
     {
       "date": "2026-11-22",
       "lunch": {
-        "condition": "Pioggia",
+        "condition": "Pioggia debole",
         "icon": "🌧",
         "min_c": 8,
-        "max_c": 8,
-        "precipitation_mm": 1.6
+        "max_c": 9,
+        "precipitation_mm": 0.5
       },
       "dinner": {
-        "condition": "Coperto",
-        "icon": "☁",
-        "min_c": 4,
+        "condition": "Parzialmente nuvoloso",
+        "icon": "⛅",
+        "min_c": 5,
+        "max_c": 6,
+        "precipitation_mm": 0.0
+      }
+    },
+    {
+      "date": "2026-11-23",
+      "lunch": {
+        "condition": "Parzialmente nuvoloso",
+        "icon": "⛅",
+        "min_c": 14,
+        "max_c": 14,
+        "precipitation_mm": 0.0
+      },
+      "dinner": {
+        "condition": "Sereno",
+        "icon": "☾",
+        "min_c": 5,
         "max_c": 6,
         "precipitation_mm": 0.0
       }
