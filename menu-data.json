@@ -236,9 +236,9 @@
         }
       },
       {
-        "name": "Linguine con gamberetti*, stracciatella e granella di pistacchi",
+        "name": "Linguine con gamberetti*, poca panna e granella di pistacchi",
         "price": 12.5,
-        "description": "Linguine con gamberetti*, stracciatella cremosa e granella di pistacchi.",
+        "description": "Linguine con gamberetti*, un tocco di panna e granella di pistacchi.",
         "allergens": [
           1,
           2,
@@ -250,12 +250,12 @@
         "dishPhoto": "cena-assets/linguine-stracciatella-pistacchi-gamberetti-20261030.png",
         "translations": {
           "en": {
-            "name": "Linguine with shrimp*, stracciatella and chopped pistachios",
-            "description": "Linguine with shrimp*, creamy stracciatella cheese and chopped pistachios."
+            "name": "Linguine with shrimp*, a little cream and chopped pistachios",
+            "description": "Linguine with shrimp*, a touch of cream and chopped pistachios."
           },
           "zh": {
-            "name": "虾仁*斯特拉恰泰拉奶酪开心果碎扁意面",
-            "description": "扁意面搭配虾仁*、柔滑斯特拉恰泰拉奶酪和开心果碎。"
+            "name": "虾仁*淡奶油开心果碎扁意面",
+            "description": "扁意面搭配虾仁*、少量淡奶油和开心果碎。"
           }
         },
         "photoSource": {
