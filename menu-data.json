@@ -247,7 +247,7 @@
         ],
         "icon": "Shrimp",
         "orderCourse": "Primo",
-        "dishPhoto": "cena-assets/linguine-stracciatella-pistacchi-gamberetti-20261030.png",
+        "dishPhoto": "cena-assets/linguine-gamberetti-pistacchi-20261024.webp",
         "translations": {
           "en": {
             "name": "Linguine with shrimp*, a little cream and chopped pistachios",
@@ -262,7 +262,7 @@
           "type": "Existing coordinated illustrative food image",
           "date": "2026-11-19",
           "tool": "reused existing asset",
-          "note": "Fotografia illustrativa coordinata di linguine, gamberetti, stracciatella e pistacchi."
+          "note": "Immagine illustrativa di linguine con gamberetti e pistacchi; aggiornamento fotografico con poca panna da completare."
         }
       }
     ],
