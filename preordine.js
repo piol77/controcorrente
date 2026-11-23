@@ -15,7 +15,9 @@
   ];
   catalog.natale = [['Menù Natale adulti', 40, 3], ['Menù Natale bimbi e ragazzi', 20, 3]];
   const NATALE_DAY = '2026-12-25';
-  const NATALE_DEADLINE = '2026-12-18';
+  const NATALE_DEADLINE = '2026-12-20';
+  const NATALE_DEPOSIT_RATE = 0.20;
+  const nataleDeposit = total => euro(Math.round(total * NATALE_DEPOSIT_RATE));
   const NATALE_MAX_PEOPLE = 25;
   // Enable only once ControcorrenteAI holds these requests for manual confirmation.
   const NATALE_WHATSAPP_READY = false;
@@ -417,7 +419,9 @@
       if (!list.children.length) { const li = document.createElement('li'); li.textContent = 'Nessun piatto selezionato. Scegli dal menù.'; list.append(li); }
       total.textContent = euro(sum);
       document.querySelector('[data-service-info]').innerHTML = natale
-        ? 'Pranzo di Natale · 25 dicembre 2026. <strong>Prenotazione definitiva dopo acconto Satispay e conferma del Ristorante.</strong>'
+        ? 'Pranzo di Natale · 25 dicembre 2026. Richieste entro il 20 dicembre. '
+          + '<strong>Caparra Satispay (20%): ' + nataleDeposit(sum) + '.</strong> '
+          + 'La prenotazione è effettiva dopo il versamento e la conferma del Ristorante.'
         : isLunch()
         ? 'Pranzo: acqua, caffè e coperto inclusi. <strong>Attendere la conferma del Ristorante entro le 12 per considerare valido l’ordine.</strong>'
         : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Prenotando <strong>tavolo e menù</strong> di cena, entro le 18, il coperto di 1,50 € è omaggio. <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong>';
@@ -492,7 +496,7 @@
       const natale = isNatale();
       if (natale) {
         if (todayInRome() > NATALE_DEADLINE) {
-          window.alert('Il termine per le richieste del Pranzo di Natale era il 18 dicembre 2026.');
+          window.alert('Il termine per le richieste del Pranzo di Natale era il 20 dicembre 2026.');
           return;
         }
         if (requestedDay !== NATALE_DAY || !lunchTime) {
@@ -515,20 +519,24 @@
           return qty ? ['*' + qty + ' × ' + name + ' — ' + euro(qty * price) + '*'] : [];
         });
         const notes = String(data.get('note') || 'Nessuna nota').replace(/\s+/g, ' ').replace(/\*/g, '＊');
-        const pending = 'In attesa della verifica dell’acconto Satispay e della conferma del Ristorante.';
+        const orderTotal = adults * catalog.natale[0][1] + kids * catalog.natale[1][1];
+        const deposit = nataleDeposit(orderTotal);
+        const pending = 'Caparra del 20% tramite Satispay: ' + deposit
+          + '. In attesa della verifica del versamento e della conferma del Ristorante.';
         const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
           '*Nome e cognome: ' + fullName + '*',
           '*Persone: ' + (adults + kids) + '*',
           '*Orario richiesto: ' + requestedTime + '*', '',
           ...dishes,
           'Servizio: Pranzo',
-          'Totale preordine: ' + euro(adults * catalog.natale[0][1] + kids * catalog.natale[1][1]), '',
+          'Totale preordine: ' + euro(orderTotal), '',
           'Giorno: ' + requestDate(requestedDay),
           '*Allergie / note: Richiesta Pranzo di Natale 2026 · Adulti: ' + adults
             + ' (' + euro(catalog.natale[0][1]) + ' a persona) · Bimbi e ragazzi: ' + kids
             + ' (' + euro(catalog.natale[1][1]) + ' a persona). ' + pending + ' ' + notes + '*'];
         if (!NATALE_WHATSAPP_READY) {
-          window.alert('I dati sono corretti. L’invio delle richieste del Pranzo di Natale è in preparazione.');
+          window.alert('Caparra Satispay (20%): ' + deposit
+            + '. La prenotazione è effettiva dopo il versamento e la conferma del Ristorante.\n\nL’invio delle richieste è in preparazione.');
           return;
         }
         if (submit.dataset.launchingWhatsapp === '1') return;
