@@ -2,7 +2,7 @@
   'use strict';
   const KEY = 'controcorrente-preordine-v1';
   const PHONE = '393272292006';
-  const catalog = {"antipasti": [["Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)", 10], ["Carciofi fritti", 13], ["Peperoni alla monferrina", 8], ["Funghi champignon fritti", 10], ["Cozze di Sardegna alla marinara", 10], ["Vitello tonnato", 12]], "primi": [["Spaghetti ai frutti di mare", 15], ["Tagliatelle con carciofi e orata", 15], ["Penne ai funghi misti e salsiccia con poca panna", 12.5], ["Linguine con gamberetti*, stracciatella e granella di pistacchi", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco", 12], ["Filetti di branzino in crosta di mandorle con broccoli saltati", 14], ["Trancio di salmone all’arancia e pepe rosa", 14], ["Orata alla griglia con patate al forno", 14]]};
+  const catalog = {"antipasti": [["Bruschette con salmone affumicato e formaggio spalmabile (2 pezzi)", 10], ["Carciofi fritti", 13], ["Peperoni alla monferrina", 8], ["Funghi champignon fritti", 10], ["Cozze di Sardegna alla marinara", 10], ["Vitello tonnato", 12]], "primi": [["Spaghetti ai frutti di mare", 15], ["Tagliatelle con carciofi e orata", 15], ["Penne ai funghi misti e salsiccia con poca panna", 12.5], ["Linguine con gamberetti*, poca panna e granella di pistacchi", 12.5]], "secondi": [["Frittura mista di alici, calamari e gamberetti*", 20], ["Insalatona con finocchi, arance, avocado e bocconcini di salmone fresco", 12], ["Filetti di branzino in crosta di mandorle con broccoli saltati", 14], ["Trancio di salmone all’arancia e pepe rosa", 14], ["Orata alla griglia con patate al forno", 14]]};
   const euro = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
   catalog['menu-fissi'] = [["Grigliata di pesce (alla coppia)", 50], ["Frittura mista di pesce (alla coppia)", 40], ["Spaghettata ai frutti di mare (alla coppia)", 30], ["Aperitivo singolo — Spritz e 5 assaggi di antipasti", 12]];
   // Solo bottiglie Cantine Delite, ai prezzi esposti nella relativa carta.
@@ -19,8 +19,6 @@
   const NATALE_DEPOSIT_RATE = 0.20;
   const nataleDeposit = total => euro(Math.round(total * NATALE_DEPOSIT_RATE));
   const NATALE_MAX_PEOPLE = 25;
-  // Enable only once ControcorrenteAI holds these requests for manual confirmation.
-  const NATALE_WHATSAPP_READY = false;
   const minimumQuantity = () => 1;
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
@@ -212,6 +210,7 @@
   }
   function setupNatale() {
     setupMenu('natale');
+    bar();
     renderNataleSelection();
     window.addEventListener('pageshow', renderNataleSelection);
   }
@@ -354,6 +353,8 @@
     const noteField = form.elements.namedItem('note');
     const peopleField = form.elements.namedItem('persone');
     const regularPeopleMax = peopleField.max;
+    const depositLabel = form.querySelector('[data-natale-deposit]');
+    const depositField = depositLabel.querySelector('input');
     try {
       const avventoSelected = sessionStorage.getItem('cc-avvento-2026-code');
       if (!isNatale() && avventoSelected && /^AVV-[0-9A-F]{16}$/.test(avventoSelected) && !noteField.value) {
@@ -420,7 +421,6 @@
       total.textContent = euro(sum);
       document.querySelector('[data-service-info]').innerHTML = natale
         ? 'Pranzo di Natale · 25 dicembre 2026. Richieste entro il 20 dicembre. '
-          + '<strong>Caparra Satispay (20%): ' + nataleDeposit(sum) + '.</strong> '
           + 'La prenotazione è effettiva dopo il versamento e la conferma del Ristorante.'
         : isLunch()
         ? 'Pranzo: acqua, caffè e coperto inclusi. <strong>Attendere la conferma del Ristorante entro le 12 per considerare valido l’ordine.</strong>'
@@ -429,10 +429,12 @@
       document.querySelector('#order-heading').textContent = natale ? 'Menù del Pranzo di Natale' : 'Piatti e vini';
       form.querySelectorAll('[data-hide-natale]').forEach(el => { el.hidden = natale; });
       document.querySelector('[data-regular-confirmation]').hidden = natale;
-      form.querySelector('[data-natale-pending]').hidden = !natale || NATALE_WHATSAPP_READY;
+      depositLabel.hidden = !natale;
+      depositField.disabled = !natale;
+      depositField.required = natale;
+      depositField.value = natale ? nataleDeposit(sum) : '';
       peopleField.max = natale ? String(NATALE_MAX_PEOPLE) : regularPeopleMax;
       noteField.placeholder = natale ? 'Allergie e richieste' : 'Allergie, richieste o codice radio di 5 cifre';
-      submit.textContent = natale && !NATALE_WHATSAPP_READY ? 'Verifica i dati' : 'Apri WhatsApp e invia la richiesta';
       const wineLink=document.querySelector('[data-add-wines]');
       if(wineLink)wineLink.hidden=natale || isLunch();
     }
@@ -493,58 +495,6 @@
       })();
       const lunchTime = Number.isFinite(minutes) && minutes >= 12 * 60 && minutes <= 14 * 60 + 30;
       const dinnerTime = Number.isFinite(minutes) && minutes >= 19 * 60 && minutes <= 22 * 60 + 30;
-      const natale = isNatale();
-      if (natale) {
-        if (todayInRome() > NATALE_DEADLINE) {
-          window.alert('Il termine per le richieste del Pranzo di Natale era il 20 dicembre 2026.');
-          return;
-        }
-        if (requestedDay !== NATALE_DAY || !lunchTime) {
-          window.alert('Il Pranzo di Natale è il 25 dicembre 2026. Scegli un orario dalle 12:00 alle 14:30.');
-          return;
-        }
-        const cart = read();
-        const [adults, kids] = catalog.natale.map((_, index) => cart[id('natale', index)]?.qty || 0);
-        if (Object.keys(cart).some(key => !key.startsWith('natale:'))) {
-          window.alert('Il Pranzo di Natale richiede un preordine separato. Azzera la selezione e riprova.');
-          return;
-        }
-        if (Number(data.get('persone')) !== adults + kids) {
-          window.alert('Il numero di persone deve coincidere con i ' + (adults + kids) + ' menù selezionati.');
-          form.elements.namedItem('persone').focus();
-          return;
-        }
-        const dishes = catalog.natale.flatMap(([name, price], index) => {
-          const qty = index === 0 ? adults : kids;
-          return qty ? ['*' + qty + ' × ' + name + ' — ' + euro(qty * price) + '*'] : [];
-        });
-        const notes = String(data.get('note') || 'Nessuna nota').replace(/\s+/g, ' ').replace(/\*/g, '＊');
-        const orderTotal = adults * catalog.natale[0][1] + kids * catalog.natale[1][1];
-        const deposit = nataleDeposit(orderTotal);
-        const pending = 'Caparra del 20% tramite Satispay: ' + deposit
-          + '. In attesa della verifica del versamento e della conferma del Ristorante.';
-        const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
-          '*Nome e cognome: ' + fullName + '*',
-          '*Persone: ' + (adults + kids) + '*',
-          '*Orario richiesto: ' + requestedTime + '*', '',
-          ...dishes,
-          'Servizio: Pranzo',
-          'Totale preordine: ' + euro(orderTotal), '',
-          'Giorno: ' + requestDate(requestedDay),
-          '*Allergie / note: Richiesta Pranzo di Natale 2026 · Adulti: ' + adults
-            + ' (' + euro(catalog.natale[0][1]) + ' a persona) · Bimbi e ragazzi: ' + kids
-            + ' (' + euro(catalog.natale[1][1]) + ' a persona). ' + pending + ' ' + notes + '*'];
-        if (!NATALE_WHATSAPP_READY) {
-          window.alert('Caparra Satispay (20%): ' + deposit
-            + '. La prenotazione è effettiva dopo il versamento e la conferma del Ristorante.\n\nL’invio delle richieste è in preparazione.');
-          return;
-        }
-        if (submit.dataset.launchingWhatsapp === '1') return;
-        submit.dataset.launchingWhatsapp = '1';
-        submit.disabled = true;
-        openWhatsapp(whatsappLink(lines));
-        return;
-      }
       const weekday = new Date(requestedDay + 'T12:00:00Z').getUTCDay();
       if (weekday === 1) {
         window.alert('Il ristorante è chiuso il lunedì. Scegli un altro giorno per la prenotazione.');
@@ -574,6 +524,10 @@
         ? !lunchTime || weekday === 6 || holiday
         : !dinnerTime && !(lunchTime && holiday);
       if (wrongService) {
+        if (isNatale()) {
+          window.alert('Il Pranzo di Natale è il 25 dicembre 2026. Scegli un orario dalle 12:00 alle 14:30.');
+          return;
+        }
         const message = isLunch()
           ? 'I piatti selezionati dal Menù di pranzo sono validi solo a pranzo, nel giorno sotto indicato, esclusi sabato, domenica e festivi. L’ordine è stato azzerato.'
           : 'I piatti selezionati dal Menù cena o dall’Offerta del giorno sono validi solo a cena, o a pranzo nei festivi. L’ordine è stato azzerato.';
@@ -590,6 +544,48 @@
       const currentMinutes = currentRomeMinutes();
       if (requestedDay === todayInRome() && ((isLunch() && currentMinutes > 12 * 60) || (!isLunch() && currentMinutes > 18 * 60))) {
         if (!advanceBookingService) window.alert('Stai inviando la richiesta per oggi dopo le ' + (isLunch() ? '12:00' : '18:00') + '. Attendi la conferma specifica del Ristorante.');
+      }
+      if (isNatale()) {
+        if (todayInRome() > NATALE_DEADLINE) {
+          window.alert('Il termine per le richieste del Pranzo di Natale era il 20 dicembre 2026.');
+          return;
+        }
+        if (requestedDay !== NATALE_DAY || !lunchTime) {
+          window.alert('Il Pranzo di Natale è il 25 dicembre 2026. Scegli un orario dalle 12:00 alle 14:30.');
+          return;
+        }
+        const [adults, kids] = catalog.natale.map((_, index) => cart[id('natale', index)]?.qty || 0);
+        if (Object.keys(cart).some(key => !key.startsWith('natale:'))) {
+          window.alert('Il Pranzo di Natale richiede un preordine separato. Azzera la selezione e riprova.');
+          return;
+        }
+        if (Number(data.get('persone')) !== adults + kids) {
+          window.alert('Il numero di persone deve coincidere con i ' + (adults + kids) + ' menù selezionati.');
+          form.elements.namedItem('persone').focus();
+          return;
+        }
+        const notes = String(data.get('note') || 'Nessuna nota').replace(/\s+/g, ' ').replace(/\*/g, '＊');
+        const orderTotal = adults * catalog.natale[0][1] + kids * catalog.natale[1][1];
+        const deposit = nataleDeposit(orderTotal);
+        const pending = 'Caparra del 20% tramite Satispay: ' + deposit
+          + '. In attesa della verifica del versamento e della conferma del Ristorante.';
+        const nataleLines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
+          '*Nome e cognome: ' + fullName + '*',
+          '*Persone: ' + (adults + kids) + '*',
+          '*Orario richiesto: ' + requestedTime + '*', '',
+          ...dishes,
+          'Servizio: Pranzo',
+          'Totale preordine: ' + euro(orderTotal), '',
+          'Giorno: ' + requestDate(requestedDay),
+          '*Allergie / note: Richiesta Pranzo di Natale 2026 · Adulti: ' + adults
+            + ' (' + euro(catalog.natale[0][1]) + ' a persona) · Bimbi e ragazzi: ' + kids
+            + ' (' + euro(catalog.natale[1][1]) + ' a persona). ' + pending + ' ' + notes + '*', '',
+          'Attendo la vostra conferma via WhatsApp entro le 12. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
+        if (submit.dataset.launchingWhatsapp === '1') return;
+        submit.dataset.launchingWhatsapp = '1';
+        submit.disabled = true;
+        openWhatsapp(whatsappLink(nataleLines));
+        return;
       }
       if (advanceBookingService) {
         window.alert('Per ' + advanceBookingService + ' il ristorante apre solo su prenotazione anticipata.\n\nLa richiesta può essere inviata, ma resta IN SOSPESO: attendi la conferma del ristorante. Se non ricevi la conferma, il ristorante resterà chiuso per quel servizio.');
@@ -711,6 +707,7 @@
         // visibile nel WhatsApp, mentre l'UUID resta privato nella banca dati.
         // Un codice di prova non dà alcuno sconto reale.
       }
+      data.set('note', bookingNote);
       const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
         '*Nome e cognome: ' + data.get('nome') + '*',
         '*Persone: ' + data.get('persone') + '*',
@@ -718,7 +715,7 @@
         ...dishes,
         'Servizio: ' + (lunchTime ? 'Pranzo' : 'Cena'), 'Totale preordine: ' + total.textContent, '',
         'Giorno: ' + requestDate(requestedDay),
-         '*Allergie / note: ' + String(bookingNote || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
+         '*Allergie / note: ' + String(data.get('note') || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const whatsappUrl = whatsappLink(lines);
       // Solo per il pranzo: somma le persone indicate al contatore pubblico
