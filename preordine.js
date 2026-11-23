@@ -13,6 +13,12 @@
     ['Emmente · Cantine Delite (bottiglia)',22],
     ['Seicentododici · Cantine Delite (bottiglia)',20]
   ];
+  catalog.natale = [['Menù Natale adulti', 40, 3], ['Menù Natale bimbi e ragazzi', 20, 3]];
+  const NATALE_DAY = '2026-12-25';
+  const NATALE_DEADLINE = '2026-12-18';
+  const NATALE_MAX_PEOPLE = 25;
+  // Enable only once ControcorrenteAI holds these requests for manual confirmation.
+  const NATALE_WHATSAPP_READY = false;
   const minimumQuantity = () => 1;
   const read = () => { try {
     const cart = JSON.parse(localStorage.getItem(KEY)) || {};
@@ -26,7 +32,7 @@
         }
         if(section==='secondi' && item.name==='Filetti di maiale con fichi su crema di zucca') return [];
         const current=catalog[section]?.[Number(indexNow)];
-        if(section==='vini-delite' && !current)return [];
+        if((section==='vini-delite' || section==='natale') && !current)return [];
         return [[keyNow,current ? {...item,qty:Math.max(minimumQuantity(section,indexNow),item.qty),name:current[0],price:current[1]} : item]];
       }));
   } catch (_) { return {}; } };
@@ -35,7 +41,7 @@
   function row(section, index) {
     if (catalog[section]) return catalog[section][index];
   }
-  const service = section => section === 'pranzo' ? 'pranzo' : 'cena';
+  const service = section => ['pranzo', 'natale'].includes(section) ? section : 'cena';
   let lunchDate = '';
   function readLunchDate(doc) {
     lunchDate = doc.querySelector('.lunch-date time')?.getAttribute('datetime') || '';
@@ -160,10 +166,20 @@
       const cart = read(), current = cart[key]?.qty || 0, minimum = minimumQuantity(section, index);
       const next = delta > 0 ? Math.min(99, current ? current + 1 : minimum) : (current <= minimum ? 0 : current - 1);
       if (delta > 0 && Object.keys(cart).some(k => service(k.split(':')[0]) !== service(section))) {
-        window.alert('Pranzo e cena richiedono ordini separati. Completa la richiesta già iniziata prima di aggiungere questi piatti.'); return;
+        const includesNatale = section === 'natale' || Object.keys(cart).some(k => k.startsWith('natale:'));
+        window.alert(includesNatale
+          ? 'Il Pranzo di Natale richiede un preordine separato. Completa o azzera la selezione già iniziata.'
+          : 'Pranzo e cena richiedono ordini separati. Completa la richiesta già iniziata prima di aggiungere questi piatti.');
+        return;
+      }
+      if (section === 'natale' && delta > 0 &&
+          Object.values(cart).reduce((sum, orderItem) => sum + orderItem.qty, 0) >= NATALE_MAX_PEOPLE) {
+        window.alert('Per gruppi oltre ' + NATALE_MAX_PEOPLE + ' persone, chiedi al Ristorante.');
+        return;
       }
       if (next) cart[key] = {qty:next, name:item[0], price:item[1]}; else delete cart[key];
       save(cart); refresh();
+      if (section === 'natale') renderNataleSelection();
     });
     wrap.append(minus, count, plus); refresh();
     window.addEventListener('pageshow', refresh);
@@ -182,6 +198,20 @@
   }
   function setupMenu(section) {
     document.querySelectorAll('[data-order-section="'+section+'"]').forEach((dish,index)=>dish.append(controls(section,index)));
+  }
+  function renderNataleSelection() {
+    const cart = read();
+    const [adults, kids] = catalog.natale.map((_, index) => cart[id('natale', index)]?.qty || 0);
+    const sum = adults * catalog.natale[0][1] + kids * catalog.natale[1][1];
+    document.querySelector('[data-natale-total]').textContent =
+      adults + ' ' + (adults === 1 ? 'adulto' : 'adulti') + ' · ' + kids + ' ' +
+      (kids === 1 ? 'bimbo o ragazzo' : 'bimbi e ragazzi') + ' · Totale ' + euro(sum);
+    document.querySelector('[data-natale-summary]').hidden = adults + kids === 0;
+  }
+  function setupNatale() {
+    setupMenu('natale');
+    renderNataleSelection();
+    window.addEventListener('pageshow', renderNataleSelection);
   }
   function setupWineDelite() {
     // Solo Cantine Delite: i vini del Trentino e le bibite non sono prenotabili.
@@ -238,7 +268,7 @@
     .map(([,item]) => item.name);
   const promoFromNotes = notes => String(notes || '').match(/(?:^|[^0-9])(?:codice(?:\s+radio)?|sconto(?:\s+radio)?|radio|premio)\s*[:#-]?\s*([0-9]{5})(?![A-Za-z0-9])/i)
     || String(notes || '').match(/(?:^|[\s,;])([0-9]{5})(?=$|[\s,;.!?])/);
-  function setupRoomAvailability(form) {
+  function setupRoomAvailability(form, isNatale) {
     const status = form.querySelector('[data-room-availability]');
     if (!status) return;
     const date = form.elements.namedItem('giorno');
@@ -248,7 +278,9 @@
     let last = '', result = null, active = null;
     function render() {
       if (!result) {
-        status.textContent = 'Disponibilità da verificare. Puoi inviare la richiesta e attendere la conferma.';
+        status.textContent = isNatale()
+          ? 'Disponibilità da verificare con il Ristorante.'
+          : 'Disponibilità da verificare. Puoi inviare la richiesta e attendere la conferma.';
         return;
       }
       if (result.available === 0) {
@@ -265,7 +297,8 @@
       const [hours, minutes] = time.value.split(':').map(Number);
       const minute = hours * 60 + minutes;
       const inService = (minute >= 720 && minute <= 870) || (minute >= 1140 && minute <= 1350);
-      const key = date.value && date.value >= todayInRome() && inService
+      const key = date.value && date.value >= todayInRome() && inService &&
+        (!isNatale() || (date.value === NATALE_DAY && minute >= 720 && minute <= 870))
         ? date.value + '|' + minute : '';
       if (!key || key !== last) {
         active?.abort();
@@ -317,9 +350,11 @@
     const dayInput = form.querySelector('[name="giorno"]');
     dayInput.min = todayInRome();
     const noteField = form.elements.namedItem('note');
+    const peopleField = form.elements.namedItem('persone');
+    const regularPeopleMax = peopleField.max;
     try {
       const avventoSelected = sessionStorage.getItem('cc-avvento-2026-code');
-      if (avventoSelected && /^AVV-[0-9A-F]{16}$/.test(avventoSelected) && !noteField.value) {
+      if (!isNatale() && avventoSelected && /^AVV-[0-9A-F]{16}$/.test(avventoSelected) && !noteField.value) {
         noteField.value = avventoSelected;
         sessionStorage.removeItem('cc-avvento-2026-code');
       }
@@ -328,6 +363,7 @@
     let promoTimer;
     noteField.addEventListener('input', () => {
       clearTimeout(promoTimer);
+      if (isNatale()) return;
       promoTimer = setTimeout(async () => {
         const code = promoFromNotes(noteField.value), names = fixedMenusInCart(read());
         if (!code || !names.length) return;
@@ -345,7 +381,7 @@
       }
       sessionStorage.removeItem('cc-promo-form-return');
     } catch (_) { /* The cart remains in localStorage if session storage is blocked. */ }
-    setupRoomAvailability(form);
+    setupRoomAvailability(form, isNatale);
     const reset = form.querySelector('[data-reset-order]');
     let menuReady = false;
     async function refreshDaily() {
@@ -365,25 +401,36 @@
       submit.disabled = !menuReady;
       if (menuReady) render();
     }
+    function isNatale() { return Object.keys(read()).some(key => key.startsWith('natale:')); }
     function isLunch() { return Object.keys(read()).some(key => key.startsWith('pranzo:')); }
     function render() {
+      const cart = read(), natale = isNatale();
       list.replaceChildren(); let sum = 0;
-      Object.values(read()).forEach(item => {
+      Object.values(cart).forEach(item => {
         if (!item || !Number.isInteger(item.qty) || item.qty < 1 || !Number.isFinite(item.price)) return;
         sum += item.price * item.qty;
         const li = document.createElement('li');
-        const label = document.createElement('span'); label.textContent = item.qty + ' × ' + item.name;
+        const label = document.createElement('span'); label.textContent = item.qty + ' × ' + item.name + (natale ? ' · ' + euro(item.price) + ' a persona' : '');
         const price = document.createElement('strong'); price.textContent = euro(item.price * item.qty);
         li.append(label, price); list.append(li);
       });
       if (!list.children.length) { const li = document.createElement('li'); li.textContent = 'Nessun piatto selezionato. Scegli dal menù.'; list.append(li); }
       total.textContent = euro(sum);
-      document.querySelector('[data-service-info]').innerHTML = isLunch()
+      document.querySelector('[data-service-info]').innerHTML = natale
+        ? 'Pranzo di Natale · 25 dicembre 2026. <strong>Prenotazione definitiva dopo acconto Satispay e conferma del Ristorante.</strong>'
+        : isLunch()
         ? 'Pranzo: acqua, caffè e coperto inclusi. <strong>Attendere la conferma del Ristorante entro le 12 per considerare valido l’ordine.</strong>'
         : 'Cena: per le richieste inviate entro le 18:00, confermiamo entro le 18:30. Prenotando <strong>tavolo e menù</strong> di cena, entro le 18, il coperto di 1,50 € è omaggio. <strong>Attendere la conferma del Ristorante per considerare valido l’ordine.</strong>';
-      document.querySelector('[data-add-dishes]').href = isLunch() ? 'pranzo.html' : 'cena.html';
+      document.querySelector('[data-add-dishes]').href = natale ? 'pranzo-natale.html' : isLunch() ? 'pranzo.html' : 'cena.html';
+      document.querySelector('#order-heading').textContent = natale ? 'Menù del Pranzo di Natale' : 'Piatti e vini';
+      form.querySelectorAll('[data-hide-natale]').forEach(el => { el.hidden = natale; });
+      document.querySelector('[data-regular-confirmation]').hidden = natale;
+      form.querySelector('[data-natale-pending]').hidden = !natale || NATALE_WHATSAPP_READY;
+      peopleField.max = natale ? String(NATALE_MAX_PEOPLE) : regularPeopleMax;
+      noteField.placeholder = natale ? 'Allergie e richieste' : 'Allergie, richieste o codice radio di 5 cifre';
+      submit.textContent = natale && !NATALE_WHATSAPP_READY ? 'Verifica i dati' : 'Apri WhatsApp e invia la richiesta';
       const wineLink=document.querySelector('[data-add-wines]');
-      if(wineLink)wineLink.hidden=isLunch();
+      if(wineLink)wineLink.hidden=natale || isLunch();
     }
     render();
     reset.addEventListener('click', () => {
@@ -442,6 +489,54 @@
       })();
       const lunchTime = Number.isFinite(minutes) && minutes >= 12 * 60 && minutes <= 14 * 60 + 30;
       const dinnerTime = Number.isFinite(minutes) && minutes >= 19 * 60 && minutes <= 22 * 60 + 30;
+      const natale = isNatale();
+      if (natale) {
+        if (todayInRome() > NATALE_DEADLINE) {
+          window.alert('Il termine per le richieste del Pranzo di Natale era il 18 dicembre 2026.');
+          return;
+        }
+        if (requestedDay !== NATALE_DAY || !lunchTime) {
+          window.alert('Il Pranzo di Natale è il 25 dicembre 2026. Scegli un orario dalle 12:00 alle 14:30.');
+          return;
+        }
+        const cart = read();
+        const [adults, kids] = catalog.natale.map((_, index) => cart[id('natale', index)]?.qty || 0);
+        if (Object.keys(cart).some(key => !key.startsWith('natale:'))) {
+          window.alert('Il Pranzo di Natale richiede un preordine separato. Azzera la selezione e riprova.');
+          return;
+        }
+        if (Number(data.get('persone')) !== adults + kids) {
+          window.alert('Il numero di persone deve coincidere con i ' + (adults + kids) + ' menù selezionati.');
+          form.elements.namedItem('persone').focus();
+          return;
+        }
+        const dishes = catalog.natale.flatMap(([name, price], index) => {
+          const qty = index === 0 ? adults : kids;
+          return qty ? ['*' + qty + ' × ' + name + ' — ' + euro(qty * price) + '*'] : [];
+        });
+        const notes = String(data.get('note') || 'Nessuna nota').replace(/\s+/g, ' ').replace(/\*/g, '＊');
+        const pending = 'In attesa della verifica dell’acconto Satispay e della conferma del Ristorante.';
+        const lines = ['Buongiorno Controcorrente, vorrei richiedere questo preordine:', '',
+          '*Nome e cognome: ' + fullName + '*',
+          '*Persone: ' + (adults + kids) + '*',
+          '*Orario richiesto: ' + requestedTime + '*', '',
+          ...dishes,
+          'Servizio: Pranzo',
+          'Totale preordine: ' + euro(adults * catalog.natale[0][1] + kids * catalog.natale[1][1]), '',
+          'Giorno: ' + requestDate(requestedDay),
+          '*Allergie / note: Richiesta Pranzo di Natale 2026 · Adulti: ' + adults
+            + ' (' + euro(catalog.natale[0][1]) + ' a persona) · Bimbi e ragazzi: ' + kids
+            + ' (' + euro(catalog.natale[1][1]) + ' a persona). ' + pending + ' ' + notes + '*'];
+        if (!NATALE_WHATSAPP_READY) {
+          window.alert('I dati sono corretti. L’invio delle richieste del Pranzo di Natale è in preparazione.');
+          return;
+        }
+        if (submit.dataset.launchingWhatsapp === '1') return;
+        submit.dataset.launchingWhatsapp = '1';
+        submit.disabled = true;
+        openWhatsapp(whatsappLink(lines));
+        return;
+      }
       const weekday = new Date(requestedDay + 'T12:00:00Z').getUTCDay();
       if (weekday === 1) {
         window.alert('Il ristorante è chiuso il lunedì. Scegli un altro giorno per la prenotazione.');
@@ -617,13 +712,7 @@
         'Giorno: ' + requestDate(requestedDay),
          '*Allergie / note: ' + String(bookingNote || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
-      const encodedMessage = encodeURIComponent(lines.join('\n'));
-      const webWhatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodedMessage;
-      // Android opens the app directly; the standard link remains the browser fallback.
-      const whatsappUrl = /Android/i.test(navigator.userAgent)
-        ? 'intent://send?phone=' + PHONE + '&text=' + encodedMessage
-          + '#Intent;scheme=whatsapp;S.browser_fallback_url=' + encodeURIComponent(webWhatsappUrl) + ';end'
-        : webWhatsappUrl;
+      const whatsappUrl = whatsappLink(lines);
       // Solo per il pranzo: somma le persone indicate al contatore pubblico
       // prima di aprire WhatsApp. Il contatore non indica prenotazioni confermate.
       if (submit.dataset.launchingWhatsapp === '1') return;
@@ -637,10 +726,22 @@
           ]);
         } catch (_) { /* L'apertura di WhatsApp non dipende dal contatore. */ }
       }
+      openWhatsapp(whatsappUrl);
+    });
+    function whatsappLink(lines) {
+      const encodedMessage = encodeURIComponent(lines.join('\n'));
+      const webWhatsappUrl = 'https://wa.me/' + PHONE + '?text=' + encodedMessage;
+      // Android opens the app directly; the standard link remains the browser fallback.
+      return /Android/i.test(navigator.userAgent)
+        ? 'intent://send?phone=' + PHONE + '&text=' + encodedMessage
+          + '#Intent;scheme=whatsapp;S.browser_fallback_url=' + encodeURIComponent(webWhatsappUrl) + ';end'
+        : webWhatsappUrl;
+    }
+    function openWhatsapp(whatsappUrl) {
       try { localStorage.removeItem(KEY); } catch (_) { /* Browser storage may be disabled. */ }
       render();
       if (window.__DEMO_OPEN_WHATSAPP) window.__DEMO_OPEN_WHATSAPP(whatsappUrl); else window.location.href = whatsappUrl;
-    });
+    }
     function requestDate(day) {
       return new Intl.DateTimeFormat('it-IT', {
         timeZone: 'Europe/Rome', weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
@@ -652,6 +753,7 @@
     if (page === 'cena') { ['antipasti','primi','secondi','menu-fissi'].forEach(setupMenu); bar(); }
     if (page === 'offerta' || page === 'pranzo') setupDaily(page);
     if (page === 'bibite-vini') setupWineDelite();
+    if (page === 'pranzo-natale') setupNatale();
     if (page === 'ordine') setupSummary();
   });
 })();

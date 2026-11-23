@@ -72,6 +72,12 @@ document.querySelectorAll('.page-head,.club-banner,.allergen-banner').forEach(fu
   }
   chat.textContent='Chat commensali';
   if(/\/(?:chat-incontri|chat-regole)\.html$/.test(window.location.pathname))chat.setAttribute('aria-current','page');
+  if (!nav.querySelector('a[href="pranzo-natale.html"]')) {
+    const link = document.createElement('a');
+    link.href = 'pranzo-natale.html';
+    link.innerHTML = '<span aria-hidden="true">🎄</span> Pranzo di Natale';
+    nav.insertBefore(link, nav.querySelector('a[href="offerta.html"]') || nav.querySelector('.languages'));
+  }
   var langs=nav.querySelector('.languages');
   [
     chat,

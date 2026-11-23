@@ -11,7 +11,7 @@
     <section class="daily-menu order-card" aria-labelledby="restaurant-heading">
       <h2 id="restaurant-heading">Informazioni del ristorante</h2>
       <p><strong>Controcorrente</strong> · Via San Paolo 16, Torino<br><a href="tel:+393272292006">327 229 2006</a></p>
-      <p>La richiesta arriva su WhatsApp. <strong>Per considerare valido l’ordine, attendere la conferma del Ristorante:</strong> per il pranzo entro le 12; per la cena entro le 18:30, per le richieste inviate entro le 18:00.</p>
+      <p data-regular-confirmation>La richiesta arriva su WhatsApp. <strong>Per considerare valido l’ordine, attendere la conferma del Ristorante:</strong> per il pranzo entro le 12; per la cena entro le 18:30, per le richieste inviate entro le 18:00.</p>
     </section>
     <form class="daily-menu order-card order-form" data-order-form>
       <h2>Dati del cliente e prenotazione</h2>
@@ -22,19 +22,20 @@
         <label>Orario di arrivo <input name="orario" type="time" required></label>
       </div>
       <p class="order-small" data-room-availability role="status" hidden></p>
-      <label>Allergie e altre note <textarea name="note" rows="3" maxlength="500" placeholder="Allergie, richieste o codice radio di 5 cifre"></textarea></label><p class="order-small">Hai sentito un codice Radio Premi? Inseriscilo qui nelle note, ad esempio «12345» (5 cifre numeriche). Se la promozione è attiva, il primo utilizzo valido dà diritto a <strong>5 € di sconto ogni 50 € interi di conto cena</strong>. Con il codice, il totale deve raggiungere almeno 50 € prima dello sconto; in caso contrario aggiungi piatti o bottiglie Cantine Delite. <a href="club.html">Leggi le condizioni nel Club</a>.</p>
+      <label>Allergie e altre note <textarea name="note" rows="3" maxlength="500" placeholder="Allergie, richieste o codice radio di 5 cifre"></textarea></label><p class="order-small" data-hide-natale>Hai sentito un codice Radio Premi? Inseriscilo qui nelle note, ad esempio «12345» (5 cifre numeriche). Se la promozione è attiva, il primo utilizzo valido dà diritto a <strong>5 € di sconto ogni 50 € interi di conto cena</strong>. Con il codice, il totale deve raggiungere almeno 50 € prima dello sconto; in caso contrario aggiungi piatti o bottiglie Cantine Delite. <a href="club.html">Leggi le condizioni nel Club</a>.</p>
       <div class="order-notices"><h2>Avvisi</h2>
         <p><strong>Se manca un dato, completa il campo segnalato: i piatti e gli altri dati restano inseriti.</strong></p>
         <p>Controlla piatti, quantità, giorno e orario prima di inviare. <strong>L’ordine è una richiesta: il tavolo e i piatti sono confermati solo dopo la nostra risposta su WhatsApp.</strong></p>
         <div data-dish-notices hidden></div>
-        <p>I piatti sono disponibili fino a esaurimento. * Ingredienti congelati all’origine.</p>
-        <p>I dati servono per comporre il messaggio WhatsApp. Per il pranzo, quando apri WhatsApp, viene conteggiato soltanto il numero di persone nel contatore pubblico, senza trasmettere al contatore nome, piatti, orario o note.</p>
+        <p data-hide-natale>I piatti sono disponibili fino a esaurimento. * Ingredienti congelati all’origine.</p>
+        <p data-hide-natale>I dati servono per comporre il messaggio WhatsApp. Per il pranzo, quando apri WhatsApp, viene conteggiato soltanto il numero di persone nel contatore pubblico, senza trasmettere al contatore nome, piatti, orario o note.</p>
       </div>
+      <p class="order-small" data-natale-pending role="status" hidden>Invio delle richieste di Natale in preparazione.</p>
       <button class="button reset-order-button" type="button" data-reset-order>Azzera tutto</button>
       <button class="button whatsapp-button" type="submit">Apri WhatsApp e invia la richiesta</button>
     </form>
     <p><a href="allergeni.html">Consulta la tabella allergeni</a></p>
-  <p class="photo-disclaimer"><strong>Le immagini dei piatti, pur realistiche, sono generate con intelligenza artificiale e hanno scopo illustrativo.</strong></p></main><footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"><p>Via San Paolo 16, Torino · <a href="tel:+393272292006">327 229 2006</a></p><p>Comunicare eventuali allergie prima di ordinare.<br>* Ingredienti congelati all’origine.</p></footer><script src="ui.js?v=20261113-nav-last-five-v1"></script><script src="site-session.js?v=20261110-promo-reserve-v4"></script><script src="walkie.js?v=20261110-risorse-v1"></script><script src="pranzo-counter.js?v=20261110-risorse-v1"></script><script src="radio-premi-whatsapp.js?v=20261106-sconto-ogni50-v1"></script><script src="avvento-api.js?v=20261113-jolly"></script><script src="preordine.js?v=20261120-menu-cena"></script>
+  <p class="photo-disclaimer"><strong>Le immagini dei piatti, pur realistiche, sono generate con intelligenza artificiale e hanno scopo illustrativo.</strong></p></main><footer><img class="footer-waves" src="footer-onde.webp?v=202610031345" alt="" aria-hidden="true" width="2172" height="724" loading="lazy"><p>Via San Paolo 16, Torino · <a href="tel:+393272292006">327 229 2006</a></p><p>Comunicare eventuali allergie prima di ordinare.<br>* Ingredienti congelati all’origine.</p></footer><script src="ui.js?v=20261123-natale"></script><script src="site-session.js?v=20261110-promo-reserve-v4"></script><script src="walkie.js?v=20261110-risorse-v1"></script><script src="pranzo-counter.js?v=20261110-risorse-v1"></script><script src="radio-premi-whatsapp.js?v=20261106-sconto-ogni50-v1"></script><script src="avvento-api.js?v=20261113-jolly"></script><script src="preordine.js?v=20261123-natale"></script>
 <script src="order-notices.js?v=20261008-avvisi-dinamici"></script></body></html>
 
 
