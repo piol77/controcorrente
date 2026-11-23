@@ -584,6 +584,14 @@
         if (submit.dataset.launchingWhatsapp === '1') return;
         submit.dataset.launchingWhatsapp = '1';
         submit.disabled = true;
+        if (window.ControcorrentePranzoCounter) {
+          try {
+            await Promise.race([
+              window.ControcorrentePranzoCounter.recordChristmasRequest(adults, kids),
+              new Promise(resolve => setTimeout(resolve, 2500))
+            ]);
+          } catch (_) { /* L'apertura di WhatsApp non dipende dal contatore. */ }
+        }
         openWhatsapp(whatsappLink(nataleLines));
         return;
       }
