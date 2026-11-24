@@ -171,6 +171,15 @@
             "name": "南瓜蘑菇香肠斜管面",
             "description": "斜管面搭配南瓜、白蘑菇和意式香肠。"
           }
+        },
+        "dishPhoto": "cena-assets/penne-zucca-champignon-salsiccia-20261124.png",
+        "photoSource": {
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-24",
+          "tool": "image_gen",
+          "resolution": "1536 × 1024 px",
+          "format": "PNG",
+          "note": "Penne con zucca, champignon e salsiccia su piatto avorio e fondo blu marino. Immagine illustrativa, non fotografia del piatto servito."
         }
       },
       {
