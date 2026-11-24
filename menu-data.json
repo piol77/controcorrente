@@ -107,59 +107,6 @@
           "tool": "image_gen",
           "note": "Existing illustrative photograph edited to show a more generous portion on absorbent paper with a lemon slice."
         }
-      },
-      {
-        "name": "Cozze di Sardegna alla marinara",
-        "price": 10,
-        "description": "Cozze sarde alla marinara con poco pomodoro.",
-        "allergens": [
-          14
-        ],
-        "icon": "Shell",
-        "dishPhoto": "cena-assets/cozze-sardegna-marinara-20261120.webp",
-        "translations": {
-          "en": {
-            "name": "Sardinian mussels alla marinara",
-            "description": "Sardinian mussels cooked marinara-style with a little tomato."
-          },
-          "zh": {
-            "name": "撒丁岛海员风味贻贝",
-            "description": "撒丁岛贻贝，以少量番茄煮制。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustrative image",
-          "date": "2026-11-20",
-          "tool": "image_gen",
-          "note": "Original illustrative photograph with a little tomato, on an ivory plate and dark navy tabletop."
-        }
-      },
-      {
-        "name": "Vitello tonnato",
-        "price": 12,
-        "description": "Fettine di vitello con salsa di tonno, uova, acciughe e capperi.",
-        "allergens": [
-          3,
-          4
-        ],
-        "icon": "Fish",
-        "dishPhoto": "cena-assets/vitello-tonnato-20261024.webp",
-        "translations": {
-          "en": {
-            "name": "Vitello tonnato",
-            "description": "Thinly sliced veal with tuna, egg, anchovy and caper sauce."
-          },
-          "zh": {
-            "name": "金枪鱼酱小牛肉",
-            "description": "薄切小牛肉配金枪鱼、鸡蛋、凤尾鱼和刺山柑酱。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustration",
-          "date": "2026-10-24",
-          "tool": "image_gen",
-          "note": "Restaurant menu illustration with sliced veal, tuna sauce and capers on an ivory plate over a navy table; recipe and visual references inspected online. Not a photograph of restaurant food."
-        }
       }
     ],
     "primi": [
@@ -207,62 +154,51 @@
         }
       },
       {
-        "name": "Penne ai funghi misti e salsiccia con poca panna",
-        "price": 12.5,
-        "description": "Penne con funghi misti, salsiccia e un tocco di panna.",
+        "name": "Penne con zucca, funghi champignon e salsiccia",
+        "price": 10,
+        "description": "Penne con zucca, funghi champignon e salsiccia.",
         "allergens": [
-          1,
-          7
+          1
         ],
-        "icon": "Leaf",
+        "icon": "Utensils",
+        "orderCourse": "Primo",
         "translations": {
           "en": {
-            "name": "Penne with mixed mushrooms, sausage and a little cream",
-            "description": "Penne with mixed mushrooms, sausage and a touch of cream."
+            "name": "Penne with pumpkin, button mushrooms and sausage",
+            "description": "Penne with pumpkin, button mushrooms and Italian sausage."
           },
           "zh": {
-            "name": "杂菌香肠奶油斜管面（少量奶油）",
-            "description": "斜管面搭配杂菌、香肠和少量奶油。"
+            "name": "南瓜蘑菇香肠斜管面",
+            "description": "斜管面搭配南瓜、白蘑菇和意式香肠。"
           }
-        },
-        "dishPhoto": "cena-assets/penne-funghi-salsiccia-poca-panna-20261113.webp",
-        "photoSource": {
-          "type": "AI-generated illustrative food image",
-          "date": "2026-11-13",
-          "tool": "image_gen",
-          "resolution": "1536 × 1024 px",
-          "format": "WebP",
-          "note": "Penne, funghi misti, salsiccia e poca panna su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
         }
       },
       {
-        "name": "Linguine con gamberetti*, poca panna e granella di pistacchi",
+        "name": "Linguine con crema di finocchi, orata e profumo d’arancia",
         "price": 12.5,
-        "description": "Linguine con gamberetti*, un tocco di panna e granella di pistacchi.",
+        "description": "Linguine con bocconcini di orata e crema di finocchi, al profumo d’arancia.",
         "allergens": [
           1,
-          2,
-          7,
-          8
+          4
         ],
-        "icon": "Shrimp",
+        "icon": "Fish",
         "orderCourse": "Primo",
-        "dishPhoto": "cena-assets/linguine-gamberetti-pistacchi-20261024.webp",
+        "dishPhoto": "pranzo-assets/20261124-linguine-orata-finocchi-arancia.webp",
         "translations": {
           "en": {
-            "name": "Linguine with shrimp*, a little cream and chopped pistachios",
-            "description": "Linguine with shrimp*, a touch of cream and chopped pistachios."
+            "name": "Linguine with fennel cream, sea bream and a hint of orange",
+            "description": "Linguine with sea bream pieces, fennel cream and a hint of orange."
           },
           "zh": {
-            "name": "虾仁*淡奶油开心果碎扁意面",
-            "description": "扁意面搭配虾仁*、少量淡奶油和开心果碎。"
+            "name": "茴香酱海鲷橙香扁意面",
+            "description": "扁意面搭配海鲷鱼块、茴香酱和淡淡橙香。"
           }
         },
         "photoSource": {
-          "type": "Existing coordinated illustrative food image",
-          "date": "2026-11-19",
-          "tool": "reused existing asset",
-          "note": "Immagine illustrativa di linguine con gamberetti e pistacchi; aggiornamento fotografico con poca panna da completare."
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-24",
+          "tool": "image_gen",
+          "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
         }
       }
     ],
@@ -368,6 +304,32 @@
           "date": "2026-11-19",
           "tool": "reused existing asset",
           "note": "Fotografia illustrativa di orata alla griglia con patate al forno."
+        }
+      },
+      {
+        "name": "Involtini di pollo al bacon con gorgonzola su crema di patate",
+        "price": 14,
+        "description": "Involtini di pollo avvolti nel bacon, con un cuore di gorgonzola, serviti su una vellutata crema di patate.",
+        "allergens": [
+          7
+        ],
+        "icon": "Utensils",
+        "orderCourse": "Secondo",
+        "dishPhoto": "cena-assets/involtini-pollo-bacon-gorgonzola-crema-patate-20261111.webp",
+        "translations": {
+          "en": {
+            "name": "Bacon-wrapped chicken roulades with gorgonzola on potato cream",
+            "description": "Bacon-wrapped chicken roulades with a gorgonzola centre, served on smooth potato cream."
+          },
+          "zh": {
+            "name": "培根鸡肉卷配戈贡佐拉奶酪及土豆泥",
+            "description": "培根包裹鸡肉卷，内馅为戈贡佐拉奶酪，佐细滑土豆泥。"
+          }
+        },
+        "photoSource": {
+          "type": "Existing coordinated illustrative food image",
+          "date": "2026-11-11",
+          "note": "Immagine illustrativa già utilizzata per lo stesso piatto."
         }
       }
     ]
@@ -577,91 +539,52 @@
   ],
   "offers": [
     {
-      "name": "Orecchiette con acciughe e capperi",
+      "name": "Orecchiette fresche con cime di rapa, acciughe e capperi",
       "price": 10,
-      "description": "Orecchiette con acciughe e capperi, dal sapore mediterraneo.",
+      "description": "Orecchiette fresche con cime di rapa, acciughe e capperi.",
       "allergens": [
         1,
         4
       ],
       "icon": "Fish",
       "orderCourse": "Primo",
-      "photoLayout": "side",
-      "dishPhoto": "offerta-assets/orecchiette-acciughe-capperi-20261119.webp",
       "translations": {
         "en": {
-          "name": "Orecchiette with anchovies and capers",
-          "description": "Orecchiette pasta with anchovies and capers, full of Mediterranean flavour."
+          "name": "Fresh orecchiette with turnip greens, anchovies and capers",
+          "description": "Fresh orecchiette with turnip greens, anchovies and capers."
         },
         "zh": {
-          "name": "凤尾鱼刺山柑猫耳朵意面",
-          "description": "猫耳朵意面搭配凤尾鱼和刺山柑，呈现地中海风味。"
+          "name": "芜菁叶凤尾鱼刺山柑鲜猫耳朵意面",
+          "description": "鲜猫耳朵意面搭配芜菁叶、凤尾鱼和刺山柑。"
         }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-19",
-        "tool": "image_gen",
-        "resolution": "1200 × 800 px",
-        "format": "WebP",
-        "note": "Orecchiette, acciughe e capperi su piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito."
       }
     },
     {
-      "name": "Straccetti di maiale con broccoli e riso al vapore",
+      "name": "Insalata tiepida di patate, fagiolini, pollo e scaglie di Grana",
       "price": 10,
-      "description": "Straccetti di maiale saltati con broccoli, accompagnati da riso bianco al vapore.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "photoLayout": "side",
-      "dishPhoto": "pranzo-assets/20261117-straccetti-maiale-broccoli-riso.webp",
-      "translations": {
-        "en": {
-          "name": "Pork strips with broccoli and steamed rice",
-          "description": "Pork strips sautéed with broccoli, served with steamed white rice."
-        },
-        "zh": {
-          "name": "西兰花猪肉条配蒸米饭",
-          "description": "猪肉条与西兰花一同炒制，搭配蒸白米饭。"
-        }
-      },
-      "photoSource": {
-        "type": "Existing coordinated HD illustrative food image reused from today's lunch",
-        "date": "2026-11-17",
-        "tool": "reused existing asset",
-        "resolution": "1440 × 1080 px WebP",
-        "note": "Piatto avorio, sfondo blu marino, luce e impiattamento coerenti con le fotografie della cena; immagine illustrativa."
-      }
-    },
-    {
-      "name": "Braciole al latte con insalata di patate prezzemolate",
-      "price": 10,
-      "description": "Due braciole di maiale al latte, accompagnate da insalata di patate prezzemolate.",
+      "description": "Patate e fagiolini tiepidi con pollo e scaglie di Grana.",
       "allergens": [
         7
       ],
       "icon": "Utensils",
-      "orderCourse": "Secondo",
+      "orderCourse": "Piatto unico",
+      "dishPhoto": "pranzo-assets/20261124-insalata-patate-fagiolini-pollo.webp",
       "photoLayout": "side",
-      "dishPhoto": "offerta-assets/braciole-latte-insalata-patate-20261113.webp",
       "translations": {
         "en": {
-          "name": "Pork chops in milk sauce with parsley potato salad",
-          "description": "Two pork chops cooked in milk sauce, served with parsley potato salad."
+          "name": "Warm potato, green bean and chicken salad with Grana shavings",
+          "description": "Warm potatoes and green beans with chicken and Grana cheese shavings."
         },
         "zh": {
-          "name": "奶汁猪排配欧芹土豆沙拉",
-          "description": "两块奶汁猪排搭配欧芹土豆沙拉。"
+          "name": "温土豆四季豆鸡肉沙拉配格拉纳奶酪薄片",
+          "description": "温土豆和四季豆搭配鸡肉及格拉纳奶酪薄片。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-13",
+        "date": "2026-11-24",
         "tool": "image_gen",
-        "resolution": "1536 × 1024 px",
-        "format": "WebP",
-        "note": "Due braciole al latte con insalata di patate prezzemolate su piatto avorio e fondo blu. Immagine illustrativa, non fotografia del piatto servito."
+        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
       }
     }
   ],
