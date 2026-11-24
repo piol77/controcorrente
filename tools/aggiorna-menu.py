@@ -33,6 +33,8 @@ def dish(d, section='', index=0, fixed=False):
         if str(a) not in symbols or a == 12: raise ValueError('Riferimento allergene non ammesso')
     cls = 'daily-dish dish' if section == 'offerta' else 'lunch-dish dish' if section == 'pranzo' else 'dish beverage' if section == 'bibite' else 'dish'
     art = node('article', class_=cls)
+    if d.get('orderCourse'):
+        art.set('data-order-course', d['orderCourse'])
     if section in data['dinner']:
         art.set('data-order-section', section); art.set('data-order-index', str(index))
     thumbnail = d.get('photoLayout') == 'thumbnail'
@@ -97,6 +99,8 @@ for target in targets:
             months = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre']
             data['lunchUpdatedAt'] = now.date().isoformat(); data['lunchDateLabel'] = f'{days[now.weekday()]} {now.day} {months[now.month-1]} {now.year}'
             time = doc.cssselect('.lunch-date time')[0]; time.text = data['lunchDateLabel']; time.set('datetime', data['lunchUpdatedAt'])
+            title = doc.cssselect('title')
+            if title: title[0].text = f"Offerta per pranzo — {data['lunchDateLabel'].lower()} | Controcorrente"
             statefile.write_text(json.dumps({'lunchDigest':digest}, indent=2)); (ROOT/'menu-data.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
     for el in doc.cssselect('link[href], script[src]'):
         attr = 'src' if el.tag == 'script' else 'href'; val = el.get(attr)

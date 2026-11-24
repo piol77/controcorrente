@@ -5,83 +5,25 @@
   };
 
   const LUNCH={
-  "en": {
-    "Udon con gamberetti*, lonza di maiale e verdure": [
-      "Udon with shrimp*, pork loin and vegetables",
-      "Udon stir-fried with shrimp*, pork loin, carrots, courgettes and Savoy cabbage."
-    ],
-    "Fusilli con zucchine, orata e pomodorini": [
-      "Fusilli with courgettes, sea bream and cherry tomatoes",
-      "Fusilli with courgettes, sea bream pieces and cherry tomatoes."
-    ],
-    "Orecchiette con broccoli e salsiccia": [
-      "Orecchiette with broccoli and sausage",
-      "Orecchiette pasta with broccoli and Italian sausage."
-    ],
-    "Spaghetti ai frutti di mare": [
-      "Seafood spaghetti",
-      "Spaghetti with shrimp*, king prawns*, clams and mussels, with a touch of tomato."
-    ],
-    "Orata alla griglia con verza e carote saltate": [
-      "Grilled sea bream with sautéed Savoy cabbage and carrots",
-      "Grilled sea bream served with sautéed Savoy cabbage and carrots."
-    ],
-    "Salmone alla griglia con verza e carote saltate": [
-      "Grilled salmon with sautéed Savoy cabbage and carrots",
-      "Grilled salmon served with sautéed Savoy cabbage and carrots."
-    ],
-    "Branzino alla griglia con verza e carote saltate": [
-      "Grilled sea bass with sautéed Savoy cabbage and carrots",
-      "Grilled sea bass served with sautéed Savoy cabbage and carrots."
-    ],
-    "Straccetti di maiale con peperoni e riso bianco": [
-      "Pork strips with peppers and white rice",
-      "Pork strips sautéed with peppers, served with white rice."
-    ],
-    "Insalata di finocchi, arancia, salmone fresco e avocado": [
-      "Fennel, orange, fresh salmon and avocado salad",
-      "Fennel, orange, fresh salmon and avocado with balsamic vinegar."
-    ]
-  },
-  "zh": {
-    "Udon con gamberetti*, lonza di maiale e verdure": [
-      "虾仁*猪里脊时蔬乌冬面",
-      "乌冬面与虾仁*、猪里脊、胡萝卜、西葫芦和皱叶甘蓝同炒。"
-    ],
-    "Fusilli con zucchine, orata e pomodorini": [
-      "西葫芦海鲷小番茄螺旋面",
-      "螺旋面搭配西葫芦、海鲷鱼块和小番茄。"
-    ],
-    "Orecchiette con broccoli e salsiccia": [
-      "西兰花香肠猫耳朵意面",
-      "猫耳朵意面搭配西兰花和意式香肠。"
-    ],
-    "Spaghetti ai frutti di mare": [
-      "海鲜意大利细面",
-      "意大利细面搭配虾仁*、大虾*、蛤蜊和贻贝，佐少量番茄。"
-    ],
-    "Orata alla griglia con verza e carote saltate": [
-      "烤海鲷配炒皱叶甘蓝和胡萝卜",
-      "烤海鲷搭配清炒皱叶甘蓝和胡萝卜。"
-    ],
-    "Salmone alla griglia con verza e carote saltate": [
-      "烤三文鱼配炒皱叶甘蓝和胡萝卜",
-      "烤三文鱼搭配清炒皱叶甘蓝和胡萝卜。"
-    ],
-    "Branzino alla griglia con verza e carote saltate": [
-      "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
-      "烤海鲈鱼搭配清炒皱叶甘蓝和胡萝卜。"
-    ],
-    "Straccetti di maiale con peperoni e riso bianco": [
-      "彩椒猪肉条配白米饭",
-      "猪肉条与彩椒同炒，搭配白米饭。"
-    ],
-    "Insalata di finocchi, arancia, salmone fresco e avocado": [
-      "茴香橙子鲜三文鱼牛油果沙拉",
-      "茴香、橙子、鲜三文鱼和牛油果，佐意大利香醋。"
-    ]
-  }
-};
+    en:{
+      "Fusilli con crema di broccoli, gamberetti* e limone":["Fusilli with broccoli cream, shrimp* and lemon","Fusilli coated in broccoli cream, with shrimp* and a hint of lemon."],
+      "Tagliatelle con zucca, champignon e salsiccia":["Tagliatelle with pumpkin, button mushrooms and sausage","Egg tagliatelle with pumpkin, button mushrooms and Italian sausage."],
+      "Linguine con orata, crema di finocchi e arancia":["Linguine with sea bream, fennel cream and orange","Linguine with pieces of sea bream, fennel cream and orange."],
+      "Bocconcini di pollo alle mandorle con riso bianco, carote e salsa di soia":["Chicken bites with almonds and white rice","Chicken bites with almonds, carrots and soy sauce, served with white rice."],
+      "Insalata di patate, fagiolini e pollo con scaglie di Parmigiano":["Potato, green bean and chicken salad with Parmesan shavings","Potatoes, green beans and chicken, finished with Parmesan shavings."],
+      "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico":["Fennel, orange, salmon and avocado salad with balsamic vinegar","Fennel, orange, salmon and avocado, dressed with balsamic vinegar."],
+      "Spaghetti di soia con verdure, pollo e gamberetti*":["Soy noodles with vegetables, chicken and shrimp*","Soy noodles stir-fried with vegetables, chicken and shrimp*."]
+    },
+    zh:{
+      "Fusilli con crema di broccoli, gamberetti* e limone":["西兰花酱虾仁*柠檬螺旋面","螺旋面裹上西兰花酱，搭配虾仁*和淡淡柠檬香。"],
+      "Tagliatelle con zucca, champignon e salsiccia":["南瓜蘑菇香肠鸡蛋宽面","鸡蛋宽面搭配南瓜、白蘑菇和意式香肠。"],
+      "Linguine con orata, crema di finocchi e arancia":["海鲷茴香酱橙香扁意面","扁意面搭配海鲷鱼块、茴香酱和橙香。"],
+      "Bocconcini di pollo alle mandorle con riso bianco, carote e salsa di soia":["杏仁鸡块配白米饭","杏仁鸡块搭配胡萝卜和酱油，佐白米饭。"],
+      "Insalata di patate, fagiolini e pollo con scaglie di Parmigiano":["土豆四季豆鸡肉沙拉配帕玛森奶酪片","土豆、四季豆和鸡肉，撒上帕玛森奶酪薄片。"],
+      "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico":["茴香橙子三文鱼牛油果沙拉配意大利香醋","茴香、橙子、三文鱼和牛油果，佐意大利香醋。"],
+      "Spaghetti di soia con verdure, pollo e gamberetti*":["时蔬鸡肉虾仁*炒大豆面","大豆面与时蔬、鸡肉和虾仁*同炒。"]
+    }
+  };
 
   function cleanDescription(text){return (text||'').replace(/\s*\([\d, ]+\)\.?\s*$/,'').trim();}
   function sourceName(article){return (article.querySelector('h3,h2')?.textContent||'').trim();}
