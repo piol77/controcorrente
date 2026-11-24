@@ -726,19 +726,9 @@
          '*Allergie / note: ' + String(data.get('note') || 'Nessuna nota').replace(/\*/g, '＊') + '*', '',
         'Attendo la vostra conferma via WhatsApp entro le ' + (lunchTime ? '12' : '18:30') + '. Il tavolo e i piatti sono confermati solo dopo la risposta del Ristorante.'];
       const whatsappUrl = whatsappLink(lines);
-      // Solo per il pranzo: somma le persone indicate al contatore pubblico
-      // prima di aprire WhatsApp. Il contatore non indica prenotazioni confermate.
       if (submit.dataset.launchingWhatsapp === '1') return;
       submit.dataset.launchingWhatsapp = '1';
       submit.disabled = true;
-      if (isLunch() && window.ControcorrentePranzoCounter) {
-        try {
-          await Promise.race([
-            window.ControcorrentePranzoCounter.recordLunchRequest(Number(data.get('persone')), requestedDay),
-            new Promise(resolve => setTimeout(resolve, 2500))
-          ]);
-        } catch (_) { /* L'apertura di WhatsApp non dipende dal contatore. */ }
-      }
       openWhatsapp(whatsappUrl);
     });
     function whatsappLink(lines) {

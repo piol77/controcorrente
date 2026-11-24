@@ -4,7 +4,7 @@
   // Il numero e condiviso tra tutti i visitatori, senza dati personali.
   // Una chiave diversa per ogni giorno permette il reset alle 15:00 (Torino).
   const API = 'https://countapi.mileshilliard.com/api/v1';
-  const PREFIX = 'controcorrente_pranzo_persone_v1_';
+  const confirmedApi = 'https://nchtaewykddmnjolcebs.supabase.co/functions/v1/controcorrente-coperti';
   // Separate, permanent keys for the Christmas lunch. These never depend on the day.
   // Paolo's first request (8 adults and 4 children) predates this counter.
   const CHRISTMAS = {
@@ -34,25 +34,7 @@
     return next.toISOString().slice(0, 10);
   }
 
-  function counterKey(day) {
-    return PREFIX + day.replace(/-/g, '');
-  }
-
-  async function recordLunchRequest(people, requestedDay) {
-    const count = Number(people);
-    if (!Number.isInteger(count) || count < 1 || count > 30 || requestedDay !== activeDay()) return;
-    const url = API + '/hit/' + counterKey(requestedDay);
-
-    // Un incremento per ogni persona, senza trasmettere nome, piatti o note.
-    // Richieste indipendenti per non perdere i conteggi concorrenti.
-    await Promise.allSettled(Array.from({length: count}, (_, index) =>
-      fetch(url + '?req=' + Date.now() + '-' + index + '-' + Math.random().toString(36).slice(2), {
-        method: 'GET', cache: 'no-store', credentials: 'omit', keepalive: true
-      })
-    ));
-  }
-
-  window.ControcorrentePranzoCounter = {recordLunchRequest};
+  window.ControcorrentePranzoCounter = {};
 
   async function recordChristmasRequest(adults, kids) {
     const quantities = [Number(adults), Number(kids)];
@@ -99,35 +81,64 @@
   const value = document.querySelector('[data-lunch-requests-count]');
   if (!value) return;
 
-  let displayedDay = null;
-  async function refresh() {
-    const day = activeDay();
-    if (displayedDay !== day) {
-      displayedDay = day;
-      value.textContent = '0';
-    }
+  const status = document.querySelector('[data-lunch-count-status]');
+  const storageKey = 'controcorrente-coperti-confermati';
+  let latest, running = false;
+  function valid(data, day) {
+    return data?.date === day && Number.isSafeInteger(data.confirmed) && data.confirmed >= 0
+      && Number.isFinite(Date.parse(data.synced_at));
+  }
+  function cached(day) {
+    if (valid(latest, day)) return latest;
     try {
-      const response = await fetch(
-        API + '/get/' + counterKey(day) + '?t=' + Date.now(),
-        {
-          method:'GET', cache:'no-store', credentials:'omit',
-          signal: typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(10000) : undefined
-        }
-      );
+      const item = JSON.parse(localStorage.getItem(storageKey + day));
+      return valid(item, day) ? item : null;
+    } catch (_) {
+      return null;
+    }
+  }
+  function draw(data, day, disconnected = false) {
+    const date = day.split('-').reverse().join('/');
+    value.textContent = data ? data.confirmed.toLocaleString('it-IT') : '—';
+    if (!status) return;
+    const stale = data && (disconnected || Date.now() - Date.parse(data.synced_at) > 240000);
+    status.textContent = !data ? 'Dato del ' + date + ' in attesa di sincronizzazione.'
+      : stale ? 'Ultimo dato disponibile per il ' + date + ' · aggiornamento in attesa.'
+      : 'Prenotazioni del ' + date + '. Il giorno di riferimento cambia alle 15:00.';
+  }
+  async function refresh() {
+    if (running) return;
+    running = true;
+    const day = activeDay(), previous = cached(day);
+    draw(previous, day);
+    try {
+      const response = await fetch(confirmedApi + '?date=' + encodeURIComponent(day), {
+        method:'GET', cache:'default', credentials:'omit',
+        signal: typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(7000) : undefined
+      });
       if (day !== activeDay()) return;
-      if (response.status === 404) {
-        value.textContent = '0';
+      if (!response.ok) throw new Error('Dati temporaneamente non disponibili');
+      const data = await response.json();
+      if (day !== activeDay()) return;
+      if (!valid(data, day)) {
+        draw(previous, day, true);
         return;
       }
-      if (!response.ok) throw new Error('counter temporarily unavailable');
-      const data = await response.json();
-      const people = Number(data.value);
-      if (!Number.isSafeInteger(people) || people < 0) throw new Error('invalid counter');
-      value.textContent = people.toLocaleString('it-IT');
+      latest = !previous || Date.parse(data.synced_at) >= Date.parse(previous.synced_at) ? data : previous;
+      try {
+        localStorage.setItem(storageKey + day, JSON.stringify(latest));
+        const yesterday = new Date(day + 'T12:00:00Z');
+        yesterday.setUTCDate(yesterday.getUTCDate() - 2);
+        localStorage.removeItem(storageKey + yesterday.toISOString().slice(0,10));
+      } catch (_) {}
+      draw(latest, day);
     } catch (_) {
-      if (day === activeDay()) value.textContent = '—';
+      if (day === activeDay()) draw(previous, day, true);
+    } finally {
+      running = false;
+      if (day !== activeDay()) void refresh();
     }
   }
 
-  window.ccWatchPanel(refresh, 20000);
+  window.ccWatchPanel(refresh, 60000);
 })();
