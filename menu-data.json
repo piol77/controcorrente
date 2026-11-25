@@ -1,6 +1,6 @@
 {
-  "lunchUpdatedAt": "2026-11-24",
-  "lunchDateLabel": "Martedì 24 novembre 2026",
+  "lunchUpdatedAt": "2026-11-25",
+  "lunchDateLabel": "Mercoledì 25 novembre 2026",
   "dinner": {
     "antipasti": [
       {
@@ -345,204 +345,200 @@
   },
   "lunch": [
     {
-      "name": "Fusilli con crema di broccoli, gamberetti* e limone",
-      "price": 12,
-      "description": "Fusilli avvolti in una crema di broccoli, con gamberetti* e una nota di limone.",
+      "name": "Penne con zucchine, salsiccia e panna",
+      "price": 10,
+      "description": "Penne con zucchine e salsiccia, avvolte in una cremosa salsa alla panna.",
       "allergens": [
         1,
-        2
-      ],
-      "icon": "Shrimp",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261124-fusilli-broccoli-gamberetti-limone.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Fusilli with broccoli cream, shrimp* and lemon",
-          "description": "Fusilli coated in broccoli cream, with shrimp* and a hint of lemon."
-        },
-        "zh": {
-          "name": "西兰花酱虾仁*柠檬螺旋面",
-          "description": "螺旋面裹上西兰花酱，搭配虾仁*和淡淡柠檬香。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
-        "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Tagliatelle con zucca, champignon e salsiccia",
-      "price": 10,
-      "description": "Tagliatelle all’uovo con zucca, funghi champignon e salsiccia.",
-      "allergens": [
-        1,
-        3
-      ],
-      "icon": "Utensils",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261124-tagliatelle-zucca-champignon-salsiccia.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Tagliatelle with pumpkin, button mushrooms and sausage",
-          "description": "Egg tagliatelle with pumpkin, button mushrooms and Italian sausage."
-        },
-        "zh": {
-          "name": "南瓜蘑菇香肠鸡蛋宽面",
-          "description": "鸡蛋宽面搭配南瓜、白蘑菇和意式香肠。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
-        "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Linguine con orata, crema di finocchi e arancia",
-      "price": 12,
-      "description": "Linguine con bocconcini di orata, crema di finocchi e arancia.",
-      "allergens": [
-        1,
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Primo",
-      "dishPhoto": "pranzo-assets/20261124-linguine-orata-finocchi-arancia.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Linguine with sea bream, fennel cream and orange",
-          "description": "Linguine with pieces of sea bream, fennel cream and orange."
-        },
-        "zh": {
-          "name": "海鲷茴香酱橙香扁意面",
-          "description": "扁意面搭配海鲷鱼块、茴香酱和橙香。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
-        "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Bocconcini di pollo alle mandorle con riso bianco, carote e salsa di soia",
-      "price": 10,
-      "description": "Bocconcini di pollo alle mandorle con carote e salsa di soia, accompagnati da riso bianco.",
-      "allergens": [
-        6,
-        8
-      ],
-      "icon": "Utensils",
-      "orderCourse": "Piatto unico",
-      "dishPhoto": "pranzo-assets/20261124-pollo-mandorle-riso.webp",
-      "photoLayout": "thumbnail",
-      "translations": {
-        "en": {
-          "name": "Chicken bites with almonds and white rice",
-          "description": "Chicken bites with almonds, carrots and soy sauce, served with white rice."
-        },
-        "zh": {
-          "name": "杏仁鸡块配白米饭",
-          "description": "杏仁鸡块搭配胡萝卜和酱油，佐白米饭。"
-        }
-      },
-      "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
-        "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Insalata di patate, fagiolini e pollo con scaglie di Parmigiano",
-      "price": 10,
-      "description": "Patate, fagiolini e pollo, completati da scaglie di Parmigiano.",
-      "allergens": [
         7
       ],
       "icon": "Utensils",
-      "orderCourse": "Piatto unico",
-      "dishPhoto": "pranzo-assets/20261124-insalata-patate-fagiolini-pollo.webp",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/penne-zucchine-salsiccia-panna.webp",
       "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Potato, green bean and chicken salad with Parmesan shavings",
-          "description": "Potatoes, green beans and chicken, finished with Parmesan shavings."
+          "name": "Penne with courgettes, sausage and cream",
+          "description": "Penne with courgettes and sausage in a creamy sauce."
         },
         "zh": {
-          "name": "土豆四季豆鸡肉沙拉配帕玛森奶酪片",
-          "description": "土豆、四季豆和鸡肉，撒上帕玛森奶酪薄片。"
+          "name": "西葫芦香肠奶油斜管面",
+          "description": "斜管面搭配西葫芦、香肠和柔滑奶油酱。"
         }
       },
       "photoSource": {
-        "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
-        "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
+        "type": "Reused approved illustrative food image",
+        "date": "2026-11-25",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito.",
+        "tool": "existing asset"
       }
     },
     {
-      "name": "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico",
-      "price": 12,
-      "description": "Finocchi, arancia, salmone e avocado, con aceto balsamico.",
+      "name": "Riso saltato speziato con verdure, gamberetti*, pollo e uova",
+      "price": 10,
+      "description": "Riso saltato con carote, zucchine e piselli, gamberetti*, pollo e uova, insaporito con spezie.",
       "allergens": [
+        2,
+        3
+      ],
+      "icon": "Shrimp",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/riso-pollo-gamberetti-verdure-coerente-20261022.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Spiced stir-fried rice with vegetables, shrimp*, chicken and eggs",
+          "description": "Stir-fried rice with carrots, courgettes, peas, shrimp*, chicken, eggs and spices."
+        },
+        "zh": {
+          "name": "香料时蔬虾仁*鸡肉蛋炒饭",
+          "description": "米饭与胡萝卜、西葫芦、豌豆、虾仁*、鸡肉和鸡蛋同炒，以香料调味。"
+        }
+      },
+      "photoSource": {
+        "type": "Reused approved illustrative food image",
+        "date": "2026-11-25",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito.",
+        "tool": "existing asset"
+      }
+    },
+    {
+      "name": "Spaghetti con crema di broccoli, acciughe, pangrattato croccante e limone, leggermente piccanti",
+      "price": 10,
+      "description": "Crema di broccoli e acciughe, con pangrattato croccante, limone e una leggera nota piccante.",
+      "allergens": [
+        1,
         4
       ],
       "icon": "Fish",
-      "orderCourse": "Piatto unico",
-      "dishPhoto": "pranzo-assets/20261124-insalata-finocchi-arancia-salmone-avocado.webp",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/20261125-spaghetti-broccoli-acciughe.webp",
       "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Fennel, orange, salmon and avocado salad with balsamic vinegar",
-          "description": "Fennel, orange, salmon and avocado, dressed with balsamic vinegar."
+          "name": "Slightly spicy spaghetti with broccoli cream, anchovies, crunchy breadcrumbs and lemon",
+          "description": "Broccoli cream and anchovies, topped with crunchy breadcrumbs, lemon and a gentle spicy note."
         },
         "zh": {
-          "name": "茴香橙子三文鱼牛油果沙拉配意大利香醋",
-          "description": "茴香、橙子、三文鱼和牛油果，佐意大利香醋。"
+          "name": "微辣西兰花酱凤尾鱼意大利面",
+          "description": "意大利面配西兰花酱、凤尾鱼、香脆面包屑和柠檬，略带辣味。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
-        "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
+        "date": "2026-11-25",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito.",
+        "tool": "image_gen"
       }
     },
     {
-      "name": "Spaghetti di soia con verdure, pollo e gamberetti*",
-      "price": 10,
-      "description": "Spaghetti di soia saltati con verdure, pollo e gamberetti*.",
+      "name": "Fusilli con zucchine, branzino e pomodoro",
+      "price": 12,
+      "description": "Fusilli con zucchine, bocconcini di branzino e pomodoro.",
       "allergens": [
-        2,
-        6
+        1,
+        4
       ],
-      "icon": "Shrimp",
-      "orderCourse": "Piatto unico",
-      "dishPhoto": "pranzo-assets/20261124-spaghetti-soia-verdure-pollo-gamberetti.webp",
+      "icon": "Fish",
+      "orderCourse": "Primo",
+      "dishPhoto": "pranzo-assets/fusilli-branzino-zucchine-pomodorini-20261112.webp",
       "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Soy noodles with vegetables, chicken and shrimp*",
-          "description": "Soy noodles stir-fried with vegetables, chicken and shrimp*."
+          "name": "Fusilli with courgettes, sea bass and tomato",
+          "description": "Fusilli with courgettes, pieces of sea bass and tomato."
         },
         "zh": {
-          "name": "时蔬鸡肉虾仁*炒大豆面",
-          "description": "大豆面与时蔬、鸡肉和虾仁*同炒。"
+          "name": "西葫芦海鲈鱼番茄螺旋面",
+          "description": "螺旋面搭配西葫芦、海鲈鱼块和番茄。"
+        }
+      },
+      "photoSource": {
+        "type": "Reused approved illustrative food image",
+        "date": "2026-11-25",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito.",
+        "tool": "existing asset"
+      }
+    },
+    {
+      "name": "Pizzaiola di maiale con patate al prezzemolo",
+      "price": 10,
+      "description": "Maiale alla pizzaiola, accompagnato da patate al prezzemolo.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261119-maiale-pizzaiola-patate.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Pork pizzaiola with parsley potatoes",
+          "description": "Pork in pizzaiola tomato sauce, served with parsley potatoes."
+        },
+        "zh": {
+          "name": "番茄酱猪肉配欧芹土豆",
+          "description": "番茄酱烩猪肉，配欧芹土豆。"
+        }
+      },
+      "photoSource": {
+        "type": "Reused approved illustrative food image",
+        "date": "2026-11-25",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito.",
+        "tool": "existing asset"
+      }
+    },
+    {
+      "name": "Bocconcini di pollo al curry con carote, patate e riso bianco",
+      "price": 10,
+      "description": "Bocconcini di pollo al curry con carote e patate, accompagnati da riso bianco.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261125-pollo-curry.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Chicken curry bites with carrots, potatoes and white rice",
+          "description": "Chicken bites in curry sauce with carrots and potatoes, served with white rice."
+        },
+        "zh": {
+          "name": "咖喱鸡块配胡萝卜土豆和白米饭",
+          "description": "咖喱鸡块搭配胡萝卜与土豆，佐白米饭。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
-        "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
+        "date": "2026-11-25",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito.",
+        "tool": "image_gen"
+      }
+    },
+    {
+      "name": "Insalata tiepida di patate, tentacoli di totani e gamberetti*",
+      "price": 12,
+      "description": "Patate, teneri tentacoli di totani e gamberetti*, serviti in un’insalata tiepida.",
+      "allergens": [
+        2,
+        14
+      ],
+      "icon": "Shrimp",
+      "orderCourse": "Piatto unico",
+      "dishPhoto": "pranzo-assets/20261125-insalata-totani-gamberetti.webp",
+      "photoLayout": "thumbnail",
+      "translations": {
+        "en": {
+          "name": "Warm potato salad with squid tentacles and shrimp*",
+          "description": "A warm salad of potatoes, tender squid tentacles and shrimp*."
+        },
+        "zh": {
+          "name": "温热土豆鱿鱼须虾仁*沙拉",
+          "description": "温热沙拉搭配土豆、鲜嫩鱿鱼须和虾仁*。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-generated illustrative food image",
+        "date": "2026-11-25",
+        "note": "Piatto avorio e fondo blu marino; immagine illustrativa, non fotografia del piatto servito.",
+        "tool": "image_gen"
       }
     }
   ],

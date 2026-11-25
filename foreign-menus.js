@@ -5,25 +5,67 @@
   };
 
   const LUNCH={
-    en:{
-      "Fusilli con crema di broccoli, gamberetti* e limone":["Fusilli with broccoli cream, shrimp* and lemon","Fusilli coated in broccoli cream, with shrimp* and a hint of lemon."],
-      "Tagliatelle con zucca, champignon e salsiccia":["Tagliatelle with pumpkin, button mushrooms and sausage","Egg tagliatelle with pumpkin, button mushrooms and Italian sausage."],
-      "Linguine con orata, crema di finocchi e arancia":["Linguine with sea bream, fennel cream and orange","Linguine with pieces of sea bream, fennel cream and orange."],
-      "Bocconcini di pollo alle mandorle con riso bianco, carote e salsa di soia":["Chicken bites with almonds and white rice","Chicken bites with almonds, carrots and soy sauce, served with white rice."],
-      "Insalata di patate, fagiolini e pollo con scaglie di Parmigiano":["Potato, green bean and chicken salad with Parmesan shavings","Potatoes, green beans and chicken, finished with Parmesan shavings."],
-      "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico":["Fennel, orange, salmon and avocado salad with balsamic vinegar","Fennel, orange, salmon and avocado, dressed with balsamic vinegar."],
-      "Spaghetti di soia con verdure, pollo e gamberetti*":["Soy noodles with vegetables, chicken and shrimp*","Soy noodles stir-fried with vegetables, chicken and shrimp*."]
-    },
-    zh:{
-      "Fusilli con crema di broccoli, gamberetti* e limone":["西兰花酱虾仁*柠檬螺旋面","螺旋面裹上西兰花酱，搭配虾仁*和淡淡柠檬香。"],
-      "Tagliatelle con zucca, champignon e salsiccia":["南瓜蘑菇香肠鸡蛋宽面","鸡蛋宽面搭配南瓜、白蘑菇和意式香肠。"],
-      "Linguine con orata, crema di finocchi e arancia":["海鲷茴香酱橙香扁意面","扁意面搭配海鲷鱼块、茴香酱和橙香。"],
-      "Bocconcini di pollo alle mandorle con riso bianco, carote e salsa di soia":["杏仁鸡块配白米饭","杏仁鸡块搭配胡萝卜和酱油，佐白米饭。"],
-      "Insalata di patate, fagiolini e pollo con scaglie di Parmigiano":["土豆四季豆鸡肉沙拉配帕玛森奶酪片","土豆、四季豆和鸡肉，撒上帕玛森奶酪薄片。"],
-      "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico":["茴香橙子三文鱼牛油果沙拉配意大利香醋","茴香、橙子、三文鱼和牛油果，佐意大利香醋。"],
-      "Spaghetti di soia con verdure, pollo e gamberetti*":["时蔬鸡肉虾仁*炒大豆面","大豆面与时蔬、鸡肉和虾仁*同炒。"]
-    }
-  };
+  "en": {
+    "Penne con zucchine, salsiccia e panna": [
+      "Penne with courgettes, sausage and cream",
+      "Penne with courgettes and sausage in a creamy sauce."
+    ],
+    "Riso saltato speziato con verdure, gamberetti*, pollo e uova": [
+      "Spiced stir-fried rice with vegetables, shrimp*, chicken and eggs",
+      "Stir-fried rice with carrots, courgettes, peas, shrimp*, chicken, eggs and spices."
+    ],
+    "Spaghetti con crema di broccoli, acciughe, pangrattato croccante e limone, leggermente piccanti": [
+      "Slightly spicy spaghetti with broccoli cream, anchovies, crunchy breadcrumbs and lemon",
+      "Broccoli cream and anchovies, topped with crunchy breadcrumbs, lemon and a gentle spicy note."
+    ],
+    "Fusilli con zucchine, branzino e pomodoro": [
+      "Fusilli with courgettes, sea bass and tomato",
+      "Fusilli with courgettes, pieces of sea bass and tomato."
+    ],
+    "Pizzaiola di maiale con patate al prezzemolo": [
+      "Pork pizzaiola with parsley potatoes",
+      "Pork in pizzaiola tomato sauce, served with parsley potatoes."
+    ],
+    "Bocconcini di pollo al curry con carote, patate e riso bianco": [
+      "Chicken curry bites with carrots, potatoes and white rice",
+      "Chicken bites in curry sauce with carrots and potatoes, served with white rice."
+    ],
+    "Insalata tiepida di patate, tentacoli di totani e gamberetti*": [
+      "Warm potato salad with squid tentacles and shrimp*",
+      "A warm salad of potatoes, tender squid tentacles and shrimp*."
+    ]
+  },
+  "zh": {
+    "Penne con zucchine, salsiccia e panna": [
+      "西葫芦香肠奶油斜管面",
+      "斜管面搭配西葫芦、香肠和柔滑奶油酱。"
+    ],
+    "Riso saltato speziato con verdure, gamberetti*, pollo e uova": [
+      "香料时蔬虾仁*鸡肉蛋炒饭",
+      "米饭与胡萝卜、西葫芦、豌豆、虾仁*、鸡肉和鸡蛋同炒，以香料调味。"
+    ],
+    "Spaghetti con crema di broccoli, acciughe, pangrattato croccante e limone, leggermente piccanti": [
+      "微辣西兰花酱凤尾鱼意大利面",
+      "意大利面配西兰花酱、凤尾鱼、香脆面包屑和柠檬，略带辣味。"
+    ],
+    "Fusilli con zucchine, branzino e pomodoro": [
+      "西葫芦海鲈鱼番茄螺旋面",
+      "螺旋面搭配西葫芦、海鲈鱼块和番茄。"
+    ],
+    "Pizzaiola di maiale con patate al prezzemolo": [
+      "番茄酱猪肉配欧芹土豆",
+      "番茄酱烩猪肉，配欧芹土豆。"
+    ],
+    "Bocconcini di pollo al curry con carote, patate e riso bianco": [
+      "咖喱鸡块配胡萝卜土豆和白米饭",
+      "咖喱鸡块搭配胡萝卜与土豆，佐白米饭。"
+    ],
+    "Insalata tiepida di patate, tentacoli di totani e gamberetti*": [
+      "温热土豆鱿鱼须虾仁*沙拉",
+      "温热沙拉搭配土豆、鲜嫩鱿鱼须和虾仁*。"
+    ]
+  }
+};
 
   function cleanDescription(text){return (text||'').replace(/\s*\([\d, ]+\)\.?\s*$/,'').trim();}
   function sourceName(article){return (article.querySelector('h3,h2')?.textContent||'').trim();}
