@@ -1,0 +1,13 @@
+{
+  "recoveredAt": "2026-11-25T09:46:33.820Z",
+  "source": "https://countapi.mileshilliard.com/api/v1/get/",
+  "method": "Direct read-only browser requests to original counter keys",
+  "originalValues": {
+    "piol77_controcorrente_visits_6ae6fd00_total": 6162,
+    "piol77_controcorrente_visits_6ae6fd00_day_20261125": 13,
+    "piol77_controcorrente_radio_unique_on_20261105_total": 31
+  },
+  "destination": "Controcorrente Work, cc_counters.totals",
+  "rule": "Original values imported once as legacy_value; new_value preserved and added atomically. No counters reset.",
+  "appearance": "Original Oggi: N · Totale: N label, border, typography and spacing restored from commit 9594bdde3beded2742b84f2534605707fcec8735."
+}

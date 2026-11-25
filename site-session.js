@@ -122,8 +122,8 @@ window.ccReadPublishedJson = (url, validate) => {
       counter.style.cssText = 'display:inline-block;margin-top:8px;padding:6px 12px;border:1px solid var(--gold);border-radius:3px;color:var(--ink);font-size:1rem;line-height:1.5';
       previous.replaceWith(counter);
     }
-    counter.textContent = data ? (data.today_pending ? 'Oggi, dal ripristino: ' : 'Oggi: ') + data.today_hits.toLocaleString('it-IT') +
-      (data.historical_pending ? ' · Storico in recupero · Nuovi accessi: ' : ' · Totale: ') + data.total_hits.toLocaleString('it-IT') :
+    counter.textContent = data && !data.historical_pending && !data.today_pending ? 'Oggi: ' + data.today_hits.toLocaleString('it-IT') +
+      ' · Totale: ' + data.total_hits.toLocaleString('it-IT') :
       failed ? 'Contatore non raggiungibile. Riprova tra poco.' : 'Caricamento contatore…';
   }
   async function request(action, key) {
