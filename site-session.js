@@ -101,7 +101,7 @@ window.ccReadPublishedJson = (url, validate) => {
   document.head.append(navStyle);
 
   // Shared anonymous counts; preserve the original once-per-tab session flag.
-  const API = 'https://countapi.mileshilliard.com/api/v1/';
+  const API = 'https://nchtaewykddmnjolcebs.supabase.co/functions/v1/controcorrente-coperti/counter/';
   const PREFIX = 'piol77_controcorrente_visits_6ae6fd00_';
   const countedKey = 'controcorrente-visitor-counted-v1';
   const valuesKey = 'controcorrente-visitor-values-v1';
@@ -122,8 +122,8 @@ window.ccReadPublishedJson = (url, validate) => {
       counter.style.cssText = 'display:inline-block;margin-top:8px;padding:6px 12px;border:1px solid var(--gold);border-radius:3px;color:var(--ink);font-size:1rem;line-height:1.5';
       previous.replaceWith(counter);
     }
-    counter.textContent = data ? 'Oggi: ' + data.today_hits.toLocaleString('it-IT') +
-      ' · Totale: ' + data.total_hits.toLocaleString('it-IT') :
+    counter.textContent = data ? (data.today_pending ? 'Oggi, dal ripristino: ' : 'Oggi: ') + data.today_hits.toLocaleString('it-IT') +
+      (data.historical_pending ? ' · Storico in recupero · Nuovi accessi: ' : ' · Totale: ') + data.total_hits.toLocaleString('it-IT') :
       failed ? 'Contatore non raggiungibile. Riprova tra poco.' : 'Caricamento contatore…';
   }
   async function request(action, key) {
@@ -131,12 +131,12 @@ window.ccReadPublishedJson = (url, validate) => {
       cache:'no-store', credentials:'omit',
       signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(15000) : undefined
     });
-    if (action === 'get' && response.status === 404 && key.includes('_day_')) return 0;
+    if (action === 'get' && response.status === 404 && key.includes('_day_')) return {value:0,pending:false};
     if (!response.ok) throw new Error('Counter unavailable');
     const json = await response.json();
     const value = Number(json.value);
     if (!Number.isSafeInteger(value) || value < 0) throw new Error('Invalid count');
-    return value;
+    return {value, pending:json.historical_pending === true};
   }
   let pending = false;
   let retryScheduled = false;
@@ -148,13 +148,13 @@ window.ccReadPublishedJson = (url, validate) => {
       const alreadyCounted = get(countedKey) === '1';
       const keys = [PREFIX + 'total', today];
       const values = await Promise.all(keys.map(key => {
-        const attemptedKey = 'cc-visit-attempt-v2-' + key;
+        const attemptedKey = 'cc-visit-attempt-v3-' + key;
         const action = readOnly || alreadyCounted || get(attemptedKey) === '1' ? 'get' : 'hit';
         // Never retry an uncertain increment: recovery only reads the values.
         if (action === 'hit') set(attemptedKey, '1');
         return request(action, key);
       }));
-      const data = {total_hits:values[0], today_hits:values[1]};
+      const data = {total_hits:values[0].value, today_hits:values[1].value, historical_pending:values[0].pending, today_pending:values[1].pending};
       set(countedKey, '1');
       set(valuesKey, JSON.stringify(data));
       show(data);
@@ -179,7 +179,7 @@ window.ccReadPublishedJson = (url, validate) => {
 (() => {
   'use strict';
   const prefix='piol77_controcorrente_radio_unique_on_20261105_';
-  const endpoint='https://countapi.mileshilliard.com/api/v1/';
+  const endpoint='https://nchtaewykddmnjolcebs.supabase.co/functions/v1/controcorrente-coperti/counter/';
   const totalKey=prefix+'total';
   const todayKey=() => {
     const p=new Intl.DateTimeFormat('en-CA',{
@@ -202,22 +202,25 @@ window.ccReadPublishedJson = (url, validate) => {
       cache:'no-store',credentials:'omit',
       signal:typeof AbortSignal!=='undefined'&&AbortSignal.timeout?AbortSignal.timeout(10000):undefined
     });
-    if(action==='get'&&response.status===404)return 0;
+    if(action==='get'&&response.status===404)return {value:0,pending:false};
     if(!response.ok)throw new Error('Radio statistic unavailable');
     const data=await response.json();
     const count=Number(data.value);
     if(!Number.isSafeInteger(count)||count<0)throw new Error('Invalid radio counter');
-    return count;
+    return {value:count,pending:data.historical_pending === true};
   }
-  function render(today,total) {
+  function render(todayResult,totalResult) {
+    const today=todayResult?.value, total=totalResult?.value;
+    const prefix=result=>result?.pending?'≥ ':'';
     if(!stat)return;
     stat.querySelector('[data-radio-click-today]').textContent=
-      Number.isSafeInteger(today)?today.toLocaleString('it-IT'):'–';
+      Number.isSafeInteger(today)?prefix(todayResult)+today.toLocaleString('it-IT'):'–';
     stat.querySelector('[data-radio-click-total]').textContent=
-      Number.isSafeInteger(total)?total.toLocaleString('it-IT'):'–';
+      Number.isSafeInteger(total)?prefix(totalResult)+total.toLocaleString('it-IT'):'–';
     stat.setAttribute('aria-label',
       'Browser che hanno acceso la radio oggi: '+(Number.isSafeInteger(today)?today:'non disponibile')+
-      '. Totale da oggi: '+(Number.isSafeInteger(total)?total:'non disponibile'));
+      '. Totale da oggi: '+(Number.isSafeInteger(total)?total:'non disponibile') + ((todayResult?.pending||totalResult?.pending)?'. Conteggi dal ripristino; storico in recupero.':''));
+    stat.title=(todayResult?.pending||totalResult?.pending)?'Conteggi dal ripristino; storico in recupero':'Accensioni radio per browser: oggi · totale';
   }
   async function refresh() {
     const [today,total]=await Promise.allSettled([
@@ -961,7 +964,7 @@ window.ccReadPublishedJson = (url, validate) => {
 (() => {
   'use strict';
   if (document.querySelector('[data-cc-share-button]')) return;
-  const endpoint = 'https://countapi.mileshilliard.com/api/v1/';
+  const endpoint = 'https://nchtaewykddmnjolcebs.supabase.co/functions/v1/controcorrente-coperti/counter/';
   // New counters: the previous totals counted repeated taps and cannot be repaired retrospectively.
   const clickKey = 'piol77_controcorrente_share_unique_browsers_v2';
   const referralKey = 'piol77_controcorrente_referral_unique_browsers_v2';
@@ -1019,19 +1022,20 @@ window.ccReadPublishedJson = (url, validate) => {
       cache:'no-store',credentials:'omit',
       signal: typeof AbortSignal !== 'undefined' && AbortSignal.timeout ? AbortSignal.timeout(10000) : undefined
     });
-    if (action === 'get' && response.status === 404) return 0;
+    if (action === 'get' && response.status === 404) return {value:0,pending:false};
     if (!response.ok) throw new Error('Counter unavailable');
     const data = await response.json();
     const value = Number(data.value);
     if (!Number.isSafeInteger(value) || value < 0) throw new Error('Invalid counter');
-    return value;
+    return {value,pending:data.historical_pending === true};
   }
   async function refresh() {
     if (!stats || document.hidden) return;
     try {
       const counts = await Promise.all([counter('get',clickKey),counter('get',referralKey)]);
-      stats.textContent = 'Browser che hanno usato Condividi: ' + counts[0].toLocaleString('it-IT') +
-        ' · Browser arrivati da link condivisi: ' + counts[1].toLocaleString('it-IT');
+      stats.textContent = 'Browser che hanno usato Condividi: ' + (counts[0].pending?'≥ ':'') + counts[0].value.toLocaleString('it-IT') +
+        ' · Browser arrivati da link condivisi: ' + (counts[1].pending?'≥ ':'') + counts[1].value.toLocaleString('it-IT') +
+        (counts.some(item=>item.pending)?' · Dal ripristino; storico in recupero.':'');
     } catch (_) {
       stats.textContent = 'Statistiche condivisioni temporaneamente non disponibili';
     }

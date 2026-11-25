@@ -3,7 +3,7 @@
 
   // Il numero e condiviso tra tutti i visitatori, senza dati personali.
   // Una chiave diversa per ogni giorno permette il reset alle 15:00 (Torino).
-  const API = 'https://countapi.mileshilliard.com/api/v1';
+  const API = 'https://nchtaewykddmnjolcebs.supabase.co/functions/v1/controcorrente-coperti/counter';
   const confirmedApi = 'https://nchtaewykddmnjolcebs.supabase.co/functions/v1/controcorrente-coperti';
   // Separate, permanent keys for the Christmas lunch. These never depend on the day.
   // Paolo's first request (8 adults and 4 children) predates this counter.
@@ -60,20 +60,22 @@
             method: 'GET', cache: 'no-store', credentials: 'omit',
             signal: typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(10000) : undefined
           });
-          if (response.status === 404) return entry.initial;
+          if (response.status === 404) return {value:entry.initial,pending:false};
           if (!response.ok) throw new Error('counter temporarily unavailable');
           const data = await response.json();
           const extra = Number(data.value);
           if (!Number.isSafeInteger(extra) || extra < 0) throw new Error('invalid counter');
-          return entry.initial + extra;
+          return {value:entry.initial + extra,pending:data.historical_pending === true};
         } catch (_) { return null; }
       }));
       if (counts.includes(null)) {
         christmasValue.textContent = '—';
         return;
       }
-      christmasValue.textContent = counts[0] + ' adulti · ' + counts[1] + ' bimbi e ragazzi · ' +
-        (counts[0] + counts[1]) + ' persone';
+      const pending=counts.some(item=>item.pending);
+      const numbers=counts.map(item=>item.value);
+      christmasValue.textContent = (pending?'Almeno ':'') + numbers[0] + ' adulti · ' + numbers[1] + ' bimbi e ragazzi · ' +
+        (numbers[0] + numbers[1]) + ' persone' + (pending?' · conteggio precedente in recupero':'');
     }
     window.ccWatchPanel(refreshChristmas, 20000);
   }
