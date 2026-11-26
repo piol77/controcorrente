@@ -181,34 +181,6 @@
           "format": "PNG",
           "note": "Penne con zucca, champignon e salsiccia su piatto avorio e fondo blu marino. Immagine illustrativa, non fotografia del piatto servito."
         }
-      },
-      {
-        "name": "Linguine con crema di finocchi, orata e profumo d’arancia",
-        "price": 12.5,
-        "description": "Linguine con bocconcini di orata e crema di finocchi, al profumo d’arancia.",
-        "allergens": [
-          1,
-          4
-        ],
-        "icon": "Fish",
-        "orderCourse": "Primo",
-        "dishPhoto": "pranzo-assets/20261124-linguine-orata-finocchi-arancia.webp",
-        "translations": {
-          "en": {
-            "name": "Linguine with fennel cream, sea bream and a hint of orange",
-            "description": "Linguine with sea bream pieces, fennel cream and a hint of orange."
-          },
-          "zh": {
-            "name": "茴香酱海鲷橙香扁意面",
-            "description": "扁意面搭配海鲷鱼块、茴香酱和淡淡橙香。"
-          }
-        },
-        "photoSource": {
-          "type": "AI-generated illustrative food image",
-          "date": "2026-11-24",
-          "tool": "image_gen",
-          "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
-        }
       }
     ],
     "secondi": [
@@ -313,32 +285,6 @@
           "date": "2026-11-19",
           "tool": "reused existing asset",
           "note": "Fotografia illustrativa di orata alla griglia con patate al forno."
-        }
-      },
-      {
-        "name": "Involtini di pollo al bacon con gorgonzola su crema di patate",
-        "price": 14,
-        "description": "Involtini di pollo avvolti nel bacon, con un cuore di gorgonzola, serviti su una vellutata crema di patate.",
-        "allergens": [
-          7
-        ],
-        "icon": "Utensils",
-        "orderCourse": "Secondo",
-        "dishPhoto": "cena-assets/involtini-pollo-bacon-gorgonzola-crema-patate-20261111.webp",
-        "translations": {
-          "en": {
-            "name": "Bacon-wrapped chicken roulades with gorgonzola on potato cream",
-            "description": "Bacon-wrapped chicken roulades with a gorgonzola centre, served on smooth potato cream."
-          },
-          "zh": {
-            "name": "培根鸡肉卷配戈贡佐拉奶酪及土豆泥",
-            "description": "培根包裹鸡肉卷，内馅为戈贡佐拉奶酪，佐细滑土豆泥。"
-          }
-        },
-        "photoSource": {
-          "type": "Existing coordinated illustrative food image",
-          "date": "2026-11-11",
-          "note": "Immagine illustrativa già utilizzata per lo stesso piatto."
         }
       }
     ]
@@ -575,52 +521,58 @@
   ],
   "offers": [
     {
-      "name": "Orecchiette fresche con cime di rapa, acciughe e capperi",
+      "name": "Orecchiette fresche con broccoli e pecorino",
       "price": 10,
-      "description": "Orecchiette fresche con cime di rapa, acciughe e capperi.",
+      "description": "Orecchiette fresche condite con broccoli e rifinite con pecorino.",
       "allergens": [
         1,
-        4
-      ],
-      "icon": "Fish",
-      "orderCourse": "Primo",
-      "translations": {
-        "en": {
-          "name": "Fresh orecchiette with turnip greens, anchovies and capers",
-          "description": "Fresh orecchiette with turnip greens, anchovies and capers."
-        },
-        "zh": {
-          "name": "芜菁叶凤尾鱼刺山柑鲜猫耳朵意面",
-          "description": "鲜猫耳朵意面搭配芜菁叶、凤尾鱼和刺山柑。"
-        }
-      }
-    },
-    {
-      "name": "Insalata tiepida di patate, fagiolini, pollo e scaglie di Grana",
-      "price": 10,
-      "description": "Patate e fagiolini tiepidi con pollo e scaglie di Grana.",
-      "allergens": [
         7
       ],
       "icon": "Utensils",
-      "orderCourse": "Piatto unico",
-      "dishPhoto": "pranzo-assets/20261124-insalata-patate-fagiolini-pollo.webp",
+      "orderCourse": "Primo",
+      "dishPhoto": "offerta-assets/20261126-orecchiette-broccoli-pecorino.webp",
       "photoLayout": "side",
       "translations": {
         "en": {
-          "name": "Warm potato, green bean and chicken salad with Grana shavings",
-          "description": "Warm potatoes and green beans with chicken and Grana cheese shavings."
+          "name": "Fresh orecchiette with broccoli and pecorino",
+          "description": "Fresh orecchiette tossed with broccoli and finished with pecorino."
         },
         "zh": {
-          "name": "温土豆四季豆鸡肉沙拉配格拉纳奶酪薄片",
-          "description": "温土豆和四季豆搭配鸡肉及格拉纳奶酪薄片。"
+          "name": "西兰花羊奶酪鲜猫耳朵面",
+          "description": "鲜猫耳朵面拌西兰花，撒上羊奶酪。"
+        }
+      },
+      "photoSource": {
+        "type": "AI-edited illustrative food image",
+        "date": "2026-11-26",
+        "tool": "image_gen",
+        "note": "Immagine coordinata ricavata dal piatto di orecchiette e broccoli, eliminando integralmente la salsiccia. Piatto avorio e fondo blu marino; illustrazione, non fotografia del piatto servito."
+      }
+    },
+    {
+      "name": "Straccetti di maiale con verdure miste in salsa piccante e riso bianco al vapore",
+      "price": 10,
+      "description": "Straccetti di maiale con verdure miste e salsa piccante, accompagnati da riso bianco al vapore.",
+      "allergens": [],
+      "icon": "Utensils",
+      "orderCourse": "Secondo",
+      "dishPhoto": "pranzo-assets/20261126-straccetti-maiale-verdure-piccanti-riso.webp",
+      "photoLayout": "side",
+      "translations": {
+        "en": {
+          "name": "Pork strips with mixed vegetables in spicy sauce and steamed white rice",
+          "description": "Pork strips with mixed vegetables and spicy sauce, served with steamed white rice."
+        },
+        "zh": {
+          "name": "辣汁什锦蔬菜猪肉条配蒸白米饭",
+          "description": "猪肉条搭配什锦蔬菜和辣汁，佐蒸白米饭。"
         }
       },
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-24",
+        "date": "2026-11-26",
         "tool": "image_gen",
-        "note": "Immagine coordinata della serie pranzo: piatto avorio, fondo blu marino e luce laterale morbida. Illustrazione, non fotografia del piatto servito."
+        "note": "Immagine coordinata già utilizzata per lo stesso piatto nel menù pranzo: piatto avorio e fondo blu marino. Illustrazione, non fotografia del piatto servito."
       }
     }
   ],
