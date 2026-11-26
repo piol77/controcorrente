@@ -545,24 +545,24 @@
       }
     },
     {
-      "name": "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico",
+      "name": "Insalatona di finocchi, arancia, bocconcini di salmone fresco e avocado con aceto balsamico",
       "price": 12,
-      "description": "Finocchi, arancia, salmone e avocado conditi con aceto balsamico.",
+      "description": "Finocchi, arancia, bocconcini di salmone fresco e avocado, conditi con aceto balsamico.",
       "allergens": [
         4
       ],
       "icon": "Fish",
       "orderCourse": "Piatto unico",
-      "dishPhoto": "pranzo-assets/20261126-insalata-finocchi-arancia-salmone-avocado.webp",
+      "dishPhoto": "pranzo-assets/20261126-insalatona-finocchi-arancia-bocconcini-salmone-fresco-avocado.webp",
       "photoLayout": "thumbnail",
       "translations": {
         "en": {
-          "name": "Fennel, orange, salmon and avocado salad with balsamic vinegar",
-          "description": "Fennel, orange, salmon and avocado dressed with balsamic vinegar."
+          "name": "Fennel, orange and avocado salad with fresh salmon bites and balsamic vinegar",
+          "description": "Shaved fennel, orange, bite-sized pieces of fresh salmon and avocado dressed with balsamic vinegar."
         },
         "zh": {
-          "name": "茴香橙子三文鱼牛油果沙拉配意式香醋",
-          "description": "茴香、橙子、三文鱼和牛油果拌意式香醋。"
+          "name": "茴香橙子鲜三文鱼块牛油果沙拉配意式香醋",
+          "description": "茴香、橙子、鲜三文鱼块和牛油果拌意式香醋。"
         }
       },
       "photoSource": {

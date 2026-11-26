@@ -34,9 +34,9 @@
       "Chicken breast with pumpkin, Gorgonzola and potatoes",
       "Chicken breast with pumpkin and Gorgonzola, served with potatoes."
     ],
-    "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico": [
-      "Fennel, orange, salmon and avocado salad with balsamic vinegar",
-      "Fennel, orange, salmon and avocado dressed with balsamic vinegar."
+    "Insalatona di finocchi, arancia, bocconcini di salmone fresco e avocado con aceto balsamico": [
+      "Fennel, orange and avocado salad with fresh salmon bites and balsamic vinegar",
+      "Shaved fennel, orange, bite-sized pieces of fresh salmon and avocado dressed with balsamic vinegar."
     ]
   },
   "zh": {
@@ -68,9 +68,9 @@
       "南瓜戈贡佐拉奶酪鸡胸配土豆",
       "鸡胸肉搭配南瓜和戈贡佐拉奶酪，佐土豆。"
     ],
-    "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico": [
-      "茴香橙子三文鱼牛油果沙拉配意式香醋",
-      "茴香、橙子、三文鱼和牛油果拌意式香醋。"
+    "Insalatona di finocchi, arancia, bocconcini di salmone fresco e avocado con aceto balsamico": [
+      "茴香橙子鲜三文鱼块牛油果沙拉配意式香醋",
+      "茴香、橙子、鲜三文鱼块和牛油果拌意式香醋。"
     ]
   }
 };
