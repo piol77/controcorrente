@@ -6,63 +6,71 @@
 
   const LUNCH={
   "en": {
-    "Penne con zucchine, salsiccia e panna": [
-      "Penne with courgettes, sausage and cream",
-      "Penne with courgettes and sausage in a creamy sauce."
+    "Orecchiette con broccoli, salsiccia e pecorino": [
+      "Orecchiette with broccoli, sausage and pecorino",
+      "Orecchiette tossed with broccoli and sausage, finished with pecorino."
     ],
-    "Riso saltato speziato con verdure, gamberetti*, pollo e uova": [
-      "Spiced stir-fried rice with vegetables, shrimp*, chicken and eggs",
-      "Stir-fried rice with carrots, courgettes, peas, shrimp*, chicken, eggs and spices."
+    "Udon con verdure, gamberetti* e pollo": [
+      "Udon with vegetables, shrimp* and chicken",
+      "Udon noodles with shrimp*, chicken, carrots, courgettes and savoy cabbage."
     ],
-    "Spaghetti con crema di broccoli, acciughe, pangrattato croccante e limone, leggermente piccanti": [
-      "Slightly spicy spaghetti with broccoli cream, anchovies, crunchy breadcrumbs and lemon",
-      "Broccoli cream and anchovies, topped with crunchy breadcrumbs, lemon and a gentle spicy note."
+    "Calamarata al sugo di orata, leggermente piccante": [
+      "Calamarata with a mildly spicy sea bream sauce",
+      "Ring-shaped pasta with sea bream sauce and a gentle kick."
     ],
-    "Fusilli con zucchine, branzino e pomodoro": [
-      "Fusilli with courgettes, sea bass and tomato",
-      "Fusilli with courgettes, pieces of sea bass and tomato."
+    "Tagliatelle con salmone fresco e porri": [
+      "Tagliatelle with fresh salmon and leeks",
+      "Tagliatelle tossed with fresh salmon and leeks."
     ],
-    "Pizzaiola di maiale con patate al prezzemolo": [
-      "Pork pizzaiola with parsley potatoes",
-      "Pork in pizzaiola tomato sauce, served with parsley potatoes."
+    "Insalata tiepida di totano gigante, gamberetti* e patate al limone": [
+      "Warm salad with giant squid, shrimp* and lemon-dressed potatoes",
+      "Giant squid, shrimp* and potatoes, served warm with a lemon dressing."
     ],
-    "Bocconcini di pollo al curry con carote, patate e riso bianco": [
-      "Chicken curry bites with carrots, potatoes and white rice",
-      "Chicken bites in curry sauce with carrots and potatoes, served with white rice."
+    "Straccetti di maiale con verdure in salsa piccante e riso bianco": [
+      "Pork strips and vegetables in spicy sauce with white rice",
+      "Pork strips and vegetables in a spicy sauce, served with white rice."
     ],
-    "Insalata tiepida di patate, tentacoli di totani e gamberetti*": [
-      "Warm potato salad with squid tentacles and shrimp*",
-      "A warm salad of potatoes, tender squid tentacles and shrimp*."
+    "Petto di pollo con zucca, gorgonzola e patate": [
+      "Chicken breast with pumpkin, Gorgonzola and potatoes",
+      "Chicken breast with pumpkin and Gorgonzola, served with potatoes."
+    ],
+    "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico": [
+      "Fennel, orange, salmon and avocado salad with balsamic vinegar",
+      "Fennel, orange, salmon and avocado dressed with balsamic vinegar."
     ]
   },
   "zh": {
-    "Penne con zucchine, salsiccia e panna": [
-      "西葫芦香肠奶油斜管面",
-      "斜管面搭配西葫芦、香肠和柔滑奶油酱。"
+    "Orecchiette con broccoli, salsiccia e pecorino": [
+      "西兰花香肠羊奶酪猫耳面",
+      "猫耳面拌西兰花和香肠，撒上羊奶酪。"
     ],
-    "Riso saltato speziato con verdure, gamberetti*, pollo e uova": [
-      "香料时蔬虾仁*鸡肉蛋炒饭",
-      "米饭与胡萝卜、西葫芦、豌豆、虾仁*、鸡肉和鸡蛋同炒，以香料调味。"
+    "Udon con verdure, gamberetti* e pollo": [
+      "时蔬虾仁*鸡肉乌冬面",
+      "乌冬面搭配虾仁*、鸡肉、胡萝卜、西葫芦和皱叶甘蓝。"
     ],
-    "Spaghetti con crema di broccoli, acciughe, pangrattato croccante e limone, leggermente piccanti": [
-      "微辣西兰花酱凤尾鱼意大利面",
-      "意大利面配西兰花酱、凤尾鱼、香脆面包屑和柠檬，略带辣味。"
+    "Calamarata al sugo di orata, leggermente piccante": [
+      "微辣鲷鱼酱环形意面",
+      "环形意面搭配微辣鲷鱼酱。"
     ],
-    "Fusilli con zucchine, branzino e pomodoro": [
-      "西葫芦海鲈鱼番茄螺旋面",
-      "螺旋面搭配西葫芦、海鲈鱼块和番茄。"
+    "Tagliatelle con salmone fresco e porri": [
+      "鲜三文鱼韭葱宽面",
+      "宽面搭配鲜三文鱼和韭葱。"
     ],
-    "Pizzaiola di maiale con patate al prezzemolo": [
-      "番茄酱猪肉配欧芹土豆",
-      "番茄酱烩猪肉，配欧芹土豆。"
+    "Insalata tiepida di totano gigante, gamberetti* e patate al limone": [
+      "柠檬大鱿鱼虾仁*土豆温沙拉",
+      "大鱿鱼、虾仁*和土豆拌柠檬调味，温热上桌。"
     ],
-    "Bocconcini di pollo al curry con carote, patate e riso bianco": [
-      "咖喱鸡块配胡萝卜土豆和白米饭",
-      "咖喱鸡块搭配胡萝卜与土豆，佐白米饭。"
+    "Straccetti di maiale con verdure in salsa piccante e riso bianco": [
+      "辣汁蔬菜猪肉条配白米饭",
+      "猪肉条和蔬菜裹上辣汁，佐白米饭。"
     ],
-    "Insalata tiepida di patate, tentacoli di totani e gamberetti*": [
-      "温热土豆鱿鱼须虾仁*沙拉",
-      "温热沙拉搭配土豆、鲜嫩鱿鱼须和虾仁*。"
+    "Petto di pollo con zucca, gorgonzola e patate": [
+      "南瓜戈贡佐拉奶酪鸡胸配土豆",
+      "鸡胸肉搭配南瓜和戈贡佐拉奶酪，佐土豆。"
+    ],
+    "Insalata di finocchi, arancia, salmone e avocado con aceto balsamico": [
+      "茴香橙子三文鱼牛油果沙拉配意式香醋",
+      "茴香、橙子、三文鱼和牛油果拌意式香醋。"
     ]
   }
 };
