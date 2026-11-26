@@ -107,6 +107,34 @@
           "tool": "image_gen",
           "note": "Existing illustrative photograph edited to show a more generous portion on absorbent paper with a lemon slice."
         }
+      },
+      {
+        "name": "Insalata di tentacoli di totano gigante, gamberetti* e patate",
+        "price": 12,
+        "description": "Tentacoli di totano gigante, gamberetti* e patate, serviti in insalata.",
+        "allergens": [
+          2,
+          14
+        ],
+        "icon": "Shell",
+        "orderCourse": "Antipasto",
+        "dishPhoto": "pranzo-assets/20261126-insalata-tiepida-totano-gamberetti-patate.webp",
+        "translations": {
+          "en": {
+            "name": "Giant squid tentacle, shrimp* and potato salad",
+            "description": "Giant squid tentacles, shrimp* and potatoes served as a salad."
+          },
+          "zh": {
+            "name": "大鱿鱼须虾仁*土豆沙拉",
+            "description": "大鱿鱼须、虾仁*和土豆制成的沙拉。"
+          }
+        },
+        "photoSource": {
+          "type": "Reused coordinated illustrative food image",
+          "date": "2026-11-26",
+          "tool": "reused existing asset",
+          "note": "Immagine illustrativa già approvata per il piatto con totano gigante, gamberetti e patate, su piatto avorio e fondo blu marino."
+        }
       }
     ],
     "primi": [
