@@ -4,28 +4,9 @@
   "location": "Torino · zona San Paolo",
   "latitude": 45.0641,
   "longitude": 7.6525,
-  "fetched_at": "2026-11-26T22:28:21+00:00",
-  "provider_updated_at": "2026-11-26T19:17:27+00:00",
+  "fetched_at": "2026-11-27T15:24:37+00:00",
+  "provider_updated_at": "2026-11-27T13:16:51+00:00",
   "days": [
-    {
-      "date": "2026-11-26",
-      "lunch": {
-        "condition": "Coperto",
-        "icon": "☁",
-        "min_c": 8,
-        "max_c": 8,
-        "precipitation_mm": 0.0,
-        "forecast_at": "2026-11-25T19:28:44+00:00"
-      },
-      "dinner": {
-        "condition": "Nebbia",
-        "icon": "🌫",
-        "min_c": 3,
-        "max_c": 5,
-        "precipitation_mm": 0.0,
-        "forecast_at": "2026-11-26T12:56:23+00:00"
-      }
-    },
     {
       "date": "2026-11-27",
       "lunch": {
@@ -33,12 +14,13 @@
         "icon": "🌫",
         "min_c": 6,
         "max_c": 7,
-        "precipitation_mm": 0.0
+        "precipitation_mm": 0.0,
+        "forecast_at": "2026-11-26T22:28:21+00:00"
       },
       "dinner": {
         "condition": "Coperto",
         "icon": "☁",
-        "min_c": 4,
+        "min_c": 5,
         "max_c": 5,
         "precipitation_mm": 0.0
       }
@@ -49,13 +31,30 @@
         "condition": "Sereno",
         "icon": "☀",
         "min_c": 8,
-        "max_c": 10,
+        "max_c": 9,
         "precipitation_mm": 0.0
       },
       "dinner": {
-        "condition": "Sereno",
-        "icon": "☾",
-        "min_c": 2,
+        "condition": "Parzialmente nuvoloso",
+        "icon": "⛅",
+        "min_c": 4,
+        "max_c": 4,
+        "precipitation_mm": 0.0
+      }
+    },
+    {
+      "date": "2026-11-29",
+      "lunch": {
+        "condition": "Parzialmente nuvoloso",
+        "icon": "⛅",
+        "min_c": 6,
+        "max_c": 8,
+        "precipitation_mm": 0.0
+      },
+      "dinner": {
+        "condition": "Coperto",
+        "icon": "☁",
+        "min_c": 3,
         "max_c": 4,
         "precipitation_mm": 0.0
       }
