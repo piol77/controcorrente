@@ -135,6 +135,33 @@
           "tool": "reused existing asset",
           "note": "Immagine illustrativa già approvata per il piatto con totano gigante, gamberetti e patate, su piatto avorio e fondo blu marino."
         }
+      },
+      {
+        "name": "Cozze di Sardegna alla marinara con poco pomodoro",
+        "price": 10,
+        "description": "Cozze di Sardegna alla marinara, con un tocco di pomodoro.",
+        "allergens": [
+          14
+        ],
+        "icon": "Shell",
+        "orderCourse": "Antipasto",
+        "translations": {
+          "en": {
+            "name": "Sardinian mussels marinara with a little tomato",
+            "description": "Sardinian mussels cooked marinara-style with a touch of tomato."
+          },
+          "zh": {
+            "name": "少许番茄的撒丁岛贻贝",
+            "description": "撒丁岛贻贝以意式海员风味烹调，加入少许番茄。"
+          }
+        },
+        "dishPhoto": "cena-assets/20261127-cozze-sardegna-marinara.webp",
+        "photoSource": {
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-27",
+          "tool": "image_gen",
+          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
+        }
       }
     ],
     "primi": [
@@ -152,7 +179,7 @@
       },
       {
         "name": "Tagliatelle con carciofi e orata",
-        "price": 15,
+        "price": 14,
         "description": "Tagliatelle all’uovo con carciofi e filetti di orata.",
         "allergens": [
           1,
@@ -182,32 +209,118 @@
         }
       },
       {
-        "name": "Penne con zucca, funghi champignon e salsiccia",
-        "price": 10,
-        "description": "Penne con zucca, funghi champignon e salsiccia.",
+        "name": "Paccheri al salmone fresco con crema di finocchi al profumo d’arancia",
+        "price": 13,
+        "description": "Paccheri con bocconcini di salmone fresco e crema di finocchi profumata all’arancia.",
         "allergens": [
-          1
+          1,
+          4
+        ],
+        "icon": "Fish",
+        "orderCourse": "Primo",
+        "translations": {
+          "en": {
+            "name": "Paccheri with fresh salmon and orange-scented fennel cream",
+            "description": "Wide pasta tubes with bites of fresh salmon in an orange-scented fennel cream."
+          },
+          "zh": {
+            "name": "鲜三文鱼橙香茴香宽管面",
+            "description": "宽管面搭配鲜三文鱼块和带有橙香的茴香泥。"
+          }
+        },
+        "dishPhoto": "cena-assets/20261127-paccheri-salmone-finocchi-arancia.webp",
+        "photoSource": {
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-27",
+          "tool": "image_gen",
+          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
+        }
+      },
+      {
+        "name": "Orecchiette con crema di cime di rapa, guanciale croccante e Parmigiano",
+        "price": 12,
+        "description": "Orecchiette avvolte in crema di cime di rapa, con guanciale croccante e Parmigiano.",
+        "allergens": [
+          1,
+          7
         ],
         "icon": "Utensils",
         "orderCourse": "Primo",
         "translations": {
           "en": {
-            "name": "Penne with pumpkin, button mushrooms and sausage",
-            "description": "Penne with pumpkin, button mushrooms and Italian sausage."
+            "name": "Orecchiette with turnip-top cream, crisp guanciale and Parmigiano",
+            "description": "Orecchiette coated in turnip-top cream, with crisp cured pork jowl and Parmigiano."
           },
           "zh": {
-            "name": "南瓜蘑菇香肠斜管面",
-            "description": "斜管面搭配南瓜、白蘑菇和意式香肠。"
+            "name": "芜菁叶脆猪颊肉帕玛森猫耳面",
+            "description": "猫耳面拌芜菁叶浓浆，配酥脆腌猪颊肉和帕玛森奶酪。"
           }
         },
-        "dishPhoto": "cena-assets/penne-zucca-champignon-salsiccia-20261124.png",
+        "dishPhoto": "cena-assets/20261127-orecchiette-cime-rapa-guanciale-parmigiano.webp",
         "photoSource": {
           "type": "AI-generated illustrative food image",
-          "date": "2026-11-24",
+          "date": "2026-11-27",
           "tool": "image_gen",
-          "resolution": "1536 × 1024 px",
-          "format": "PNG",
-          "note": "Penne con zucca, champignon e salsiccia su piatto avorio e fondo blu marino. Immagine illustrativa, non fotografia del piatto servito."
+          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
+        }
+      },
+      {
+        "name": "Spaghetti con crema di broccoli, stracciatella e mandorle",
+        "price": 11,
+        "description": "Spaghetti avvolti in crema di broccoli, con stracciatella e mandorle.",
+        "allergens": [
+          1,
+          7,
+          8
+        ],
+        "icon": "Utensils",
+        "orderCourse": "Primo",
+        "translations": {
+          "en": {
+            "name": "Spaghetti with broccoli cream, stracciatella and almonds",
+            "description": "Spaghetti coated in broccoli cream, with stracciatella cheese and almonds."
+          },
+          "zh": {
+            "name": "西兰花奶酪杏仁意大利细面",
+            "description": "意大利细面拌西兰花泥，搭配斯特拉恰泰拉奶酪和杏仁。"
+          }
+        },
+        "dishPhoto": "cena-assets/20261127-spaghetti-broccoli-stracciatella-mandorle.webp",
+        "photoSource": {
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-27",
+          "tool": "image_gen",
+          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
+        }
+      },
+      {
+        "name": "Linguine con gamberetti*, burrata e granella di pistacchi",
+        "price": 13,
+        "description": "Linguine con gamberetti* e burrata cremosa, rifinite con granella di pistacchi.",
+        "allergens": [
+          1,
+          2,
+          7,
+          8
+        ],
+        "icon": "Shrimp",
+        "orderCourse": "Primo",
+        "translations": {
+          "en": {
+            "name": "Linguine with shrimp*, burrata and chopped pistachios",
+            "description": "Linguine with shrimp* and creamy burrata, finished with chopped pistachios."
+          },
+          "zh": {
+            "name": "虾仁*布拉塔奶酪开心果扁意面",
+            "description": "扁意面搭配虾仁*和绵滑的布拉塔奶酪，撒上开心果碎。"
+          }
+        },
+        "dishPhoto": "cena-assets/20261127-linguine-gamberetti-burrata-pistacchi.webp",
+        "photoSource": {
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-27",
+          "tool": "image_gen",
+          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
         }
       }
     ],
@@ -252,30 +365,30 @@
         }
       },
       {
-        "name": "Filetti di branzino in crosta di mandorle con broccoli saltati",
+        "name": "Filetti di branzino in crosta di mandorle con verza e carote saltate",
         "price": 14,
-        "description": "Filetti di branzino in crosta croccante di mandorle, serviti con broccoli saltati.",
+        "description": "Filetti di branzino in crosta croccante di mandorle, serviti con verza e carote saltate.",
         "allergens": [
           4,
           8
         ],
         "icon": "Fish",
-        "dishPhoto": "cena-assets/branzino-mandorle-broccoli-20261120.webp",
+        "dishPhoto": "cena-assets/20261127-branzino-mandorle-verza-carote.webp",
         "translations": {
           "en": {
-            "name": "Almond-crusted sea bass fillets with sautéed broccoli",
-            "description": "Sea bass fillets with a crisp almond crust, served with sautéed broccoli."
+            "name": "Almond-crusted sea bass fillets with sautéed savoy cabbage and carrots",
+            "description": "Sea bass fillets with a crisp almond crust, served with sautéed savoy cabbage and carrots."
           },
           "zh": {
-            "name": "杏仁脆皮海鲈鱼柳配炒西兰花",
-            "description": "香脆杏仁裹烤海鲈鱼柳，配炒西兰花。"
+            "name": "杏仁脆皮海鲈鱼柳配炒皱叶甘蓝和胡萝卜",
+            "description": "香脆杏仁裹烤海鲈鱼柳，搭配清炒皱叶甘蓝和胡萝卜。"
           }
         },
         "photoSource": {
-          "type": "AI-generated illustrative image",
-          "date": "2026-11-20",
+          "type": "AI-edited illustrative food image",
+          "date": "2026-11-27",
           "tool": "image_gen",
-          "note": "Approved sea bass illustration edited to replace purple cabbage with sautéed broccoli."
+          "note": "Modificato il contorno nella foto illustrativa esistente: verza e carote saltate."
         }
       },
       {
@@ -290,7 +403,7 @@
       },
       {
         "name": "Orata alla griglia con patate al forno",
-        "price": 14,
+        "price": 15,
         "description": "Orata alla griglia, accompagnata da patate dorate al forno.",
         "allergens": [
           4
@@ -313,6 +426,59 @@
           "date": "2026-11-19",
           "tool": "reused existing asset",
           "note": "Fotografia illustrativa di orata alla griglia con patate al forno."
+        }
+      },
+      {
+        "name": "Bistecca di vitello alla griglia con patate al forno",
+        "price": 18,
+        "description": "Bistecca di vitello alla griglia, servita con patate dorate al forno.",
+        "allergens": [],
+        "icon": "Utensils",
+        "orderCourse": "Secondo",
+        "translations": {
+          "en": {
+            "name": "Grilled veal steak with roasted potatoes",
+            "description": "Grilled veal steak served with golden oven-roasted potatoes."
+          },
+          "zh": {
+            "name": "烤小牛排配烤土豆",
+            "description": "炭烤小牛排搭配金黄烤土豆。"
+          }
+        },
+        "dishPhoto": "cena-assets/20261127-bistecca-vitello-patate.webp",
+        "photoSource": {
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-27",
+          "tool": "image_gen",
+          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
+        }
+      },
+      {
+        "name": "Salmone in crosta di sesamo con fagioli saltati",
+        "price": 14,
+        "description": "Salmone in crosta croccante di sesamo, accompagnato da fagioli saltati.",
+        "allergens": [
+          4,
+          11
+        ],
+        "icon": "Fish",
+        "orderCourse": "Secondo",
+        "translations": {
+          "en": {
+            "name": "Sesame-crusted salmon with sautéed beans",
+            "description": "Salmon with a crisp sesame crust, served with sautéed beans."
+          },
+          "zh": {
+            "name": "芝麻脆皮三文鱼配炒豆",
+            "description": "三文鱼裹香脆芝麻，搭配炒豆。"
+          }
+        },
+        "dishPhoto": "cena-assets/20261127-salmone-sesamo-fagioli.webp",
+        "photoSource": {
+          "type": "AI-generated illustrative food image",
+          "date": "2026-11-27",
+          "tool": "image_gen",
+          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
         }
       }
     ]
@@ -579,59 +745,34 @@
   ],
   "offers": [
     {
-      "name": "Orecchiette fresche con broccoli e pecorino",
-      "price": 10,
-      "description": "Orecchiette fresche condite con broccoli e rifinite con pecorino.",
+      "name": "Spaghetti con crema di broccoli, stracciatella e mandorle",
+      "price": 12,
+      "description": "Spaghetti avvolti in crema di broccoli, con stracciatella e mandorle.",
       "allergens": [
         1,
-        7
+        7,
+        8
       ],
       "icon": "Utensils",
       "orderCourse": "Primo",
-      "dishPhoto": "offerta-assets/20261126-orecchiette-broccoli-pecorino.webp",
-      "photoLayout": "side",
       "translations": {
         "en": {
-          "name": "Fresh orecchiette with broccoli and pecorino",
-          "description": "Fresh orecchiette tossed with broccoli and finished with pecorino."
+          "name": "Spaghetti with broccoli cream, stracciatella and almonds",
+          "description": "Spaghetti coated in broccoli cream, with stracciatella cheese and almonds."
         },
         "zh": {
-          "name": "西兰花羊奶酪鲜猫耳朵面",
-          "description": "鲜猫耳朵面拌西兰花，撒上羊奶酪。"
+          "name": "西兰花奶酪杏仁意大利细面",
+          "description": "意大利细面拌西兰花泥，搭配斯特拉恰泰拉奶酪和杏仁。"
         }
       },
-      "photoSource": {
-        "type": "AI-edited illustrative food image",
-        "date": "2026-11-26",
-        "tool": "image_gen",
-        "note": "Immagine coordinata ricavata dal piatto di orecchiette e broccoli, eliminando integralmente la salsiccia. Piatto avorio e fondo blu marino; illustrazione, non fotografia del piatto servito."
-      }
-    },
-    {
-      "name": "Straccetti di maiale con verdure miste in salsa piccante e riso bianco al vapore",
-      "price": 10,
-      "description": "Straccetti di maiale con verdure miste e salsa piccante, accompagnati da riso bianco al vapore.",
-      "allergens": [],
-      "icon": "Utensils",
-      "orderCourse": "Secondo",
-      "dishPhoto": "pranzo-assets/20261126-straccetti-maiale-verdure-piccanti-riso.webp",
-      "photoLayout": "side",
-      "translations": {
-        "en": {
-          "name": "Pork strips with mixed vegetables in spicy sauce and steamed white rice",
-          "description": "Pork strips with mixed vegetables and spicy sauce, served with steamed white rice."
-        },
-        "zh": {
-          "name": "辣汁什锦蔬菜猪肉条配蒸白米饭",
-          "description": "猪肉条搭配什锦蔬菜和辣汁，佐蒸白米饭。"
-        }
-      },
+      "dishPhoto": "cena-assets/20261127-spaghetti-broccoli-stracciatella-mandorle.webp",
       "photoSource": {
         "type": "AI-generated illustrative food image",
-        "date": "2026-11-26",
+        "date": "2026-11-27",
         "tool": "image_gen",
-        "note": "Immagine coordinata già utilizzata per lo stesso piatto nel menù pranzo: piatto avorio e fondo blu marino. Illustrazione, non fotografia del piatto servito."
-      }
+        "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
+      },
+      "photoLayout": "side"
     }
   ],
   "fixed": {
