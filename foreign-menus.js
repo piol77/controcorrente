@@ -6,33 +6,37 @@
 
   const LUNCH={
   "en": {
-    "Orecchiette con broccoli, salsiccia e pecorino": [
-      "Orecchiette with broccoli, sausage and pecorino",
-      "Orecchiette tossed with broccoli and sausage, finished with pecorino."
+    "Spaghetti con porri, salsiccia e poca panna": [
+      "Spaghetti with leeks, sausage and a touch of cream",
+      "Spaghetti with leeks and sausage, lightly finished with cream."
     ],
-    "Udon con verdure, gamberetti* e pollo": [
-      "Udon with vegetables, shrimp* and chicken",
-      "Udon noodles with shrimp*, chicken, carrots, courgettes and savoy cabbage."
+    "Casarecce con orata, patate e zafferano": [
+      "Casarecce with sea bream, potatoes and saffron",
+      "Casarecce pasta with sea bream and potatoes, delicately scented with saffron."
     ],
-    "Calamarata al sugo di orata, leggermente piccante": [
-      "Calamarata with a mildly spicy sea bream sauce",
-      "Ring-shaped pasta with sea bream sauce and a gentle kick."
+    "Linguine ai frutti di mare con poco pomodoro": [
+      "Seafood linguine with a little tomato",
+      "Linguine with shrimp*, king prawns*, clams and mussels, with a touch of tomato."
     ],
-    "Tagliatelle con salmone fresco e porri": [
-      "Tagliatelle with fresh salmon and leeks",
-      "Tagliatelle tossed with fresh salmon and leeks."
+    "Fusilli con crema di broccoli, stracciatella e mandorle": [
+      "Fusilli with broccoli cream, stracciatella and almonds",
+      "Fusilli coated in broccoli cream, with stracciatella cheese and almonds."
     ],
-    "Insalata tiepida di totano gigante, gamberetti* e patate al limone": [
-      "Warm salad with giant squid, shrimp* and lemon-dressed potatoes",
-      "Giant squid, shrimp* and potatoes, served warm with a lemon dressing."
+    "Orata alla griglia con verza e carote saltate": [
+      "Grilled sea bream with sautéed savoy cabbage and carrots",
+      "Grilled sea bream served with sautéed savoy cabbage and carrots."
     ],
-    "Straccetti di maiale con verdure in salsa piccante e riso bianco": [
-      "Pork strips and vegetables in spicy sauce with white rice",
-      "Pork strips and vegetables in a spicy sauce, served with white rice."
+    "Salmone alla griglia con verza e carote saltate": [
+      "Grilled salmon with sautéed savoy cabbage and carrots",
+      "Grilled salmon served with sautéed savoy cabbage and carrots."
     ],
-    "Petto di pollo con zucca, gorgonzola e patate": [
-      "Chicken breast with pumpkin, Gorgonzola and potatoes",
-      "Chicken breast with pumpkin and Gorgonzola, served with potatoes."
+    "Branzino alla griglia con verza e carote saltate": [
+      "Grilled sea bass with sautéed savoy cabbage and carrots",
+      "Grilled sea bass served with sautéed savoy cabbage and carrots."
+    ],
+    "Scaloppine di pollo al Marsala con patate al prezzemolo": [
+      "Chicken escalopes with Marsala and parsley potatoes",
+      "Chicken escalopes in Marsala sauce, served with parsley potatoes."
     ],
     "Insalatona di finocchi, arancia, bocconcini di salmone fresco e avocado con aceto balsamico": [
       "Fennel, orange and avocado salad with fresh salmon bites and balsamic vinegar",
@@ -40,33 +44,37 @@
     ]
   },
   "zh": {
-    "Orecchiette con broccoli, salsiccia e pecorino": [
-      "西兰花香肠羊奶酪猫耳面",
-      "猫耳面拌西兰花和香肠，撒上羊奶酪。"
+    "Spaghetti con porri, salsiccia e poca panna": [
+      "韭葱香肠意大利细面配少许奶油",
+      "意大利细面搭配韭葱和香肠，以少许奶油拌匀。"
     ],
-    "Udon con verdure, gamberetti* e pollo": [
-      "时蔬虾仁*鸡肉乌冬面",
-      "乌冬面搭配虾仁*、鸡肉、胡萝卜、西葫芦和皱叶甘蓝。"
+    "Casarecce con orata, patate e zafferano": [
+      "藏红花鲷鱼土豆短卷面",
+      "短卷面搭配鲷鱼和土豆，带有藏红花的清香。"
     ],
-    "Calamarata al sugo di orata, leggermente piccante": [
-      "微辣鲷鱼酱环形意面",
-      "环形意面搭配微辣鲷鱼酱。"
+    "Linguine ai frutti di mare con poco pomodoro": [
+      "少许番茄海鲜扁意面",
+      "扁意面搭配虾仁*、大虾*、蛤蜊和贻贝，佐少许番茄。"
     ],
-    "Tagliatelle con salmone fresco e porri": [
-      "鲜三文鱼韭葱宽面",
-      "宽面搭配鲜三文鱼和韭葱。"
+    "Fusilli con crema di broccoli, stracciatella e mandorle": [
+      "西兰花奶酪杏仁螺旋面",
+      "螺旋面裹上西兰花泥，搭配斯特拉恰泰拉奶酪和杏仁。"
     ],
-    "Insalata tiepida di totano gigante, gamberetti* e patate al limone": [
-      "柠檬大鱿鱼虾仁*土豆温沙拉",
-      "大鱿鱼、虾仁*和土豆拌柠檬调味，温热上桌。"
+    "Orata alla griglia con verza e carote saltate": [
+      "烤鲷鱼配炒皱叶甘蓝和胡萝卜",
+      "烤鲷鱼，搭配清炒皱叶甘蓝和胡萝卜。"
     ],
-    "Straccetti di maiale con verdure in salsa piccante e riso bianco": [
-      "辣汁蔬菜猪肉条配白米饭",
-      "猪肉条和蔬菜裹上辣汁，佐白米饭。"
+    "Salmone alla griglia con verza e carote saltate": [
+      "烤三文鱼配炒皱叶甘蓝和胡萝卜",
+      "烤三文鱼，搭配清炒皱叶甘蓝和胡萝卜。"
     ],
-    "Petto di pollo con zucca, gorgonzola e patate": [
-      "南瓜戈贡佐拉奶酪鸡胸配土豆",
-      "鸡胸肉搭配南瓜和戈贡佐拉奶酪，佐土豆。"
+    "Branzino alla griglia con verza e carote saltate": [
+      "烤海鲈鱼配炒皱叶甘蓝和胡萝卜",
+      "烤海鲈鱼，搭配清炒皱叶甘蓝和胡萝卜。"
+    ],
+    "Scaloppine di pollo al Marsala con patate al prezzemolo": [
+      "马沙拉酒汁鸡肉薄片配欧芹土豆",
+      "鸡肉薄片佐马沙拉酒汁，搭配欧芹土豆。"
     ],
     "Insalatona di finocchi, arancia, bocconcini di salmone fresco e avocado con aceto balsamico": [
       "茴香橙子鲜三文鱼块牛油果沙拉配意式香醋",
