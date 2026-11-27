@@ -265,35 +265,6 @@
         }
       },
       {
-        "name": "Spaghetti con crema di broccoli, stracciatella e mandorle",
-        "price": 11,
-        "description": "Spaghetti avvolti in crema di broccoli, con stracciatella e mandorle.",
-        "allergens": [
-          1,
-          7,
-          8
-        ],
-        "icon": "Utensils",
-        "orderCourse": "Primo",
-        "translations": {
-          "en": {
-            "name": "Spaghetti with broccoli cream, stracciatella and almonds",
-            "description": "Spaghetti coated in broccoli cream, with stracciatella cheese and almonds."
-          },
-          "zh": {
-            "name": "西兰花奶酪杏仁意大利细面",
-            "description": "意大利细面拌西兰花泥，搭配斯特拉恰泰拉奶酪和杏仁。"
-          }
-        },
-        "dishPhoto": "cena-assets/20261127-spaghetti-broccoli-stracciatella-mandorle.webp",
-        "photoSource": {
-          "type": "AI-generated illustrative food image",
-          "date": "2026-11-27",
-          "tool": "image_gen",
-          "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
-        }
-      },
-      {
         "name": "Linguine con gamberetti*, burrata e granella di pistacchi",
         "price": 13,
         "description": "Linguine con gamberetti* e burrata cremosa, rifinite con granella di pistacchi.",
