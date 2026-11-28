@@ -425,9 +425,9 @@
         }
       },
       {
-        "name": "Salmone in crosta di sesamo con fagioli saltati",
+        "name": "Salmone in crosta di sesamo con fagiolini saltati",
         "price": 14,
-        "description": "Salmone in crosta croccante di sesamo, accompagnato da fagioli saltati.",
+        "description": "Salmone in crosta croccante di sesamo, accompagnato da fagiolini saltati.",
         "allergens": [
           4,
           11
@@ -436,18 +436,18 @@
         "orderCourse": "Secondo",
         "translations": {
           "en": {
-            "name": "Sesame-crusted salmon with sautéed beans",
-            "description": "Salmon with a crisp sesame crust, served with sautéed beans."
+            "name": "Sesame-crusted salmon with sautéed green beans",
+            "description": "Salmon with a crisp sesame crust, served with sautéed green beans."
           },
           "zh": {
-            "name": "芝麻脆皮三文鱼配炒豆",
-            "description": "三文鱼裹香脆芝麻，搭配炒豆。"
+            "name": "芝麻脆皮三文鱼配炒四季豆",
+            "description": "三文鱼裹香脆芝麻，搭配炒四季豆。"
           }
         },
-        "dishPhoto": "cena-assets/20261127-salmone-sesamo-fagioli.webp",
+        "dishPhoto": "cena-assets/20261128-salmone-sesamo-fagiolini.png",
         "photoSource": {
           "type": "AI-generated illustrative food image",
-          "date": "2026-11-27",
+          "date": "2026-11-28",
           "tool": "image_gen",
           "note": "Immagine illustrativa appositamente generata: piatto avorio, fondo blu marino e luce coordinata al menù."
         }
