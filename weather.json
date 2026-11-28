@@ -4,8 +4,8 @@
   "location": "Torino · zona San Paolo",
   "latitude": 45.0641,
   "longitude": 7.6525,
-  "fetched_at": "2026-11-28T08:12:00+00:00",
-  "provider_updated_at": "2026-11-28T07:16:31+00:00",
+  "fetched_at": "2026-11-28T17:02:02+00:00",
+  "provider_updated_at": "2026-11-28T13:16:35+00:00",
   "days": [
     {
       "date": "2026-11-28",
@@ -14,7 +14,8 @@
         "icon": "☀",
         "min_c": 8,
         "max_c": 10,
-        "precipitation_mm": 0.0
+        "precipitation_mm": 0.0,
+        "forecast_at": "2026-11-28T08:12:00+00:00"
       },
       "dinner": {
         "condition": "Parzialmente nuvoloso",
